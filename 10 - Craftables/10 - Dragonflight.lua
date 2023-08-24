@@ -262,7 +262,7 @@ root(ROOTS.Craftables, tier(DF_TIER, bubbleDownSelf({ ["timeline"] = { ADDED_10_
 			FirstCraft(71283, 370533);	-- Residual Neural Channeling Agent
 			FirstCraft(75213, 405832, ADDED_10_1_0);	-- Stinky Bright Potion
 			-- Cauldrons
-			--FirstCraft(x, 405879, ADDED_10_1_0);	-- Cauldron of Extracted Putrescence
+			FirstCraft(75225, 405879, ADDED_10_1_0);	-- Cauldron of Extracted Putrescence
 			FirstCraft(71247, 370673);	-- Cauldron of the Pooka
 			FirstCraft(75243, 406106, ADDED_10_1_0);	-- Draconic Phial Cauldron
 			FirstCraft(71295, 370672);	-- Potion Cauldron of Ultimate Power
@@ -1385,9 +1385,6 @@ root(ROOTS.Craftables, tier(DF_TIER, bubbleDownSelf({ ["timeline"] = { ADDED_10_
 			i(198334),	-- P.E.W. x2
 			i(198335),	-- Sophisticated Problem Solver
 		}),
-		n(DROPS, {
-			i(198970),	-- Infinitely Attachable Pair o' Docks
-		}),
 	}),
 	prof(FISHING, {
 		i(198438, {	-- Draconic Recipe in a Bottle
@@ -1751,6 +1748,7 @@ root(ROOTS.Craftables, tier(DF_TIER, bubbleDownSelf({ ["timeline"] = { ADDED_10_
 			-- Glyphs
 			FirstCraft(75582, 408277, ADDED_10_1_0);	-- Glyph of the Chosen Glaive
 			FirstCraft(75583, 408273, ADDED_10_1_0);	-- Glyph of the Heaved Armament
+			FirstCraft(76602, 416137, ADDED_10_1_5);	-- Glyph of the Shath'Yar
 		})),
 		i(194829, {	-- Fated Fortune Card
 			i(198127),	-- Recipe: Fated Fortune Cookie (RECIPE!)
