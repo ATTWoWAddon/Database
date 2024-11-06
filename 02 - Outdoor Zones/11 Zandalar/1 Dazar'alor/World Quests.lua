@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(THE_GREAT_SEAL, {
 		n(WORLD_QUESTS, {
 			q(52251, {	-- Compromised Reconnaissance
@@ -241,7 +241,7 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 				["isWorldQuest"] = true,
 				["requireSkill"] = ENGINEERING,
 				["g"] = {
-					i(162340),	-- Schematic: Electroshock Mount Motivator
+					i(162340),	-- Schematic: Electroshock Mount Motivator [Rank 3] (RECIPE!)
 				},
 			}),
 			q(52358, {	-- Work Order: Enchant Ring - Seal of Haste

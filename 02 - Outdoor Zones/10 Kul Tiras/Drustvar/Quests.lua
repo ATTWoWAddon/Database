@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(DRUSTVAR, {
 		n(QUESTS, {	-- [Alliance]
 			q(50970, {	-- A Farmer's Fate
@@ -18,6 +18,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 36.8, 50.1, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["provider"] = { "n", 129642 },	-- Lucille Waycrest
+				["g"] = {
+					i(156515),	-- Lucille's Sewing Kit (QI!)
+				},
 			}),
 			q(50327, {	-- A Little 'Pick Me Up'
 				["sourceQuests"] = {
@@ -72,6 +75,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 136234 },	-- Cesi Loosecannon
 				["coord"] = { 22.8, 46.2, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(159143),	-- Tranquil Charm (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(50175, {	-- An Eight-Legged Curse
@@ -97,13 +103,14 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					-- Awarded "A New Order" criteria.
 				},
 				["g"] = {
+					i(156532),	-- Inquisitor's Regalia (QI!)
 					azeriteItem(155107),	-- Banisher Cowl
 					azeriteItem(155104),	-- Waycrest Militia Helmet
 					azeriteItem(160888),	-- Banisher Jerkin
 					azeriteItem(160890),	-- Waycrest Militia Battleplate
 					azeriteItem(160889),	-- Crone-Seeker's Chainmail
 					azeriteItem(155106),	-- Crone-Seeker's Helm
-					azeriteItem(160891, { ["timeline"] = { "created 8.0.1.26433" }}), -- Wickerwoven Robe
+					azeriteItem(160891, { ["timeline"] = { CREATED_8_0_1 }}), -- Wickerwoven Robe
 					azeriteItem(160887),	-- Wickerwoven Vestments
 					azeriteItem(155105),	-- Wickerwoven Crown
 					azewrongItem(175301),	-- Banisher Cowl (no azerite version)
@@ -124,21 +131,30 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					50151,	-- A Steady Ballast
 					50173,	-- Precious Metals
 				},
+				["g"] = {
+					i(156853),	-- Battered Hand Cannon (QI!)
+				},
 			}),
 			q(50450, {	-- An Offensive Harvest
 				["provider"] = { "n", 133839 },	-- Harris Hocking
 				["coord"] = { 27.0, 25.2, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50449 },	-- Reeking Refuge
+				["g"] = {
+					i(157807),	-- Aromatic Onion (QI!)
+				},
 			}),
 			q(48113, {	-- A Pungent Solution
 				["provider"] = { "n", 125380 },	-- Lucille Waycrest
 				["coord"] = { 70.0, 42.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48111 },	-- Trial by Superstition
+				["g"] = {
+					i(151934),	-- Juicy Onion (QI!)
+				},
 			}),
 			q(48522, {	-- A Revealing Missive
-				["itemID"] = 152587,	-- Levae's Missive
+				["provider"] = {"i",152587},	-- Levae's Missive
 				["races"] = ALLIANCE_ONLY,
 				["description"] = "This quest appears to drop from whichever Sister you kill last.",
 				["sourceQuests"] = { 48520 },	-- The Three Sisters
@@ -200,6 +216,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 31.2, 29.9, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50003 },	-- The First Watch
+				["g"] = {
+					i(156855),	-- Falconer's Whistle (QI!)
+				},
 			}),
 			q(53462, {	-- All Wrapped Up
 				["coord"] = { 34.6, 30.6, DRUSTVAR },
@@ -211,6 +230,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 31.7, 29.5, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50446 },	-- Witchrending
+				["g"] = {
+					i(157800),	-- Blasting Powder (QI!)
+				},
 			}),
 			q(47947, {	-- Big Bad Wolves
 				["provider"] = { "n", 124786 },	-- Thomas Staughton
@@ -256,6 +278,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 26.9, 71.3, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 49939 },	-- So Long, Sister
+				["g"] = {
+					i(156830),	-- Lord Sharptooth (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(50001, {	-- Breaking Hag
@@ -293,6 +318,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 141894 },	-- Ulfar
 				["coord"] = { 45.2, 45.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(162526),	-- Drust Runestone (QI!)
+				},
 			}),
 			q(49803, {	-- Changing of the Guard
 				["provider"] = { "n", 129643 },	-- Marshal Everit Reade
@@ -314,12 +342,14 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					i(158618),	-- Waycrest Militia Greatbelt
 				},
 			}),
-			o(273814, {	-- Bladed Charm
-				q(48521, {	-- Charming the Lifeless
-					["coord"] = { 70.0, 62.8, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 48519 },	-- Hope They Can't Swim
-				}),
+			q(48521, {	-- Charming the Lifeless
+				["coord"] = { 70.0, 62.8, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 48519 },	-- Hope They Can't Swim
+				["provider"] = {"o",273814},	-- Bladed Charm
+				["g"] = {
+					i(152590),	-- Wicker Charm (QI!)
+				},
 			}),
 			q(49295, {	-- Clear-Cutting
 				["provider"] = { "n", 126310 },	-- Evelyn Pare
@@ -331,8 +361,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 135085 },	-- Captain Lilian Nottley
 				["coord"] = { 39.7, 57.9, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
-				["sourceQuests"] = { 49805 },	-- Implements of Ill Intent
-				-- May be available earlier; needs confirmation.
+				["sourceQuests"] = { 49807 },	-- A New Order
 			}),
 			q(50445, {	-- Controlling the Situation
 				["provider"] = { "n", 133105 },	-- Warren Ashton
@@ -340,15 +369,15 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50370 },	-- Deeper Into the Woods
 				["g"] = {
+					i(157821),	-- Control Charm (QI!)
 					i(158557),	-- Heartsbane Charm
 				},
 			}),
-			o(272422, {	-- Gentle's Spellbook
-				q(47981, {	-- Cracking the Curse
-					["coord"] = { 60.5, 31.4, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 47979 },	-- Witch Hunt (must be ON this quest and sit on the stool for this quest to become available)
-				}),
+			q(47981, {	-- Cracking the Curse
+				["coord"] = { 60.5, 31.4, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 47979 },	-- Witch Hunt (must be ON this quest and sit on the stool for this quest to become available)
+				["provider"] = {"o",272422},	-- Gentle's Spellbook
 			}),
 			q(48524, {	-- Culling the Coven
 				["provider"] = { "n", 126310 },	-- Evelyn Pare
@@ -366,12 +395,19 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 47949 },	-- That's Not My Fetish
 				-- May have additional source quests; needs confirmation.
+				["g"] = {
+					i(151793),	-- Pig Fetish (QI!)
+					i(153432),	-- Pig Fetish (QI!)
+				}
 			}),
 			q(50092, {	-- Curiously Strong
 				["provider"] = { "n", 131448 },	-- Warren Ashton
 				["coord"] = { 25.3, 67.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50903 },	-- A Missing Master
+				["g"] = {
+					i(156828),	-- Frost Potion (QI!)
+				},
 			}),
 			q(51020, {	-- Cutthroat Business Practices
 				["provider"] = { "n", 136227 },	-- Fixi Slyshiv
@@ -391,6 +427,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 64.5, 54.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48947 },	-- Gol Koval
+				["g"] = {
+					i(161124),	-- Emergency Supplies (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(50152, {	-- Digging for Scraps
@@ -399,6 +438,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50149 },	-- A Weather Eye
 				-- May be available earlier; needs confirmation.
+				["g"] = {
+					i(156663),	-- Quality Salvage (QI!)
+				},
 			}),
 			q(48963, {	-- Diversionary Tactics
 				["provider"] = { "n", 127715 },	-- Lucille Waycrest
@@ -438,6 +480,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					50533,	-- Stick It To 'Em!
 					50639,	-- Waycrest Manor: The Fallen Mother
 				},
+				["g"] = {
+					i(161247),	-- Marshal's Regalia (QI!)
+				},
 			}),
 			q(51001, {	-- Every Day I'm Smugglin'
 				["provider"] = { "n", 136140 },	-- Clonk Greaseybit
@@ -453,6 +498,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["sourceQuests"] = { 50036 },	-- A Weapon of Old
 				-- Awarded "Fighting with Fire" criteria.
 				["g"] = {
+					i(156710),	-- Liquid Fire Flask (QI!)
 					i(155162),	-- Band of Wortcunning
 					i(155159),	-- Waycrest Inquisitor's Cloak
 				},
@@ -490,12 +536,18 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 70.0, 42.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48111 },	-- Trial by Superstition
+				["g"] = {
+					i(151935),	-- Intact Venom Gland (QI!)
+				},
 			}),
 			q(52485, {	-- Hatred's Focus
 				["sourceQuests"] = { 52482 },	-- The Old Bear
 				["provider"] = { "n", 141894 },	-- Ulfar
 				["coord"] = { 45.2, 45.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(162527),	-- Korvash's Skull (QI!)
+				},
 			}),
 			q(50585, {	-- Hexecutioner
 				["provider"] = { "n", 131636 },	-- Marshal Everit Reade
@@ -511,11 +563,11 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				-- May be available earlier; needs confirmation.
 				-- Not required for "Drust Do It."
 				["g"] = {
-					i(157845),	-- Falconer's Whistle
+					i(157845),	-- Falconer's Whistle (QI!)
 				},
 			}),
 			q(49806, {	-- Hidden Dealings
-				["itemID"] = 156517,	-- Hastily Drawn Map
+				["provider"] = {"i",156517},	-- Hastily Drawn Map
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 49804 },	-- Sharp Thinking
 				["crs"] = {
@@ -580,22 +632,27 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(51134, {	-- If Bones Could Talk
 				["races"] = ALLIANCE_ONLY,
-				["itemID"] = 159748,	-- Rune-Etched Bone
+				["provider"] = {"i",159748},	-- Rune-Etched Bone
 				["sourceQuests"] = { 48941 },	-- A Slight Detour
 				-- Needs confirmation -- the quest didn't auto-pop and I didn't notice the item in my bags until later.  This source is based on a wowhead comment.
 				-- Not required for "Drust Do It."
+				["g"] = {
+					i(159746),	-- Pristine Rune-Etched Bone (QI!)
+				},
 			}),
 			q(48882, {	-- I Like Fish Guts and I Cannot Lie
 				["provider"] = { "o", 276513 },	-- Intact Mudfish
 				["coord"] = { 70.7, 50.8, DRUSTVAR },
 				["sourceQuests"] = { 48880 },	-- Mean Gulls (must be ON quest for this one to appear)
+				["g"] = {
+					i(152845),	-- Mudfish Innards (QI!)
+				},
 			}),
-			o(292523, {	-- Heartsbane Grimoire
-				q(49805, {	-- Implements of Ill Intent
-					["coord"] = { 37.7, 50.3, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 49443 },	-- A Lesson in Witch Hunting
-				}),
+			q(49805, {	-- Implements of Ill Intent
+				["coord"] = { 37.7, 50.3, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 49443 },	-- A Lesson in Witch Hunting
+				["provider"] = {"o",292523},	-- Heartsbane Grimoire
 			}),
 			q(48110, {	-- In Case of Ambush
 				["provider"] = { "n", 125385 },	-- Marshal Everit Reade
@@ -642,6 +699,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 31.2, 22.7, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50446 },	-- Witchrending
+				["g"] = {
+					i(157840),	-- Falconer's Key (QI!)
+				},
 				-- May be available earlier; needs confirmation.
 				-- Not required for "Drust Do It."
 			}),
@@ -686,6 +746,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 24.5, 56.6, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50370 },	-- Deeper Into the Woods
+				["g"] = {
+					i(158175),	-- Weakening Potion (QI!)
+				},
 			}),
 			q(48880, {	-- Mean Gulls
 				["provider"] = { "n", 127558 },	-- Art Hughie
@@ -714,6 +777,10 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 141894 },	-- Ulfar
 				["coord"] = { 45.2, 45.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(162525),	-- Ancient Sinew (QI!)
+					i(162524),	-- Intact Drust Bone (QI!)
+				},
 			}),
 			q(50306, {	-- Odds and Ends
 				["provider"] = { "n", 133126 },	-- Marten Webb
@@ -721,12 +788,14 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50172 },	-- Into the Crimsonwood
 				["g"] = {
-					i(158593),	-- Drust-Speaker's Pathfinder
+					i(156951),	-- Bag of Reagents (QI!)
+					i(156950),	-- Organic Matter Sample (QI!)
 					i(158595),	-- Ashenwood Defender
-					i(160193),	-- Wickerwoven Mittens
 					i(160194),	-- Banisher Grasps
 					i(160195),	-- Crone-Seeker's Mitts
+					i(158593),	-- Drust-Speaker's Pathfinder
 					i(160196),	-- Waycrest Militia Grips
+					i(160193),	-- Wickerwoven Mittens
 					-- Horde sourceid's(not actual reward)
 					i(155373),	-- Golden Lilypad
 				},
@@ -742,6 +811,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 135200 },	-- Alexander Treadward
 				["coord"] = { 23.3, 17.4, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(158654),	-- Treadward's Ring (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(50911, {	-- One Man Against the Horde
@@ -778,6 +850,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 23.2, 17.4, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50754 },	-- To Have Loved and Lost
+				["g"] = {
+					i(158654),	-- Treadward's Ring (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(48184, {	-- Pieces of History
@@ -811,6 +886,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					50451,	-- Eating Through the Defenses
 				},
 				["g"] = {
+					i(157846),	-- Sack of Aromatic Onions (QI!)
 					i(155564),	-- Mercy's Psalter
 				},
 			}),
@@ -818,6 +894,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 135673 },	-- Scout McKellis
 				["coord"] = { 34.6, 39.7, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(159076),	-- Azerite Powder (QI!)
+				},
 				--	["sourceQuests"] = {  },	-- UNKNOWN - this quest was bugged/not appearing when I quested through the zone, so not sure if it has a specific prereq or only access to Kul Tiras in general
 				-- Not required for "Drust Do It."
 			}),
@@ -826,11 +905,17 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 31.4, 30.2, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50149 },	-- A Weather Eye
+				["g"] = {
+					i(156722),	-- Silver Nugget (QI!)
+				},
 			}),
 			q(53461, {	-- Precious Metals
 				["coord"] = { 36.4, 25.8, DRUSTVAR },
 				["races"] = HORDE_ONLY,
 				["provider"] = { "n", 143878 },	-- Reez Grimelock
+				["g"] = {
+					i(156722),	-- Silver Nugget (QI!)
+				},
 			}),
 			q(48678, {	-- Questionable Offerings
 				["provider"] = { "n", 127080 },	-- Lord Autumnvale
@@ -866,15 +951,20 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50253 },	-- An Improvised Arsenal
 				-- May be available earlier; needs confirmation.
+				["g"] = {
+					i(157806),	-- Personal Keepsake (QI!)
+				},
 			}),
-			o(284426, {	-- Buried Mining Machine
-				q(50912, {	-- Remix to Ignition
-					["coord"] = { 34.7, 40.0, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-				--	["sourceQuests"] = {  },	-- UNKNOWN - this quest was bugged/not appearing when I quested through the zone, so not sure if it has a specific prereq or only access to Kul Tiras in general
-				}),
-				-- Not required for "Drust Do It."
+			q(50912, {	-- Remix to Ignition
+				["coord"] = { 34.7, 40.0, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["provider"] = {"o",284426},	-- Buried Mining Machine
+			--	["sourceQuests"] = {  },	-- UNKNOWN - this quest was bugged/not appearing when I quested through the zone, so not sure if it has a specific prereq or only access to Kul Tiras in general
+				["g"] = {
+					i(160101),	-- Goldspark's Ignition Key (QI!)
+				},
 			}),
+			-- Not required for "Drust Do It."
 			q(48179, {	-- Rescue Rangers
 				["provider"] = { "n", 139912 },	-- Ranger Wons
 				["coord"] = { 61.9, 59.2, DRUSTVAR },
@@ -892,12 +982,16 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					i(155490),	-- Waycrest Militia Vambraces
 				},
 			}),
-			o(276251, {	-- Excavation Inventory
-				q(48805, {	-- Research Recovery
-					["coord"] = { 51.8, 22.8, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 48793 },	-- The Adventurer's Society
-				}),
+			q(48805, {	-- Research Recovery
+				["coord"] = { 51.8, 22.8, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 48793 },	-- The Adventurer's Society
+				["provider"] = {"o",276251},	-- Excavation Inventory
+				["g"] = {
+					i(152699),	-- "Ancient Potsherds" (QI!)
+					i(152703),	-- "Genuine Titan Disc" (QI!)
+					i(152704),	-- "Relic of the Makers" (QI!)
+				},
 			}),
 			q(50584, {	-- Ruinous Rituals
 				["provider"] = { "n", 131636 },	-- Marshal Everit Reade
@@ -916,6 +1010,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 23.3, 12.5, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50758 },	-- Painful Memories
+				["g"] = {
+					i(158719),	-- Lord Waycrest's Notes (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(48943, {	-- Salvage Rights
@@ -932,6 +1029,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				-- May have additional/later sourceQuests; needs confirmation.
 				-- Picked up after turning in "Drustfall."
 				-- Not required for "Drust Do It."
+				["g"] = {
+					i(160406),	-- Mountain Sapling (QI!)
+				},
 			}),
 			q(47946, {	-- Save Their Bacon
 				["provider"] = { "n", 124786 },	-- Thomas Staughton
@@ -950,6 +1050,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 20.6, 57.4, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50172 },	-- Into the Crimsonwood
+				["g"] = {
+					i(156859),	-- Cage Key (QI!)
+				},
 			}),
 			q(48475, {	-- Seeing Spirits
 				["provider"] = { "n", 126210 },	-- Caretaker Allen
@@ -957,6 +1060,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48622 },	-- The Vanishing Lord
 				-- May have additional sourceQuests; needs confirmation.  Picked up after turning in "And Justice For All."
+				["g"] = {
+					i(152480),	-- Gravebloom (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(49804, {	-- Sharp Thinking
@@ -965,6 +1071,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 49443 },	-- A Lesson in Witch Hunting
 				["g"] = {
+					i(156518),	-- Lucille's Sewing Needle (QI!)
 					i(163607),	-- Lucille's Sewing Needle (TOY!)
 				},
 			}),
@@ -975,15 +1082,14 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["sourceQuests"] = { 50988 },	-- An Economic Opportunity
 				-- Not required for "Drust Do It."
 			}),
-			o(272179, {	-- Mayor's Bulletin
-				q(47968, {	-- Signs and Portents
-					["coord"] = { 56.1, 35.2, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 48622, },	-- The Vanishing Lord
-					["g"] = {
-						i(179385),	-- Neglected Luck Pendant (added in SL)
-					},
-				}),
+			q(47968, {	-- Signs and Portents
+				["coord"] = { 56.1, 35.2, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 48622, },	-- The Vanishing Lord
+				["provider"] = {"o",272179},	-- Mayor's Bulletin
+				["g"] = {
+					i(179385),	-- Neglected Luck Pendant (added in SL)
+				},
 			}),
 			q(49939, {	-- So Long, Sister
 				["provider"] = { "n", 131879 },	-- Inquisitor Cleardawn
@@ -995,7 +1101,8 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 131579 },	-- Captive Villager
 				["coord"] = { 26.1, 66.4, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
-				["sourceQuests"] = { 49896 },	-- To Falconhurst
+				["sourceQuests"] = { 50001 },	-- Breaking Hag
+				["isBreadcrumb"] = true,	-- Quest is not obtainable after a certain point in the quest chain
 			}),
 			q(48476, {	-- Split Party
 				["provider"] = { "n", 126225 },	-- Aaron Cresterly
@@ -1015,6 +1122,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 27.0, 57.9, DRUSTVAR },	-- Coordinates may vary slightly; the NPCs follow you when outside the cave.
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50481 },	-- In the Hall of the Drust King
+				["g"] = {
+					i(158064),	-- Greater Control Charm (QI!)
+				},
 				-- Awarded "Stick It To 'Em!" criteria & overall "Drust Do It." achievement.
 			}),
 			q(50325, {	-- Stopping the Grand Rite
@@ -1053,17 +1163,23 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					azewrongItem(175323),	-- Waycrest Militia Spaulders (no azerite version)
 				},
 			}),
---						   51851	-- Storming the Manor \	-- Not sure why, but there are three versions of this quest on wowhead.
---						   51852	-- Storming the Manor /	-- Not sure why, but there are three versions of this quest on wowhead.
+--							51851	-- Storming the Manor \	-- Not sure why, but there are three versions of this quest on wowhead.
+--							51852	-- Storming the Manor /	-- Not sure why, but there are three versions of this quest on wowhead.
 			q(50960, {	-- Sweete's Orders
 				["provider"] = { "o", 286016 },	-- Ship's Log
 				["coord"] = { 27.4, 11.6, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
-				["lvl"] = 110,
+				["lvl"] = 20,
+				["g"] = {
+					i(159156),	-- Sweete's Orders (QI!)
+				},
 			}),
 			q(48904, {	-- Take the Bait
 				["provider"] = { "n", 127558 },	-- Art Hughie
 				["coord"] = { 71.7, 50.4, DRUSTVAR },
+				["g"] = {
+					i(152865),	-- Snapclaw Meat (QI!)
+				},
 			}),
 			q(48986, {	-- Take the High Road
 				["provider"] = { "n", 127715 },	-- Lucille Waycrest
@@ -1095,6 +1211,11 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["sourceQuests"] = { 48622 },	-- The Vanishing Lord
 				-- May have additional sourceQuests; needs confirmation.  Picked up after turning in "And Justice For All."
 				-- Not required for "Drust Do It."
+				["g"] = {
+					i(154875),	-- Mayor Striggs (QI!)
+					i(154894),	-- Mr. Munchykins (QI!)
+					i(154874),	-- Trunksy (QI!)
+				},
 			}),
 			q(48853, {	-- Terminal Degree
 				["provider"] = { "n", 127157 },	-- Marcus Howlingdale
@@ -1119,6 +1240,11 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					47982,	-- The Final Effigy
 					48948,	-- The North Pass Caverns
 				},
+				["g"] = {
+					i(152677),	-- A Beginner's Guide to Archaeology (QI!)
+					i(152676),	-- Half-eaten Journal (QI!)
+					i(152685),	-- Is it a Rock? How to Identify Relics (QI!)
+				},
 			}),
 			q(48198, {	-- The Burden of Proof
 				["provider"] = { "n", 125380 },	-- Lucille Waycrest
@@ -1140,30 +1266,28 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48198 },	-- The Burden of Proof
 			}),
-			o(281673, {	-- Corlain Citizen's Journal
-				q(50586, {	-- The Fall of Corlain
-					["coord"] = { 30.7, 19.5, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 50457 },	-- Break on Through
-				}),
+			q(50586, {	-- The Fall of Corlain
+				["coord"] = { 30.7, 19.5, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 50457 },	-- Break on Through
+				["provider"] = {"o",281673},	-- Corlain Citizen's Journal
 			}),
-			o(278675, {	-- Cursed Effigy
-				q(47982, {	-- The Final Effigy
-					["coord"] = { 55.8, 35.0, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 47981 },	-- Cracking the Curse
-					-- Awarded "The Final Effigy" criteria
-					["g"] = {
-						i(155109),	-- Wickerwoven Leggings
-						i(155111),	-- Banisher Breeches
-						i(155110),	-- Crone-Seeker's Legguards
-						i(155108),	-- Waycrest Militia Greaves
-						i(155121),	-- Wickerwoven Cuffs
-						i(155124),	-- Banisher Bracers
-						i(155123),	-- Crone-Seeker's Bracers
-						i(155122),	-- Waycrest Militia Bracers
-					},
-				}),
+			q(47982, {	-- The Final Effigy
+				["coord"] = { 55.8, 35.0, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 47981 },	-- Cracking the Curse
+				["provider"] = {"o",278675},	-- Cursed Effigy
+				-- Awarded "The Final Effigy" criteria
+				["g"] = {
+					i(155109),	-- Wickerwoven Leggings
+					i(155111),	-- Banisher Breeches
+					i(155110),	-- Crone-Seeker's Legguards
+					i(155108),	-- Waycrest Militia Greaves
+					i(155121),	-- Wickerwoven Cuffs
+					i(155124),	-- Banisher Bracers
+					i(155123),	-- Crone-Seeker's Bracers
+					i(155122),	-- Waycrest Militia Bracers
+				},
 			}),
 			q(50003, {	-- The First Watch
 				["provider"] = { "n", 131636 },	-- Marshal Everit Reade
@@ -1194,6 +1318,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 61.9, 59.2, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 52074 },	-- Deliverance
+				["g"] = {
+					i(152394),	-- Runic Power Core (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(50762, {	-- The Lady's Fate
@@ -1201,6 +1328,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 23.2, 12.6, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 50761 },	-- Blood in the Chapel
+				["g"] = {
+					i(158914),	-- Assassin's Orders (QI!)
+				},
 				-- Not required for "Drust Do It."
 			}),
 			q(48523, {	-- The Murderous Matron
@@ -1231,6 +1361,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 42.5, 25.2, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48945 },	-- The Ruins of Gol Var
+				["g"] = {
+					i(153053),	-- Tome of Silver and Ash (QI!)
+				},
 				-- Awarder "The Order of Embers" criteria.
 			}),
 			q(48881, {	-- The Reel Deal
@@ -1292,12 +1425,11 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 47982 },	-- The Final Effigy
 			}),
-			o(278669, {	-- Fallhaven Ledger
-				q(47978, {	-- The Wayward Crone
-					["coord"] = { 55.6, 35.73, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 47968 },	-- Signs and Portents
-				}),
+			q(47978, {	-- The Wayward Crone
+				["coord"] = { 55.6, 35.73, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 47968 },	-- Signs and Portents
+				["provider"] = {"o",278669},	-- Fallhaven Ledger
 			}),
 			q(48109, {	-- The Woods Have Eyes
 				["provider"] = { "n", 125385 },	-- Marshal Everit Reade
@@ -1307,12 +1439,15 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(50965, {	-- Those Who Remain
 				["races"] = ALLIANCE_ONLY,
-				["itemID"] = 160027,	-- Ashenwood Relic
+				["provider"] = {"i",160027},	-- Ashenwood Relic
 				["sourceQuests"] = { 48622 },	-- The Vanishing Lord
 				-- May only drop while on A Farmer's Fate / Lost in the Woods as that was the point I picked it up; needs confirmation.
 				["crs"] = {
 					135902,	-- Bloodbough Fungalmancer
 					135901,	-- Bloodbough Funggarian
+				},
+				["g"] = {
+					i(159350),	-- Ashenwood Relic (QI!)
 				},
 			}),
 			q(51445, {	-- Thros, the Blighted Lands
@@ -1321,6 +1456,11 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 27.5, 58.8, DRUSTVAR },
 				["races"] = ALLIANCE_ONLY,
 				["maps"] = { 1045 },	-- Thros, The Blighted Lands
+				["groups"] = {
+					ach(12997, {	-- The Pride of Kul Tiras
+						["races"] = ALLIANCE_ONLY,
+					}),
+				},
 			}),
 			q(48504, {	-- Through the Old Roads
 				["provider"] = { "n", 135021 },	-- Inquisitor Cleardawn
@@ -1367,14 +1507,18 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48110, 48109 },	-- In Case of Ambush & The Woods Have Eyes
 			}),
-			i(158918, {	-- Bilgewater Patented Flamethrower
-				q(50897, {	-- Turn the Heat Around
-					["provider"] = { "n", 135541 },	-- Bilgewater Incinerator
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 50911 },	-- One Man Against the Horde
-					-- May have earlier sourceQuest or no prerequisite; needs confirmation.
-					-- Not required for "Drust Do It."
-				}),
+			q(50897, {	-- Turn the Heat Around
+				["providers"] = {
+					{"n",135541},	-- Bilgewater Incinerator
+					{"i",158918},	-- Bilgewater Patented Flamethrower
+				},
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 50911 },	-- One Man Against the Horde
+				["g"] = {
+					i(158928),	-- Bilgewater Patented Flamethrower (QI!)
+				},
+				-- May have earlier sourceQuest or no prerequisite; needs confirmation.
+				-- Not required for "Drust Do It."
 			}),
 			q(48944, {	-- Unlocking History
 				["provider"] = { "n", 127715 },	-- Lucille Waycrest
@@ -1382,43 +1526,47 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["sourceQuests"] = { 48963 },	-- Diversionary Tactics
 			}),
-			o(290419, {	-- Wanted Poster
-				q(51547, {	-- WANTED: Rindlewoe
-					["coord"] = { 55.7, 34.9, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 47982 },	-- The Final Effigy
-				}),
+			q(51547, {	-- WANTED: Rindlewoe
+				["coord"] = { 55.7, 34.9, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 47982 },	-- The Final Effigy
+				["provider"] = {"o",290419},	-- Wanted Poster
 			}),
-			o(288622, {	-- Wanted Poster
-				q(51356, {	-- WANTED: Sister Lilias
-					["coord"] = { 31.7, 30.7, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 50253 },	-- An Improvised Arsenal
-					-- Not required for "Drust Do It."
-				}),
+			q(51356, {	-- WANTED: Sister Lilias
+				["coord"] = { 31.7, 30.7, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 50253 },	-- An Improvised Arsenal
+				["provider"] = {"o",288622},	-- Wanted Poster
+				-- Not required for "Drust Do It."
+				["g"] = {
+					i(160026),	-- Sister Lilias' Head (QI!)
+				},
 			}),
-			o(289365, {	-- Wanted Poster
-				q(51390, {	-- WANTED: The Crimson Cutthroats
-					["coord"] = { 26.4, 72.2, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 49939 },	-- So Long, Sister
-					-- Not required for "Drust Do It."
-				}),
+			q(51390, {	-- WANTED: The Crimson Cutthroats
+				["coord"] = { 26.4, 72.2, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 49939 },	-- So Long, Sister
+				["provider"] = {"o",289365},	-- Wanted Poster
+				-- Not required for "Drust Do It."
 			}),
-			o(292523, {	-- Wanted Poster
-				q(52033, {	-- WANTED: The Rime Huntress
-					["coord"] = { 41.2, 40.9, DRUSTVAR },
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuests"] = { 48622 },	-- The Vanishing Lord
-					-- May have additional sourceQuests; needs confirmation.  Picked up after turning in "The Order of Embers."
-					-- Not required for "Drust Do It."
-				}),
+			q(52033, {	-- WANTED: The Rime Huntress
+				["coord"] = { 41.2, 40.9, DRUSTVAR },
+				["races"] = ALLIANCE_ONLY,
+				["sourceQuests"] = { 48622 },	-- The Vanishing Lord
+				["provider"] = {"o",292523},	-- Wanted Poster
+				-- May have additional sourceQuests; needs confirmation.  Picked up after turning in "The Order of Embers."
+				-- Not required for "Drust Do It."
 			}),
 			q(51240, {	-- WANTED: Anchorface
 				["coord"] = { 19.57, 43.65, DRUSTVAR },
 			}),
 			q(53459, {	-- WANTED: Sister Lilias
+				["races"] = HORDE_ONLY,
+				["lvl"] = 20,
 				["coord"] = { 37.51, 25.8, DRUSTVAR },
+				["g"] = {
+					i(160026),	-- Sister Lilias' Head (QI!)
+				},
 			}),
 			q(53455, {	-- WANTED: The Crimson Cutthroats
 				["coord"] = { 19.57, 43.65, DRUSTVAR },
@@ -1538,3 +1686,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 		}),
 	}),
 })));
+
+root(ROOTS.HiddenQuestTriggers, {
+	expansion(EXPANSION.BFA, {
+		q(52934),	-- Spell 277753 & 278578 granting access to NPC 127156 during quest 48853
+	}),
+});

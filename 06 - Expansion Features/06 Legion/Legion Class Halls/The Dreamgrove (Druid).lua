@@ -3,7 +3,7 @@
 -------------------------------------------------------------------
 DAILY_DREAMWAY_EVENT_ROLL = createHeader({
 	readable = "Daily Dreamway Event Roll",
-	icon = "Interface\\Icons\\inv_misc_druidstone04",
+	icon = 1128042,
 	text = {
 		en = "Event Roll",
 		es = "Rollo de eventos",
@@ -21,9 +21,9 @@ DAILY_DREAMWAY_EVENT_ROLL = createHeader({
 });
 DUSKWOOD_ACTIVE = createHeader({
 	readable = "Duskwood Active",
-	icon = "Interface\\Icons\\achievement_zone_duskwood",
+	icon = 236757,
 	text = {
-		en = [[~DUNGEON_FLOOR_NIGHTMARERAID8.." "..GetSpellInfo(133137)]],
+		en = [[~DUNGEON_FLOOR_NIGHTMARERAID8.." "..]] .. WOWAPI_GetSpellName(133137),
 		ru = "Сумеречный лес - активен",
 	},
 	description = {
@@ -32,9 +32,9 @@ DUSKWOOD_ACTIVE = createHeader({
 });
 FERALAS_ACTIVE = createHeader({
 	readable = "Feralas Active",
-	icon = "Interface\\Icons\\achievement_zone_feralas",
+	icon = 236764,
 	text = {
-		en = [[~DUNGEON_FLOOR_NIGHTMARERAID9.." "..GetSpellInfo(133137)]],
+		en = [[~DUNGEON_FLOOR_NIGHTMARERAID9.." "..]] .. WOWAPI_GetSpellName(133137),
 		ru = "Фералас - активен",
 	},
 	description = {
@@ -43,9 +43,9 @@ FERALAS_ACTIVE = createHeader({
 });
 THE_HINTERLANDS_ACTIVE = createHeader({
 	readable = "The Hinterlands Active",
-	icon = "Interface\\Icons\\achievement_zone_hinterlands_01",
+	icon = 236780,
 	text = {
-		en = [[~DUNGEON_FLOOR_NIGHTMARERAID7.." "..GetSpellInfo(133137)]],
+		en = [[~DUNGEON_FLOOR_NIGHTMARERAID7.." "..]] .. WOWAPI_GetSpellName(133137),
 		ru = "Внутренние земли - активен",
 	},
 	description = {
@@ -54,9 +54,9 @@ THE_HINTERLANDS_ACTIVE = createHeader({
 });
 DUSKWOOD_ACTIVATED = createHeader({
 	readable = "Duskwood Activated",
-	icon = "Interface\\Icons\\achievement_zone_duskwood",
+	icon = 236757,
 	text = {
-		en = [[~DUNGEON_FLOOR_NIGHTMARERAID8.." "..GetSpellInfo(78741)]],
+		en = [[~DUNGEON_FLOOR_NIGHTMARERAID8.." "..]] .. WOWAPI_GetSpellName(78741),
 		ru = "Сумеречный лес - активирован",
 	},
 	description = {
@@ -65,9 +65,9 @@ DUSKWOOD_ACTIVATED = createHeader({
 });
 FERALAS_ACTIVATED = createHeader({
 	readable = "Feralas Activated",
-	icon = "Interface\\Icons\\achievement_zone_feralas",
+	icon = 236764,
 	text = {
-		en = [[~DUNGEON_FLOOR_NIGHTMARERAID9.." "..GetSpellInfo(78741)]],
+		en = [[~DUNGEON_FLOOR_NIGHTMARERAID9.." "..]] .. WOWAPI_GetSpellName(78741),
 		ru = "Фералас - активирован",
 	},
 	description = {
@@ -76,9 +76,9 @@ FERALAS_ACTIVATED = createHeader({
 });
 THE_HINTERLANDS_ACTIVATED = createHeader({
 	readable = "The Hinterlands Activated",
-	icon = "Interface\\Icons\\achievement_zone_hinterlands_01",
+	icon = 236780,
 	text = {
-		en = [[~DUNGEON_FLOOR_NIGHTMARERAID7.." "..GetSpellInfo(78741)]],
+		en = [[~DUNGEON_FLOOR_NIGHTMARERAID7.." "..]] .. WOWAPI_GetSpellName(78741),
 		ru = "Внутренние земли - активирован",
 	},
 	description = {
@@ -87,7 +87,7 @@ THE_HINTERLANDS_ACTIVATED = createHeader({
 });
 
 
-root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "added 7.0.3" } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.LEGION, bubbleDown({ ["timeline"] = { ADDED_7_0_3 } }, {
 	n(CLASS_HALL, {
 		cl(DRUID, bubbleDownSelf({ ["classes"] = { DRUID } }, {
 			["maps"] = { THE_DREAMGROVE },
@@ -116,7 +116,8 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					}),
 				}),
 				n(FOLLOWERS, bubbleDownSelf({
-					["u"] = 15,	-- Temporary troops
+					["collectible"] = false,
+					["u"] = UNLEARNABLE,	-- Temporary troops
 				}, {
 					follower(749),	-- Ancient of War
 					follower(938),	-- Ancient of War
@@ -182,6 +183,9 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["sourceQuests"] = { 44663 },	-- In the Blink of an Eye
 						["provider"] = { "n", 101061 },  -- Archdruid Hamuul Runetotem
 						["coord"] = { 57.8, 45.8, LEGION_DALARAN },
+						["g"] = {
+							i(173716),	-- Mossy Hearthstone (QI!)
+						},
 					}),
 					q(42439, {	-- Aid for the Ashen
 						["sourceQuests"] = { 42428 },	-- The Shrine of Ashamane
@@ -841,24 +845,29 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["provider"] = { "n", 104241 },	-- Malfurion Stormrage
 						["coord"] = { 46.0, 51.1, 747 },
 					}),
-					spell(231437, {	-- Archdruid's Lunarwing Form
-						q(46317, {	-- Talon's Call
-								["provider"] = { "n", 118105 },	-- Grovewarden Proudhorn
-							["coord"] = { 43.6, 63.6, BROKEN_SHORE },
-						["sourceQuests"] = { 46251 },	-- Shard Times
-						}),
-						q(46318, {	-- Defense of Aviana
-							["provider"] = { "n", 106299 },	-- Thisalee Crow
-							["sourceQuests"] = { 46317 },	-- Talon's Call
-							}),
-						q(46319, {	-- You Can't Take the Sky from Me
-							["provider"] = { "n", 106299 },	-- Thisalee Crow
-							["sourceQuests"] = { 46318 },	-- Defense of Aviana
-							["g"] = {
-								mount(231437),	-- Archdruid's Lunarwing Form
-							},
-						}),
+
+					-- 7.2.0
+					q(46317, {	-- Talon's Call
+						["sourceQuests"] = {
+							47137,	-- Champions of Legionfall
+							45425,	-- Grovebound
+						},
+						["provider"] = { "n", 118105 },	-- Grovewarden Proudhorn
+						["coord"] = { 43.6, 63.6, BROKEN_SHORE },
 					}),
+					q(46318, {	-- Defense of Aviana
+						["sourceQuests"] = { 46317 },	-- Talon's Call
+						["provider"] = { "n", 106299 },	-- Thisalee Crow
+					}),
+					q(46319, {	-- You Can't Take the Sky from Me
+						["sourceQuests"] = { 46318 },	-- Defense of Aviana
+						["provider"] = { "n", 106299 },	-- Thisalee Crow
+						["g"] = {
+							mount(231437),	-- Archdruid's Lunarwing Form (MOUNT!)
+							mount(241857),	-- Archdruid's Lunarwing Form (MOUNT!)
+						},
+					}),
+					--
 
 					q(44237),	-- Ancients of War
 					q(41412, {	-- The Retreat
@@ -946,7 +955,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					}),
 				}),
 				m(715, bubbleDown({["classes"] = { DRUID }},{	-- Emerald Dreamway
-					["icon"] = "Interface\\Icons\\spell_arcane_portalshattrath",	-- Dream Portal Icon
+					["icon"] = 135745,	-- Dream Portal Icon
 					["g"] = {
 						n(DAILY_DREAMWAY_EVENT_ROLL, {
 							["questID"] = 44326,	-- "daily dreamway event roll" on WoWHead
@@ -1060,7 +1069,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(42513),	-- Ashamane's Fall - landing and approaching RPing NPCs at the start of "The Shrine of Ashamane" (questID 42428)
 		q(41885),	-- Naralex Kneel Seen - drinking the potion while next to Naralex during "In Deep Slumber" (questID 41436)
 		q(41194),	-- Remulos Tracker - entering the Emerald Dreamway for the first time

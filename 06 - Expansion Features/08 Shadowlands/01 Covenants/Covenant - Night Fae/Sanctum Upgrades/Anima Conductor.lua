@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
-local GRATEFUL = currency(GRATEFUL);
+local GRATEFUL_CURRENCY = currency(GRATEFUL);
 local GLIMMERLIGHT_STAFF = i(179518);
 local TWILIGHT_BLOOM = i(182453);
 local EVERCHILL_BRAMBLES = i(182452);
@@ -19,7 +19,7 @@ local STAR_LAKE_AMPHITHEATER = n(-934,   {	-- Star Lake Amphitheater
 	["questID"] = 61633,
 	["isDaily"] = true,
 	["coord"] = { 41.5, 44.8, ARDENWEALD },
-	["icon"] = "Interface\\Icons\\inv_helm_mask_fittedalpha_b_01_nightborne_02",
+	["icon"] = 1354190,
 	["crs"] = { 171743 },	-- Dapperdew
 	["g"] = {
 		n(166135, {	-- Astra, As Azshara <An Infamous Queen>
@@ -75,18 +75,19 @@ local VALFIR = n(168647, {	-- Valfir the Unrelenting
 	},
 });
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
 	n(NIGHT_FAE, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_ardenweald01",
+			["icon"] = 3641394,
 			["g"] = {
 				n(ANIMA_CONDUCTOR, {
-					["icon"] = "Interface\\Icons\\Sanctum_features_animadiversion_ardenweald",
-					["g"] = sharedData({ ["icon"] = "Interface\\Icons\\Sanctum_features_animadiversion_ardenweald" }, {
+					["icon"] = 3854013,
+					["g"] = sharedData({ ["icon"] = 3854013 }, {
 						n(REWARDS, {
-							["description"] = "Every Activity within Anima Conductor Rewards this.",
 							["g"] = {
-								GRATEFUL,
+								currency(GRATEFUL, {
+									["description"] = "Grateful Offerings can be collected once you have unlocked the Anima Conductor in for your covenant.\n Once unlocked, you can loot them from Covenant Callings (higher Conductor => more Offerings), Patterns Within Patterns Weekly Quest in Zereth Morthis and from special rares & treasures, based on the channeling of your Anima Conductor.",
+								}),
 							},
 						}),
 						n(TIER_ONE, {
@@ -171,27 +172,48 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							n(QUESTS, sharedData({ ["coord"] = { 59.7, 52.8, ARDENWEALD }, ["isDaily"] = true }, {
 								q(62160, {	-- A Bundle of Lilies
 									["provider"] = { "n", 173277 },	-- Teendynneetll
+									["g"] = {
+										i(182659),	-- Night Lilly (QI!)
+									},
 								}),
 								q(62224, {	-- A Thread of Hope
 									["provider"] = { "n", 173277 },	-- Teendynneetll
+									["g"] = {
+										i(183041),	-- Anima-Infused Silk (QI!)
+									},
 								}),
 								q(62188, {	-- Catch A Star
 									["provider"] = { "n", 173277 },	-- Teendynneetll
 								}),
 								q(61875, {	-- Doing the Dew
 									["provider"] = { "n", 173277 },	-- Teendynneetll
+									["g"] = {
+										i(182333),	-- Thistledrop Dew (QI!)
+									},
 								}),
 								q(61950, {	-- Hunting the Wilds
 									["provider"] = { "n", 173282 },    -- Guardian Dazzlewing
+									["g"] = {
+										i(182387),	-- Feral Anima (QI!)
+									},
 								}),
 								q(61968, {	-- Just Wing It
 									["provider"] = { "n", 173282 },    -- Guardian Dazzlewing
+									["g"] = {
+										i(182450),	-- Perfect Ardenmoth Wing Scale (QI!)
+									},
 								}),
 								q(62081, {	-- Return Those Animacones!
 									["provider"] = { "n", 173282 },    -- Guardian Dazzlewing
+									["g"] = {
+										i(182619),	-- Looted Animacone (QI!)
+									},
 								}),
 								q(62155, {	-- Runestone Roundup
 									["provider"] = { "n", 173282 },    -- Guardian Dazzlewing
+									["g"] = {
+										i(182647),	-- Runestone Spike (QI!)
+									},
 								}),
 								q(62057, {	-- Those Who Hunger
 									["provider"] = { "n", 173282 },    -- Guardian Dazzlewing
@@ -201,11 +223,20 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 								}),
 							})),
 							n(WORLD_QUESTS, sharedData({ ["isWorldQuest"] = true }, {
-								q(62068),	-- Gormling Piper: Crumbled Ridge
-								q(61394),	-- Gormling Piper: Tranquil Pools
-								q(61717),	-- Gormling Piper: Tranquil Pools
+								q(62068, {	-- Gormling Piper: Crumbled Ridge
+									i(182611),	-- Fae Flute (QI!)
+								}),
+								q(61394, {	-- Gormling Piper: Tranquil Pools
+									["g"] = {
+										i(181284),	-- Gormling in a Bag (QI!)
+									},
+								}),
+								q(61717, {	-- Gormling Piper: Tranquil Pools
+									i(182189),	-- Fae Flute (QI!)
+								}),
 								q(62051, {	-- Gormling Toss: Spirit Glen
 									i(184487),	-- Gormling in a Bag (TOY!)
+									i(182600),	-- Gormling in a Bag (QI!)
 								}),
 							})),
 						}),
@@ -221,10 +252,18 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 	}),
 })));
 
-for _,t in ipairs({STAR_LAKE_AMPHITHEATER, VALFIR,GRATEFUL,GLIMMERLIGHT_STAFF,TWILIGHT_BLOOM,EVERCHILL_BRAMBLES,GLIMMERDUSTS_GRAND_DESIGN,MIKAI_DEATHSCYTHE,DREAMERS_MENDING,MURMURS_IN_THE_DARK,SILKY_SHIMMERMOTH,GREATAXE_OF_UNRELENTING_PURSUIT}) do
+for _,t in ipairs({STAR_LAKE_AMPHITHEATER, VALFIR,GRATEFUL_CURRENCY,GLIMMERLIGHT_STAFF,TWILIGHT_BLOOM,EVERCHILL_BRAMBLES,GLIMMERDUSTS_GRAND_DESIGN,MIKAI_DEATHSCYTHE,DREAMERS_MENDING,MURMURS_IN_THE_DARK,SILKY_SHIMMERMOTH,GREATAXE_OF_UNRELENTING_PURSUIT}) do
 	t.customCollect = nil;
 end
 
-root(ROOTS.HiddenQuestTriggers, {
-	q(61168),	-- triggered when obtaining trickers moves from conductor lvl 3 enchantments
-});
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	n(NIGHT_FAE, {
+		n(SANCTUM_UPGRADES, {
+			n(ANIMA_CONDUCTOR, {
+				q(61168),	-- triggered when obtaining trickers moves from conductor lvl 3 enchantments
+				q(61169),	-- Night Fae buff from Claw's Edge anima conductor
+				q(61158),	-- Night Fae buff from Claw's Edge anima conductor (Ka'rolei)
+			}),
+		}),
+	}),
+})));

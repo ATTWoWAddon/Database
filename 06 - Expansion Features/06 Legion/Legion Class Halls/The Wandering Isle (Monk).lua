@@ -2,7 +2,7 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "added 7.0.3" } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.LEGION, bubbleDown({ ["timeline"] = { ADDED_7_0_3 } }, {
 	n(CLASS_HALL, {
 		cl(MONK, bubbleDownSelf({ ["classes"] = { MONK } }, {
 			["maps"] = { THE_WANDERING_ISLE },
@@ -42,7 +42,8 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					}),
 				}),
 				n(FOLLOWERS, bubbleDownSelf({
-					["u"] = 15,	-- Temporary troops
+					["collectible"] = false,
+					["u"] = UNLEARNABLE,	-- Temporary troops
 				}, {
 					follower(702),	-- Echo of Chi-Ji
 					follower(701),	-- Echo of Niuzao
@@ -119,6 +120,10 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["sourceQuests"] = { 42762 },	-- The Wanderer's Companion
 							["provider"] = { "n", 108700 },	-- The Monkey King
 							["coord"] = { 41.6, 27.4, THE_JADE_FOREST },
+							["g"] = {
+								i(138477),	-- Pure Water Core (QI!)
+								i(173703),	-- Purity Jug (QI!)
+							},
 						}),
 						q(42766, {	-- The Riddle of the Barrel
 							["sourceQuests"] = { 42762 },	-- The Wanderer's Companion
@@ -129,6 +134,12 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["sourceQuests"] = { 42762 },	-- The Wanderer's Companion
 							["provider"] = { "n", 108700 },	-- The Monkey King
 							["coord"] = { 41.6, 27.4, THE_JADE_FOREST },
+							["g"] = {
+								i(173704, {	-- Granary Jug (QI!)
+									["timeline"] = { ADDED_9_0_1 },
+								}),
+								i(138623),	-- Sack of Roasted Grain (QI!)
+							},
 						}),
 						q(42957, {	-- Journey to the East
 							["sourceQuests"] = {
@@ -138,6 +149,11 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							},
 							["provider"] = { "n", 109049 },	-- The Monkey King
 							["maps"] = { VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = {
+								i(173706, {	-- Jade Jug (QI!)
+									["timeline"] = { ADDED_9_0_1 },
+								}),
+							},
 						}),
 						q(42868, {	-- The Monkey King's Challenge
 							["sourceQuests"] = { 42957 },	-- Journey to the East
@@ -237,11 +253,17 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["sourceQuests"] = { 40793 },	-- A Matter of Planning
 						["provider"] = { "n", 100438 },	-- Iron-Body Ponshu
 						["coord"] = { 51.4, 48.5, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.0.1", "removed 8.0.1" },
+						["timeline"] = { ADDED_7_0_3, REMOVED_8_0_1 },
 					}),
 					-- Start Zone
 					q(40795, {	-- The Fight Begins
-						["sourceQuests"] = { 40698 },	-- Purity of Form
+						["sourceQuests"] = {
+							-- #if BEFORE BFA
+							40698,	-- Purity of Form
+							-- #else
+							40793,	-- A Matter of Planning
+							-- #endif
+						},
 						["provider"] = { "n", 99179 },	-- Master Hsu
 						["coord"] = { 52.8, 59.7, THE_WANDERING_ISLE },
 					}),
@@ -532,7 +554,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["provider"] = { "n", 100438 },	-- Iron-Body Ponshu
 						["coord"] = { 51.4, 48.4, THE_WANDERING_ISLE },
 						["g"] = {
-							title(329),	-- Grandmaster %s
+							title(329),	-- Grandmaster <Name>
 							i(139731),	-- Grandmaster's Tunic
 							i(142056),	-- Arcanum of the Order
 							i(142063),	-- Dusk of the Order
@@ -573,13 +595,13 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["provider"] = { "n", 118430 },	-- Injured Initiate
 						["coord"] = { 51.2, 58.8, THE_WANDERING_ISLE },
 						["isBreadcrumb"] = true,
-						["timeline"] = { "added 7.1.5", "removed 7.2.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_2_0 },
 					}),
 					q(46025, {	-- Investigate the Broken Shore
 						["sourceQuest"] = 46024,	-- An Urgent Warning
 						["provider"] = { "n", 99179 },	-- Master Hsu <Mission Master>
 						["coord"] = { 52.8, 59.6, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.1.5", "removed 7.2.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_2_0 },
 					}),
 					-- 7.2.0
 					q(45440, {	-- A Brewing Situation
@@ -593,38 +615,38 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						},
 						["provider"] = { "n", 116929 },	-- Brewmaster Blancee
 						["coord"] = { 51.4, 48.6, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(45404, {	-- Panic at the Brewery
 						["sourceQuests"] = { 45440 },	-- A Brewing Situation
 						["provider"] = { "n", 119664 },	-- Brewmaster Almai
 						["coord"] = { 51.3, 48.5, THE_WANDERING_ISLE },
 						["maps"] = { 872, 873, 874 },	-- Stormstout Brewery (Scenario Map)
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(45459, {	-- Storming the Legion
 						["sourceQuests"] = { 45404 },	-- Panic at the Brewery
 						["provider"] = { "n", 119765 },	-- Spirit of Brewmaster Blanche
 						["coord"] = { 51.5, 48.5, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(45574, {	-- Fel Ingredients
 						["sourceQuests"] = { 45459 },	-- Storming the Legion
 						["provider"] = { "n", 117305 },	-- Brewmaster Almai
 						["coord"] = { 53.6, 53.3, BROKEN_SHORE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(45545, {	-- Barrel Toss
 						["sourceQuests"] = { 45459 },	-- Storming the Legion
 						["provider"] = { "n", 117305 },	-- Brewer Almai
 						["coord"] = { 53.6, 53.3, BROKEN_SHORE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(45449, {	-- Alchemist Koryla
 						["sourceQuests"] = { 45459 },	-- Storming the Legion
 						["provider"] = { "n", 117305 },	-- Brewer Almai
 						["coord"] = { 53.6, 53.3, BROKEN_SHORE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46320, {	-- Hope For a Cure
 						["sourceQuests"] = {
@@ -634,21 +656,21 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						},
 						["provider"] = { "n", 117305 },	-- Brewer Almai
 						["coord"] = { 53.6, 53.4, BROKEN_SHORE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(45442, {	-- Not Felling Well
 						["sourceQuests"] = { 46320 },	-- Hope For a Cure
 						["provider"] = { "n", 119765 },	-- Spirit of Brewmaster Blanche
 						["coord"] = { 50.5, 57.8, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(45771, {	-- A Time for Everything
 						["sourceQuests"] = { 45442 },	-- Not Felling Well
 						["provider"] = { "n", 119765 },	-- Spirit of Brewmaster Blanche
 						["coord"] = { 50.5, 57.8, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
-					q(45790, bubbleDownSelf({ ["timeline"] = { "added 7.2.0" } }, {	-- Champion: Almai
+					q(45790, bubbleDownSelf({ ["timeline"] = { ADDED_7_2_0 } }, {	-- Champion: Almai
 						["sourceQuests"] = { 45771 },	-- A Time for Everything
 						["provider"] = { "n", 117504 },	-- Brewer Almai
 						["coord"] = { 51.6, 48.5, THE_WANDERING_ISLE },
@@ -660,57 +682,57 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["sourceQuest"] = 45790,	-- Champion: Almai
 						["provider"] = { "n", 118214 },	-- Yiska
 						["coord"] = { 44.9, 62.0, BROKEN_SHORE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46341, {	-- The Tale of Ban-Lu
 						["sourceQuests"] = { 46353 },	-- Master Who?
 						["provider"] = { "n", 120758 },	-- Master Bu
 						["coord"] = { 32.3, 43.3, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46342, {	-- Return to the Broken Peak
 						["sourceQuests"] = { 46341 },	-- The Tale of Ban-Lu
 						["provider"] = { "n", 120758 },	-- Master Bu
 						["coord"] = { 32.3, 43.3, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46343, {	-- The Trail of Ban-Lu
 						["sourceQuests"] = { 46342 },	-- Return to the Broken Peak
 						["provider"] = { "n", 120722 },	-- Master Bu
 						["coord"] = { 47.3, 41.7, KUN_LAI_SUMMIT },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46344, {	-- Smelly's Luckydo
 						["sourceQuests"] = { 46343 },	-- The Trail of Ban-Lu
 						["provider"] = { "n", 120744 },	-- Smelly Mountaintop
 						["coord"] = { 47.9, 49.0, KUN_LAI_SUMMIT },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46346, {	-- The Shadow of Ban-Lu
 						["sourceQuests"] = { 46344 },	-- Smelly's Luckydo
 						["provider"] = { "n", 120722 },	-- Master Bu
 						["coord"] = { 47.9, 48.8, KUN_LAI_SUMMIT },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46347, {	-- Clean-up on Aisle Sha
 						["sourceQuests"] = { 46346 },	-- The Shadow of Ban-Lu
 						["provider"] = { "n", 120722 },	-- Master Bu
 						["coord"] = { 36.5, 48.2, KUN_LAI_SUMMIT },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46348, {	-- The River to Ban-Lu
 						["sourceQuests"] = { 46347 },	-- Clean-up on Aisle Sha
 						["provider"] = { "n", 120722 },	-- Master Bu
 						["coord"] = { 36.5, 48.3, KUN_LAI_SUMMIT },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 					q(46349, {	-- Lilies for Ryuli
 						["sourceQuests"] = { 46348 },	-- The River to Ban-Lu
 						["provider"] = { "n", 120726 },	-- Waterspeaker Ryuli
 						["coord"] = { 74.4, 88.7, KUN_LAI_SUMMIT },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
-					q(46350, bubbleDownSelf({ ["timeline"] = { "added 7.2.0" } }, {	-- The Trial of Ban-Lu
+					q(46350, bubbleDownSelf({ ["timeline"] = { ADDED_7_2_0 } }, {	-- The Trial of Ban-Lu
 						["sourceQuests"] = { 46349 },	-- Lilies for Ryuli
 						["provider"] = { "n", 120726 },	-- Waterspeaker Ryuli
 						["coord"] = { 73.9, 88.9, KUN_LAI_SUMMIT },
@@ -722,25 +744,25 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(43881, {	-- Hitting the Books
 						["provider"] = { "n", 106942 },	-- Lorewalker Cho <Head Archivist>
 						["coord"] = { 46.8, 46.8, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.0.3", "removed 7.3.0" },
+						["timeline"] = { ADDED_7_0_3, REMOVED_7_3_0 },
 					}),
 					q(46144, {	-- Knowledge is Power
 						["sourceQuest"] = 43881,	-- Hitting the Books
 						["provider"] = { "n", 106942 },	-- Lorewalker Cho <Head Archivist>
 						["coord"] = { 46.8, 46.8, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.1.5", "removed 7.3.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_3_0 },
 					}),
 					q(46157, {	-- Furthering Knowledge
 						["sourceQuest"] = 46144,	-- Knowledge is Power
 						["provider"] = { "n", 106942 },	-- Lorewalker Cho <Head Archivist>
 						["coord"] = { 46.8, 46.8, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.1.5", "removed 7.3.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_3_0 },
 					}),
 					q(46785, {	-- Further Advancement
 						["sourceQuests"] = { 45771 },	-- A Time for Everything
 						["provider"] = { "n", 99179 },	-- Master Hsu
 						["coord"] = { 52.8, 59.6, THE_WANDERING_ISLE },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 				}),
 				n(SPECIAL,{
@@ -819,7 +841,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 	}),
 })));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(40127),	-- Da-Nel's Quest - Da-Nel sends you from Dalaran to Peak of Serenity
 		q(40655),	-- Li Li - hopping on kite during "Off to Adventure!" (questID 40633)
 		q(40516),	-- The Dawning Bit -  triggered after accepting "The Dawning Light" (questID 40236)

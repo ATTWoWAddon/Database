@@ -1,14 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
-	inst(261, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {	-- The Steamvault
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
+	inst(261, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {	-- The Steamvault
 		["lore"] = "The Steamvault serves as the mechanical heart of the Naga's draining operations in Zangarmarsh. The mechanisms on display within the massive cavern supply the power for the actual act of removing the marsh's water.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3715,	-- The Steamvault
-		["sins"] = {
-			"Coilfang: The Steamvault",
-			"Echsenkessel: Dampfkammer",
-		},
+		-- #endif
 		["coord"] = { 50.35, 33.39, ZANGARMARSH },	-- The Steamvault, Zangarmarsh
 		["maps"] = {
 			COILFANG_RESERVOIR_STEAMVAULT,
@@ -19,7 +17,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 			n(QUESTS, {
 				q(29613, {	-- A Proper Fate
 					["qg"] = 54848,	-- Watcher Jhang
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- Warlord Kalithresh slain
@@ -29,7 +27,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29614, {	-- Containment is Key
 					["qg"] = 54849,	-- Naturalist Bite
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- 0/3 Bog Overlord slain
@@ -45,16 +43,17 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(9764, {	-- Orders from Lady Vashj
 					["provider"] = { "i", 24367 },	-- Orders from Lady Vashj
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
+					["maps"] = { ZANGARMARSH },
 					["lvl"] = lvlsquish(67, 67, 20),
 				}),
 				q(29616, {	-- Storming the Steamvault
 					["qg"] = 17841,	-- Ysiel Windsinger
 					["coord"] = { 78.4, 62, ZANGARMARSH },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 				}),
-				q(9763, bubbleDown({ ["timeline"] = { "removed 4.3.0.14732" } }, {	-- The Warlord's Hideout
+				q(9763, bubbleDown({ ["timeline"] = { REMOVED_4_3_0 } }, {	-- The Warlord's Hideout
 					["qg"] = 17884,	-- Watcher Jhang
 					["coord"] = { 52.3, 36.0, ZANGARMARSH },
 					["lvl"] = lvlsquish(67, 67, 20),
@@ -84,7 +83,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29615, {	-- Windcaller Claw and the Water Thief
 					["qg"] = 54851,	-- Windcaller Claw
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- Hydromancer Thespia slain
@@ -102,7 +101,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["cr"] = 17803,	-- Coilfang Oracle
 				}),
 				i(24367, {	-- Orders from Lady Vashj
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					-- #if BEFORE 4.3.0.14732
 					["crs"] = {
 						17721,	-- Coilfang Engineer
@@ -115,11 +114,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					-- #endif
 				}),
 				i(24487, {	-- Second Key Fragment
+					["providers"] = {
+						{ "o", 182197 },	-- Arcane Container
+						{ "n",  22891 },	-- Second Fragment Guardian
+					},
 					["coord"] = { 59.0, 24.8, COILFANG_RESERVOIR_STEAMVAULT },
-					["cr"] = 22891,	-- Second Fragment Guardian
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(573, {	-- Hydromancer Thespia
 					["creatureID"] = 17797,
 					["groups"] = {
@@ -154,9 +156,9 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(27795),	-- Sash of Serpentra (7.3.5 - Moved from Warlord Kalithresh)
 						-- #endif
-						i(23887),	-- Schematic: Rocket Boots Xtreme
+						i(23887),	-- Schematic: Rocket Boots Xtreme (RECIPE!)
 						i(72574, {	-- Irradiated Gear
-							["timeline"] = { "added 4.3.0.14732" },
+							["timeline"] = { ADDED_4_3_0 },
 						}),
 					},
 				}),
@@ -197,11 +199,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(30543),	-- Pontifex Kilt
 						-- #endif
 						i(27805),	-- Ring of the Silver Hand
-						i(24313),	-- Pattern: Battlecast Hood
+						i(24313),	-- Pattern: Battlecast Hood (RECIPE!)
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -259,9 +261,9 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							-- #if AFTER 7.3.5
 							i(27795),	-- Sash of Serpentra (7.3.5 - Moved from Warlord Kalithresh)
 							-- #endif
-							i(23887),	-- Schematic: Rocket Boots Xtreme
+							i(23887),	-- Schematic: Rocket Boots Xtreme (RECIPE!)
 							i(72574, {	-- Irradiated Gear
-								["timeline"] = { "added 4.3.0.14732" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						},
 					}),
@@ -274,7 +276,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 								-- #endif
 							}),
 							ach(5077, {	-- Heroic: The Steamvault Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(29351),	-- Wrathtide Longbow
 							i(27801),	-- Beast Lord Mantle
@@ -296,7 +298,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(27874),	-- Beast Lord Leggings
 							i(30543),	-- Pontifex Kilt
 							i(27805),	-- Ring of the Silver Hand
-							i(24313),	-- Pattern: Battlecast Hood
+							i(24313),	-- Pattern: Battlecast Hood (RECIPE!)
 							applyclassicphase(TBC_PHASE_ONE, i(23572)),	-- Primal Nether
 							i(31721),	-- Kalithresh's Trident
 							i(33827),	-- The Warlord's Treatise
@@ -309,7 +311,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35533),	-- The Steamvault Reward Quest - Normal completion
 		q(35534),	-- The Steamvault Reward Quest - Heroic completion
 	}),

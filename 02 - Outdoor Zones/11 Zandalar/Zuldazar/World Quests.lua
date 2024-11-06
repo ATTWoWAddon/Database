@@ -2,15 +2,15 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(ZULDAZAR, {
 		n(WORLD_QUESTS, sharedData({
 			["isWorldQuest"] = true,
 			["lvl"] = { 50 },
 		},{
-			q(52923, {	-- Add More to the Collection
+			petbattle(q(52923, {	-- Add More to the Collection
 				["provider"] = { "n", 142114 },	-- Talia Sparkbrow
-			}),
+			})),
 			q(50864),	-- Atal'zul Gotaka
 			q(50863),	-- Avatar of Xolotal
 			q(52858),	-- Azerite Empowerment
@@ -31,7 +31,12 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 				["lvl"] = 45,
 				["races"] = ALLIANCE_ONLY,
 			}),
-			q(50652),	-- Biting the Hand that Feeds Them
+			q(50652, {	-- Biting the Hand that Feeds Them
+				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(158184),	-- Fresh Meat (QI!)
+				},
+			}),
 			q(54523, {	-- Blinky Gizmospark (Faction Assault WQ)
 				["lvl"] = 45,
 				["races"] = HORDE_ONLY,
@@ -49,7 +54,11 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			q(55344, {	-- Calligraphy
 				["races"] = HORDE_ONLY,
 			}),
-			q(50966),	-- Cleanup Crew
+			q(50966, {	-- Cleanup Crew
+				["g"] = {
+					i(160703),	-- Bundle of Supplies (QI!)
+				},
+			}),
 			q(54524, {	-- Crate n' Barrel (Faction Assault WQ)
 				["lvl"] = 45,
 				["races"] = ALLIANCE_ONLY,
@@ -69,15 +78,21 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 				},
 			}),
 			q(50854),	-- Crimsonclaw
-			q(52892),	-- Critters are Friends, Not Food
+			petbattle(q(52892)),	-- Critters are Friends, Not Food
 			q(50651, {	-- Cut Off Potential
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(158185),	-- Poison Dart (QI!)
+				},
 			}),
 			q(50871),	-- Daggerjaw
 			q(51084),	-- Dark Chronicler
 			q(50875),	-- Darkspeaker Jo'la
 			q(53328, {	-- Dense Storm Silver
 				["requireSkill"] = MINING,
+				["g"] = {
+					i(163629),	-- Dense Storm Silver (QI!)
+				},
 			}),
 			q(54513, {	-- Dino Time! (Faction Assault WQ)
 				["lvl"] = 45,
@@ -93,6 +108,9 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			}),
 			q(53329, {	-- Ductile Platinum
 				["requireSkill"] = MINING,
+				["g"] = {
+					i(163630),	-- Ductile Platinum (QI!)
+				},
 			}),
 			q(51373, {	-- Ears Everywhere
 				["races"] = ALLIANCE_ONLY,
@@ -106,9 +124,17 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			q(50969, {	-- Emergency Management
 				["races"] = ALLIANCE_ONLY,
 			}),
-			q(50548),	-- Enforcing the Will of the King
+			q(50548, {	-- Enforcing the Will of the King
+				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(157867),	-- Mindbreaker Chant (QI!)
+				},
+			}),
 			q(53301, {	-- Flourishing Sea Stalks
 				["requireSkill"] = HERBALISM,
+				["g"] = {
+					i(163588),	-- Flourishing Sea Stalk (QI!)
+				},
 			}),
 			q(50877),	-- Gahz'ralka
 			h(q(54505, {	-- Get on the Payload (Faction Assault WQ)
@@ -122,29 +148,39 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			q(54298, {	-- Gravity Matters (Faction Assault WQ)
 				["lvl"] = 45,
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(165878),	-- X-52 Delevitator (QI!)
+				},
 			}),
 			q(50874),	-- Hakbi the Risen
 			q(54162, {	-- Hard Landing (Faction Assault WQ)
 				["lvl"] = 45,
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(165877),	-- BOOM-O-MATIC 9000 (QI!)
+				},
 			}),
 			q(53327, {	-- Hardened Monelite
 				["requireSkill"] = MINING,
+				["g"] = {
+					i(163628),	-- Hardened Monelite (QI!)
+				},
 			}),
 			q(50846),	-- Headhunter Lee'za
 			q(51497, {	-- Hex Education
+				["races"] = HORDE_ONLY,
 				["g"] = {
-					i(160307),	-- Raal's Hexing Stick
+					i(160307),	-- Raal's Hexing Stick (QI!)
 				},
 			}),
 			q(54132, {	-- Horde of Heroes (Faction Assault WQ)
 				["provider"] = { "n", 135447 },	-- Ransa Greyfeather <The Honorbound Emissary>
 				["races"] = HORDE_ONLY,
 			}),
-			a(q(51178, { -- Hundred Troll Holdout (A)
+			a(q(51178, {	-- Hundred Troll Holdout (A)
 				ach(13035),	-- By de Power of de Loa!
 			})),
-			h(q(51232, { -- Hundred Troll Holdout (H)
+			h(q(51232, {	-- Hundred Troll Holdout (H)
 				ach(13035),	-- By de Power of de Loa!
 			})),
 			q(51305),	-- Jelly Clouds (possibly NYI?)
@@ -183,7 +219,12 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 				["lvl"] = 45,
 				["races"] = HORDE_ONLY,
 			}),
-			q(50574),	-- Preservation Methods
+			q(50574, {	-- Preservation Methods
+				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(158067),	-- Potent Inoculation Dart (QI!)
+				},
+			}),
 			q(51816, {	-- Pterrible Ingredients
 				["races"] = ALLIANCE_ONLY,
 			}),
@@ -199,12 +240,21 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			}),
 			q(50540, {	-- Rally the Rastari
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(157858),	-- Rastari Skull Whistle (QI!)
+				},
 			}),
 			q(50636, {	-- Ravoracious
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(159755),	-- Ravasaur Stomach Lining (QI!)
+				},
 			}),
 			q(51814, {	-- Ravoracious
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(159755),	-- Ravasaur Stomach Lining (QI!)
+				},
 			}),
 			q(54532, {	-- Receding Treeline (Faction Assault WQ)
 				["lvl"] = 45,
@@ -224,9 +274,15 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			}),
 			q(50581, {	-- Scrolls and Scales
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(158068),	-- Scroll of Gral (QI!)
+				},
 			}),
 			q(51822, {	-- Scrolls and Scales
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(158068),	-- Scroll of Gral (QI!)
+				},
 			}),
 			q(51630),	-- Shell Game
 			q(53883, {	-- Shores of Zuldazar (Faction Assault WQ)
@@ -238,9 +294,9 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 				["lvl"] = 45,
 				["races"] = HORDE_ONLY,
 			}),
-			q(52938, {	-- Small Beginnings
+			petbattle(q(52938, {	-- Small Beginnings
 				["filterID"] = BATTLE_PETS,
-			}),
+			})),
 			q(54712, {	-- Spell Components (Faction Assault WQ)
 				["lvl"] = 45,
 				["races"] = ALLIANCE_ONLY,
@@ -254,6 +310,9 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			q(50873),	-- Strange Egg
 			q(50756, {	-- Subterranean Evacuation
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(158652),	-- Mole Machine Remote Control (QI!)
+				},
 			}),
 			q(51081),	-- Syrawon the Dominus
 			q(50867),	-- Tambano
@@ -324,7 +383,7 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 				["races"] = HORDE_ONLY,
 				["requireSkill"] = ALCHEMY,
 				["g"] = {
-					i(162258),	-- Recipe: Lightfoot Potion (Rank 3)
+					i(162258),	-- Recipe: Lightfoot Potion [Rank 3] (RECIPE!)
 				},
 			}),
 			q(52342, {	-- Work Order: Monel-Hardened Hoofplates
@@ -378,11 +437,14 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 			q(54701, {	-- Wrath of the Ravasaur (Faction Assault WQ)
 				["lvl"] = 45,
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(166441),	-- Void Elf Head (QI!)
+				},
 			}),
 			q(51824, {	-- You're Grounded
 				["races"] = ALLIANCE_ONLY,
 			}),
-			q(52937),	-- You've Never Seen Jammer Upset
+			petbattle(q(52937)),	-- You've Never Seen Jammer Upset
 			q(50866),	-- Zayoos
 		})),
 	}),

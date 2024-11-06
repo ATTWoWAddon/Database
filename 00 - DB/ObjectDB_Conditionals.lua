@@ -1,15 +1,102 @@
-﻿-- PROGRAMMATIC OBJECT LOCALES
+-- #if NOT DEBUG
+-- PROGRAMMATIC OBJECT LOCALES
 -- Brightly Colored Egg
 local brightlyColoredEgg = ObjectDB[113768];
 brightlyColoredEgg.icon = [[~_.asset("Holiday_noblegarden")]];
-brightlyColoredEgg.text.en = [[~GetSpellInfo(61820)]];
+brightlyColoredEgg.text.en = WOWAPI_GetSpellName(61820);
 
 -- Research Equipment
 local researchEquipment = ObjectDB[161521];
 researchEquipment.icon = [[~_.asset("Icon_PetFamily_Mechanical")]];
 
 -- Spirit of the Wolf
-ObjectDB[226469].text.en = [[~GetSpellInfo(154259)]];
+ObjectDB[226469].text.en = WOWAPI_GetSpellName(154259);
+
+-- #if BEFORE WRATH
+ObjectDB[176344] = {
+	readable = "Document Chest",
+	icon = 134943,
+	model = 196976,
+	text = {
+		en = "Document Chest",
+		es = "Cofre de documentos",
+		de = "Dokumententruhe",
+		fr = "Coffre de documents",
+		it = "[Document Chest]",
+		pt = "Baú de Documentos",
+		ru = "Ящик с документами",
+		ko = "문서함",
+		cn = "文件箱",
+	},
+};
+ObjectDB[190483] = {
+	readable = "Document Chest",
+	icon = 134943,
+	model = 196976,
+	text = {
+		en = "Document Chest",
+		es = "Cofre de documentos",
+		de = "Dokumententruhe",
+		fr = "Coffre de documents",
+		it = "[Document Chest]",
+		pt = "Baú de Documentos",
+		ru = "Ящик с документами",
+		ko = "문서함",
+		cn = "文件箱",
+	},
+};
+ObjectDB[190484] = {
+	readable = "Document Chest",
+	icon = 134943,
+	model = 196976,
+	text = {
+		en = "Document Chest",
+		es = "Cofre de documentos",
+		de = "Dokumententruhe",
+		fr = "Coffre de documents",
+		it = "[Document Chest]",
+		pt = "Baú de Documentos",
+		ru = "Ящик с документами",
+		ko = "문서함",
+		cn = "文件箱",
+	},
+};
+-- #endif
+
+-- #if BEFORE CATA
+ObjectDB[256] = {
+	readable = "WANTED",
+	icon = 134939,
+	model = 199424,
+	text = {
+		en = "WANTED",
+		es = "SE BUSCA",
+		de = "GESUCHT",
+		fr = "AVIS DE RECHERCHE",
+		it = "RICERCATO",
+		pt = "PROCURA-SE",
+		ru = "РАЗЫСКИВАЕТСЯ",
+		ko = "현상 수배!",
+		cn = "通缉",
+	},
+};
+-- #else
+ObjectDB[57] = {
+	readable = "Bloodscalp Lore Tablet",
+	model = 200640,
+	text = {
+		en = "Bloodscalp Lore Tablet",
+		es = "Tablilla de conocimiento Sangrapellejo",
+		de = "Schrifttafel der Blutskalpe",
+		fr = "Tablette de savoir scalp-rouge",
+		it = "Tavoletta Mistica degli Scalporosso",
+		pt = "Tabuleta de História dos Sanguescalpo",
+		ru = "Легенды и предания племени Кровавого Скальпа",
+		ko = "붉은머리 전통지식 서판",
+		cn = "月亮照耀着山谷",
+	},
+};
+-- #endif
 
 -- TODO: Change the headers for this stuff to a custom header and allow the object localizer to translate the object so it appears on the tooltip.
 -- Item 1: Scintillating Murloc Skin Lotion
@@ -60,7 +147,7 @@ ObjectDB[1673].model = 202013;	-- Fel Cone
 
 local plantBundle = ObjectDB[17282];
 plantBundle.readable = "Plant Bundle";
-plantBundle.icon = "Interface/Icons/inv_misc_herb_05";
+plantBundle.icon = 134185;
 plantBundle.model = 203748;
 plantBundle.text.en = "Plant Bundle";
 plantBundle.text.es = "Paquete de plantas";
@@ -74,7 +161,7 @@ plantBundle.text.cn = "草药";
 
 local elunesTear = ObjectDB[19015];
 elunesTear.readable = "Elune's Tear";
-elunesTear.icon = "Interface/Icons/inv_ore_arcanite_02";
+elunesTear.icon = 134564;
 elunesTear.model = 198719;
 elunesTear.text.en = "Elune's Tear";
 elunesTear.text.es = "Lágrima de Elune";
@@ -109,10 +196,6 @@ ObjectDB[141832].text.de = "Gong von Zul’Farrak";	-- Gong of Zul'Farrak
 ObjectDB[156561].text.ko = "현상수배 전단";	-- Wanted Poster
 -- #endif
 
--- #if BEFORE WRATH
-ObjectDB[164820].icon = [[~_.asset("Achievement_Character_Dwarf_Male")]];	-- Dark Keeper Nameplate
--- #endif
-
 -- #if BEFORE TBC
 ObjectDB[175329].text.es = "Provisiones de nueces del Bosque Negro";	-- Blackwood Nut Stores
 ObjectDB[175330].text.es = "Provisiones de fruta del Bosque Negro";	-- Blackwood Fruit Stores
@@ -142,5 +225,51 @@ ObjectDB[176213].text.es = "Sangre de Héroes";	-- Blood of Heroes
 -- #endif
 
 -- #if BEFORE CATA
-ObjectDB[182947].icon = "Interface/Icons/inv_misc_book_06";	-- The Codex of Blood
+ObjectDB[182947].icon = 133738;	-- The Codex of Blood
 -- #endif
+-- #endif
+
+-- Hero's Call Board
+for i,objectID in pairs({
+	206111,
+	206294,
+	207320,
+	207321,
+	207322,
+	208316,
+	250720,
+	250804,
+	278574,
+	278575,
+	281339,
+}) do
+	-- #if AFTER 7.3.5
+	ObjectDB[objectID].icon = 1863940;
+	-- #elseif AFTER 5.4.2
+	ObjectDB[objectID].icon = 464076;
+	-- #else
+	ObjectDB[objectID].icon = 134328;
+	-- #endif
+end
+
+-- Warchief's Command Board
+for i,objectID in pairs({
+	206109,
+	206116,
+	207279,
+	207323,
+	207324,
+	207325,
+	208317,
+	278347,
+	278457,
+	281340,
+}) do
+	-- #if AFTER 7.3.5
+	ObjectDB[objectID].icon = 1863940;
+	-- #elseif AFTER 5.4.2
+	ObjectDB[objectID].icon = 464078;
+	-- #else
+	ObjectDB[objectID].icon = 134328;
+	-- #endif
+end

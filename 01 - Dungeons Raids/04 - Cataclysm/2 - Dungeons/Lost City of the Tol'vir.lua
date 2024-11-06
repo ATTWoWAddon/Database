@@ -1,9 +1,8 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON};
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
-	inst(69, {	-- Lost City of the Tol'vir
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
+	applyclassicphase(CATA_PHASE_ONE, inst(69, {	-- Lost City of the Tol'vir
 		["mapID"] = 277,
 		["coord"] = { 60.53, 64.29, ULDUM },	-- Lost City of Tol'vir
 		["groups"] = {
@@ -31,6 +30,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(66908),	-- Treads of the Neferset
 						i(66909),	-- Ramkahen Front Boots
 					},
+				}),
+				q(28801, {	-- Tol'vir Hieroglyphics
+					["provider"] = { "o", 207409 },	-- Tol'vir Grave
+					["requireSkill"] = ARCHAEOLOGY,
+					["isRepeatable"] = true,
 				}),
 			}),
 			n(ZONE_DROPS, {
@@ -98,7 +102,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
+			d(DIFFICULTY.DUNGEON.NORMAL, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
 				e(117, {	-- General Husam
 					["crs"] = { 44577 },	-- General Husam
 					["groups"] = {
@@ -149,7 +153,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				}),
 			})),
 			-- #if BEFORE 7.3.5
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(117, {	-- General Husam
 					["crs"] = { 44577 },	-- General Husam
 					["groups"] = {
@@ -205,14 +209,14 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				}),
 			}),
 			-- #else
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_HEROIC, {
 				e(117, {	-- General Husam
 					["crs"] = { 44577 },	-- General Husam
 					["groups"] = {
 						i(56381), -- Greaves of Wu the Elder
 						i(56383), -- Ionic Gloves
 						i(56379), -- Kaleki Cloak
-						i(157600, { -- Necklace of Rumbling Earth
+						i(157600, {	-- Necklace of Rumbling Earth
 							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(56382), -- Siliza's Spear
@@ -250,7 +254,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56401), -- Leggings of the Path
 						i(56399), -- Mantle of Master Cho
 						i(56398), -- Ring of Three Lights
-						i(157599, { -- Sceptre of Swirling Winds
+						i(157599, {	-- Sceptre of Swirling Winds
 							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(56400), -- Sorrowsong
@@ -259,7 +263,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(118, {	-- Lockmaw
 					["crs"] = {
 						43614,	-- Lockmaw
@@ -286,23 +290,12 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 			}),
 			-- #endif
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35413),	-- Lost City of the Tol'vir Reward Quest
 		q(35414),	-- Lost City of the Tol'vir Reward Quest
-	}),
-});
-
-root(ROOTS.NeverImplemented, {
-	tier(CATA_TIER, {
-		inst(69, {	-- Lost City of the Tol'vir
-			["mapID"] = 277,
-			["groups"] = {
-				i(56405),	-- Oasis Bracers (Lost City)
-			},
-		}),
 	}),
 });

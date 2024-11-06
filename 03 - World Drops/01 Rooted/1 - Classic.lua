@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --       W O R L D   D R O P S   M O D U L E       --
 -----------------------------------------------------
-root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
+root(ROOTS.WorldDrops, expansion(EXPANSION.CLASSIC, {
 	filter(CLOAKS, {
 		i(9938),	-- Abjurer's Cloak
 		i(14116),	-- Aboriginal Cape
@@ -74,11 +74,15 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(14331),	-- Eternal Cloak
 		i(15309),	-- Feral Cloak
 		i(12979),	-- Firebane Cloak
-		i(2652),	-- Flimsy Chain Cloak
+		i(2652, {	-- Flimsy Chain Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
 		i(4710),	-- Forest Cloak
 		i(15632),	-- Formidable Cape
 		i(9812),	-- Fortified Cloak
-		i(1376),	-- Frayed Cloak
+		i(1376, {	-- Frayed Cloak
+			["timeline"] = { REMOVED_4_0_3, ADDED_8_0_1 },
+		}),
 		i(14270),	-- Gaea's Cloak
 		i(14219),	-- Geomancer's Cloak
 		i(15147),	-- Ghostwalker Cloak
@@ -102,25 +106,25 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(4689),	-- Hunting Cloak
 		i(9890),	-- Huntsman's Cape
 		i(68762, {	-- Imbued Cadet Cloak
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68748, {	-- Imbued Disciple's Cloak
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68759, {	-- Imbued Gypsy Cloak
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68743, {	-- Imbued Infantry Cloak
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68744, {	-- Imbued Pioneer Cloak
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68746, {	-- Imbued Primal Cape
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68756, {	-- Imbued Simple Cape
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(15661),	-- Impenetrable Cloak
 		i(6432),	-- Imperial Cloak
@@ -140,11 +144,15 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(14665),	-- Keeper's Cloak
 		i(14781),	-- Khan's Cloak
 		i(7460),	-- Knight's Cloak
-		i(1741),	-- Laced Cloak
+		i(1741, {	-- Laced Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
 		i(4706),	-- Lambent Scale Cloak
 		i(3995),	-- Laminated Scale Cloak
 		i(1749),	-- Linked Chain Cloak
-		i(2644),	-- Loose Chain Cloak
+		i(2644, {	-- Loose Chain Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
 		i(10079),	-- Lord's Cape
 		i(14251),	-- Lunar Cloak
 		i(15015),	-- Lupine Cloak
@@ -170,7 +178,9 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(15501),	-- Outrunner's Cloak
 		i(4003),	-- Overlinked Chain Cloak
 		i(14161),	-- Pagan Cape
-		i(1790),	-- Patched Cloak
+		i(1790, {	-- Patched Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
 		i(1429),	-- Patchwork Cloak
 		i(15340),	-- Pathfinder Cloak
 		i(15427),	-- Peerless Cloak
@@ -184,7 +194,9 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(14563),	-- Prospector's Cloak
 		i(14791),	-- Protector Cape
 		i(15382),	-- Rageclaw Cloak
-		i(1372),	-- Ragged Cloak
+		i(1372, {	-- Ragged Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
 		i(9786),	-- Raider's Cloak
 		i(14188),	-- Raincaller Cloak
 		i(7483),	-- Ranger Cloak
@@ -218,7 +230,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #if AFTER 6.0.1
 			["description"] = "Dropped from Big Crate of Salvage during Warlords of Draenor.",
 			-- #endif
-			["timeline"] = { "created 4.0.1.12941", "added 6.0.1", "removed 7.0.1" },
+			["timeline"] = { CREATED_4_0_1, ADDED_6_0_2, REMOVED_7_0_3 },
 		}),
 		i(14752),	-- Slayer's Cape
 		i(3972),	-- Smooth Cloak
@@ -252,7 +264,9 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(15483),	-- War Torn Cape
 		i(14602),	-- Warden's Cloak
 		i(9959),	-- Warmonger's Cloak
-		i(1505),	-- Warped Cloak
+		i(1505, {	-- Warped Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
 		i(4658),	-- Warrior's Cloak
 		i(14813),	-- Warstrike Cape
 		i(14179),	-- Watcher's Cape
@@ -261,8 +275,12 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(14430),	-- Windchaser Cloak
 		i(13121),	-- Wing of the Whelpling
 		i(15371),	-- Wolf Rider's Cloak
-		i(1733),	-- Worn Cloak
-		i(1421),	-- Worn Hide Cloak
+		i(1733, {	-- Worn Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
+		i(1421, {	-- Worn Hide Cloak
+			["timeline"] = { REMOVED_4_0_3 },	-- estimated removal time
+		}),
 		i(15333),	-- Wrangler's Cloak
 	}),
 	filter(CLOTH, {
@@ -514,12 +532,24 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(14336),	-- Eternal Wraps
 		i(3075),	-- Eye of Flame
 		i(9433),	-- Forgotten Wraps
-		i(3363),	-- Frayed Belt
-		i(3365),	-- Frayed Bracers
-		i(1377),	-- Frayed Gloves
-		i(1378),	-- Frayed Pants
-		i(1380),	-- Frayed Robe
-		i(1374),	-- Frayed Shoes
+		i(3363, {	-- Frayed Belt
+			["timeline"] = { REMOVED_4_0_3, ADDED_8_0_1 },
+		}),
+		i(3365, {	-- Frayed Bracers
+			["timeline"] = { REMOVED_4_0_3, ADDED_8_0_1 },
+		}),
+		i(1377, {	-- Frayed Gloves
+			["timeline"] = { REMOVED_4_0_3, ADDED_8_0_1 },
+		}),
+		i(1378, {	-- Frayed Pants
+			["timeline"] = { REMOVED_4_0_3, ADDED_8_0_1 },
+		}),
+		i(1380, {	-- Frayed Robe
+			["timeline"] = { REMOVED_4_0_3, ADDED_8_0_1 },
+		}),
+		i(1374, {	-- Frayed Shoes
+			["timeline"] = { REMOVED_4_0_3, ADDED_8_0_1 },
+		}),
 		i(13100),	-- Furen's Boots
 		i(14273),	-- Gaea's Amice
 		i(14276),	-- Gaea's Belt
@@ -595,16 +625,16 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(3798),	-- Interlaced Shoulderpads
 		i(3799),	-- Interlaced Vest
 		i(68754, {	-- Imbued Disciple's Boots
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68749, {	-- Imbued Disciple's Bracers
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68755, {	-- Imbued Disciple's Gloves
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68747, {	-- Imbued Disciple's Sash
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(8246),	-- Imperial Red Boots
 		i(8247),	-- Imperial Red Bracers
@@ -1132,19 +1162,19 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(9893),	-- Huntsman's Leggings
 		i(9894),	-- Huntsman's Shoulders
 		i(68750, {	-- Imbued Pioneer Belt
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68758, {	-- Imbued Pioneer Boots
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68751, {	-- Imbued Pioneer Bracers
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68757, {	-- Imbued Pioneer Gloves
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68745, {	-- Imbued Primal Belt
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(4738),	-- Imperial Leather Belt
 		i(6431),	-- Imperial Leather Boots
@@ -1367,7 +1397,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #if AFTER 6.0.1
 			["description"] = "Dropped from Big Crate of Salvage during Warlords of Draenor.",
 			-- #endif
-			["timeline"] = { "created 1.12.1.12941", "added 6.0.1", "removed 7.0.1" },
+			["timeline"] = { CREATED_1_12_1, ADDED_6_0_2, REMOVED_7_0_3 },
 		}),
 		i(13111),	-- Sandals of the Insurgent
 		i(14553),	-- Sash of Mercy
@@ -1562,10 +1592,10 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(3281),	-- Battle Chain Gloves
 		i(3282),	-- Battle Chain Pants
 		i(3283, {	-- Battle Chain Tunic
-			["timeline"] = { "removed 6.1.0.19445" },
+			["timeline"] = { REMOVED_6_1_0 },
 		}),
 		i(120950, {	-- Battle Chain Vest
-			["timeline"] = { "added 6.1.0.19445" },
+			["timeline"] = { ADDED_6_1_0 },
 		}),
 		i(13126),	-- Battlecaller Gauntlets
 		i(6592),	-- Battleforge Armor
@@ -1612,10 +1642,10 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(3304),	-- Brackwater Gauntlets
 		i(4681),	-- Brackwater Girdle
 		i(3305, {	-- Brackwater Leggings
-			["timeline"] = { "removed 6.1.0.19445" },
+			["timeline"] = { REMOVED_6_1_0 },
 		}),
 		i(120954, {	-- Brackwater Legguards
-			["timeline"] = { "added 6.1.0.19445" },
+			["timeline"] = { ADDED_6_1_0 },
 		}),
 		i(3306),	-- Brackwater Vest
 		i(9926),	-- Brigade Boots
@@ -1637,7 +1667,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #if AFTER 6.0.1
 			["description"] = "Dropped from Big Crate of Salvage during Warlords of Draenor.",
 			-- #endif
-			["timeline"] = { "created 4.0.1.12941", "added 6.0.1", "removed 7.0.1" },
+			["timeline"] = { CREATED_4_0_1, ADDED_6_0_2, REMOVED_7_0_3 },
 		}),
 		i(9758),	-- Cadet Belt
 		i(9759),	-- Cadet Boots
@@ -1707,7 +1737,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #if AFTER 6.0.1
 			["description"] = "Dropped from Big Crate of Salvage during Warlords of Draenor.",
 			-- #endif
-			["timeline"] = { "created 1.12.1.12941", "added 6.0.1", "removed 7.0.1" },
+			["timeline"] = { CREATED_1_12_1, ADDED_6_0_2, REMOVED_7_0_3 },
 		}),
 		i(2649),	-- Flimsy Chain Belt
 		i(2650),	-- Flimsy Chain Boots
@@ -1786,7 +1816,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #if AFTER 6.0.1
 			["description"] = "Dropped from Big Crate of Salvage during Warlords of Draenor.",
 			-- #endif
-			["timeline"] = { "created 1.12.1.12941", "added 6.0.1", "removed 7.0.1" },
+			["timeline"] = { CREATED_1_12_1, ADDED_6_0_2, REMOVED_7_0_3 },
 		}),
 		i(2245),	-- Helm of Narv
 		i(8308),	-- Hero's Band
@@ -1807,16 +1837,16 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(14749),	-- Hulking Spaulders
 		i(1981),	-- Icemail Jerkin
 		i(68752, {	-- Imbued Infantry Belt
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68761, {	-- Imbued Infantry Boots
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68753, {	-- Imbued Infantry Bracers
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(68760, {	-- Imbued Infantry Gauntlets
-			["timeline"] = { "added 4.0.6.13596" },
+			["timeline"] = { ADDED_4_0_6 },
 		}),
 		i(15663),	-- Impenetrable Belt
 		i(15659),	-- Impenetrable Bindings
@@ -2006,7 +2036,11 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(1715),	-- Polished Jazeraint Armor
 		i(14794),	-- Protector Ankleguards
 		i(14788),	-- Protector Armguards
-		i(14789),	-- Protector Breastplate
+		i(14789, {	-- Protector Breastplate
+			-- #if AFTER 9.2.0
+			["description"] = "Is currently bugged and cannot be sold to vendor.",
+			-- #endif
+		}),
 		i(14792),	-- Protector Gauntlets
 		i(14795),	-- Protector Helm
 		i(14796),	-- Protector Legguards
@@ -2054,10 +2088,6 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(15524),	-- Sentry's Surcoat
 		i(12982),	-- Silver-Linked Footguards [CATA+] / Silver-linked Footguards
 		i(13132),	-- Skeletal Shoulders
-		i(120952, {	-- Slarkhide
-			["description"] = "Dropped from Big Crate of Salvage during Warlords of Draenor.",
-			["timeline"] = { "added 6.1.0.19445", "removed 7.0.1" },
-		}),
 		i(14750),	-- Slayer's Cuffs
 		i(14754),	-- Slayer's Gloves
 		i(14757),	-- Slayer's Pants
@@ -2120,9 +2150,11 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(3213),	-- Veteran Bracers
 		i(4678),	-- Veteran Girdle
 		i(2980),	-- Veteran Gloves
-		i(2978),	-- Veteran Leggings [CRIEVE NOTE: This might be in a similar situation to the two other mail items that were swapped out.]
+		i(2978, {	-- Veteran Leggings [CRIEVE NOTE: This might be in a similar situation to the two other mail items that were swapped out.]
+			["timeline"] = { REMOVED_6_1_0 },	-- Likely unobtainable since adding of Vetaran Legguards
+		}),
 		i(120953, {	-- Veteran Legguards
-			["timeline"] = { "added 6.1.0.19445" },
+			["timeline"] = { ADDED_6_1_0 },
 		}),
 		i(14722),	-- War Paint Anklewraps
 		i(14723),	-- War Paint Bindings
@@ -2456,6 +2488,9 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(871),		-- Flurry Axe
 			i(790),		-- Forester's Axe
 			i(863),		-- Gloom Reaper
+			-- #if BEFORE DF
+			i(1819),	-- Gouging Pick
+			-- #endif
 			i(15234),	-- Greater Scythe
 			i(4568),	-- Grunt Axe
 			i(15232),	-- Hacking Cleaver
@@ -2653,6 +2688,11 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(9385),	-- Archaic Defender
 			i(8199),	-- Battlefield Destroyer
 			i(15253),	-- Beheading Blade
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_FOUR, i(227691, {	-- Blade of Hanna
+				["timeline"] = { "created 1.15.3" },
+			})),
+			-- #endif
 			i(2801),	-- Blade of Hanna
 			i(13043),	-- Blade of the Titans
 			i(1811),	-- Blunt Claymore
@@ -3004,7 +3044,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(15592),	-- Steadfast Buckler
 		-- #if BEFORE 8.2.0
 		i(7188, {	-- Stormwind Guard Shield
-			["timeline"] = { "created 1.12.1.12941", "added 8.2.0" },
+			["timeline"] = { CREATED_1_12_1, ADDED_8_2_0 },
 		}),
 		-- #endif
 		i(14852),	-- Sunscale Shield
@@ -3141,7 +3181,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #if AFTER 6.0.1
 			["description"] = "Dropped from Crate of Salvage during Warlords of Draenor.",
 			-- #endif
-			["timeline"] = { "created 1.11.1.13287", "added 6.0.1", "removed 7.0.1" },
+			["timeline"] = { CREATED_1_11_1, ADDED_6_0_2, REMOVED_7_0_3 },
 		}),
 		i(12042),	-- Marsh Chain
 		i(13091),	-- Medallion of Grand Marshal Morris
@@ -3149,7 +3189,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(12035),	-- Obsidian Pendant
 		i(12032),	-- Onyx Choker
 		i(4614, {	-- Pendant of Myzrael
-			["timeline"] = { "removed 4.0.3" },
+			["timeline"] = { REMOVED_4_0_3 },
 		}),
 		i(12048),	-- Prismatic Pendant
 		i(12026),	-- Quicksilver Pendant
@@ -3254,7 +3294,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #if AFTER 6.0.1
 			["description"] = "Dropped from Big Crate of Salvage during Warlords of Draenor.",
 			-- #endif
-			["timeline"] = { "removed 3.0.2", "added 6.0.1", "removed 7.0.1" },
+			["timeline"] = { REMOVED_3_0_2, ADDED_6_0_2, REMOVED_7_0_3 },
 		}),
 		i(11302),	-- Uther's Strength
 	}),
@@ -3270,11 +3310,10 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(17963),	-- Green Sack of Gems
 		i(17969),	-- Red Sack of Gems
 		i(17965, {	-- Yellow Sack of Gems
-			i(12363),	-- Arcane Crystal
 		}),
 		-- #if BEFORE 5.0.4
-		applyclassicphase(PHASE_FIVE, i(23197, {	-- Idol of the Moon [Phase 5/6]
-			["timeline"] = { "removed 5.0.4" },
+		applyclassicphase(PHASE_FIVE_RECIPES, i(23197, {	-- Idol of the Moon [Phase 5/6]
+			["timeline"] = { REMOVED_5_0_4 },
 		})),
 		-- #endif
 		-- #if AFTER 9.1.0
@@ -3288,8 +3327,8 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			-- #endif
 		}),
 		-- #if BEFORE 5.0.4
-		applyclassicphase(PHASE_FIVE, i(23203, {	-- Libram of Fervor [Phase 5/6]
-			["timeline"] = { "removed 5.0.4" },
+		applyclassicphase(PHASE_FIVE_RECIPES, i(23203, {	-- Libram of Fervor [Phase 5/6]
+			["timeline"] = { REMOVED_5_0_4 },
 		})),
 		-- #endif
 		i(11736, {	-- Libram of Resilience
@@ -3320,13 +3359,62 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			["description"] = "Drops from bears in Classic zones.",
 		}),
 		-- #endif
+		-- #if SEASON_OF_DISCOVERY
+		applyclassicphase(SOD_PHASE_ONE, i(211786, {	-- Scroll: CHAP BALK WELLES
+			["description"] = "'Black Sheep Wall'",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_ONE, i(211785, {	-- Scroll: CWAL
+			["description"] = "'Claw'",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_ONE, i(211780, {	-- Scroll: KWYJIBO
+			["description"] = "This might just be a Simpsons quote.",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_ONE, i(211787, {	-- Scroll: LOWER PING WHOMEVER
+			["description"] = "'Overwhelming Power'",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_ONE, i(211854, {	-- Scroll: OMIT KESA
+			["description"] = "'Time Soak'",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_ONE, i(211855, {	-- Scroll: STHENIC LUNATE
+			["description"] = "'Ancient Hustle'",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_ONE, i(211853, {	-- Scroll: VOCE WELL
+			["description"] = "'Cow Level'",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_ONE, i(211784, {	-- Scroll: WUBBA WUBBA
+			["description"] = "This might just be a Pee Wee Herman quote.",
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_TWO, i(213545, {	-- PEATCHY ATTAX
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_TWO, i(213546, {	-- Scroll: SHOOBEEDOOP
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_TWO, i(213547, {	-- Scroll: THAW WORDS
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_TWO, i(213544, {	-- Scroll: TOPAZ YORAK
+			["classes"] = { MAGE },
+		})),
+		applyclassicphase(SOD_PHASE_TWO, i(213543, {	-- Scroll: UPDOG
+			["classes"] = { MAGE },
+		})),
+		-- #endif
 		-- #if BEFORE 5.0.4
-		applyclassicphase(PHASE_FIVE, i(23199, {	-- Totem of the Storm [Phase 5/6]
-			["timeline"] = { "removed 5.0.4" },
+		applyclassicphase(PHASE_FIVE_RECIPES, i(23199, {	-- Totem of the Storm [Phase 5/6]
+			["timeline"] = { REMOVED_5_0_4 },
 		})),
 		-- #endif
 	}),
-	category(106, applyclassicphase(PHASE_THREE, {	-- Tarot Cards
+	category(106, applyclassicphase(PHASE_THREE_DMF_CARDS, {	-- Tarot Cards
 		i(19230),	-- Two of Beasts
 		i(19231),	-- Three of Beasts
 		i(19232),	-- Four of Beasts
@@ -3335,6 +3423,16 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(19235),	-- Seven of Beasts
 		i(19236),	-- Eight of Beasts
 
+		-- #if SEASON_OF_DISCOVERY
+		applyclassicphase(SOD_PHASE_THREE, i(221291)),	-- Two of Dunes
+		applyclassicphase(SOD_PHASE_THREE, i(221292)),	-- Three of Dunes
+		applyclassicphase(SOD_PHASE_THREE, i(221293)),	-- Four of Dunes
+		applyclassicphase(SOD_PHASE_THREE, i(221294)),	-- Five of Dunes
+		applyclassicphase(SOD_PHASE_THREE, i(221295)),	-- Six of Dunes
+		applyclassicphase(SOD_PHASE_THREE, i(221296)),	-- Seven of Dunes
+		applyclassicphase(SOD_PHASE_THREE, i(221297)),	-- Eight of Dunes
+		-- #endif
+
 		i(19269),	-- Two of Elementals
 		i(19270),	-- Three of Elementals
 		i(19271),	-- Four of Elementals
@@ -3342,6 +3440,24 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(19273),	-- Six of Elementals
 		i(19274),	-- Seven of Elementals
 		i(19275),	-- Eight of Elementals
+
+		-- #if SEASON_OF_DISCOVERY
+		applyclassicphase(SOD_PHASE_THREE, i(221300)),	-- Two of Nightmares
+		applyclassicphase(SOD_PHASE_THREE, i(221301)),	-- Three of Nightmares
+		applyclassicphase(SOD_PHASE_THREE, i(221302)),	-- Four of Nightmares
+		applyclassicphase(SOD_PHASE_THREE, i(221303)),	-- Five of Nightmares
+		applyclassicphase(SOD_PHASE_THREE, i(221304)),	-- Six of Nightmares
+		applyclassicphase(SOD_PHASE_THREE, i(221305)),	-- Seven of Nightmares
+		applyclassicphase(SOD_PHASE_THREE, i(221306)),	-- Eight of Nightmares
+
+		applyclassicphase(SOD_PHASE_THREE, i(221282)),	-- Two of Plagues
+		applyclassicphase(SOD_PHASE_THREE, i(221283)),	-- Three of Plagues
+		applyclassicphase(SOD_PHASE_THREE, i(221284)),	-- Four of Plagues
+		applyclassicphase(SOD_PHASE_THREE, i(221285)),	-- Five of Plagues
+		applyclassicphase(SOD_PHASE_THREE, i(221286)),	-- Six of Plagues
+		applyclassicphase(SOD_PHASE_THREE, i(221287)),	-- Seven of Plagues
+		applyclassicphase(SOD_PHASE_THREE, i(221288)),	-- Eight of Plagues
+		-- #endif
 
 		i(19278),	-- Two of Portals
 		i(19279),	-- Three of Portals
@@ -3358,65 +3474,25 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		i(19263),	-- Six of Warlords
 		i(19264),	-- Seven of Warlords
 		i(19265),	-- Eight of Warlords
+
+		-- #if SEASON_OF_DISCOVERY
+		applyclassicphase(SOD_PHASE_THREE, i(221273)),	-- Two of Wilds
+		applyclassicphase(SOD_PHASE_THREE, i(221274)),	-- Three of Wilds
+		applyclassicphase(SOD_PHASE_THREE, i(221275)),	-- Four of Wilds
+		applyclassicphase(SOD_PHASE_THREE, i(221276)),	-- Five of Wilds
+		applyclassicphase(SOD_PHASE_THREE, i(221277)),	-- Six of Wilds
+		applyclassicphase(SOD_PHASE_THREE, i(221278)),	-- Seven of Wilds
+		applyclassicphase(SOD_PHASE_THREE, i(221279)),	-- Eight of Wilds
+		-- #endif
 	})),
 	filter(TOYS, {
 		i(1973),	-- Orb of Deception (TOY!)
 	}),
 	filter(RECIPES, {
-		-- #if BEFORE 4.0.1
-		cl(DRUID, {
-			{
-				["itemID"] = 17682,		-- Book: Gift of the Wild
-				["spellID"] = 21849,	-- Gift of the Wild
-				["rank"] = 1,
-			},
-			{
-				["itemID"] = 17683,		-- Book: Gift of the Wild II
-				["spellID"] = 21850,	-- Gift of the Wild II
-				["rank"] = 2,
-			},
-		}),
-		cl(MAGE, {
-			{
-				["itemID"] = 18600,		-- Tome of Arcane Brilliance
-				["spellID"] = 23028,	-- Arcane Brilliance
-				["rank"] = 1,
-			},
-			applyclassicphase(PHASE_SIX, {
-				["itemID"] = 22890,		-- Tome of Frost Ward V [Phase 6]
-				["spellID"] = 28609,	-- Frost Ward V
-				["rank"] = 5,
-			}),
-		}),
-		cl(PRIEST, {
-			{
-				["itemID"] = 17413,		-- Codex: Prayer of Fortitude
-				["spellID"] = 21562,	-- Prayer of Fortitude
-				["rank"] = 1,
-			},
-			{
-				["itemID"] = 17414,		-- Codex: Prayer of Fortitude II
-				["spellID"] = 21564,	-- Prayer of Fortitude II
-				["rank"] = 2,
-			},
-			applyclassicphase(PHASE_FIVE, {
-				["itemID"] = 22393,		-- Codex: Prayer of Shadow Protection [Phase 5]
-				["spellID"] = 27683,	-- Prayer of Shadow Protection
-				["rank"] = 1,
-			}),
-		}),
-		cl(WARLOCK, {
-			applyclassicphase(PHASE_SIX, {
-				["itemID"] = 22891,		-- Grimoire of Shadow Ward IV [Phase 6]
-				["spellID"] = 28610,	-- Shadow Ward IV
-				["rank"] = 4,
-			}),
-		}),
-		-- #endif
 		prof(ALCHEMY, {
-			-- #if AFTER 8.0.1.10000
-			i(6454),	-- Manual: Strong Anti-Venom
-			-- #endif
+			i(6454, {	-- Manual: Strong Anti-Venom (RECIPE!)
+				["timeline"] = { ADDED_8_0_1 },
+			}),
 			i(3832),	-- Recipe: Elixir of Detect Lesser Invisibility (RECIPE!)
 			i(9297),	-- Recipe: Elixir of Dream Vision (RECIPE!)
 			i(3830),	-- Recipe: Elixir of Fortitude (RECIPE!)
@@ -3431,17 +3507,17 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(13518),	-- Recipe: Flask of Petrification / Recipe: Potion of Petrification [3.2.0+] (RECIPE!)
 			-- #endif
 			i(13493, {	-- Recipe: Greater Arcane Elixir (RECIPE!)
-				["timeline"] = { "removed 2.0.1" },
+				["timeline"] = { REMOVED_3_0_2 },
 			}),
 			i(13490),	-- Recipe: Greater Stoneshield Potion (RECIPE!)
 			i(9295),	-- Recipe: Invisibility Potion (RECIPE!)
 			i(3395),	-- Recipe: Limited Invulnerability Potion (RECIPE!)
 			i(9293, {	-- Recipe: Magic Resistance Potion (RECIPE!)
-				["timeline"] = { "deleted 5.0.4" },
+				["timeline"] = { REMOVED_5_0_4 },
 			}),
-			i(3831),	-- Recipe: Mighty Troll's Blood Potion / Recipe: Major Troll's Blood Elixir [Wrath+] (RECIPE!)
+			i(3831),	-- Recipe: Major Troll's Blood Elixir[Wrath+] / Mighty Troll's Blood Potion  (RECIPE!)
 			i(3393, {	-- Recipe: Minor Magic Resistance Potion (RECIPE!)
-				["timeline"] = { "deleted 5.0.4" },
+				["timeline"] = { REMOVED_5_0_4 },
 			}),
 			-- #if AFTER TBC
 			i(3394),	-- Recipe: Potion of Curing [TBC+] / Recipe: Elixir of Poison Resistance (RECIPE!)
@@ -3450,36 +3526,91 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(13518),	-- Recipe: Potion of Petrification [3.2.0+] / Recipe: Flask of Petrification (RECIPE!)
 			-- #endif
 			i(13492, {	-- Recipe: Purification Potion (RECIPE!)
-				["timeline"] = { "removed 3.0.1" },
+				["timeline"] = { REMOVED_2_0_1 },
 			}),
 			i(2555),	-- Recipe: Swiftness Potion (RECIPE!)
 			i(13489),	-- Recipe: Transmute Earth to Life (RECIPE!)
 			i(13488),	-- Recipe: Transmute Life to Earth (RECIPE!)
 			i(13486),	-- Recipe: Transmute Undeath to Water (RECIPE!)
 			i(13487),	-- Recipe: Transmute Water to Undeath (RECIPE!)
+			-- #if AFTER 4.0.3
+			i(9294, {	-- Recipe: Wildvine Potion (RECIPE!)
+				-- #if AFTER 10.1.7
+				["description"] = "Can drop from any troll in zones such as Arathi Highlands, Dun Morogh, Stranglethorn, Silithus, The Hinterlands & Zul Gurub. Inside Zul Gurub is a great spot.",
+				["maps"] = { ARATHI_HIGHLANDS, DUN_MOROGH, NORTHERN_STRANGLETHORN, SILITHUS, THE_CAPE_OF_STRANGLETHORN, THE_HINTERLANDS, ZULGURUB },
+				-- #endif
+				["timeline"] = { REMOVED_4_0_1, ADDED_10_1_7 },	-- ATT Discord 05.09.2023
+			}),
+			-- #endif
 		}),
 		prof(BLACKSMITHING, {
 			i(7992),	-- Plans: Blue Glittering Axe (RECIPE!)
 			i(3609),	-- Plans: Copper Chain Vest (RECIPE!)
 			i(12698, {	-- Plans: Dawnbringer Shoulders (RECIPE!)
-				["timeline"]={ "created 1.12.1.6180", "added 2.0.1" },
+				["timeline"] = {
+					-- #if SEASON_OF_DISCOVERY
+					"added 1.15.3",
+					-- #else
+					CREATED_1_12_1, ADDED_2_0_1,
+					-- #endif
+				},
 			}),
 			i(7993),	-- Plans: Dazzling Mithril Rapier (RECIPE!)
 			i(2883),	-- Plans: Deadly Bronze Poniard (RECIPE!)
 			i(3868),	-- Plans: Frost Tiger Blade (RECIPE!)
 			i(3610),	-- Plans: Gemmed Copper Gauntlets (RECIPE!)
 			i(3867),	-- Plans: Golden Iron Destroyer (RECIPE!)
-			i(3875),	-- Plans: Golden Scale Boots (RECIPE!)
-			i(3873),	-- Plans: Golden Scale Cuirass (RECIPE!)
-			i(3872),	-- Plans: Golden Scale Leggings (RECIPE!)
-			i(3871),	-- Plans: Golden Scale Shoulders (RECIPE!)
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_TWO, i(217276, {	-- Plans: Golden Scale Boots (RECIPE!)
+				["timeline"] = { "added 1.15.1" },
+			})),
+			applyclassicphase(SOD_PHASE_TWO, i(217278, {	-- Plans: Golden Scale Cuirass (RECIPE!)
+				["timeline"] = { "added 1.15.1" },
+			})),
+			applyclassicphase(SOD_PHASE_TWO, i(217286, {	-- Plans: Golden Scale Leggings (RECIPE!)
+				["timeline"] = { "added 1.15.1" },
+			})),
+			applyclassicphase(SOD_PHASE_TWO, i(217284, {	-- Plans: Golden Scale Shoulders (RECIPE!)
+				["timeline"] = { "added 1.15.1" },
+			})),
+			-- #endif
+			i(3875, {	-- Plans: Golden Scale Boots (RECIPE!)
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { "removed 1.15.1" },
+				-- #endif
+			}),
+			i(3873, {	-- Plans: Golden Scale Cuirass (RECIPE!)
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { "removed 1.15.1" },
+				-- #endif
+			}),
+			i(3872, {	-- Plans: Golden Scale Leggings (RECIPE!)
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { "removed 1.15.1" },
+				-- #endif
+			}),
+			i(3871, {	-- Plans: Golden Scale Shoulders (RECIPE!)
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { "removed 1.15.1" },
+				-- #endif
+			}),
 			i(3611),	-- Plans: Green Iron Boots (RECIPE!)
 			i(3612),	-- Plans: Green Iron Gauntlets (RECIPE!)
 			i(3870),	-- Plans: Green Iron Shoulders (RECIPE!)
 			i(7990),	-- Plans: Heavy Mithril Helm (RECIPE!)
 			i(7975),	-- Plans: Heavy Mithril Pants (RECIPE!)
 			i(12716),	-- Plans: Helm of the Great Chief (RECIPE!)
-			i(12728),	-- Plans: Invulnerable Mail (RECIPE!)
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_FOUR, i(228312, {	-- Plans: Invincible Mail (RECIPE!)
+				["timeline"] = { "added 1.15.3" },
+			})),
+			-- #endif
+			i(12728, {	-- Plans: Invulnerable Mail (RECIPE!)
+				-- #if SEASON_OF_DISCOVERY
+				-- CRIEVE NOTE: This item still drops apparently, I got this on my paladin.
+				-- ["timeline"] = { "removed 1.15.3" },
+				-- #endif
+			}),
 			i(5543),	-- Plans: Iridescent Hammer (RECIPE!)
 			i(6045),	-- Plans: Iron Counterweight (RECIPE!)
 			i(6044),	-- Plans: Iron Shield Spike (RECIPE!)
@@ -3489,7 +3620,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(7991),	-- Plans: Mithril Scale Shoulders (RECIPE!)
 			i(7976),	-- Plans: Mithril Shield Spike (RECIPE!)
 			i(7989),	-- Plans: Mithril Spurs (RECIPE!)
-			applyclassicphase(PHASE_FIVE, i(22390)),	-- Plans: Persuader (RECIPE!)
+			applyclassicphase(PHASE_FIVE_RECIPES, i(22390)),	-- Plans: Persuader (RECIPE!)
 			i(3874),	-- Plans: Polished Steel Boots (RECIPE!)
 			i(12685),	-- Plans: Radiant Belt (RECIPE!)
 			i(12697),	-- Plans: Radiant Boots (RECIPE!)
@@ -3499,15 +3630,30 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(12713),	-- Plans: Radiant Leggings (RECIPE!)
 			i(2881),	-- Plans: Runed Copper Breastplate (RECIPE!)
 			i(8028),	-- Plans: Runed Mithril Hammer (RECIPE!)
-			applyclassicphase(PHASE_FIVE, i(22389)),	-- Plans: Sageblade (RECIPE!)
+			applyclassicphase(PHASE_FIVE_RECIPES, i(22389)),	-- Plans: Sageblade (RECIPE!)
 			i(12261),	-- Plans: Searing Golden Blade (RECIPE!)
 			i(3869),	-- Plans: Shadow Crescent Axe (RECIPE!)
 			i(5578),	-- Plans: Silvered Bronze Breastplate (RECIPE!)
 			i(10424),	-- Plans: Silvered Bronze Leggings (RECIPE!)
 			i(2882),	-- Plans: Silvered Bronze Shoulders (RECIPE!)
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_FOUR, i(227905, {	-- Plans: Skyrider's Masterwork Stormhammer (RECIPE!)
+				["timeline"] = { "added 1.15.3" },
+			})),
+			-- #endif
 			i(6046),	-- Plans: Steel Weapon Chain (RECIPE!)
 			i(12703),	-- Plans: Storm Gauntlets (RECIPE!)
+			i(12703, {	-- Plans: Storm Gauntlets (RECIPE!)
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { "removed 1.15.3" },
+				-- #endif
+			}),
 			i(12720),	-- Plans: Stronghold Gauntlets (RECIPE!)
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_FOUR, i(228313, {	-- Plans: Tempest Gauntlets (RECIPE!)
+				["timeline"] = { "added 1.15.3" },
+			})),
+			-- #endif
 			i(12682),	-- Plans: Thorium Armor (RECIPE!)
 			i(12683),	-- Plans: Thorium Belt (RECIPE!)
 			i(12693),	-- Plans: Thorium Boots (RECIPE!)
@@ -3516,6 +3662,11 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(12704),	-- Plans: Thorium Leggings (RECIPE!)
 			i(12692),	-- Plans: Thorium Shield Spike (RECIPE!)
 			applyclassicphase(PHASE_FIVE, i(22388)),	-- Plans: Titanic Leggings (RECIPE!)
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_FOUR, i(228314, {	-- Plans: Warcrest of the Great Chief (RECIPE!)
+				["timeline"] = { "added 1.15.3" },
+			})),
+			-- #endif
 			i(12711),	-- Plans: Whitesoul Helm (RECIPE!)
 			i(8029),	-- Plans: Wicked Mithril Blade (RECIPE!)
 			i(12691),	-- Plans: Wildthorn Mail (RECIPE!)
@@ -3523,7 +3674,7 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 		prof(ENCHANTING, {
 			i(11038),	-- Formula: Enchant 2H Weapon - Lesser Versatility / CLASSIC: Formula: Enchant 2H Weapon - Lesser Spirit (RECIPE!)
 			i(16245, {	-- Formula: Enchant Boots - Greater Agility (RECIPE!)
-				["timeline"] = { "removed 2.3.0" },	-- Learned at trainer
+				["timeline"] = { REMOVED_2_3_0 },	-- Learned at trainer
 			}),
 			i(16215),	-- Formula: Enchant Boots - Greater Stamina (RECIPE!)
 			i(11167),	-- Formula: Enchant Boots - Lesser Versatility / CLASSIC: Formula: Enchant Boots - Lesser Spirit (RECIPE!)
@@ -3553,12 +3704,12 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(16253),	-- Formula: Enchant Chest - Greater Stats (RECIPE!)
 			i(6342),	-- Formula: Enchant Chest - Minor Mana (RECIPE!)
 			i(11098, {	-- Formula: Enchant Cloak - Lesser Shadow Resistance (RECIPE!)
-				["timeline"] = { "removed 5.0.4" },
+				["timeline"] = { REMOVED_5_0_4 },
 			}),
 			i(11039),	-- Formula: Enchant Cloak - Minor Agility (RECIPE!)
 			i(11226),	-- Formula: Enchant Gloves - Riding Skill (RECIPE!)
 			i(11224, {	-- Formula: Enchant Shield - Frost Resistance (RECIPE!)
-				["timeline"] = { "removed 5.0.4" },
+				["timeline"] = { REMOVED_5_0_4 },
 			}),
 			i(11168),	-- Formula: Enchant Shield - Lesser Parry / CLASSIC: Formula: Enchant Shield - Lesser Block (RECIPE!)
 			i(11081),	-- Formula: Enchant Shield - Lesser Protection (RECIPE!)
@@ -3569,36 +3720,36 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(6348),	-- Formula: Enchant Weapon - Minor Beastslayer (RECIPE!)
 		}),
 		prof(ENGINEERING, {
-			i(16055),	-- Schematic: Arcane Bomb
-			i(10601),	-- Schematic: Bright-Eye Goggles
-			i(10603),	-- Schematic: Catseye Ultra Goggles
-			i(6716),	-- Schematic: EZ-Thro Dynamite
-			i(4416),	-- Schematic: Goblin Land Mine
-			i(4417),	-- Schematic: Large Seaforium Charge
-			i(16044),	-- Schematic: Lifelike Mechanical Toad
-			i(4408),	-- Schematic: Mechanical Squirrel Box [Wrath+] / Schematic: Mechanical Squirrel
-			i(10604),	-- Schematic: Mithril Heavy-Bore Rifle [CATA+] / Schematic: Mithril Heavy-bore Rifle
-			i(4412),	-- Schematic: Moonsight Rifle
-			i(10606),	-- Schematic: Parachute Cloak
-			i(4414),	-- Schematic: Portable Bronze Mortar
-			i(4410),	-- Schematic: Shadow Goggles
-			i(4409),	-- Schematic: Small Seaforium Charge
-			i(10608),	-- Schematic: Sniper Scope
-			i(10605, {	-- Schematic: Spellpower Goggles Xtreme
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+			i(16055),	-- Schematic: Arcane Bomb (RECIPE!)
+			i(10601),	-- Schematic: Bright-Eye Goggles (RECIPE!)
+			i(10603),	-- Schematic: Catseye Ultra Goggles (RECIPE!)
+			i(6716),	-- Schematic: EZ-Thro Dynamite (RECIPE!)
+			i(4416),	-- Schematic: Goblin Land Mine (RECIPE!)
+			i(4417),	-- Schematic: Large Seaforium Charge (RECIPE!)
+			i(16044),	-- Schematic: Lifelike Mechanical Toad (RECIPE!)
+			i(4408),	-- Schematic: Mechanical Squirrel Box [Wrath+] / Schematic: Mechanical Squirrel (RECIPE!)
+			i(10604),	-- Schematic: Mithril Heavy-Bore Rifle [CATA+] / Schematic: Mithril Heavy-bore Rifle (RECIPE!)
+			i(4412),	-- Schematic: Moonsight Rifle (RECIPE!)
+			i(10606),	-- Schematic: Parachute Cloak (RECIPE!)
+			i(4414),	-- Schematic: Portable Bronze Mortar (RECIPE!)
+			i(4410),	-- Schematic: Shadow Goggles (RECIPE!)
+			i(4409),	-- Schematic: Small Seaforium Charge (RECIPE!)
+			i(10608),	-- Schematic: Sniper Scope (RECIPE!)
+			i(10605, {	-- Schematic: Spellpower Goggles Xtreme (RECIPE!)
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
-			i(16043, {	-- Schematic: Thorium Rifle
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+			i(16043, {	-- Schematic: Thorium Rifle (RECIPE!)
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
-			i(16051, {	-- Schematic: Thorium Shells
-				["timeline"] = { "removed 2.0.3", "deleted 4.0.1" },	-- Taught by trainer
+			i(16051, {	-- Schematic: Thorium Shells (RECIPE!)
+				["timeline"] = { REMOVED_2_0_3, REMOVED_4_0_1 },	-- Taught by trainer
 			}),
 		}),
-		-- #if BEFORE 8.0.1.10000
 		prof(FIRST_AID, {
-			i(6454),	-- Manual: Strong Anti-Venom
+			i(6454, {	-- Manual: Strong Anti-Venom (RECIPE!)
+				["timeline"] = { REMOVED_8_0_1 },
+			}),
 		}),
-		-- #endif
 		applyclassicphase(TBC_PHASE_ONE, prof(JEWELCRAFTING, {
 			i(20976),	-- Design: Citrine Pendant of Golden Healing
 			i(21953),	-- Design: Emerald Owl
@@ -3640,60 +3791,74 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(7363),	-- Pattern: Pilferer's Gloves (RECIPE!)
 			i(7288),	-- Pattern: Rugged Leather Pants (RECIPE!)
 			i(15745, {	-- Pattern: Runic Leather Belt (RECIPE!)
-				["timeline"] = { "removed 5.0.4" },	-- Taught by trainer
+				["timeline"] = { REMOVED_5_0_4 },	-- Taught by trainer
 			}),
 			i(15731, {	-- Pattern: Runic Leather Gauntlets (RECIPE!)
-				["timeline"] = { "removed 5.0.4" },	-- Taught by trainer
+				["timeline"] = { REMOVED_5_0_4 },	-- Taught by trainer
 			}),
 			i(15765, {	-- Pattern: Runic Leather Pants (RECIPE!)
-				["timeline"] = { "removed 5.0.4" },	-- Taught by trainer
+				["timeline"] = { REMOVED_5_0_4 },	-- Taught by trainer
 			}),
 			i(7453),	-- Pattern: Swift Boots (RECIPE!)
 			i(8385),	-- Pattern: Turtle Scale Gloves (RECIPE!)
 			i(15742),	-- Pattern: Warbear Harness (RECIPE!)
 			i(2407),	-- Pattern: White Leather Jerkin (RECIPE!)
 			i(15757, {	-- Pattern: Wicked Leather Pants (RECIPE!)
-				["timeline"] = { "removed 5.0.4" },	-- Taught by trainer
+				["timeline"] = { REMOVED_5_0_4 },	-- Taught by trainer
 			}),
 		}),
 		prof(TAILORING, {
 			i(7085),	-- Pattern: Azure Shoulders
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_TWO, i(217254)),	-- Pattern: Boots of the Enchanter
+			i(4352, {	-- Pattern: Boots of the Enchanter
+				["timeline"] = { "removed 1.15.1" },
+			}),
+			-- #else
 			i(4352),	-- Pattern: Boots of the Enchanter
+			-- #endif
 			i(14510),	-- Pattern: Bottomless Bag
 			i(14484, {	-- Pattern: Brightcloth Cloak
-				["timeline"] = { "removed 4.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_4_0_3 },	-- Taught by trainer
 			}),
 			i(14479, {	-- Pattern: Brightcloth Gloves
-				["timeline"] = { "removed 4.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_4_0_3 },	-- Taught by trainer
 			}),
 			i(14494),	-- Pattern: Brightcloth Pants
 			i(14478, {	-- Pattern: Brightcloth Robe
-				["timeline"] = { "removed 4.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_4_0_3 },	-- Taught by trainer
 			}),
 			i(10316),	-- Pattern: Colorful Kilt
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_TWO, i(217251)),	-- Pattern: Crimson Silk Shoulders
+			i(7084, {	-- Pattern: Crimson Silk Shoulders
+				["timeline"] = { "removed 1.15.1" },
+			}),
+			-- #else
 			i(7084),	-- Pattern: Crimson Silk Shoulders
+			-- #endif
 			i(7086),	-- Pattern: Earthen Silk Belt
 			i(14492, {	-- Pattern: Felcloth Boots
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(14496, {	-- Pattern: Felcloth Hood
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(14506, {	-- Pattern: Felcloth Robe
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(14508, {	-- Pattern: Felcloth Shoulders
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(14474, {	-- Pattern: Frostweave Gloves
-				["timeline"] = { "removed 4.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_4_0_3 },	-- Taught by trainer
 			}),
 			i(14489, {	-- Pattern: Frostweave Pants
-				["timeline"] = { "removed 4.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_4_0_3 },	-- Taught by trainer
 			}),
 			i(14467),	-- Pattern: Frostweave Robe
 			i(14466, {	-- Pattern: Frostweave Tunic
-				["timeline"] = { "removed 4.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_4_0_3 },	-- Taught by trainer
 			}),
 			i(14511),	-- Pattern: Gloves of Spell Mastery
 			i(2601),	-- Pattern: Gray Woolen Robe
@@ -3720,16 +3885,16 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(4347),	-- Pattern: Reinforced Woolen Shoulders
 			i(4354),	-- Pattern: Rich Purple Silk Shirt
 			i(14498, {	-- Pattern: Runecloth Headband
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(14491, {	-- Pattern: Runecloth Pants
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(14504, {	-- Pattern: Runecloth Shoulders
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(14470, {	-- Pattern: Runecloth Tunic
-				["timeline"] = { "removed 2.0.3" },	-- Taught by trainer
+				["timeline"] = { REMOVED_2_0_3 },	-- Taught by trainer
 			}),
 			i(4351),	-- Pattern: Shadow Hood
 			i(4353),	-- Pattern: Spider Belt
@@ -3740,5 +3905,58 @@ root(ROOTS.WorldDrops, tier(CLASSIC_TIER, {
 			i(7091),	-- Pattern: Truefaith Gloves
 			i(10301),	-- Pattern: White Bandit Mask
 		}),
+		-- #if BEFORE 4.0.1
+		cl(DRUID, {
+			{
+				["itemID"] = 17682,		-- Book: Gift of the Wild
+				["spellID"] = 21849,	-- Gift of the Wild
+				["rank"] = 1,
+			},
+			{
+				["itemID"] = 17683,		-- Book: Gift of the Wild II
+				["spellID"] = 21850,	-- Gift of the Wild II
+				["rank"] = 2,
+			},
+		}),
+		cl(MAGE, {
+			{
+				["itemID"] = 18600,		-- Tome of Arcane Brilliance
+				["spellID"] = 23028,	-- Arcane Brilliance
+				["rank"] = 1,
+			},
+			applyclassicphase(PHASE_SIX_CLASS_BOOKS, {
+				["itemID"] = 22890,		-- Tome of Frost Ward V [Phase 6]
+				["spellID"] = 28609,	-- Frost Ward V
+				["rank"] = 5,
+			}),
+		}),
+		cl(PRIEST, {
+			{
+				["itemID"] = 17413,		-- Codex: Prayer of Fortitude
+				["spellID"] = 21562,	-- Prayer of Fortitude
+				["rank"] = 1,
+			},
+			{
+				["itemID"] = 17414,		-- Codex: Prayer of Fortitude II
+				["spellID"] = 21564,	-- Prayer of Fortitude II
+				["rank"] = 2,
+			},
+			applyclassicphase(PHASE_FIVE_RECIPES, {
+				["itemID"] = 22393,		-- Codex: Prayer of Shadow Protection [Phase 5]
+				["spellID"] = 27683,	-- Prayer of Shadow Protection
+				["rank"] = 1,
+			}),
+		}),
+		cl(WARLOCK, {
+			applyclassicphase(PHASE_SIX_CLASS_BOOKS, {
+				["itemID"] = 22891,		-- Grimoire of Shadow Ward IV [Phase 6]
+				["spellID"] = 28610,	-- Shadow Ward IV
+				["rank"] = 4,
+			}),
+		}),
+		-- #endif
+	}),
+	filter(REAGENTS, {
+		i(7191),	-- Fused Wiring
 	}),
 }));

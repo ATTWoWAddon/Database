@@ -4,12 +4,10 @@
 root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 	m(BLACKROCK_MOUNTAIN, {
 		["lore"] = "Blackrock Mountain is a zone between the Burning Steppes and the Searing Gorge, linking the two regions. This zone is deceptively small and appears empty when first entered - however, it is among the most dangerous places in Azeroth. It was hotly contested between the forces of Ragnaros and his Dark Iron servants on one side and the black dragon Nefarian and his orc minions on the other. This is one of the most important areas in World of Warcraft lore.",
-		-- #if BEFORE CATA
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 25,	-- Blackrock Mountain (mapID doesn't exist for a couple expansions)
 		-- #endif
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\Achievement_Boss_Nefarion",
-		-- #endif
+		["icon"] = 254649,
 		["maps"] = {
 			BLACKROCK_MOUNTAIN_LEVEL2,	-- Blackrock Caverns
 			BLACKROCK_MOUNTAIN_LEVEL3,	-- Blackrock Depths
@@ -25,11 +23,11 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 						{ 44.6, 75.0, BLACKROCK_MOUNTAIN_LEVEL3 },
 						{ 56.2, 76.0, BLACKROCK_MOUNTAIN_LEVEL3 },
 					},
-					["timeline"] = { "added 5.1.0.16257" },
+					["timeline"] = { ADDED_5_1_0 },
 				}),
 				n(51066, {	-- Crystalfang
 					["coord"] = { 34.0, 20.0, BLACKROCK_MOUNTAIN_LEVEL3 },
-					["timeline"] = { "added 5.2.0.16408" },
+					["timeline"] = { ADDED_5_2_0 },
 				}),
 				n(9026, {	-- Overmaster Pyron
 					["coords"] = {
@@ -45,13 +43,13 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 					["description"] = "This mob used to simply be rare and have a limited loot table. He was later repurposed for use with the BWL Attunement Quest Chain. The two items listed below were never available in WoW Classic.",
 					["groups"] = {
 						i(13254, {	-- Astral Guard
-							["timeline"] = { "removed 1.6.0" },
+							["timeline"] = { REMOVED_1_6_0, ADDED_10_1_7 },	-- 07.09.2023 ATT DISCORD
 						}),
 						i(13248, {	-- Burstshot Harquebus
-							["timeline"] = { "removed 1.6.0" },
+							["timeline"] = { REMOVED_1_6_0, ADDED_10_1_7 },	-- 07.09.2023 ATT Discord
 						}),
 						i(18987, {	-- Blackhand's Command
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },	-- 07.09.2023 ATT Discord
 						}),
 					},
 				}),
@@ -61,11 +59,26 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 						{ 47.6, 62.0, BLACKROCK_MOUNTAIN_LEVEL3 },
 					},
 					["groups"] = {
-						applyclassicphase(PHASE_THREE, i(19259)),	-- Two of Warlords
+						applyclassicphase(PHASE_THREE_DMF_CARDS, i(19259)),	-- Two of Warlords
 						i(11603),	-- Vilerend Slicer
 					},
 				}),
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			n(TREASURES, {
+				applyclassicphase(SOD_PHASE_FOUR, i(226694, {	-- Rune of Defense Specialization
+					["provider"] = { "o", 457099 },	-- Zirene's Guide to Getting Punched
+					["timeline"] = { "added 1.15.3" },
+					["description"] = "1. Head to the South end of Searing Gorge and enter Blackrock Mountain.\n2. As you enter the main chamber, head left down the circular pathway.\n3. When you come to the meeting stone for Lower Blackrock Spire, turn left and head up the hallway.\n4. Watch out for level 54-ish mobs and take the first right in to a small room.\n5. You will see two copies of the book laying on the floor.\n*One is next to a pair of mobs. Another is in a small nook where you may safely loot the book without pulling aggro.",
+					["classes"] = { WARRIOR, PALADIN, ROGUE, SHAMAN, WARLOCK, DRUID },
+					["groups"] = {
+						recipe(459313, {	-- Engrave Ring - Defense Specialization
+							["classes"] = { WARRIOR, PALADIN, ROGUE, SHAMAN, WARLOCK, DRUID },
+						}),
+					},
+				})),
+			}),
+			-- #endif
 		},
 	}),
 }));

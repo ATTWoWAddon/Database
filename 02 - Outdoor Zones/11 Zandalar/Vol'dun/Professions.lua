@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(VOLDUN, {
 		n(PROFESSIONS, {
 			prof(JEWELCRAFTING, {
@@ -14,6 +14,10 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 					["requireSkill"] = JEWELCRAFTING,
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 120,
+					["g"] = {
+						i(155664),	-- Polished Fire Spinel (QI!)
+						i(155665),	-- Rough Fire Spinel (QI!)
+					},
 				}),
 			}),
 		}),

@@ -51,7 +51,7 @@ local LFR_WEAPON_GROUP = {
 -- "Our True Purpose" 59324 no longer shows as a 'valid Quest' from the server (2020-12-04), meaning likely no character has acquired it this week (2) of the expac?
 -- But it is complete for my main, as well as 62921... /shrug
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
 	n(VENTHYR, {
 		n(QUESTS, {
 			q(63215, {	-- Report to Draven
@@ -71,7 +71,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 					62000,	-- Choosing Your Purpose [Skip]
 					63215,	-- Report to Draven [Skip]
 				},
-				["sourceQuestNumRequired"] = 1,
+				["sourceQuestNumRequired"] = 2,	-- You want to be able to be given the Breadcrumb warning so you can pickup General Draven quest.
 				["provider"] = { "n", 171589 },	-- General Draven
 				["coord"] = { 44.8, 68.9, ORIBOS },
 			}),
@@ -119,6 +119,12 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 160280 },	-- Mikanikos
 				["coord"] = { 50.1, 20.5, BASTION },
+				["g"] = {
+					i(180450),	-- Assorted Bolts (QI!)
+					i(180448),	-- Eroded Heat Sink (QI!)
+					i(180449),	-- Failed Experiment (QI!)
+					i(174330),	-- Perfected Circlet Mold (QI!)
+				},
 			}),
 			q(59325, {	-- A Stalwart Ally
 				["sourceQuests"] = { 58407 },	-- The Medallion of Dominion
@@ -156,6 +162,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 60904 },	-- Medallion of Desire
 				["provider"] = { "n", 161979 },	-- Theotar
 				["coord"] = { 50.2, 18.6, SINFALL_REACHES },
+				["g"] = {
+					i(173158),	-- Theotar's Note (QI!)
+				},
 			}),
 			q(58424, {	-- An Eye for an Amulet
 				["sourceQuests"] = {
@@ -170,6 +179,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57887 },	-- Killing the Messenger
 				["provider"] = { "n", 159694 },	-- The Countess
 				["coord"] = { 58.0, 27.5, REVENDRETH },
+				["g"] = {
+					i(173358),	-- Invitations (QI!)
+				},
 			}),
 			q(57771, {	-- An Unwelcome Incursion
 				["sourceQuests"] = { 57727 },	-- Stonevigil Unrest
@@ -199,6 +211,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57887 },	-- Killing the Messenger
 				["provider"] = { "n", 159694 },	-- The Countess
 				["coord"] = { 58.0, 27.5, REVENDRETH },
+				["g"] = {
+					o(338520, {	-- Duskmire Mushroom
+						i(173286),	-- Duskmire Mushroom (QI!)
+					}),
+				},
 			}),
 			q(62918, {	-- Binding Power
 				["sourceQuests"] = { 62915 },	-- Home Improvement
@@ -214,6 +231,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 58842 },	-- The Curator
 				["provider"] = { "n", 161056 },	-- Guard Captain Elizabeta
 				["coord"] = { 65.9, 32.2, REVENDRETH },
+				["g"] = {
+					i(174040),	-- Chains of Regret (QI!)
+				},
 			}),
 			q(62856, {	-- Building Your Renown
 				["sourceQuests"] = { 59323 },	-- Anima Awakening
@@ -263,6 +283,14 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 160941 },	-- The Curator <Harvester of Avarice>
 				["coord"] = { 72.7, 37.6, REVENDRETH },
+				["g"] = {
+					o(339837, {	-- Powder Bag
+						i(174098),	-- Death Lotus Powder (QI!)
+					}),
+					o(353305, {	-- Stronebreaker Mallet
+						i(174100),	-- Stonebreaker Mallet (QI!)
+					}),
+				},
 			}),
 			q(58392, {	-- Death's End Destruction
 				["sourceQuests"] = { 58391 },	-- Reconnaissance... for my, uh, Recovery
@@ -278,6 +306,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57727 },	-- Stonevigil Unrest
 				["provider"] = { "i", 178557 },	-- Supply Chain Memo
 				["coord"] = { 57.4, 69.2, REVENDRETH },	-- rough area
+				["g"] = {
+					i(178557),	-- Supply Chain Memo (QI!)
+				},
 			}),
 			q(58384, {	-- Dredgers Left Behind
 				["sourceQuests"] = { 58426 },	-- In the Shadow of our Failures
@@ -307,16 +338,25 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 171147 },	-- General Draven
 				["coord"] = { 24.3, 29.7, BASTION },
+				["g"] = {
+					i(180605),	-- Crown of the Harvesters (QI!)
+				},
 			}),
 			q(57772, {	-- Fangs and Minds
 				["sourceQuests"] = { 57727 },	-- Stonevigil Unrest
 				["provider"] = { "n", 167380 },	-- Prince Renethal
 				["coord"] = { 56.3, 66.7, REVENDRETH },
+				["g"] = {
+					i(178213),	-- Prince Renathal's Decree (QI!)
+				},
 			}),
 			q(60500, {	-- Halls of Atonement: Medallion of Pride
 				["sourceQuests"] = { 59324, 62921 },	-- Our True Purpose
 				["provider"] = { "o", 352520 },	-- Medallion of Pride
 				["coord"] = { 56.8, 30.8, SINFALL_REACHES },
+				["g"] = {
+					i(179024),	-- Medallion of Pride (QI!)
+				},
 			}),
 			q(59676, {	-- Harvester of Desire
 				["sourceQuests"] = { 59706 },	-- Invitation for the Countess
@@ -342,6 +382,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61050 },	-- How to Wear Seven Medallions
 				["provider"] = { "n", 161514 },	-- General Draven
 				["coord"] = { 43.8, 46.4, SINFALL_REACHES },
+				["g"] = {
+					i(180356),	-- Laurent's Compact Looking Glass (QI!)
+				},
 			}),
 			q(62915, {	-- Home Improvement
 				["sourceQuests"] = { 62837 },	-- Hopeful News
@@ -392,6 +435,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57886 },	-- A Meal and a Deal
 				["provider"] = { "n", 159694 },	-- The Countess
 				["coord"] = { 58.0, 27.5, REVENDRETH },
+				["g"] = {
+					i(173285),	-- Treasonous Missive (QI!)
+				},
 			}),
 			q(59343, {	-- Kindred Spirits
 				["sourceQuests"] = { 59719 },	-- The Court
@@ -449,7 +495,8 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 					161480,	-- Blackbale Extortionist
 				},
 				["g"] = {
-					i(174211),	-- Maldraxxian Weapon (quest item in bags collected during quest)
+					i(174211),	-- Maldraxxian Weapon (QI!)
+					i(174212),	-- Suspicious Weapon (QI!)
 				},
 			}),
 			q(60935, {	-- Medallion of Avarice
@@ -480,6 +527,10 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["coord"] = { 72.7, 37.6, REVENDRETH },
 				["g"] = {
 					i(180945),	-- Crypt Gargon (MOUNT!)
+					i(174179),	-- Death Lotus Powder (QI!)
+					o(339869, {	-- Curator's Chest
+						i(174111),	-- Medallion of Avarice (QI!)
+					}),
 				},
 			}),
 			q(57891, {	-- Mix, Mingle, and Meddle
@@ -495,11 +546,17 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57892 },	-- Enacting Immediate Justice
 				["provider"] = { "n", 159946 },	-- The Countess
 				["coord"] = { 56.9, 28.7, REVENDRETH },
+				["g"] = {
+					i(173287),	-- Medallion of Desire (QI!)
+				},
 			}),
 			q(58585, {	-- No Friend of Mine
 				["sourceQuests"] = { 58555 },	-- A Tense Reunion
 				["provider"] = { "n", 160280 },	-- Mikanikos
 				["coord"] = { 50.1, 20.6, BASTION },
+				["g"] = {
+					i(174466),	-- Mikanikos's Tool Chest (QI!)
+				},
 			}),
 			q(62921, {	-- Our True Purpose
 				["sourceQuests"] = { 62920 },	-- A Conduit For Change
@@ -519,6 +576,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 160280 },	-- Mikanikos
 				["coord"] = { 50.1, 20.5, BASTION },
+				["g"] = {
+					i(174061),	-- Phaestus, Genesis of Aeons (QI!)
+				},
 			}),
 			q(57884, {	-- Reclaiming Thornhill Manor
 				["sourceQuests"] = {
@@ -542,6 +602,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57880 },	-- An Estate Within the Old Gate
 				["provider"] = { "n", 159513 },	-- Bogdan
 				["coord"] = { 60.4, 40.1, REVENDRETH },
+				["g"] = {
+					i(174839),	-- Offer of Employment (QI!)
+				},
 			}),
 			q(61981, {	-- Replenish the Reservoir
 				["sourceQuests"] = { 59324, 62921 },	-- Our True Purpose
@@ -553,6 +616,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 58440 },	-- Mirror, Mirror...
 				["provider"] = { "n", 160941 },	-- The Curator <Harvester of Avarice>
 				["coord"] = { 72.7, 37.6, REVENDRETH },
+				["g"] = {
+					i(174111),	-- Medallion of Avarice (QI!)
+				},
 			}),
 			q(58584, {	-- Right our Wrongs
 				["sourceQuests"] = { 58555 },	-- A Tense Reunion
@@ -605,11 +671,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["provider"] = { "n", 164079 },	-- Highlord Bolvar Fordragon
 				["coord"] = { 40.0, 68.3, ORIBOS },
 				["g"] = {
+					i(180202),	-- Soulkeeper Crystal (QI!)
 					i(180909),	-- Ebony Death Shroud Gloves
 					i(180910),	-- Dread Sentinel's Ebony Grips
 					i(180911),	-- Soulbreaker's Ebony Handwraps
 					i(180912),	-- Fearstalker's Ebony Gauntlets
-					i(180202),	-- Soulkeeper Crystal
 				},
 			}),
 			q(58421, {	-- Special Access
@@ -620,6 +686,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 160941 },	-- The Curator <Harvester of Avarice>
 				["coord"] = { 72.7, 37.6, REVENDRETH },
+				["g"] = {
+					i(174094),	-- Boian's Fangs (QI!)
+					i(174095),	-- Daciana's Fangs (QI!)
+					i(174093),	-- Ionata's Fangs (QI!)
+				},
 			}),
 			q(57727, {	-- Stonevigil Unrest
 				["description"] = "Requires Renown 20.",
@@ -652,8 +723,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				}),
 			}),
 			q(57918, {	-- The Absolution of Souls
-			--	unsure what triggered its availability.  "Our Forgotten Purpose" was available for me for days and this version wasn't.  i THINK it might have been unlocking the first tier of every sanctum upgrade?  i noticed it after going to pick up a daily quest from The Accuser after unlocking my final sanctum upgrade, and this quest wasn't up the night before when i started the upgrade
-			--	["sourceQuests"] = {  },	-- ??
+				["description"] = "Becomes available after unlocking tier 1 of the Command Table sanctum upgrade.",
 				["isBreadcrumb"] = true,
 				["altQuests"] = { 58093 },	-- Our Forgotten Purpose
 				["provider"] = { "n", 165291 },	-- The Accuser
@@ -698,6 +768,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57880 },	-- An Estate Within the Old Gate
 				["provider"] = { "n", 159513 },	-- Bogdan
 				["coord"] = { 60.4, 40.1, REVENDRETH },
+				["g"] = {
+					i(173180),	-- Ornate Key (QI!)
+				},
 			}),
 			q(58383, {	-- The Many Sins of Kael'thas Sunstrider
 				["sourceQuests"] = { 58382 },	-- Someone Worth Saving
@@ -718,10 +791,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["provider"] = { "n", 171175 },	-- General Draven
 				["coord"] = { 21.0, 22.8, BASTION },
 				["g"] = {
+					i(180604),	-- Crown of the Harvesters (QI!)
+					i(180905),	-- Dread Sentinel's Ebony Greatboots
+					i(180908),	-- Ebony Death Shroud Boots
 					i(180907),	-- Fearstalker's Ebony Sabatons
 					i(180906),	-- Soulbreaker's Ebony Slippers
-					i(180908),	-- Ebony Death Shroud Boots
-					i(180905),	-- Dread Sentinel's Ebony Greatboots
 				},
 			}),
 			q(61492, {	-- The Princeguard
@@ -729,11 +803,18 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["description"] = "Requires Renown 5.",
 				["provider"] = { "n", 161977 },	-- General Draven
 				["coord"] = { 46.3, 15.7, SINFALL_REACHES },
+				["g"] = {
+					i(181516),	-- Stone-Laced Infused Ruby (QI!)
+				},
 			}),
 			q(58586, {	-- The Right Stuff
 				["sourceQuests"] = { 58555 },	-- A Tense Reunion
 				["provider"] = { "n", 160280 },	-- Mikanikos
 				["coord"] = { 50.1, 20.6, BASTION },
+				["g"] = {
+					i(173880),	-- Purified Metal (QI!)
+					i(174465),	-- Tainted Centurion Component (QI!)
+				},
 			}),
 			q(62904, {	-- The Souls Plight
 				["sourceQuests"] = { 62903 },	-- Into the Reservoir
@@ -745,6 +826,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["provider"] = { "n", 167689 },	-- Prince Renethal
 				["coord"] = { 71.9, 68.8, REVENDRETH },
 				["g"] = {
+					i(173976),	-- Medallion of Envy (QI!)
 					i(180923),	-- Fearstalker's Ebony Monnion
 					i(180922),	-- Soulbreaker's Ebony Mantle
 					i(180920),	-- Ebony Death Shroud Spaulders
@@ -756,6 +838,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["provider"] = { "n", 161298 },	-- Nourman <The Doorman>
 				["coord"] = { 77.5, 39.2, REVENDRETH },
 				["g"] = {
+					i(174092),	-- Mateo's Mirror Shard (QI!)
 					i(180913),	-- Soulbreaker's Ebony Hood
 					i(180915),	-- Ebony Death Shroud Hood
 					i(180914),	-- Fearstalker's Ebony Helm
@@ -767,6 +850,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["provider"] = { "n", 161427 },	-- Kael'thas Sunstrider
 				["maps"] = { REVENDRETH },
 				-- no coords, is your 'pet'
+				["g"] = {
+					i(174278),	-- Orders from the Tithelord (QI!)
+				},
 			}),
 			q(60145, {	-- Third Talon Vartox
 				["sourceQuests"] = { 57727 },	-- Stonevigil Unrest
@@ -854,7 +940,7 @@ for _,g in ipairs({CONDUIT_GROUP,LFR_WEAPON_GROUP}) do
 	end
 end
 
-root(ROOTS.HiddenQuestTriggers, tier(SL_TIER, {
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, {
 	n(VENTHYR, {
 		q(62699),	-- triggered when turning in #62691, "A Calling in Revendreth"
 		q(62924),	-- triggered when turning in #62691, "A Calling in Revendreth"

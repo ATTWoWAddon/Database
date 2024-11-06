@@ -16,45 +16,28 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 			46,	-- Karazhan Catacombs
 		},
 		-- #endif
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\achievement_zone_deadwindpass",
-		-- #endif
+		["icon"] = 236741,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
-				explorationAch(777, {	-- Explore Deadwind Pass
-					-- #if BEFORE WRATH
-					["description"] = "Explore Deadwind Pass, revealing the covered areas of the world map.",
-					-- #endif
-				}),
+				explorationAch(777),	-- Explore Deadwind Pass
 			}),
 			battlepets({
 				pet(1160, {	-- Arcane Eye (PET!)
 					["timeline"] = { ADDED_5_1_0 },
 				}),
 				pet(439, {	-- Restless Shadeling (PET!)
-					["description"] = "Spawns in |cFFFFD700The Master's Cellar|r at midnight PST for a very limited amount of time.",
+					-- #if BEFORE 5.1.0
+					["description"] = "Spawns in |cFFFFD700The Master's Cellar|r during the early morning between midnight and 9:00am realm time.",
+					-- #else
+					["description"] = "Spawns in |cFFFFD700The Master's Cellar|r during the early morning between midnight and 9:00am PST(US)/CEST(EU)/AEST(OCE).",
+					-- #endif
 				}),
 			}),
-			-- #if ANYCLASSIC
-			n(EXPLORATION, {
-				exploration(2697, "380:365:249:76"),	-- Deadman's Crossing
-				exploration(2562, "300:245:269:337"),	-- Karazhan
-				exploration(2561, "270:270:426:299"),	-- The Vice
-				--[[
-				exploration(2558, ""),	-- Deadwind Ravine
-				exploration(2559, ""),	-- Diamondhead River
-				exploration(2560, ""),	-- Ariden's Camp
-				exploration(2563, ""),	-- Morgan's Plot
-				exploration(2837, ""),	-- The Master's Cellar
-				exploration(2937, ""),	-- Grosh'gok Compound
-				exploration(2938, ""),	-- Sleeping Gorge
-				]]--
-			}),
-			-- #endif
-			petbattles({
-				n(66522, {	-- Lydia Accoste <Grand Master Pet Tamer>
-					["coord"] = { 40.2, 76.6, DEADWIND_PASS },
-				}),
+			explorationHeader({
+				exploration(2697),	-- Deadman's Crossing
+				exploration(2562),	-- Karazhan
+				exploration(2938),	-- Sleeping Gorge
+				exploration(2561),	-- The Vice
 			}),
 			-- #if AFTER 7.0.3.21796
 			n(QUESTS, {
@@ -62,20 +45,199 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 					["provider"] = { "o", 254007 },	-- Executioner's Altar
 					["sourceQuest"] = 44083,	-- The Grimoire of the First Necrolyte
 					["coord"] = { 38.7, 73.9, DEADWIND_PASS },
-					["timeline"] = { "added 7.0.3.21996" },
+					["timeline"] = { ADDED_7_0_3 },
 					["classes"] = { WARLOCK },
 				}),
 				q(44487, {	-- Waterlogged Tome
 					["provider"] = { "o", 258978 },	-- Waterlogged Tome
 					["coord"] = { 39.1, 73.7, 45 },
-					["timeline"] = { "added 7.0.3.21796" },
+					["timeline"] = { ADDED_7_0_3 },
 					["lvl"] = 110,
 					["groups"] = {
-						crit(1, {	-- Waterlogged Tome
+						crit(33145, {	-- Waterlogged Tome
 							["achievementID"] = 11240,	-- Harbinger
 						}),
 					},
 				}),
+			}),
+			-- #endif
+			-- #if SEASON_OF_DISCOVERY
+			n(QUESTS, {
+				applyclassicphase(SOD_PHASE_TWO, q(80120, {	-- A Service to Dalaran
+					["qg"] = 218920,	-- Dalaran Agent <Violet Eye>
+					["sourceQuests"] = {
+						80148,	-- Curious Dalaran Relic [Arathi Highlands]
+						80152,	-- Curious Dalaran Relic [Badlands]
+						80098,	-- Curious Dalaran Relic [Deadwind Pass]
+						80151,	-- Curious Dalaran Relic [Desolace]
+						80147,	-- Curious Dalaran Relic [Duskwood]
+						80149,	-- Curious Dalaran Relic [Swamp of Sorrows]
+						80150,	-- Curious Dalaran Relic [The Barrens]
+					},
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["groups"] = {
+						i(217014, {	-- Supply Bag
+							i(213144, {	-- Luminous Epiphany
+								["classes"] = { PRIEST },
+								["groups"] = {
+									recipe(425312),	-- Engrave Boots - Spirit of the Redeemer
+								},
+							}),
+							i(213124, {	-- Rune of Close Combat
+								["classes"] = { HUNTER },
+								["groups"] = {
+									recipe(416086),	-- Engrave Belt - Melee Specialist
+								},
+							}),
+							i(213100, {	-- Rune of Forbidden Knowledge
+								["classes"] = { WARLOCK },
+								["groups"] = {
+									recipe(416014),	-- Engrave Boots - Demonic Knowledge
+								},
+							}),
+							i(213130, {	-- Rune of Infusions
+								["classes"] = { PALADIN },
+								["groups"] = {
+									recipe(426180),	-- Engrave Belt - Infusion of Light
+								},
+							}),
+							i(213104, {	-- Rune of Ruthless Precision
+								["classes"] = { WARRIOR },
+								["groups"] = {
+									recipe(416005),	-- Engrave Belt - Precise Timing
+								},
+							}),
+							i(213137, {	-- Rune of the Assailant
+								["classes"] = { ROGUE },
+								["groups"] = {
+									recipe(415926),	-- Engrave Boots - Waylay
+								},
+							}),
+							i(213118, {	-- Rune of the Jungle King
+								["classes"] = { DRUID },
+								["groups"] = {
+									recipe(424765),	-- Engrave Boots - King of the Jungle
+								},
+							}),
+							i(216606, {	-- Rune of Two-Handed Mastery
+								["classes"] = { SHAMAN },
+								["groups"] = {
+									recipe(436368),	-- Engrave Chest - Two-Handed Mastery
+								},
+							}),
+							i(213112, {	-- Spell Notes: Missile Barrage
+								["classes"] = { MAGE },
+								["groups"] = {
+									recipe(401763),	-- Engrave Belt - Missile Barrage
+								},
+							}),
+						}),
+					},
+				})),
+				applyclassicphase(SOD_PHASE_TWO, q(80148, {	-- Curious Dalaran Relic [Arathi Highlands]
+					["providers"] = {
+						{ "i", 216947 },	-- Whirring Dalaran Relic
+						{ "n", 218920 },	-- Dalaran Agent <Violet Eye>
+					},
+					--["sourceQuest"] = ,	-- 
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["maps"] = { ARATHI_HIGHLANDS },
+				})),
+				applyclassicphase(SOD_PHASE_TWO, q(80152, {	-- Curious Dalaran Relic [Badlands]
+					["providers"] = {
+						{ "i", 216951 },	-- Slippery Dalaran Relic
+						{ "n", 218920 },	-- Dalaran Agent <Violet Eye>
+					},
+					--["sourceQuest"] = ,	-- 
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["maps"] = { BADLANDS },
+				})),
+				applyclassicphase(SOD_PHASE_TWO, q(80098, {	-- Curious Dalaran Relic [Deadwind Pass]
+					["providers"] = {
+						{ "i", 216945 },	-- Curious Dalaran Relic
+						{ "n", 218920 },	-- Dalaran Agent <Violet Eye>
+					},
+					--["sourceQuest"] = ,	-- 
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+				})),
+				applyclassicphase(SOD_PHASE_TWO, q(80151, {	-- Curious Dalaran Relic [Desolace]
+					["providers"] = {
+						{ "i", 216950 },	-- Creepy Dalaran Relic
+						{ "n", 218920 },	-- Dalaran Agent <Violet Eye>
+					},
+					--["sourceQuest"] = ,	-- 
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["maps"] = { DESOLACE },
+				})),
+				applyclassicphase(SOD_PHASE_TWO, q(80147, {	-- Curious Dalaran Relic [Duskwood]
+					["providers"] = {
+						{ "i", 216946 },	-- Glittering Dalaran Relic
+						{ "n", 218920 },	-- Dalaran Agent <Violet Eye>
+					},
+					--["sourceQuest"] = ,	-- 
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["maps"] = { DUSKWOOD },
+				})),
+				applyclassicphase(SOD_PHASE_TWO, q(80149, {	-- Curious Dalaran Relic [Swamp of Sorrows]
+					["providers"] = {
+						{ "i", 216948 },	-- Odd Dalaran Relic
+						{ "n", 218920 },	-- Dalaran Agent <Violet Eye>
+					},
+					--["sourceQuest"] = ,	-- 
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["maps"] = { SWAMP_OF_SORROWS },
+				})),
+				applyclassicphase(SOD_PHASE_TWO, q(80150, {	-- Curious Dalaran Relic [The Barrens]
+					["providers"] = {
+						{ "i", 216949 },	-- Heavy Dalaran Relic
+						{ "n", 218920 },	-- Dalaran Agent <Violet Eye>
+					},
+					--["sourceQuest"] = ,	-- 
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["maps"] = { THE_BARRENS },
+				})),
+			}),
+			n(RARES, {
+				applyclassicphase(SOD_PHASE_TWO, n(218931, {	-- Dark Rider
+					["provider"] = { "i", 216941 },	-- Ariden's Sigil
+					["coord"] = { 43, 29, DEADWIND_PASS },
+					["groups"] = {
+						i(216945),	-- Curious Dalaran Relic
+					},
+				})),
+			}),
+			-- #endif
+			-- #if AFTER 10.2.5
+			n(TREASURES, {
+				i(212989, {	-- Grimoire of the Mana-Gorged Observer (CI!)
+					--["provider"] = { "o", xxxxx },	-- Carved Eye
+					["coord"] = { 43.9, 72.8, DEADWIND_PASS },
+					["timeline"] = { ADDED_10_2_5 },
+				}),
+			}),
+			-- #endif
+			-- #if SEASON_OF_DISCOVERY
+			n(TREASURES, {
+				applyclassicphase(SOD_PHASE_FOUR, i(226406, {	-- Rune of Sword Specialization
+					["provider"] = { "o", 457088 },	-- Advanced Swordplay
+					["timeline"] = { "added 1.15.3" },
+					["coord"] = { 43.1, 74.6, DEADWIND_PASS },
+					["classes"] = { WARRIOR, PALADIN, HUNTER, MAGE, WARLOCK, ROGUE },
+					["groups"] = {
+						recipe(453635, {	-- Engrave Ring - Sword Specialization
+							["classes"] = { WARRIOR, PALADIN, HUNTER, MAGE, WARLOCK, ROGUE },
+						}),
+					},
+				})),
+			}),
+			n(VENDORS, {
+				applyclassicphase(SOD_PHASE_TWO, n(218920, {	-- Dalaran Agent <Violet Eye>
+					["coord"] = { 52, 34.2, DEADWIND_PASS },
+					["groups"] = {
+						-- TODO: This might be a quest, gonna need to see if it triggers a questID when you talk to them.
+						i(216941),	-- Ariden's Sigil
+					},
+				})),
 			}),
 			-- #endif
 			-- #if AFTER TBC
@@ -88,22 +250,15 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 						applyclassicphase(TBC_PHASE_THREE, i(33124, {["timeline"] = {ADDED_2_2_0}})),	-- Pattern: Cloak of Darkness (RECIPE!)
 						applyclassicphase(TBC_PHASE_THREE, i(33205, {["timeline"] = {ADDED_2_2_0}})),	-- Pattern: Shadowprowler's Chestguard (RECIPE!)
 						applyclassicphase(TBC_PHASE_THREE, i(33209, {	-- Recipe: Flask of Chromatic Wonder (RECIPE!)
-							-- #if BEFORE MOP
-							["spellID"] = 42736,	-- Flask of Chromatic Wonder
-							["requireSkill"] = ALCHEMY,
-							["f"] = RECIPES,
-							-- #else
-							["spellID"] = 0,
-							-- #endif
-							["timeline"] = { "removed 5.0.1.20000" },
+							["timeline"] = { ADDED_2_2_0, REMOVED_5_0_4 },
 						})),
 						i(29187),	-- Inscription of Endurance
 						-- #if BEFORE CATA
 						applyclassicphase(TBC_PHASE_THREE, i(34581, {	-- Mysterious Arrow
-							["timeline"] = { "removed 4.0.1.20000" },
+							["timeline"] = { REMOVED_4_0_1 },
 						})),
 						applyclassicphase(TBC_PHASE_THREE, i(34582, {	-- Mysterious Shell
-							["timeline"] = { "removed 4.0.1.20000" },
+							["timeline"] = { REMOVED_4_0_1 },
 						})),
 						-- #endif
 					},

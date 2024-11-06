@@ -1,125 +1,113 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
-local OnTooltipForFrenzyheart = [[function(t)
+ExportDB.OnTooltipDB.ForFrenzyheart = [[~function(t, tooltipInfo)
 	local reputation = t.reputation;
 	if reputation < 0 then
-		if not t.champion then
-			local f = _.SearchForField("questID", 12582);
-			if f and #f > 0 then t.champion = f[1]; end
+		local champion = t.champion;
+		if not champion then
+			champion = _.SearchForField("questID", 12582)[1];
+			t.champion = champion;
 		end
-		GameTooltip:AddDoubleLine("Complete " .. (t.champion.text or RETRIEVING_DATA), _.L[t.champion.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"]);
+		_.Modules.FactionData.AddQuestTooltip(tooltipInfo, "Complete %s", champion);
 	elseif reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
-		GameTooltip:AddLine("Daily Quests:");
-		local chickenRep = isHuman and 550 or 500;
-		if not t.chicken then
-			local f = _.SearchForField("questID", 12702);
-			if f and #f > 0 then t.chicken = f[1]; end
+		tinsert(tooltipInfo, { left = "Daily Quests:" });
+		local chicken = t.chicken;
+		if not chicken then
+			chicken = _.SearchForField("questID", 12702)[1];
+			t.chicken = chicken;
 		end
-		GameTooltip:AddDoubleLine(t.chicken.text or RETRIEVING_DATA, _.L[t.chicken.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. chickenRep .. " Rep");
+		local chickenRep = _.Modules.FactionData.AddQuestTooltipWithReputation(tooltipInfo, " %s", chicken, 250);
 
-		local rejekRep = isHuman and 550 or 500;
-		if not t.rejek then
-			local rejek = {};
-			local f = _.SearchForField("questID", 12758);
-			if f and #f > 0 then tinsert(rejek, f[1]); end
-			f = _.SearchForField("questID", 12734);
-			if f and #f > 0 then tinsert(rejek, f[1]); end
-			f = _.SearchForField("questID", 12741);
-			if f and #f > 0 then tinsert(rejek, f[1]); end
-			f = _.SearchForField("questID", 12732);
-			if f and #f > 0 then tinsert(rejek, f[1]); end
+		local rejek = t.rejek;
+		if not rejek then
+			rejek = {};
+			for i,questID in ipairs({ 12758, 12734, 12741, 12732 }) do
+				for j,quest in ipairs(_.SearchForField("questID", questID)) do
+					if quest.questID == questID then
+						tinsert(rejek, quest);
+					end
+				end
+			end
 			t.rejek = rejek;
 		end
-		local completedAny = false;
-		for i,quest in ipairs(t.rejek) do if quest.saved then completedAny = true; break; end end
-		GameTooltip:AddDoubleLine("Complete 1 of 4 quests offered by Rejek:", _.L[completedAny and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. rejekRep .. " Rep");
-		for i,quest in ipairs(t.rejek) do GameTooltip:AddLine("  " .. (quest.text or RETRIEVING_DATA)); end
+		local AddQuestsWithReputation = _.Modules.FactionData.AddQuestsTooltipWithReputation;
+		local rejekRep = AddQuestsWithReputation(tooltipInfo, "Complete 1 of 4 quests offered by Rejek:", rejek, 250);
 
-		local vekgarRep = isHuman and 770 or 700;
-		if not t.vekgar then
-			local vekgar = {};
-			local f = _.SearchForField("questID", 12703);
-			if f and #f > 0 then tinsert(vekgar, f[1]); end
-			f = _.SearchForField("questID", 12760);
-			if f and #f > 0 then tinsert(vekgar, f[1]); end
-			f = _.SearchForField("questID", 12759);
-			if f and #f > 0 then tinsert(vekgar, f[1]); end
+		local vekgar = t.vekgar;
+		if not vekgar then
+			vekgar = {};
+			for i,questID in ipairs({ 12703, 12760, 12759 }) do
+				for j,quest in ipairs(_.SearchForField("questID", questID)) do
+					if quest.questID == questID then
+						tinsert(vekgar, quest);
+					end
+				end
+			end
 			t.vekgar = vekgar;
 		end
-		GameTooltip:AddDoubleLine("Complete 1 of 3 quests offered by Vekgar:", _.L[t.vekgar[1].saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. vekgarRep .. " Rep");
-		for i,quest in ipairs(t.vekgar) do GameTooltip:AddLine("  " .. (quest.text or RETRIEVING_DATA)); end
-
-		local repPerDay = chickenRep + rejekRep + vekgarRep;
-		local x, n = math.ceil((42000 - t.reputation) / repPerDay), math.ceil(42000 / repPerDay);
-		GameTooltip:AddDoubleLine("Complete Dailies Everyday", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+		local vekgarRep = AddQuestsWithReputation(tooltipInfo, "Complete 1 of 3 quests offered by Vekgar:", vekgar, 350);
+		_.Modules.FactionData.AddReputationTooltipInfo(tooltipInfo, reputation, "Complete Dailies Everyday", chickenRep + rejekRep + vekgarRep, 42000);
 	end
 end]];
-local OnTooltipForOracles = [[function(t)
+ExportDB.OnTooltipDB.ForOracles = [[~function(t, tooltipInfo)
 	local reputation = t.reputation;
 	if reputation < 0 then
-		if not t.hand then
-			local f = _.SearchForField("questID", 12689);
-			if f and #f > 0 then t.hand = f[1]; end
+		local hand = t.hand;
+		if not hand then
+			hand = _.SearchForField("questID", 12689)[1];
+			t.hand = hand;
 		end
-		GameTooltip:AddDoubleLine("Complete " .. (t.hand.text or RETRIEVING_DATA), _.L[t.hand.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"]);
+		_.Modules.FactionData.AddQuestTooltip(tooltipInfo, "Complete %s", hand);
 	elseif reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
-		GameTooltip:AddLine("Daily Quests:");
-		local appeasingRep = isHuman and 550 or 500;
-		if not t.appeasing then
-			local f = _.SearchForField("questID", 12704);
-			if f and #f > 0 then t.appeasing = f[1]; end
+		tinsert(tooltipInfo, { left = "Daily Quests:" });
+		local appeasing = t.appeasing;
+		if not appeasing then
+			appeasing = _.SearchForField("questID", 12704)[1];
+			t.appeasing = appeasing;
 		end
-		GameTooltip:AddDoubleLine(t.appeasing.text or RETRIEVING_DATA, _.L[t.appeasing.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. appeasingRep .. " Rep");
+		local appeasingRep = _.Modules.FactionData.AddQuestTooltipWithReputation(tooltipInfo, " %s", appeasing, 250);
 
-		local soodowRep = isHuman and 770 or 700;
-		if not t.soodow then
-			local soodow = {};
-			local f = _.SearchForField("questID", 12761);
-			if f and #f > 0 then tinsert(soodow, f[1]); end
-			f = _.SearchForField("questID", 12762);
-			if f and #f > 0 then tinsert(soodow, f[1]); end
-			f = _.SearchForField("questID", 12705);
-			if f and #f > 0 then tinsert(soodow, f[1]); end
+		local soodow = t.soodow;
+		if not soodow then
+			soodow = {};
+			for i,questID in ipairs({ 12761, 12762, 12705 }) do
+				for j,quest in ipairs(_.SearchForField("questID", questID)) do
+					if quest.questID == questID then
+						tinsert(soodow, quest);
+					end
+				end
+			end
 			t.soodow = soodow;
 		end
-		GameTooltip:AddDoubleLine("Complete 1 of 3 quests offered by Oracle Soo-dow:", _.L[t.soodow[1].saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. soodowRep .. " Rep");
-		for i,quest in ipairs(t.soodow) do GameTooltip:AddLine("  " .. (quest.text or RETRIEVING_DATA)); end
+		local AddQuestsWithReputation = _.Modules.FactionData.AddQuestsTooltipWithReputation;
+		local soodowRep = AddQuestsWithReputation(tooltipInfo, "Complete 1 of 3 quests offered by Oracle Soo-dow:", soodow, 350);
 
-		local sooneeRep = isHuman and 550 or 500;
-		if not t.soonee then
-			local soonee = {};
-			local f = _.SearchForField("questID", 12735);
-			if f and #f > 0 then tinsert(soonee, f[1]); end
-			f = _.SearchForField("questID", 12737);
-			if f and #f > 0 then tinsert(soonee, f[1]); end
-			f = _.SearchForField("questID", 12736);
-			if f and #f > 0 then tinsert(soonee, f[1]); end
-			f = _.SearchForField("questID", 12726);
-			if f and #f > 0 then tinsert(soonee, f[1]); end
+		local soonee = t.soonee;
+		if not soonee then
+			soonee = {};
+			for i,questID in ipairs({ 12735, 12737, 12736, 12726 }) do
+				for j,quest in ipairs(_.SearchForField("questID", questID)) do
+					if quest.questID == questID then
+						tinsert(soonee, quest);
+					end
+				end
+			end
 			t.soonee = soonee;
 		end
-		local completedAny = false;
-		for i,quest in ipairs(t.soonee) do if quest.saved then completedAny = true; break; end end
-		GameTooltip:AddDoubleLine("Complete 1 of 4 quests offered by Oracle Soo-nee:", _.L[completedAny and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. sooneeRep .. " Rep");
-		for i,quest in ipairs(t.soonee) do GameTooltip:AddLine("  " .. (quest.text or RETRIEVING_DATA)); end
-
-		local repPerDay = appeasingRep + soodowRep + sooneeRep;
-		local x, n = math.ceil((42000 - t.reputation) / repPerDay), math.ceil(42000 / repPerDay);
-		GameTooltip:AddDoubleLine("Complete Dailies Everyday", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+		local sooneeRep = AddQuestsWithReputation(tooltipInfo, "Complete 1 of 4 quests offered by Oracle Soo-nee:", soonee, 250);
+		_.Modules.FactionData.AddReputationTooltipInfo(tooltipInfo, reputation, "Complete Dailies Everyday", appeasingRep + soodowRep + sooneeRep, 42000);
 	end
 end]];
 root(ROOTS.Zones, {
 	m(NORTHREND, applyclassicphase(WRATH_PHASE_ONE, {
 		m(SHOLAZAR_BASIN, {
 			["lore"] = "Sholazar Basin is a lush tropical forest in western Northrend. It owes its warm climate to the pylons around the zone, which are maintained by the Titans and also ward off the Scourge. It is a great zone for gathering max-Northrend level items like herbs and ore. There's also some rare beasts hunters like taming for pets, like Loque'nahak. Players will revisit Hemet Nesingwary and prove their hunting prowess for him, become an unwitting ambassador in a faction war between the Oracles and the Frenzyheart tribes, and learn about the power of the pylons.",
-			["icon"] = "Interface\\Icons\\achievement_zone_sholazar_01",
+			["icon"] = 236817,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					explorationAch(1268),	-- Explore Sholazar Basin
-					achWithRep(950, 1104),	-- Frenzyheart Tribe
+					achWithRep(950, FACTION_FRENZYHEART_TRIBE),	-- Frenzyheart Tribe
 					ach(961, {	-- Honorary Frenzyheart
 						["sourceQuest"] = 12692,	-- Return of the Lich Hunter
 						["groups"] = {
@@ -167,22 +155,22 @@ root(ROOTS.Zones, {
 						["rank"] = 75,
 						-- #endif
 						-- #else
-						crit(1, {	-- Hunting Bigger Game
+						crit(39053, {	-- Hunting Bigger Game
 							["sourceQuest"] = 12595,	-- In Search of Bigger Game
 						}),
-						crit(2, {	-- Teeth, Spikes, and Talons
+						crit(2004, {	-- Teeth, Spikes, and Talons
 							["sourceQuest"] = 12614,	-- Post-partum Aggression
 						}),
-						crit(3, {	-- The Wolvar
+						crit(39054, {	-- The Wolvar
 							["sourceQuest"] = 12540,	-- Just Following Orders
 						}),
-						crit(4, {	-- The Oracles
+						crit(39055, {	-- The Oracles
 							["sourceQuest"] = 12581,	-- A Hero's Burden
 						}),
-						crit(5, {	-- The Lifewarden
+						crit(39056, {	-- The Lifewarden
 							["sourceQuest"] = 12805,	-- Salvaging Life's Strength
 						}),
-						crit(6, {	-- Watching Over the Basin
+						crit(39726, {	-- Watching Over the Basin
 							["sourceQuest"] = 12546,	-- Reclamation
 						}),
 						-- #endif
@@ -223,25 +211,30 @@ root(ROOTS.Zones, {
 							}),
 						},
 					}),
-					achWithRep(951, 1105),	-- The Oracles
+					achWithRep(951, FACTION_THE_ORACLES),	-- The Oracles
 				}),
 				battlepets({
 					["sym"] = {{"select","speciesID",
 						387,	-- Snake (PET!)
 						379,	-- Squirrel (PET!)
-						1238,	-- Unborn Val'kyr (PET!)
 					}},
 					["groups"] = {
-						pet(649),	-- Biletoad (PET!)
+						pet(649, {	-- Biletoad (PET!)
+							["description"] = "Found around the central basin.",
+							["coord"] = { 48.0, 63.0, SHOLAZAR_BASIN },
+						}),
 						pet(1167, {	-- Emerald Proto-Whelp (PET!)
 							["description"] = "Found all around the Savage Thicket, but they seem to be on an undisclosed timer. This pet is a strong PvE Dragonkin.",
+							["coord"] = { 46.0, 27.0, SHOLAZAR_BASIN },
 							["timeline"] = { ADDED_5_1_0 },
 						}),
-						pet(532),	-- Stunted Shardhorn (PET!)
+						pet(532, {	-- Stunted Shardhorn (PET!)
+							["description"] = "Found around The Suntouched Pillar.",
+							["coord"] = { 33.0, 53.0, SHOLAZAR_BASIN },
+						}),
 					},
 				}),
-				-- #if ANYCLASSIC
-				n(EXPLORATION, {
+				explorationHeader({
 					exploration(4369),	-- Dorian's Outpost
 					exploration(4292),	-- Frenzyheart Hill
 					exploration(4287),	-- Kartak's Hold
@@ -270,25 +263,32 @@ root(ROOTS.Zones, {
 					exploration(4300),	-- Waygate
 					exploration(4293),	-- Wildgrowth Mangal
 				}),
-				-- #endif
 				n(FACTIONS, {
-					faction(1104, {	-- Frenzyheart Tribe
-						["maxReputation"] = { 1105, NEUTRAL },	-- The Oracles, Neutral.
-						["altAchievements"] = { 952 },	-- Mercenary of Sholazar
-						["OnTooltip"] = OnTooltipForFrenzyheart,
+					faction(1117, {	-- Sholazar Basin
+						["description"] = "This is a hidden reputation. It might not count towards reputation achievements.",
+						["collectible"] = false,
 					}),
-					faction(1105, {	-- The Oracles
-						["maxReputation"] = { 1104, NEUTRAL },	-- Frenzyheart Tribe, Neutral.
-						["altAchievements"] = { 952 },	-- Mercenary of Sholazar
-						["OnTooltip"] = OnTooltipForOracles,
+					faction(FACTION_FRENZYHEART_TRIBE, {	-- Frenzyheart Tribe
+						["maxReputation"] = { FACTION_THE_ORACLES, NEUTRAL },	-- The Oracles, Neutral.
+						["OnTooltip"] = [[_.OnTooltipDB.ForFrenzyheart]],
+					}),
+					faction(FACTION_THE_ORACLES, {	-- The Oracles
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, NEUTRAL },	-- Frenzyheart Tribe, Neutral.
+						["OnTooltip"] = [[_.OnTooltipDB.ForOracles]],
 					}),
 				}),
 				prof(FISHING, {
+					-- #if ANYCLASSIC
 					ach(1517, {	-- Northrend Angler
 						["provider"] = { "o", 192057 },	-- Nettlefish School
 						["criteriaID"] = 5287,	-- Nettlefish School
 						["requireSkill"] = FISHING,
 					}),
+					-- #else
+					o(192057, {	-- Nettlefish School
+						["requireSkill"] = FISHING,
+					}),
+					-- #endif
 					i(45902, {	-- Phantom Ghostfish
 						["description"] = "Eat this before it despawns!",
 					}),
@@ -316,16 +316,16 @@ root(ROOTS.Zones, {
 							12732,	-- The Heartblood's Strength
 						},
 						["coord"] = { 55.7, 69.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12702, {	-- Chicken Party!
 						["qg"] = 28138,	-- Elder Harkek
 						["sourceQuest"] = 12692,	-- Return of the Lich Hunter
 						["coord"] = { 55.5, 69.6, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12582, {	-- Frenzyheart Champion
@@ -338,8 +338,8 @@ root(ROOTS.Zones, {
 						["qg"] = 29146,	-- Vekgar
 						["sourceQuest"] = 12692,	-- Return of the Lich Hunter
 						["coord"] = { 55.5, 68.6, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12734, {	-- Rejek: First Blood
@@ -352,8 +352,8 @@ root(ROOTS.Zones, {
 							12732,	-- The Heartblood's Strength
 						},
 						["coord"] = { 55.7, 69.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12692, {	-- Return of the Lich Hunter
@@ -365,8 +365,8 @@ root(ROOTS.Zones, {
 						["qg"] = 29146,	-- Vekgar
 						["sourceQuest"] = 12692,	-- Return of the Lich Hunter
 						["coord"] = { 55.5, 68.6, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12741, {	-- Strength of the Tempest
@@ -379,8 +379,8 @@ root(ROOTS.Zones, {
 							12732,	-- The Heartblood's Strength
 						},
 						["coord"] = { 55.7, 69.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12732, {	-- The Heartblood's Strength
@@ -393,16 +393,16 @@ root(ROOTS.Zones, {
 							-- 12732,	-- The Heartblood's Strength
 						},
 						["coord"] = { 55.7, 69.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12759, {	-- Tools of War
 						["qg"] = 29146,	-- Vekgar
 						["sourceQuest"] = 12692,	-- Return of the Lich Hunter
 						["coord"] = { 55.5, 68.6, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1104, EXALTED },	-- Frenzyheart Tribe, Exalted.
-						["minReputation"] = { 1104, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
+						["maxReputation"] = { FACTION_FRENZYHEART_TRIBE, EXALTED },	-- Frenzyheart Tribe, Exalted.
+						["minReputation"] = { FACTION_FRENZYHEART_TRIBE, FRIENDLY },	-- Frenzyheart Tribe, Friendly.
 						["isDaily"] = true,
 					}),
 
@@ -417,8 +417,8 @@ root(ROOTS.Zones, {
 							12726,	-- Song of Wind and Water
 						},
 						["coord"] = { 53.3, 56.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12704, {	-- Appeasing the Great Rain Stone
@@ -428,8 +428,8 @@ root(ROOTS.Zones, {
 						},
 						["sourceQuest"] = 12695,	-- Return of the Friendly Dryskin
 						["coord"] = { 54.6, 56.3, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 						["groups"] = {
 							objective(1, {	-- 0/6 Shiny Treasures
@@ -454,8 +454,8 @@ root(ROOTS.Zones, {
 						["qg"] = 29149,	-- Oracle Soo-dow
 						["sourceQuest"] = 12695,	-- Return of the Friendly Dryskin
 						["coord"] = { 54.2, 53.8, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 						["groups"] = {
 							objective(1, {	-- 0/50 Frenzyheart Attacker slain
@@ -473,8 +473,8 @@ root(ROOTS.Zones, {
 						["qg"] = 29149,	-- Oracle Soo-dow
 						["sourceQuest"] = 12695,	-- Return of the Friendly Dryskin
 						["coord"] = { 54.2, 53.8, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12695, {	-- Return of the Friendly Dryskin
@@ -492,8 +492,8 @@ root(ROOTS.Zones, {
 							12726,	-- Song of Wind and Water
 						},
 						["coord"] = { 53.3, 56.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 						["groups"] = {
 							objective(1, {	-- 0/8 Song of Fedundity played
@@ -514,8 +514,8 @@ root(ROOTS.Zones, {
 							12726,	-- Song of Wind and Water
 						},
 						["coord"] = { 53.3, 56.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12726, {	-- Song of Wind and Water
@@ -528,16 +528,16 @@ root(ROOTS.Zones, {
 							-- 12726,	-- Song of Wind and Water
 						},
 						["coord"] = { 53.3, 56.4, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 					}),
 					q(12705, {	-- Will of the Titans
 						["qg"] = 29149,	-- Oracle Soo-dow
 						["sourceQuest"] = 12695,	-- Return of the Friendly Dryskin
 						["coord"] = { 54.2, 53.8, SHOLAZAR_BASIN },
-						["maxReputation"] = { 1105, EXALTED },	-- The Oracles, Exalted.
-						["minReputation"] = { 1105, FRIENDLY },	-- The Oracles, Friendly.
+						["maxReputation"] = { FACTION_THE_ORACLES, EXALTED },	-- The Oracles, Exalted.
+						["minReputation"] = { FACTION_THE_ORACLES, FRIENDLY },	-- The Oracles, Friendly.
 						["isDaily"] = true,
 					}),
 
@@ -748,7 +748,20 @@ root(ROOTS.Zones, {
 						["coord"] = { 25.3, 58.4, SHOLAZAR_BASIN },
 						["qg"] = 28033,	-- Weslex Quickwrench
 						["sourceQuest"] = 12522,	-- Need an Engine, Take an Engine
+						["groups"] = {
+							o_repeated({
+								i(38349),	-- Venture Co. Spare Parts (QI!)
+								o(190453),	-- Venture Co. Spare Parts
+								o(190454),	-- Venture Co. Spare Parts
+								o(190455),	-- Venture Co. Spare Parts
+							}),
+						},
 					}),
+					heroscall(q(49553, {	-- Hero's Call: Sholazar Basin!
+						["timeline"] = { ADDED_7_3_5 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 66,
+					})),
 					q(12577, {	-- Home Time!
 						["coord"] = { 42.1, 38.6, SHOLAZAR_BASIN },
 						["qg"] = 28114,	-- Mistcaller Soon-gan
@@ -855,6 +868,11 @@ root(ROOTS.Zones, {
 					q(12522, {	-- Need an Engine, Take an Engine
 						["coord"] = { 25.3, 58.4, SHOLAZAR_BASIN },
 						["qg"] = 28033,	-- Weslex Quickwrench
+						["groups"] = {
+							o(190447, {	-- Flying Machine Engine
+								i(38334),	-- Flying Machine Engine (QI!)
+							}),
+						},
 					}),
 					q(12528, {	-- Playing Along
 						["coord"] = { 50.5, 76.5, SHOLAZAR_BASIN },
@@ -873,7 +891,7 @@ root(ROOTS.Zones, {
 							i(39478),	-- Cloak of the Deadliest Game
 							i(40353),	-- Polished Protodrake Cloak
 							i(39490, {	-- Dorian's Prybar
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 						},
 					}),
@@ -990,11 +1008,29 @@ root(ROOTS.Zones, {
 							12549,	-- Dreadsaber Matery: Becoming a Predator
 							12520,	-- Rhino Mastery: The Test
 						},
+						["groups"] = {
+							o(190622, {	-- Sturdy Vine
+								o(190623, {	-- Papaya
+									i(38655),	-- Papaya (QI!)
+								}),
+								o(190624, {	-- Orange
+									i(38656),	-- Orange (QI!)
+								}),
+								o(190625, {	-- Banana Bunch
+									i(38653),	-- Banana Bunch (QI!)
+								}),
+							}),
+						},
 					}),
 					q(12644, {	-- Still At It
 						["coord"] = { 26.7, 60.0, SHOLAZAR_BASIN },
 						["qg"] = 29157,	-- Grimbooze Thunderbrew
 						["sourceQuest"] = 12634,	-- Some Make Lemonade, Some Make Liquor
+						["groups"] = {
+							o(190643, {	-- Thunderbrew's Jungle Punch
+								i(38688),	-- Thunderbrew's Jungle Punch (QI!)
+							}),
+						},
 					}),
 					q(12547, {	-- The Activation Rune
 						["lvl"] = 66,
@@ -1096,6 +1132,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 26.7, 60.0, SHOLAZAR_BASIN },
 						["qg"] = 29157,	-- Crimbooze Thunderbrew
 						["sourceQuest"] = 12644,	-- Still At It
+						["groups"] = {
+							i(38697),	-- Jungle Punch Sample (QI!)
+						},
 					}),
 					q(12531, {	-- The Underground Menace
 						["coord"] = { 55.4, 69.6, SHOLAZAR_BASIN },
@@ -1115,6 +1154,15 @@ root(ROOTS.Zones, {
 						["qg"] = 28214,	-- Goregek the Gorilla Hunter
 						["sourceQuest"] = 12528,	-- Playing Along
 					}),
+					q(12524, {	-- Venture Co. Misadventure
+						["coord"] = { 27.2, 59.8, SHOLAZAR_BASIN },
+						["qg"] = 28032,	-- Debaar
+					}),
+					warchiefscommand(q(49535, {	-- Warchief's Command: Sholazar Basin!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+					})),
 					q(12660, {	-- Weapons of Destruction
 						["coord"] = { 64.5, 48.6, SHOLAZAR_BASIN },
 						["qg"] = 27801,	-- Avatar of Freya
@@ -1131,9 +1179,15 @@ root(ROOTS.Zones, {
 							12521,	-- Where in the World is Hemet Nesingwary?
 						},
 					}),
-					q(12524, {	-- Venture Co. Misadventure
-						["coord"] = { 27.2, 59.8, SHOLAZAR_BASIN },
-						["qg"] = 28032,	-- Debaar
+					q(12521, {	-- Where in the World is Hemet Nesingwary?
+						["qg"] = 28160,	-- Achmage Pentarus
+						-- #if AFTER 7.3.5.25600
+						["sourceQuests"] = {
+							49553,	-- Hero's Call: Sholazar Basin!
+							49535,	-- Warchief's Command: Sholazar Basin!
+						},
+						-- #endif
+						["coord"] = { 68.5, 42.0, NORTHREND_DALARAN },
 					}),
 					q(12525, {	-- Wipe That Grin Off His Face
 						["coord"] = { 27.2, 59.8, SHOLAZAR_BASIN },
@@ -1232,31 +1286,39 @@ root(ROOTS.Zones, {
 				n(VENDORS, {
 					n(31910, {	-- Geen <Oracles Quartermaster>
 						["coord"] = { 54.6, 56.1, SHOLAZAR_BASIN },
-						["groups"] = {
-							i(41724),	-- Design: Misty Forest Emerald [CATA+] / Design: Sundered Forest Emerald [WRATH]
-							i(41567),	-- Design: Nimble Dark Jade [CATA+] / Design: Vivid Dark Jade [WRATH]
-							i(44104),	-- Fishy Cinch
-							i(44112),	-- Glimmershell Shoulder Protectors
-							i(44106),	-- Glitterscale Wrap
-							i(44111),	-- Gold Star Spaulders
-							i(39878, {	-- Mysterious Egg
-								["provider"] = { "i", 39883 },	-- Cracked Egg
-								["groups"] = {
-									i(44707),	-- Green Proto-Drake (MOUNT!)
-									i(39898, {	-- Cobra Hatchling (PET!)
-										["timeline"] = { "added 3.0.3.9183" },
-									}),
-									i(44721),	-- Proto-Drake Whelp (PET!)
-									i(39896),	-- Tickbird Hatchling (PET!)
-									i(39899),	-- White Tickbird Hatchling (PET!)
-									i(44722),	-- Aged Yolk
-								},
-							}),
-							i(44074),	-- Oracle Talisman of Ablution
-							i(44110),	-- Sharkjaw Cap
-							i(44108),	-- Shinygem Rod
-							i(44109),	-- Toothslice Helm
-						},
+						["groups"] = bubbleDownClassicRep(FACTION_THE_ORACLES, {
+							{		-- Neutral
+							}, {	-- Friendly
+								i(41567),	-- Design: Nimble Dark Jade [CATA+] / Design: Vivid Dark Jade [WRATH]
+								i(44065),	-- Oracle Secret Solution
+							}, {	-- Honored
+								i(44071),	-- Slow-Roasted Eel
+							}, {	-- Revered
+								i(41724),	-- Design: Misty Forest Emerald [CATA+] / Design: Sundered Forest Emerald [WRATH] (RECIPE!)
+								i(44104),	-- Fishy Cinch
+								i(44112),	-- Glimmershell Shoulder Protectors
+								i(44106),	-- Glitterscale Wrap
+								i(44111),	-- Gold Star Spaulders
+								i(39878, {	-- Mysterious Egg
+									["provider"] = { "i", 39883 },	-- Cracked Egg
+									["groups"] = {
+										i(44707),	-- Green Proto-Drake (MOUNT!)
+										i(39898, {	-- Cobra Hatchling (PET!)
+											["timeline"] = { ADDED_3_0_3 },
+										}),
+										i(44721),	-- Proto-Drake Whelp (PET!)
+										i(39896),	-- Tickbird Hatchling (PET!)
+										i(39899),	-- White Tickbird Hatchling (PET!)
+										i(44722),	-- Aged Yolk
+									},
+								}),
+								i(44110),	-- Sharkjaw Cap
+								i(44108),	-- Shinygem Rod
+								i(44109),	-- Toothslice Helm
+							}, {	-- Exalted
+								i(44074),	-- Oracle Talisman of Ablution
+							},
+						}),
 					}),
 					n(29014, {	-- Grakjek <Bowyer>
 						["coord"] = { 55.8, 70.2, SHOLAZAR_BASIN },
@@ -1279,26 +1341,34 @@ root(ROOTS.Zones, {
 					}),
 					n(31911, {	-- Tanak <Frenzyheart Quartermaster>
 						["coord"] = { 55.1, 69.0, SHOLAZAR_BASIN },
-						["groups"] = {
-							i(44117),	-- Azure Strappy Pants
-							i(41723),	-- Design: Jagged Forest Emerald
-							i(41561),	-- Design: Reckless Huge Citrine
-							i(44123),	-- Discarded Titanium Legplates
-							i(44717, {	-- Disgusting Jar
-								["provider"] = { "i", 44718 },	-- Ripe Disgusting Jar
-								["groups"] = {
-									i(44719),	-- Frenzyheart Brew (TOY!)
-								},
-							}),
-							i(44073),	-- Frenzyheart Insignia of Fury
-							i(44120),	-- Giant-Sized Gauntlets
-							i(44116),	-- Muddied Crimson Gloves
-							i(44122),	-- Scavenged Feathery Leggings
-							i(44121),	-- Sparkly Shiny Gloves
-							i(44118, {	-- Stolen Vrykul Harpoon
-								["timeline"] = { "removed 5.0.4" },
-							}),
-						},
+						["groups"] = bubbleDownClassicRep(FACTION_FRENZYHEART_TRIBE, {
+							{		-- Neutral
+							}, {	-- Friendly
+								i(41561),	-- Design: Reckless Huge Citrine (RECIPE!)
+								i(44064),	-- Nepeta Leaf
+								i(44072),	-- Roasted Mystery Beast
+							}, {	-- Honored
+							}, {	-- Revered
+								i(44117),	-- Azure Strappy Pants
+								i(41723),	-- Design: Jagged Forest Emerald (RECIPE!)
+								i(44123),	-- Discarded Titanium Legplates
+								i(44717, {	-- Disgusting Jar
+									["provider"] = { "i", 44718 },	-- Ripe Disgusting Jar
+									["groups"] = {
+										i(44719),	-- Frenzyheart Brew (TOY!)
+									},
+								}),
+								i(44120),	-- Giant-Sized Gauntlets
+								i(44116),	-- Muddied Crimson Gloves
+								i(44122),	-- Scavenged Feathery Leggings
+								i(44121),	-- Sparkly Shiny Gloves
+								i(44118, {	-- Stolen Vrykul Harpoon
+									["timeline"] = { REMOVED_5_0_4 },
+								}),
+							}, {	-- Exalted
+								i(44073),	-- Frenzyheart Insignia of Fury
+							},
+						}),
 					}),
 				}),
 				n(ZONE_DROPS, {
@@ -1310,15 +1380,4 @@ root(ROOTS.Zones, {
 			},
 		}),
 	})),
-});
-
-root(ROOTS.NeverImplemented, {
-	tier(WOTLK_TIER, {
-		n(ARMOR, {
-			filter(TRINKET_F, {
-				i(44869),	-- Frenzyheart Insignia of Fury
-				i(44870),	-- Oracle Talisman of Ablution
-			}),
-		}),
-	}),
 });

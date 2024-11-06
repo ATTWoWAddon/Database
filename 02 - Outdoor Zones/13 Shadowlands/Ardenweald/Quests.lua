@@ -15,6 +15,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60338 },	-- Journey to Ardenweald
 					["provider"] = { "n", 168341 },	-- Lady Moonberry
 					["coord"] = { 68.2, 18.3, ARDENWEALD },
+					["g"] = {
+						i(178747),	-- Night Lily (QI!)
+					},
 				}),
 				q(60341, {	-- First on the Agenda
 					["sourceQuests"] = { 60763 },	-- I Moustache You to Lend a Hand
@@ -30,6 +33,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60778 },	-- Wildseed Rescue
 					["provider"] = { "n", 170324 },	-- Featherlight
 					["coord"] = { 67.7, 20.6, ARDENWEALD },
+					["g"] = {
+						i(180436),	-- List of wildseeds (QI!)
+					},
 				}),
 				q(60859, {	-- Souls of the Forest
 					["sourceQuests"] = { 60857 },	-- We Can't Save Them All
@@ -62,6 +68,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57816 },	-- Dreamweaver
 					["provider"] = { "n", 169116 },	-- Dreamweaver
 					["coord"] = { 64.2, 41.2, ARDENWEALD },
+					["g"] = {
+						i(179389),	-- Animacone (QI!)
+					},
 				}),
 				q(60575, {	-- Belly Full of Fae
 					["sourceQuests"] = {
@@ -71,6 +80,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "n", 169202 },	-- Dreamweaver
 					["coord"] = { 61.4, 40.9, ARDENWEALD },
 					["g"] = {
+						i(179921),	-- Hydra Gutter (QI!)
 						i(175673),	-- Dreamthorn Chain
 						i(175671),	-- Grove Warden's Girdle
 						i(175672),	-- Spirit Tender's Cord
@@ -84,6 +94,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 169202 },	-- Dreamweaver
 					["coord"] = { 61.4, 40.9, ARDENWEALD },
+					["g"] = {
+						i(179922),	-- Animacone (QI!)
+					},
 				}),
 				q(60594, {	-- One Special Spirit
 					["sourceQuests"] = {
@@ -92,6 +105,10 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 169217 },	-- Dreamweaver
 					["coord"] = { 62.1, 36.4, ARDENWEALD },
+					["g"] = {
+						i(179978),	-- Infused Animacones (QI!)
+						i(179983),	-- Infused Animacones (QI!)
+					},
 				}),
 				q(57947, {	-- Spirits of the Glen
 					["sourceQuests"] = { 57787 },	-- Keep to the Path
@@ -107,6 +124,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57947 },	-- Spirits of the Glen
 					["provider"] = { "n", 159638 },	-- Choofa
 					["coord"] = { 97.1, 32.1, ARDENWEALD },
+					["g"] = {
+						i(176445),	-- Soulweb (QI!)
+					},
 				}),
 				q(57950, {	-- Mizik the Haughty
 					["sourceQuests"] = {
@@ -120,6 +140,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "n", 159639 },	-- Choofa
 					["coord"] = { 67.1, 32.1, ARDENWEALD },
 					["g"] = {
+						i(173292),	-- Dreamcatcher Anima (QI!)
 						i(175659),	-- Dreamthorn Handguards
 						i(175657),	-- Grove Warden's Gauntlets
 						i(175658),	-- Spirit Tender's Handwraps
@@ -149,6 +170,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60624 },	-- Ride to Heartwood Grove
 					["provider"] = { "n", 169686 },	-- Niya
 					["coord"] = { 66.9, 26.5, ARDENWEALD },
+					["g"] = {
+						i(180126),	-- Drained Wildseed (QI!)
+					},
 				}),
 				q(60637, {	-- The End of Former Friends
 					["sourceQuests"] = { 60624 },	-- Ride to Heartwood Grove
@@ -166,6 +190,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						{ "n", 169868 },	-- Niya	(post-pickup)
 					},
 					["coord"] = { 68.4, 24.5, ARDENWEALD },
+					["g"] = {
+						i(180172),	-- Animacone (QI!)
+					},
 				}),
 				q(60648, {	-- Survivors of Heartwood Grove
 					["sourceQuests"] = {
@@ -217,6 +244,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60521 },	-- Call of the Hunt
 					["provider"] = { "n", 169584 },	-- Hunt-Captain Korayn
 					["coord"] = { 51.3, 34.0, ARDENWEALD },
+					["g"] = {
+						i(180061),	-- Fae Weapon (QI!)
+					},
 				}),
 				q(60628, {	-- The Missing Hunters
 					["sourceQuests"] = { 60521 },	-- Call of the Hunt
@@ -256,6 +286,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60632 },	-- I Know Your Face
 					["provider"] = { "n", 169935 },	-- Ara'lon
 					["coord"] = { 51.3, 34.0, ARDENWEALD },
+					["g"] = {
+						i(180207),	-- Spirit Cradle (QI!)
+					},
 				}),
 				q(60520, {	-- Nightmares Manifest
 					["sourceQuests"] = { 60522 },	-- Return to Tirna Vaal
@@ -325,6 +358,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						{ "n", 161447 },	-- Niya
 					},
 					["coord"] = { 68.4, 57.4, ARDENWEALD },
+					["g"] = {
+						i(174219),	-- Stolen Memento (QI!)
+					},
 				}),
 				q(58480, {	-- Read the Roots
 					["sourceQuests"] = { 58473 },	-- Echoes of Tirna Noch
@@ -341,6 +377,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						{ "n", 161446 },	-- Ara'lon
 					},
 					["coord"] = { 68.4, 57.4, ARDENWEALD },
+					["g"] = {
+						i(180287),	-- Plundered Anima (QI!)
+					},
 				}),
 				q(58486, {	-- He's Drust in the Way
 					["sourceQuests"] = {
@@ -354,6 +393,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58486 },	-- He's Drust in the Way
 					["provider"] = { "n", 161492 },	-- Ara'lon
 					["coord"] = { 71.4, 54.5, ARDENWEALD },
+					["g"] = {
+						i(174269),	-- Heart of Tirna Noch (QI!)
+					},
 				}),
 				q(58524, {	-- Sparkles Rain from Above
 					["sourceQuests"] = { 58488 },	-- Go for the Heart
@@ -422,6 +464,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58593 },	-- End of the Dream
 					["provider"] = { "n", 160894 },	-- Droman Aliothe
 					["coord"] = { 60.0, 53.9, ARDENWEALD },
+					["g"] = {
+						i(174864),	-- Droman's Hunting Horn (QI!)
+					},
 				}),
 				q(58714, {	-- The Forest Has Eyes
 					["sourceQuests"] = { 58593 },	-- End of the Dream
@@ -480,11 +525,18 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57661 },	-- Silk Shortage
 					["provider"] = { "o", 350804 },	-- Broken Harp
 					["coord"] = { 38.1, 28.7, ARDENWEALD },
+					["g"] = {
+						i(178138),	-- Harp Piece (QI!)
+					},
 				}),
 				q(60063, {	-- A Song for Silkstriders
 					["sourceQuests"] = { 60062 },	-- The Shattered Harp
 					["provider"] = { "n", 167047 },	-- Artisan Rees
 					["coord"] = { 37.0, 29.6, ARDENWEALD },
+					["g"] = {
+						i(178144),	-- Raw Silkstrider Silk (QI!)
+						i(178143),	-- Silkstrider Harp (QI!)
+					},
 				}),
 				q(60064, {	-- Save Ol' Gertie
 					["sourceQuests"] = { 60062 },	-- The Shattered Harp
@@ -521,17 +573,25 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57952 },	-- In Need of Gorm Gris
 					["provider"] = { "n", 158969 },	-- Master Sha'lor
 					["coord"] = { 64.8, 38.9, ARDENWEALD },
+					["g"] = {
+						i(172953),	-- Depleted Wildseed (QI!)
+					},
 				}),
 				q(57824, {	-- Collection Day
 					["sourceQuests"] = { 57818 },	-- Nothing Goes to Waste
 					["provider"] = { "n", 158969 },	-- Master Sha'lor
 					["coord"] = { 64.8, 38.9, ARDENWEALD },
+					["g"] = {
+						i(173268),	-- Fresh Gorm Gris (QI!)
+						i(172955),	-- Gormherd Branch (QI!)
+					},
 				}),
 				q(57825, {	-- Delivery for Guardian Kota
 					["sourceQuests"] = { 57824 },	-- Collection Day
 					["provider"] = { "n", 158969 },	-- Master Sha'lor
 					["coord"] = { 64.8, 38.9, ARDENWEALD },
 					["g"] = {
+						i(173268),	-- Fresh Gorm Gris (QI!)
 						i(175741),	-- Gormgris Gorget
 					},
 				}),
@@ -544,11 +604,18 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 61051 },	-- The Absent-Minded Artisan
 					["provider"] = { "n", 171195 },	-- Gorm Burrow
 					["coord"] = { 62.1, 29.9, ARDENWEALD },
+					["g"] = {
+						i(173534),	-- Gormherd Branch (QI!)
+					},
 				}),
 				q(58022, {	-- Finish What He Started
 					["sourceQuests"] = { 61051 },	-- The Absent-Minded Artisan
 					["provider"] = { "n", 171099 },	-- Guardian Kota
 					["coord"] = { 62.8, 32.1, ARDENWEALD },
+					["g"] = {
+						i(173534),	-- Gormherd Branch (QI!)
+						i(180543),	-- Wild Gorm Gris (QI!)
+					},
 				}),
 				q(58023, {	-- One Big Problem
 					["sourceQuests"] = { 61051 },	-- The Absent-Minded Artisan
@@ -559,12 +626,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58023 },	-- One Big Problem
 					["provider"] = { "n", 160155 },	-- Guardian Kota
 					["coord"] = { 59.6, 33.4, ARDENWEALD },
+					["g"] = {
+						i(172955),	-- Gormherd Branch (QI!)
+						i(173534),	-- Gormherd Branch (QI!)
+					},
 				}),
 				q(58026, {	-- When a Gorm Eats a God
 					["sourceQuests"] = { 58025 },	-- Queen of the Underground
 					["provider"] = { "n", 160155 },	-- Guardian Kota
 					["coord"] = { 59.6, 33.4, ARDENWEALD },
 					["g"] = {
+						i(173534),	-- Gormherd Branch (QI!)
 						i(175665),	-- Dreamthorn Legguards
 						i(175663),	-- Grove Warden's Greaves
 						i(175664),	-- Spirit Tender's Leggings
@@ -601,6 +673,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 158422 },	-- Foreman Thorodir
 					["coord"] = { 46.6, 29.4, ARDENWEALD },
+					["g"] = {
+						i(172950),	-- Jar of Clay (QI!)
+					},
 				}),
 				q(57656, {	-- Gifts of the Forest
 					["sourceQuests"] = {
@@ -609,6 +684,10 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 158489 },	-- Fluttercatch
 					["coord"] = { 48.0, 24.3, ARDENWEALD },
+					["g"] = {
+						i(172512),	-- Culexwood Branch (QI!)
+						i(172517),	-- Enchanted Pipes (QI!)
+					},
 				}),
 				q(57657, {	-- Tied Totem Toter
 					["sourceQuests"] = { 57656 },	-- Gifts of the Forest
@@ -639,16 +718,27 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59656 },	-- Well, Tell the Lady
 					["provider"] = { "n", 159427 },	-- Elder Finnan
 					["coord"] = { 55.8, 23.4, ARDENWEALD },
+					["g"] = {
+						i(173150),	-- Finnan's Lucky Mallet (QI!)
+					},
 				}),
 				q(57869, {	-- Spirit-Gathering Labor
 					["sourceQuests"] = { 59656 },	-- Well, Tell the Lady
 					["provider"] = { "n", 159428 },	-- Groonoomcrooek
 					["coord"] = { 56.4, 29.2, ARDENWEALD },
+					["g"] = {
+						i(173187),	-- River Sediment (QI!)
+					},
 				}),
 				q(57867, {	-- The Sweat of Our Brow
 					["sourceQuests"] = { 59656 },	-- Well, Tell the Lady
 					["provider"] = { "n", 160045 },	-- Helpful Faerie
 					["coord"] = { 53.8, 27.5, ARDENWEALD },
+					["g"] = {
+						i(177163),	-- Enchanted Soulweb (QI!)
+						i(177161),	-- Faerie Harp (QI!)
+						i(177162),	-- Ordinary Basket (QI!)
+					},
 				}),
 				q(57870, {	-- The Games We Play
 					["sourceQuests"] = { 59656 },	-- Well, Tell the Lady
@@ -660,6 +750,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "n", 159465 },	-- Elder Gwenna
 					["coord"] = { 59.0, 24.3, ARDENWEALD },
 					["g"] = {
+						i(173355),	-- Pouch of Puffpetal Powder (QI!)
 						i(183849),	-- Soulsifter Root
 						i(183850),	-- Wakener's Frond
 					},
@@ -676,6 +767,10 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "o", 349515 },	-- Battered Journal
 					["coord"] = { 72.2, 33.9, ARDENWEALD },
 					["g"] = {
+						i(173798),	-- Battered Journal (QI!)
+						i(173873),	-- Crumpled Journal Page (QI!)
+						i(155876),	-- Stained Journal Page (QI!)
+						i(173872),	-- Torn Journal Page (QI!)
 						i(183851),	-- Withergrove Shardling
 					},
 				}),
@@ -688,6 +783,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58161 },	-- Forest Disappearances
 					["provider"] = { "n", 160439 },	-- Partik
 					["coord"] = { 70.3, 32.5, ARDENWEALD },
+					["g"] = {
+						i(173800),	-- Featureless Mask (QI!)
+					},
 				}),
 				q(59802, {	-- The Crumbling Village
 					["sourceQuests"] = {
@@ -702,11 +800,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59802 },	-- The Crumbling Village
 					["provider"] = { "n", 160439 },	-- Partik
 					["coord"] = { 74.3, 32.3, ARDENWEALD },
+					["g"] = {
+						i(173732),	-- Strange Runestone (QI!)
+					},
 				}),
 				q(59801, {	-- Take the Power
 					["sourceQuests"] = { 59802 },	-- The Crumbling Village
 					["provider"] = { "n", 160439 },	-- Partik
 					["coord"] = { 74.3, 32.3, ARDENWEALD },
+					["g"] = {
+						i(177878),	-- Animacone (QI!)
+					},
 				}),
 				q(58166, {	-- Unknown Assailants
 					["sourceQuests"] = {
@@ -716,6 +820,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "n", 160439 },	-- Partik
 					["coord"] = { 74.3, 32.3, ARDENWEALD },
 					["g"] = {
+						i(173732),	-- Strange Runestone (QI!)
 						i(175677),	-- Dreamthorn Wristguards
 						i(175676),	-- Grove Warden's Vambraces
 						i(175675),	-- Spirit Tender's Cuffs
@@ -733,6 +838,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58265 },	-- Blooming Villains
 					["provider"] = { "n", 160749 },	-- Primrose
 					["coord"] = { 53.4, 58.7, ARDENWEALD },
+					["g"] = {
+						i(174078),	-- Primrose's Pyrotechnic Powder (QI!)
+					},
 				}),
 				q(58264, {	-- Wake Up, Get Up, Get Out There
 					["sourceQuests"] = { 58265 },	-- Blooming Villains
@@ -815,6 +923,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["sourceQuests"] = { 60905 },	-- Infusing the Wildseed
 				["provider"] = { "n", 160894 },	-- Droman Aliothe
 				["coord"] = { 60.0, 53.9, ARDENWEALD },
+				["g"] = {
+					i(184157),	-- Hibernal Hollow Supplies (QI!)
+				},
 			}),
 			q(59120, {	-- Renny the Vulpin
 				["sourceQuests"] = { 59087 },	-- That Darn Fox!
@@ -831,10 +942,16 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(57652, {	-- Supplies Needed: Amber Grease
 				["provider"] = { "o", 348747 },	-- Muddy Scroll
 				["coord"] = { 46.9, 27.6, ARDENWEALD },
+				["g"] = {
+					i(172221),	-- Giant Gorm Gris (QI!)
+				},
 			}),
 			q(57655, {	-- Supplies Needed: More Husks!
 				["provider"] = { "o", 336415 },	-- Discarded Scroll
 				["coord"] = { 47.5, 26.2, ARDENWEALD },
+				["g"] = {
+					i(172218),	-- Treated Gorm Husk (QI!)
+				},
 			}),
 			q(62186, {	-- Swollen Anima Seed
 				["provider"] = { "i", 182730 },	-- Swollen Anima Seed
@@ -852,6 +969,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["provider"] = { "n", 165382 },	-- Gormsmith Cavina
 				["coord"] = { 51.5, 34.0, ARDENWEALD },
 				["g"] = {
+					i(176760),	-- Buzzkill's Stinger (QI!)
 					i(180474),	-- Culexwood Dagger
 					i(178022),	-- Culexwood Knife
 					i(178021),	-- Culexwood Longbow
@@ -873,7 +991,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["customCollect"] = "SL_SKIP",	-- SL Skip Character
 				["lockCriteria"] = { 1, "lvl", 60 },
 			}, bubbleDown({
-				["timeline"] = { ADDED_9_0_2, REMOVED_10_0_2 },
+				["timeline"] = { ADDED_9_0_2 },
 			}, {
 				q(62773, {	-- Dreamshrine Basin [Pre-60]
 					["coord"] = { 62.0, 52.8, ARDENWEALD },
@@ -884,6 +1002,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				q(62720, {	-- The Fallen Tree [Pre-60]
 					["coord"] = { 72.0, 56.0, ARDENWEALD },
 					["g"] = {
+						i(184015),	-- Stolen Memento (QI!)
 						i(181404),	-- Faemoss Shoes
 						i(181406),	-- Runetender Boots
 						i(181405),	-- Gormhusk Steps
@@ -893,18 +1012,21 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				q(62775, {	-- The Waning Grove [Pre-60]
 					["coord"] = { 69.0, 22.4, ARDENWEALD },
 					["g"] = {
+						i(184101),	-- Drained Wildseed (QI!)
 						i(181415),	-- Faemoss Leggings
-						i(181417),	-- Runetender Pants
 						i(181416),	-- Gormhusk Kilt
+						i(181417),	-- Runetender Pants
 						i(181414),	-- Sapsteel Legplates
 					},
 				}),
 				q(62774, {	-- Tranquil Pools [Pre-60]
 					["coord"] = { 63.3, 39.3, ARDENWEALD },
 					["g"] = {
+						i(172948),	-- Animacone (QI!)
+						i(179921),	-- Hydra Gutter (QI!)
 						i(181420),	-- Faemoss Amice
-						i(181418),	-- Runetender Shoulderguards
 						i(181421),	-- Gormhusk Mantle
+						i(181418),	-- Runetender Shoulderguards
 						i(181419),	-- Sapsteel Pauldrons
 					},
 				}),
@@ -912,43 +1034,16 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 		}),
 	}),
 })));
-
-root(ROOTS.NeverImplemented, {
-	tier(SL_TIER, {
-		n(WEAPONS, {
-			i(176012),	-- Ardenweald Quest Mace
-			i(176013),	-- Ardenweald Quest Mace
-			i(176014),	-- Ardenweald Quest Mace
-			i(176015),	-- Ardenweald Quest Mace
-			i(176016),	-- Ardenweald Quest Mace
-			i(179503),	-- Ardenweald Quest Dagger
-			i(179504),	-- Ardenweald Quest Dagger
-			i(179505),	-- Ardenweald Quest Dagger
-			i(179506),	-- Ardenweald Quest Dagger
-			i(179507),	-- Ardenweald Quest Dagger
-			i(176042),	-- Ardenweald Quest Offhand
-			i(176043),	-- Ardenweald Quest Offhand
-			i(176044),	-- Ardenweald Quest Offhand
-			i(176045),	-- Ardenweald Quest Offhand
-			i(176046),	-- Ardenweald Quest Offhand
-			i(176841),	-- Ardenweald Quest Staff
-			i(176842),	-- Ardenweald Quest Staff
-			i(176843),	-- Ardenweald Quest Staff
-			i(176844),	-- Ardenweald Quest Staff
-			i(178117),	-- Ardenweald NPC Staff
-			i(178118),	-- Ardenweald NPC Staff
-		}),
-	}),
-});
-
-root(ROOTS.HiddenQuestTriggers, {
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	m(SHADOWLANDS, {
 		m(ARDENWEALD, {
 			n(QUESTS, {
 				q(62936),	-- Saw Bwonsamdi (spellID 345430)
 				q(63007),	-- Intro Skip
-				q(64312),	-- listening to the story time with tyrande after 9.1 campaign finish (in Ardenweald) (spellID 356055)
+				q(60838),	-- requesting a song and dance from Korenth during "Wildseed Rescue" (doesn't seem to be a tracking quest for simply saying "I'll help you" - i abandoned/re-picked up to check)
+				------ Stay awhile and listen ------
+				hqt(64312, {["timeline"] = {ADDED_9_1_0}}),	-- Tyrande after 9.1 campaign finish (in Ardenweald) (spellID 356055)
 			}),
 		}),
 	}),
-});
+})));

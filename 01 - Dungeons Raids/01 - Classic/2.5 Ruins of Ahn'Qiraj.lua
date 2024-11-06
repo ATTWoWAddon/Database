@@ -3,7 +3,7 @@
 -----------------------------------------------------
 CAPTAINS = createHeader({
 	readable = "Captains",
-	icon = "Interface\\Icons\\achievement_pvp_h_12",
+	icon = 236623,
 	text = {
 		en = "Captains",
 		fr = "Capitaines",
@@ -23,7 +23,7 @@ local KEYL_LOCATION = { 59.4, 14.0, AHNQIRAJ_THE_FALLEN_KINGDOM };
 local WARDEN_LOCATION = { 59.4, 14.0, AHNQIRAJ_THE_FALLEN_KINGDOM };
 local WINDCALLER_LOCATION = { 59.4, 14.0, AHNQIRAJ_THE_FALLEN_KINGDOM };
 -- #endif
-root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, applyclassicphase(PHASE_FIVE, {
 	inst(743, {	-- Ruins of Ahn'Qiraj
 		["lore"] = "Deep within the deserts of Silithus lies an ancient and powerful race of beings known as the Qiraji. One thousand years ago, the Night Elves and Bronze Dragonflight combined their considerable powers to seal the Qiraji behind the scarab wall with the help of the children of some of the aspects. This is remembered as the \"War of the Shifting Sands\".\n\nRecently it was discovered that some of the Qiraji were finding ways past the wall. Anachronos, the bronze dragon, helped the adventurers of Azeroth open the Scarab Wall to prevent more incursions. The mortal races have now banded together to confront the evil Qiraji in their own land. A champion has opened the gate and the Horde and Alliance have driven the armies of the Qiraji back into the ruins in retreat. It now falls to heroes to delve into the lair of the Qiraji and put an end to their masters once and for all",
 		-- #if BEFORE WRATH
@@ -36,8 +36,8 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 		["lvl"] = lvlsquish(50, 50, 25),
 		["groups"] = {
 			n(FACTIONS, {
-				faction(609, {	-- Cenarion Circle
-					["icon"] = "Interface\\Icons\\Ability_Druid_Maul",
+				faction(FACTION_CENARION_CIRCLE, {	-- Cenarion Circle
+					["icon"] = 132136,
 					["maps"] = { SILITHUS },
 				}),
 			}),
@@ -45,7 +45,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(DRUID, bubbleDown({ ["classes"] = { DRUID } }, {
 					q(8700, {	-- Band of Unending Life
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { DRUID },
 						["cost"] = {
@@ -60,7 +60,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8692, {	-- Cloak of Unending Life
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { DRUID },
 						["cost"] = {
@@ -75,7 +75,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8708, {	-- Mace of Unending Life
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { DRUID },
 						["cost"] = {
@@ -92,7 +92,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(HUNTER, bubbleDown({ ["classes"] = { HUNTER } }, {
 					q(8704, {	-- Signet of the Unseen Path
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { HUNTER },
 						["cost"] = {
@@ -107,7 +107,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8696, {	-- Cloak of the Unseen Path
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { HUNTER },
 						["cost"] = {
@@ -122,7 +122,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8712, {	-- Scythe of the Unseen Path
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { HUNTER },
 						["cost"] = {
@@ -139,7 +139,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(MAGE, bubbleDown({ ["classes"] = { MAGE } }, {
 					q(8699, {	-- Band of Vaulted Secrets
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { MAGE },
 						["cost"] = {
@@ -154,7 +154,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8691, {	-- Drape of Vaulted Secrets
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { MAGE },
 						["cost"] = {
@@ -169,7 +169,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8707, {	-- Blade of Vaulted Secrets
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { MAGE },
 						["cost"] = {
@@ -186,7 +186,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(PALADIN, bubbleDown({ ["classes"] = { PALADIN } }, {
 					q(8703, {	-- Ring of Eternal Justice
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { PALADIN },
 						["cost"] = {
@@ -201,7 +201,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8695, {	-- Cape of Eternal Justice
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { PALADIN },
 						["cost"] = {
@@ -216,7 +216,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8711, {	-- Blade of Eternal Justice
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { PALADIN },
 						["cost"] = {
@@ -233,7 +233,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(PRIEST, bubbleDown({ ["classes"] = { PRIEST } }, {
 					q(8697, {	-- Ring of Infinite Wisdom
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { PRIEST },
 						["cost"] = {
@@ -248,7 +248,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8689, {	-- Shroud of Infinite Wisdom
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { PRIEST },
 						["cost"] = {
@@ -263,7 +263,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8705, {	-- Gavel of Infinite Wisdom
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { PRIEST },
 						["cost"] = {
@@ -280,7 +280,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(ROGUE, bubbleDown({ ["classes"] = { ROGUE } }, {
 					q(8701, {	-- Band of Veiled Shadows
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { ROGUE },
 						["cost"] = {
@@ -295,7 +295,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8693, {	-- Cloak of Veiled Shadows
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { ROGUE },
 						["cost"] = {
@@ -310,7 +310,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8709, {	-- Dagger of Veiled Shadows
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { ROGUE },
 						["cost"] = {
@@ -327,7 +327,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(SHAMAN, bubbleDown({ ["classes"] = { SHAMAN } }, {
 					q(8698, {	-- Ring of the Gathering Storm
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { SHAMAN },
 						["cost"] = {
@@ -342,7 +342,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8690, {	-- Cloak of the Gathering Storm
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { SHAMAN },
 						["cost"] = {
@@ -357,7 +357,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8706, {	-- Hammer of the Gathering Storm
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { SHAMAN },
 						["cost"] = {
@@ -374,7 +374,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(WARLOCK, bubbleDown({ ["classes"] = { WARLOCK } }, {
 					q(8702, {	-- Ring of Unspoken Names
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { WARLOCK },
 						["cost"] = {
@@ -389,7 +389,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8694, {	-- Shroud of Unspoken Names
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { WARLOCK },
 						["cost"] = {
@@ -404,7 +404,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8710, {	-- Kris of Unspoken Names
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { WARLOCK },
 						["cost"] = {
@@ -421,7 +421,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				cl(WARRIOR, bubbleDown({ ["classes"] = { WARRIOR } }, {
 					q(8556, {	-- Signet of Unyielding Strength
 						["qg"] = 15498,	-- Windcaller Yessendra
-						["minReputation"] = { 609, HONORED },	-- Cenarion Circle, Honored.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, HONORED },	-- Cenarion Circle, Honored.
 						["coord"] = WINDCALLER_LOCATION,
 						["classes"] = { WARRIOR },
 						["cost"] = {
@@ -436,7 +436,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8557, {	-- Drape of Unyielding Strength
 						["qg"] = 15500,	-- Keyl Swiftclaw
-						["minReputation"] = { 609, REVERED },	-- Cenarion Circle, Revered.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },	-- Cenarion Circle, Revered.
 						["coord"] = KEYL_LOCATION,
 						["classes"] = { WARRIOR },
 						["cost"] = {
@@ -451,7 +451,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					}),
 					q(8558, {	-- Sickle of Unyielding Strength
 						["qg"] = 15499,	-- Warden Haro
-						["minReputation"] = { 609, EXALTED },	-- Cenarion Circle, Exalted.
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },	-- Cenarion Circle, Exalted.
 						["coord"] = WARDEN_LOCATION,
 						["classes"] = { WARRIOR },
 						["cost"] = {
@@ -467,6 +467,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				})),
 				q(8791, {	-- The Fall of Ossirian
 					["provider"] = { "i", 21220 },	-- Head of Ossirian the Unscarred
+					["maps"] = { SILITHUS },
 					["lvl"] = 60,
 					["groups"] = {
 						i(21507),	-- Amulet of the Shifting Sands
@@ -505,8 +506,8 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				}),
 				i(21761, {	-- Scarab Coffer Key
 					["timeline"] = {
-						"added 1.13.0.28211",
-						"deleted 4.2.2.28211"
+						ADDED_1_13_0,
+						DELETED_4_2_2
 					},
 				}),
 			}),
@@ -521,266 +522,133 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				},
 				["groups"] = {
 					-- Class Books
+					-- #if BEFORE 4.0.1
 					cl(DRUID, bubbleDown({ ["classes"] = { DRUID } }, {
-						{
-							["itemID"] = 21294,		-- Book of Healing Touch XI
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21294, {	-- Book of Healing Touch XI
 							["spellID"] = 25297,	-- Healing Touch XI
 							["rank"] = 11,
-							-- #endif
-						},
-						{
-							["itemID"] = 21295,		-- Book of Starfire VII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21295, {	-- Book of Starfire VII
 							["spellID"] = 25298,	-- Starfire VII
 							["rank"] = 7,
-							-- #endif
-						},
-						{
-							["itemID"] = 21296,		-- Book of Rejuvenation XI
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21296, {	-- Book of Rejuvenation XI
 							["spellID"] = 25299,	-- Rejuvenation XI
 							["rank"] = 11,
-							-- #endif
-						},
+						}),
 					})),
 					cl(HUNTER, bubbleDown({ ["classes"] = { HUNTER } }, {
-						{
-							["itemID"] = 21304,		-- Guide: Multi-Shot V
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21304, {	-- Guide: Multi-Shot V
 							["spellID"] = 25294,	-- Multi-Shot V
 							["rank"] = 5,
-							-- #endif
-						},
-						{
-							["itemID"] = 21306,		-- Guide: Serpent Sting IX
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21306, {	-- Guide: Serpent Sting IX
 							["spellID"] = 25295,	-- Serpent Sting IX
 							["rank"] = 9,
-							-- #endif
-						},
-						{
-							["itemID"] = 21307,		-- Guide: Aspect of the Hawk VII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21307, {	-- Guide: Aspect of the Hawk VII
 							["spellID"] = 25296,	-- Aspect of the Hawk VII
 							["rank"] = 7,
-							-- #endif
-						},
+						}),
 					})),
 					cl(MAGE, bubbleDown({ ["classes"] = { MAGE } }, {
-						{
-							["itemID"] = 21280,		-- Tome of Arcane Missiles VIII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21280, {	-- Tome of Arcane Missiles VIII
 							["spellID"] = 25345,	-- Arcane Missiles VIII
 							["rank"] = 8,
-							-- #endif
-						},
-						{
-							["itemID"] = 21279,		-- Tome of Fireball XII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21279, {	-- Tome of Fireball XII
 							["spellID"] = 25306,	-- Fireball XII
 							["rank"] = 12,
-							-- #endif
-						},
-						{
-							["itemID"] = 21214,		-- Tome of Frostbolt XI
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21214, {	-- Tome of Frostbolt XI
 							["spellID"] = 25304,	-- Frostbolt XI
 							["rank"] = 11,
-							-- #endif
-						},
+						}),
 					})),
 					cl(PALADIN, bubbleDown({ ["classes"] = { PALADIN } }, {
-						{
-							["itemID"] = 21289,		-- Libram: Blessing of Might VII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21289, {	-- Libram: Blessing of Might VII
 							["spellID"] = 25291,	-- Blessing of Might VII
 							["rank"] = 7,
-							-- #endif
-						},
-						{
-							["itemID"] = 21288,		-- Libram: Blessing of Wisdom VI
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21288, {	-- Libram: Blessing of Wisdom VI
 							["spellID"] = 25290,	-- Blessing of Wisdom VI
 							["rank"] = 6,
-							-- #endif
-						},
-						{
-							["itemID"] = 21290,		-- Libram: Holy Light IX
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21290, {	-- Libram: Holy Light IX
 							["spellID"] = 25292,	-- Holy Light IX
 							["rank"] = 9,
-							-- #endif
-						},
+						}),
 					})),
 					cl(PRIEST, bubbleDown({ ["classes"] = { PRIEST } }, {
-						{
-							["itemID"] = 21284,		-- Codex of Greater Heal V
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21284, {	-- Codex of Greater Heal V
 							["spellID"] = 25314,	-- Greater Heal V
 							["rank"] = 5,
-							-- #endif
-						},
-						{
-							["itemID"] = 21285,		-- Codex of Renew X
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21285, {	-- Codex of Renew X
 							["spellID"] = 25315,	-- Renew X
 							["rank"] = 10,
-							-- #endif
-						},
-						{
-							["itemID"] = 21287,		-- Codex of Prayer of Healing V
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21287, {	-- Codex of Prayer of Healing V
 							["spellID"] = 25316,	-- Prayer of Healing V
 							["rank"] = 5,
-							-- #endif
-						},
+						}),
 					})),
 					cl(ROGUE, bubbleDown({ ["classes"] = { ROGUE } }, {
-						{
-							["itemID"] = 21300,		-- Handbook of Backstab IX
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21300, {	-- Handbook of Backstab IX
 							["spellID"] = 25300,	-- Backstab IX
 							["rank"] = 9,
-							-- #endif
-						},
-						{
-							["itemID"] = 21302,		-- Handbook of Deadly Poison V
-							-- #if AFTER WRATH
-							["spellID"] = 0,
-							-- #else
-							["recipeID"] = 25347,	-- Deadly Poison V
-							-- #endif
-						},
-						{
-							["itemID"] = 21303,		-- Handbook of Feint V
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21302),	-- Handbook of Deadly Poison V (RECIPE!)
+						i(21303, {	-- Handbook of Feint V
 							["spellID"] = 25302,	-- Feint V
 							["rank"] = 5,
-							-- #endif
-						},
+						}),
 					})),
 					cl(SHAMAN, bubbleDown({ ["classes"] = { SHAMAN } }, {
-						{
-							["itemID"] = 21293,		-- Tablet of Grace of Air Totem III
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21293, {	-- Tablet of Grace of Air Totem III
+							-- #if BEFORE 3.0.1
 							["spellID"] = 25359,	-- Grace of Air Totem III
 							["rank"] = 3,
 							-- #endif
-						},
-						{
-							["itemID"] = 21291,		-- Tablet of Healing Wave X
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21291, {	-- Tablet of Healing Wave X
 							["spellID"] = 25357,	-- Healing Wave X
 							["rank"] = 10,
-							-- #endif
-						},
-						{
-							["itemID"] = 21292,		-- Tablet of Strength of Earth Totem V
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21292, {	-- Tablet of Strength of Earth Totem V
 							["spellID"] = 25361,	-- Strength of Earth Totem V
 							["rank"] = 5,
-							-- #endif
-						},
+						}),
 					})),
 					cl(WARLOCK, bubbleDown({ ["classes"] = { WARLOCK } }, {
-						{
-							["itemID"] = 21283,		-- Grimoire of Corruption VII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21283, {	-- Grimoire of Corruption VII
 							["spellID"] = 25311,	-- Corruption VII
 							["rank"] = 7,
-							-- #endif
-						},
-						{
-							["itemID"] = 21282,		-- Grimoire of Immolate VIII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21282, {	-- Grimoire of Immolate VIII
 							["spellID"] = 25309,	-- Immolate VIII
 							["rank"] = 8,
-							-- #endif
-						},
-						{
-							["itemID"] = 21281,		-- Grimoire of Shadow Bolt X
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21281, {	-- Grimoire of Shadow Bolt X
 							["spellID"] = 25307,	-- Shadow Bolt X
 							["rank"] = 10,
-							-- #endif
-						},
+						}),
 					})),
 					cl(WARRIOR, bubbleDown({ ["classes"] = { WARRIOR } }, {
-						{
-							["itemID"] = 21298,		-- Manual of Battle Shout VII
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						i(21298, {	-- Manual of Battle Shout VII
 							["spellID"] = 25289,	-- Battle Shout VII
 							["rank"] = 7,
-							-- #endif
-						},
-						{
-							["itemID"] = 21297,		-- Manual of Heroic Strike IX
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21297, {	-- Manual of Heroic Strike IX
 							["spellID"] = 25286,	-- Heroic Strike IX
 							["rank"] = 9,
-							-- #endif
-						},
-						{
-							["itemID"] = 21299,		-- Manual of Revenge VI
-							-- #if AFTER CATA
-							["spellID"] = 0,
-							-- #else
+						}),
+						i(21299, {	-- Manual of Revenge VI
 							["spellID"] = 25288,	-- Revenge VI
 							["rank"] = 6,
-							-- #endif
-						},
+						}),
 					})),
+					-- #endif
 
 					-- Enchants
 					i(20736),	-- Formula: Enchant Cloak - Dodge (RECIPE!)
@@ -847,7 +715,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				}),
 				-- Key (Post 4.3 Only!)
 				applyclassicphase(CATA_PHASE_ONE, i(76401, {	-- Scarab Coffer Key
-					["timeline"] = { "added 4.3.0.15005" },
+					["timeline"] = { ADDED_4_3_0 },
 					["crs"] = {
 						15369,	-- Ayamiss the Hunter
 						15370,	-- Buru the Gorger
@@ -887,8 +755,8 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 				["groups"] = {
 					i(22217, {	-- Kurinnaxx's Venom Sac
 						["timeline"] = {
-							"added 1.13.0.28211",
-							"deleted 4.2.2.28211"
+							ADDED_1_13_0,
+							DELETED_4_2_2
 						},
 					}),
 					i(21498),	-- Qiraji Sacrificial Dagger
@@ -902,8 +770,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 			n(15471, {	-- Lieutenant General Andorov
 				["description"] = "In order to interact with this vendor, you must first talk to him to start the encounter with General Rajaxx and allow him to get at least one hit on the boss after the waves have completed.",
 				["groups"] = {
-					i(22219),	-- Plans: Jagged Obsidian Shield (RECIPE!)
-					i(22221),	-- Plans: Obsidian Mail Tunic (RECIPE!)
+					i(22219, {	-- Plans: Jagged Obsidian Shield (RECIPE!)
+						["minReputation"] = { FACTION_CENARION_CIRCLE, REVERED },
+						["isLimited"] = true,
+					}),
+					i(22221, {	-- Plans: Obsidian Mail Tunic (RECIPE!)
+						["minReputation"] = { FACTION_CENARION_CIRCLE, EXALTED },
+						["isLimited"] = true,
+					}),
 				},
 			}),
 			e(1538, {	-- General Rajaxx
@@ -953,11 +827,26 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 					i(21479),	-- Gauntlets of the Immovable
 					i(21484),	-- Helm of Regrowth
 					i(21480),	-- Scaled Silithid Gauntlets
-					i(21481),	-- Boots of the Desert Protector
+					i(21481, {	-- Boots of the Desert Protector
+						-- #if BEFORE 2.0.1
+						-- Originally a faction specific drop for Paladins.
+						["races"] = ALLIANCE_ONLY,
+						-- #endif
+					}),
 					i(21482, {	-- Boots of the Fiery Sands
+						-- #if BEFORE 10.1.
+						["description"] = "This item was originally a Horde exclusive drop for Shamans during vanilla. Sometime after TBC Prepatch, this item disappeared from the loot table. Please @Crieve if you get it to drop.",
+						-- #if AFTER 2.0.1
+						["isBounty"] = true,
+						-- #else
+						["races"] = HORDE_ONLY,
+						-- #endif
+						-- #endif
 						["timeline"] = {
-							"added 1.13.0.28211",
-							"removed 4.2.2.28211"
+							ADDED_1_13_0,
+							REMOVED_2_0_1,	-- Classic WoWHead shows 0 new drops in WotLK since Classic. (902 recorded drops in both versions, which goes to show that this item no longer exists on the drop table)
+							--REMOVED_4_2_2,
+							ADDED_10_1_7,
 						},
 					}),
 					i(21483),	-- Ring of the Desert Winds
@@ -991,7 +880,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_FIVE, {
 						-- #endif
 					}),
 					ach(5059, {	-- Ruins of Ahn'Qiraj Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					i(21220),	-- Head of Ossirian the Unscarred
 					i(21452),	-- Staff of the Ruins

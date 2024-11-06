@@ -4,129 +4,121 @@
 root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 	m(1186, {	-- Blackrock Depths: Shadowforge City
 		["lore"] = "Known for their fiery tempers and fierce determination, Dark Iron dwarves have a turbulent history with the other clans. A failed coup in Ironforge ignited the War of the Three Hammers, and many of the Dark Iron once fought in the service of Ragnaros the Firelord. Though one faction of the dwarves is pledged to Queen-Regent Moira Thaurissan, others refuse to stand alongside their kin. The Alliance seeks a united Dark Iron clan to harness the power of azerite and aid their struggle against the Horde",
-		["timeline"] = { "added 8.0.1.27326" },
-		["icon"] = "Interface\\Icons\\ability_racial_fireblood",
-		["isRaid"] = true,	-- Cities we mark as Raids
+		["icon"] = 1786406,
+		["timeline"] = { ADDED_8_0_1 },
 		["races"] = { DARKIRON },
+		["isRaid"] = true,
 		["groups"] = {
-			n(-517, bubbleDown({	-- Mole Machine
-				["races"] = { DARKIRON },
-				["icon"] = "Interface\\Icons\\ability_racial_molemachine",
-			}, {
-				tier(CLASSIC_TIER, {
-					["groups"] = {
-						q(53591, {	-- Fire Plume Ridge
-							["name"] = "Fire Plume Ridge",
-							["description"] = "Fire Plume Ridge",
+			header(HEADERS.NPC, 143925, {	-- Dark Iron Mole Machine
+				["icon"] = 1786409,
+				["coord"] = { 61.44, 24.35, 1186 },	-- Shadowforge City
+				["groups"] = {
+					expansion(EXPANSION.CLASSIC, {
+						molemachine(53591, "Fire Plume Ridge", {
 							["coord"] = { 52.89, 55.76, UNGORO_CRATER },
 						}),
-						q(53600, {	-- Honor's Stand
-							["name"] = "Honor's Stand",
-							["description"] = "Honor's Stand",
+						molemachine(53600, "Honor's Stand", {
 							["coord"] = { 39.11, 09.31, SOUTHERN_BARRENS },
 						}),
-						q(53585, {	-- Aerie Peak
-							["name"] = "Aerie Peak",
-							["description"] = "Aerie Peak",
+						molemachine(53585, "Aerie Peak", {
 							["coord"] = { 13.52, 46.81, THE_HINTERLANDS },
 						}),
-						q(53587, {	-- Blackrock Depths
-							["name"] = "Blackrock Depths",
-							["description"] = "Blackrock Depths",
+						molemachine(53587, "Blackrock Depths", {
 							["coord"] = { 33.4, 24.7, BLACKROCK_MOUNTAIN_LEVEL3 },
 						}),
-						q(53594, {	-- Nethergarde Keep
-							["name"] = "Nethergarde Keep",
-							["description"] = "Nethergarde Keep",
+						molemachine(53594, "Nethergarde Keep", {
 							["coord"] = { 61.82, 12.74, BLASTED_LANDS },
 						}),
-					},
-				}),
-				tier(TBC_TIER, {
-					["groups"] = {
-						q(53592, {	-- Honor Hold [Outlands]
-							["name"] = "Honor Hold",
-							["description"] = "Honor Hold",
+					}),
+					expansion(EXPANSION.TBC, {
+						molemachine(53592, "Honor Hold", {	-- Honor Hold [Outlands]
 							["coord"] = { 53.15, 64.89, HELLFIRE_PENINSULA },
 						}),
-						q(53597, {	-- Skald [Outlands]
-							["name"] = "Skald",
-							["description"] = "Skald",
+						molemachine(53597, "Skald", {	-- Skald [Outlands]
 							["coord"] = { 72.41, 17.65, BLADES_EDGE_MOUNTAINS },
 						}),
-						q(53599, {	-- The Hand of Gul'dan [Outlands]
-							["name"] = "The Hand of Gul'dan",
-							["description"] = "The Hand of Gul'dan",
+						molemachine(53599, "The Hand of Gul'dan", {	-- The Hand of Gul'dan [Outlands]
 							["coord"] = { 50.77, 35.28, SHADOWMOON_VALLEY },
 						}),
-					},
-				}),
-				tier(WOTLK_TIER, {
-					["groups"] = {
-						q(53586, {	-- Argent Tournament Grounds
-							["name"] = "Argent Tournament Grounds",
-							["description"] = "Argent Tournament Grounds",
+					}),
+					expansion(EXPANSION.WRATH, {
+						molemachine(53586, "Argent Tournament Grounds", {
 							["coord"] = { 76.97, 18.68, ICECROWN },
 						}),
-						q(53596, {	-- Ruby Dragonshrine
-							["name"] = "Ruby Dragonshrine",
-							["description"] = "Ruby Dragonshrine",
+						molemachine(53596, "Ruby Dragonshrine", {
 							["coord"] = { 45.34, 49.92, DRAGONBLIGHT },
 						}),
-					},
-				}),
-				tier(CATA_TIER, {
-					["groups"] = {
-						q(53601, {	-- Sulfuron Spire
-							["name"] = "Sulfuron Spire",
-							["description"] = "Sulfuron Spire",
+					}),
+					expansion(EXPANSION.CATA, {
+						molemachine(53601, "Sulfuron Spire", {
 							["coord"] = { 57.16, 77.09, MOUNT_HYJAL },
 						}),
-					},
-				}),
-				tier(MOP_TIER, {
-					["groups"] = {
-						q(53595, {	-- One Keg
-							["name"] = "One Keg",
-							["description"] = "One Keg",
+					}),
+					expansion(EXPANSION.MOP, {
+						molemachine(53595, "One Keg", {
 							["coord"] = { 57.68, 62.81, KUN_LAI_SUMMIT },
 						}),
-						q(53598, {	-- Stormstout Brewery
-							["name"] = "Stormstout Brewery",
-							["description"] = "Stormstout Brewery",
+						molemachine(53598, "Stormstout Brewery", {
 							["coord"] = { 31.51, 73.57, VALLEY_OF_THE_FOUR_WINDS },
 						}),
-					},
-				}),
-				tier(WOD_TIER, {
-					["groups"] = {
-						q(53590, {	-- Elemental Plateau
-							["name"] = "Elemental Plateau",
-							["description"] = "Elemental Plateau",
+					}),
+					expansion(EXPANSION.WOD, {
+						molemachine(53590, "Elemental Plateau", {
 							["coord"] = { 65.74, 08.24, DRAENOR_NAGRAND },
 						}),
-						q(53588, {	-- The Pit
-							["name"] = "The Pit",
-							["description"] = "The Pit",
+						molemachine(53588, "The Pit", {
 							["coord"] = { 46.69, 38.75, GORGROND },
 						}),
-					},
-				}),
-				tier(LEGION_TIER, {
-					["groups"] = {
-						q(53589, {	-- Aalgen Point
-							["name"] = "Aalgen Point",
-							["description"] = "Aalgen Point",
+					}),
+					expansion(EXPANSION.LEGION, {
+						molemachine(53589, "Aalgen Point", {
 							["coord"] = { 71.68, 48.01, BROKEN_SHORE },
 						}),
-						q(53593, {	-- Neltharion's Vault
-							["name"] = "Neltharion's Vault",
-							["description"] = "Neltharion's Vault",
+						molemachine(53593, "Neltharion's Vault", {
 							["coord"] = { 44.66, 72.87, HIGHMOUNTAIN },
 						}),
-					},
-				}),
-			})),
+					}),
+					expansion(EXPANSION.BFA, sharedDataSelf({ ["timeline"] = ADDED_11_0_5 }, {
+						molemachine(80102, "Tidebreak Summit", {
+							["coord"] = { 64.21, 29.44, STORMSONG_VALLEY },
+						}),
+						molemachine(80101, "Wailing Tideways", {
+							["coord"] = { 88.22, 71.53, TIRAGARDE_SOUND },
+						}),
+						molemachine(80100, "Xibala Incursion", {
+							["coord"] = { 38.24, 72.38, ZULDAZAR },
+						}),
+						molemachine(80099, "Zalamar Invasion", {
+							["coord"] = { 34.34, 45.15, NAZMIR },
+						}),
+					})),
+					expansion(EXPANSION.SL, sharedDataSelf({ ["timeline"] = ADDED_11_0_5 }, {
+						molemachine(80104, "Scorched Crypt", {
+							["coord"] = { 19.94, 38.81, REVENDRETH },
+						}),
+						molemachine(80106, "Soryn's Meadow", {
+							["coord"] = { 66.47, 50.55, ARDENWEALD },
+						}),
+						molemachine(80105, "The Eternal Forge", {
+							["coord"] = { 51.75, 13.14, BASTION },
+						}),
+						molemachine(80103, "Valley of a Thousand Legs", {
+							["coord"] = { 53.49, 59.79, MALDRAXXUS },
+						}),
+					})),
+					expansion(EXPANSION.DF, sharedDataSelf({ ["timeline"] = ADDED_11_0_5 }, {
+						molemachine(80107, "The Slagmire", {
+							["coord"] = { 32.36, 54.90, THE_WAKING_SHORES },
+						}),
+						molemachine(80108, "Vakthros Summit", {
+							["coord"] = { 80.09, 38.96, THE_AZURE_SPAN },
+						}),
+						molemachine(80109, "Obsidian Rest", {
+							["coord"] = { 52.73, 27.67, ZARALEK_CAVERN },
+						}),
+					})),
+				},
+			}),
 		},
 	}),
 }));

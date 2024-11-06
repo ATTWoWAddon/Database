@@ -4,9 +4,9 @@
 ICOKE_PROMOTION = createHeader({
 	readable = "iCoke",
 	-- #if AFTER 5.4.2
-	icon = "Interface\\Icons\\INV_Drink_33_BloodRedAle",
+	icon = 461806,
 	-- #else
-	icon = "Interface\\Icons\\Inv_drink_10",
+	icon = 132797,
 	-- #endif
 	text = {
 		en = "iCoke",
@@ -17,7 +17,7 @@ ICOKE_PROMOTION = createHeader({
 	},
 });
 root(ROOTS.Promotions, n(ICOKE_PROMOTION, bubbleDown({ ["u"] = REMOVED_FROM_GAME }, {
-	["timeline"] = { "added 1.12.1.11159" },
+	["timeline"] = { ADDED_1_12_1 },
 	["groups"] = {
 		i(19055),	-- Tiny Green Dragon (PET!)
 		i(22781),	-- Poley (PET!)

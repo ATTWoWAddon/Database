@@ -6,7 +6,7 @@ root(ROOTS.Zones, m(PANDARIA, {
 		["lore"] = "The Shrine of Two Moons is an ancient mogu structure located north of Mogu'shan Palace in the eastern part of the Vale of Eternal Blossoms. The Golden Lotus have allowed use of the shrine by the Horde, and it serves as the main hub for the faction in the continent of Pandaria, as opposed to the sanctuary cities serving as main hubs for both factions in previous expansions.",
 		["isRaid"] = true,
 		["races"] = HORDE_ONLY,
-		["icon"] = "Interface\\Icons\\achievement_doublejeopardyhorde",
+		["icon"] = 462674,
 		["maps"] = { 392 },	-- upper level
 		["lvl"] = 78,
 		["g"] = {
@@ -67,7 +67,7 @@ root(ROOTS.Zones, m(PANDARIA, {
 				q(32726, {	-- So You Want to Be a Blacksmith...
 					["provider"] = { "n", 64058 },	-- Jorunga Stonehoof
 					["requireSkill"] = BLACKSMITHING,
-					["timeline"] = { "removed 8.0" },	-- no longer available due to the profession level changes
+					["timeline"] = { REMOVED_8_0_1 },	-- no longer available due to the profession level changes
 				}),
 				-- q(31391, {	-- The Klaxxi
 				-- }),
@@ -478,6 +478,28 @@ root(ROOTS.Zones, m(PANDARIA, {
 							["cost"] = { { "i", 99677, 1 }, },	-- Chest of the Cursed Vanquisher
 						}),
 					},
+				}),
+				n(66685, {	-- Danky <Spirit of Harmony Vendor>
+					["coord"] = { 61.6, 21.6, VALE_OF_ETERNAL_BLOSSOMS },
+					["races"] = IGNORED_VALUE,	-- technically available both factions
+					["groups"] = sharedData({
+						["cost"] = {{"i",76061,1}},	-- Spirit of Harmony
+					},{
+						i(72094),	-- Black Trillium Ore
+						i(74247),	-- Ethereal Shard
+						i(72092),	-- Ghost Iron Ore
+						i(72238),	-- Golden Lotus
+						i(72093),	-- Kyparite
+						i(72120),	-- Mist-Touched Leather
+						i(74250),	-- Mysterious Essence
+						-- i(89610),	-- Pandaria Herbs (non-specific content)
+						i(79101),	-- Prismatic Scale
+						i(76734),	-- Serpent's Eye
+						i(74249),	-- Spirit Dust
+						i(79255),	-- Starlight Ink
+						i(72103),	-- White Trillium Ore
+						i(72988),	-- Windwool Cloth
+					}),
 				}),
 				n(64051, {	-- Esha the Loommaiden <Tailoring Supplies>
 					["requireSkill"] = TAILORING,

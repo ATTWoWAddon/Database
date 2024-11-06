@@ -1,8 +1,7 @@
 local Items = ItemDBConditional;
 local i = function(itemID, illusionID, questID)
-	Items[itemID] = { ["illusionID"] = illusionID, ["questID"] = questID };
+	Items[itemID] = { ["illusionID"] = illusionID, ["questID"] = questID, ["type"] = "illusionID" };
 end
-
 -----------------
 -- PATCH 6.0.2 --
 -----------------
@@ -64,7 +63,7 @@ i(0, 5862);					-- Titanguard
 i(0, 1899);					-- Unholy Weapon
 i(0, 4441);					-- Windsong
 i(0, 4098);					-- Windwalk
--- Class Specific --
+--- Class Specific ---
 i(138832, 5871, 42941);		-- Earthliving
 i(138833, 5872, 42942);		-- Flametongue
 i(138834, 5873, 42943);		-- Frostbrand
@@ -87,7 +86,6 @@ i(0, 6096);					-- Dreadflame
 -- PATCH 8.2.5 --
 -----------------
 i(171363, 6158, 57569);		-- Stinging Sands
-i(172177, 6162, 57596);		-- Wraithchill
 -- NYI --
 i(0, 6185);					-- Stinging Sands
 
@@ -99,7 +97,12 @@ i(174932, 6174, 58927);		-- Void Edge
 i(174933, 0, 58925);		-- Voidwrath
 
 -----------------
--- PATCH 9.0.1 --
+-- PATCH 8.3.7 --
+-----------------
+i(172177, 6162, 57596);		-- Wraithchill
+
+-----------------
+-- PATCH 9.0.2 --
 -----------------
 i(184351, 6256, 63004);		-- Devoted Spirit
 i(183134, 6264, 62965);		-- Hunt's Favor
@@ -138,11 +141,24 @@ i(200470, 6672);			-- Primal Mastery
 ------------------
 -- PATCH 10.0.7 --
 ------------------
--- NYI --
 i(0, 6786);					-- Primal Storm
 
 ------------------
 -- PATCH 10.1.0 --
 ------------------
--- NYI --
 i(0, 6836);					-- Shadow Flame
+
+------------------
+-- PATCH 10.2.0 --
+------------------
+i(0, 7032);					-- Verdant Crush
+
+------------------
+-- PATCH 10.2.6 --
+------------------
+i(0, 7100);					-- Bronze Infinite
+
+------------------
+-- PATCH 10.2.7 --
+------------------
+i(220765, 7322, 82000);			-- Sha Corruption

@@ -1,2576 +1,9 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
--- #if BEFORE CATA
-local OnTooltipForCityFactionReputation = [[function(t)
-	local reputation = t.reputation;
-	if reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
--- #if AFTER TBC
-		local repPerTurnIn = isHuman and 82.5 or 75;
--- #else
-		local repPerTurnIn = isHuman and 55 or 50;
--- #endif
-		local x, n = math.ceil((42000 - reputation) / repPerTurnIn), math.ceil(42000 / repPerTurnIn);
-		GameTooltip:AddDoubleLine("Runecloth Turn Ins", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-	end
-end]];
--- #endif
-
-local COOKING_AWARD_GROUPS = {
-	-- #if AFTER 5.0.4
-	currency(81),	-- Epicurean's Award
-	-- #else
-	currency(402),	-- Chef's Award
-	-- #endif
-};
-local FISHING_AWARD_GROUPS = {
-	i(67414, {	-- Bag of Shiny Things
-		["timeline"] = { "added 4.0.1.12984" },
-	}),
-};
 local JEWELCRAFTING_AWARD_GROUPS = {
 	currency(361),	-- Illustrious Jewelcrafter's Token
 };
-
--- #if AFTER CATA
-local TIER_THIRTEEN_RAIDFINDER_GROUPS = {	-- Dragon Soul [Tier 13] (Raid Finder)
-	cl(WARRIOR, {
-		-- DPS
-		i(78783, {	-- Colossal Dragonplate Helmet
-			["cost"] = { { "i", 78870, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78830, {	-- Colossal Dragonplate Pauldrons
-			["cost"] = { { "i", 78876, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78752, {	-- Colossal Dragonplate Battleplate
-			["cost"] = { { "i", 78864, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78763, {	-- Colossal Dragonplate Gauntlets
-			["cost"] = { { "i", 78867, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78801, {	-- Colossal Dragonplate Legplates
-			["cost"] = { { "i", 78873, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Protection
-		i(78784, {	-- Colossal Dragonplate Faceguard
-			["cost"] = { { "i", 78870, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78829, {	-- Colossal Dragonplate Shoulderguards
-			["cost"] = { { "i", 78876, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78753, {	-- Colossal Dragonplate Chestguard
-			["cost"] = { { "i", 78864, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78764, {	-- Colossal Dragonplate Handguards
-			["cost"] = { { "i", 78867, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78800, {	-- Colossal Dragonplate Legguards
-			["cost"] = { { "i", 78873, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(PALADIN, {
-		-- DPS
-		i(78788, {	-- Helmet of Radiant Glory
-			["cost"] = { { "i", 78869, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78837, {	-- Pauldrons of Radiant Glory
-			["cost"] = { { "i", 78875, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78822, {	-- Battleplate of Radiant Glory
-			["cost"] = { { "i", 78863, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78770, {	-- Gauntlets of Radiant Glory
-			["cost"] = { { "i", 78866, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78807, {	-- Legplates of Radiant Glory
-			["cost"] = { { "i", 78872, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Holy
-		i(78787, {	-- Headguard of Radiant Glory
-			["cost"] = { { "i", 78869, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78841, {	-- Mantle of Radiant Glory
-			["cost"] = { { "i", 78875, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78821, {	-- Breastplate of Radiant Glory
-			["cost"] = { { "i", 78863, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78768, {	-- Gloves of Radiant Glory
-			["cost"] = { { "i", 78866, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78812, {	-- Greaves of Radiant Glory
-			["cost"] = { { "i", 78872, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Protection
-		i(78790, {	-- Faceguard of Radiant Glory
-			["cost"] = { { "i", 78869, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78840, {	-- Shoulderguards of Radiant Glory
-			["cost"] = { { "i", 78875, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78827, {	-- Chestguard of Radiant Glory
-			["cost"] = { { "i", 78863, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78772, {	-- Handguards of Radiant Glory
-			["cost"] = { { "i", 78866, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78810, {	-- Legguards of Radiant Glory
-			["cost"] = { { "i", 78872, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(DEATHKNIGHT, {
-		-- DPS
-		i(78782, {	-- Necrotic Boneplate Helmet
-			["cost"] = { { "i", 78868, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78831, {	-- Necrotic Boneplate Pauldrons
-			["cost"] = { { "i", 78874, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78754, {	-- Necrotic Boneplate Breastplate
-			["cost"] = { { "i", 78862, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78765, {	-- Necrotic Boneplate Gauntlets
-			["cost"] = { { "i", 78865, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78802, {	-- Necrotic Boneplate Greaves
-			["cost"] = { { "i", 78871, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Protection
-		i(78792, {	-- Necrotic Boneplate Faceguard
-			["cost"] = { { "i", 78868, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78846, {	-- Necrotic Boneplate Shoulderguards
-			["cost"] = { { "i", 78874, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78758, {	-- Necrotic Boneplate Chestguard
-			["cost"] = { { "i", 78862, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78773, {	-- Necrotic Boneplate Handguards
-			["cost"] = { { "i", 78865, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78811, {	-- Necrotic Boneplate Legguards
-			["cost"] = { { "i", 78871, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(HUNTER, {
-		i(78793, {	-- Wyrmstalker's Headguard
-			["cost"] = { { "i", 78870, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78832, {	-- Wyrmstalker's Spaulders
-			["cost"] = { { "i", 78876, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78756, {	-- Wyrmstalker's Tunic
-			["cost"] = { { "i", 78864, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78769, {	-- Wyrmstalker's Gloves
-			["cost"] = { { "i", 78867, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78804, {	-- Wyrmstalker's Legguards
-			["cost"] = { { "i", 78873, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(ROGUE, {
-		i(78794, {	-- Blackfang Battleweave Helmet
-			["cost"] = { { "i", 78868, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78833, {	-- Blackfang Battleweave Spaulders
-			["cost"] = { { "i", 78874, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78759, {	-- Blackfang Battleweave Tunic
-			["cost"] = { { "i", 78862, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78774, {	-- Blackfang Battleweave Gloves
-			["cost"] = { { "i", 78865, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78803, {	-- Blackfang Battleweave Legguards
-			["cost"] = { { "i", 78871, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(PRIEST, {
-		-- DPS
-		i(78798, {	-- Hood of Dying Light
-			["cost"] = { { "i", 78869, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78845, {	-- Mantle of Dying Light
-			["cost"] = { { "i", 78875, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78826, {	-- Robes of Dying Light
-			["cost"] = { { "i", 78863, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78777, {	-- Gloves of Dying Light
-			["cost"] = { { "i", 78866, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78817, {	-- Leggings of Dying Light
-			["cost"] = { { "i", 78872, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Holy
-		i(78795, {	-- Cowl of Dying Light
-			["cost"] = { { "i", 78869, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78842, {	-- Mantle of Dying Light
-			["cost"] = { { "i", 78875, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78823, {	-- Robes of Dying Light
-			["cost"] = { { "i", 78863, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78778, {	-- Handwraps of Dying Light
-			["cost"] = { { "i", 78866, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78814, {	-- Legwraps of Dying Light
-			["cost"] = { { "i", 78872, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(SHAMAN, {
-		-- Enhance
-		i(78781, {	-- Spiritwalker's Helmet
-			["cost"] = { { "i", 78870, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78828, {	-- Spiritwalker's Spaulders
-			["cost"] = { { "i", 78876, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78819, {	-- Spiritwalker's Cuirass
-			["cost"] = { { "i", 78864, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78762, {	-- Spiritwalker's Grips
-			["cost"] = { { "i", 78867, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78799, {	-- Spiritwalker's Legguards
-			["cost"] = { { "i", 78873, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Elemental
-		i(78780, {	-- Spiritwalker's Headpiece
-			["cost"] = { { "i", 78870, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78836, {	-- Spiritwalker's Shoulderwraps
-			["cost"] = { { "i", 78876, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78818, {	-- Spiritwalker's Hauberk
-			["cost"] = { { "i", 78864, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78761, {	-- Spiritwalker's Gloves
-			["cost"] = { { "i", 78867, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78806, {	-- Spiritwalker's Kilt
-			["cost"] = { { "i", 78873, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Restoration
-		i(78786, {	-- Spiritwalker's Faceguard
-			["cost"] = { { "i", 78870, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78834, {	-- Spiritwalker's Mantle
-			["cost"] = { { "i", 78876, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78820, {	-- Spiritwalker's Tunic
-			["cost"] = { { "i", 78864, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78767, {	-- Spiritwalker's Handwraps
-			["cost"] = { { "i", 78867, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78813, {	-- Spiritwalker's Legwraps
-			["cost"] = { { "i", 78873, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(MAGE, {
-		i(78796, {	-- Time Lord's Hood
-			["cost"] = { { "i", 78868, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78843, {	-- Time Lord's Mantle
-			["cost"] = { { "i", 78874, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78824, {	-- Time Lord's Robes
-			["cost"] = { { "i", 78862, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78766, {	-- Time Lord's Gloves
-			["cost"] = { { "i", 78865, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78815, {	-- Time Lord's Leggings
-			["cost"] = { { "i", 78871, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(WARLOCK, {
-		i(78797, {	-- Hood of the Faceless Shroud
-			["cost"] = { { "i", 78869, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78844, {	-- Mantle of the Faceless Shroud
-			["cost"] = { { "i", 78875, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78825, {	-- Robes of the Faceless Shroud
-			["cost"] = { { "i", 78863, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78776, {	-- Gloves of the Faceless Shroud
-			["cost"] = { { "i", 78866, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78816, {	-- Leggings of the Faceless Shroud
-			["cost"] = { { "i", 78872, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(DRUID, {
-		-- Boomkin
-		i(78791, {	-- Deep Earth Cover
-			["cost"] = { { "i", 78868, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78839, {	-- Deep Earth Shoulderwraps
-			["cost"] = { { "i", 78874, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78757, {	-- Deep Earth Vestment
-			["cost"] = { { "i", 78862, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78771, {	-- Deep Earth Gloves
-			["cost"] = { { "i", 78865, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78809, {	-- Deep Earth Leggings
-			["cost"] = { { "i", 78871, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Feral
-		i(78789, {	-- Deep Earth Headpiece
-			["cost"] = { { "i", 78868, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78838, {	-- Deep Earth Spaulders
-			["cost"] = { { "i", 78874, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78760, {	-- Deep Earth Raiment
-			["cost"] = { { "i", 78862, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78779, {	-- Deep Earth Grips
-			["cost"] = { { "i", 78865, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78808, {	-- Deep Earth Legguards
-			["cost"] = { { "i", 78871, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Restoration
-		i(78785, {	-- Deep Earth Helm
-			["cost"] = { { "i", 78868, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78835, {	-- Deep Earth Mantle
-			["cost"] = { { "i", 78874, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78755, {	-- Deep Earth Robes
-			["cost"] = { { "i", 78862, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78775, {	-- Deep Earth Handwraps
-			["cost"] = { { "i", 78865, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78805, {	-- Deep Earth Legwraps
-			["cost"] = { { "i", 78871, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-};
-local TIER_THIRTEEN_NORMAL_GROUPS = {	-- Dragon Soul [Tier 13] (Normal)
-	cl(WARRIOR, {
-		-- DPS
-		i(76983, {	-- Colossal Dragonplate Helmet
-			["cost"] = { { "i", 78177, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(76987, {	-- Colossal Dragonplate Pauldrons
-			["cost"] = { { "i", 78175, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(76984, {	-- Colossal Dragonplate Battleplate
-			["cost"] = { { "i", 78179, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(76985, {	-- Colossal Dragonplate Gauntlets
-			["cost"] = { { "i", 78178, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(76986, {	-- Colossal Dragonplate Legplates
-			["cost"] = { { "i", 78176, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Protection
-		i(76990, {	-- Colossal Dragonplate Faceguard
-			["cost"] = { { "i", 78177, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(76992, {	-- Colossal Dragonplate Shoulderguards
-			["cost"] = { { "i", 78175, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(76988, {	-- Colossal Dragonplate Chestguard
-			["cost"] = { { "i", 78179, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(76989, {	-- Colossal Dragonplate Handguards
-			["cost"] = { { "i", 78178, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(76991, {	-- Colossal Dragonplate Legguards
-			["cost"] = { { "i", 78176, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(PALADIN, {
-		-- DPS
-		i(76876, {	-- Helmet of Radiant Glory
-			["cost"] = { { "i", 78182, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(76878, {	-- Pauldrons of Radiant Glory
-			["cost"] = { { "i", 78180, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(76874, {	-- Battleplate of Radiant Glory
-			["cost"] = { { "i", 78184, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(76875, {	-- Gauntlets of Radiant Glory
-			["cost"] = { { "i", 78183, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(76877, {	-- Legplates of Radiant Glory
-			["cost"] = { { "i", 78181, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Holy
-		i(76767, {	-- Headguard of Radiant Glory
-			["cost"] = { { "i", 78182, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(76769, {	-- Mantle of Radiant Glory
-			["cost"] = { { "i", 78180, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(76765, {	-- Breastplate of Radiant Glory
-			["cost"] = { { "i", 78184, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(76766, {	-- Gloves of Radiant Glory
-			["cost"] = { { "i", 78183, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(76768, {	-- Greaves of Radiant Glory
-			["cost"] = { { "i", 78181, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Protection
-		i(77005, {	-- Faceguard of Radiant Glory
-			["cost"] = { { "i", 78182, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(77007, {	-- Shoulderguards of Radiant Glory
-			["cost"] = { { "i", 78180, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(77003, {	-- Chestguard of Radiant Glory
-			["cost"] = { { "i", 78184, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(77004, {	-- Handguards of Radiant Glory
-			["cost"] = { { "i", 78183, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(77006, {	-- Legguards of Radiant Glory
-			["cost"] = { { "i", 78181, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(DEATHKNIGHT, {
-		-- DPS
-		i(76976, {	-- Necrotic Boneplate Helmet
-			["cost"] = { { "i", 78172, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(76978, {	-- Necrotic Boneplate Pauldrons
-			["cost"] = { { "i", 78170, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(76974, {	-- Necrotic Boneplate Breastplate
-			["cost"] = { { "i", 78174, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(76975, {	-- Necrotic Boneplate Gauntlets
-			["cost"] = { { "i", 78173, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(76977, {	-- Necrotic Boneplate Greaves
-			["cost"] = { { "i", 78171, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Protection
-		i(77010, {	-- Necrotic Boneplate Faceguard
-			["cost"] = { { "i", 78172, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(77012, {	-- Necrotic Boneplate Shoulderguards
-			["cost"] = { { "i", 78170, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(77008, {	-- Necrotic Boneplate Chestguard
-			["cost"] = { { "i", 78174, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(77009, {	-- Necrotic Boneplate Handguards
-			["cost"] = { { "i", 78173, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(77011, {	-- Necrotic Boneplate Legguards
-			["cost"] = { { "i", 78171, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(HUNTER, {
-		i(77030, {	-- Wyrmstalker's Headguard
-			["cost"] = { { "i", 78177, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(77032, {	-- Wyrmstalker's Spaulders
-			["cost"] = { { "i", 78175, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(77028, {	-- Wyrmstalker's Tunic
-			["cost"] = { { "i", 78179, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(77029, {	-- Wyrmstalker's Gloves
-			["cost"] = { { "i", 78178, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(77031, {	-- Wyrmstalker's Legguards
-			["cost"] = { { "i", 78176, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(ROGUE, {
-		i(77025, {	-- Blackfang Battleweave Helmet
-			["cost"] = { { "i", 78172, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(77027, {	-- Blackfang Battleweave Spaulders
-			["cost"] = { { "i", 78170, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(77023, {	-- Blackfang Battleweave Tunic
-			["cost"] = { { "i", 78174, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(77024, {	-- Blackfang Battleweave Gloves
-			["cost"] = { { "i", 78173, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(77026, {	-- Blackfang Battleweave Legguards
-			["cost"] = { { "i", 78171, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(PRIEST, {
-		-- DPS
-		i(76347, {	-- Hood of Dying Light
-			["cost"] = { { "i", 78182, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(76344, {	-- Mantle of Dying Light
-			["cost"] = { { "i", 78180, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(76345, {	-- Robes of Dying Light
-			["cost"] = { { "i", 78184, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(76348, {	-- Gloves of Dying Light
-			["cost"] = { { "i", 78183, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(76346, {	-- Leggings of Dying Light
-			["cost"] = { { "i", 78181, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Holy
-		i(76358, {	-- Cowl of Dying Light
-			["cost"] = { { "i", 78182, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(76361, {	-- Mantle of Dying Light
-			["cost"] = { { "i", 78180, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(76360, {	-- Robes of Dying Light
-			["cost"] = { { "i", 78184, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(76357, {	-- Handwraps of Dying Light
-			["cost"] = { { "i", 78183, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(76359, {	-- Legwraps of Dying Light
-			["cost"] = { { "i", 78181, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(SHAMAN, {
-		-- Enhance
-		i(77042, {	-- Spiritwalker's Helmet
-			["cost"] = { { "i", 78177, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(77044, {	-- Spiritwalker's Spaulders
-			["cost"] = { { "i", 78175, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(77040, {	-- Spiritwalker's Cuirass
-			["cost"] = { { "i", 78179, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(77041, {	-- Spiritwalker's Grips
-			["cost"] = { { "i", 78178, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(77043, {	-- Spiritwalker's Legguards
-			["cost"] = { { "i", 78176, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Elemental
-		i(77037, {	-- Spiritwalker's Headpiece
-			["cost"] = { { "i", 78177, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(77035, {	-- Spiritwalker's Shoulderwraps
-			["cost"] = { { "i", 78175, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(77039, {	-- Spiritwalker's Hauberk
-			["cost"] = { { "i", 78179, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(77038, {	-- Spiritwalker's Gloves
-			["cost"] = { { "i", 78178, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(77036, {	-- Spiritwalker's Kilt
-			["cost"] = { { "i", 78176, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Restoration
-		i(76758, {	-- Spiritwalker's Faceguard
-			["cost"] = { { "i", 78177, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(76760, {	-- Spiritwalker's Mantle
-			["cost"] = { { "i", 78175, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(76756, {	-- Spiritwalker's Tunic
-			["cost"] = { { "i", 78179, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(76757, {	-- Spiritwalker's Handwraps
-			["cost"] = { { "i", 78178, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(76759, {	-- Spiritwalker's Legwraps
-			["cost"] = { { "i", 78176, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(MAGE, {
-		i(76213, {	-- Time Lord's Hood
-			["cost"] = { { "i", 78172, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(76216, {	-- Time Lord's Mantle
-			["cost"] = { { "i", 78170, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(76215, {	-- Time Lord's Robes
-			["cost"] = { { "i", 78174, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(76212, {	-- Time Lord's Gloves
-			["cost"] = { { "i", 78173, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(76214, {	-- Time Lord's Leggings
-			["cost"] = { { "i", 78171, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(WARLOCK, {
-		i(76342, {	-- Hood of the Faceless Shroud
-			["cost"] = { { "i", 78182, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(76339, {	-- Mantle of the Faceless Shroud
-			["cost"] = { { "i", 78180, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(76340, {	-- Robes of the Faceless Shroud
-			["cost"] = { { "i", 78184, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(76343, {	-- Gloves of the Faceless Shroud
-			["cost"] = { { "i", 78183, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(76341, {	-- Leggings of the Faceless Shroud
-			["cost"] = { { "i", 78181, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(DRUID, {
-		-- Boomkin
-		i(77019, {	-- Deep Earth Cover
-			["cost"] = { { "i", 78172, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(77022, {	-- Deep Earth Shoulderwraps
-			["cost"] = { { "i", 78170, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(77021, {	-- Deep Earth Vestment
-			["cost"] = { { "i", 78174, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(77018, {	-- Deep Earth Gloves
-			["cost"] = { { "i", 78173, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(77020, {	-- Deep Earth Leggings
-			["cost"] = { { "i", 78171, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Feral
-		i(77015, {	-- Deep Earth Headpiece
-			["cost"] = { { "i", 78172, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(77017, {	-- Deep Earth Spaulders
-			["cost"] = { { "i", 78170, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(77013, {	-- Deep Earth Raiment
-			["cost"] = { { "i", 78174, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(77014, {	-- Deep Earth Grips
-			["cost"] = { { "i", 78173, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(77016, {	-- Deep Earth Legguards
-			["cost"] = { { "i", 78171, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Restoration
-		i(76750, {	-- Deep Earth Helm
-			["cost"] = { { "i", 78172, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(76753, {	-- Deep Earth Mantle
-			["cost"] = { { "i", 78170, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(76752, {	-- Deep Earth Robes
-			["cost"] = { { "i", 78174, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(76749, {	-- Deep Earth Handwraps
-			["cost"] = { { "i", 78173, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(76751, {	-- Deep Earth Legwraps
-			["cost"] = { { "i", 78171, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-};
-local TIER_THIRTEEN_HEROIC_GROUPS = {	-- Dragon Soul [Tier 13] (Heroic)
-	cl(WARRIOR, {
-		-- DPS
-		i(78688, {	-- Colossal Dragonplate Helmet
-			["cost"] = { { "i", 78851, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78735, {	-- Colossal Dragonplate Pauldrons
-			["cost"] = { { "i", 78860, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78657, {	-- Colossal Dragonplate Battleplate
-			["cost"] = { { "i", 78848, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78668, {	-- Colossal Dragonplate Gauntlets
-			["cost"] = { { "i", 78854, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78706, {	-- Colossal Dragonplate Legplates
-			["cost"] = { { "i", 78857, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Protection
-		i(78689, {	-- Colossal Dragonplate Faceguard
-			["cost"] = { { "i", 78851, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78734, {	-- Colossal Dragonplate Shoulderguards
-			["cost"] = { { "i", 78860, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78658, {	-- Colossal Dragonplate Chestguard
-			["cost"] = { { "i", 78848, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78669, {	-- Colossal Dragonplate Handguards
-			["cost"] = { { "i", 78854, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78705, {	-- Colossal Dragonplate Legguards
-			["cost"] = { { "i", 78857, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(PALADIN, {
-		-- DPS
-		i(78693, {	-- Helmet of Radiant Glory
-			["cost"] = { { "i", 78850, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78742, {	-- Pauldrons of Radiant Glory
-			["cost"] = { { "i", 78859, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78727, {	-- Battleplate of Radiant Glory
-			["cost"] = { { "i", 78847, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78675, {	-- Gauntlets of Radiant Glory
-			["cost"] = { { "i", 78853, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78712, {	-- Legplates of Radiant Glory
-			["cost"] = { { "i", 78856, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Holy
-		i(78692, {	-- Headguard of Radiant Glory
-			["cost"] = { { "i", 78850, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78746, {	-- Mantle of Radiant Glory
-			["cost"] = { { "i", 78859, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78726, {	-- Breastplate of Radiant Glory
-			["cost"] = { { "i", 78847, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78673, {	-- Gloves of Radiant Glory
-			["cost"] = { { "i", 78853, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78717, {	-- Greaves of Radiant Glory
-			["cost"] = { { "i", 78856, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Protection
-		i(78695, {	-- Faceguard of Radiant Glory
-			["cost"] = { { "i", 78850, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78745, {	-- Shoulderguards of Radiant Glory
-			["cost"] = { { "i", 78859, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78732, {	-- Chestguard of Radiant Glory
-			["cost"] = { { "i", 78847, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78677, {	-- Handguards of Radiant Glory
-			["cost"] = { { "i", 78853, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78715, {	-- Legguards of Radiant Glory
-			["cost"] = { { "i", 78856, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(DEATHKNIGHT, {
-		-- DPS
-		i(78687, {	-- Necrotic Boneplate Helmet
-			["cost"] = { { "i", 78852, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78736, {	-- Necrotic Boneplate Pauldrons
-			["cost"] = { { "i", 78861, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78659, {	-- Necrotic Boneplate Breastplate
-			["cost"] = { { "i", 78849, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78670, {	-- Necrotic Boneplate Gauntlets
-			["cost"] = { { "i", 78855, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78707, {	-- Necrotic Boneplate Greaves
-			["cost"] = { { "i", 78858, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Protection
-		i(78697, {	-- Necrotic Boneplate Faceguard
-			["cost"] = { { "i", 78852, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78751, {	-- Necrotic Boneplate Shoulderguards
-			["cost"] = { { "i", 78861, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78663, {	-- Necrotic Boneplate Chestguard
-			["cost"] = { { "i", 78849, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78678, {	-- Necrotic Boneplate Handguards
-			["cost"] = { { "i", 78855, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78716, {	-- Necrotic Boneplate Legguards
-			["cost"] = { { "i", 78858, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(HUNTER, {
-		i(78698, {	-- Wyrmstalker's Headguard
-			["cost"] = { { "i", 78851, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78737, {	-- Wyrmstalker's Spaulders
-			["cost"] = { { "i", 78860, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78661, {	-- Wyrmstalker's Tunic
-			["cost"] = { { "i", 78848, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78674, {	-- Wyrmstalker's Gloves
-			["cost"] = { { "i", 78854, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78709, {	-- Wyrmstalker's Legguards
-			["cost"] = { { "i", 78857, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(ROGUE, {
-		i(78699, {	-- Blackfang Battleweave Helmet
-			["cost"] = { { "i", 78852, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78738, {	-- Blackfang Battleweave Spaulders
-			["cost"] = { { "i", 78861, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78664, {	-- Blackfang Battleweave Tunic
-			["cost"] = { { "i", 78849, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78679, {	-- Blackfang Battleweave Gloves
-			["cost"] = { { "i", 78855, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78708, {	-- Blackfang Battleweave Legguards
-			["cost"] = { { "i", 78858, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(PRIEST, {
-		-- DPS
-		i(78703, {	-- Hood of Dying Light
-			["cost"] = { { "i", 78850, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78750, {	-- Mantle of Dying Light
-			["cost"] = { { "i", 78859, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78731, {	-- Robes of Dying Light
-			["cost"] = { { "i", 78847, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78682, {	-- Gloves of Dying Light
-			["cost"] = { { "i", 78853, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78722, {	-- Leggings of Dying Light
-			["cost"] = { { "i", 78856, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-
-		-- Holy
-		i(78700, {	-- Cowl of Dying Light
-			["cost"] = { { "i", 78850, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78747, {	-- Mantle of Dying Light
-			["cost"] = { { "i", 78859, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78728, {	-- Robes of Dying Light
-			["cost"] = { { "i", 78847, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78683, {	-- Handwraps of Dying Light
-			["cost"] = { { "i", 78853, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78719, {	-- Legwraps of Dying Light
-			["cost"] = { { "i", 78856, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(SHAMAN, {
-		-- Enhance
-		i(78686, {	-- Spiritwalker's Helmet
-			["cost"] = { { "i", 78851, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78733, {	-- Spiritwalker's Spaulders
-			["cost"] = { { "i", 78860, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78724, {	-- Spiritwalker's Cuirass
-			["cost"] = { { "i", 78848, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78667, {	-- Spiritwalker's Grips
-			["cost"] = { { "i", 78854, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78704, {	-- Spiritwalker's Legguards
-			["cost"] = { { "i", 78857, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Elemental
-		i(78685, {	-- Spiritwalker's Headpiece
-			["cost"] = { { "i", 78851, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78741, {	-- Spiritwalker's Shoulderwraps
-			["cost"] = { { "i", 78860, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78723, {	-- Spiritwalker's Hauberk
-			["cost"] = { { "i", 78848, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78666, {	-- Spiritwalker's Gloves
-			["cost"] = { { "i", 78854, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78711, {	-- Spiritwalker's Kilt
-			["cost"] = { { "i", 78857, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-
-		-- Restoration
-		i(78691, {	-- Spiritwalker's Faceguard
-			["cost"] = { { "i", 78851, 1 }, },	-- Crown of the Corrupted Protector
-		}),
-		i(78739, {	-- Spiritwalker's Mantle
-			["cost"] = { { "i", 78860, 1 }, },	-- Shoulders of the Corrupted Protector
-		}),
-		i(78725, {	-- Spiritwalker's Tunic
-			["cost"] = { { "i", 78848, 1 }, },	-- Chest of the Corrupted Protector
-		}),
-		i(78672, {	-- Spiritwalker's Handwraps
-			["cost"] = { { "i", 78854, 1 }, },	-- Gauntlets of the Corrupted Protector
-		}),
-		i(78718, {	-- Spiritwalker's Legwraps
-			["cost"] = { { "i", 78857, 1 }, },	-- Leggings of the Corrupted Protector
-		}),
-	}),
-	cl(MAGE, {
-		i(78701, {	-- Time Lord's Hood
-			["cost"] = { { "i", 78852, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78748, {	-- Time Lord's Mantle
-			["cost"] = { { "i", 78861, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78729, {	-- Time Lord's Robes
-			["cost"] = { { "i", 78849, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78671, {	-- Time Lord's Gloves
-			["cost"] = { { "i", 78855, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78720, {	-- Time Lord's Leggings
-			["cost"] = { { "i", 78858, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-	cl(WARLOCK, {
-		i(78702, {	-- Hood of the Faceless Shroud
-			["cost"] = { { "i", 78850, 1 }, },	-- Crown of the Corrupted Conqueror
-		}),
-		i(78749, {	-- Mantle of the Faceless Shroud
-			["cost"] = { { "i", 78859, 1 }, },	-- Shoulders of the Corrupted Conqueror
-		}),
-		i(78730, {	-- Robes of the Faceless Shroud
-			["cost"] = { { "i", 78847, 1 }, },	-- Chest of the Corrupted Conqueror
-		}),
-		i(78681, {	-- Gloves of the Faceless Shroud
-			["cost"] = { { "i", 78853, 1 }, },	-- Gauntlets of the Corrupted Conqueror
-		}),
-		i(78721, {	-- Leggings of the Faceless Shroud
-			["cost"] = { { "i", 78856, 1 }, },	-- Leggings of the Corrupted Conqueror
-		}),
-	}),
-	cl(DRUID, {
-		-- Boomkin
-		i(78696, {	-- Deep Earth Cover
-			["cost"] = { { "i", 78852, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78744, {	-- Deep Earth Shoulderwraps
-			["cost"] = { { "i", 78861, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78662, {	-- Deep Earth Vestment
-			["cost"] = { { "i", 78849, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78676, {	-- Deep Earth Gloves
-			["cost"] = { { "i", 78855, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78714, {	-- Deep Earth Leggings
-			["cost"] = { { "i", 78858, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Feral
-		i(78694, {	-- Deep Earth Headpiece
-			["cost"] = { { "i", 78852, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78743, {	-- Deep Earth Spaulders
-			["cost"] = { { "i", 78861, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78665, {	-- Deep Earth Raiment
-			["cost"] = { { "i", 78849, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78684, {	-- Deep Earth Grips
-			["cost"] = { { "i", 78855, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78713, {	-- Deep Earth Legguards
-			["cost"] = { { "i", 78858, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-
-		-- Restoration
-		i(78690, {	-- Deep Earth Helm
-			["cost"] = { { "i", 78852, 1 }, },	-- Crown of the Corrupted Vanquisher
-		}),
-		i(78740, {	-- Deep Earth Mantle
-			["cost"] = { { "i", 78861, 1 }, },	-- Shoulders of the Corrupted Vanquisher
-		}),
-		i(78660, {	-- Deep Earth Robes
-			["cost"] = { { "i", 78849, 1 }, },	-- Chest of the Corrupted Vanquisher
-		}),
-		i(78680, {	-- Deep Earth Handwraps
-			["cost"] = { { "i", 78855, 1 }, },	-- Gauntlets of the Corrupted Vanquisher
-		}),
-		i(78710, {	-- Deep Earth Legwraps
-			["cost"] = { { "i", 78858, 1 }, },	-- Leggings of the Corrupted Vanquisher
-		}),
-	}),
-};
-local TIER_THIRTEEN_COMMON_GROUPS = {
-	i(77162),	-- Arrowflick Gauntlets
-	i(77109),	-- Band of Reconstruction
-	i(77095),	-- Batwing Cloak
-	i(77180),	-- Belt of Hidden Keys
-	i(77181),	-- Belt of Universal Curing
-	i(77171),	-- Bladeshatter Treads
-	i(77184),	-- Blinding Girdle of Truth
-	i(77119),	-- Bones of the Damned
-	i(77175),	-- Boneshard Boots
-	i(77172),	-- Boots of Fungoid Growth
-	i(77114),	-- Bottled Wishes
-	i(77322),	-- Bracers of Manifold Pockets
-	i(77323),	-- Bracers of the Black Dream
-	i(77319),	-- Bracers of the Spectral Wolf
-	i(77318),	-- Bracers of Unrelenting Excellence
-	i(77091),	-- Cameo of Terrible Memories
-	i(77120),	-- Chestplate of the Unshakable Titan
-	i(77324),	-- Chronoboost Bracers
-	i(77159),	-- Clockwinder's Immaculate Gloves
-	i(77182),	-- Cord of Dragon Sinew
-	i(77127),	-- Decaying Herbalist's Robes
-	i(77185),	-- Demonbone Waistguard
-	i(77321),	-- Dragonbelly Bracers
-	i(77124),	-- Dragonflayer Vest
-	i(77097),	-- Dreamcrusher Drape
-	i(77111),	-- Emergency Descent Loop
-	i(77117),	-- Fire of the Deep
-	i(77316),	-- Flashing Bracers of Warmth
-	i(77186),	-- Forgesmelter Waistplate
-	i(77160),	-- Fungus-Born Gloves
-	i(77166),	-- Gauntlets of Feathery Blows
-	i(77125),	-- Ghostworld Chestguard
-	i(77183),	-- Girdle of Shamanic Fury
-	i(77164),	-- Gleaming Grips of Mending
-	i(77163),	-- Gloves of Ghostly Dreams
-	i(77153),	-- Glowing Wings of Hope
-	i(77165),	-- Grimfist Crushers
-	i(77092),	-- Guardspike Choker
-	i(77317),	-- Heartcrusher Wristplates
-	i(77149),	-- Helmet of Perpetual Rebirth
-	i(77147),	-- Hood of Hidden Flesh
-	i(77079),	-- Hungermouth Wand
-	i(77099),	-- Indefatigable Greatcloak
-	i(77156),	-- Jaw of Repudiation
-	i(77176),	-- Kavan's Forsaken Treads
-	i(77113),	-- Kiroptyric Sigil
-	i(77170),	-- Kneebreaker Boots
-	i(77161),	-- Lightfinger Handwraps
-	i(77121),	-- Lightwarper Vestments
-	i(77320),	-- Luminescent Bracers
-	i(77098),	-- Nanoprecise Cape
-	i(77090),	-- Necklace of Black Dragon's Teeth
-	i(77148),	-- Nocturnal Gaze
-	i(77088),	-- Opal of the Secret Order
-	i(77115),	-- Reflection of the Light
-	i(77110),	-- Ring of Torn Flesh
-	i(77122),	-- Robes of Searing Shadow
-	i(77173),	-- Rooftop Griptoes
-	i(77116),	-- Rotting Skull
-	i(77174),	-- Sabatons of the Graceful Spirit
-	i(77078),	-- Scintillating Rods
-	i(77108),	-- Seal of the Grand Architect
-	i(77126),	-- Shadowbinder Chestguard
-	i(77123),	-- Shining Carapace of Glory
-	i(77112),	-- Signet of the Resolute
-	i(77169),	-- Silver Sabatons of Fury
-	i(77146),	-- Soulgaze Cowl
-	i(77177),	-- Splinterfoot Sandals
-	i(77179),	-- Tentacular Belt
-	i(77157),	-- The Hands of Gilly
-	i(77089),	-- Threadlinked Chain
-	i(77187),	-- Vestal's Irrepressible Girdle
-	i(77155),	-- Visage of Petrification
-	i(77151),	-- Wolfdream Circlet
-	i(77096),	-- Woundlicker Cover
-	i(77150),	-- Zeherah's Dragonskull Crown
-};
-local TIER_THIRTEEN_GROUPS = applyclassicphase(CATA_PHASE_FIVE,
-	appendGroups(TIER_THIRTEEN_COMMON_GROUPS,
-	appendGroups(TIER_THIRTEEN_HEROIC_GROUPS,
-	appendGroups(TIER_THIRTEEN_NORMAL_GROUPS,
-	appendGroups(TIER_THIRTEEN_RAIDFINDER_GROUPS, {
-})))));
-
-local TIER_TWELVE_NORMAL_GROUPS = {	-- Firelands [Tier 12] (Normal)
-	cl(WARRIOR, {
-		-- DPS
-		i(71070),	-- Helmet of the Molten Giant
-		i(71072),	-- Pauldrons of the Molten Giant
-		i(71069),	-- Gauntlets of the Molten Giant
-		i(71068),	-- Battleplate of the Molten Giant
-		i(71071),	-- Legplates of the Molten Giant
-
-		-- Protection
-		i(70944),	-- Faceguard of the Molten Giant
-		i(70941),	-- Shoulderguards of the Molten Giant
-		i(70943),	-- Handguards of the Molten Giant
-		i(70945),	-- Chestguard of the Molten Giant
-		i(70942),	-- Legguards of the Molten Giant
-	}),
-	cl(PALADIN, {
-		-- DPS
-		i(71065),	-- Immolation Helmet
-		i(71067),	-- Immolation Pauldrons
-		i(71064),	-- Immolation Gauntlets
-		i(71063),	-- Immolation Battleplate
-		i(71066),	-- Immolation Legplates
-
-		-- Holy
-		i(71093),	-- Immolation Headguard
-		i(71095),	-- Immolation Mantle
-		i(71092),	-- Immolation Gloves
-		i(71091),	-- Immolation Breastplate
-		i(71094),	-- Immolation Greaves
-
-		-- Protection
-		i(70948),	-- Immolation Faceguard
-		i(70946),	-- Immolation Shoulderguards
-		i(70949),	-- Immolation Handguards
-		i(70950),	-- Immolation Chestguard
-		i(70947),	-- Immolation Legguards
-	}),
-	cl(DEATHKNIGHT, {
-		-- DPS
-		i(71060),	-- Elementium Deathplate Helmet
-		i(71062),	-- Elementium Deathplate Pauldrons
-		i(71059),	-- Elementium Deathplate Gauntlets
-		i(71058),	-- Elementium Deathplate Breastplate
-		i(71061),	-- Elementium Deathplate Greaves
-
-		-- Protection
-		i(70954),	-- Elementium Deathplate Faceguard
-		i(70951),	-- Elementium Deathplate Shoulderguards
-		i(70953),	-- Elementium Deathplate Handguards
-		i(70955),	-- Elementium Deathplate Chestguard
-		i(70952),	-- Elementium Deathplate Legguards
-	}),
-	cl(HUNTER, {
-		i(71051),	-- Flamewaker's Headguard
-		i(71053),	-- Flamewaker's Spaulders
-		i(71050),	-- Flamewaker's Gloves
-		i(71054),	-- Flamewaker's Tunic
-		i(71052),	-- Flamewaker's Legguards
-	}),
-	cl(ROGUE, {
-		i(71047),	-- Dark Phoenix Helmet
-		i(71049),	-- Dark Phoenix Spaulders
-		i(71046),	-- Dark Phoenix Gloves
-		i(71045),	-- Dark Phoenix Tunic
-		i(71048),	-- Dark Phoenix Legguards
-	}),
-	cl(PRIEST, {
-		-- DPS
-		i(71277),	-- Hood of the Cleansing Flame
-		i(71280),	-- Shoulderwraps of the Cleansing Flame
-		i(71276),	-- Gloves of the Cleansing Flame
-		i(71279),	-- Vestment of the Cleansing Flame
-		i(71278),	-- Leggings of the Cleansing Flame
-
-		-- Holy
-		i(71272),	-- Cowl of the Cleansing Flame
-		i(71275),	-- Mantle of the Cleansing Flame
-		i(71271),	-- Handwraps of the Cleansing Flame
-		i(71274),	-- Robes of the Cleansing Flame
-		i(71273),	-- Legwraps of the Cleansing Flame
-	}),
-	cl(SHAMAN, {
-		-- Enhance
-		i(71303),	-- Erupting Volcanic Helmet
-		i(71305),	-- Erupting Volcanic Spaulders
-		i(71302),	-- Erupting Volcanic Grips
-		i(71301),	-- Erupting Volcanic Cuirass
-		i(71304),	-- Erupting Volcanic Legguards
-
-		-- Elemental
-		i(71293),	-- Erupting Volcanic Headpiece
-		i(71295),	-- Erupting Volcanic Shoulderwraps
-		i(71292),	-- Erupting Volcanic Gloves
-		i(71291),	-- Erupting Volcanic Hauberk
-		i(71294),	-- Erupting Volcanic Kilt
-
-		-- Restoration
-		i(71298),	-- Erupting Volcanic Faceguard
-		i(71300),	-- Erupting Volcanic Mantle
-		i(71297),	-- Erupting Volcanic Handwraps
-		i(71296),	-- Erupting Volcanic Tunic
-		i(71299),	-- Erupting Volcanic Legwraps
-	}),
-	cl(MAGE, {
-		i(71287),	-- Firehawk Hood
-		i(71290),	-- Firehawk Mantle
-		i(71286),	-- Firehawk Gloves
-		i(71289),	-- Firehawk Robes
-		i(71288),	-- Firehawk Leggings
-	}),
-	cl(WARLOCK, {
-		i(71282),	-- Balespider's Hood
-		i(71285),	-- Balespider's Mantle
-		i(71281),	-- Balespider's Handwraps
-		i(71284),	-- Balespider's Robes
-		i(71283),	-- Balespider's Leggings
-	}),
-	cl(DRUID, {
-		-- Boomkin
-		i(71108),	-- Obsidian Arborweave Cover
-		i(71111),	-- Obsidian Arborweave Shoulderwraps
-		i(71107),	-- Obsidian Arborweave Gloves
-		i(71110),	-- Obsidian Arborweave Vestment
-		i(71109),	-- Obsidian Arborweave Leggings
-
-		-- Feral
-		i(71098),	-- Obsidian Arborweave Headpiece
-		i(71101),	-- Obsidian Arborweave Spaulders
-		i(71097),	-- Obsidian Arborweave Grips
-		i(71100),	-- Obsidian Arborweave Raiment
-		i(71099),	-- Obsidian Arborweave Legguards
-
-		-- Restoration
-		i(71103),	-- Obsidian Arborweave Helm
-		i(71106),	-- Obsidian Arborweave Mantle
-		i(71102),	-- Obsidian Arborweave Handwraps
-		i(71105),	-- Obsidian Arborweave Tunic
-		i(71104),	-- Obsidian Arborweave Legwraps
-	}),
-};
-local TIER_TWELVE_HEROIC_GROUPS = {	-- Firelands [Tier 12] (Heroic)
-	cl(WARRIOR, {
-		-- DPS
-		i(71599, {	-- Helmet of the Molten Giant
-			["cost"] = { { "i", 71684.05, 1 }, },	-- Crown of the Fiery Protector
-		}),
-		i(71603, {	-- Pauldrons of the Molten Giant
-			["cost"] = { { "i", 71687.05, 1 }, },	-- Shoulders of the Fiery Protector
-		}),
-		i(71601, {	-- Gauntlets of the Molten Giant
-			["cost"] = {
-				{ "i", 71069, 1 },	-- Gauntlets of the Molten Giant
-				{ "i", 71683.05, 1 },	-- Gauntlets of the Fiery Protector
-			},
-		}),
-		i(71600, {	-- Battleplate of the Molten Giant
-			["cost"] = {
-				{ "i", 71068, 1 },	-- Battleplate of the Molten Giant
-				{ "i", 71686.05, 1 },	-- Chest of the Fiery Protector
-			},
-		}),
-		i(71602, {	-- Legplates of the Molten Giant
-			["cost"] = {
-				{ "i", 71071, 1 },	-- Legplates of the Molten Giant
-				{ "i", 71685.05, 1 },	-- Leggings of the Fiery Protector
-			},
-		}),
-
-		-- Protection
-		i(71606, {	-- Faceguard of the Molten Giant
-			["cost"] = { { "i", 71684.05, 1 }, },	-- Crown of the Fiery Protector
-		}),
-		i(71608, {	-- Shoulderguards of the Molten Giant
-			["cost"] = { { "i", 71687.05, 1 }, },	-- Shoulders of the Fiery Protector
-		}),
-		i(71605, {	-- Handguards of the Molten Giant
-			["cost"] = {
-				{ "i", 70943, 1 },	-- Handguards of the Molten Giant
-				{ "i", 71683.05, 1 },	-- Gauntlets of the Fiery Protector
-			},
-		}),
-		i(71604, {	-- Chestguard of the Molten Giant
-			["cost"] = {
-				{ "i", 70945, 1 },	-- Chestguard of the Molten Giant
-				{ "i", 71686.05, 1 },	-- Chest of the Fiery Protector
-			},
-		}),
-		i(71607, {	-- Legguards of the Molten Giant
-			["cost"] = {
-				{ "i", 70942, 1 },	-- Legguards of the Molten Giant
-				{ "i", 71685.05, 1 },	-- Leggings of the Fiery Protector
-			},
-		}),
-	}),
-	cl(PALADIN, {
-		-- DPS
-		i(71514, {	-- Immolation Helmet
-			["cost"] = { { "i", 71677.05, 1 }, },	-- Crown of the Fiery Conqueror
-		}),
-		i(71516, {	-- Immolation Pauldrons
-			["cost"] = { { "i", 71680.05, 1 }, },	-- Shoulders of the Fiery Conqueror
-		}),
-		i(71513, {	-- Immolation Gauntlets
-			["cost"] = {
-				{ "i", 71064, 1 },	-- Immolation Gauntlets
-				{ "i", 71676.05, 1 },	-- Gauntlets of the Fiery Conqueror
-			},
-		}),
-		i(71512, {	-- Immolation Battleplate
-			["cost"] = {
-				{ "i", 71063, 1 },	-- Immolation Battleplate
-				{ "i", 71679.05, 1 },	-- Chest of the Fiery Conqueror
-			},
-		}),
-		i(71515, {	-- Immolation Legplates
-			["cost"] = {
-				{ "i", 71066, 1 },	-- Immolation Legplates
-				{ "i", 71678.05, 1 },	-- Leggings of the Fiery Conqueror
-			},
-		}),
-
-		-- Holy
-		i(71519, {	-- Immolation Headguard
-			["cost"] = { { "i", 71677.05, 1 }, },	-- Crown of the Fiery Conqueror
-		}),
-		i(71521, {	-- Immolation Mantle
-			["cost"] = { { "i", 71680.05, 1 }, },	-- Shoulders of the Fiery Conqueror
-		}),
-		i(71518, {	-- Immolation Gloves
-			["cost"] = {
-				{ "i", 71092, 1 },	-- Immolation Gloves
-				{ "i", 71676.05, 1 },	-- Gauntlets of the Fiery Conqueror
-			},
-		}),
-		i(71517, {	-- Immolation Breastplate
-			["cost"] = {
-				{ "i", 71091, 1 },	-- Immolation Breastplate
-				{ "i", 71679.05, 1 },	-- Chest of the Fiery Conqueror
-			},
-		}),
-		i(71520, {	-- Immolation Greaves
-			["cost"] = {
-				{ "i", 71094, 1 },	-- Immolation Greaves
-				{ "i", 71678.05, 1 },	-- Leggings of the Fiery Conqueror
-			},
-		}),
-
-		-- Protection
-		i(71524, {	-- Immolation Faceguard
-			["cost"] = { { "i", 71677.05, 1 }, },	-- Crown of the Fiery Conqueror
-		}),
-		i(71526, {	-- Immolation Shoulderguards
-			["cost"] = { { "i", 71680.05, 1 }, },	-- Shoulders of the Fiery Conqueror
-		}),
-		i(71523, {	-- Immolation Handguards
-			["cost"] = {
-				{ "i", 70949, 1 },	-- Immolation Handguards
-				{ "i", 71676.05, 1 },	-- Gauntlets of the Fiery Conqueror
-			},
-		}),
-		i(71522, {	-- Immolation Chestguard
-			["cost"] = {
-				{ "i", 70950, 1 },	-- Immolation Chestguard
-				{ "i", 71679.05, 1 },	-- Chest of the Fiery Conqueror
-			},
-		}),
-		i(71525, {	-- Immolation Legguards
-			["cost"] = {
-				{ "i", 70947, 1 },	-- Immolation Legguards
-				{ "i", 71678.05, 1 },	-- Leggings of the Fiery Conqueror
-			},
-		}),
-	}),
-	cl(DEATHKNIGHT, {
-		-- DPS
-		i(71478, {	-- Elementium Deathplate Helmet
-			["cost"] = { { "i", 71670.05, 1 }, },	-- Crown of the Fiery Vanquisher
-		}),
-		i(71480, {	-- Elementium Deathplate Pauldrons
-			["cost"] = { { "i", 71673.05, 1 }, },	-- Shoulders of the Fiery Vanquisher
-		}),
-		i(71477, {	-- Elementium Deathplate Gauntlets
-			["cost"] = {
-				{ "i", 71059, 1 },	-- Elementium Deathplate Gauntlets
-				{ "i", 71669.05, 1 },	-- Gauntlets of the Fiery Vanquisher
-			},
-		}),
-		i(71476, {	-- Elementium Deathplate Breastplate
-			["cost"] = {
-				{ "i", 71058, 1 },	-- Elementium Deathplate Breastplate
-				{ "i", 71672.05, 1 },	-- Chest of the Fiery Vanquisher
-			},
-		}),
-		i(71479, {	-- Elementium Deathplate Greaves
-			["cost"] = {
-				{ "i", 71061, 1 },	-- Elementium Deathplate Greaves
-				{ "i", 71671.05, 1 },	-- Leggings of the Fiery Vanquisher
-			},
-		}),
-
-		-- Protection
-		i(71483, {	-- Elementium Deathplate Faceguard
-			["cost"] = { { "i", 71670.05, 1 }, },	-- Crown of the Fiery Vanquisher
-		}),
-		i(71485, {	-- Elementium Deathplate Shoulderguards
-			["cost"] = { { "i", 71673.05, 1 }, },	-- Shoulders of the Fiery Vanquisher
-		}),
-		i(71482, {	-- Elementium Deathplate Handguards
-			["cost"] = {
-				{ "i", 70953, 1 },	-- Elementium Deathplate Handguards
-				{ "i", 71669.05, 1 },	-- Gauntlets of the Fiery Vanquisher
-			},
-		}),
-		i(71481, {	-- Elementium Deathplate Chestguard
-			["cost"] = {
-				{ "i", 70955, 1 },	-- Elementium Deathplate Chestguard
-				{ "i", 71672.05, 1 },	-- Chest of the Fiery Vanquisher
-			},
-		}),
-		i(71484, {	-- Elementium Deathplate Legguards
-			["cost"] = {
-				{ "i", 70952, 1 },	-- Elementium Deathplate Legguards
-				{ "i", 71671.05, 1 },	-- Leggings of the Fiery Vanquisher
-			},
-		}),
-	}),
-	cl(HUNTER, {
-		i(71503, {	-- Flamewaker's Headguard
-			["cost"] = { { "i", 71684.05, 1 }, },	-- Crown of the Fiery Protector
-		}),
-		i(71505, {	-- Flamewaker's Spaulders
-			["cost"] = { { "i", 71687.05, 1 }, },	-- Shoulders of the Fiery Protector
-		}),
-		i(71502, {	-- Flamewaker's Gloves
-			["cost"] = {
-				{ "i", 71050, 1 },	-- Flamewaker's Gloves
-				{ "i", 71683.05, 1 },	-- Gauntlets of the Fiery Protector
-			},
-		}),
-		i(71501, {	-- Flamewaker's Tunic
-			["cost"] = {
-				{ "i", 71054, 1 },	-- Flamewaker's Tunic
-				{ "i", 71686.05, 1 },	-- Chest of the Fiery Protector
-			},
-		}),
-		i(71504, {	-- Flamewaker's Legguards
-			["cost"] = {
-				{ "i", 71052, 1 },	-- Flamewaker's Legguards
-				{ "i", 71685, 1 },	-- Leggings of the Fiery Protector
-			},
-		}),
-	}),
-	cl(ROGUE, {
-		i(71539, {	-- Dark Phoenix Helmet
-			["cost"] = { { "i", 71670.05, 1 }, },	-- Crown of the Fiery Vanquisher
-		}),
-		i(71541, {	-- Dark Phoenix Spaulders
-			["cost"] = { { "i", 71673.05, 1 }, },	-- Shoulders of the Fiery Vanquisher
-		}),
-		i(71538, {	-- Dark Phoenix Gloves
-			["cost"] = {
-				{ "i", 71046, 1 },	-- Dark Phoenix Gloves
-				{ "i", 71669.05, 1 },	-- Gauntlets of the Fiery Vanquisher
-			},
-		}),
-		i(71537, {	-- Dark Phoenix Tunic
-			["cost"] = {
-				{ "i", 71045, 1 },	-- Dark Phoenix Tunic
-				{ "i", 71672.05, 1 },	-- Chest of the Fiery Vanquisher
-			},
-		}),
-		i(71540, {	-- Dark Phoenix Legguards
-			["cost"] = {
-				{ "i", 71048, 1 },	-- Dark Phoenix Legguards
-				{ "i", 71671.05, 1 },	-- Leggings of the Fiery Vanquisher
-			},
-		}),
-	}),
-	cl(PRIEST, {
-		-- DPS
-		i(71533, {	-- Hood of the Cleansing Flame
-			["cost"] = { { "i", 71677.05, 1 }, },	-- Crown of the Fiery Conqueror
-		}),
-		i(71536, {	-- Shoulderwraps of the Cleansing Flame
-			["cost"] = { { "i", 71680.05, 1 }, },	-- Shoulders of the Fiery Conqueror
-		}),
-		i(71532, {	-- Gloves of the Cleansing Flame
-			["cost"] = {
-				{ "i", 71276, 1 },	-- Gloves of the Cleansing Flame
-				{ "i", 71676.05, 1 },	-- Gauntlets of the Fiery Conqueror
-			},
-		}),
-		i(71535, {	-- Vestment of the Cleansing Flame
-			["cost"] = {
-				{ "i", 71279, 1 },	-- Vestment of the Cleansing Flame
-				{ "i", 71679.05, 1 },	-- Chest of the Fiery Conqueror
-			},
-		}),
-		i(71534, {	-- Leggings of the Cleansing Flame
-			["cost"] = {
-				{ "i", 71278, 1 },	-- Leggings of the Cleansing Flame
-				{ "i", 71678.05, 1 },	-- Leggings of the Fiery Conqueror
-			},
-		}),
-
-		-- Holy
-		i(71528, {	-- Cowl of the Cleansing Flame
-			["cost"] = { { "i", 71677.05, 1 }, },	-- Crown of the Fiery Conqueror
-		}),
-		i(71531, {	-- Mantle of the Cleansing Flame
-			["cost"] = { { "i", 71680.05, 1 }, },	-- Shoulders of the Fiery Conqueror
-		}),
-		i(71527, {	-- Handwraps of the Cleansing Flame
-			["cost"] = {
-				{ "i", 71271, 1 },	-- Handwraps of the Cleansing Flame
-				{ "i", 71676.05, 1 },	-- Gauntlets of the Fiery Conqueror
-			},
-		}),
-		i(71530, {	-- Robes of the Cleansing Flame
-			["cost"] = {
-				{ "i", 71274, 1 },	-- Robes of the Cleansing Flame
-				{ "i", 71679.05, 1 },	-- Chest of the Fiery Conqueror
-			},
-		}),
-		i(71529, {	-- Legwraps of the Cleansing Flame
-			["cost"] = {
-				{ "i", 71273, 1 },	-- Legwraps of the Cleansing Flame
-				{ "i", 71678.05, 1 },	-- Leggings of the Fiery Conqueror
-			},
-		}),
-	}),
-	cl(SHAMAN, {
-		-- Enhance
-		i(71549, {	-- Erupting Volcanic Helmet
-			["cost"] = { { "i", 71684.05, 1 }, },	-- Crown of the Fiery Protector
-		}),
-		i(71551, {	-- Erupting Volcanic Spaulders
-			["cost"] = { { "i", 71687.05, 1 }, },	-- Shoulders of the Fiery Protector
-		}),
-		i(71548, {	-- Erupting Volcanic Grips
-			["cost"] = {
-				{ "i", 71302, 1 },	-- Erupting Volcanic Grips
-				{ "i", 71683.05, 1 },	-- Gauntlets of the Fiery Protector
-			},
-		}),
-		i(71547, {	-- Erupting Volcanic Cuirass
-			["cost"] = {
-				{ "i", 71301, 1 },	-- Erupting Volcanic Cuirass
-				{ "i", 71686.05, 1 },	-- Chest of the Fiery Protector
-			},
-		}),
-		i(71550, {	-- Erupting Volcanic Legguards
-			["cost"] = {
-				{ "i", 71304, 1 },	-- Erupting Volcanic Legguards
-				{ "i", 71685.05, 1 },	-- Leggings of the Fiery Protector
-			},
-		}),
-
-		-- Elemental
-		i(71554, {	-- Erupting Volcanic Headpiece
-			["cost"] = { { "i", 71684.05, 1 }, },	-- Crown of the Fiery Protector
-		}),
-		i(71556, {	-- Erupting Volcanic Shoulderwraps
-			["cost"] = { { "i", 71687.05, 1 }, },	-- Shoulders of the Fiery Protector
-		}),
-		i(71553, {	-- Erupting Volcanic Gloves
-			["cost"] = {
-				{ "i", 71292, 1 },	-- Erupting Volcanic Gloves
-				{ "i", 71683.05, 1 },	-- Gauntlets of the Fiery Protector
-			},
-		}),
-		i(71552, {	-- Erupting Volcanic Hauberk
-			["cost"] = {
-				{ "i", 71291, 1 },	-- Erupting Volcanic Hauberk
-				{ "i", 71686.05, 1 },	-- Chest of the Fiery Protector
-			},
-		}),
-		i(71555, {	-- Erupting Volcanic Kilt
-			["cost"] = {
-				{ "i", 71294, 1 },	-- Erupting Volcanic Kilt
-				{ "i", 71685.05, 1 },	-- Leggings of the Fiery Protector
-			},
-		}),
-
-		-- Restoration
-		i(71544, {	-- Erupting Volcanic Faceguard
-			["cost"] = { { "i", 71684.05, 1 }, },	-- Crown of the Fiery Protector
-		}),
-		i(71546, {	-- Erupting Volcanic Mantle
-			["cost"] = { { "i", 71687.05, 1 }, },	-- Shoulders of the Fiery Protector
-		}),
-		i(71543, {	-- Erupting Volcanic Handwraps
-			["cost"] = {
-				{ "i", 71297, 1 },	-- Erupting Volcanic Handwraps
-				{ "i", 71683.05, 1 },	-- Gauntlets of the Fiery Protector
-			},
-		}),
-		i(71542, {	-- Erupting Volcanic Tunic
-			["cost"] = {
-				{ "i", 71296, 1 },	-- Erupting Volcanic Tunic
-				{ "i", 71686.05, 1 },	-- Chest of the Fiery Protector
-			},
-		}),
-		i(71545, {	-- Erupting Volcanic Legwraps
-			["cost"] = {
-				{ "i", 71299, 1 },	-- Erupting Volcanic Legwraps
-				{ "i", 71685.05, 1 },	-- Leggings of the Fiery Protector
-			},
-		}),
-	}),
-	cl(MAGE, {
-		i(71508, {	-- Firehawk Hood
-			["cost"] = { { "i", 71670.05, 1 }, },	-- Crown of the Fiery Vanquisher
-		}),
-		i(71511, {	-- Firehawk Mantle
-			["cost"] = { { "i", 71673.05, 1 }, },	-- Shoulders of the Fiery Vanquisher
-		}),
-		i(71507, {	-- Firehawk Gloves
-			["cost"] = {
-				{ "i", 71286, 1 },	-- Firehawk Gloves
-				{ "i", 71669.05, 1 },	-- Gauntlets of the Fiery Vanquisher
-			},
-		}),
-		i(71510, {	-- Firehawk Robes
-			["cost"] = {
-				{ "i", 71289, 1 },	-- Firehawk Robes
-				{ "i", 71672.05, 1 },	-- Chest of the Fiery Vanquisher
-			},
-		}),
-		i(71509, {	-- Firehawk Leggings
-			["cost"] = {
-				{ "i", 71288, 1 },	-- Firehawk Leggings
-				{ "i", 71671.05, 1 },	-- Leggings of the Fiery Vanquisher
-			},
-		}),
-	}),
-	cl(WARLOCK, {
-		i(71595, {	-- Balespider's Hood
-			["cost"] = { { "i", 71677.05, 1 }, },	-- Crown of the Fiery Conqueror
-		}),
-		i(71598, {	-- Balespider's Mantle
-			["cost"] = { { "i", 71680.05, 1 }, },	-- Shoulders of the Fiery Conqueror
-		}),
-		i(71594, {	-- Balespider's Handwraps
-			["cost"] = {
-				{ "i", 71281, 1 },	-- Balespider's Handwraps
-				{ "i", 71676.05, 1 },	-- Gauntlets of the Fiery Conqueror
-			},
-		}),
-		i(71597, {	-- Balespider's Robes
-			["cost"] = {
-				{ "i", 71284, 1 },	-- Balespider's Robes
-				{ "i", 71679.05, 1 },	-- Chest of the Fiery Conqueror
-			},
-		}),
-		i(71596, {	-- Balespider's Leggings
-			["cost"] = {
-				{ "i", 71283, 1 },	-- Balespider's Leggings
-				{ "i", 71678.05, 1 },	-- Leggings of the Fiery Conqueror
-			},
-		}),
-	}),
-	cl(DRUID, {
-		-- Boomkin
-		i(71497, {	-- Obsidian Arborweave Cover
-			["cost"] = { { "i", 71670.05, 1 }, },	-- Crown of the Fiery Vanquisher
-		}),
-		i(71500, {	-- Obsidian Arborweave Shoulderwraps
-			["cost"] = { { "i", 71673.05, 1 }, },	-- Shoulders of the Fiery Vanquisher
-		}),
-		i(71496, {	-- Obsidian Arborweave Gloves
-			["cost"] = {
-				{ "i", 71107, 1 },	-- Obsidian Arborweave Gloves
-				{ "i", 71669.05, 1 },	-- Gauntlets of the Fiery Vanquisher
-			},
-		}),
-		i(71499, {	-- Obsidian Arborweave Vestment
-			["cost"] = {
-				{ "i", 71110, 1 },	-- Obsidian Arborweave Vestment
-				{ "i", 71672.05, 1 },	-- Chest of the Fiery Vanquisher
-			},
-		}),
-		i(71498, {	-- Obsidian Arborweave Leggings
-			["cost"] = {
-				{ "i", 71109, 1 },	-- Obsidian Arborweave Leggings
-				{ "i", 71671.05, 1 },	-- Leggings of the Fiery Vanquisher
-			},
-		}),
-
-		-- Feral
-		i(71488, {	-- Obsidian Arborweave Headpiece
-			["cost"] = { { "i", 71670.05, 1 }, },	-- Crown of the Fiery Vanquisher
-		}),
-		i(71490, {	-- Obsidian Arborweave Spaulders
-			["cost"] = { { "i", 71673.05, 1 }, },	-- Shoulders of the Fiery Vanquisher
-		}),
-		i(71487, {	-- Obsidian Arborweave Grips
-			["cost"] = {
-				{ "i", 71097, 1 },	-- Obsidian Arborweave Grips
-				{ "i", 71669.05, 1 },	-- Gauntlets of the Fiery Vanquisher
-			},
-		}),
-		i(71486, {	-- Obsidian Arborweave Raiment
-			["cost"] = {
-				{ "i", 71100, 1 },	-- Obsidian Arborweave Raiment
-				{ "i", 71672.05, 1 },	-- Chest of the Fiery Vanquisher
-			},
-		}),
-		i(71489, {	-- Obsidian Arborweave Legguards
-			["cost"] = {
-				{ "i", 71099, 1 },	-- Obsidian Arborweave Legguards
-				{ "i", 71671.05, 1 },	-- Leggings of the Fiery Vanquisher
-			},
-		}),
-
-		-- Restoration
-		i(71492, {	-- Obsidian Arborweave Helm
-			["cost"] = { { "i", 71670.05, 1 }, },	-- Crown of the Fiery Vanquisher
-		}),
-		i(71495, {	-- Obsidian Arborweave Mantle
-			["cost"] = { { "i", 71673.05, 1 }, },	-- Shoulders of the Fiery Vanquisher
-		}),
-		i(71491, {	-- Obsidian Arborweave Handwraps
-			["cost"] = {
-				{ "i", 71102, 1 },	-- Obsidian Arborweave Handwraps
-				{ "i", 71669.05, 1 },	-- Gauntlets of the Fiery Vanquisher
-			},
-		}),
-		i(71494, {	-- Obsidian Arborweave Tunic
-			["cost"] = {
-				{ "i", 71105, 1 },	-- Obsidian Arborweave Tunic
-				{ "i", 71672.05, 1 },	-- Chest of the Fiery Vanquisher
-			},
-		}),
-		i(71493, {	-- Obsidian Arborweave Legwraps
-			["cost"] = {
-				{ "i", 71104, 1 },	-- Obsidian Arborweave Legwraps
-				{ "i", 71671.05, 1 },	-- Leggings of the Fiery Vanquisher
-			},
-		}),
-	}),
-};
-local TIER_TWELVE_COMMON_GROUPS = {
-	i(71213),	-- Amulet of Burning Brilliance
-	i(71264),	-- Bracers of Forked Lightning
-	i(71260),	-- Bracers of Imperious Truths
-	i(71263),	-- Bracers of Misting Ash
-	i(70937),	-- Bracers of Regal Force
-	i(71210),	-- Crystalline Brimstone Ring
-	i(70940),	-- Deflecting Brimstone Band
-	i(71265),	-- Emberflame Bracers
-	i(71214),	-- Firemind Pendant
-	i(71266),	-- Firesoul Wristguards
-	i(71130),	-- Flamebinder Bracers
-	i(71261),	-- Gigantiform Bracers
-	i(71129),	-- Necklace of Smoke Signals
-	i(71150),	-- Scorchvine Wand
-	i(71208),	-- Serrated Brimstone Signet
-	i(71262),	-- Smolderskull Bindings
-	i(71211),	-- Soothing Brimstone Circle
-	i(71209),	-- Splintered Brimstone Seal
-	i(71212),	-- Stoneheart Choker
-	i(70935),	-- Stoneheart Necklace
-	i(71151),	-- Trail of Embers
-};
-local TIER_TWELVE_GROUPS = applyclassicphase(CATA_PHASE_FOUR,
-	appendGroups(TIER_TWELVE_COMMON_GROUPS,
-	appendGroups(TIER_TWELVE_HEROIC_GROUPS,
-	appendGroups(TIER_TWELVE_NORMAL_GROUPS, {
-}))));
-
-local TIER_ELEVEN_NORMAL_GROUPS = {	-- Bastion of Twilight [Tier 11] (Normal)
-	cl(WARRIOR, {
-		-- DPS
-		i(60325),	-- Earthen Helmet
-		i(60327),	-- Earthen Pauldrons
-		i(60326),	-- Earthen Gauntlets
-		i(60323),	-- Earthen Battleplate
-		i(60324),	-- Earthen Legplates
-
-		-- Protection
-		i(60328),	-- Earthen Faceguard
-		i(60331),	-- Earthen Shoulderguards
-		i(60332),	-- Earthen Handguards
-		i(60329),	-- Earthen Chestguard
-		i(60330),	-- Earthen Legguards
-	}),
-	cl(PALADIN, {
-		-- DPS
-		i(60346),	-- Reinforced Sapphirium Helmet
-		i(60348),	-- Reinforced Sapphirium Pauldrons
-		i(60345),	-- Reinforced Sapphirium Gauntlets
-		i(60344),	-- Reinforced Sapphirium Battleplate
-		i(60347),	-- Reinforced Sapphirium Legplates
-
-		-- Holy
-		i(60359),	-- Reinforced Sapphirium Headguard
-		i(60362),	-- Reinforced Sapphirium Mantle
-		i(60363),	-- Reinforced Sapphirium Gloves
-		i(60360),	-- Reinforced Sapphirium Breastplate
-		i(60361),	-- Reinforced Sapphirium Greaves
-
-		-- Protection
-		i(60356),	-- Reinforced Sapphirium Faceguard
-		i(60358),	-- Reinforced Sapphirium Shoulderguards
-		i(60355),	-- Reinforced Sapphirium Handguards
-		i(60354),	-- Reinforced Sapphirium Chestguard
-		i(60357),	-- Reinforced Sapphirium Legguards
-	}),
-	cl(DEATHKNIGHT, {
-		-- DPS
-		i(60341),	-- Magma Plated Helmet
-		i(60343),	-- Magma Plated Pauldrons
-		i(60340),	-- Magma Plated Gauntlets
-		i(60339),	-- Magma Plated Battleplate
-		i(60342),	-- Magma Plated Legplates
-
-		-- Protection
-		i(60351),	-- Magma Plated Faceguard
-		i(60353),	-- Magma Plated Shoulderguards
-		i(60350),	-- Magma Plated Handguards
-		i(60349),	-- Magma Plated Chestguard
-		i(60352),	-- Magma Plated Legguards
-	}),
-	cl(HUNTER, {
-		i(60303),	-- Lightning-Charged Headguard
-		i(60306),	-- Lightning-Charged Spaulders
-		i(60307),	-- Lightning-Charged Gloves
-		i(60304),	-- Lightning-Charged Tunic
-		i(60305),	-- Lightning-Charged Legguards
-	}),
-	cl(ROGUE, {
-		i(60299),	-- Wind Dancer's Helmet
-		i(60302),	-- Wind Dancer's Spaulders
-		i(60298),	-- Wind Dancer's Gloves
-		i(60301),	-- Wind Dancer's Tunic
-		i(60300),	-- Wind Dancer's Legguards
-	}),
-	cl(PRIEST, {
-		-- DPS
-		i(60256),	-- Mercurial Hood
-		i(60253),	-- Mercurial Shoulderwraps
-		i(60257),	-- Mercurial Gloves
-		i(60254),	-- Mercurial Vestment
-		i(60255),	-- Mercurial Leggings
-
-		-- Holy
-		i(60258),	-- Mercurial Cowl
-		i(60262),	-- Mercurial Mantle
-		i(60275),	-- Mercurial Handwraps
-		i(60259),	-- Mercurial Robes
-		i(60261),	-- Mercurial Legwraps
-	}),
-	cl(SHAMAN, {
-		-- Enhance
-		i(60320),	-- Helmet of the Raging Elements
-		i(60322),	-- Spaulders of the Raging Elements
-		i(60319),	-- Grips of the Raging Elements
-		i(60318),	-- Cuirass of the Raging Elements
-		i(60321),	-- Legguards of the Raging Elements
-
-		-- Elemental
-		i(60315),	-- Headpiece of the Raging Elements
-		i(60317),	-- Shoulderwraps of the Raging Elements
-		i(60314),	-- Gloves of the Raging Elements
-		i(60313),	-- Hauberk of the Raging Elements
-		i(60316),	-- Kilt of the Raging Elements
-
-		-- Restoration
-		i(60308),	-- Faceguard of the Raging Elements
-		i(60311),	-- Mantle of the Raging Elements
-		i(60312),	-- Handwraps of the Raging Elements
-		i(60309),	-- Tunic of the Raging Elements
-		i(60310),	-- Legwraps of the Raging Elements
-	}),
-	cl(MAGE, {
-		i(60243),	-- Firelord's Hood
-		i(60246),	-- Firelord's Mantle
-		i(60247),	-- Firelord's Gloves
-		i(60244),	-- Firelord's Robes
-		i(60245),	-- Firelord's Leggings
-	}),
-	cl(WARLOCK, {
-		i(60249),	-- Shadowflame Hood
-		i(60252),	-- Shadowflame Mantle
-		i(60248),	-- Shadowflame Handwraps
-		i(60251),	-- Shadowflame Robes
-		i(60250),	-- Shadowflame Leggings
-	}),
-	cl(DRUID, {
-		-- Boomkin
-		i(60282),	-- Stormrider's Cover
-		i(60284),	-- Stormrider's Shoulderwraps
-		i(60285),	-- Stormrider's Gloves
-		i(60281),	-- Stormrider's Vestment
-		i(60283),	-- Stormrider's Leggings
-
-		-- Feral
-		i(60286),	-- Stormrider's Headpiece
-		i(60289),	-- Stormrider's Spaulders
-		i(60290),	-- Stormrider's Grips
-		i(60287),	-- Stormrider's Raiment
-		i(60288),	-- Stormrider's Legguards
-
-		-- Restoration
-		i(60277),	-- Stormrider's Helm
-		i(60279),	-- Stormrider's Mantle
-		i(60280),	-- Stormrider's Handwraps
-		i(60276),	-- Stormrider's Robes
-		i(60278),	-- Stormrider's Legwraps
-	}),
-};
-local TIER_ELEVEN_HEROIC_GROUPS = {	-- Bastion of Twilight [Tier 11] (Heroic)
-	cl(WARRIOR, {
-		-- DPS
-		i(65266, {	-- Earthen Helmet
-			["cost"] = { { "i", 65000, 1 }, },	-- Crown of the Forlorn Protector
-		}),
-		i(65268, {	-- Earthen Pauldrons
-			["cost"] = { { "i", 65087, 1 }, },	-- Shoulders of the Forlorn Protector
-		}),
-		i(65265, {	-- Earthen Gauntlets
-			["cost"] = {
-				{ "i", 67430, 1 },	-- Gauntlets of the Forlorn Protector
-				{ "i", 60326, 1 },	-- Earthen Gauntlets
-			},
-		}),
-		i(65264, {	-- Earthen Battleplate
-			["cost"] = {
-				{ "i", 67424, 1 },	-- Chest of the Forlorn Protector
-				{ "i", 60323, 1 },	-- Earthen Battleplate
-			},
-		}),
-		i(65267, {	-- Earthen Legplates
-			["cost"] = {
-				{ "i", 67427, 1 },	-- Leggings of the Forlorn Protector
-				{ "i", 60324, 1 },	-- Earthen Legplates
-			},
-		}),
-
-		-- Protection
-		i(65271, {	-- Earthen Faceguard
-			["cost"] = { { "i", 65000, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65273, {	-- Earthen Shoulderguards
-			["cost"] = { { "i", 65087, 1 }, },	-- Shoulders of the Forlorn Protector
-		}),
-		i(65270, {	-- Earthen Handguards
-			["cost"] = {
-				{ "i", 67430, 1 },	-- Gauntlets of the Forlorn Protector
-				{ "i", 60332, 1 },	-- Earthen Handguards
-			},
-		}),
-		i(65269, {	-- Earthen Chestguard
-			["cost"] = {
-				{ "i", 67424, 1 },	-- Chest of the Forlorn Protector
-				{ "i", 60329, 1 },	-- Earthen Chestguard
-			},
-		}),
-		i(65272, {	-- Earthen Legguards
-			["cost"] = {
-				{ "i", 67427, 1 },	-- Leggings of the Forlorn Protector
-				{ "i", 60330, 1 },	-- Earthen Legguards
-			},
-		}),
-	}),
-	cl(PALADIN, {
-		-- DPS
-		i(65216, {	-- Reinforced Sapphirium Helmet
-			["cost"] = { { "i", 65001, 1 }, },	-- Crown of the Forlorn Conqueror
-		}),
-		i(65218, {	-- Reinforced Sapphirium Pauldrons
-			["cost"] = { { "i", 65088, 1 }, },	-- Shoulders of the Forlorn Conqueror
-		}),
-		i(65215, {	-- Reinforced Sapphirium Gauntlets
-			["cost"] = {
-				{ "i", 67429, 1 },	-- Gauntlets of the Forlorn Conqueror
-				{ "i", 60345, 1 },	-- Reinforced Sapphirium Gauntlets
-			},
-		}),
-		i(65214, {	-- Reinforced Sapphirium Battleplate
-			["cost"] = {
-				{ "i", 67423, 1 },	-- Chest of the Forlorn Conqueror
-				{ "i", 60344, 1 },	-- Reinforced Sapphirium Battleplate
-			},
-		}),
-		i(65217, {	-- Reinforced Sapphirium Legplates
-			["cost"] = {
-				{ "i", 67428, 1 },	-- Leggings of the Forlorn Conqueror
-				{ "i", 60347, 1 },	-- Reinforced Sapphirium Legplates
-			},
-		}),
-
-		-- Holy
-		i(65221, {	-- Reinforced Sapphirium Headguard
-			["cost"] = { { "i", 65001, 1 }, },	-- Crown of the Forlorn Conqueror
-		}),
-		i(65223, {	-- Reinforced Sapphirium Mantle
-			["cost"] = { { "i", 65088, 1 }, },	-- Shoulders of the Forlorn Conqueror
-		}),
-		i(65220, {	-- Reinforced Sapphirium Gloves
-			["cost"] = {
-				{ "i", 67429, 1 },	-- Gauntlets of the Forlorn Conqueror
-				{ "i", 60363, 1 },	-- Reinforced Sapphirium Gloves
-			},
-		}),
-		i(65219, {	-- Reinforced Sapphirium Breastplate
-			["cost"] = {
-				{ "i", 67423, 1 },	-- Chest of the Forlorn Conqueror
-				{ "i", 60360, 1 },	-- Reinforced Sapphirium Breastplate
-			},
-		}),
-		i(65222, {	-- Reinforced Sapphirium Greaves
-			["cost"] = {
-				{ "i", 67428, 1 },	-- Leggings of the Forlorn Conqueror
-				{ "i", 60361, 1 },	-- Reinforced Sapphirium Greaves
-			},
-		}),
-
-		-- Protection
-		i(65226, {	-- Reinforced Sapphirium Faceguard
-			["cost"] = { { "i", 65001, 1 }, },	-- Crown of the Forlorn Conqueror
-		}),
-		i(65228, {	-- Reinforced Sapphirium Shoulderguards
-			["cost"] = { { "i", 65088, 1 }, },	-- Shoulders of the Forlorn Conqueror
-		}),
-		i(65225, {	-- Reinforced Sapphirium Handguards
-			["cost"] = {
-				{ "i", 67429, 1 },	-- Gauntlets of the Forlorn Conqueror
-				{ "i", 60355, 1 },	-- Reinforced Sapphirium Handguards
-			},
-		}),
-		i(65224, {	-- Reinforced Sapphirium Chestguard
-			["cost"] = {
-				{ "i", 67423, 1 },	-- Chest of the Forlorn Conqueror
-				{ "i", 60354, 1 },	-- Reinforced Sapphirium Chestguard
-			},
-		}),
-		i(65227, {	-- Reinforced Sapphirium Legguards
-			["cost"] = {
-				{ "i", 67428, 1 },	-- Leggings of the Forlorn Conqueror
-				{ "i", 60357, 1 },	-- Reinforced Sapphirium Legguards
-			},
-		}),
-	}),
-	cl(DEATHKNIGHT, {
-		-- DPS
-		i(65181, {	-- Magma Plated Helmet
-			["cost"] = { { "i", 65002, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65183, {	-- Magma Plated Pauldrons
-			["cost"] = { { "i", 65089, 1 }, },	-- Shoulders of the Forlorn Vanquisher
-		}),
-		i(65180, {	-- Magma Plated Gauntlets
-			["cost"] = {
-				{ "i", 67431, 1 },	-- Gauntlets of the Forlorn Vanquisher
-				{ "i", 60340, 1 },	-- Magma Plated Gauntlets
-			},
-		}),
-		i(65179, {	-- Magma Plated Battleplate
-			["cost"] = {
-				{ "i", 67425, 1 },	-- Chest of the Forlorn Vanquisher
-				{ "i", 60339, 1 },	-- Magma Plated Battleplate
-			},
-		}),
-		i(65182, {	-- Magma Plated Legplates
-			["cost"] = {
-				{ "i", 67426, 1 },	-- Leggings of the Forlorn Vanquisher
-				{ "i", 60342, 1 },	-- Magma Plated Legplates
-			},
-		}),
-
-		-- Protection
-		i(65186, {	-- Magma Plated Faceguard
-			["cost"] = { { "i", 65002, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65188, {	-- Magma Plated Shoulderguards
-			["cost"] = { { "i", 65089, 1 }, },	-- Shoulders of the Forlorn Vanquisher
-		}),
-		i(65185, {	-- Magma Plated Handguards
-			["cost"] = {
-				{ "i", 67431, 1 },	-- Gauntlets of the Forlorn Vanquisher
-				{ "i", 60350, 1 },	-- Magma Plated Handguards
-			},
-		}),
-		i(65184, {	-- Magma Plated Chestguard
-			["cost"] = {
-				{ "i", 67425, 1 },	-- Chest of the Forlorn Vanquisher
-				{ "i", 60349, 1 },	-- Magma Plated Chestguard
-			},
-		}),
-		i(65187, {	-- Magma Plated Legguards
-			["cost"] = {
-				{ "i", 67426, 1 },	-- Leggings of the Forlorn Vanquisher
-				{ "i", 60352, 1 },	-- Magma Plated Legguards
-			},
-		}),
-	}),
-	cl(HUNTER, {
-		i(65206, {	-- Lightning-Charged Headguard
-			["cost"] = { { "i", 65000, 1 }, },	-- Crown of the Forlorn Protector
-		}),
-		i(65208, {	-- Lightning-Charged Spaulders
-			["cost"] = { { "i", 65087, 1 }, },	-- Shoulders of the Forlorn Protector
-		}),
-		i(65205, {	-- Lightning-Charged Gloves
-			["cost"] = {
-				{ "i", 67430, 1 },	-- Gauntlets of the Forlorn Protector
-				{ "i", 60307, 1 },	-- Lightning-Charged Gloves
-			},
-		}),
-		i(65204, {	-- Lightning-Charged Tunic
-			["cost"] = {
-				{ "i", 67424, 1 },	-- Chest of the Forlorn Protector
-				{ "i", 60304, 1 },	-- Lightning-Charged Tunic
-			},
-		}),
-		i(65207, {	-- Lightning-Charged Legguards
-			["cost"] = {
-				{ "i", 67427, 1 },	-- Leggings of the Forlorn Protector
-				{ "i", 60305, 1 },	-- Lightning-Charged Legguards
-			},
-		}),
-	}),
-	cl(ROGUE, {
-		i(65241, {	-- Wind Dancer's Helmet
-			["cost"] = { { "i", 65002, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65243, {	-- Wind Dancer's Spaulders
-			["cost"] = { { "i", 65089, 1 }, },	-- Shoulders of the Forlorn Vanquisher
-		}),
-		i(65240, {	-- Wind Dancer's Gloves
-			["cost"] = {
-				{ "i", 67431, 1 },	-- Gauntlets of the Forlorn Vanquisher
-				{ "i", 60298, 1 },	-- Wind Dancer's Gloves
-			},
-		}),
-		i(65239, {	-- Wind Dancer's Tunic
-			["cost"] = {
-				{ "i", 67425, 1 },	-- Chest of the Forlorn Vanquisher
-				{ "i", 60301, 1 },	-- Wind Dancer's Tunic
-			},
-		}),
-		i(65242, {	-- Wind Dancer's Legguards
-			["cost"] = {
-				{ "i", 67426, 1 },	-- Leggings of the Forlorn Vanquisher
-				{ "i", 60300, 1 },	-- Wind Dancer's Legguards
-			},
-		}),
-	}),
-	cl(PRIEST, {
-		-- DPS
-		i(65235, {	-- Mercurial Hood
-			["cost"] = { { "i", 65001, 1 }, },	-- Crown of the Forlorn Conqueror
-		}),
-		i(65238, {	-- Mercurial Shoulderwraps
-			["cost"] = { { "i", 65088, 1 }, },	-- Shoulders of the Forlorn Conqueror
-		}),
-		i(65234, {	-- Mercurial Gloves
-			["cost"] = {
-				{ "i", 67429, 1 },	-- Gauntlets of the Forlorn Conqueror
-				{ "i", 60257, 1 },	-- Mercurial Gloves
-			},
-		}),
-		i(65237, {	-- Mercurial Vestment
-			["cost"] = {
-				{ "i", 67423, 1 },	-- Chest of the Forlorn Conqueror
-				{ "i", 60254, 1 },	-- Mercurial Vestment
-			},
-		}),
-		i(65236, {	-- Mercurial Leggings
-			["cost"] = {
-				{ "i", 67428, 1 },	-- Leggings of the Forlorn Conqueror
-				{ "i", 60255, 1 },	-- Mercurial Leggings
-			},
-		}),
-
-		-- Holy
-		i(65230, {	-- Mercurial Cowl
-			["cost"] = { { "i", 65001, 1 }, },	-- Crown of the Forlorn Conqueror
-		}),
-		i(65233, {	-- Mercurial Mantle
-			["cost"] = { { "i", 65088, 1 }, },	-- Shoulders of the Forlorn Conqueror
-		}),
-		i(65229, {	-- Mercurial Handwraps
-			["cost"] = {
-				{ "i", 67429, 1 },	-- Gauntlets of the Forlorn Conqueror
-				{ "i", 60275, 1 },	-- Mercurial Handwraps
-			},
-		}),
-		i(65232, {	-- Mercurial Robes
-			["cost"] = {
-				{ "i", 67423, 1 },	-- Chest of the Forlorn Conqueror
-				{ "i", 60259, 1 },	-- Mercurial Robes
-			},
-		}),
-		i(65231, {	-- Mercurial Legwraps
-			["cost"] = {
-				{ "i", 67428, 1 },	-- Leggings of the Forlorn Conqueror
-				{ "i", 60261, 1 },	-- Mercurial Legwraps
-			},
-		}),
-	}),
-	cl(SHAMAN, {
-		-- Enhance
-		i(65251, {	-- Helmet of the Raging Elements
-			["cost"] = { { "i", 65000, 1 }, },	-- Crown of the Forlorn Protector
-		}),
-		i(65253, {	-- Spaulders of the Raging Elements
-			["cost"] = { { "i", 65087, 1 }, },	-- Shoulders of the Forlorn Protector
-		}),
-		i(65250, {	-- Grips of the Raging Elements
-			["cost"] = {
-				{ "i", 67430, 1 },	-- Gauntlets of the Forlorn Protector
-				{ "i", 60319, 1 },	-- Grips of the Raging Elements
-			},
-		}),
-		i(65249, {	-- Cuirass of the Raging Elements
-			["cost"] = {
-				{ "i", 67424, 1 },	-- Chest of the Forlorn Protector
-				{ "i", 60318, 1 },	-- Cuirass of the Raging Elements
-			},
-		}),
-		i(65252, {	-- Legguards of the Raging Elements
-			["cost"] = {
-				{ "i", 67427, 1 },	-- Leggings of the Forlorn Protector
-				{ "i", 60321, 1 },	-- Legguards of the Raging Elements
-			},
-		}),
-
-		-- Elemental
-		i(65256, {	-- Headpiece of the Raging Elements
-			["cost"] = { { "i", 65000, 1 }, },	-- Crown of the Forlorn Protector
-		}),
-		i(65258, {	-- Shoulderwraps of the Raging Elements
-			["cost"] = { { "i", 65087, 1 }, },	-- Shoulders of the Forlorn Protector
-		}),
-		i(65255, {	-- Gloves of the Raging Elements
-			["cost"] = {
-				{ "i", 67430, 1 },	-- Gauntlets of the Forlorn Protector
-				{ "i", 60314, 1 },	-- Gloves of the Raging Elements
-			},
-		}),
-		i(65254, {	-- Hauberk of the Raging Elements
-			["cost"] = {
-				{ "i", 67424, 1 },	-- Chest of the Forlorn Protector
-				{ "i", 60313, 1 },	-- Hauberk of the Raging Elements
-			},
-		}),
-		i(65257, {	-- Kilt of the Raging Elements
-			["cost"] = {
-				{ "i", 67427, 1 },	-- Leggings of the Forlorn Protector
-				{ "i", 60316, 1 },	-- Kilt of the Raging Elements
-			},
-		}),
-
-		-- Restoration
-		i(65246, {	-- Faceguard of the Raging Elements
-			["cost"] = { { "i", 65000, 1 }, },	-- Crown of the Forlorn Protector
-		}),
-		i(65248, {	-- Mantle of the Raging Elements
-			["cost"] = { { "i", 65087, 1 }, },	-- Shoulders of the Forlorn Protector
-		}),
-		i(65245, {	-- Handwraps of the Raging Elements
-			["cost"] = {
-				{ "i", 67430, 1 },	-- Gauntlets of the Forlorn Protector
-				{ "i", 60312, 1 },	-- Handwraps of the Raging Elements
-			},
-		}),
-		i(65244, {	-- Tunic of the Raging Elements
-			["cost"] = {
-				{ "i", 67424, 1 },	-- Chest of the Forlorn Protector
-				{ "i", 60309, 1 },	-- Tunic of the Raging Elements
-			},
-		}),
-		i(65247, {	-- Legwraps of the Raging Elements
-			["cost"] = {
-				{ "i", 67427, 1 },	-- Leggings of the Forlorn Protector
-				{ "i", 60310, 1 },	-- Legwraps of the Raging Elements
-			},
-		}),
-	}),
-	cl(MAGE, {
-		i(65210, {	-- Firelord's Hood
-			["cost"] = { { "i", 65002, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65213, {	-- Firelord's Mantle
-			["cost"] = { { "i", 65089, 1 }, },	-- Shoulders of the Forlorn Vanquisher
-		}),
-		i(65209, {	-- Firelord's Gloves
-			["cost"] = {
-				{ "i", 67431, 1 },	-- Gauntlets of the Forlorn Vanquisher
-				{ "i", 60247, 1 },	-- Firelord's Gloves
-			},
-		}),
-		i(65212, {	-- Firelord's Robes
-			["cost"] = {
-				{ "i", 67425, 1 },	-- Chest of the Forlorn Vanquisher
-				{ "i", 60244, 1 },	-- Firelord's Robes
-			},
-		}),
-		i(65211, {	-- Firelord's Leggings
-			["cost"] = {
-				{ "i", 67426, 1 },	-- Leggings of the Forlorn Vanquisher
-				{ "i", 60245, 1 },	-- Firelord's Leggings
-			},
-		}),
-	}),
-	cl(WARLOCK, {
-		i(65260, {	-- Shadowflame Hood
-			["cost"] = { { "i", 65001, 1 }, },	-- Crown of the Forlorn Conqueror
-		}),
-		i(65263, {	-- Shadowflame Mantle
-			["cost"] = { { "i", 65088, 1 }, },	-- Shoulders of the Forlorn Conqueror
-		}),
-		i(65259, {	-- Shadowflame Handwraps
-			["cost"] = {
-				{ "i", 67429, 1 },	-- Gauntlets of the Forlorn Conqueror
-				{ "i", 60248, 1 },	-- Shadowflame Handwraps
-			},
-		}),
-		i(65262, {	-- Shadowflame Robes
-			["cost"] = {
-				{ "i", 67423, 1 },	-- Chest of the Forlorn Conqueror
-				{ "i", 60251, 1 },	-- Shadowflame Robes
-			},
-		}),
-		i(65261, {	-- Shadowflame Leggings
-			["cost"] = {
-				{ "i", 67428, 1 },	-- Leggings of the Forlorn Conqueror
-				{ "i", 60250, 1 },	-- Shadowflame Leggings
-			},
-		}),
-	}),
-	cl(DRUID, {
-		-- Boomkin
-		i(65200, {	-- Stormrider's Cover
-			["cost"] = { { "i", 65002, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65203, {	-- Stormrider's Shoulderwraps
-			["cost"] = { { "i", 65089, 1 }, },	-- Shoulders of the Forlorn Vanquisher
-		}),
-		i(65199, {	-- Stormrider's Gloves
-			["cost"] = {
-				{ "i", 67431, 1 },	-- Gauntlets of the Forlorn Vanquisher
-				{ "i", 60285, 1 },	-- Stormrider's Gloves
-			},
-		}),
-		i(65202, {	-- Stormrider's Vestment
-			["cost"] = {
-				{ "i", 67425, 1 },	-- Chest of the Forlorn Vanquisher
-				{ "i", 60281, 1 },	-- Stormrider's Vestment
-			},
-		}),
-		i(65201, {	-- Stormrider's Leggings
-			["cost"] = {
-				{ "i", 67426, 1 },	-- Leggings of the Forlorn Vanquisher
-				{ "i", 60283, 1 },	-- Stormrider's Leggings
-			},
-		}),
-
-		-- Feral
-		i(65190, {	-- Stormrider's Headpiece
-			["cost"] = { { "i", 65002, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65193, {	-- Stormrider's Spaulders
-			["cost"] = { { "i", 65089, 1 }, },	-- Shoulders of the Forlorn Vanquisher
-		}),
-		i(65189, {	-- Stormrider's Grips
-			["cost"] = {
-				{ "i", 67431, 1 },	-- Gauntlets of the Forlorn Vanquisher
-				{ "i", 60290, 1 },	-- Stormrider's Grips
-			},
-		}),
-		i(65192, {	-- Stormrider's Raiment
-			["cost"] = {
-				{ "i", 67425, 1 },	-- Chest of the Forlorn Vanquisher
-				{ "i", 60287, 1 },	-- Stormrider's Raiment
-			},
-		}),
-		i(65191, {	-- Stormrider's Legguards
-			["cost"] = {
-				{ "i", 67426, 1 },	-- Leggings of the Forlorn Vanquisher
-				{ "i", 60288, 1 },	-- Stormrider's Legguards
-			},
-		}),
-
-		-- Restoration
-		i(65195, {	-- Stormrider's Helm
-			["cost"] = { { "i", 65002, 1 }, },	-- Crown of the Forlorn Vanquisher
-		}),
-		i(65198, {	-- Stormrider's Mantle
-			["cost"] = { { "i", 65089, 1 }, },	-- Shoulders of the Forlorn Vanquisher
-		}),
-		i(65194, {	-- Stormrider's Handwraps
-			["cost"] = {
-				{ "i", 67431, 1 },	-- Gauntlets of the Forlorn Vanquisher
-				{ "i", 60280, 1 },	-- Stormrider's Handwraps
-			},
-		}),
-		i(65197, {	-- Stormrider's Robes
-			["cost"] = {
-				{ "i", 67425, 1 },	-- Chest of the Forlorn Vanquisher
-				{ "i", 60276, 1 },	-- Stormrider's Robes
-			},
-		}),
-		i(65196, {	-- Stormrider's Legwraps
-			["cost"] = {
-				{ "i", 67426, 1 },	-- Leggings of the Forlorn Vanquisher
-				{ "i", 60278, 1 },	-- Stormrider's Legwraps
-			},
-		}),
-	}),
-};
-local TIER_ELEVEN_COMMON_GROUPS = {
-	i(65001, {	-- Crown of the Forlorn Conqueror
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(65000, {	-- Crown of the Forlorn Protector
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(65002, {	-- Crown of the Forlorn Vanquisher
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(65088, {	-- Shoulders of the Forlorn Conqueror
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(65087, {	-- Shoulders of the Forlorn Protector
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(65089, {	-- Shoulders of the Forlorn Vanquisher
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67429, {	-- Gauntlets of the Forlorn Conqueror
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67430, {	-- Gauntlets of the Forlorn Protector
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67431, {	-- Gauntlets of the Forlorn Vanquisher
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67423, {	-- Chest of the Forlorn Conqueror
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67424, {	-- Chest of the Forlorn Protector
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67425, {	-- Chest of the Forlorn Vanquisher
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67428, {	-- Leggings of the Forlorn Conqueror
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67427, {	-- Leggings of the Forlorn Protector
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(67426, {	-- Leggings of the Forlorn Vanquisher
-		["cost"] = { { "i", 66998, 1 }, },	-- Essence of the Forlorn
-	}),
-	i(57931),	-- Amulet of Dull Dreaming
-	i(57924),	-- Apple-Bent Bough
-	i(58185),	-- Band of Bees
-	i(58188),	-- Band of Secret Names
-	i(58182),	-- Bedrock Talisman
-	i(57913),	-- Beech Green Belt
-	i(57915),	-- Belt of Barred Clouds
-	i(57916),	-- Belt of the Dim Forest
-	i(57922),	-- Belt of the Falling Rain
-	i(57917),	-- Belt of the Still Stream
-	i(58152),	-- Blessed Hands of Elune
-	i(58481),	-- Boots of the Perilous Seas
-	i(58096),	-- Breastplate of Raging Fury
-	i(57934),	-- Celadon Pendant
-	i(58106),	-- Chestguard of Dancing Waves
-	i(58139),	-- Chestguard of Forgetfulness
-	i(58101),	-- Chestplate of the Steadfast
-	i(58150),	-- Cluster of Stars
-	i(58184),	-- Core of Ripeness
-	i(58155),	-- Cowl of Pleasant Gloom
-	i(58108),	-- Crown of the Blazing Sun
-	i(57929),	-- Dawnblaze Blade
-	i(58134),	-- Embrace of the Night
-	i(58198),	-- Eternal Pathfinders
-	i(58484),	-- Fading Violet Sandals
-	i(58190),	-- Floating Web
-	i(58181),	-- Fluid Death
-	i(57914),	-- Girdle of the Mountains
-	i(58130),	-- Gleaning Gloves
-	i(58110),	-- Gloves of Curious Conscience
-	i(58163),	-- Gloves of Purification
-	i(58158),	-- Gloves of the Painless Midnight
-	i(58125),	-- Gloves of the Passing Night
-	i(58192),	-- Gray Hair Cloak
-	i(58097),	-- Greaves of Gallantry
-	i(58102),	-- Greaves of Splendor
-	i(58193),	-- Haunt of Flies
-	i(58194),	-- Heavenly Breeze
-	i(58098),	-- Helm of Easeful Death
-	i(58128),	-- Helm of the Inward Eye
-	i(58103),	-- Helm of the Proud
-	i(57923),	-- Hermit's Lamp
-	i(58122),	-- Hillside Striders
-	i(68812),	-- Hornet-Sting Band
-	i(57921),	-- Incense-Infused Cummerbund
-	i(58160),	-- Leggings of Charity
-	i(58140),	-- Leggings of Late Blooms
-	i(58127),	-- Leggings of Soothing Silence
-	i(58132),	-- Leggings of the Burrowing Mole
-	i(58107),	-- Legguards of the Gentle
-	i(58180),	-- License to Slay
-	i(58161),	-- Mask of New Snow
-	i(58133),	-- Mask of Vines
-	i(58157),	-- Meadow Mantle
-	i(58485),	-- Melodious Slippers
-	i(58199),	-- Moccasins of Verdurous Glooms
-	i(58159),	-- Musk Rose Robes
-	i(58105),	-- Numbing Handguards
-	i(58109),	-- Pauldrons of the Forlorn
-	i(58100),	-- Pauldrons of the High Requiem
-	i(57930),	-- Pendant of Quiet Breath
-	i(58154),	-- Pensive Legwraps
-	i(58099),	-- Reaping Gauntlets
-	i(58187),	-- Ring of the Battle Anthem
-	i(58153),	-- Robes of Embalmed Darkness
-	i(58197),	-- Rock Furrow Boots
-	i(57918),	-- Sash of Musing
-	i(58129),	-- Seafoam Mantle
-	i(57926),	-- Shield of the Four Grey Towers
-	i(57925),	-- Shield of the Mists
-	i(58486),	-- Slippers of Moving Waters
-	i(58151),	-- Somber Shawl
-	i(58183),	-- Soul Casket
-	i(58138),	-- Sticky Fingers
-	i(57933),	-- String of Beaded Bubbles
-	i(58162),	-- Summer Song Shoulderwraps
-	i(58104),	-- Sunburnt Pauldrons
-	i(57919),	-- Thatch Eave Vines
-	i(57932),	-- The Lustrous Eye
-	i(57927),	-- Throat Slasher
-	i(58482),	-- Treads of Fleeting Joy
-	i(58131),	-- Tunic of Sinking Envy
-	i(58189),	-- Twined Band of Flowers
-	i(58121),	-- Vest of the True Companion
-	i(58126),	-- Vest of the Waking Dream
-	i(58191),	-- Viewless Wings
-	i(58123),	-- Willow Mask
-	i(57928),	-- Windslicer
-	i(58195),	-- Woe Breeder's Boots
-	i(58124),	-- Wrap of the Valley Glades
-};
-local TIER_ELEVEN_GROUPS = applyclassicphase(CATA_PHASE_ONE,
-	appendGroups(TIER_ELEVEN_COMMON_GROUPS,
-	appendGroups(TIER_ELEVEN_HEROIC_GROUPS,
-	appendGroups(TIER_ELEVEN_NORMAL_GROUPS, {
-}))));
--- #endif
-
 local PVP_MOUNT_COST = {
 	-- #if AFTER 7.0.3.22248
 	{ "i", 137642, 15 },	-- Mark of Honor
@@ -2588,64 +21,59 @@ local PVP_MOUNT_COST = {
 root(ROOTS.Zones, m(KALIMDOR, {
 	m(ORGRIMMAR, {
 		["lore"] = "Named in honor of the legendary Orgrim Doomhammer, Orgrimmar was founded as the capital city of the orcs' new homeland. Built within a huge, winding canyon in the harsh land of Durotar, Orgrimmar stands as one of the mightiest warrior cities in the world. Behind Orgrimmar's immense walls, elderly shaman pass their knowledge on to the Horde's newest generation of leaders, while warriors spar in the gladiatorial arena, honing their skills in preparation for the trials that await them in this dangerous land.",
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\Inv_misc_tournaments_symbol_orc",
-		-- #endif
+		["icon"] = 255142,
 		-- #if AFTER CATA
 		["maps"] = { 86 },		-- The Drag
 		-- #endif
 		["isRaid"] = true,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
-				ach(5477, {	-- Fish or Cut Bait: Orgrimmar
-					["timeline"] = { "added 4.2.0" },
+				applyclassicphase(CATA_PHASE_ONE, ach(5477, {	-- Fish or Cut Bait: Orgrimmar
+					["timeline"] = { ADDED_4_2_0 },
 					["requireSkill"] = FISHING,
 					["races"] = HORDE_ONLY,
 					["groups"] = {
-						crit(1, {	-- Clammy Hands
+						crit(15817, {	-- Clammy Hands
 							["_quests"] = { 26543 },
 						}),
-						crit(2, {	-- No Dumping Allowed
+						crit(15818, {	-- No Dumping Allowed
 							["_quests"] = { 26556 },
 						}),
-						crit(3, {	-- A Staggering Effort
+						crit(15819, {	-- A Staggering Effort
 							["_quests"] = { 26557 },
 						}),
-						crit(4, {	-- A Furious Catch
+						crit(15820, {	-- A Furious Catch
 							["_quests"] = { 26588 },
 						}),
-						crit(5, {	-- A Golden Opportunity
+						crit(15821, {	-- A Golden Opportunity
 							["_quests"] = { 26572 },
 						}),
 					},
-				}),
-				ach(5475, {	-- Let's Do Lunch: Orgrimmar
-					["timeline"] = { "added 4.2.0" },
+				})),
+				applyclassicphase(CATA_PHASE_ONE, ach(5475, {	-- Let's Do Lunch: Orgrimmar
+					["timeline"] = { ADDED_4_2_0 },
 					["requireSkill"] = COOKING,
 					["races"] = HORDE_ONLY,
 					["groups"] = {
-						crit(1, {	-- Careful, This Fruit Bites Back
+						crit(15807, {	-- Careful, This Fruit Bites Back
 							["_quests"] = { 26227 },
 						}),
-						crit(2, {	-- Crawfish Creole
+						crit(15808, {	-- Crawfish Creole
 							["_quests"] = { 26226 },
 						}),
-						crit(3, {	-- Even Thieves Get Hungry
+						crit(15809, {	-- Even Thieves Get Hungry
 							["_quests"] = { 26235 },
 						}),
-						crit(4, {	-- Everything Is Better with Bacon
+						crit(15810, {	-- Everything Is Better with Bacon
 							["_quests"] = { 26220 },
 						}),
-						crit(5, {	-- Stealing From Our Own
+						crit(16244, {	-- Stealing From Our Own
 							["_quests"] = { 26233, 26234 },
 						}),
 					},
-				}),
+				})),
 				applyclassicphase(TBC_PHASE_ONE, ach(1836, {	-- Old Crafty
 					["provider"] = { "i", 34486 },	-- Old Crafty
-					-- #if BEFORE WRATH
-					["description"] = "Fish up Old Crafty in Orgrimmar.",
-					-- #endif
 					["requireSkill"] = FISHING,
 				})),
 			}),
@@ -2659,41 +87,62 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}},
 			}),
 			n(FACTIONS, {
-				faction(530, {	-- Darkspear Trolls
-					-- #if AFTER WRATH
-					["icon"] = "Interface\\Icons\\Achievement_Character_Troll_Male",
+				faction(FACTION_BILGEWATER_CARTEL, {	-- Bilgewater Cartel
+					["provider"] = { "i", 64884 },	-- Bilgewater Cartel Tabard
+					["timeline"] = { ADDED_4_0_3 },
+					["races"] = HORDE_ONLY,
+				}),
+				faction(FACTION_DARKSPEAR_TROLLS, {	-- Darkspear Trolls
+					-- #if AFTER CATA
+					["provider"] = { "i", 45582 },	-- Darkspear Tabard
 					-- #else
-					["icon"] = [[~_.asset("Achievement_Character_Troll_Male")]],
+					["icon"] = 236456,
 					-- #endif
-					-- #if BEFORE CATA
-					["OnTooltip"] = OnTooltipForCityFactionReputation,
-					-- #endif
+					["OnTooltip"] = [[_.OnTooltipDB.RuneclothTurnIns]],
+					["races"] = HORDE_ONLY,
+				}),
+				faction(FACTION_HUOJIN_PANDAREN, {	-- Huojin Pandaren
+					["provider"] = { "i", 83080 },	-- Huojin Tabard
+					["timeline"] = { ADDED_5_0_4 },
 					["races"] = HORDE_ONLY,
 				}),
 				faction(FACTION_ORGRIMMAR, {
-					-- #if AFTER WRATH
-					["icon"] = "Interface\\Icons\\Achievement_Character_Orc_Male",
+					-- #if AFTER CATA
+					["provider"] = { "i", 45581 },	-- Orgrimmar Tabard
 					-- #else
-					["icon"] = [[~_.asset("Achievement_Character_Orc_Male")]],
+					["icon"] = 236452,
 					-- #endif
-					-- #if BEFORE CATA
-					["OnTooltip"] = OnTooltipForCityFactionReputation,
-					-- #endif
+					["OnTooltip"] = [[_.OnTooltipDB.RuneclothTurnIns]],
 					["races"] = HORDE_ONLY,
 				}),
 			}),
 			n(FLIGHT_PATHS, {
 				fp(23, {	-- Orgrimmar, Durotar
 					["cr"] = 3310,	-- Doras <Wind Rider Master>
-					-- #if AFTER CATA
-					["coord"] = { 49.4, 59.2, ORGRIMMAR },
-					-- #else
-					["coord"] = { 45.2, 63.8, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 49.4, 59.2, ORGRIMMAR },
+						-- #else
+						{ 45.2, 63.8, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 				}),
 			}),
 			n(PROFESSIONS, {
+				prof(ALCHEMY, {
+					n(3347, {	-- Yelmak <Alchemy Trainer>
+						["coord"] = { 55.6, 46.6, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = appendGroups(CLASSIC_ALCHEMY,
+							-- #if AFTER CATA
+							CATA_ALCHEMY
+							-- #else
+							{}
+							-- #endif
+						),
+					}),
+				}),
 				prof(BLACKSMITHING, {
 					n(11178, {	-- Borgosh Corebender <Weaponsmith>
 						["coord"] = { 79.6, 23.6, ORGRIMMAR },
@@ -2717,6 +166,19 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						),
 					}),
 				}),
+				prof(COOKING, {
+					n(3399, {	-- Zamja <Cooking Trainer>
+						["coord"] = { 32.2, 69.6, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = appendGroups(CLASSIC_COOKING,
+							-- #if AFTER CATA
+							CATA_COOKING
+							-- #else
+							{}
+							-- #endif
+						),
+					}),
+				}),
 				prof(ENCHANTING, {
 					n(3345, {	-- Godan <Enchanting Trainer>
 						["coord"] = { 53.4, 49.4, ORGRIMMAR },
@@ -2730,32 +192,92 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						),
 					}),
 				}),
+				prof(ENGINEERING, {
+					n(11017, {	-- Roxxik <Engineering Trainer>
+						["coord"] = { 56.8, 56.4, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = appendGroups(CLASSIC_ENGINEERING,
+							-- #if AFTER CATA
+							CATA_ENGINEERING
+							-- #else
+							{}
+							-- #endif
+						),
+					}),
+				}),
+				prof(FIRST_AID, {
+					n(3373, bubbleDownSelf({ ["timeline"] = { REMOVED_4_0_3 } }, {	-- Arnok <First Aid Trainer>
+						["coord"] = { 34.0, 84.4, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = CLASSIC_FIRST_AID,
+					})),
+					n(45540, bubbleDownSelf({ ["timeline"] = { ADDED_4_0_3, REMOVED_7_3_5 } }, {	-- Krenk Choplimb <Bandage Trainer>
+						["coord"] = { 37.6, 87.2, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = appendGroups(CLASSIC_FIRST_AID,
+							-- #if AFTER CATA
+							CATA_FIRST_AID
+							-- #else
+							{}
+							-- #endif
+						),
+					})),
+					n(133109, bubbleDownSelf({ ["timeline"] = { ADDED_7_3_5 } }, {	-- Mender Jessara <Bandage Trainer>
+						["coord"] = { 38.2, 86.6, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = appendGroups(CLASSIC_FIRST_AID,
+							-- #if AFTER CATA
+							CATA_FIRST_AID
+							-- #else
+							{}
+							-- #endif
+						),
+					})),
+				}),
 				prof(FISHING, {
+					n(3332, {	-- Lumak <Fishing Trainer>
+						["coord"] = { 66.6, 41.6, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = appendGroups(CLASSIC_FISHING,
+							-- #if AFTER CATA
+							CATA_FISHING
+							-- #else
+							{}
+							-- #endif
+						),
+					}),
 					i(34864, {	-- Baby Crocolisk
-						["timeline"] = { "added 2.4.0.7897" },
+						["timeline"] = { ADDED_2_4_0 },
 					}),
 					i(67414, {	-- Bag of Shiny Things
+						["provider"] = { "n", 43239 },	-- Razgar
 						["description"] = "Fishing Daily Quest Reward",
-						["timeline"] = { "added 4.0.1.12984" },
-						["cr"] = 43239,	-- Razgar
+						["sourceQuests"] = {
+							26588,	-- A Furious Catch
+							26572,	-- A Golden Opportunity
+							26557,	-- A Staggering Effort
+							26543,	-- Clammy Hands
+							26556,	-- No Dumping Allowed
+						},
+						["timeline"] = { ADDED_4_0_1 },
 						["groups"] = {
 							i(44983, {	-- Strand Crawler (PET!)
-								["timeline"] = { "added 3.1.0.9658" },
+								["timeline"] = { ADDED_3_1_0 },
 							}),
 							i(33820, {	-- Weather-Beaten Fishing Hat
-								["timeline"] = { "added 2.4.0.7897" },
+								["timeline"] = { ADDED_2_4_0 },
 							}),
 							i(45991, {	-- Bone Fishing Pole
-								["timeline"] = { "added 3.1.0.9658" },
+								["timeline"] = { ADDED_3_1_0 },
 							}),
 							i(45992, {	-- Jeweled Fishing Pole
-								["timeline"] = { "added 3.1.0.9658" },
+								["timeline"] = { ADDED_3_1_0 },
 							}),
 							i(67410, {	-- Very Unlucky Rock
-								["timeline"] = { "added 4.0.1.12984" },
+								["timeline"] = { ADDED_4_0_1 },
 							}),
 							i(67388, {	-- String of Alligator Teeth
-								["timeline"] = { "added 4.0.1.12984" },
+								["timeline"] = { ADDED_4_0_1 },
 							}),
 						},
 					}),
@@ -2765,7 +287,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						-- #elseif BEFORE LEGION
 						["description"] = "Keep this in your bank until Transmog is added otherwise you'll need to fish it up again. Fair warning!",
 						-- #endif
-						["timeline"] = { "added 2.3.0.7561" },
+						["timeline"] = { ADDED_2_3_0 },
 					}),
 				}),
 				prof(HERBALISM, {
@@ -2791,7 +313,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				prof(INSCRIPTION, {
 					n(30706, {	-- Jo'mah <Inscription Trainer>
 						["coord"] = { 35.6, 69.2, ORGRIMMAR },
-						["timeline"] = { "added 3.0.2.8905" },
+						["timeline"] = { ADDED_3_0_2 },
 						["races"] = HORDE_ONLY,
 						["groups"] = CLASSIC_INSCRIPTION,
 					}),
@@ -2801,7 +323,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				prof(JEWELCRAFTING, {
 					n(46675, {	-- Lugrah <Jewelcrafting Trainer>
 						["coord"] = { 72.5, 34.3, ORGRIMMAR },
-						["timeline"] = { "added 4.0.1.12984" },
+						["timeline"] = { ADDED_4_0_1 },
 						["races"] = HORDE_ONLY,
 						["groups"] = {
 							r(404740, {	-- Cataclysm Crushing
@@ -2837,12 +359,25 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						["groups"] = CLASSIC_CATA_MINING,
 					}),
 				}),
+				prof(POISONS, {
+					n(3328, {	-- Ormok <Rogue Trainer>
+						["coord"] = { 44.6, 61.6, ORGRIMMAR },
+						["races"] = HORDE_ONLY,
+						["groups"] = appendGroups(CLASSIC_POISONS,
+							-- #if AFTER TBC
+							TBC_POISONS
+							-- #else
+							{}
+							-- #endif
+						),
+					}),
+				}),
 			}),
 			n(QUESTS, {
 				q(7831, {	-- A Donation of Mageweave
 					["qg"] = 14726,	-- Rashona Straglash <Horde Cloth Quartermaster>
 					["coord"] = { 63.4, 51.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 4338, 60 } },	-- Mageweave Cloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 40,
@@ -2850,7 +385,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(7835, {	-- A Donation of Mageweave
 					["qg"] = 14727,	-- Vehena <Horde Cloth Quartermaster>
 					["coord"] = { 37.8, 87.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 4338, 60 } },	-- Mageweave Cloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 40,
@@ -2858,7 +393,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(7824, {	-- A Donation of Runecloth
 					["qg"] = 14726,	-- Rashona Straglash <Horde Cloth Quartermaster>
 					["coord"] = { 63.4, 51.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 14047, 60 } },	-- Runecloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 50,
@@ -2866,7 +401,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(7836, {	-- A Donation of Runecloth
 					["qg"] = 14727,	-- Vehena <Horde Cloth Quartermaster>
 					["coord"] = { 37.8, 87.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 14047, 60 } },	-- Runecloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 50,
@@ -2874,7 +409,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(7827, {	-- A Donation of Silk
 					["qg"] = 14726,	-- Rashona Straglash <Horde Cloth Quartermaster>
 					["coord"] = { 63.4, 51.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 4306, 60 } },	-- Silk Cloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 26,
@@ -2882,7 +417,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(7834, {	-- A Donation of Silk
 					["qg"] = 14727,	-- Vehena <Horde Cloth Quartermaster>
 					["coord"] = { 37.8, 87.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 4306, 60 } },	-- Silk Cloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 26,
@@ -2890,7 +425,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(7826, {	-- A Donation of Wool
 					["qg"] = 14726,	-- Rashona Straglash <Horde Cloth Quartermaster>
 					["coord"] = { 63.4, 51.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 2592, 60 } },	-- Wool Cloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 12,
@@ -2898,7 +433,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(7833, {	-- A Donation of Wool
 					["qg"] = 14727,	-- Vehena <Horde Cloth Quartermaster>
 					["coord"] = { 37.8, 87.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 2592, 60 } },	-- Wool Cloth
 					["races"] = HORDE_ONLY,
 					["lvl"] = 12,
@@ -2909,7 +444,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #if BEFORE 4.0.1
 					["cost"] = { { "i", 15997, 200 } },	-- Thorium Shells
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
 					["lvl"] = 52,
@@ -2922,32 +457,47 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(26588, {	-- A Furious Catch
 					["qg"] = 43239,	-- Razgar
 					["coord"] = { 65.7, 41.1, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["requireSkill"] = FISHING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
 					["lvl"] = 10,
-					["groups"] = FISHING_AWARD_GROUPS,
+					["groups"] = {
+						i(67414),	-- Bag of Shiny Things
+					},
 				}),
 				q(26572, {	-- A Golden Opportunity
 					["qg"] = 43239,	-- Razgar
 					["coord"] = { 65.7, 41.1, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["requireSkill"] = FISHING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
 					["lvl"] = 10,
-					["groups"] = FISHING_AWARD_GROUPS,
+					["groups"] = {
+						i(67414),	-- Bag of Shiny Things
+					},
 				}),
 				q(62265, {	-- A New Adventure Awaits
-					["description"] = "This quest is automatically offered upon reaching the specified level.",
-					["timeline"] = { "created 9.0.2", ADDED_10_0_2 },
+					["description"] = "This quest is automatically offered upon reaching the specified level while in Chromie Time.",
+					["timeline"] = { CREATED_9_0_2, ADDED_10_0_2 },
 					["races"] = HORDE_ONLY,
+					["lockCriteria"] = { 1, "lvl", 61 },	-- either level or some HQT probably locks this... good luck
+					["g"] = {
+						i(183188),	-- Chromie's Scroll (H) (QI!)
+					},
 				}),
+				warchiefscommand(q(28790, {	-- A Personal Summons (Vashj'ir Starter Quest)
+					["qg"] = 45244,	-- Farseer Krogar
+					["coord"] = { 50.4, 38.2, ORGRIMMAR },
+					["timeline"] = { ADDED_4_0_1, REMOVED_8_3_0 },
+					["isBreadcrumb"] = true,
+					["lvl"] = lvlsquish(80, 80, 30),
+				})),
 				q(25160, {	-- A Present for Lila
 					["qg"] = 50482,	-- Marith Lazuria
 					["coord"] = { 72.4, 34.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = JEWELCRAFTING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
@@ -2957,25 +507,28 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 132254,	-- Nathanos Blightcaller
 					["sourceQuest"] = 49977,	-- Summons to Orgrimmar
 					["coord"] = { 49.8, 75.6, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5", "removed 8.0.1" },
+					["timeline"] = { ADDED_7_3_5, REMOVED_8_0_1 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(26557, {	-- A Staggering Effort
 					["qg"] = 43239,	-- Razgar
 					["coord"] = { 65.7, 41.1, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["requireSkill"] = FISHING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
 					["lvl"] = 10,
-					["groups"] = FISHING_AWARD_GROUPS,
+					["groups"] = {
+						i(58949),	-- Stag Eye
+						i(67414),	-- Bag of Shiny Things
+					},
 				}),
 				q(7832, {	-- Additional Runecloth [Darkspear Trolls]
 					["qg"] = 14726,	-- Rashona Straglash <Horde Cloth Quartermaster>
 					["sourceQuest"] = 7824,	-- A Donation of Runecloth
 					["coord"] = { 63.4, 51.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
-					["maxReputation"] = { 530, EXALTED },	-- Darkspear Trolls, Exalted.
+					["timeline"] = { REMOVED_4_0_3 },
+					["maxReputation"] = { FACTION_DARKSPEAR_TROLLS, EXALTED },	-- Darkspear Trolls, Exalted.
 					["cost"] = { { "i", 14047, 20 } },	-- Runecloth
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
@@ -2985,8 +538,8 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 14727,	-- Vehena <Horde Cloth Quartermaster>
 					["sourceQuest"] = 7836,	-- A Donation of Runecloth
 					["coord"] = { 37.8, 87.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
-					["maxReputation"] = { 76, EXALTED },	-- Orgrimmar, Exalted.
+					["timeline"] = { REMOVED_4_0_3 },
+					["maxReputation"] = { FACTION_ORGRIMMAR, EXALTED },	-- Orgrimmar, Exalted.
 					["cost"] = { { "i", 14047, 20 } },	-- Runecloth
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
@@ -3004,21 +557,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3216,	-- Arnak Fireblade
 					["sourceQuest"] = 25263,	-- Arnak Fireblade
 					["coord"] = { 58.5, 53.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
-				q(31853, {	-- All Aboard!
-					["qg"] = 54870,	-- General Nazgrim
-					["sourceQuests"] = {
-						29611,	-- The Art of War
-						29612,	-- The Art of War
-						49852,	-- To Pandaria!
-						49538,	-- Warchief's Command: Jade Forest!
-					},
-					["coord"] = { 48.6, 70.8, ORGRIMMAR },
-					["timeline"] = { "added 5.0.4.15913" },
-					["races"] = HORDE_ONLY,
-				}),
+
 				q(27277, {	-- An Audience with Ureda
 					["qgs"] = {
 						3047,	-- Archmage Shymm <Mage Trainer>
@@ -3030,7 +572,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 85.0, 14.0, UNDERCITY },	-- Kaelystia Hatebringer <Mage Trainer>
 						{ 53.0, 19.6, SILVERMOON_CITY },	-- Inethven <Mage Trainer>
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { MAGE },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(20, 20, 8),
@@ -3039,21 +581,24 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(40976, {	-- Audience with the Warchief
 					["qg"] = 97296,	-- Archmage Khadgar
 					["coord"] = { 52.6, 88.2, ORGRIMMAR },
-					["timeline"] = { "added 7.0.1.20756" },
+					["timeline"] = { ADDED_7_0_3 },
 					["classes"] = { DEMONHUNTER },
 					["races"] = { BLOODELF },
 				}),
 				q(2751, {	-- Barbaric Battlements
 					["qg"] = 7790,	-- Orokk Omosh
-					["coords"] = {
-						-- #if AFTER CATA
-						{ 76.2, 37.4, ORGRIMMAR },
-						-- #else
-						{ 79.4, 22.4, ORGRIMMAR },
-						-- #endif
-					},
-					["description"] = "Requires skill 140 in Blacksmithing.",
+					-- #if BEFORE 4.0.3
+					["description"] = "Becomes available at Blacksmithing skill level 140 when character level requirement is met.",
+					["coord"] = { 79.4, 22.4, ORGRIMMAR },
+					-- #elseif AFTER 8.0.1
+					["description"] = "Becomes available at Classic Blacksmithing skill level 140 when character level requirement is met.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #else
+					["description"] = "Becomes available at Blacksmithing skill level 140 when character level requirement is met.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #endif
 					["requireSkill"] = BLACKSMITHING,
+					["learnedAt"] = 140,
 					["races"] = HORDE_ONLY,
 					["cost"] = {
 						{ "i", 2868, 2 },	-- Patterned Bronze Bracers
@@ -3063,21 +608,35 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["lvl"] = lvlsquish(32, 32, 15),
 					["groups"] = {
 						i(7979, {	-- Plans: Barbaric Iron Breastplate (RECIPE!)
-							-- #if ANYCLASSIC
-							["description"] = "This item can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths.",
-							-- #endif
+						-- #if BEFORE 6.0.2
+						["description"] = "This recipe can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #elseif AFTER 9.2.5
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to both Alliance and Horde alts.",
+						-- #else
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #endif
 						}),
 					},
 				}),
-				q(60361, bubbleDownSelf({ ["timeline"] = { ADDED_9_0_1 } }, {	-- Battle for Azeroth: Mission Statement
-					["sourceQuest"] = 60360,	-- An Urgent Meeting
-					["qg"] = 168431,	-- Warlord Breka Grimaxe
-					["coord"] = { 48.3, 71.4, ORGRIMMAR },
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						i(178942),	-- War-Chain of the Horde
+				q(51443, {	-- Battle For Azeroth: Mission Statement (BfA version)
+					-- available to a level 47, pre-9.0 character during patch 9.0
+					["providers"] = {
+						{ "n", 140176 },	-- Nathanos Blightcaller
+						{ "n", 49750 },	-- Warchief's Herald
 					},
-				})),
+				--[[ these SQs are no longer required, because the heart of azeroth is not mandatory to start bfa content.  you can pick 51443 up immediately
+					["sourceQuests"] = {
+						-- This quest was not completed for me, but 52428 was completed... maybe it's a breadcrumb technically?
+						53031,	-- The Speaker's Imperative
+						52428,	-- Infusing the Heart
+					},	--]]
+					["coords"] = {
+						{ 48.9, 91.4, ORGRIMMAR },	-- Nathanos Blightcaller
+						{ 49.4, 76.6, ORGRIMMAR },	-- Warchief's Herald
+					},
+					["timeline"] = { ADDED_8_0_1 },
+					["races"] = HORDE_ONLY,
+				}),
 				q(1508, {	-- Blind Cazul
 					["qg"] = 5909,	-- Cazul
 					["sourceQuests"] = {
@@ -3085,7 +644,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						1472,	-- Devourer of Souls [Undercity]
 					},
 					["coord"] = { 47.2, 46.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = { ORC, UNDEAD },
 					["lvl"] = 20,
@@ -3093,18 +652,24 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(29401, {	-- Blown Away
 					["qg"] = 54004,	-- Jaga
 					["coord"] = { 48.1, 46.8, ORGRIMMAR },
-					["timeline"] = { "added 4.2.0.14133" },
+					["timeline"] = { ADDED_4_2_0 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
+						objective(1, {	-- 0/5 Windswept Balloon
+							["providers"] = {
+								{ "i",  71034 },	-- Windswept Balloon
+								{ "o", 209058 },	-- Windswept Balloon
+							},
+						}),
 						i(72045, {	-- Horde Balloon (PET!)
-							["timeline"] = { "added 4.2.0.14133" },
+							["timeline"] = { ADDED_4_2_0 },
 						}),
 					},
 				}),
 				q(4300, {	-- Bone-Bladed Weapons
 					["qg"] = 8659,	-- Jes'rimon
 					["coord"] = { 55.6, 34.2, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { UNGORO_CRATER },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
@@ -3121,13 +686,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(11862, {	-- White Bone Band
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11863, {	-- White Bone Shredder
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11864, {	-- White Bone Spear
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -3138,11 +703,33 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 2756,	-- The Old Ways
 					["coord"] = { 80.4, 23.2, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["requireSkill"] = BLACKSMITHING,
+					["learnedAt"] = 210,
 					["races"] = HORDE_ONLY,
 					["lvl"] = 40,
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, n(BURLY_BRAWL, {
+					["questID"] = 75300,	-- Burly Brawl HQT	-- TODO: Confirm if this is the same HQT.
+					["qgs"] = {
+						3399,	-- Zamja <Cooking Trainer>
+						208023,	-- Gru'ark
+					},
+					["coord"] = { 57.6, 53.6, ORGRIMMAR },
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { WARRIOR },
+					["races"] = HORDE_ONLY,
+					["groups"] = {
+						i(204716, {	-- Rune of Frenzied Assault
+							["classes"] = { WARRIOR },
+							["groups"] = {
+								recipe(425447),	-- Engrave Pants - Frenzied Assault
+							},
+						}),
+					},
+				})),
+				-- #endif
 				q(60961, {	-- Burning Crusade: Onward to Adventure in Outland
 					["qg"] = 167032,	-- Chromie <Emissary of the Bronze Dragonflight>
 					["sourceQuest"] = 60123,	-- Burning Crusade: To Outland!
@@ -3161,31 +748,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["lockCriteria"] = { 1, "lvl", LEVEL_CHROMIETIME_MAX },
 					["isBreadcrumb"] = true,
 				}),
-				q(29219, {	-- Bwemba's Spirit
-					["qg"] = 53081,	-- Bwemba
-					-- #if BEFORE 7.0.1
-					["sourceQuest"] = 29157,	-- The Zandalari Menace
-					-- #endif
-					["coord"] = { 32.6, 68.6, ORGRIMMAR },
-					["timeline"] = { "added 4.1.0.13726" },
-					["races"] = HORDE_ONLY,
-				}),
 				q(4511, {	-- Calm Before the Storm (2/2)
 					["qg"] = 7010,	-- Zilzibin Drumlore
 					["sourceQuest"] = 4509,	-- Calm Before the Storm (1/2)
 					["coord"] = { 56.4, 46.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
 						i(11870, {	-- Oblivion Orb
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11871, {	-- Snarkshaw Spaulders
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11872, {	-- Eschewal Greaves
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -3200,44 +778,53 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(26227, {	-- Careful, This Fruit Bites Back
 					["qg"] = 42506,	-- Marogg
 					["coord"] = { 56.5, 62.5, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = COOKING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
-					["groups"] = COOKING_AWARD_GROUPS,
+					["groups"] = {
+						COOKING_AWARD,
+					},
 				}),
 				q(26543, {	-- Clammy Hands
 					["qg"] = 43239,	-- Razgar
 					["coord"] = { 65.7, 41.1, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["requireSkill"] = FISHING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
 					["lvl"] = 10,
-					["groups"] = FISHING_AWARD_GROUPS,
+					["groups"] = {
+						i(67414),	-- Bag of Shiny Things
+					},
 				}),
 				q(26226, {	-- Crawfish Creole
 					["qg"] = 42506,	-- Marogg
 					["coord"] = { 56.5, 62.5, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = COOKING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
-					["groups"] = COOKING_AWARD_GROUPS,
+					["groups"] = {
+						COOKING_AWARD,
+					},
 				}),
 				q(1501, {	-- Creature of the Void [Orgrimmar]
 					["qg"] = 5875,	-- Gan'rul Bloodeye
 					["sourceQuest"] = 1506,	-- Gan'rul's Summons
 					["altQuests"] = { 1473 },	-- Creature of the Void [Undercity]
 					["coord"] = { 48.2, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DUROTAR },
 					["races"] = { ORC, TROLL, UNDEAD },
 					["classes"] = { WARLOCK },
 					["lvl"] = 10,
 					["groups"] = {
 						objective(1, {	-- 0/1 Tablet of Verga
-							["provider"] = { "i", 6535 },	-- Tablet of Verga
+							["providers"] = {
+								{ "i", 6535 },	-- Tablet of Verga
+								{ "o", 58595 },	-- Burning Blade Stash
+							},
 							["coord"] = { 51.6, 9.7, DUROTAR },
 						}),
 					},
@@ -3246,15 +833,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 16926,	-- Vivica Starshot
 					["sourceQuest"] = 32471,	-- Light Camera Action (H)
 					["coord"] = { 34.5, 70.8, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5" },
+					["timeline"] = { ADDED_7_3_5 },
 					["collectible"] = false,
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(122661, {	-- S.E.L.F.I.E. Lens Upgrade Kit
-							["timeline"] = { "added 6.1.0" },
+							["timeline"] = { ADDED_6_1_0 },
 							["groups"] = {
 								i(122674, {	-- S.E.L.F.I.E. Camera MkII
-									["timeline"] = { "added 6.1.0" },
+									["timeline"] = { ADDED_6_1_0 },
 								}),
 							},
 						}),
@@ -3267,25 +854,38 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 2460,	-- The Shattered Salute
 					["coord"] = { 43, 53.4, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
 				}),
-				q(1507, {	-- Devourer of Souls [Orgrimmar]
-					["qg"] = 5875,	-- Dan'rul Bloodeye
-					["altQuests"] = { 1472 },	-- Devourer of Souls [Undercity]
-					["timeline"] = { "removed 4.0.3" },
-					["races"] = { ORC, UNDEAD },
-					["classes"] = { WARLOCK },
-					["isBreadcrumb"] = true,
+				-- #if NOT ANYCLASSIC
+				q(5646, {	-- Devouring Plague [Orgrimmar]
+					["qg"] = 6018,	-- Ur'kyo <Priest Trainer>
+					["coord"] = { 35.6, 87.6, ORGRIMMAR },
+					["altQuests"] = {
+						5679,	-- Devouring Plague [Undercity]
+						5644,	-- Devouring Plague [Thunder Bluff]
+					},
+					["timeline"] = { REMOVED_3_0_2 },
+					["classes"] = { PRIEST },
+					["races"] = { UNDEAD },
 					["lvl"] = 20,
+					-- #if BEFORE 3.0.2
+					["groups"] = {
+						{
+							["recipeID"] = 2944,	-- Devouring Plague (Rank 1)
+							["rank"] = 1,
+						},
+					},
+					-- #endif
 				}),
+				-- #endif
 				q(49855, {	-- Disaster at Mount Hyjal
 					["qg"] = 45244,	-- Farseer Krogar
 					["sourceQuest"] = 28805,	-- The Eye of the Storm
 					["coord"] = { 50.4, 38.2, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5.25600" },
+					["timeline"] = { ADDED_7_3_5 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 				}),
@@ -3293,30 +893,31 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3144,	-- Eitrigg
 					["sourceQuest"] = 13841,	-- All Apologies
 					["coord"] = { 49.2, 72.3, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(56708, {	-- Bow of Ire (old version)
-							["timeline"] = { "added 4.0.3.13277", "removed 6.0.2.18764" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_6_0_2 },
 						}),
 						i(56710, {	-- Unbountied Cloak (Replaced by Durak's Downfall in WoD)
-							["timeline"] = { "added 4.0.3.13277", "removed 6.0.2.18764" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_6_0_2 },
 						}),
 						i(119325, {	-- Bow of Ire
-							["timeline"] = { "added 6.0.2.18764" },
+							["timeline"] = { ADDED_6_0_2 },
 						}),
 						i(119326, {	-- Ring of Pardons
-							["timeline"] = { "added 6.0.2.18764" },
+							["timeline"] = { ADDED_6_0_2 },
 						}),
 						i(119327, {	-- Durak's Downfall
-							["timeline"] = { "added 6.0.2.18764" },
+							["timeline"] = { ADDED_6_0_2 },
 						}),
 					},
 				}),
 				q(2378, {	-- Find the Shattered Hand
 					["qg"] = 6467,	-- Mennet Carkad
+					["altQuests"] = { 2380 },	-- To Orgrimmar!
 					["coord"] = { 83.2, 69, UNDERCITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -3326,13 +927,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3310,	-- Doras
 					["sourceQuest"] = 26803,	-- Missing Reports
 					["coord"] = { 49.4, 59.2, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = { GOBLIN },
 				}),
 				q(27686, {	-- Forged Documents
 					["provider"] = { "i", 63276 },	-- Forged Documents
 					["description"] = "After creating Forged Documents with Inscription, search the city for an NPC to accept them - the quest can end in a variety of different places.",
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = INSCRIPTION,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
@@ -3340,7 +941,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(25162, {	-- Elemental Goo
 					["qg"] = 50482,	-- Marith Lazuria
 					["coord"] = { 72.4, 34.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = JEWELCRAFTING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
@@ -3349,28 +950,33 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(26235, {	-- Even Thieves Get Hungry
 					["qg"] = 42506,	-- Marogg
 					["coord"] = { 56.5, 62.5, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = COOKING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
-					["groups"] = COOKING_AWARD_GROUPS,
+					["groups"] = {
+						COOKING_AWARD,
+					},
 				}),
 				q(26220, {	-- Everything Is Better with Bacon
 					["qg"] = 42506,	-- Marogg
 					["coord"] = { 56.5, 62.5, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = COOKING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
-					["groups"] = COOKING_AWARD_GROUPS,
+					["groups"] = {
+						COOKING_AWARD,
+					},
 				}),
 				q(31014, {	-- Hellscream's Gift
 					["qg"] = 62092,	-- Garrosh Hellscream
 					["sourceQuest"] = 31013,	-- The Horde Way
 					["coord"] = { 70.6, 30.8, ORGRIMMAR },
-					["timeline"] = { "added 5.0.1.15589", "removed 7.0.3" },
+					["timeline"] = { ADDED_5_0_4, REMOVED_7_0_3 },
 					["races"] = { PANDAREN_HORDE },
 				}),
+				-- #if ANYCLASSIC
 				q(5652, {	-- Hex of Weakness [Orgrimmar]
 					["qgs"] = {
 						6018,	-- Ur'kyo <Priest Trainer>
@@ -3387,13 +993,12 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 49.01, 18.32, UNDERCITY },
 					},
 					["altQuests"] = {
-						5653,	-- Hex of Weakness (NYI)
 						5654,	-- Hex of Weakness [Durotar]
 						5655,	-- Hex of Weakness [Mulgore]
 						5656,	-- Hex of Weakness [Thunder Bluff]
 						5657,	-- Hex of Weakness [Undercity]
 					},
-					["timeline"] = { "removed 2.4.1" },
+					["timeline"] = { REMOVED_2_4_1 },
 					["classes"] = { PRIEST },
 					["races"] = { TROLL },
 					["lvl"] = 10,
@@ -3406,10 +1011,35 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					-- #endif
 				}),
+				-- #endif
+				-- #if NOT ANYCLASSIC
+				q(5652, {	-- Hex of Weakness [Orgrimmar]
+					["qg"] = 6018,	-- Ur'kyo <Priest Trainer>
+					["coord"] = { 35.6, 87.6, ORGRIMMAR },
+					["altQuests"] = {
+						5654,	-- Hex of Weakness [Durotar]
+						5655,	-- Hex of Weakness [Mulgore]
+						5656,	-- Hex of Weakness [Thunder Bluff]
+						5657,	-- Hex of Weakness [Undercity]
+					},
+					["timeline"] = { REMOVED_2_4_1 },
+					["classes"] = { PRIEST },
+					["races"] = { TROLL },
+					["lvl"] = 10,
+					-- #if BEFORE 3.0.2
+					["groups"] = {
+						{
+							["recipeID"] = 9035,	-- Hex of Weakness (Rank 1)
+							["rank"] = 1,
+						},
+					},
+					-- #endif
+				}),
+				-- #endif
 				q(5726, {	-- Hidden Enemies (1/5)
 					["qg"] = 4949,	-- Thrall <Warchief>
 					["coord"] = { 32.0, 37.8, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DUROTAR },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 9,
@@ -3427,7 +1057,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 4949,	-- Thrall <Warchief>
 					["sourceQuest"] = 5726,	-- Hidden Enemies (1/5)
 					["coord"] = { 32.0, 37.8, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 9,
 					["groups"] = {
@@ -3445,12 +1075,12 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 2478,	-- Mission: Possible But Not Probable
 					["coord"] = { 43, 53.4, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
 				}),
-				q(53372, {	-- Hour of Reckoning
+				q(53372, {	-- Battle for Azeroth: Hour of Reckoning
 				--	TODO: level is obviously incorrect.  whether this quest is still available is disputed.  potential ways to get, per wowhead comments:
 					-- "If you are looking for how to get your Heart of Azeroth, post Shadowlands pre-patch (9.0) you can only get it once you have hit level 50, it will then be automatically pushed through as soon as you ding to go visit Magni in Silithus."
 					-- "This is incorrect. All you have to do is loot an Azerite item from a BfA Dungeon Level 45-49 and it starts the Quest when you Zone to Org/SW."
@@ -3458,7 +1088,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				--	["description"] = "This quest is automatically offered to Horde players upon reaching level 110.",
 					["qg"] = 14720,	-- High Overlord Saurfang
 					["coord"] = { 48.6, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 8.0.1.27144" },
+					["timeline"] = { ADDED_8_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(163528),	-- Deathguard's Gladius
@@ -3475,7 +1105,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				q(32674, {	-- I Believe You Can Fly
 					["description"] = "This quest is automatically offered to Horde players upon reaching level 30.",
-					["timeline"] = { "added 5.2.0.16486" },
+					["timeline"] = { ADDED_5_2_0, REMOVED_10_1_5 },
 					["races"] = HORDE_ONLY,
 					["lockCriteria"] = { 1,
 						"spellID", 34090,	-- Expert Riding
@@ -3492,7 +1122,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["timeline"] = { ADDED_9_2_5, REMOVED_10_0_5 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
-						i(191682, {	-- Explosive Pie
+						i(191682, {	-- Explosive Pie (QI!)
 							["timeline"] = { ADDED_9_2_5, REMOVED_10_0_5 },
 						}),
 					},
@@ -3500,14 +1130,18 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2754, {	-- Horns of Frenzy
 					["qg"] = 7790,	-- Orokk Omosh
 					["sourceQuest"] = 2753,	-- Trampled Under Foot
-					["coords"] = {
-						-- #if AFTER CATA
-						{ 76.2, 37.4, ORGRIMMAR },
-						-- #else
-						{ 79.4, 22.4, ORGRIMMAR },
-						-- #endif
-					},
+					-- #if BEFORE 4.0.3
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.\n\nPlans: Solid Iron Maul is a 1-in-stock recipe that can either be bought from Muuran at Ghost Walker Post in Desolace, or the Alliance-only vendor Jannos Ironwill at Refuge Pointe in Arathi Highlands.",
+					["coord"] = { 79.4, 22.4, ORGRIMMAR },
+					-- #elseif AFTER 8.0.1
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Classic Blacksmithing skill level 140.\n\nPlans: Solid Iron Maul is a 1-in-stock recipe that can either be bought from Muuran at Ghost Walker Post in Desolace, or the Alliance-only vendor Jannos Ironwill at Refuge Pointe in Arathi Highlands.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #else
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.\n\nPlans: Solid Iron Maul is a 1-in-stock recipe that can either be bought from Muuran at Ghost Walker Post in Desolace, or the Alliance-only vendor Jannos Ironwill at Refuge Pointe in Arathi Highlands.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #endif
 					["requireSkill"] = BLACKSMITHING,
+					["learnedAt"] = 140,
 					["races"] = HORDE_ONLY,
 					["cost"] = {
 						{ "i", 3851, 2 },	-- Solid Iron Maul
@@ -3517,30 +1151,42 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["lvl"] = lvlsquish(32, 32, 15),
 					["groups"] = {
 						i(7980, {	-- Plans: Barbaric Iron Helm (RECIPE!)
-							-- #if ANYCLASSIC
-							["description"] = "This item can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths.",
-							-- #endif
+						-- #if BEFORE 6.0.2
+						["description"] = "This recipe can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #elseif AFTER 9.2.5
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to both Alliance and Horde alts.",
+						-- #else
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #endif
 						}),
 					},
 				}),
 				q(2755, {	-- Joys of Omosh
 					["qg"] = 7790,	-- Orokk Omosh
 					["sourceQuest"] = 2754,	-- Horns of Frenzy
-					["coords"] = {
-						-- #if AFTER CATA
-						{ 76.2, 37.4, ORGRIMMAR },
-						-- #else
-						{ 79.4, 22.4, ORGRIMMAR },
-						-- #endif
-					},
+					-- #if BEFORE 4.0.3
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.",
+					["coord"] = { 79.4, 22.4, ORGRIMMAR },
+					-- #elseif AFTER 8.0.1
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Classic Blacksmithing skill level 140.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #else
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #endif
 					["requireSkill"] = BLACKSMITHING,
+					["learnedAt"] = 140,
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(32, 32, 15),
 					["groups"] = {
 						i(7982, {	-- Plans: Barbaric Iron Gloves (RECIPE!)
-							-- #if ANYCLASSIC
-							["description"] = "This item can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths.",
-							-- #endif
+						-- #if BEFORE 6.0.2
+						["description"] = "This recipe can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #elseif AFTER 9.2.5
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to both Alliance and Horde alts.",
+						-- #else
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #endif
 						}),
 					},
 				}),
@@ -3548,11 +1194,11 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5885,	-- Deino <Mage Trainer>
 					["sourceQuest"] = 1944,	-- Waters of Xavian
 					["coord"] = { 38.6, 86.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ASHENVALE },
 					["classes"] = { MAGE },
 					["races"] = { UNDEAD, TROLL },
-					["lvl"] = 15,
+					["lvl"] = 26,
 					["groups"] = {
 						objective(1, {	-- 0/12 Laughing Sister's Hair
 							["provider"] = { "i", 7270 },	-- Laughing Sister's Hair
@@ -3562,7 +1208,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				q(32673, {	-- Learn To Ride (Goblin)
 					["description"] = "This quest is available to Goblins upon reaching level 10.",
-					["timeline"] = { "added 5.2.0.16486", REMOVED_10_1_5 },
+					["timeline"] = { ADDED_5_2_0, REMOVED_10_1_5 },
 					["races"] = { GOBLIN },
 					["lockCriteria"] = { 1,
 						"spellID", 33388,	-- Apprentice Riding
@@ -3576,7 +1222,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				q(32669, {	-- Learn To Ride (Orc)
 					["description"] = "This quest is available to Orcs upon reaching level 10.",
-					["timeline"] = { "added 5.2.0.16486", REMOVED_10_1_5 },
+					["timeline"] = { ADDED_5_2_0, REMOVED_10_1_5 },
 					["races"] = { ORC },
 					["lockCriteria"] = { 1,
 						"spellID", 33388,	-- Apprentice Riding
@@ -3590,7 +1236,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				q(32667, {	-- Learn To Ride (Pandaren)
 					["description"] = "This quest is available to Pandaren upon reaching level 10.",
-					["timeline"] = { "added 5.2.0.16486", REMOVED_10_1_5 },
+					["timeline"] = { ADDED_5_2_0, REMOVED_10_1_5 },
 					["races"] = { PANDAREN_HORDE },
 					["lockCriteria"] = { 1,
 						"spellID", 33388,	-- Apprentice Riding
@@ -3605,7 +1251,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(14086, {	-- Learn to Ride in Orgrimmar
 					["provider"] = { "i", 46880 },	-- Riding Training Pamphlet
 					["description"] = "The pamphlet that starts this quest is sent to Orcs in their Mailbox upon reaching the specified level.",
-					["timeline"] = { "added 3.3.0", "removed 4.0.3" },
+					["timeline"] = { ADDED_3_3_0, REMOVED_4_0_3 },
 					["lockCriteria"] = { 1,
 						"spellID", 33388,	-- Apprentice Riding
 						"spellID", 33391,	-- Journeyman Riding
@@ -3627,7 +1273,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(32471, {	-- Light Camera Action (H)
 					["qg"] = 16926,	-- Vivica Starshot
 					["coord"] = { 34.5, 70.8, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5" },
+					["timeline"] = { ADDED_7_3_5 },
 					["cost"] = { { "i", 4406, 1 } },	-- Standard Scope
 					["collectible"] = false,
 					["races"] = HORDE_ONLY,
@@ -3641,7 +1287,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["coord"] = { 60.8, 54.0, ORGRIMMAR },
 						}),
 						i(122637, {	-- S.E.L.F.I.E. Camera
-							["timeline"] = { "added 6.1.0.19508" },
+							["timeline"] = { ADDED_6_1_0 },
 						}),
 					},
 				}),
@@ -3649,7 +1295,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(65601, {	-- Love Hurts
 					["qg"] = 5909,	-- Cazul
 					["coord"] = { 47.2, 46.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -3659,40 +1305,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3144,	-- Eitrigg
 					["sourceQuest"] = 28717,	-- Warchief's Command: Twilight Highlands!
 					["coord"] = { 48.6, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(4494, {	-- March of the Silithid (H)
 					["qg"] = 7010,	-- Zilzibin Drumlore
 					["sourceQuest"] = 32,	-- Rise of the Silithid (H)
 					["coord"] = { 55.2, 55.8, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
+					["maps"] = { TANARIS },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 50,
-				}),
-				q(51443, {	-- Mission Statement (BfA version)
-					-- available to a level 47, pre-9.0 character during patch 9.0
-					["providers"] = {
-						{ "n", 140176 },	-- Nathanos Blightcaller
-						{ "n", 49750 },	-- Warchief's Herald
-					},
-				--[[ these SQs are no longer required, because the heart of azeroth is not mandatory to start bfa content.  you can pick 51443 up immediately
-					["sourceQuests"] = {
-						-- This quest was not completed for me, but 52428 was completed... maybe it's a breadcrumb technically?
-						53031,	-- The Speaker's Imperative
-						52428,	-- Infusing the Heart
-					},	--]]
-					["coords"] = {
-						{ 48.9, 91.4, ORGRIMMAR },	-- Nathanos Blightcaller
-						{ 49.4, 76.6, ORGRIMMAR },	-- Warchief's Herald
-					},
-					["timeline"] = { "added 8.0.1.27144" },
-					["races"] = HORDE_ONLY,
 				}),
 				q(26803, {	-- Missing Reports
 					["qg"] = 3144,	-- Eitrigg
 					["coord"] = { 48.6, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = { GOBLIN },
 				}),
 				q(60964, {	-- Mists of Pandaria: Onward to Adventure in Pandaria
@@ -3715,7 +1343,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5910,	-- Zankaja
 					["sourceQuest"] = 1508,	-- Blind Cazul
 					["coord"] = { 37, 59.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = { ORC, UNDEAD },
 					["lvl"] = 20,
@@ -3723,7 +1351,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(25158, {	-- Nibbler! No!
 					["qg"] = 50482,	-- Marith Lazuria
 					["coord"] = { 72.4, 34.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = JEWELCRAFTING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
@@ -3732,17 +1360,19 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(26556, {	-- No Dumping Allowed
 					["qg"] = 43239,	-- Razgar
 					["coord"] = { 65.7, 41.1, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["requireSkill"] = FISHING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
 					["lvl"] = 10,
-					["groups"] = FISHING_AWARD_GROUPS,
+					["groups"] = {
+						i(67414),	-- Bag of Shiny Things
+					},
 				}),
 				q(25161, {	-- Ogrezonians in the Mood
 					["qg"] = 50482,	-- Marith Lazuria
 					["coord"] = { 72.4, 34.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = JEWELCRAFTING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
@@ -3751,14 +1381,18 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2752, {	-- On Iron Pauldrons
 					["qg"] = 7790,	-- Orokk Omosh
 					["sourceQuest"] = 2751,	-- Barbaric Battlements
-					["coords"] = {
-						-- #if AFTER CATA
-						{ 76.2, 37.4, ORGRIMMAR },
-						-- #else
-						{ 79.4, 22.4, ORGRIMMAR },
-						-- #endif
-					},
+					-- #if BEFORE 4.0.3
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.",
+					["coord"] = { 79.4, 22.4, ORGRIMMAR },
+					-- #elseif AFTER 8.0.1
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Classic Blacksmithing skill level 140.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #else
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #endif
 					["requireSkill"] = BLACKSMITHING,
+					["learnedAt"] = 140,
 					["races"] = HORDE_ONLY,
 					["cost"] = {
 						{ "i", 7958, 4 },	-- Bronze Battle Axe
@@ -3767,29 +1401,33 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["lvl"] = lvlsquish(32, 32, 15),
 					["groups"] = {
 						i(7978, {	-- Plans: Barbaric Iron Shoulders (RECIPE!)
-							-- #if ANYCLASSIC
-							["description"] = "This item can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths.",
-							-- #endif
+						-- #if BEFORE 6.0.2
+						["description"] = "This recipe can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #elseif AFTER 9.2.5
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to both Alliance and Horde alts.",
+						-- #else
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #endif
 						}),
 					},
 				}),
 				q(25275, {	-- Report to the Labor Captain
 					["qg"] = 3144,	-- Eitrigg
 					["coord"] = { 48.6, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = { GOBLIN },
 				}),
 				q(26840, {	-- Return to the Highlands
 					["qg"] = 3144,	-- Eitrigg
 					["sourceQuest"] = 26830,	-- Traitor's Bait
 					["coord"] = { 48.6, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(10794, {	-- Rogues of the Shattered Hand
 					["qg"] = 16684,	-- Zelanis <Rogue Trainer>
 					["coord"] = { 79.4, 52, SILVERMOON_CITY },
-					["timeline"] = { "added 2.0.3", "removed 4.0.3" },
+					["timeline"] = { ADDED_2_0_3, REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -3799,11 +1437,57 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3144,	-- Eitrigg
 					["sourceQuest"] = 26294,	-- Weapons of Mass Dysfunction
 					["coord"] = { 48.6, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 				}),
-				q(5680, {	-- Shadowguard [Undercity]
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78196, {	-- Secrets of Undeath (1/2)
+					["qg"] = 211229,	-- Dietrich Praice
+					["coord"] = { 35.6, 87.8, ORGRIMMAR },
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { ASHENVALE },
+					["classes"] = { PRIEST },
+					["races"] = { TROLL },
+					["lvl"] = 18,
+					["groups"] = {
+						objective(1, {	-- 0/12 Shadeleaf
+							["provider"] = { "i", 210045 },	-- Shadeleaf
+							["coord"] = { 69.6, 63.0, ASHENVALE },
+							["crs"] = {
+								3782,	-- Shadethicket Stone Mover
+								3784,	-- Shadethicket Bark Ripper
+								3783,	-- Shadethicket Raincaller
+								3781,	-- Shadethicket Wood Shaper
+							},
+						}),
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, q(78197, {	-- Secrets of Undeath (2/2)
+					["providers"] = {
+						{ "n", 211229 },	-- Dietrich Praice
+						{ "n",   6491 },	-- Spirit Healer
+						{ "i", 210056 },	-- Tincture of Waking Death
+					},
+					["sourceQuest"] = 78196,	-- Secrets of Undeath (1/2)
+					["coords"] = {
+						{ 35.6, 87.8, ORGRIMMAR },
+						{ 56.2, 49.4, TIRISFAL_GLADES },
+					},
+					["description"] = "Completing this quest will allow you to meditate in the same manner as the undead.",
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { PRIEST },
+					["races"] = { TROLL },
+					["lvl"] = 18,
+					["groups"] = {
+						recipe(424041, {	-- Secrets of Undeath
+							["classes"] = { PRIEST },
+						}),
+					},
+				})),
+				-- #endif
+				-- #if ANYCLASSIC
+				q(5680, {	-- Shadowguard [Orgrimmar]
 					["qgs"] = {
 						6018,	-- Ur'kyo <Priest Trainer>
 						4606,	-- Aelthalyste
@@ -3818,7 +1502,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 49.01, 18.32, UNDERCITY },
 						{ 26.0, 15.8, THUNDER_BLUFF },
 					},
-					["timeline"] = { "removed 2.4.1" },
+					["timeline"] = { REMOVED_2_4_1 },
 					["classes"] = { PRIEST },
 					["races"] = { UNDEAD },
 					["lvl"] = 20,
@@ -3831,10 +1515,50 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					-- #endif
 				}),
+				-- #endif
+				-- #if NOT ANYCLASSIC
+				q(5680, {	-- Shadowguard [Orgrimmar]
+					["qg"] = 6018,	-- Ur'kyo <Priest Trainer>
+					["altQuests"] = {
+						5643,	-- Shadowguard [Undercity]
+						5642,	-- Shadowguard [Thunder Bluff]
+					},
+					["coord"] = { 35.6, 87.6, ORGRIMMAR },
+					["timeline"] = { REMOVED_2_4_1 },
+					["classes"] = { PRIEST },
+					["races"] = { UNDEAD },
+					["lvl"] = 20,
+					-- #if BEFORE 2.4.1
+					["groups"] = {
+						{
+							["recipeID"] = 18137,	-- Shadowguard (Rank 1)
+							["rank"] = 1,
+						},
+					},
+					-- #endif
+				}),
+				-- #endif
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(79079, {	-- Sharing the Faith
+					["qg"] = 6018,	-- Ur'kyo <Priest Trainer>
+					["coord"] = { 35.6, 87.6, ORGRIMMAR },
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { DUROTAR },
+					["classes"] = { PRIEST },
+					["races"] = { TROLL },
+					["lvl"] = 5,
+					["groups"] = {
+						objective(1, {	-- Pray over the Supplicant
+							["provider"] = { "n", 215096 },	-- Supplicant
+							["description"] = "You must first have your Meditation buff and then use /pray on the kneeling Supplicant.",
+						}),
+					},
+				})),
+				-- #endif
 				q(1943, {	-- Speak with Deino
 					["qg"] = 4568,	-- Anastasia Hartwell <Mage Trainer>
 					["coord"] = { 85, 10.2, UNDERCITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { UNDEAD, TROLL },
 					["classes"] = { MAGE },
 					["isBreadcrumb"] = true,
@@ -3845,18 +1569,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 56.5, 62.5, ORGRIMMAR },
 					["requireSkill"] = COOKING,
 					["races"] = exclude(TROLL, HORDE_ONLY),
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["isDaily"] = true,
-					["groups"] = COOKING_AWARD_GROUPS,
+					["groups"] = {
+						COOKING_AWARD,
+					},
 				}),
 				q(26234, {	-- Stealing From Our Own (Troll)
 					["qg"] = 42506,	-- Marogg
 					["coord"] = { 56.5, 62.5, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = COOKING,
 					["races"] = { TROLL },
 					["isDaily"] = true,
-					["groups"] = COOKING_AWARD_GROUPS,
+					["groups"] = {
+						COOKING_AWARD,
+					},
 				}),
 				q(66253, {	-- Stolen Shipments
 					["qg"] = 187758,	-- Zaa'je
@@ -3870,29 +1598,8 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				q(49977, {	-- Summons to Orgrimmar
-					["timeline"] = { "added 7.3.5", "removed 8.0.1" },
+					["timeline"] = { ADDED_7_3_5, REMOVED_8_0_1 },
 					["races"] = HORDE_ONLY,
-				}),
-				q(5301, {	-- The Art of the Armorsmith (H)
-					["qg"] = 11177,	-- Okothos Ironrager
-					["altQuests"] = {
-						5283,	-- The Art of the Armorsmith (A)
-						5284,	-- The Way of the Weaponsmith (A)
-						5302,	-- The Way of the Weaponsmith (H)
-					},
-					-- #if BEFORE 4.0.3
-					["description"] = "Upon finishing this quest, you will become a Armorsmith and be locked out of becoming a Weaponsmith.",
-					-- #endif
-					["coord"] = { 79.8, 23.8, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
-					["requireSkill"] = BLACKSMITHING,
-					["races"] = HORDE_ONLY,
-					["cost"] = {
-						{ "i", 7937, 4 },	-- Ornate Mithril Helm
-						{ "i", 7936, 2 },	-- Ornate Mithril Boots
-						{ "i", 7935, 1 },	-- Ornate Mithril Breastplate
-					},
-					["lvl"] = 40,
 				}),
 				q(51796, {	-- The Battle for Lordaeron
 					["providers"] = {
@@ -3904,7 +1611,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 48.5, 70.7, ORGRIMMAR },
 						{ 49.0, 91.6, ORGRIMMAR },
 					},
-					["timeline"] = { "added 8.0.1.27144" },
+					["timeline"] = { ADDED_8_0_1 },
 					["races"] = HORDE_ONLY,
 				}),
 				-- #if ANYCLASSIC
@@ -3913,7 +1620,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["sourceQuest"] = 65610,	-- Wish You Were Here
 					["altQuests"] = { 65597 },	-- The Binding (Incubus) [Undercity]
 					["coord"] = { 48.2, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -3926,7 +1633,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						recipe(713),	-- Summon Incubus
 						-- #endif
 						i(22243, {	-- Small Soul Pouch
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -3936,7 +1643,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["sourceQuest"] = 1512,	-- Love's Gift
 					["altQuests"] = { 1474 },	-- The Binding (Succubus) [Undercity]
 					["coord"] = { 48.2, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -3949,7 +1656,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						recipe(712),	-- Summon Succubus
 						-- #endif
 						i(22243, {	-- Small Soul Pouch
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -3958,7 +1665,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["sourceQuest"] = 1501,	-- Creature of the Void [Orgrimmar]
 					["altQuests"] = { 1471 },	-- The Binding (Voidwalker) [Undercity]
 					["coord"] = { 48.2, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { ORC, TROLL, UNDEAD },
 					["classes"] = { WARLOCK },
 					["lvl"] = 10,
@@ -3972,31 +1679,30 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						-- #endif
 					},
 				}),
-				q(29440, {	-- The Call of the World-Shaman
-					["qg"] = 45244,	-- Farseer Krogar
-					["coord"] = { 50.4, 38.2, ORGRIMMAR },
-					["timeline"] = { "added 4.2.0.14133" },
-					["races"] = HORDE_ONLY,
-					["isBreadcrumb"] = true,
-				}),
 				q(28805, {	-- The Eye of the Storm
 					["qg"] = 45244,	-- Farseer Krogar
 					["sourceQuest"] = 28790,	-- A Personal Summons
 					["coord"] = { 50.4, 38.2, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
+					["groups"] = {
+						objective(1, {	-- Peered into the Waters of Farseeing
+							["provider"] = { "o", 207416 },	-- Waters of Farseeing
+							["coord"] = { 50.9, 37.8, ORGRIMMAR },
+						}),
+					},
 				}),
 				q(31013, {	-- The Horde Way
 					["qg"] = 39605,	-- Garrosh Hellscream
 					["sourceQuest"] = 31012,	-- Joining the Horde
 					["coord"] = { 48.2, 70.6, ORGRIMMAR },
-					["timeline"] = { "added 5.0.1.15589" },
-					["races"] = { PANDAREN_HORDE },
+					["timeline"] = { ADDED_5_0_4 },
+					["races"] = { PANDAREN_NEUTRAL },
 				}),
 				q(25159, {	-- The Latest Fashion!
 					["qg"] = 50482,	-- Marith Lazuria
 					["coord"] = { 72.4, 34.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["requireSkill"] = JEWELCRAFTING,
 					["races"] = HORDE_ONLY,
 					["isDaily"] = true,
@@ -4006,15 +1712,32 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 146630,	-- Restless Spirit
 					["sourceQuest"] = 53777,	-- Where He Died
 					["coord"] = { 48.4, 71.4, ORGRIMMAR },
-					["timeline"] = { "added 8.1.0.29139" },
+					["timeline"] = { ADDED_8_1_0 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(120, 120, 50),
+				}),
+				q(75519, {	-- The Long Hunt
+					["sourceQuests"] = {
+						57376,	-- The Hidden Need
+						72867,	-- I Am Forsaken
+						57152,	-- Most Loyal
+					},
+					["sourceQuestNumRequired"] = 1,
+					["provider"] = { "n", 204250 },	-- Lilian Voss / Dori'thur
+					["coords"] = {
+						{ 63.0, 68.4, TIRISFAL_GLADES },
+						{ 48.6, 48.6, ORGRIMMAR },
+					},
+					["timeline"] = { ADDED_10_1_7 },
+					["races"] = HORDE_ONLY,
+					["description"] = "Probably, Undead need to complete The Hidden Need and I Am Forsaken, while non-Undead only need to complete Most Loyal. Undead are offered this quest in Undercity, while non-Undead are offered this quest in Orgrimmar.",
 				}),
 				q(2756, {	-- The Old Ways
 					["qg"] = 7792,	-- Aturk the Anvil
 					["coord"] = { 80.6, 23.2, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["requireSkill"] = BLACKSMITHING,
+					["learnedAt"] = 210,
 					["races"] = HORDE_ONLY,
 					["cost"] = {
 						{ "i", 7963, 4 },	-- Steel Breastplate
@@ -4023,7 +1746,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["lvl"] = 40,
 					["groups"] = {
 						recipe(9957, {	-- Orcish War Leggings
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -4031,7 +1754,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6446,	-- Therzok
 					["sourceQuest"] = 1859,	-- Therzok
 					["coord"] = { 42.74, 53.52, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { THE_BARRENS },
 					["races"] = { ORC, TROLL },
 					["classes"] = { ROGUE },
@@ -4048,7 +1771,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6446,	-- Therzok
 					["sourceQuest"] = 1963,	-- The Shattered Hand (1/2)
 					["coord"] = { 42.74, 53.52, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { ORC, TROLL },
 					["classes"] = { ROGUE },
 					["lvl"] = 10,
@@ -4063,14 +1786,20 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 6466,	-- Gamon
 						}),
 						i(7298, {	-- Blade of Cunning
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(2460, {	-- The Shattered Salute
 					["qg"] = 3401,	-- Shenthul
+					["sourceQuests"] = {
+						-- #if AFTER TBC
+						10794,	-- Rogues of the Shattered Hand
+						-- #endif
+						2380,	-- To Orgrimmar!
+					},
 					["coord"] = { 43, 53.4, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -4079,62 +1808,95 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 135205,	-- Nathanos Blightcaller
 					["sourceQuest"] = 51443,	-- Mission Statement
 					["coord"] = { 54.4, 78.4, ORGRIMMAR },
-					["timeline"] = { "added 8.0.1.27144" },
+					["timeline"] = { ADDED_8_0_1 },
 					["maps"] = {
 						DAZARALOR,
 						1012,	-- Stormwind City (Scenario)
 						1013,	-- The Stockade (Scenario)
 					},
 					["races"] = HORDE_ONLY,
-				}),
-				q(5302, {	-- The Way of the Weaponsmith (H)
-					["qg"] = 11178,	-- Borgosh Corebender
-					["altQuests"] = {
-						5283,	-- The Art of the Armorsmith (A)
-						5301,	-- The Art of the Armorsmith (H)
-						5284,	-- The Way of the Weaponsmith (A)
+					["g"] = {
+						i(160251),	-- Blightcaller's Easy Death (QI!)
 					},
+				}),
+				q(6611, {	-- To Gadgetzan You Go!
 					-- #if BEFORE 4.0.3
-					["description"] = "Upon finishing this quest, you will become a Weaponsmith and be locked out of becoming an Armorsmith.",
+					["description"] = "Becomes available at Cooking skill level 225 when character level requirement is met.",
+					["coord"] = { 57.4, 53.6, ORGRIMMAR },
+					-- #elseif AFTER 8.0.1
+					["description"] = "Becomes available at Classic Cooking skill level 225 when character level requirement is met.",
+					["coord"] = { 32.2, 69.4, ORGRIMMAR },
+					-- #else
+					["description"] = "Becomes available at Cooking skill level 225 when character level requirement is met.",
+					["coord"] = { 32.2, 69.4, ORGRIMMAR },
 					-- #endif
-					["coord"] = { 79.6, 23.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
-					["requireSkill"] = BLACKSMITHING,
+					["qg"] = 3399,	-- Zamja
+					["requireSkill"] = COOKING,
+					["learnedAt"] = 225,
 					["races"] = HORDE_ONLY,
-					["cost"] = {
-						{ "i", 3853, 4 },	-- Moonsteel Broadsword
-						{ "i", 3855, 4 },	-- Massive Iron Axe
-						{ "i", 7941, 2 },	-- Heavy Mithril Axe
-						{ "i", 7945, 2 },	-- Big Black Mace
-					},
-					["lvl"] = 40,
+					["isBreadcrumb"] = true,
+					["lvl"] = lvlsquish(35, 35, 15),
 				}),
+				q(2380, {	-- To Orgrimmar!
+					["qg"] = 3170,	-- Kaplak
+					["altQuests"] = { 2378 },	-- Find the Shattered Hand
+					["coord"] = { 51.98, 43.70, DUROTAR },
+					["timeline"] = { REMOVED_4_0_3 },
+					["races"] = HORDE_ONLY,
+					["classes"] = { ROGUE },
+					["isBreadcrumb"] = true,
+					["lvl"] = 16,
+				}),
+				-- #if NOT ANYCLASSIC
+				q(5662, {	-- Touch of Weakness [Orgrimmar]
+					["qg"] = 6018,	-- Ur'kyo <Priest Trainer>
+					["coord"] = { 35.6, 87.6, ORGRIMMAR },
+					["altQuests"] = {
+						5658,	-- Touch of Weakness [Undercity]
+						5660,	-- Touch of Weakness [Durotar]
+						5661,	-- Touch of Weakness [Mulgore]
+						5663,	-- Touch of Weakness [Thunder Bluff]
+					},
+					["timeline"] = { REMOVED_3_0_2 },
+					["classes"] = { PRIEST },
+					["races"] = { UNDEAD },
+					["lvl"] = 10,
+					-- #if BEFORE 3.0.2
+					["groups"] = {
+						{
+							["recipeID"] = 2652,	-- Touch of Weakness (Rank 1)
+							["rank"] = 1,
+						},
+					},
+					-- #endif
+				}),
+				-- #endif
 				q(26830, {	-- Traitor's Bait
 					["qg"] = 3144,	-- Eitrigg
 					["sourceQuest"] = 26798,	-- Saurfang Will be Pleased
 					["coord"] = { 48.6, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(63916, {	-- Belt of Mystical Betrayal
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(63914, {	-- Mindsliced Chestguard
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(63913, {	-- Twilight-Heart Shoulderplates
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(63912, {	-- Twilight Mirrorshield
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(63915, {	-- Vision-Tainted Treads
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						-- #if BEFORE 9.1.0
 						i(63917, {	-- Truthbreaker Shield [Not listed, but awards on completing quest] [9.1: was NOT received when completed. 2021-09-25]
 							-- Crieve NOTE: This appears to have been an Alliance quest reward in SW.
-							["timeline"] = { "added 4.0.3.13277", REMOVED_9_1_0 },
+							["timeline"] = { ADDED_4_0_3, REMOVED_9_1_0 },
 						}),
 						-- #endif
 					},
@@ -4142,14 +1904,18 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2753, {	-- Trampled Under Foot
 					["qg"] = 7790,	-- Orokk Omosh
 					["sourceQuest"] = 2752,	-- On Iron Pauldrons
-					["coords"] = {
-						-- #if AFTER CATA
-						{ 76.2, 37.4, ORGRIMMAR },
-						-- #else
-						{ 79.4, 22.4, ORGRIMMAR },
-						-- #endif
-					},
+					-- #if BEFORE 4.0.3
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.",
+					["coord"] = { 79.4, 22.4, ORGRIMMAR },
+					-- #elseif AFTER 8.0.1
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Classic Blacksmithing skill level 140.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #else
+					["description"] = "This questline begins with the quest 'Barbaric Battlements', which requires Blacksmithing skill level 140.",
+					["coord"] = { 76.2, 37.4, ORGRIMMAR },
+					-- #endif
 					["requireSkill"] = BLACKSMITHING,
+					["learnedAt"] = 140,
 					["races"] = HORDE_ONLY,
 					["cost"] = {
 						{ "i", 3836, 4 },	-- Green Iron Helm
@@ -4159,27 +1925,31 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["lvl"] = 32,
 					["groups"] = {
 						i(7981, {	-- Plans: Barbaric Iron Boots (RECIPE!)
-							-- #if ANYCLASSIC
-							["description"] = "This item can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths.",
-							-- #endif
+						-- #if BEFORE 6.0.2
+						["description"] = "This recipe can be sold on the Neutral Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #elseif AFTER 9.2.5
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to both Alliance and Horde alts.",
+						-- #else
+						["description"] = "This recipe can be sold on the Auction House to Alliance Blacksmiths for a... nominal fee.\n\nOnly naturally accessible to Horde Blacksmiths, this recipe is not soulbound and can be mailed to Horde alts.",
+						-- #endif
 						}),
 					},
 				}),
 				q(26311, {	-- Unfamiliar Waters
 					["qg"] = 42637,	-- Sauranok the Mystic
-					["sourceQuest"] = 28909,	-- Sauranok Will Paint the Way
+					["sourceQuest"] = 28909,	-- Sauranok Will Point the Way
 					["coord"] = { 48.0, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(63922, {	-- Awestruck Bracers
-							["timeline"] = { "added 4.0.3.13287" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(63924, {	-- Blade-Dodging Girdle
-							["timeline"] = { "added 4.0.3.13287" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(63923, {	-- Hauberk of Shock
-							["timeline"] = { "added 4.0.3.13287" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -4187,9 +1957,18 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 162190,	-- Valeera Sanguinar
 					["sourceQuest"] = 58672,	-- A Gathering of Champions
 					["coord"] = { 39.4, 79.6, ORGRIMMAR },
-					["timeline"] = { "added 8.3.0.33169" },
+					["timeline"] = { ADDED_8_3_0 },
 					["races"] = HORDE_ONLY,
 				}),
+				warchiefscommand(q(28717, {	-- Warchief's Command: Twilight Highlands!
+					["timeline"] = { ADDED_4_0_3 },
+					["maps"] = { --[[ORGRIMMAR,]] THUNDER_BLUFF, UNDERCITY },	-- Only found in Orgrimmar, Thunder Bluff, & Undercity in Cataclysm.
+					["isBreadcrumb"] = true,
+					-- #if BEFORE 7.3.5
+					-- Cataclysm: Minimum is level 84. (TODO: Confirm this.)
+					["lvl"] = 84,
+					-- #endif
+				})),
 				q(60968, {	-- Warlords of Draenor: Onward to Adventure in Draenor
 					["qg"] = 167032,	-- Chromie <Emissary of the Bronze Dragonflight>
 					["coord"] = { 40.8, 79.9, ORGRIMMAR },
@@ -4202,7 +1981,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5885,	-- Deino <Mage Trainer>
 					["sourceQuest"] = 1943,	-- Speak with Deino
 					["coord"] = { 38.6, 86.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ASHENVALE },
 					["races"] = { UNDEAD, TROLL },
 					["classes"] = { MAGE },
@@ -4233,15 +2012,16 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 48.6, 71.0, ORGRIMMAR },
 						-- #ENDIF
 					},
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 				}),
 				-- #if ANYCLASSIC
 				q(65610, {	-- Wish You Were Here
 					["qg"] = 3363,	-- Magar <Tailoring Trainer>
 					["sourceQuest"] = 65601,	-- Love Hurts
+					["altQuests"] = { 65593 },	-- Hearts of the Lovers
 					["coord"] = { 63.6, 50.0, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ASHENVALE },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
@@ -4260,13 +2040,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				-- #endif
 				q(7660, {	-- Wolf Swapping - Arctic Wolf
 					["qg"] = 3362,	-- Ogunaro Wolfrunner
-					-- #if AFTER CATA
-					["coord"] = { 61.6, 35.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 69.4, 12.4, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 61.6, 35.6, ORGRIMMAR },
+						-- #else
+						{ 69.4, 12.4, ORGRIMMAR },
+						-- #endif
+					},
 					["description"] = "If you are one of the poor unfortunate souls that turned in your unique mount for one of the generic mounts I'm so sorry.",
-					["timeline"] = { "removed 1.4.0" },
+					["timeline"] = { REMOVED_1_4_0 },
 					["cost"] = { { "i", 12351, 1 } },	-- Arctic Wolf
 					["sym"] = { { "select", "itemID", 18796, 18798, 18797 } },
 					["races"] = HORDE_ONLY,
@@ -4275,13 +2057,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				q(7661, {	-- Wolf Swapping - Red Wolf
 					["qg"] = 3362,	-- Ogunaro Wolfrunner
-					-- #if AFTER CATA
-					["coord"] = { 61.6, 35.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 69.4, 12.4, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 61.6, 35.6, ORGRIMMAR },
+						-- #else
+						{ 69.4, 12.4, ORGRIMMAR },
+						-- #endif
+					},
 					["description"] = "If you are one of the poor unfortunate souls that turned in your unique mount for one of the generic mounts I'm so sorry.",
-					["timeline"] = { "removed 1.4.0" },
+					["timeline"] = { REMOVED_1_4_0 },
 					["cost"] = { { "i", 12330, 1 } },	-- Red Wolf (MOUNT!)
 					["sym"] = { { "select", "itemID", 18796, 18798, 18797 } },
 					["races"] = HORDE_ONLY,
@@ -4308,37 +2092,51 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3402,	-- Zando'zan
 					["sourceQuest"] = 2379,	-- Zando'zan
 					["coord"] = { 42.8, 53, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 16,
 				}),
 				q(6608, {	-- You Too Good.
 					["qg"] = 3332,	-- Lumak <Fishing Trainer>
-					-- #if BEFORE LEGION
-					["description"] = "Requires 225 Fishing to start this quest.",
-					-- #endif
-					-- #if AFTER CATA
-					["coord"] = { 66.6, 41.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 69.8, 29.6, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 66.6, 41.6, ORGRIMMAR },
+						-- #else
+						{ 69.8, 29.6, ORGRIMMAR },
+						-- #endif
+					},
 					["requireSkill"] = FISHING,
+					["learnedAt"] = 225,
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(35, 35, 15),
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78304, {	-- You've Got Yourself A Deal [H]
+					["providers"] = {
+						{ "n",   3408 },	-- Zel'mak <Warrior Trainer>
+						{ "i", 211448 },	-- Signed Procurement Contract
+					},
+					["sourceQuest"] = 78288,	-- Let Me Make You An Offer [H]
+					["coord"] = { 80.2, 29.6, ORGRIMMAR },
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { THE_BARRENS },
+					["races"] = HORDE_ONLY,
+					["lvl"] = 20,
+					["groups"] = {
+						i(210210),	-- Grizzwerks Defense Industries Founder's Certificate
+					},
+				})),
+				-- #endif
 				q(2379, {	-- Zando'zan
 					["qg"] = 3401,	-- Shenthul
 					-- #if AFTER TBC
 					["altQuests"] = { 10372 },	-- A Discreet Inquiry
 					-- #endif
-					["sourceQuests"] = {
-						2378,	-- Find the Shattered Hand
-						2380,	-- To Orgrimmar!
-					},
+					["sourceQuest"] = 2378,	-- Find the Shattered Hand
 					["coord"] = { 43, 53.4, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 16,
@@ -4348,11 +2146,11 @@ root(ROOTS.Zones, m(KALIMDOR, {
 			n(RARES, {
 				n(130911, {	-- Charles Gastly
 					["coord"] = { 50.8, 55.1, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5.25692" },
+					["timeline"] = { ADDED_7_3_5 },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(134831, {	-- Doomsayer's Robes (TOY!)
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 					},
 				}),
@@ -4365,7 +2163,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["races"] = { ORC, TROLL, UNDEAD },
 
 					-- Available to Orcs without faction requirements.
-					["minReputation"] = { 76, EXALTED },	-- Orgrimmar, Exalted.
+					["minReputation"] = { FACTION_ORGRIMMAR, EXALTED },	-- Orgrimmar, Exalted.
 					["OnInit"] = [[function(t)
 						if _.RaceIndex == ]] .. ORC .. [[ then
 							t.minReputation = nil;
@@ -4381,222 +2179,34 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 			}),
 			-- #endif
+			-- #if SEASON_OF_DISCOVERY
+			n(TREASURES, {
+				applyclassicphase(SOD_PHASE_ONE, i(204174, {	-- Rune of Precision
+					["provider"] = { "o", 404830 },	-- Dusty Chest
+					["coord"] = { 55.9, 44.7, ORGRIMMAR },
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { ROGUE },
+					["groups"] = {
+						recipe(400081),	-- Engrave Pants - Between the Eyes
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(207972, {	-- The Lessons of Ta'zo
+					["provider"] = { "o", 405149 },	-- Mural of Ta'zo
+					["coord"] = { 38.7, 78.4, ORGRIMMAR },
+				})),
+			}),
+			-- #endif
 			n(VENDORS, {
 				n(149806, {	-- A. Shady
 					["coord"] = { 76.7, 35.6, ORGRIMMAR },
-					["timeline"] = { "added 8.1.5.29701" },
+					["timeline"] = { ADDED_8_1_5 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(166805, {	-- Blood-Soaked Invitation (QI)
-							["timeline"] = { "added 8.1.5.29701" },
+							["timeline"] = { ADDED_8_1_5 },
 						}),
 					},
 				}),
-				n(175050, bubbleDownSelf({ ["timeline"] = { ADDED_9_0_1 } }, {	-- Aneka Melae
-					["coord"] = { 37.5, 71.4, ORGRIMMAR },
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						n(PVP_ASPIRANT, {
-							n(WEAPONS, {
-								i(172881, {	-- Corrupted Aspirant's Chopper (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(174012, {	-- Corrupted Aspirant's Claw (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172879, {	-- Corrupted Aspirant's Cleaver (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(174014, {	-- Corrupted Aspirant's Decapitator (H)
-									["cost"] = { { "c", 1792, 1750 } },	-- 1750x Honor
-								}),
-								i(172873, {	-- Corrupted Aspirant's Gavel (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172885, {	-- Corrupted Aspirant's Greatsword (H)
-									["cost"] = { { "c", 1792, 1750 } },	-- 1750x Honor
-								}),
-								i(172871, {	-- Corrupted Aspirant's Longbow (H)
-									["cost"] = { { "c", 1792, 1750 } },	-- 1750x Honor
-								}),
-								i(172883, {	-- Corrupted Aspirant's Pike (H)
-									["cost"] = { { "c", 1792, 1750 } },	-- 1750x Honor
-								}),
-								i(172875, {	-- Corrupted Aspirant's Pummeler (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172867, {	-- Corrupted Aspirant's Reprieve (H)
-									["cost"] = { { "c", 1792, 425 } },	-- 425x Honor
-								}),
-								i(174016, {	-- Corrupted Aspirant's Rifle (H)
-									["cost"] = { { "c", 1792, 1750 } },	-- 1750x Honor
-								}),
-								i(172861, {	-- Corrupted Aspirant's Shanker (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172869, {	-- Corrupted Aspirant's Shield Wall (H)
-									["cost"] = { { "c", 1792, 425 } },	-- 425x Honor
-								}),
-								i(172877, {	-- Corrupted Aspirant's Slicer (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(174010, {	-- Corrupted Aspirant's Spellblade (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172860, {	-- Corrupted Aspirant's Stabber (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172865, {	-- Corrupted Aspirant's Staff (H)
-									["cost"] = { { "c", 1792, 1750 } },	-- 1750x Honor
-								}),
-								i(172863, {	-- Corrupted Aspirant's Wand (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(174018, {	-- Corrupted Aspirant's War Staff (H)
-									["cost"] = { { "c", 1792, 1750 } },	-- 1750x Honor
-								}),
-								i(172887, {	-- Corrupted Aspirant's Warglaive (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-							}),
-							filter(CLOTH, {
-								i(172787, {	-- Corrupted Aspirant's Silk Cord (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172786, {	-- Corrupted Aspirant's Silk Cuffs (H)
-									["cost"] = { { "c", 1792, 525 } },	-- 525x Honor
-								}),
-								i(172782, {	-- Corrupted Aspirant's Silk Gloves (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172783, {	-- Corrupted Aspirant's Silk Hood (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172784, {	-- Corrupted Aspirant's Silk Leggings (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172785, {	-- Corrupted Aspirant's Silk Mantle (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172780, {	-- Corrupted Aspirant's Silk Robe (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172781, {	-- Corrupted Aspirant's Silk Treads (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-							}),
-							filter(LEATHER, {
-								i(172794, {	-- Corrupted Aspirant's Leather Belt (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172795, {	-- Corrupted Aspirant's Leather Bindings (H)
-									["cost"] = { { "c", 1792, 525 } },	-- 525x Honor
-								}),
-								i(172789, {	-- Corrupted Aspirant's Leather Boots (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172790, {	-- Corrupted Aspirant's Leather Gloves (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172791, {	-- Corrupted Aspirant's Leather Helm (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172792, {	-- Corrupted Aspirant's Leather Legguards (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172793, {	-- Corrupted Aspirant's Leather Spaulders (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172788, {	-- Corrupted Aspirant's Leather Tunic (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-							}),
-							filter(MAIL, {
-								i(172803, {	-- Corrupted Aspirant's Chain Armbands (H)
-									["cost"] = { { "c", 1792, 525 } },	-- 525x Honor
-								}),
-								i(172796, {	-- Corrupted Aspirant's Chain Armor (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172798, {	-- Corrupted Aspirant's Chain Gauntlets (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172799, {	-- Corrupted Aspirant's Chain Helm (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172800, {	-- Corrupted Aspirant's Chain Leggings (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172797, {	-- Corrupted Aspirant's Chain Sabatons (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172801, {	-- Corrupted Aspirant's Chain Spaulders (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172802, {	-- Corrupted Aspirant's Chain Waistguard (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-							}),
-							filter(PLATE, {
-								i(172811, {	-- Corrupted Aspirant's Plate Armguards (H)
-									["cost"] = { { "c", 1792, 525 } },	-- 525x Honor
-								}),
-								i(172805, {	-- Corrupted Aspirant's Plate Chestpiece (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172807, {	-- Corrupted Aspirant's Plate Gauntlets (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172810, {	-- Corrupted Aspirant's Plate Girdle (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172804, {	-- Corrupted Aspirant's Plate Helm (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172808, {	-- Corrupted Aspirant's Plate Legguards (H)
-									["cost"] = { { "c", 1792, 875 } },	-- 875x Honor
-								}),
-								i(172809, {	-- Corrupted Aspirant's Plate Pauldrons (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172806, {	-- Corrupted Aspirant's Plate Warboots (H)
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-							}),
-							n(FINGER, {
-								i(172845, {	-- Corrupted Aspirant's Band
-									["cost"] = { { "c", 1792, 525 } },	-- 525x Honor
-								}),
-								i(172844, {	-- Corrupted Aspirant's Ring
-									["cost"] = { { "c", 1792, 525 } },	-- 525x Honor
-								}),
-							}),
-							n(TRINKET, {
-								i(172849, {	-- Corrupted Aspirant's Badge
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172846, {	-- Corrupted Aspirant's Bauble
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172847, {	-- Corrupted Aspirant's Emblem
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(172848, {	-- Corrupted Aspirant's Insignia
-									["cost"] = { { "c", 1792, 700 } },	-- 700x Honor
-								}),
-								i(184058, {	-- Corrupted Aspirant's Medallion
-									["cost"] = { { "g", 8000000 } },	-- 800g
-								}),
-								i(184059, {	-- Corrupted Aspirant's Relentless Brooch
-									["cost"] = { { "g", 8000000 } },	-- 800g
-								}),
-								i(184060, {	-- Corrupted Aspirant's Sigil of Adaptation
-									["cost"] = { { "g", 8000000 } },	-- 800g
-								}),
-							}),
-						}),
-					},
-				})),
 				n(52809, {	-- Blax Bottlerocket <Toys and Novelties>
 					["coords"] = {
 						{ 58.2, 62.6, ORGRIMMAR },
@@ -4605,53 +2215,53 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 58.6, 55.2, ORGRIMMAR },
 						{ 57.8, 51.0, ORGRIMMAR },
 					},
-					["timeline"] = { "added 4.1.0.13682" },
+					["timeline"] = { ADDED_4_1_0 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(54436, {	-- Blue Clockwork Rocket Bot (PET!)
-							["timeline"] = { "added 3.3.3.11573" },
+							["timeline"] = { ADDED_3_3_3 },
 						}),
 						i(95621, {	-- Warbot (PET!)
-							["timeline"] = { "added 5.2.0.16539" },
+							["timeline"] = { ADDED_5_2_0 },
 						}),
 						i(54343, {	-- Blue Crashin' Thrashin' Racer Controller (TOY!)
-							["timeline"] = { "added 3.3.3.11573" },
+							["timeline"] = { ADDED_3_3_3 },
 						}),
 						i(104324, {	-- Foot Ball (TOY!)
-							["timeline"] = { "added 5.4.0.17227" },
+							["timeline"] = { ADDED_5_4_0 },
 						}),
 						applyevent(EVENTS.CHILDRENS_WEEK, i(69895, {	-- Green Balloon Toy (TOY!)
-							["timeline"] = { "added 4.1.0.13875" },
+							["timeline"] = { ADDED_4_1_0 },
 						})),
 						i(137663, {	-- Soft Foam Sword (TOY!)
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(104323, {	-- The Swineskin (TOY!)
-							["timeline"] = { "added 5.4.0.17227" },
+							["timeline"] = { ADDED_5_4_0 },
 						}),
 						i(54438, {	-- Tiny Blue Ragdoll (TOY!)
-							["timeline"] = { "added 3.3.3.11573" },
+							["timeline"] = { ADDED_3_3_3 },
 						}),
 						i(54437, {	-- Tiny Green Ragdoll (TOY!)
-							["timeline"] = { "added 3.3.3.11573" },
+							["timeline"] = { ADDED_3_3_3 },
 						}),
 						i(44606, {	-- Toy Train Set Toy (TOY!)
-							["timeline"] = { "added 3.0.2.8982" },
+							["timeline"] = { ADDED_3_0_2 },
 						}),
 						i(45057, {	-- Wind-Up Train Wrecker Toy (TOY!)
-							["timeline"] = { "added 3.1.0.9626" },
+							["timeline"] = { ADDED_3_1_0 },
 						}),
 						applyevent(EVENTS.CHILDRENS_WEEK, i(69896, {	-- Yellow Balloon Toy (TOY!)
-							["timeline"] = { "added 4.1.0.13875" },
+							["timeline"] = { ADDED_4_1_0 },
 						})),
 					},
 				}),
 				n(69977, {	-- Blood Guard Zar'shi <Ruthless Gladiator>
 					["coord"] = { 38.6, 70.0, ORGRIMMAR },
-					["timeline"] = { "added 5.2.0.16591" },
+					["timeline"] = { ADDED_5_2_0 },
 					["races"] = HORDE_ONLY,
 					["sym"] = {
-						{"sub", "pvp_gear_base", CATA_TIER, SEASON_RUTHLESS, PVP_GLADIATOR },
+						{"sub", "pvp_gear_base", EXPANSION.CATA, SEASON_RUTHLESS, PVP_GLADIATOR },
 						{"merge"},	-- Subroutines are automatically finalized, so merge back for further processing
 						{"pop"},	-- Discard the Set header and acquire the children.
 						{"exclude", "headerID", NECK, FINGER, TRINKET },	-- Exclude Neck, Finger and Trinkets
@@ -4659,18 +2269,20 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(54659, {	-- Blood Guard Zar'shi Original CATA S10 ELITE VENDOR
 					["coord"] = { 38.2, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.3.0.15050" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = HORDE_ONLY,
 					["u"] = REMOVED_FROM_GAME,
 					["groups"] = {
 					},
 				}),
 				n(3364, {	-- Borya <Tailoring Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 60.6, 58.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 63.0, 51.2, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 60.6, 58.6, ORGRIMMAR },
+						-- #else
+						{ 63.0, 51.2, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = appendGroups(COMMON_CATACLYSM_TAILORING_RECIPES, {
 						i(6270, {	-- Pattern: Blue Linen Vest
@@ -4679,6 +2291,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(6274, {	-- Pattern: Blue Overalls
 							["isLimited"] = true,
 						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_ONE, i(215369)),	-- Pattern: Invoker's Cord
+						applyclassicphase(SOD_PHASE_ONE, i(215370)),	-- Pattern: Invoker's Mantle
+						-- #endif
 						i(10314, {	-- Pattern: Lavender Mageweave Shirt
 							["isLimited"] = true,
 						}),
@@ -4720,6 +2336,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				n(12793, {	-- Brave Stonehide <Officer Accessories Quartermaster>
 					["description"] = "Found within the Champion's Hall in Orgrimmar.",
 					["maps"] = { ORGRIMMAR },
+					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(18607),	-- Horde Battle Standard
 						i(15199),	-- Stone Guard's Herald
@@ -4731,7 +2348,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				n(46742, {	-- Brunda
 					["coord"] = { 54.6, 50.6, ORGRIMMAR },
 					["races"] = HORDE_ONLY,
-					["timeline"] = { "added 4.0.1." },
+					["timeline"] = { ADDED_4_0_1 },
 					["groups"] = {
 						i(3422),	-- Beautiful Wildflowers
 						i(3420),	-- Black Rose
@@ -4754,76 +2371,48 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				})),
 				n(50477, {	-- Champion Uru'zin <Darkspear Quartermaster>
 					["coord"] = { 49.9, 58.1, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(45582, {	-- Darkspear Tabard
-							["timeline"] = { "added 3.1.0.9626" },
+							["timeline"] = { ADDED_3_1_0 },
 						}),
 						i(64912, {	-- Darkspear Cape
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_DARKSPEAR_TROLLS, EXALTED },	-- Darkspear Trolls, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(64911, {	-- Darkspear Mantle
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_DARKSPEAR_TROLLS, EXALTED },	-- Darkspear Trolls, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(64913, {	-- Darkspear Shroud
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_DARKSPEAR_TROLLS, EXALTED },	-- Darkspear Trolls, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(67536, {	-- Darkspear Satchel
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_DARKSPEAR_TROLLS, REVERED },	-- Darkspear Trolls, Revered.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
-				n(73151, {	-- Deathguard Netharian <Combatant Mount Quartermaster>
-					["coord"] = { 41.8, 73.0, ORGRIMMAR },
-					["timeline"] = { "added 5.4.0.17161" },
-					["races"] = HORDE_ONLY,
-					["groups"] = pvp({
-						vicioussaddle(i(70910)),	-- Vicious War Wolf (MOUNT!)
-						vicioussaddle(i(102533)),	-- Vicious Skeletal Warhorse (MOUNT!)
-						vicioussaddle(i(165020)),	-- Vicious Black Bonesteed (MOUNT!)
-						vicioussaddle(i(163121)),	-- Vicious War Basilisk (A) (MOUNT!)
-						vicioussaddle(i(142235)),	-- Vicious War Bear (H) (MOUNT!)
-						vicioussaddle(i(163124)),	-- Vicious War Clefthoof (MOUNT!)
-						vicioussaddle(i(152869)),	-- Vicious War Fox (H) (MOUNT!)
-						vicioussaddle(i(124540)),	-- Vicious War Kodo (MOUNT!)
-						vicioussaddle(i(116778)),	-- Vicious War Raptor (MOUNT!)
-						vicioussaddle(i(142437)),	-- Vicious War Scorpion (MOUNT!)
-						vicioussaddle(i(140354)),	-- Vicious War Trike (MOUNT!)
-						vicioussaddle(i(143649)),	-- Vicious War Turtle (H) (MOUNT!)
-						vicioussaddle(i(140348)),	-- Vicious Warstrider (MOUNT!)
-						vicioussaddle(i(173713)),	-- Vicious White Bonesteed (MOUNT!)
-						vicioussaddle(i(184013, {	-- Vicious War Spider (H) (MOUNT!)
-							["timeline"] = { ADDED_10_0_2_LAUNCH },
-						})),
-						vicioussaddle(i(186179, {	-- Vicious War Gorm (H) (MOUNT!)
-							["timeline"] = { ADDED_10_0_2_LAUNCH },
-						})),
-						vicioussaddle(i(187680, {	-- Vicious War Gulper (H) (MOUNT!)
-							["timeline"] = { ADDED_10_0_2_LAUNCH },
-						})),
-						vicioussaddle(i(187642, {	-- Vicious Warstalker (H) (MOUNT!)
-							["timeline"] = { ADDED_10_0_2_LAUNCH },
-						})),
-					}),
-				}),
 				n(69333, {	-- Disciple Jusi <Huojin Quartermaster>
 					["coord"] = { 68.6, 40.2, ORGRIMMAR },
-					["timeline"] = { "added 5.2.0.16591" },
+					["timeline"] = { ADDED_5_2_0 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(83080, {	-- Huojin Tabard
-							["timeline"] = { "added 5.0.1.15544" },
+							["timeline"] = { ADDED_5_0_4 },
 						}),
 						i(92070, {	-- Houjin Satchel
-							["timeline"] = { "added 5.1.0.16309" },
+							["minReputation"] = { FACTION_HUOJIN_PANDAREN, REVERED },	-- Huojin Pandaren, Revered.
+							["timeline"] = { ADDED_5_1_0 },
 						}),
 					},
 				}),
 				n(24520, {	-- Doris Volanthius <Armor Quartermaster> -- BC Vendor for Trinkets
 					-- The NPC ID got reused many times. This is the BC Version, items listed under PvP>BC
 					["coord"] = { 38.8, 69.8, ORGRIMMAR },
-					["timeline"] = { "added 2.3.0.7561" },
+					["timeline"] = { ADDED_2_3_0 },
 					["races"] = HORDE_ONLY,
 					["u"] = REMOVED_FROM_GAME,
 					["groups"] = {
@@ -4831,25 +2420,24 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(46593, {	-- Doris Volanthius Original CATA S9 ELITE VENDOR Horde
 					["coord"] = { 38.8, 69.8, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["u"] = REMOVED_FROM_GAME,
 				}),
 				n(54657, {	-- Doris Volanthius <Vicious Gladiator>
 					["coord"] = { 38.8, 69.8, ORGRIMMAR },
-					["timeline"] = { "added 4.3.0.15050" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = HORDE_ONLY,
 					["sym"] = {
-						{"sub", "pvp_gear_base", CATA_TIER, SEASON_VICIOUS, PVP_GLADIATOR },
+						{"sub", "pvp_gear_base", EXPANSION.CATA, SEASON_VICIOUS, PVP_GLADIATOR },
 						{"merge"},	-- Subroutines are automatically finalized, so merge back for further processing
 						{"pop"},	-- Discard the Set header and acquire the children.
 						{"exclude", "headerID", NECK, FINGER, TRINKET },	-- Exclude Neck, Finger and Trinkets
-						{"finalize"},	-- Push the Set items to the finalized list.
 					},
 				}),
 				n(44918, {	-- Drakma <Wind Rider Keeper>
 					["coord"] = { 48.0, 58.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(25477),	-- Swift Red Wind Rider (MOUNT!)
@@ -4861,6 +2449,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(25476),	-- Green Wind Rider (MOUNT!)
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, n(3144, {	-- Eitrigg
+					["sourceQuest"] = 6602,	-- Blood of the Black Dragon Champion
+					["coord"] = { 34.6, 38.6, ORGRIMMAR },
+					["timeline"] = { "added 1.15.3" },
+					["races"] = HORDE_ONLY,
+					["groups"] = {
+						i(226500),	-- Chipped Drakefire Amulet
+						i(228222, {	-- Handbook of Valor of Azeroth
+							["timeline"] = { "added 1.15.3" },
+							["spellID"] = 461475,	-- Valor of Azeroth
+							["f"] = RECIPES,
+						}),
+					},
+				})),
+				-- #endif
 				n(3367, {	-- Felika <Trade Supplies>
 					["description"] = "This NPC walks between the Valley of Wisdom and Valley of Strength on the right path.",
 					["coords"] = {
@@ -4875,14 +2479,14 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(20856, {	-- Design: Heavy Golden Necklace of Battle
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 							["isLimited"] = true,
 						}),
 					},
 				}),
 				n(133261, {	-- Feng Su <Cooking Trainer>
 					["coord"] = { 41.0, 79.4, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5.25692" },
+					["timeline"] = { ADDED_7_3_5 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(21219),	-- Recipe: Sagefish Delight (RECIPE!)
@@ -5024,83 +2628,87 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				-- #endif
 				n(50323, {	-- Frizzo Villamar <Bilgewater Cartel Quartermaster>
 					["coord"] = { 50.0, 58.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(64884, {	-- Bilgewater Cartel Tabard
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(64906, {	-- Bilgewater Cape
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_BILGEWATER_CARTEL, EXALTED },	-- Bilgewater Cartel, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(64905, {	-- Bilgewater Shroud
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_BILGEWATER_CARTEL, EXALTED },	-- Bilgewater Cartel, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(64907, {	-- Bilgewater Mantle
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_BILGEWATER_CARTEL, EXALTED },	-- Bilgewater Cartel, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(67525, {	-- Bilgewater Satchel
-							["timeline"] = { "added 4.0.3.13277" },
+							["minReputation"] = { FACTION_BILGEWATER_CARTEL, REVERED },	-- Bilgewater Cartel, Revered.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
 				n(52036, {	-- Galra <Honor Heirlooms>
 					["coord"] = { 38.0, 70.8, ORGRIMMAR },
-					["timeline"] = { "added 4.0.6.13596" },
+					["timeline"] = { ADDED_4_0_6 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						moh(8, i(122375, {	-- Aged Pauldrons of The Five Thunders
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(12, i(122338, {	-- Ancient Heirloom Armor Casing
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 							["sym"] = {{ "fill" }},	-- simply fill this item
 						})),
 						moh(14, i(122339, {	-- Ancient Heirloom Scabbard
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 							["sym"] = {{ "fill" }},	-- simply fill this item
 						})),
 						moh(10, i(122369, {	-- Battleworn Thrash Blade
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(8, i(122376, {	-- Exceptional Stormshroud Shoulders
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(8, i(122378, {	-- Exquisite Sunderseer Mantle
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(4, i(122370, {	-- Inherited Insignia of the Horde
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(4, i(122530, {	-- Inherited Mark of Tyranny
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(10, i(122368, {	-- Grand Staff of Jordan
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(8, i(122377, {	-- Lasting Feralheart Spaulders
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(8, i(122373, {	-- Pristine Lightforge Spaulders
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(8, i(122374, {	-- Prized Beastmaster's Mantle
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(10, i(122365, {	-- Reforged Truesilver Champion
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(10, i(122364, {	-- Sharpened Scarlet Kris
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(8, i(122372, {	-- Strengthened Stockade Pauldrons
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(10, i(122367, {	-- The Blessed Hammer of Grace
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 						moh(10, i(122366, {	-- Unpgraded Dwarven Hand Cannon
-							["timeline"] = { "added 6.1.0.19445" },
+							["timeline"] = { ADDED_6_1_0 },
 						})),
 					},
 				}),
@@ -5108,6 +2716,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 76.0, 37.2, ORGRIMMAR },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
+						i(2361, {	-- Battleworn Bludgeon
+							["timeline"] = { ADDED_11_0_5 },
+						}),
+						i(23346, {	-- Battleworn Claymore
+							["timeline"] = { ADDED_10_1_7 },
+						}),
+						i(52557, {	-- Battleworn Hammer
+							["timeline"] = { ADDED_10_1_7 }
+						}),
 						i(2523),	-- Bullova
 						i(2521),	-- Flamberge
 						i(2531),	-- Great Axe
@@ -5116,101 +2733,81 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						i(2525),	-- War Hammer
 						i(2533),	-- War Maul
+						i(57244, {	-- Warder's Spear
+							["timeline"] = { ADDED_10_1_7 },
+						}),
+						i(12282, {	-- Worn Battleaxe
+							["timeline"] = { ADDED_10_1_7 },
+						}),
+						i(49778, {	-- Worn Greatsword
+							["timeline"] = { ADDED_10_1_7 },
+						}),
+						i(57243, {	-- Worn Spear
+							["timeline"] = { ADDED_10_1_7 }
+						}),
+						i(52532, {	-- Worn Wood Chopper
+							["timeline"] = { ADDED_10_1_7 },
+						}),
 						i(2529),	-- Zweihander
 					},
 				}),
-				-- #if NOT ANYCLASSIC
-				-- CRIEVE NOTE: I've never been a fan of Tabard Vendors, they're too all encompassing.
-				-- Not including it in Classic for now, going to use a symlink instead at some point but don't have time right now. Just want this merge to be finished!
 				n(5188, {	-- Garyl <Tabard Vendor>
-					["coord"] = { 47.6, 75.6, ORGRIMMAR },
+					["coord"] =
+					-- #IF AFTER 10.0.5
+					{ 46.4, 79.4, ORGRIMMAR },	-- moved due to Trading Post
+					-- #ELSE
+					{ 47.6, 75.6, ORGRIMMAR },
+					-- #ENDIF
 					["races"] = HORDE_ONLY,
+					["sym"] = {
+						{"select", "itemID",
+						31779,	-- Aldor Tabard
+						31804,	-- Cenarion Expedition Tabard
+						36941,	-- Competitor's Tabard
+						31776,	-- Consortium Tabard
+						19031,	-- Frostwolf Battle Tabard
+						31404,	-- Green Trophy Tabard of the Illidari
+						31777,	-- Keepers of Time Tabard
+						31778,	-- Lower City Tabard
+						31773,	-- Mag'har Tabard
+						43300,	-- Loremaster's Colors
+						32828,	-- Ogri'la Tabard
+						31405,	-- Purple Trophy Tabard of the Illidari
+						15197,	-- Scout's Tabard
+						31780,	-- Scryers Tabard
+						31781,	-- Sha'tar Tabard
+						32445,	-- Skyguard Tabard
+						31775,	-- Sporeggar Tabard
+						15199,	-- Stone Guard's Herald
+						43349,	-- Tabard of Brute Force
+						49054,	-- Tabard of Conquest (H)
+						35280,	-- Tabard of Summer Flames
+						35279,	-- Tabard of Summer Skies
+						40643,	-- Tabard of the Achiever
+						43348,	-- Tabard of the Explorer
+						35221,	-- Tabard of the Shattered Sun
+						24004,	-- Thrallmar Tabard (H)
+						19505,	-- Warsong Battle Tabard (H)
+						},
+					},
 					["groups"] = {
-						i(31779),	-- Aldor Tabard
-						i(31804),	-- Cenarion Expedition Tabard
-						i(36941, {	-- Competitor's Tabard
-							["u"] = REMOVED_FROM_GAME,
-							["description"] = "Participated in a battleground during the Beijing 2008 Summer Olympics event.",
-						}),
-						i(31776),	-- Consortium Tabard
-						i(19031, {	-- Frostwolf Battle Tabard
-							["races"] = HORDE_ONLY,
-							["cost"] = { { "i", 137642, 10 } },	-- 10x Mark of Honor
-						}),
-						i(31404, {	-- Green Trophy Tabard of the Illidari
-							["sourceQuests"] = {
-								10781,	-- Battle of the Crimson Watch
-							},
-						}),
 						i(5976),	-- Guild Tabard
-						i(31777),	-- Keepers of Time Tabard
-						i(43300),	-- Loremaster's Colors
-						i(31778),	-- Lower City Tabard
-						i(31773, {	-- Mag'har Tabard
-							["races"] = HORDE_ONLY,
-						}),
-						i(32828, {	-- Ogri'la Tabard
-							["cost"] = { { "i", 32569, 10 } },	-- 10x Apexis Shard
-						}),
-						i(31405, {	-- Purple Trophy Tabard of the Illidari
-							["sourceQuests"] = {
-								10781,	-- Battle of the Crimson Watch
-							},
-						}),
-						i(31780),	-- Scryers Tabard
-						i(15197, {	-- Scout's Tabard
-							["races"] = HORDE_ONLY,
-							["cost"] = { { "i", 137642, 1 } },	-- 1x Mark of Honor
-						}),
-						i(31781),	-- Sha'tar Tabard
-						i(32445),	-- Skyguard Tabard
-						i(31775, {	-- Sporeggar Tabard
-							["cost"] = { { "i", 24245, 10 }, },	-- 10x Glowcap
-						}),
-						i(15199, {	-- Stone Guard's Herald
-							["races"] = HORDE_ONLY,
-							["cost"] = { { "i", 137642, 1 } },	-- 1x Mark of Honor
-						}),
-						pvp(i(43349)),	-- Tabard of Brute Force
-						pvp(i(49054, {	-- Tabard of Conquest [Horde]
-							["races"] = HORDE_ONLY,
-							["timeline"] = { "added 3.2.0.10192" },
-						})),
-						i(35280, {	-- Tabard of Summer Flames
-							["sourceQuests"] = {
-								11972,	-- Shards of Ahune
-							},
-						}),
-						i(35279, {	-- Tabard of Summer Skies
-							["sourceQuests"] = {
-								11972,	-- Shards of Ahune
-							},
-						}),
-						i(40643),	-- Tabard of the Achiever
-						i(43348),	-- Tabard of the Explorer
-						i(35221),	-- Tabard of the Shattered Sun
-						i(24004, {	-- Thrallmar Tabard
-							["races"] = HORDE_ONLY,
-						}),
-						i(19505, {	-- Warsong Battle Tabard
-							["races"] = HORDE_ONLY,
-							["cost"] = { { "i", 137642, 10 } },	-- 10x Mark of Honor
-						}),
 					},
 				}),
-				-- #endif
 				n(46555, {	-- Gunra <Justice Quartermaster>
 					["coord"] = { 48.4, 71.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = TIER_TWELVE_GROUPS,
 				}),
 				n(3335, {	-- Hagrus <Reagents>
-					-- #if AFTER CATA
-					["coord"] = { 45.6, 39.0, 86 },	-- The Drag
-					-- #else
-					["coord"] = { 46.2, 46.6, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 45.6, 39.0, 86 },	-- The Drag
+						-- #else
+						{ 46.2, 46.6, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(5643, {	-- Recipe: Great Rage Potion (RECIPE!)
@@ -5222,11 +2819,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				n(3316, {	-- Handor <Cloth & Leather Armor Merchant>
-					-- #if AFTER CATA
-					["coord"] = { 60.8, 54.0, ORGRIMMAR },
-					-- #else
-					["coord"] = { 62.8, 44.8, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 60.8, 54.0, ORGRIMMAR },
+						-- #else
+						{ 62.8, 44.8, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["sym"] = {{"select","itemID",
 						2142,	-- Cuirboulli Belt
@@ -5278,22 +2877,18 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				applyevent(EVENTS.WOW_ANNIVERSARY, n(110035, {	-- Historian Ju'pa
 					["coord"] = { 36.6, 74.6, ORGRIMMAR },
-					["timeline"] = { "added 7.1.0.22810" },
+					["timeline"] = { ADDED_7_1_0 },
 					["races"] = HORDE_ONLY,
-					["sym"] = {
-						{"select", "npcID", 158061},					-- Select Historian Ma'di
-						{"pop"},										-- Discard Header and aquire their children
-					},
 				})),
 				n(46556, {	-- Jamus'Vaz <Valor Quartermaster>
 					["coord"] = { 48.6, 71.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = TIER_THIRTEEN_GROUPS,
 				}),
 				n(3410, {	-- Jin'sora <Bow Merchant>
 					["coord"] = { 77.8, 38.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(11303, {	-- Fine Shortbow
@@ -5333,20 +2928,28 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(48510, {	-- Kall Worthaton <Trike Dealer>
 					["coord"] = { 36.2, 86.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					-- Available to Goblins without faction requirements.
+					["minReputation"] = { FACTION_BILGEWATER_CARTEL, EXALTED },	-- Bilgewater Cartel, Exalted.
+					["OnInit"] = [[function(t)
+						if _.RaceIndex == ]] .. GOBLIN .. [[ then
+							t.minReputation = nil;
+						end
+						return t;
+					end]],
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
-						i(62462, {
-							["timeline"] = { "added 4.0.3.13287" },
-						}),	-- Goblin Turbo-Trike (MOUNT!)
-						i(62461, {
-							["timeline"] = { "added 4.0.3.13287" },
-						}),	-- Goblin Trike (MOUNT!)
+						i(62462, {	-- Goblin Turbo-Trike (MOUNT!)
+							["timeline"] = { ADDED_4_0_3 },
+						}),
+						i(62461, {	-- Goblin Trike (MOUNT!)
+							["timeline"] = { ADDED_4_0_3 },
+						}),
 					},
 				}),
 				n(45551, {	-- Karizi Porkpatty <Cooking Supplies>
 					["coord"] = { 39.0, 85.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(21219),	-- Recipe: Sagefish Delight (RECIPE!)
@@ -5400,17 +3003,19 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				n(3346, {	-- Kithas <Enchanting Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 53.2, 48.8, ORGRIMMAR },
-					-- #else
-					["coord"] = { 53.6, 38.0, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 53.2, 48.8, ORGRIMMAR },
+						-- #else
+						{ 53.6, 38.0, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = appendGroups(COMMON_CATACLYSM_ENCHANTING_RECIPES, {
 						i(67308, {	-- Formula: Enchanted Lantern (RECIPE!)
 							["races"] = HORDE_ONLY,
 							["cost"] = { { "i", 52555, 20 }, },	-- 20x Hypnotic Dust
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(6349, {	-- Formula: Enchant 2H Weapon - Lesser Intellect (RECIPE!)
 							["isLimited"] = true,
@@ -5467,15 +3072,20 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(925),		-- Flail
 						i(2028),	-- Hammer
 						i(924),	-- Maul
+						i(20981, {	-- Neophyte's Mace
+							["timeline"] = { ADDED_10_1_7 }
+						}),
 						i(2026),	-- Rock Hammer
 					},
 				}),
 				n(3348, {	-- Kor'geld <Alchemy Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 55.6, 45.4, ORGRIMMAR },
-					-- #else
-					["coord"] = { 56.2, 34.2, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 55.6, 45.4, ORGRIMMAR },
+						-- #else
+						{ 56.2, 34.2, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(13478, {	-- Recipe: Elixir of Superior Defense (RECIPE!)
@@ -5487,7 +3097,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				n(34043, {	-- Lady Palanseer <Jewelcrafting Quartermaster>
-					["timeline"] = { "added 3.0.2.8970", "removed 4.0.3" },
+					["timeline"] = { ADDED_3_0_2, REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = pvp({
 						-- #if BEFORE 4.0.3
@@ -5495,7 +3105,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(41563),	-- Design: Durable Huge Citrine [WRATH] / Design: Willful Huge Citrine [CATA+]
 						-- #endif
 						i(41564, {	-- Design: Empowered Huge Citrine [WRATH] / Design: Lucent Huge Citrine [CATA+]
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #if BEFORE 4.0.3
 						-- These move to Tiffany in Dalaran
@@ -5504,7 +3114,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(41559),	-- Design: Mystic Sun Crystal
 						-- #endif
 						i(41573, {	-- Design: Opaque Dark Jade [WRATH] / Design: Turbid Dark Jade [CATA+]
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #if BEFORE 4.0.3
 						-- These move to Tiffany in Dalaran
@@ -5516,29 +3126,29 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(41571),	-- Design: Turbid Dark Jade
 						-- #endif
 						moh(1, i(28118, {	-- Brilliant Ornate Ruby
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 						})),
 						moh(1, i(28119, {	-- Smooth Ornate Dawnstone
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 						})),
 						moh(1, i(28120, {	-- Gleaming Ornate Dawnstone
-							["timeline"] = { "added 2.0.1.6180", "removed 4.0.1" },
+							["timeline"] = { ADDED_2_0_1, REMOVED_4_0_1 },
 						})),
 						moh(1, i(28123, {	-- Potent Ornate Topaz
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 						})),
 						moh(1, i(28362, {	-- Delicate Ornate Ruby
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 						})),
 						moh(1, i(28363, {	-- Deadly Ornate Topaz
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 						})),
 					}),
 				}),
 				-- #if NOT ANYCLASSIC
 				-- TODO: Finish this part.
 				n(12792, {	-- Lady Palanseer <Armor Quartermaster>
-					["timeline"] = { "removed 3.0.2.8970" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						un(REMOVED_FROM_GAME, i(28807)),	-- High Warlord's Chain Helm
@@ -5622,7 +3232,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				-- #else
 				n(12792, {	-- Lady Palanseer <Armor Quartermaster>
 					["description"] = "Found within the Champion's Hall in Orgrimmar.",
-					["timeline"] = { "removed 3.0.2.8970" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["maps"] = { ORGRIMMAR },
 					["groups"] = {
 						i(22860, {	-- Blood Guard's Silk Walkers (60)
@@ -5722,7 +3332,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["classes"] = { MAGE },
 						}),
 						i(16525, {	-- Legionnaire's Chain Breastplate
-							["classes"] = {HUNTER },
+							["classes"] = { HUNTER },
 						}),
 						i(22874, {	-- Legionnaire's Chain Hauberk
 							["classes"] = { HUNTER },
@@ -6062,7 +3672,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				-- #endif
 				n(133239, {	-- Leyweaver Aurielle
 					["coord"] = { 38.2, 86.8, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5.25692" },
+					["timeline"] = { ADDED_7_3_5 },
 					["races"] = HORDE_ONLY,
 					["sym"] = {
 						{"sub", "common_recipes_vendor", 3364},	-- Borya <Tailoring Supplies>
@@ -6086,11 +3696,19 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				n(45558, {	-- Lizna Goldweaver <Tailoring Supplies> (removed 7.3.5? when embassy took over)
+					["coord"] = { 41.0, 79.8, ORGRIMMAR },
+					["timeline"] = { ADDED_4_0_1 },
 					-- #if AFTER 7.3.5.25961
 					["description"] = "This NPC is only visible if you have not yet unlocked the allied race Highmountain Tauren.",
+					["OnUpdate"] = [[function(t,parent,defaultUpdate)
+						if _.MODE_DEBUG or (defaultUpdate(t,parent) and not ATTAccountWideData.Achievements[12452]) then
+							t.visible = true;
+						else
+							t.visible = false;
+						end
+						return true;
+					end]],
 					-- #endif
-					["coord"] = { 41.0, 79.8, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984", "removed 7.3.5.25961" },
 					["races"] = HORDE_ONLY,
 					["sym"] = {
 						{"sub", "common_recipes_vendor", 3364},	-- Borya <Tailoring Supplies>
@@ -6115,46 +3733,74 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(50482, {	-- Marith Lazuria <Jewelcrafting Supplies>
 					["coord"] = { 72.4, 34.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = appendGroups(COMMON_CATACLYSM_JEWELCRAFTING_RECIPES, {}),
 				}),
-				-- #if AFTER 10.0.5
 				n(3321, {	-- Morgum <Leather Armor Merchant>
-					["coord"] = { 60.0, 55.6, ORGRIMMAR },
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 60.0, 55.6, ORGRIMMAR },
+						-- #else
+						{ 56.0, 73.2, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
-					["groups"] = sharedData({ ["timeline"] = { ADDED_10_0_5 } }, {
+					["groups"] = {
 						i(2371),	-- Battered Leather Belt
 						i(2373),	-- Battered Leather Boots
 						i(2374),	-- Battered Leather Bracers
 						i(2375),	-- Battered Leather Gloves
 						i(2370),	-- Battered Leather Harness
 						i(2372),	-- Battered Leather Pants
-						i(236),	-- Cured Leather Armor
+						i(236),		-- Cured Leather Armor
 						i(1849),	-- Cured Leather Belt
-						i(238),	-- Cured Leather Boots
+						i(238),		-- Cured Leather Boots
 						i(1850),	-- Cured Leather Bracers
-						i(239),	-- Cured Leather Gloves
-						i(237),	-- Cured Leather Pants
-						i(20896),	-- Lookouts Pants
-						i(20898),	-- Lookouts Shoes
-						i(58238),	-- Lookouts Vest
-						i(6124),	-- Novices Pants
-						i(6139),	-- Novices Robe
-						i(153),	-- Primitive Kilt
-						i(6135),	-- Primitive Kilt
+						i(239),		-- Cured Leather Gloves
+						i(237),		-- Cured Leather Pants
+						-- #if AFTER 10.0.5
+						i(20896, {	-- Lookouts Pants
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(20898, {	-- Lookouts Shoes
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(58238, {	-- Lookouts Vest
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(6124, {	-- Novices Pants
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(6139, {	-- Novices Robe
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(153, {	-- Primitive Kilt
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(6135, {	-- Primitive Kilt
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						-- #endif
 						i(1843),	-- Tanned Leather Belt
-						i(843),	-- Tanned Leather Boots
+						i(843),		-- Tanned Leather Boots
 						i(1844),	-- Tanned Leather Bracers
-						i(844),	-- Tanned Leather Gloves
-						i(846),	-- Tanned Leather Jerkin
-						i(845),	-- Tanned Leather Pants
-						i(121),	-- Thug Boots
-						i(120),	-- Thug Pants
-						i(58246),	-- Thug Vest
-					}),
+						i(844),		-- Tanned Leather Gloves
+						i(846),		-- Tanned Leather Jerkin
+						i(845),		-- Tanned Leather Pants
+						-- #if AFTER 10.0.5
+						i(121, {	-- Thug Boots
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(120, {	-- Thug Pants
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						i(58246, {	-- Thug Vest
+							["timeline"] = { ADDED_10_0_5 }
+						}),
+						-- #endif
+					},
 				}),
-				-- #endif
 				n(46718, {	-- Moraka
 					["coord"] = { 55.8, 55.6, ORGRIMMAR },
 					["races"] = HORDE_ONLY,
@@ -6172,7 +3818,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(46512, {	-- Naros <Plate Armor Merchant>
 					["coord"] = { 45.0, 77.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["sym"] = {{"select","itemID",
 						2451,	-- Crested Heater Shield
@@ -6245,24 +3891,34 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(46716, {	-- Nerog <Inscription Trainer>
 					["coord"] = { 55.2, 55.8, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(140565, {	-- Technique: Songs of the Horde
-							["timeline"] = { "added 7.0.3" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 					},
 				}),
 				n(3362, {	-- Ogunaro Wolfrunner <Kennel Master>
-					-- #if AFTER CATA
-					["coord"] = { 61.6, 35.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 69.4, 12.4, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 61.6, 35.6, ORGRIMMAR },
+						-- #else
+						{ 69.4, 12.4, ORGRIMMAR },
+						-- #endif
+					},
+					-- Available to Orcs without faction requirements.
+					["minReputation"] = { FACTION_ORGRIMMAR, EXALTED },	-- Orgrimmar, Exalted.
+					["OnInit"] = [[function(t)
+						if _.RaceIndex == ]] .. ORC .. [[ then
+							t.minReputation = nil;
+						end
+						return t;
+					end]],
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(46099, {	-- Black Wolf (MOUNT!)
-							["timeline"] = { "added 3.1.0.9684" },
+							["timeline"] = { ADDED_3_1_0 },
 						}),
 						i(5668),	-- Brown Wolf (MOUNT!)
 						i(5665),	-- Dire Wolf (MOUNT!)
@@ -6271,17 +3927,17 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(18798),	-- Swift Gray Wolf (MOUNT!)
 						i(1132),	-- Timber Wolf (MOUNT!)
 						i(12351, {	-- Arctic Wolf (MOUNT!)
-							["timeline"] = { "removed 1.4.0" },
+							["timeline"] = { REMOVED_1_4_0 },
 						}),
 						i(12330, {	-- Red Wolf (MOUNT!)
-							["timeline"] = { "removed 1.4.0" },
+							["timeline"] = { REMOVED_1_4_0 },
 						}),
 					},
 				}),
 				n(44975, {	-- Old Umbehto
 					["coord"] = { 35.0, 67.6, ORGRIMMAR },
 					["races"] = HORDE_ONLY,
-					["timeline"] = { "added 4.0.3." },
+					["timeline"] = { ADDED_4_0_3 },
 					["sym"] = {{"select","itemID",
 						6365,	-- Strong Fishing Pole
 					}},
@@ -6410,7 +4066,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				})),
 				n(46359, {	-- Punra <Blacksmithing Supplies>
 					["coord"] = { 45.0, 77.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["sym"] = {
 						{"sub", "common_recipes_vendor", 3356},	-- Sumi <Blacksmithing Supplies>
 					},
@@ -6430,35 +4086,35 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["races"] = HORDE_ONLY,
 					["groups"] = pvp({
 						i(29466, {	-- Black War Kodo (MOUNT!)
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 							["cost"] = PVP_MOUNT_COST,
 						}),
 						i(18247, {	-- Black War Kodo (MOUNT!)
-							["timeline"] = { "removed 2.0.1.6180" },
+							["timeline"] = { REMOVED_2_0_1 },
 						}),
 						i(29472, {	-- Black War Raptor (MOUNT!)
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 							["cost"] = PVP_MOUNT_COST,
 						}),
 						i(18246, {	-- Black War Raptor (MOUNT!)
-							["timeline"] = { "removed 2.0.1.6180" },
+							["timeline"] = { REMOVED_2_0_1 },
 						}),
 						i(29469, {	-- Black War Wolf (MOUNT!)
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 							["cost"] = PVP_MOUNT_COST,
 						}),
 						i(18245, {	-- Black War Wolf (MOUNT!)
-							["timeline"] = { "removed 2.0.1.6180" },
+							["timeline"] = { REMOVED_2_0_1 },
 						}),
 						i(29470, {	-- Red Skeletal Warhorse (MOUNT!)
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 							["cost"] = PVP_MOUNT_COST,
 						}),
 						i(18248, {	-- Red Skeletal Warhorse (MOUNT!)
-							["timeline"] = { "removed 2.0.1.6180" },
+							["timeline"] = { REMOVED_2_0_1 },
 						}),
 						i(34129, {	-- Swift Warstrider (MOUNT!)
-							["timeline"] = { "added 2.3.0.7382" },
+							["timeline"] = { ADDED_2_3_0 },
 							["cost"] = PVP_MOUNT_COST,
 						}),
 					}),
@@ -6468,21 +4124,108 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(4565),	-- Simple Dagger
+						i(21835, {	-- Anesthetic Poison
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(43237, {	-- Anesthetic Poison II
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(3775, {	-- Crippling Poison
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(2892, {	-- Deadly Poison
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(2893, {	-- Deadly Poison II
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(8984, {	-- Deadly Poison III
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(8985, {	-- Deadly Poison IV
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(20844, {	-- Deadly Poison V
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(22053, {	-- Deadly Poison VI
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(22054, {	-- Deadly Poison VII
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(43232, {	-- Deadly Poison VIII
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(43233, {	-- Deadly Poison IX
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(6947, {	-- Instant Poison
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(6949, {	-- Instant Poison II
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(6950, {	-- Instant Poison III
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(8926, {	-- Instant Poison IV
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(8927, {	-- Instant Poison V
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(8928, {	-- Instant Poison VI
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(21927, {	-- Instant Poison VII
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(43230, {	-- Instant Poison VIII
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(43231, {	-- Instant Poison IX
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(5237, {	-- Mind-Numbing Poison
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(10918, {	-- Wound Poison
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(10920, {	-- Wound Poison II
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(10921, {	-- Wound Poison III
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(10922, {	-- Wound Poison IV
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(22055, {	-- Wound Poison V
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(43234, {	-- Wound Poison VI
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
+						i(43235, {	-- Wound Poison VII
+							["timeline"] = { ADDED_3_0_2, REMOVED_5_0_4 },
+						}),
 					},
 				}),
 				n(52033, {	-- Rogoc <Bloodthirsty Gladiator>
 					["coord"] = { 37.8, 71.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.6.13596" },
+					["timeline"] = { ADDED_4_0_6 },
 					["races"] = HORDE_ONLY,
 					["sym"] = {
-						{"sub", "pvp_gear_base", CATA_TIER, SEASON_VICIOUS, PVP_HONOR },
+						{"sub", "pvp_gear_base", EXPANSION.CATA, SEASON_VICIOUS, PVP_HONOR },
 						{"merge"},	-- Subroutines are automatically finalized, so merge back for further processing
 						{"pop"},	-- Discard the Set header and acquire the children.
 					},
 				}),
 				n(58155, {	-- Rugok <Legacy Justice Quartermaster>
 					["coord"] = { 48.2, 71.6, ORGRIMMAR },
-					["timeline"] = { "added 4.3.0.14890" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = HORDE_ONLY,
 					["groups"] = TIER_ELEVEN_GROUPS,
 				}),
@@ -6540,6 +4283,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				-- TODO: Finish this part.
 				n(12799, {	-- Sergeant Ba'sha <Accessories Quartermaster>
 					["coord"] = { 41.6, 68.6, ORGRIMMAR },
+					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(15197),	-- Scout's Tabard
 						i(18834, {	-- Insignia of the Horde
@@ -6573,7 +4317,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(18428),	-- Senior Sergeant's Insignia (45)
 						i(15200),	-- Senior Sergeant's Insignia (30)
 						i(16486, {	-- First Sergeant's Silk Cuffs (58)
-							["classes"] = { MAGE, PRIEST, WARLOCK },
+							["classes"] = CLOTH_CLASSES,
 						}),
 						i(18434, {	-- First Sergeant's Dragonhide Armguards (58)
 							["classes"] = { DRUID },
@@ -6582,19 +4326,19 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["classes"] = { WARRIOR },
 						}),
 						i(16532, {	-- First Sergeant's Mail Wristguards (58)
-							["classes"] = { HUNTER, SHAMAN },
+							["classes"] = MAIL_CLASSES,
 						}),
 						i(16497, {	-- First Sergeant's Leather Armguards (58)
 							["classes"] = { ROGUE },
 						}),
 						i(18437, {	-- First Sergeant's Silk Cuffs (45)
-							["classes"] = { MAGE, PRIEST, WARLOCK },
+							["classes"] = CLOTH_CLASSES,
 						}),
 						i(18430, {	-- First Sergeant's Plate Bracers (45)
 							["classes"] = { WARRIOR },
 						}),
 						i(18432, {	-- First Sergeant's Mail Wristguards (45)
-							["classes"] = { HUNTER, SHAMAN },
+							["classes"] = MAIL_CLASSES,
 						}),
 						i(18436, {	-- First Sergeant's Dragonhide Armguards (45)
 							["classes"] = { DRUID },
@@ -6606,6 +4350,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(14581, {	-- Sergeant Thunderhorn <Weapons Quartermaster>
 					["description"] = "Found within the Champion's Hall in Orgrimmar.",
+					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(18831),	-- High Warlord's Battle Axe
 						i(23464),	-- High Warlord's Battle Mace
@@ -6632,7 +4377,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				-- #endif
 				n(26396, {	-- Sergeant Thunderhorn Warlord Vendor Edition
-					["timeline"] = { "added 2.4.2.8278" },
+					["timeline"] = { ADDED_2_4_2 },
 					["races"] = HORDE_ONLY,
 					["u"] = REMOVED_FROM_GAME,
 					["groups"] = {
@@ -6660,31 +4405,42 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(69978, {	-- Sergeant Thunderhorn <Cataclysmic Gladiator>
 					["coord"] = { 38.8, 70.0, ORGRIMMAR },
-					["timeline"] = { "added 5.2.0.16591" },
+					["timeline"] = { ADDED_5_2_0 },
 					["races"] = HORDE_ONLY,
 					["sym"] = {
-						{"sub", "pvp_gear_base", CATA_TIER, SEASON_CATACLYSMIC, PVP_GLADIATOR },{"merge"},	-- Subroutines are automatically finalized
+						{"sub", "pvp_gear_base", EXPANSION.CATA, SEASON_CATACLYSMIC, PVP_GLADIATOR },{"merge"},	-- Subroutines are automatically finalized
 						{"pop"},	-- Discard the Set header and acquire the children.
 						{"exclude", "headerID", NECK, FINGER, TRINKET },	-- Exclude Neck, Finger and Trinkets
 					},
 				}),
 				n(3333, {	-- Shankys <Fishing Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 70.0, 29.4, ORGRIMMAR },
-					-- #else
-					["coord"] = { 66.6, 41.6, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 70.0, 29.4, ORGRIMMAR },
+						-- #else
+						{ 66.6, 41.6, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = {
+						i(6256, {	-- Fishing Pole
+							-- #if AFTER 10.0.0
+							["collectible"] = false,
+							-- #endif
+						}),
 						i(17062),	-- Recipe: Mithril Head Trout (RECIPE!)
 						i(6368),	-- Recipe: Rainbow Fin Albacore (RECIPE!)
 						i(6369),	-- Recipe: Rockscale Cod (RECIPE!)
-						i(6365),	-- Strong Fishing Pole
+						i(6365, {	-- Strong Fishing Pole
+							-- #if AFTER 10.0.0
+							["collectible"] = false,
+							-- #endif
+						}),
 					},
 				}),
 				n(49737, {	-- Shazdar <Sous Chef>
 					["coord"] = { 56.8, 62.6, ORGRIMMAR },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						chefsaward(3, i(65426)),	-- Recipe: Baked Rockfish (RECIPE!)
@@ -6708,7 +4464,9 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						chefsaward(3, i(65420)),	-- Recipe: Mushroom Sauce Mudfish (RECIPE!)
 						chefsaward(3, i(65417)),	-- Recipe: Pickled Guppy (RECIPE!)
 						chefsaward(3, i(65410)),	-- Recipe: Salted Eye (RECIPE!)
-						chefsaward(3, i(68688)),	-- Recipe: Scalding Murglesnout (RECIPE!)
+						chefsaward(3, i(68688, {	-- Recipe: Scalding Murglesnout (RECIPE!)
+							["timeline"] = { ADDED_4_0_6 },
+						})),
 						chefsaward(3, i(65413)),	-- Recipe: Seasoned Crab (RECIPE!)
 						chefsaward(3, i(65421)),	-- Recipe: Severed Sagefish Head (RECIPE!)
 						chefsaward(3, i(65425)),	-- Recipe: Skewered Eel (RECIPE!)
@@ -6733,70 +4491,82 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(2207),	-- Jambiya
 						i(2209),	-- Kris
 						i(15906, {	-- Left-Handed Brass Knuckles
-							["timeline"] = { "removed 6.0.2" },
+							["timeline"] = { REMOVED_6_0_2 },
 						}),
 						i(15909, {	-- Left-Handed Blades
-							["timeline"] = { "removed 6.0.2" },
+							["timeline"] = { REMOVED_6_0_2 },
 						}),
 						i(15907, {	-- Left-Handed Claw
-							["timeline"] = { "removed 6.0.2" },
+							["timeline"] = { REMOVED_6_0_2 },
 						}),
 						i(923),		-- Longsword
 						i(2526),	-- Main Gauche
 						i(2208),	-- Poniad
+						i(20977, {	-- Recruit's Shortsword
+							["timeline"] = { ADDED_10_1_7 }
+						}),
 						i(2534),	-- Rondel
 						i(2027),	-- Scimitar
+						i(20982, {	-- Sharp Dagger
+							["timeline"] = { ADDED_10_1_7 }
+						}),
 						i(15903),	-- Slicing Claw
 					},
 				}),
 				n(3413, {	-- Sovik <Engineering Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 56.0, 56.0, ORGRIMMAR },
-					-- #else
-					["coord"] = { 75.6, 25.2, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 56.0, 56.0, ORGRIMMAR },
+						-- #else
+						{ 75.6, 25.2, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = {
-						i(18647, {	-- Schematic: Red Firework
+						i(18647, {	-- Schematic: Red Firework (RECIPE!)
 							["isLimited"] = true,
 						}),
-						i(16041, {	-- Schematic: Thorium Grenade
-							["timeline"] = { "removed 3.0.1" },	-- Now taught by trainer, schematic removed from the game.
-							-- #if BEFORE 3.0.1
-							["isLimited"] = true,
-							-- #endif
-						}),
-						i(16042, {	-- Schematic: Thorium Widget
-							["timeline"] = { "removed 3.0.1" },	-- Now taught by trainer, schematic removed from the game.
-							-- #if BEFORE 3.0.1
+						i(16041, {	-- Schematic: Thorium Grenade (RECIPE!)
+							["timeline"] = { REMOVED_3_0_2 },	-- Now taught by trainer, schematic removed from the game.
+							-- #if BEFORE 3.0.2
 							["isLimited"] = true,
 							-- #endif
 						}),
-						i(22729, {	-- Schematic: Steam Tonk Controller
-							["timeline"] = { "created 1.12.1", "added 2.3.0" },
+						i(16042, {	-- Schematic: Thorium Widget (RECIPE!)
+							["timeline"] = { REMOVED_3_0_2 },	-- Now taught by trainer, schematic removed from the game.
+							-- #if BEFORE 3.0.2
+							["isLimited"] = true,
+							-- #endif
+						}),
+						i(22729, {	-- Schematic: Steam Tonk Controller (RECIPE!)
+							["timeline"] = { CREATED_1_12_1, ADDED_2_3_0 },
 							["isLimited"] = true,
 						}),
 					},
 				}),
 				n(50488, {	-- Stone Guard Nargol <Orgrimmar Quartermaster>
 					["coord"] = { 50.4, 58.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(45581, {	-- Orgrimmar Tabard
-							["timeline"] = { "added 3.1.0.9626" },
+							["timeline"] = { ADDED_3_1_0 },
 						}),
 						i(64908, {	-- Shroud of Orgrimmar
-							["timeline"] = { "added 4.0.3.13287" },
+							["minReputation"] = { FACTION_ORGRIMMAR, EXALTED },	-- Orgrimmar, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(64909, {	-- Cape of Orgrimmar
-							["timeline"] = { "added 4.0.3.13287" },
+							["minReputation"] = { FACTION_ORGRIMMAR, EXALTED },	-- Orgrimmar, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(64910, {	-- Mantle of Orgrimmar
-							["timeline"] = { "added 4.0.3.13287" },
+							["minReputation"] = { FACTION_ORGRIMMAR, EXALTED },	-- Orgrimmar, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(67533, {	-- Orgrimmar Satchel
-							["timeline"] = { "added 4.0.3.13287" },
+							["minReputation"] = { FACTION_ORGRIMMAR, REVERED },	-- Orgrimmar, Revered.
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -6876,7 +4646,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				-- #endif
 				n(46708, {	-- Suja <Cooking Supplies>
 					["coord"] = { 56.6, 61.2, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(21219),	-- Recipe: Sagefish Delight (RECIPE!)
@@ -6884,11 +4654,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				n(3356, {	-- Sumi <Blacksmithing Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 75.8, 35.2, ORGRIMMAR },
-					-- #else
-					["coord"] = { 82.4, 23.8, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 75.8, 35.2, ORGRIMMAR },
+						-- #else
+						{ 82.4, 23.8, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = appendGroups(COMMON_CATACLYSM_BLACKSMITHING_RECIPES, {
 						i(12162, {	-- Plans: Hardened Iron Shortsword (RECIPE!)
@@ -6897,11 +4669,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					}),
 				}),
 				n(3366, {	-- Tamar <Leatherworking Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 60.6, 54.4, ORGRIMMAR },
-					-- #else
-					["coord"] = { 63.0, 45.2, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 60.6, 54.4, ORGRIMMAR },
+						-- #else
+						{ 63.0, 45.2, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = appendGroups(COMMON_CATACLYSM_LEATHERWORKING_RECIPES, {
 						i(18731, {	-- Pattern: Heavy Leather Ball (RECIPE!)
@@ -6909,9 +4683,9 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 					}),
 				}),
-				applyclassicphase(CATA_PHASE_FIVE, n(57922, {	-- Taryssa Lazuria <Jewelcrafting Supplies>
+				applyclassicphase(CATA_PHASE_HOUR_OF_TWILIGHT, n(57922, {	-- Taryssa Lazuria <Jewelcrafting Supplies>
 					["coord"] = { 72.4, 34.6, ORGRIMMAR },
-					["timeline"] = { "added 4.3.0.14849" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						currency(361, {	-- Illustrious Jewelcrafter's Token
@@ -7122,30 +4896,33 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["sym"] = {
 								{"select","creatureID",57922},{"pop"},	-- this NPC
 								{"not","itemID",71949},				-- not this item
+								{"isnt","currencyID"},	-- no currencies
 							},
 						}),
 					},
 				})),
 				n(133127, {	-- Thaluriel <Engineering Supplies>
 					["coord"] = { 36.8, 84.6, ORGRIMMAR },
-					["timeline"] = { "added 7.3.5.25692" },
+					["timeline"] = { ADDED_7_3_5 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
-						i(18647, {	-- Schematic: Red Firework
+						i(18647, {	-- Schematic: Red Firework (RECIPE!)
 							["isLimited"] = true,
 						}),
-						i(22729, {	-- Schematic: Steam Tonk Controller
-							["timeline"] = { "created 1.12.1", "added 2.3.0" },
+						i(22729, {	-- Schematic: Steam Tonk Controller (RECIPE!)
+							["timeline"] = { CREATED_1_12_1, ADDED_2_3_0 },
 							["isLimited"] = true,
 						}),
 					},
 				}),
 				n(3315, {	-- Tor'phan <Cloth & Leather Armor Merchant>
-					-- #if AFTER CATA
-					["coord"] = { 60.8, 59.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 62.6, 50.6, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 60.8, 59.6, ORGRIMMAR },
+						-- #else
+						{ 62.6, 50.6, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(2617),	-- Burning Robes
@@ -7227,7 +5004,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(62264),	-- Grunts Chain Leggings
 						i(62265),	-- Grunts Chain Vest
 						i(62253),	-- Grunts Plate Armor
-						i(62255),	-- Grunts Plate Belt
+						i(62254),	-- Grunts Plate Belt
 						i(62255),	-- Grunts Plate Boots
 						i(62256),	-- Grunts Plate Bracers
 						i(62257),	-- Grunts Plate Gloves
@@ -7259,8 +5036,16 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				-- #endif
-				n(66022, bubbleDownSelf({ ["timeline"] = { "added 5.0.1.15799" }, }, {	-- Turtlemaster Odai <Dragon Turtle Breeder>
+				n(66022, bubbleDownSelf({ ["timeline"] = { ADDED_5_0_4 }, }, {	-- Turtlemaster Odai <Dragon Turtle Breeder>
 					["coord"] = { 69.8, 41.0, ORGRIMMAR },
+					-- Available to Huojin Pandaren without faction requirements.
+					["minReputation"] = { FACTION_HUOJIN_PANDAREN, EXALTED },	-- Huojin Pandaren, Exalted.
+					["OnInit"] = [[function(t)
+						if _.RaceIndex == ]] .. PANDAREN_HORDE .. [[ then
+							t.minReputation = nil;
+						end
+						return t;
+					end]],
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(91008, {	-- Black Dragon Turtle (MOUNT!) (PANDA)
@@ -7338,11 +5123,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				})),
 				n(3314, {	-- Urtharo <Weapon Merchant>
-					-- #if AFTER CATA
-					["coord"] = { 46.6, 73.8, ORGRIMMAR },
-					-- #else
-					["coord"] = { 47.4, 68.6, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 46.6, 73.1, ORGRIMMAR },
+						-- #else
+						{ 47.4, 68.6, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["sym"] = {{"select","itemID",
 						1198,	-- Claymore
@@ -7375,25 +5162,27 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(45546, {	-- Vizna Bangwrench <Engineering Supplies>
 					["coord"] = { 36.6, 86.8, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
-						i(18647, {	-- Schematic: Red Firework
+						i(18647, {	-- Schematic: Red Firework (RECIPE!)
 							["isLimited"] = true,
 						}),
-						i(22729, {	-- Schematic: Steam Tonk Controller
-							["timeline"] = { "created 1.12.1", "added 2.3.0" },
+						i(22729, {	-- Schematic: Steam Tonk Controller (RECIPE!)
+							["timeline"] = { CREATED_1_12_1, ADDED_2_3_0 },
 							["isLimited"] = true,
 						}),
 					},
 				}),
 				n(8404, {	-- Xan'tish <Snake Vendor>
 					["description"] = "This NPC walks around in a circle in the Valley of Spirits.",
-					-- #if AFTER CATA
-					["coord"] = { 34.0, 67.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 37.6, 75.8, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 34.0, 67.6, ORGRIMMAR },
+						-- #else
+						{ 37.6, 75.8, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(10360),	-- Black Kingsnake (PET!)
@@ -7409,11 +5198,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				n(3400, {	-- Xen'to <Cooking Supplies>
-					-- #if AFTER CATA
-					["coord"] = { 32.6, 68.6, ORGRIMMAR },
-					-- #else
-					["coord"] = { 57.6, 53.2, ORGRIMMAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 32.6, 68.6, ORGRIMMAR },
+						-- #else
+						{ 57.6, 53.2, ORGRIMMAR },
+						-- #endif
+					},
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(21219),	-- Recipe: Sagefish Delight (RECIPE!)
@@ -7446,11 +5237,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(2030),	-- Gnarled Staff
 						i(2507),	-- Laminated Recurve Bow
 						i(928),		-- Long Staff
+						i(37, {	-- Worn Axe
+							["timeline"] = { ADDED_10_1_7 }
+						}),
 					},
 				}),
+				-- #IF BEFORE SHADOWLANDS
 				n(45549, {	-- Zido Helmbreaker <Blacksmithing Supplies>
 					["coord"] = { 36.2, 83.2, ORGRIMMAR },
-					["timeline"] = { "added 4.0.1.12984" },
+					["timeline"] = { ADDED_4_0_1 },
 					["sym"] = {
 						{"sub", "common_recipes_vendor", 3356},	-- Sumi <Blacksmithing Supplies>
 					},
@@ -7461,7 +5256,28 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 					},
 				}),
+				-- #ENDIF
 			}),
+			-- #if NOT ANYCLASSIC
+			-- CRIEVE NOTE: I'm going to solve this a different way eventually.
+			o(206109, {	-- Warchief's Command Board
+				["provider"] = { "o", 206116 },	-- Warchief's Command Board
+				["coords"] = {
+					-- Locations for 206109
+					{ 49.8, 76.4, ORGRIMMAR },
+					{ 58.3, 45.7, ORGRIMMAR },
+					{ 45.6, 5.9, ORGRIMMAR },
+					-- Locations for 206116
+					{ 23.4, 94.2, ORGRIMMAR },
+					{ 59.0, 44.4, ORGRIMMAR },
+					{ 66.7, 49.5, ORGRIMMAR },
+				},
+				["timeline"] = { ADDED_4_0_1 },
+				["sym"] = WARCHIEFS_COMMAND_BOARD_SYMLINK,
+				["races"] = HORDE_ONLY,
+				["skipFill"] = true,
+			}),
+			-- #endif
 		},
 	}),
 }));
@@ -7471,27 +5287,10 @@ root(ROOTS.HiddenQuestTriggers, {
 	m(KALIMDOR, {
 		m(ORGRIMMAR, {
 			q(54948, {	-- something in orgrimmar on lvl 60 necrolord goblin warlock
-				["timeline"] = { "added 8.2.0.30918" },
+				["timeline"] = { ADDED_8_2_0 },
 			}),
 			q(51766, {	-- cinematic during Horde BFA intro scenario quest
-				["timeline"] = { "added 8.0.1.27291" },
-			}),
-		}),
-	}),
-});
--- #endif
-
--- #if AFTER 3.3.3.11723
-root(ROOTS.NeverImplemented, {
-	tier(WOTLK_TIER, {
-		n(ARMOR, {
-			filter(NECK_F, {
-				i(49314, {	-- Sparkling Onyxia Tooth Pendant
-					["timeline"] = { "created 3.3.3.11723" },
-				}),
-				i(49312, {	-- Purified Onyxia Blood Talisman
-					["timeline"] = { "created 3.3.3.11723" },
-				}),
+				["timeline"] = { ADDED_8_0_1 },
 			}),
 		}),
 	}),

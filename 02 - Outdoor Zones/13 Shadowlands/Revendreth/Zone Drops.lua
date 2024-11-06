@@ -25,6 +25,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["description"] = "Used to open the crypts around |cFFFFFFFF70.1, 55.2|r.",
 				["sourceQuests"] = { 57928 },	-- Atonement Crypt Key
 			}),
+			i(173735, {	-- Atonement Crypt Key (QI!)
+				["sourceQuest"] = 57925,	-- Archivist Fane
+			}),
 			i(182703, {	-- Bubbling Red Muck Dye
 				["description"] = "Drops from mobs or |cFFFFFFFFDiscarded Vials|r in the Blistering Bog area (|cFFFFFFFF35.7, 32.7|r).",
 				["crs"] = {
@@ -72,7 +75,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			}),
 			i(187430),	-- Harvester's Sinvyr Chalice
 			i(183420, {	-- Hopebreaker's Right Boot
-				["classes"] = { DEMONHUNTER, DRUID, MONK, ROGUE },
+				["classes"] = LEATHER_CLASSES,
 				["g"] = {
 					i(183418, {	-- Hopebreaker's Boots
 						["cost"] = {
@@ -82,7 +85,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				},
 			}),
 			i(183417, {	-- Mail Courier's Right Runner
-				["classes"] = { HUNTER, SHAMAN },
+				["classes"] = MAIL_CLASSES,
 				["g"] = {
 					i(182719, {	-- Mail Courier's Runners
 						["cost"] = {
@@ -91,8 +94,21 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					}),
 				},
 			}),
+			i(174378, {	-- Mortegore Scroll
+				["crs"] = {
+					161248,	-- Big Shiny
+					161294,	-- Carved Sniffer
+					161246,	-- Heftor
+					173013,	-- Lichsworn Necromancer
+					161180,	-- Maldraxxi Defector
+					169876,	-- Retained Lookout
+					161179,	-- Retained Supplier
+					161178,	-- Retained Trafficker
+					161257,	-- Stacka
+				},
+			}),
 			i(183430, {	-- Researcher's Right Slipper
-				["classes"] = { MAGE, PRIEST, WARLOCK },
+				["classes"] = CLOTH_CLASSES,
 				["g"] = {
 					i(183425, {	-- Researcher's Slippers
 						["cost"] = {
@@ -105,7 +121,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["crs"] = { 165270 },	-- Royal Arcanist
 			}),
 			i(183423, {	-- Stone Legion Right Sabaton
-				["classes"] = { DEATHKNIGHT, PALADIN, WARRIOR },
+				["classes"] = PLATE_CLASSES,
 				["g"] = {
 					i(183421, {	-- Stone Legion Sabatons
 						["cost"] = {
@@ -148,6 +164,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					}),
 				},
 			}),
+			i(174674, {	-- Bell of Remembrance (QI!)
+				["crs"] = { 160716 },	-- Sinstone Rampager
+			}),
 			i(177800),	-- Bubbling Concoction
 			i(180862),	-- Bulletslinger
 			i(179319),	-- Caged Cudgel
@@ -189,9 +208,6 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			i(177792),	-- Night Guardian Legguards
 			i(177793),	-- Night Guardian Pauldrons
 			i(173719, {	-- Pristine Dredbat Fang
-				["sourceQuests"] = { 58062 },	-- A Very Special Guest
-				["questID"] = 58079,	-- Favor: Pristine Dredbat Fang
-				["isDaily"] = true,
 				["crs"] = {
 					169154,	-- Famished Fangling
 					161206,	-- Fanged Dredbat
@@ -204,7 +220,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				},
 			}),
 			i(177805),	-- Redeemer's Mace
-			i(177812),	-- Redelv House Band
+			i(177812),	-- Redelev House Band
 			i(177808),	-- Reinforced Rapier
 			i(177804),	-- Ritualist Dagger
 			i(177787),	-- Savage Bonemauler Bracers

@@ -9,14 +9,24 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 			98,		-- Tides' Hollow
 			99,		-- Stillpine Hold
 		},
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\achievement_zone_azuremystisle_01",
-		-- #endif
-		["timeline"] = { "added 2.0.1.6180" },
+		["icon"] = 236715,
+		["timeline"] = { ADDED_2_0_1 },
 		["groups"] = {
 			m(AMMEN_VALE, {
 				["lore"] = "Ammen Vale is a small island and subzone off the coast of Azuremyst Isle. It is a lightly forested valley with escape pods, crystals, and smoking bits of the crashed planar ship scattered about the landscape.",
-				["icon"] = "Interface\\Icons\\Spell_Arcane_TeleportExodar",
+				["icon"] = 135756,
+				-- #if BEFORE MOP
+				["zone-text-areas"] = {
+					3526,	-- Ammen Vale
+					3560,	-- Ammen Fields
+					3527,	-- Crash Site
+					3559,	-- Nestlewood Hills
+					3529,	-- Nestlewood Thicket
+					3530,	-- Shadow Ridge
+					3528,	-- Silverline Lake
+					3561,	-- The Sacred Grove
+				},
+				-- #endif
 				["groups"] = {
 					n(QUESTS, {
 						q(9798, {	-- Blood Elf Plans
@@ -63,7 +73,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["races"] = ALLIANCE_ONLY,
 							["groups"] = {
 								objective(1, {	-- 0/3 Corrupted Flower
-									["provider"] = { "i", 24416 },	-- Corrupted Flower
+									["providers"] = {
+										{ "i",  24416 },	-- Corrupted Flower
+										{ "o", 182127 },	-- Corrupted Flower
+									},
 								}),
 							},
 						}),
@@ -85,9 +98,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.3, 49.1, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { SHAMAN },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(4, 4, 1),
 						}),
 						q(9450, {	-- Call of Earth (2/3)
@@ -98,9 +111,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 71.3, 39.1, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { SHAMAN },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(4, 4, 1),
 							["groups"] = {
 								objective(1, {	-- 0/4 Restless Spirit of Earth slain
@@ -119,16 +132,16 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 71.3, 39.1, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { SHAMAN },
+							["races"] = { DRAENEI },
 							["lvl"] = 4,
 							-- #if BEFORE 4.0.3
 							["groups"] = {
 								recipe(8071),	-- Stoneskin Totem
 								i(5175, {	-- Earth Totem
 									["description"] = "You must keep this in your bags forever.",
-									["timeline"] = { "removed 4.0.3" },
+									["timeline"] = { REMOVED_4_0_3 },
 								}),
 							},
 							-- #endif
@@ -140,9 +153,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.6, 48.8, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "added 4.0.3", "removed 7.0.3" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_7_0_3 },
 							["classes"] = { MAGE },
-							["races"] = ALLIANCE_ONLY,
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9294, {	-- Healing the Lake
@@ -157,7 +170,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["lvl"] = lvlsquish(2, 2, 1),
 							["groups"] = {
 								objective(1, {	-- Disperse the Neutralizing Agent
-									["provider"] = { "i", 22955 },	-- Neutralizing Agent
+									["providers"] = {
+										{ "i", 22955 },	-- Neutralizing Agent
+										{ "o", 181433 },	-- Irradiated Power Crystal
+									},
 									-- #if AFTER MOP
 									["coord"] = { 45.2, 64.9, AMMEN_VALE },
 									-- #else
@@ -173,9 +189,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.9, 49.7, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { HUNTER },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9303, {	-- Inoculation [Original]
@@ -206,7 +222,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["sourceQuest"] = 10302,	-- Volatile Mutations
 							["description"] = "This quest is given if you pick it up before getting or turning in the quest |cFFFFD700Vindicator Aldar|r.",
 							["coord"] = { 50.6, 48.7, AMMEN_VALE },
-							["timeline"] = { "added 6.0.2.18816" },
+							["timeline"] = { ADDED_6_0_2 },
 							["races"] = ALLIANCE_ONLY,
 							["groups"] = {
 								objective(1, {	-- Nestlewood Owlkin inoculated
@@ -222,9 +238,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 80.1, 48.9, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "added 4.0.3", "removed 7.0.3" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_7_0_3 },
 							["classes"] = { PRIEST },
-							["races"] = ALLIANCE_ONLY,
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9290, {	-- Mage Training
@@ -234,15 +250,15 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.6, 48.8, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { MAGE },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(31172, {	-- Monk Training
-							["races"] = { DRAENEI },
 							["classes"] = { MONK },
-							["timeline"] = { "added 5.0.1.15640", "removed 7.0.3" },
+							["races"] = { DRAENEI },
+							["timeline"] = { ADDED_5_0_4, REMOVED_7_0_3 },
 						}),
 						q(9287, {	-- Paladin Training
 							["qg"] = 16501,	-- Aurelon
@@ -251,9 +267,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.7, 48.2, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { PALADIN },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9291, {	-- Priest Training
@@ -263,9 +279,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 80.1, 48.9, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { PRIEST },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(26969, {	-- Primal Strike
@@ -275,9 +291,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.3, 49.1, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "added 4.0.3", "removed 7.0.3" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_7_0_3 },
 							["classes"] = { SHAMAN },
-							["races"] = ALLIANCE_ONLY,
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9280, {	-- Replenishing the Healing Crystals
@@ -349,9 +365,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.3, 49.1, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { SHAMAN },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9305, {	-- Spare Parts
@@ -369,7 +385,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["lvl"] = lvlsquish(2, 2, 1),
 							["groups"] = {
 								objective(1, {	-- 0/4 Emitter Spare Part
-									["provider"] = { "i", 22978 },	-- Emitter Spare Part
+									["providers"] = {
+										{ "i",  22978 },	-- Emitter Spare Part
+										{ "o", 181283 },	-- Emitter Spare Part
+									},
 									-- #if AFTER MOP
 									["coord"] = { 64.6, 84.4, AMMEN_VALE },
 									-- #else
@@ -388,11 +407,14 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["qg"] = 17071,	-- Technician Zhanaa
 							["sourceQuest"] = 10302,	-- Volatile Mutations
 							["coord"] = { 50.5, 47.9, AMMEN_VALE },
-							["timeline"] = { "added 6.0.2.18833" },
+							["timeline"] = { ADDED_6_0_2 },
 							["races"] = ALLIANCE_ONLY,
 							["groups"] = {
 								objective(1, {	-- 0/4 Emitter Spare Part
-									["provider"] = { "i", 22978 },	-- Emitter Spare Part
+									["providers"] = {
+										{ "i",  22978 },	-- Emitter Spare Part
+										{ "o", 181283 },	-- Emitter Spare Part
+									},
 									["coord"] = { 64.6, 84.4, AMMEN_VALE },
 								}),
 								i(24423),	-- Beaten Plate Leggings
@@ -410,9 +432,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.9, 49.7, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "added 4.0.3", "removed 7.0.3" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_7_0_3 },
 							["classes"] = { HUNTER },
-							["races"] = ALLIANCE_ONLY,
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(10303, {	-- The Blood Elves
@@ -460,9 +482,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.7, 48.2, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "added 4.0.3", "removed 7.0.3" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_7_0_3 },
 							["classes"] = { PALADIN },
-							["races"] = ALLIANCE_ONLY,
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9309, {	-- The Missing Scout
@@ -479,7 +501,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 						q(31173, {	-- The Tiger Palm
 							["qg"] = 63335,	-- Mojo Stormstout
 							["coord"] = { 50.6, 48.6, AMMEN_VALE },
-							["timeline"] = { "added 5.0.1.15640", "removed 7.0.3" },
+							["timeline"] = { ADDED_5_0_4, REMOVED_7_0_3 },
 							["classes"] = { MONK },
 							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
@@ -525,15 +547,14 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 						}),
 						q(10302, {	-- Volatile Mutations
 							["qg"] = 16514,	-- Botanist Taerix
-							-- #if BEFORE MOP
-							["sourceQuest"] = 9279,	-- You Survived! [NOTE: On new Draenei, it was offered at the same time as Replenishing the Healing Crystal]
-							-- #else
-							["sourceQuests"] = {	-- TODO: Test this source quest list.
+							["sourceQuests"] = {
+								-- #if AFTER MOP
+								-- TODO: Test this source quest list.
 								9369,	-- Replenishing the Healing Crystal (All other ally races)
 								9280,	-- Replenishing the Healing Crystal (Draenei)
+								-- #endif
 								9371,	-- Botanist Taerix (breadcrumb)
 							},
-							-- #endif
 							-- #if AFTER MOP
 							["coord"] = { 49.9, 37.3, AMMEN_VALE },
 							-- #else
@@ -553,9 +574,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.6, 49.5, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
-							["races"] = { DRAENEI },
+							["timeline"] = { REMOVED_4_0_3 },
 							["classes"] = { WARRIOR },
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 						q(9293, {	-- What Must Be Done...
@@ -591,9 +612,9 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							-- #else
 							["coord"] = { 79.6, 49.5, AZUREMYST_ISLE },
 							-- #endif
-							["timeline"] = { "added 4.0.3", "removed 7.0.3" },
+							["timeline"] = { ADDED_4_0_3, REMOVED_7_0_3 },
 							["classes"] = { WARRIOR },
-							["races"] = ALLIANCE_ONLY,
+							["races"] = { DRAENEI },
 							["lvl"] = lvlsquish(3, 3, 1),
 						}),
 					}),
@@ -611,11 +632,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				},
 			}),
 			n(ACHIEVEMENTS, {
-				explorationAch(860, {	-- Explore Azuremyst Isle
-					-- #if BEFORE WRATH
-					["description"] = "Explore Azuremyst Isle, revealing the covered areas of the world map.",
-					-- #endif
-				}),
+				explorationAch(860),	-- Explore Azuremyst Isle
 			}),
 			battlepets({
 				["sym"] = {{"select","speciesID",
@@ -627,33 +644,37 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					pet(464),	-- Grey Moth (PET!)
 				},
 			}),
-			-- #if ANYCLASSIC
-			n(EXPLORATION, {
-				exploration(3857, "256:256:515:279"),	-- Ammen Ford
-				exploration(3526, "475:512:527:104"),	-- Ammen Vale
-				exploration(3576, "256:256:383:249"),	-- Azure Watch
-				exploration(3571, "256:256:174:363"),	-- Bristlelimb Village
-				exploration(3564, "256:256:488:24"),	-- Emberglade
-				exploration(3915, "256:128:356:0"),		-- Fairbridge Strand
-				exploration(3577, "256:256:507:350"),	-- Geezle's Camp
-				exploration(3916, "256:256:449:183"),	-- Moongraze Woods
-				exploration(3573, "256:256:352:378"),	-- Odesyus' Landing
-				exploration(3567, "256:256:281:305"),	-- Pod Cluster
-				exploration(3568, "128:256:462:349"),	-- Pod Wreckage
-				exploration(3575, "256:256:291:3"),		-- Silting Shore
-				exploration(3639, "256:222:23:446"),	-- Silvermyst Isle
-				exploration(3572, "256:256:365:49"),	-- Stillpine Hold
-				exploration(3557, "512:512:74:85"),		-- The Exodar
-				exploration(3574, "256:256:176:303"),	-- Valaar's Berth
-				exploration(3570, "256:247:220:421"),	-- Wrathscale Point
+			explorationHeader({
+				exploration(3560),	-- Ammen Fields
+				exploration(3857),	-- Ammen Ford
+				exploration(3526),	-- Ammen Vale
+				exploration(3576),	-- Azure Watch
+				exploration(3571),	-- Bristlelimb Village
+				exploration(3564),	-- Emberglade
+				exploration(3915),	-- Fairbridge Strand
+				exploration(3577),	-- Geezle's Camp
+				exploration(3578),	-- Menagerie Wreckage
+				exploration(3916),	-- Moongraze Woods
+				exploration(3566),	-- Moonwing Den
+				exploration(3559),	-- Nestlewood Hills
+				exploration(3573),	-- Odesyus' Landing
+				exploration(3567),	-- Pod Cluster
+				exploration(3568),	-- Pod Wreckage
+				exploration(3530),	-- Shadow Ridge
+				exploration(3575),	-- Silting Shore
+				exploration(3639),	-- Silvermyst Isle
+				exploration(3572),	-- Stillpine Hold
+				exploration(3557),	-- The Exodar
+				exploration(3579),	-- Traitor's Cove
+				exploration(3574),	-- Valaar's Berth
+				exploration(3570),	-- Wrathscale Point
 			}),
-			-- #endif
 			-- #if AFTER CATA
 			n(FLIGHT_PATHS, {
 				fp(624, {	-- Azure Watch, Azuremyst Isle [Alliance]
 					["cr"] = 43991,	-- Zaldaan <Flight Master>
 					["coord"] = { 49.6, 49.2, AZUREMYST_ISLE },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 				}),
 			}),
@@ -693,11 +714,17 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(5, 5, 1),
 					["groups"] = {
 						objective(1, {	-- 0/1 Nautical Compass
-							["provider"] = { "i", 23738 },	-- Nautical Compass
+							["providers"] = {
+								{ "i",  23738 },	-- Nautical Compass
+								{ "o", 181675 },	-- Nautical Compass
+							},
 							["coord"] = { 59.6, 67.7, AZUREMYST_ISLE },
 						}),
 						objective(2, {	-- 0/1 Nautical Map
-							["provider"] = { "i", 23739 },	-- Nautical Map
+							["providers"] = {
+								{ "i",  23739 },	-- Nautical Map
+								{ "o", 181674 },	-- Nautical Map
+							},
 							["coord"] = { 58.6, 66.4, AZUREMYST_ISLE },
 						}),
 					},
@@ -726,7 +753,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(5, 5, 1),
 					["groups"] = {
 						objective(1, {	-- 0/5 Azure Snapdragon Bulb
-							["provider"] = { "i", 23692 },	-- Azure Snapdragon Bulb
+							["providers"] = {
+								{ "i", 23692 },	-- Azure Snapdragon Bulb
+								{ "o", 181644 },	-- Azure Snapdragon
+							},
 						}),
 					},
 				}),
@@ -771,15 +801,16 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(9675, {	-- Beast Training
 					["qg"] = 17614,	-- Huntress Kella Nightbow
+					["sourceQuest"] = 9593,	-- Taming the Beast (3/3)
 					["coord"] = { 24.2, 54.4, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { THE_EXODAR },
 					["classes"] = { HUNTER },
 					["races"] = { DRAENEI },
 					["lvl"] = lvlsquish(10, 10, 1),
 					["groups"] = {
 						i(24138, {	-- Silver Crossbow
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #if BEFORE CATA
 						recipe(6991),		-- Feed Pet
@@ -834,7 +865,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				q(9462, {	-- Call of Fire (1/7)
 					["qg"] = 17219,	-- Sulaa <Shaman Trainer>
 					["coord"] = { 32.3, 23.9, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["isBreadcrumb"] = true,
@@ -844,7 +875,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17212,	-- Tuluun <Shaman Trainer>
 					["sourceQuest"] = 9462,	-- Call of Fire (1/4)
 					["coord"] = { 48.0, 50.4, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = lvlsquish(10, 10, 1),
@@ -853,7 +884,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17205,	-- Temper
 					["sourceQuest"] = 9464,	-- Call of Fire (2/4)
 					["coord"] = { 59.5, 18.1, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = lvlsquish(10, 10, 1),
@@ -868,7 +899,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17205,	-- Temper
 					["sourceQuest"] = 9465,	-- Call of Fire (3/4)
 					["coord"] = { 59.5, 18.1, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = lvlsquish(10, 10, 1),
@@ -889,7 +920,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17205,	-- Temper
 					["sourceQuest"] = 9467,	-- Call of Fire (4/4)
 					["coord"] = { 59.5, 18.1, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 23688, 1 } },	-- Hauteur's Ashes
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
@@ -899,7 +930,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17212,	-- Tuluun <Shaman Trainer>
 					["sourceQuest"] = 9468,	-- Call of Fire (5/4)
 					["coord"] = { 48.0, 50.4, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = lvlsquish(10, 10, 1),
@@ -908,7 +939,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17468,	-- Prophet Velen
 					["sourceQuest"] = 9461,	-- Call of Fire (6/4)
 					["coord"] = { 32.9, 54.5, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = lvlsquish(10, 10, 1),
@@ -956,7 +987,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					-- wowhead also doesn't have provider data for it, leading me to believe it has been culled/not seen in a long time
 					["qg"] = 17481,	-- Semid
 					["coord"] = { 49.9, 50.0, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },	-- NOTE: Possibly added back the same time as the Ghostlands Mage quest was.
+					["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Possibly added back the same time as the Ghostlands Mage quest was.
 					["classes"] = { MAGE },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(10, 10, 1),
@@ -993,19 +1024,6 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(5, 5, 1),
 				}),
-				q(9625, {	-- Elekks Are Serious Business
-					["qg"] = 17584,	-- Torallius the Pack Handler
-					["sourceQuest"] = 9623,	-- Coming of Age
-					-- #if AFTER CATA
-					["altQuests"] = { 28559 },	-- Hero's Call: Bloodmyst Isle!
-					["coord"] = { 81.5, 51.5, THE_EXODAR },
-					-- #else
-					["coord"] = { 35.3, 43.1, AZUREMYST_ISLE },
-					-- #endif
-					["races"] = ALLIANCE_ONLY,
-					["isBreadcrumb"] = true,	-- TODO: Double check this is actually a breadcrumb. If you finish Alien Predators, does this diappear? [Not required for Alien Predators, Discord 2023-07-29]
-					["lvl"] = lvlsquish(10, 10, 1),
-				}),
 				q(9453, {	-- Find Acteon!
 					["qg"] = 17101,	-- Diktynna
 					["sourceQuest"] = 9452,	-- Red Snapper - Very Tasty!
@@ -1031,7 +1049,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				q(9586, {	-- Help Tavara
 					["qg"] = 17482,	-- Guvan
 					["coord"] = { 56.2, 48.4, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(5, 5, 1),
@@ -1042,7 +1060,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["cr"] = 17551,	-- Tavara
 						}),
 						i(23931, {	-- Azure Watch Robes
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1054,10 +1072,16 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(6, 6, 1),
 					["groups"] = {
 						objective(1, {	-- 0/1 Hollowed Out Tree
-							["provider"] = { "i", 23790 },	-- Hollowed Out Tree
+							["providers"] = {
+								{ "i",  23790 },	-- Hollowed Out Tree
+								{ "o", 181696 },	-- Hollowed Out Tree
+							},
 						}),
 						objective(2, {	-- 0/5 Pile of Leaves
-							["provider"] = { "i", 23791 },	-- Pile of Leaves
+							["providers"] = {
+								{ "i",  23791 },	-- Pile of Leaves
+								{ "o", 181697 },	-- Pile of Leaves
+							},
 						}),
 					},
 				}),
@@ -1097,7 +1121,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(7, 7, 1),
 					["groups"] = {
 						objective(1, {	-- 0/5 Stillpine Grain
-							["provider"] = { "i", 23849 },	-- Stillpine Grain
+							["providers"] = {
+								{ "i",  23849 },	-- Stillpine Grain
+								{ "o", 181757 },	-- Stillpine Grain
+							},
 							["crs"] = {
 								17475,	-- Murgurgula
 								17192,	-- Siltfin Hunter
@@ -1143,7 +1170,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(6, 6, 1),
 					["groups"] = {
 						objective(1, {	-- 0/8 Ancient Relic
-							["provider"] = { "i", 23779 },	-- Ancient Relic
+							["providers"] = {
+								{ "i",  23779 },	-- Ancient Relic
+								{ "o", 181683 },	-- Ancient Relic
+							},
 						}),
 					},
 				}),
@@ -1171,7 +1201,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(4, 4, 1),
 					["groups"] = {
 						objective(1, {	-- 0/10 Red Snapper
-							["provider"] = { "i", 23614 },	-- Red Snapper
+							["providers"] = {
+								{ "i",  23614 },	-- Red Snapper
+								{ "o", 181616 },	-- School of Red Snapper
+							},
 							["cost"] = { { "i", 23654, 1 } },	-- Draenei Fishing Net
 						}),
 					},
@@ -1188,6 +1221,14 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["coord"] = { 46.6, 20.6, AZUREMYST_ISLE },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(9, 9, 1),
+				}),
+				q(9757, {	-- Seek Huntress Kella Nightbow
+					["qg"] = 17110,	-- Acteon <Hunter Trainer>
+					["coord"] = { 49.8, 51.8, AZUREMYST_ISLE },
+					["timeline"] = { REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { HUNTER },
+					["lvl"] = 10,
 				}),
 				q(9537, {	-- Show Gnomercy
 					["qg"] = 17240,	-- Admiral Odesyus
@@ -1247,6 +1288,62 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 						recipe(71),		-- Defensive Stance
 						--recipe(7386),	-- Sunder Armor	[TODO: Users are reporting they can't collect this.]
 						recipe(355),	-- Taunt
+						-- #endif
+					},
+				}),
+				q(9591, {	-- Taming the Beast (1/3)
+					["qg"] = 17614,	-- Huntress Kella Nightbow
+					["sourceQuest"] = 9757,	-- Seek Huntress Kella Nightbow
+					["coord"] = { 24.2, 54.2, AZUREMYST_ISLE },
+					["timeline"] = { REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { HUNTER },
+					["lvl"] = 10,
+					["groups"] = {
+						objective(1, {	-- Tame a Barbed Crawler
+							["providers"] = {
+								{ "n", 17217 },	-- Barbed Crawler
+								{ "i", 23896 },	-- Taming Totem
+							},
+						}),
+					},
+				}),
+				q(9592, {	-- Taming the Beast (2/3)
+					["qg"] = 17614,	-- Huntress Kella Nightbow
+					["sourceQuest"] = 9591,	-- Taming the Beast (1/3)
+					["coord"] = { 24.2, 54.2, AZUREMYST_ISLE },
+					["timeline"] = { REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { HUNTER },
+					["lvl"] = 10,
+					["groups"] = {
+						objective(1, {	-- Tame a Greater Timberstrider
+							["providers"] = {
+								{ "n", 17374 },	-- Greater Timberstrider
+								{ "i", 23897 },	-- Taming Totem
+							},
+						}),
+					},
+				}),
+				q(9593, {	-- Taming the Beast (3/3)
+					["qg"] = 17614,	-- Huntress Kella Nightbow
+					["sourceQuest"] = 9592,	-- Taming the Beast (2/3)
+					["coord"] = { 24.2, 54.2, AZUREMYST_ISLE },
+					["timeline"] = { REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { HUNTER },
+					["lvl"] = 10,
+					["groups"] = {
+						objective(1, {	-- Tame a Nightstalker
+							["providers"] = {
+								{ "n", 17203 },	-- Nightstalker
+								{ "i", 23898 },	-- Taming Totem
+							},
+						}),
+						-- #if BEFORE CATA
+						recipe(883),	-- Call Pet
+						recipe(2641),	-- Dismiss Pet
+						recipe(1515),	-- Tame Beast
 						-- #endif
 					},
 				}),
@@ -1332,7 +1429,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(8, 8, 1),
 					["groups"] = {
 						objective(1, {	-- 0/8 Stillpine Captive Freed
-							["provider"] = { "i", 23801 },	-- Bristlelimb Key
+							["providers"] = {
+								{ "i", 23801 },	-- Bristlelimb Key
+								{ "o", 181714 },	-- Bristlelimb Cage
+							},
 							["cr"] = 17375,	-- Stillpine Captive
 						}),
 						i(23801, {	-- Bristlelimb Key

@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(285, {	-- Utgarde Keep
 		["mapID"] = UTGARDE_KEEP,
 		["coord"] = { 58.2, 48.9, HOWLING_FJORD },
@@ -10,49 +10,49 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(477, {	-- Utgarde Keep
-					crit(5377, { -- Prince Keleseth
-						["_encounter"] = { 638, NORMAL_DUNGEON },
+					crit(5377, {	-- Prince Keleseth
+						["_encounter"] = { 638, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5378, { -- Skarvald the Constructor
-						["_encounter"] = { 639, NORMAL_DUNGEON },
+					crit(5378, {	-- Skarvald the Constructor
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5379, { -- Dalronn the Controller
-						["_encounter"] = { 639, NORMAL_DUNGEON },
+					crit(5379, {	-- Dalronn the Controller
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					-- NOTE: This boss has a different criteriaUID in classic for some dumb reason. BLIZZARD.
-					crit(5621, { -- Ingvar the Plunderer
-						["_encounter"] = { 640, NORMAL_DUNGEON },
+					crit(5621, {	-- Ingvar the Plunderer
+						["_encounter"] = { 640, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #else
-					crit(5380, { -- Ingvar the Plunderer
-						["_encounter"] = { 640, NORMAL_DUNGEON },
+					crit(5380, {	-- Ingvar the Plunderer
+						["_encounter"] = { 640, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #endif
 				}),
 				-- #if ANYCLASSIC
 				applyclassicphase(WRATH_PHASE_TWO, ach(17213, {	-- Defense Protocol Alpha: Utgarde Keep
-					crit(57666, { -- Prince Keleseth
-						["_encounter"] = { 638, HEROIC_DUNGEON },
+					crit(57666, {	-- Prince Keleseth
+						["_encounter"] = { 638, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39345),	-- Girdle of the Ascended Phantom
 							i(39379),	-- Spectral Rider's Girdle
 							i(39392),	-- Veiled Amulet of Life
 						},
 					}),
-					crit(57665, { -- Skarvald the Constructor
-						["_encounter"] = { 639, HEROIC_DUNGEON },
+					crit(57665, {	-- Skarvald the Constructor
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39309),	-- Leggings of the Instructor
 							i(39344),	-- Slayer of the Lifeless
 							i(39369),	-- Sabatons of Deathlike Gloom
 						},
 					}),
-					crit(57667, { -- Dalronn the Controller
-						["_encounter"] = { 639, HEROIC_DUNGEON },
+					crit(57667, {	-- Dalronn the Controller
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(57668, { -- Ingvar the Plunderer
-						["_encounter"] = { 640, HEROIC_DUNGEON },
+					crit(57668, {	-- Ingvar the Plunderer
+						["_encounter"] = { 640, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(40519),	-- Footsteps of Malygos
 							i(40474),	-- Surge Needle Ring
@@ -70,24 +70,24 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					}),
 				})),
 				applyclassicphase(WRATH_PHASE_THREE, ach(18590, {	-- Defense Protocol Beta: Utgarde Keep
-					crit(60571, { -- Prince Keleseth
-						["_encounter"] = { 638, HEROIC_DUNGEON },
+					crit(60571, {	-- Prince Keleseth
+						["_encounter"] = { 638, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45378),	-- Boots of the Petrified Forest
 						},
 					}),
-					crit(60570, { -- Skarvald the Constructor
-						["_encounter"] = { 639, HEROIC_DUNGEON },
+					crit(60570, {	-- Skarvald the Constructor
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45322),	-- Cloak of the Iron Council
 							i(45329),	-- Circlet of True Sight
 						},
 					}),
-					crit(60572, { -- Dalronn the Controller
-						["_encounter"] = { 639, HEROIC_DUNGEON },
+					crit(60572, {	-- Dalronn the Controller
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(60573, { -- Ingvar the Plunderer
-						["_encounter"] = { 640, HEROIC_DUNGEON },
+					crit(60573, {	-- Ingvar the Plunderer
+						["_encounter"] = { 640, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							currency(SIDEREAL_ESSENCE),
 							i(45330),	-- Greaves of Iron Intensity
@@ -96,19 +96,42 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(19427, {	-- Defense Protocol Gamma: Utgarde Keep
+					crit(63319, {	-- Prince Keleseth
+						["_encounter"] = { 638, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63318, {	-- Skarvald the Constructor
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63321, {	-- Dalronn the Controller
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
+					}),
+					crit(63320, {	-- Ingvar the Plunderer
+						["_encounter"] = { 640, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+				})),
 				-- #endif
 				ach(489,  {	-- Heroic: Utgarde Keep
-					crit(3701, { -- Prince Keleseth
-						["_encounter"] = { 638, HEROIC_DUNGEON },
+					crit(3701, {	-- Prince Keleseth
+						["_encounter"] = { 638, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(3702, { -- Skarvald the Constructor
-						["_encounter"] = { 639, HEROIC_DUNGEON },
+					crit(3702, {	-- Skarvald the Constructor
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(3703, { -- Dalronn the Controller
-						["_encounter"] = { 639, HEROIC_DUNGEON },
+					crit(3703, {	-- Dalronn the Controller
+						["_encounter"] = { 639, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5608, { -- Ingvar the Plunderer
-						["_encounter"] = { 640, HEROIC_DUNGEON },
+					crit(5608, {	-- Ingvar the Plunderer
+						["_encounter"] = { 640, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -131,7 +154,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(30112,{	-- A Score to Settle
 					["qg"] = 24137,	-- Dark Ranger Marrah
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(67, 67, 10),
 					["groups"] = {
@@ -146,7 +169,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(13205, {	-- Disarmament
 					["qg"] = 24111,	-- Defender Mordun
-					["timeline"] = { "added 3.0.0", "removed 4.3.0.14732" },
+					["timeline"] = { ADDED_3_0_2, REMOVED_4_3_0 },
 					["coord"] = { 59.4, 48.8, HOWLING_FJORD },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(68, 68, 10),
@@ -162,7 +185,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29764, {	-- Disarmament
 					["qg"] = 24111,	-- Defender Mordun
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(67, 67, 10),
 					["groups"] = {
@@ -191,7 +214,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29803, {	-- Ears of the Lich King
 					["qg"] = 24111,	-- Defender Mordun
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(68, 68, 10),
 					["groups"] = {
@@ -227,7 +250,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				q(11252, {	-- Into Utgarde!
 					["qg"] = 24111,	-- Defender Mordun
 					["sourceQuest"] = 11251,	-- Fresh Legs
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(68, 68, 10),
 					["groups"] = {
@@ -243,7 +266,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				q(29763, {	-- Stealing Their Thunder
 					["qg"] = 24111,	-- Defender Mordun
 					["sourceQuest"] = 11251,	-- Fresh Legs
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(68, 68, 10),
 					["groups"] = {
@@ -257,7 +280,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(35580),	-- Skein Woven Mantle
 					i(35579),	-- Vrykul Shackles
@@ -290,7 +313,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(37181),	-- Dagger of Betrayal (7.3.5 - Used to be only Heroic Mode)
 						i(157555, {	-- Constructor's Worklight
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(37182),	-- Helmet of the Constructor (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -329,7 +352,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ZONE_DROPS, {
@@ -340,7 +363,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if BEFORE CATA
 					n(COMMON_BOSS_DROPS, {
 						currency(101, {	-- Emblem of Heroism
-							["timeline"] = { "added 3.0.2.8905", "removed 4.0.1" },
+							["timeline"] = { ADDED_3_0_2, REMOVED_4_0_1 },
 						}),
 					}),
 					-- #endif
@@ -372,7 +395,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #endif
 							i(37181),	-- Dagger of Betrayal
 							i(157555, {	-- Constructor's Worklight
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37182),	-- Helmet of the Constructor
 							-- #if AFTER 7.3.5
@@ -388,12 +411,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					e(640, {	-- Ingvar the Plunderer
 						["creatureID"] = 23954,	-- Ingvar the Plunderer
 						["groups"] = {
-							{	-- Champion of the Frozen Wastes
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 5608,		-- Ingvar the Plunderer slain
-							},
 							ach(5095, {	-- Heroic: Utgarde Keep Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(41793),	-- Design: Fierce Monarch Topaz
 							i(37190),	-- Enraged Feral Staff
@@ -426,7 +445,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35502),	-- Utgarde Keep Reward Quest - Normal completion
 		q(35512),	-- Utgarde Keep Reward Quest - Heroic completion
 	}),

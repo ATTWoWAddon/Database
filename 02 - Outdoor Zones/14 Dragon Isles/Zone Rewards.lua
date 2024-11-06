@@ -10,6 +10,19 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		},
 	}),
 	n(ZONE_REWARDS, {
+		--DF open world supplies
+		i(200691),	-- Claw Thistle Barbs
+		i(200700),	-- Cuppressa Berries
+		i(200554),	-- Dropcap Head
+		i(200695),	-- Fangtooth Petals
+		i(200555),	-- Inferno Seeds
+		i(200699),	-- Milkweed Fibers
+		i(200690),	-- Ritherem Petals
+		i(200694),	-- River Bell Bulbs
+		i(200693),	-- Terata Leaves
+		i(200703),	-- Vine Flower Fibers
+		i(200222),	-- White Bell Pigment
+		--
 		i(199197, {	-- Bottled Essence x5
 			i(190453),	-- Spark of Ingenuity
 		}),
@@ -20,6 +33,35 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		}),
 		i(205682, {	-- Large Shadowflame Residue Sack
 			["timeline"] = { ADDED_10_1_0 },
+		}),
+		i(209837, {	-- Faint Whispers of Dreaming
+			["timeline"] = { ADDED_10_2_0 },
+		}),
+		i(209839, {	-- Tangible Whispers of Dreaming
+			["timeline"] = { ADDED_10_2_0 },
+		}),
+		i(217243, {	-- Awakening Ruby Wing
+			["timeline"] = { ADDED_10_2_6_SEASON_FOUR },
+		}),
+		i(217242, {	-- Awakening Stone WingDreaming
+			["timeline"] = { ADDED_10_2_6_SEASON_FOUR },
+		}),
+		i(215362, {	-- Cache of Storms
+			["description"] = "Rewarded from any 'Awakened' Zone Activity",
+			["timeline"] = { ADDED_10_2_6_SEASON_FOUR },
+			["sym"] = {
+				-- DF > Zone Rewards (Armors)
+				{"select","mapID",DRAGON_ISLES},{"pop"},{"where","headerID",ZONE_REWARDS},{"pop"},
+					{"whereany","filterID",CLOTH,LEATHER,MAIL,PLATE,TRINKET_F},{"finalize"},
+				-- DF > Zone Rewards (Weapons)
+				{"select","mapID",DRAGON_ISLES},{"pop"},{"where","headerID",ZONE_REWARDS},{"pop"},
+					{"where","headerID",WEAPONS},{"finalize"},
+				-- World Drops > DF
+				{"select","expansionID",EXPANSION.DF},{"pop"},{"where","headerID",WEAPONS},
+			},
+			["g"] = {
+				i(202172),	-- Overflowing Satchel of Coins
+			},
 		}),
 		filter(CLOTH, {
 			i(191989),	-- Cobalt Watcher's Cord

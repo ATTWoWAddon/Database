@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(273, {	-- Drak'Tharon Keep
 		["mapID"] = DRAKTHARON_KEEP,
 		["coord"] = { 28.6, 86.9, ZULDRAK },
@@ -10,47 +10,47 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(482, {	-- Drak'Tharon Keep
-					crit(5443, { -- Trollgore
-						["_encounter"] = { 588, NORMAL_DUNGEON },
+					crit(5443, {	-- Trollgore
+						["_encounter"] = { 588, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5444, { -- Novos the Summoner
-						["_encounter"] = { 589, NORMAL_DUNGEON },
+					crit(5444, {	-- Novos the Summoner
+						["_encounter"] = { 589, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5445, { -- King Dred
-						["_encounter"] = { 590, NORMAL_DUNGEON },
+					crit(5445, {	-- King Dred
+						["_encounter"] = { 590, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(9098, { -- The Prophet Tharon'ja
-						["_encounter"] = { 591, NORMAL_DUNGEON },
+					crit(9098, {	-- The Prophet Tharon'ja
+						["_encounter"] = { 591, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 				}),
 				-- #if ANYCLASSIC
 				applyclassicphase(WRATH_PHASE_TWO, ach(17292, {	-- Defense Protocol Alpha: Drak'Tharon Keep
-					crit(57735, { -- Trollgore
-						["_encounter"] = { 588, HEROIC_DUNGEON },
+					crit(57735, {	-- Trollgore
+						["_encounter"] = { 588, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39241),	-- Dark Shroud of the Scourge
 							i(39245),	-- Demise
 							i(39242),	-- Robes of Hoarse Breaths
 						},
 					}),
-					crit(57736, { -- Novos the Summoner
-						["_encounter"] = { 589, HEROIC_DUNGEON },
+					crit(57736, {	-- Novos the Summoner
+						["_encounter"] = { 589, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39244),	-- Ring of the Fated
 							i(39236),	-- Trespasser's Boots
 							i(39237),	-- Spaulders of Resumed Battle
 						},
 					}),
-					crit(57737, { -- King Dred
-						["_encounter"] = { 590, HEROIC_DUNGEON },
+					crit(57737, {	-- King Dred
+						["_encounter"] = { 590, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39239),	-- Chestplate of the Risen Soldier
 							i(39240),	-- Noth's Curse
 							i(39243),	-- Handgrips of the Foredoomed
 						},
 					}),
-					crit(57738, { -- The Prophet Tharon'ja
-						["_encounter"] = { 591, HEROIC_DUNGEON },
+					crit(57738, {	-- The Prophet Tharon'ja
+						["_encounter"] = { 591, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(43995),	-- Enamored Cowl
 							i(39416),	-- Kel'Thuzad's Reach
@@ -68,28 +68,28 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					}),
 				})),
 				applyclassicphase(WRATH_PHASE_THREE, ach(18594, {	-- Defense Protocol Beta: Drak'Tharon Keep
-					crit(60587, { -- Trollgore
-						["_encounter"] = { 588, HEROIC_DUNGEON },
+					crit(60587, {	-- Trollgore
+						["_encounter"] = { 588, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45697),	-- Shoulderguards of the Solemn Watch
 							i(45698),	-- Sabatons of the Iron Watcher
 						},
 					}),
-					crit(60588, { -- Novos the Summoner
-						["_encounter"] = { 589, HEROIC_DUNGEON },
+					crit(60588, {	-- Novos the Summoner
+						["_encounter"] = { 589, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45703),	-- Spark of Hope
 						},
 					}),
-					crit(60589, { -- King Dred
-						["_encounter"] = { 590, HEROIC_DUNGEON },
+					crit(60589, {	-- King Dred
+						["_encounter"] = { 590, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45975),	-- Cable of the Metrognome
 							i(45700),	-- Stoneguard
 						},
 					}),
-					crit(60590, { -- The Prophet Tharon'ja
-						["_encounter"] = { 591, HEROIC_DUNGEON },
+					crit(60590, {	-- The Prophet Tharon'ja
+						["_encounter"] = { 591, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							currency(SIDEREAL_ESSENCE),
 							i(45303),	-- Band of Draconic Guile
@@ -98,19 +98,45 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(19431, {	-- Defense Protocol Gamma: Drak'Tharon Keep
+					crit(63334, {	-- Trollgore
+						["_encounter"] = { 588, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63335, {	-- Novos the Summoner
+						["_encounter"] = { 589, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63334, {	-- King Dred
+						["_encounter"] = { 590, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63337, {	-- The Prophet Tharon'ja
+						["_encounter"] = { 591, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+				})),
 				-- #endif
 				ach(493,  {	-- Heroic: Drak'Tharon Keep
-					crit(6813, { -- Trollgore
-						["_encounter"] = { 588, HEROIC_DUNGEON },
+					crit(6813, {	-- Trollgore
+						["_encounter"] = { 588, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6814, { -- Novos the Summoner
-						["_encounter"] = { 589, HEROIC_DUNGEON },
+					crit(6814, {	-- Novos the Summoner
+						["_encounter"] = { 589, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6815, { -- King Dred
-						["_encounter"] = { 590, HEROIC_DUNGEON },
+					crit(6815, {	-- King Dred
+						["_encounter"] = { 590, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(9261, { -- The Prophet Tharon'ja
-						["_encounter"] = { 591, HEROIC_DUNGEON },
+					crit(9261, {	-- The Prophet Tharon'ja
+						["_encounter"] = { 591, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -140,7 +166,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						{ "i", 35797 },	-- Drakuru's Elixir
 					},
 					["altQuests"] = { 12238 },	-- Cleansing Drak'Tharon
-					["timeline"] = { "added 4.3.0.14890" },
+					["timeline"] = { ADDED_4_3_0 },
 					["cost"] = { { "i", 38303, 5 } },	-- Enduring Mojo
 					["lvl"] = lvlsquish(73, 73, 15),
 					["groups"] = {
@@ -174,8 +200,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 				q(29828, {	-- What the Scourge Dred
-					["qg"] = 26664,	-- Kurzel
-					["timeline"] = { "added 4.3.0.14890" },
+					["qgs"] = {
+						26664,	-- Kurzel
+						29828,	-- Kurzel
+					},
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(72, 72, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 King Dred's Tooth
@@ -202,7 +231,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				-- #if BEFORE 7.3.5
 				n(ZONE_DROPS, {
 					-- #if AFTER 7.3.5
@@ -247,7 +276,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #endif
 						i(35631),	-- Crystal Pendant of Warding
 						i(157558, {	-- Shoddily Stitched Shoulderguards
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						-- #if AFTER 7.3.5
 						i(37722),	-- Breastplate of Undeath (7.3.5 - Used to be only Heroic Mode)
@@ -271,7 +300,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(37725),	-- Savage Wound Wrap (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
 						i(157561, {	-- Dino-Toothed Waistguard
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(35635),	-- Stable Master's Breeches
 						-- #if AFTER 7.3.5
@@ -302,7 +331,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					-- #if BEFORE 7.3.5
@@ -322,7 +351,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if BEFORE CATA
 					n(COMMON_BOSS_DROPS, {
 						currency(101, {	-- Emblem of Heroism
-							["timeline"] = { "added 3.0.2.8905", "removed 4.0.1" },
+							["timeline"] = { ADDED_3_0_2, REMOVED_4_0_1 },
 						}),
 					}),
 					-- #endif
@@ -355,7 +384,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #if AFTER 7.3.5
 							i(35631),	-- Crystal Pendant of Warding (7.3.5 - Used to be only Normal Mode)
 							i(157558, {	-- Shoddily Stitched Shoulderguards
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							-- #endif
 							i(37722),	-- Breastplate of Undeath
@@ -379,7 +408,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(37724),	-- Handler's Arm Strap
 							i(37725),	-- Savage Wound Wrap
 							i(157561, {	-- Dino-Toothed Waistguard
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							-- #if AFTER 7.3.5
 							i(35635),	-- Stable Master's Breeches (7.3.5 - Used to be only Normal Mode)
@@ -390,15 +419,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					e(591, {	-- The Prophet Tharon'ja
 						["creatureID"] = 26632,	-- The Prophet Tharon'ja
 						["groups"] = {
-							{	-- Champion of the Frozen Wastes
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 9261,		-- The Prophet Tharon'ja slain
-							},
 							ach(5099, {	-- Heroic: Drak'Tharon Keep Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(41795, {	-- Design: Timeless Twilight Opal [CATA+] / Design: Timeless Forest Emerald
-								["timeline"] = { "removed 4.0.1" },
+								["timeline"] = { REMOVED_4_0_1 },
 							}),
 							i(37733),	-- Mojo Masked Crusher
 							-- #if AFTER 7.3.5
@@ -428,7 +453,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35483),	-- Drak'Tharon Keep Reward Quest - Normal completion
 		q(35484),	-- Drak'Tharon Keep Reward Quest - Heroic completion
 	}),

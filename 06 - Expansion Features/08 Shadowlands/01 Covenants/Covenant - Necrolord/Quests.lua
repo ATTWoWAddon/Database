@@ -48,7 +48,7 @@ local LFR_WEAPON_GROUP = {
 	i(183889, {["modID"] = 4, }),	-- Thaumaturgic Anima Bead
 };
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NEC" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NEC" }, {
 	n(NECROLORD, {
 		n(QUESTS, {
 			q(63212, {	-- Report to Mevix
@@ -153,6 +153,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 60050 },	-- Trouble on the Western Front
 				["provider"] = { "n", 167810 },	-- Emeni
 				["coord"] = { 28.1, 37.5, MALDRAXXUS },
+				["g"] = {
+					i(180899),	-- Riding Hook (QI!)
+				},
 			}),
 			q(59709, {	-- Afterlife Goes On
 				["sourceQuests"] = { 59700 },	-- The Last Labor
@@ -225,6 +228,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 168744 },	-- Artemede
 				["coord"] = { 35.2, 26.9, MALDRAXXUS },
+				["g"] = {
+					i(180845),	-- Stitchflesh Design (QI!)
+				},
 			}),
 			q(62414, {	-- Burying Suspicion
 				["sourceQuests"] = { 61739 },	-- The Wayward Baron
@@ -235,11 +241,17 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61749 },	-- Necessary Ingredients
 				["provider"] = { "n", 173492 },	-- Jor'dan the Powerful
 				["coord"] = { 69.9, 32.7, MALDRAXXUS },
+				["g"] = {
+					i(182678),	-- Intact Spore Cluster (QI!)
+				},
 			}),
 			q(61252, {	-- Call In a Favor
 				["sourceQuests"] = { 61230 },	-- Outside Influence
 				["provider"] = { "n", 173343 },	-- Ascended Bearer
 				["coord"] = { 54.2, 16.2, MALDRAXXUS },
+				["g"] = {
+					i(181162),	-- Beacon Trigger (QI!)
+				},
 			}),
 			q(58833, {	-- Calling in All Favors
 				["sourceQuests"] = { 62391 },	-- Mobilize Maldraxxus
@@ -251,6 +263,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61745 },	-- Mistress of Tomes
 				["provider"] = { "n", 172924 },	-- Baroness Ninadar
 				["coord"] = { 66.3, 26.3, MALDRAXXUS },
+				["g"] = {
+					i(182609),	-- Overdue Scroll (QI!)
+				},
 			}),
 			q(62317, {	-- Casting Doubt
 				["sourceQuests"] = { 61748 },	-- The Hall of Tomes
@@ -282,6 +297,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 62846 },	-- Sanctum Improvements
 				["altQuests"] = { 59596 },	-- Collective Soul
 				["provider"] = { "n", 161907 },	-- Baroness Draka
+				["coord"] = { 49.7, 50.4, SEAT_OF_THE_PRIMUS },
 			}),
 			q(59597, {	-- Come On, We're Simpatico!
 				["sourceQuests"] = { 59596, 63003 },	-- Collective Soul
@@ -316,6 +332,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 59910 },	-- Fight and Flight
 				["provider"] = { "o", 357246 },	-- Tattered Scroll
 				["coord"] = { 33.5, 24.1, MALDRAXXUS },
+				["g"] = {
+					i(181285),	-- Abhorrent Design (QI!)
+				},
 			}),
 			q(59645, {	-- Death Rains
 				["sourceQuests"] = { 59625 },	-- The Only Cure
@@ -339,6 +358,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 173172 },	-- Balmedar
 				["coord"] = { 66.2, 32.1, MALDRAXXUS },
+				["g"] = {
+					i(182779),	-- Bundle of "Modified" Reagents (QI!)
+				},
 			}),
 			q(59922, {	-- Do Not Forget
 				["sourceQuests"] = { 59921 },	-- All I Ever Will Be
@@ -371,6 +393,10 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61745 },	-- Mistress of Tomes
 				["provider"] = { "n", 172924 },	-- Baroness Ninadar
 				["coord"] = { 66.3, 26.3, MALDRAXXUS },
+				["g"] = {
+					i(182615),	-- Errant Tome (QI!)
+					i(182616),	-- Mischievous Quill (QI!)
+				},
 			}),
 			q(61753, {	-- Explosive Schemes
 				["sourceQuests"] = { 61752 },	-- The Final Reagent
@@ -430,6 +456,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61749 },	-- Necessary Ingredients
 				["provider"] = { "n", 173492 },	-- Jor'dan the Powerful
 				["coord"] = { 69.9, 32.7, MALDRAXXUS },
+				["g"] = {
+					i(182676),	-- Veilwing's Heart (QI!)
+				},
 			}),
 			q(62388, {	-- House of Rituals
 				["sourceQuests"] = { 58624 },	-- Pauldrons of Imperium
@@ -456,6 +485,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 					58599,	-- Drive A Dredge Between Them
 				},
 				["provider"] = { "n", 161474 },	-- Baroness Draka
+				["g"] = {
+					i(182386),	-- Pauldrons of Imperium (QI!)
+				},
 			}),
 			q(60043, {	-- Justice from Above
 				["sourceQuests"] = { 59910 },	-- Fight and Flight
@@ -534,11 +566,19 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61753 },	-- Explosive Schemes
 				["provider"] = { "n", 173422 },	-- Balmedar's Oculus
 				["_drop"] = { "g" },	-- make items stop showing up that are not actually rewarded by this quest
+				["g"] = {
+					i(182734),	-- Assorted Curios (QI!)
+					i(182735),	-- Domination Blade (QI!)
+				},
 			}),
 			q(57644, {	-- No Friend Left Behind
 				["sourceQuests"] = { 61226 },	-- Extra Limbs
 				["provider"] = { "n", 158604 },	-- Navigator Xennir
 				["coord"] = { 52.0, 16.9, MALDRAXXUS },
+				["g"] = {
+					i(183118),	-- Venomous Solvent (QI!)
+					i(181237),	-- Venomous Solvent (QI!)
+				},
 			}),
 			q(59650, {	-- No Hesitation, No Surrender
 				["sourceQuests"] = { 59625 },	-- The Only Cure
@@ -567,6 +607,10 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 171875 },	-- Khaliiq <Vashj's Devoted>
 				["coord"] = { 50.0, 17.9, MALDRAXXUS },
+				["g"] = {
+					i(175796),	-- Loose Stitch's Key (QI!)
+					i(173312),	-- Toc's Key (QI!)
+				},
 			}),
 			q(58624, {	-- Pauldrons of Imperium
 				["sourceQuests"] = { 58608 },	-- It's Treason, Then
@@ -624,11 +668,17 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 57530 },	-- Gharmal's Tower
 				["provider"] = { "n", 173194 },	-- Alexandros Mograine
 				["coord"] = { 27.3, 23.8, MALDRAXXUS },
+				["g"]= {
+					i(182658),	-- Mantle of Eternal Victory (QI!)
+				},
 			}),
 			q(59265, {	-- Prying Eyes
 				["sourceQuests"] = { 58007 },	-- Eyes on the Problem
 				["provider"] = { "n", 164619 },	-- Baroness Vashj
 				["coord"] = { 50.8, 24.4, MALDRAXXUS },
+				["g"] = {
+					i(175795),	-- Betrayer's Eye (QI!)
+				},
 			}),
 			q(60067, {	-- Pursuit of Justice
 				["sourceQuests"] = { 60098 },	-- The End is Now
@@ -639,6 +689,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61227 },	-- The Other Foot
 				["provider"] = { "n", 159814 },	-- Ansid the Mechanic
 				["coord"] = { 48.6, 18.5, MALDRAXXUS },
+				["g"] = {
+					i(173312),	-- Toc's Key (QI!)
+				},
 			}),
 			q(62320, {	-- Regalia de Rigeuer
 				["sourceQuests"] = { 61749 },	-- Necessary Ingredients
@@ -648,6 +701,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 					i(183401, {	-- Amethystine Dye
 						["description"] = "This may drop for any character on your account once the toy 'Acolyte's Guise' has been learned by a Necrolord character.",
 					}),
+					i(183400),	-- Amethystine Powder (QI!)
 				},
 			}),
 			q(61983, {	-- Replenish the Reservoir
@@ -686,6 +740,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["provider"] = { "n", 158529 },	-- Whisperer Vyn
 				["coord"] = { 49.9, 17.8, MALDRAXXUS },
 				["g"] = {
+					i(181162),	-- Beacon Trigger (QI!)
 					i(182265),	-- Bladesworn Wraith's Belt
 					i(182274),	-- Bladesworn Conjurer's Cinch
 					i(182283),	-- Bladesworn Tactician's Girdle
@@ -696,6 +751,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 60112 },	-- Cut to the Bone
 				["provider"] = { "n", 172573 },	-- Khaliiq
 				["coord"] = { 27.2, 45.2, MALDRAXXUS },
+				["g"] = {
+					i(181785),	-- Ossein Key (QI!)
+				},
 			}),
 			q(65165, {	-- Soul Support
 				["sourceQuests"] = { 62848 },	-- Conduits, What Are They For?
@@ -756,6 +814,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 					i(182252),	-- Bladesworn Harbinger's Stompers
 					i(182279),	-- Bladesworn Tactician's Sabatons
 					i(182261),	-- Bladesworn Wraith's Boots
+					i(182679),	-- Bundle of Reagents (QI!)
 				},
 			}),
 			q(59894, {	-- The Golden Dawn
@@ -773,6 +832,12 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				},
 				["provider"] = { "n", 172924 },	-- Baroness Ninadar
 				["coord"] = { 66.3, 26.3, MALDRAXXUS },
+				["g"] = {
+					i(182645),	-- Binding of the Banished One (QI!)
+					i(182644),	-- Greater Wards and Barriers, Volume IV (QI!)
+					i(182643),	-- Paths of the First Ones (QI!)
+					i(182642),	-- Winged Arcanum (QI!)
+				},
 			}),
 			q(63032, {	-- The Highlord Calls
 				["sourceQuests"] = { 59609 },	-- No Rest For the Dead
@@ -886,6 +951,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 58007 },	-- Eyes on the Problem
 				["provider"] = { "n", 164619 },	-- Baroness Vashj
 				["coord"] = { 50.8, 24.4, MALDRAXXUS },
+				["g"] = {
+					i(172371),	-- Mark of Vashj (QI!)
+				},
 			}),
 			q(59698, {	-- Wipe the Slate Clean
 				["sourceQuests"] = {
@@ -954,19 +1022,31 @@ for _,g in ipairs({CONDUIT_GROUP,LFR_WEAPON_GROUP}) do
 	end
 end
 
-root(ROOTS.HiddenQuestTriggers, {
---	Campaign quests
-	q(62982),	-- triggers when searching the storeroom on "Gharmal's Tower" (#57530)
-	q(62983),	-- triggers when searching the alchemical laboratory on "Gharmal's Tower" (#57530)
-
---	Crypt Couture
-	q(62319),	-- using "Amethystine Dye"
-	q(62266),	-- using "Discarded Grimoire"
-	q(62409),	-- using "Plague Doctor's Mask"
-	q(62311),	-- using "Ritualist's Mantle"
-	q(62306),	-- using "Sorcerer's Blade"
-
---	Unknown
-	--q(60773),	-- Renown 30/Channeling anima
-	--q(60873),	-- Flying around in necrolord base
-});
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	n(NECROLORD, {
+		n(QUESTS, {
+			-- Campaign quests
+			q(62982),	-- triggers when searching the storeroom on "Gharmal's Tower" (#57530)
+			q(62983),	-- triggers when searching the alchemical laboratory on "Gharmal's Tower" (#57530)
+			--
+			q(57622),	-- Triggered when completing 58609 'Taking the Seat' on a Skip+Necrolord character
+			q(62752),	-- Triggered when completion 59609 'No Rest For the Dead'
+			q(57602),	-- triggered after summoning Atticus in Maldraxxus for quest Supply Chain
+			q(57615),	-- triggered after summoning Atticus/Neena in Maldraxxus (spellID 353995 & 351967)
+			q(58434),	-- triggered when summoning Chordy in Ardenweald for #61510, "A Bountiful Haul"
+			q(60783),	-- triggered when turning in #60722, "Tower Power"/Completing Campaign: Promises of the Praetor
+			q(61516),	-- When completing 'Things They Leave Behind' (61511) for the first time
+			q(63453),	-- triggers when turning in "Return Lost Souls" (spellID 348838 & 348841 & 348844 & 348847)
+			q(61591),	-- Triggered after completing Specter Of War: Visectus (60283) for the first time
+			q(62929),	-- Triggered when freeing Neena from cage to make "Every Dog Has Its Day" (questID 59615) available (spellID 345404)
+			q(62247),	-- Triggered when Toothpick dug up a "Burried Chest"
+			q(62290),	-- Triggered when turning in 'Corpse Run' (61523)
+			q(62215),	-- Triggered when turning in Training Program (62216)
+			q(59266),	-- triggered when i picked up the last eye for "Prying Eyes"
+			q(60166),	-- Triggered after raising portcullis to access Miru Soulblossom in Etheric Vault
+			-- Unknown
+			--q(60773),	-- Renown 30/Channeling anima
+			--q(60873),	-- Flying around in necrolord base
+		}),
+	}),
+})));

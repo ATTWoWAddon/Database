@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(275, {	-- Halls of Lightning
 		["lore"] = "Upon departing Azeroth, the titans entrusted loyal protectors with safeguarding Ulduar, an enigmatic city nestled in the mountains of the Storm Peaks. Designated supreme among his brethren was the guardian known as Loken, but with the power of the titan complex in his hands, he turned to darkness and plunged the region into chaos.",
 		-- #if NOT ANYCLASSIC
@@ -14,54 +14,54 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(486, {	-- Halls of Lightning
-					crit(5455, { -- General Bjarngrim
-						["_encounter"] = { 597, NORMAL_DUNGEON },
+					crit(5455, {	-- General Bjarngrim
+						["_encounter"] = { 597, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5456, { -- Ionar
-						["_encounter"] = { 599, NORMAL_DUNGEON },
+					crit(5456, {	-- Ionar
+						["_encounter"] = { 599, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5457, { -- Volkhan
-						["_encounter"] = { 598, NORMAL_DUNGEON },
+					crit(5457, {	-- Volkhan
+						["_encounter"] = { 598, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					-- NOTE: This boss has a different criteriaUID in classic for some dumb reason. BLIZZARD.
-					crit(5629, { -- Loken
-						["_encounter"] = { 600, NORMAL_DUNGEON },
+					crit(5629, {	-- Loken
+						["_encounter"] = { 600, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #else
-					crit(5458, { -- Loken
-						["_encounter"] = { 600, NORMAL_DUNGEON },
+					crit(5458, {	-- Loken
+						["_encounter"] = { 600, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #endif
 				}),
 				-- #if ANYCLASSIC
 				applyclassicphase(WRATH_PHASE_TWO, ach(17299, {	-- Defense Protocol Alpha: Halls of Lightning
-					crit(57761, { -- General Bjarngrim
-						["_encounter"] = { 597, HEROIC_DUNGEON },
+					crit(57761, {	-- General Bjarngrim
+						["_encounter"] = { 597, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39189),	-- Boots of Persistence
 							i(39192),	-- Gloves of Dark Gestures
 							i(39141),	-- Deflection Band
 						},
 					}),
-					crit(57759, { -- Volkhan
-						["_encounter"] = { 598, HEROIC_DUNGEON },
+					crit(57759, {	-- Volkhan
+						["_encounter"] = { 598, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39188),	-- Chivalric Chestguard
 							i(39140),	-- Knife of Incision
 							i(39191),	-- Splint-Bound Leggings
 						},
 					}),
-					crit(57760, { -- Ionar
-						["_encounter"] = { 599, HEROIC_DUNGEON },
+					crit(57760, {	-- Ionar
+						["_encounter"] = { 599, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39139),	-- Ravaging Sabatons
 							i(39190),	-- Agonal Sash
 							i(39146),	-- Collar of Dissolution
 						},
 					}),
-					crit(57756, { -- Loken
-						["_encounter"] = { 600, HEROIC_DUNGEON },
+					crit(57756, {	-- Loken
+						["_encounter"] = { 600, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(40526),	-- Gown of the Spell-Weaver
 							i(40426),	-- Signet of the Accord
@@ -79,29 +79,29 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					}),
 				})),
 				applyclassicphase(WRATH_PHASE_THREE, ach(18598, {	-- Defense Protocol Beta: Halls of Lightning
-					crit(60604, { -- General Bjarngrim
-						["_encounter"] = { 597, HEROIC_DUNGEON },
+					crit(60604, {	-- General Bjarngrim
+						["_encounter"] = { 597, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(46347),	-- Cloak of the Dormant Blaze
 							i(46341),	-- Drape of the Spellweaver
 						},
 					}),
-					crit(60602, { -- Volkhan
-						["_encounter"] = { 598, HEROIC_DUNGEON },
+					crit(60602, {	-- Volkhan
+						["_encounter"] = { 598, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(46342),	-- Golemheart Longbow
 							i(46343),	-- Fervor of the Protectorate
 						},
 					}),
-					crit(60603, { -- Ionar
-						["_encounter"] = { 599, HEROIC_DUNGEON },
+					crit(60603, {	-- Ionar
+						["_encounter"] = { 599, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(46344),	-- Iceshear Mantle
 							i(45677),	-- Treacherous Shoulderpads
 						},
 					}),
-					crit(60601, { -- Loken
-						["_encounter"] = { 600, HEROIC_DUNGEON },
+					crit(60601, {	-- Loken
+						["_encounter"] = { 600, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							currency(SIDEREAL_ESSENCE),
 							i(45676),	-- Chestplate of Vicious Potency
@@ -109,26 +109,52 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(19435, {	-- Defense Protocol Gamma: Halls of Lightning
+					crit(63353, {	-- General Bjarngrim
+						["_encounter"] = { 597, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63349, {	-- Volkhan
+						["_encounter"] = { 598, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63350, {	-- Ionar
+						["_encounter"] = { 599, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63348, {	-- Loken
+						["_encounter"] = { 600, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+				})),
 				-- #endif
 				ach(497,  {	-- Heroic: Halls of Lightning
-					crit(6831, { -- General Bjarngrim
-						["_encounter"] = { 597, 2 },
+					crit(6831, {	-- General Bjarngrim
+						["_encounter"] = { 597, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6832, { -- Ionar
-						["_encounter"] = { 599, 2 },
+					crit(6832, {	-- Ionar
+						["_encounter"] = { 599, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6833, { -- Volkhan
-						["_encounter"] = { 598, 2 },
+					crit(6833, {	-- Volkhan
+						["_encounter"] = { 598, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5616, { -- Loken
-						["_encounter"] = { 600, 2 },
+					crit(5616, {	-- Loken
+						["_encounter"] = { 600, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
 			n(QUESTS, {
 				q(29862, {	-- Clearing the Way
 					["qg"] = 56027,	-- Stormherald Eljrrin
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(77, 77, 20),
 					["groups"] = {
 						objective(1, {	-- 0/3 Stormforged Mender slain
@@ -145,7 +171,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				q(13109, {	-- Diametrically Opposed
 					["qg"] = 30105,	-- King Jokkum
 					["coord"] = { 65.4, 60.2, THE_STORM_PEAKS },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(77, 77, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Volkhan Defeated
@@ -160,7 +186,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29860, {	-- Diametrically Opposed
 					["qg"] = 56027,	-- Stormherald Eljrrin
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(77, 77, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Volkhan Defeated
@@ -173,11 +199,18 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(43198),	-- Mantle of Volkhan
 					},
 				}),
+				q(29863, {	-- Stormherald Eljrrin
+					["qg"] = 30105,	-- King Jokkum
+					["sourceQuest"] = 13047,	-- The Reckoning
+					["coord"] = { 65.4, 60.1, THE_STORM_PEAKS },
+					["timeline"] = { ADDED_4_3_0 },
+					["isBreadcrumb"] = true,
+				}),
 				q(13108, {	-- Whatever it Takes!
 					["qg"] = 30105,	-- King Jokkum
 					["sourceQuest"] = 13047,	-- The Reckoning
 					["coord"] = { 65.4, 60.2, THE_STORM_PEAKS },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(77, 77, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Loken's Tongue
@@ -193,7 +226,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				q(29861, {	-- Whatever it Takes!
 					["qg"] = 56027,	-- Stormherald Eljrrin
 					["sourceQuest"] = 29863,	-- Stormherald Eljrrin
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(77, 77, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Loken's Tongue
@@ -210,7 +243,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 			n(ZONE_DROPS, {
 				i(42780),	-- Relics of Ulduar
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(36999),	-- Boots of the Terrestrial Guardian
 					i(36997),	-- Sash of the Hardened Watcher
@@ -221,7 +254,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["groups"] = {
 						i(36980),	-- Hewn Sparring Quarterstaff
 						i(157580, {	-- Spark of the Forge
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						-- #if AFTER 7.3.5
 						i(37814),	-- Iron Dwarf Smith Pauldrons (7.3.5 - Used to be only Heroic Mode)
@@ -234,7 +267,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #endif
 						i(36979),	-- Bjarngrim Family Signet
 						i(36981, {	-- Hardened Vrykul Throwing Axe
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 					},
 				}),
@@ -252,7 +285,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(36986),	-- Kilt of Molten Golems
 						-- #if AFTER 7.3.5
 						i(157579, {	-- Slag-Stained Legplates
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(37841),	-- Slag Footguards (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -308,12 +341,12 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #endif
 						i(36993),	-- Seal of the Pantheon
 						i(122237, {	-- Music Roll: Mountains of Thunder
-							["timeline"] = { "added 6.1.0.19480" },
+							["timeline"] = { ADDED_6_1_0 },
 						}),
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ZONE_DROPS, {
@@ -324,7 +357,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if BEFORE CATA
 					n(COMMON_BOSS_DROPS, {
 						currency(101, {	-- Emblem of Heroism
-							["timeline"] = { "added 3.0.2.8905", "removed 4.0.1" },
+							["timeline"] = { ADDED_3_0_2, REMOVED_4_0_1 },
 						}),
 					}),
 					-- #endif
@@ -335,7 +368,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #if AFTER 7.3.5
 							i(36980),	-- Hewn Sparring Quarterstaff (7.3.5 - Used to be only Normal Mode)
 							i(157580, {	-- Spark of the Forge
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							-- #endif
 							i(37814),	-- Iron Dwarf Smith Pauldrons
@@ -365,7 +398,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #if AFTER 7.3.5
 							i(36986),	-- Kilt of Molten Golems (7.3.5 - Used to be only Normal Mode)
 							i(157579, {	-- Slag-Stained Legplates
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							-- #endif
 							i(37841),	-- Slag Footguards
@@ -393,12 +426,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					e(600, {	-- Loken
 						["creatureID"] = 28923,	-- Loken
 						["groups"] = {
-							{	-- Champion of the Frozen Wastes
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 5616,			-- Loken slain
-							},
 							ach(5103, {	-- Heroic: Halls of Lightning Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(1867),	-- Timely Death
 							i(41799),	-- Design: Eternal Earthsiege Diamond
@@ -429,7 +458,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(36993),	-- Seal of the Pantheon (7.3.5 - Used to be only Normal Mode)
 							-- #endif
 							i(122237, {	-- Music Roll: Mountains of Thunder
-								["timeline"] = { "added 6.1.0.19480" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							-- #if BEFORE 4.0.1
 							i(43724),	-- Celestial Ruby Ring
@@ -444,7 +473,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35456),	-- Halls of Lightning Reward Quest - Normal completion
 		q(35457),	-- Halls of Lightning Reward Quest - ?
 		q(35458),	-- Halls of Lightning Reward Quest - Heroic completion

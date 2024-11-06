@@ -104,7 +104,11 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			}),
 			o(341424, {		-- Forgotten Mementos
 				["description"] = "Unlock the gate to the treasure by clicking the chain at |cFFFFFFFF25.8, 53.9|r.\n\nThe treasure will respawn about 5 minutes after being looted by another player.",
-				["coord"] = { 22.5, 30.5, MALDRAXXUS },
+				["provider"] = { "o", 341416 },	-- Vault Portcullis Chain
+				["coords"] = {
+					{ 22.5, 30.5, MALDRAXXUS },
+					{ 25.8, 53.8, MALDRAXXUS },	-- Chain
+				},
 				["questID"] = 58710,
 			}),
 			o(358531, {		-- Giant Cache of Epic Treasure
@@ -291,9 +295,12 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				},
 			}),
 			o(358315, {		-- Skeletal Hand Fragments
-				["description"] = "You must possess the Animated Ulna and Animated Radius to interact with this object.",
 				["coord"] = { 47.4, 62.1, MALDRAXXUS },
 				["questID"] = 62318,
+				["cost"] = {
+					{"i",183111,1},	-- Animated Ulna
+					{"i",183112,1},	-- Animated Radius
+				},
 				["g"] = {
 					i(183113),	-- Flexing Phalanges
 				},
@@ -353,9 +360,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["coord"] = { 65.6, 50.8, MALDRAXXUS },
 				["questID"] = 61451,
 				["g"] = {
-					i(182618, {	-- Reclaimed Vessel
-						["questID"] = 62085,	-- ...Why Me?
-					}),
+					i(182618),	-- Reclaimed Vessel (QS!)
 				},
 			}),
 			o(348521, {		-- Strange Growth
@@ -399,10 +404,19 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 		}),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, {
---	Treasures of Maldraxxus achievement
-	q(58709),	-- Forgotten Mementos - clicking the chain
-	q(59245),	-- Misplaced Supplies (daily trigger)
-	q(62582),	-- Using Cache of Spare Weapons
-});
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	m(SHADOWLANDS, {
+		m(MALDRAXXUS, {
+			n(TREASURES, {
+				--	Treasures of Maldraxxus achievement
+				q(58709),	-- Forgotten Mementos - clicking the chain
+				q(59245),	-- Misplaced Supplies (daily trigger)
+				q(62582),	-- Using Cache of Spare Weapons
+				--
+				q(62248),	-- interacting with the Box of Torments
+				q(61127),	-- Triggered after getting Oonar's Arm
+				q(61128),	-- Triggered after getting Sorrowbane
+			}),
+		}),
+	}),
+})));

@@ -6,6 +6,34 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		n(QUESTS, {
 			header(HEADERS.Achievement, 16334, {	-- Waking Hope
 				------ Prologue ------
+				q(70197, {	-- The Call of the Isles [A]
+					["maps"] = { STORMWIND_CITY },
+					["races"] = ALLIANCE_ONLY,
+					["isBreadcrumb"] = true,
+				}),
+				q(70198, {	-- The Call of the Isles [H]
+					["maps"] = { ORGRIMMAR },
+					["races"] = HORDE_ONLY,
+					["isBreadcrumb"] = true,
+				}),
+				q(67700, {	-- To The Dragon Isles! [A]
+					["sourceQuests"] = {
+						66596,	--  Whispers in the Winds [A]
+						70197,	--	The Call of the Isles [A]
+					},
+					["provider"] = { "n", 189077 },	-- Toddy Whiskers
+					["coord"] = { 22.7, 55.6, STORMWIND_CITY },
+					["races"] = ALLIANCE_ONLY,
+				}),
+				q(65444, {	-- To the Dragon Isles! [H]
+					["sourceQuests"] = {
+						65439,	-- Whispers on the Winds [H]
+						70198,	-- The Call of the Isles [H]
+					},
+					["provider"] = { "n", 197279 },	-- Naleidea Rivergleam
+					["coord"] = { 55.8, 12.7, DUROTAR },
+					["races"] = HORDE_ONLY,
+				}),
 				q(70122, {	-- Explorers in Peril [A]
 					["sourceQuests"] = { 67700 },	-- To The Dragon Isles! [A]
 					["provider"] = { "n", 189022 },	-- Toddy Whiskers
@@ -23,12 +51,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 189021 },	-- Thaelin Darkanvil
 					["coord"] = { 82.1, 31.9, THE_WAKING_SHORES },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(198398),	-- Primal Proto-Whelp Scale (QI!)
+					},
 				}),
 				q(65451, {	-- Practice Materials [H]
 					["sourceQuests"] = { 65444 },	-- To the Dragon Isles! [H]
 					["provider"] = { "n", 184844 },	-- Boss Magor
 					["coord"] = { 80.6, 27.7, THE_WAKING_SHORES },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(189565),	-- Primal Proto-Whelp Scale (QI!)
+					},
 				}),
 				q(70123, {	-- Primal Pests [A]
 					["sourceQuests"] = { 67700 },		-- To The Dragon Isles! [A]
@@ -125,7 +159,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 						i(194389),	-- Brush Clearing Axe
 						i(194392),	-- Expedition Defender's Blade
 						i(194378),	-- Explorer's Belt Knife
-						i(194374),	-- Explorer's League Rifle
+						i(194374),	-- Explorers' League Rifle
 						i(194375),	-- Explorer's Short Sword
 						i(194373),	-- Field Explorer's Stave
 						i(194394),	-- Persistent Threat Cleaver
@@ -163,6 +197,14 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["sourceQuests"] = { 65997 },	-- Chasing Sendrax
 					["provider"] = { "o", 377499 },	-- On the Origin of Draconic Species
 					["coord"] = { 55.3, 24.7, THE_WAKING_SHORES },
+					["g"] = {
+						i(192754),	-- Dracuixote (QI!)
+						i(192757),	-- Pride and Protodrakes (QI!)
+						i(192755),	-- The Lord of the Wings (QI!)
+						i(192756),	-- The Red and the Black Flights (QI!)
+						i(192753),	-- The Scales of Wrath (QI!)
+						i(192745),	-- The Titanic Comedy (QI!)
+					},
 				}),
 				q(65999, {	-- Red in Tooth and Claw
 					["sourceQuests"] = { 65997 },	-- Chasing Sendrax
@@ -226,6 +268,15 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 						i(188169),	-- Bronze Timepiece
 					},
 				}),
+				q(77345, {	-- The Need For Higher Velocities
+					["sourceQuests"] = { 65133 },	-- How to Use Momentum with Your Dragon
+					["provider"] = { "n", 193287 },	-- Lord Andestrasz
+					["timeline"] = { ADDED_10_1_7 },
+					["coord"] = { 57.7, 66.9, THE_WAKING_SHORES },
+					["g"] = {
+						i(208182),	-- Bronze Timepiece (QI!)
+					},
+				}),
 				q(68796, {	-- The Skytop Observatory
 					["sourceQuests"] = { 65133 },	-- How to Use Momentum with Your Dragon
 					["provider"] = { "n", 193287 },	-- Lord Andestrasz
@@ -236,8 +287,8 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 193359 },	-- Lord Andestrasz
 					["coord"] = { 75.2, 55.0, THE_WAKING_SHORES },
 					["g"] = {
-						i(197380),	-- Renewed Proto-Drake: Curved Horns (DM!)
-						i(197365),	-- Renewed Proto-Drake: Finned Crest (DM!)
+						i(197380),	-- Renewed Proto-Drake: Curved Horns (MM!)
+						i(197365),	-- Renewed Proto-Drake: Finned Crest (MM!)
 					},
 				}),
 				q(68798, {	-- Dragon Glyphs and You
@@ -266,7 +317,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 194174 },	-- Amella
 					["coord"] = { 62.2, 70.5, THE_WAKING_SHORES },
 					["g"] = {
-						i(197406),	-- Renewed Proto-Drake: Spined Tail (DM!)
+						i(197406),	-- Renewed Proto-Drake: Spined Tail (MM!)
 					},
 				}),
 				q(66931, {	-- Who Brought the Ruckus?
@@ -326,7 +377,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 191895 },	-- Majordomo Selistra
 					["coord"] = { 53.7, 80.2, THE_WAKING_SHORES },
 					["g"] = {
-						i(197378),	-- Renewed Proto-Drake: Subtle Horns (DM!)
+						i(197378),	-- Renewed Proto-Drake: Subtle Horns (MM!)
 					},
 				}),
 				------ Chapter 3 ------
@@ -413,6 +464,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					},
 					["provider"] = { "n", 186493 },	-- Forgemaster Bazentus
 					["coord"] = { 27.3, 62.8, THE_WAKING_SHORES },
+					["g"] = {
+						i(192548),	-- Cindershard Coal (QI!)
+					},
 				}),
 				q(66354, {	-- The Spark
 					["sourceQuests"] = { 66056 },	-- Forging A New Future
@@ -531,6 +585,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["coord"] = { 66.6, 56.1, THE_WAKING_SHORES },
 					["g"] = {
 						i(194367),	-- Band of Focused Elements
+						i(192562),	-- Orb of Primal Waves (QI!)
 					},
 				}),
 				q(66438, {	-- Lofty Goals
@@ -541,6 +596,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					},
 					["provider"] = { "n", 188503 },	-- Examiner Tae'Shara Bloodwatcher
 					["coord"] = { 66.6, 56.1, THE_WAKING_SHORES },
+					["g"] = {
+						i(192524),	-- Orb of Primal Gales (QI!)
+					},
 				}),
 				q(66439, {	-- Rapid Fire Plans
 					["sourceQuests"] = {
@@ -550,6 +608,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					},
 					["provider"] = { "n", 188053 },	-- Acadia Chistlestone
 					["coord"] = { 66.6, 56.1, THE_WAKING_SHORES },
+					["g"] = {
+						i(192546),	-- Orb of Primal Flames (QI!)
+						i(192545),	-- Primal Flame Fragment (QI!)
+					},
 				}),
 				q(66442, {	-- Let's Get Theoretical
 					["sourceQuests"] = {
@@ -568,6 +630,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 						i(194393),	-- Expedition Guard's Cudgel
 						i(194371),	-- Expedition Guard's Shield
 						i(194379),	-- Field Scout's Longblade
+						i(192480),	-- Fragmented Record Rubbing (QI!)
 						i(194386),	-- League Mercenary's Mace
 						i(194416),	-- Titan Lightning Generator
 						i(194372),	-- Vault Guardian's Missive
@@ -709,7 +772,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 191011 },	-- Keshki
 					["coord"] = { 65.3, 63.7, THE_WAKING_SHORES },
 					["g"] = {
-						i(197399),	-- Renewed Proto-Drake: Razor Snout (DM!)
+						i(197399),	-- Renewed Proto-Drake: Razor Snout (MM!)
 					},
 				}),
 				q(66879, {	-- Hornstrider Havoc
@@ -814,6 +877,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["sourceQuests"] = { 66104 },	-- Forensic Ecology
 					["provider"] = { "n", 186428 },	-- Ecologist Tharu
 					["coord"] = { 74.5, 42.2, THE_WAKING_SHORES },
+					["g"] = {
+						i(191549),	-- Water-Infused Shell (QI!)
+						i(191546),	-- Wind-Infused Shell (QI!)
+					},
 				}),
 			}),
 			header(HEADERS.AchCriteria, 16401.06, {	-- The Shadow of His Wings
@@ -831,6 +898,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["sourceQuests"] = { 65690 },	-- A Cultist's Misgivings
 					["provider"] = { "n", 185628 },	-- Ayasanth
 					["coord"] = { 37.4, 46.7, THE_WAKING_SHORES },
+					["g"] = {
+						i(190612),	-- Worldbreaker Cell Key (QI!)
+					},
 				}),
 				q(65687, {	-- Punching Up
 					["sourceQuests"] = {
@@ -905,7 +975,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 194805 },	-- Bathoras
 					["coord"] = { 57.4, 65.7, THE_WAKING_SHORES },
 					["g"] = {
+						i(198668),	-- Blooming Shallowlily (QI!)
 						i(198673),	-- Empty Life Pool Vial
+						i(200109),	-- Medicative Potion (QI!)
+						i(198666),	-- Milky Snapflower (QI!)
 					},
 				}),
 				q(70241, {	-- The Bitter End
@@ -918,11 +991,17 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["sourceQuests"] = { 70241 },	-- The Bitter End
 					["provider"] = { "n", 194805 },	-- Bathoras
 					["coord"] = { 56.8, 64.4, THE_WAKING_SHORES },
+					["g"] = {
+						i(198701),	-- Inert Vessel (QI!)
+					},
 				}),
 				q(70708, {	-- Hallow
 					["sourceQuests"] = { 70242 },	-- Life After Life
 					["provider"] = { "n", 194801 },	-- Bathoras
 					["coord"] = { 58.4, 67.5, THE_WAKING_SHORES },
+					["g"] = {
+						i(200129),	-- Kolgar's Pack (QI!)
+					},
 				}),
 			}),
 			header(HEADERS.AchCriteria, 16406.03, {	-- Tarjin the Blind
@@ -931,7 +1010,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["coord"] = { 16.1, 62.6, THE_WAKING_SHORES },
 					["isWeekly"] = true,
 					["g"] = {
-						i(200143),	-- Fenistrasza's Skull
+						i(199822),	-- Impressive Dragon Skull (QI!)
 					},
 				}),
 			}),
@@ -950,7 +1029,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 194076 },	-- Veritistrasz
 					["coord"] = { 57.8, 66.7, THE_WAKING_SHORES },
 					["g"] = {
-						i(197361),	-- Renewed Proto-Drake: Spiked Crest (DM!)
+						i(197361),	-- Renewed Proto-Drake: Spiked Crest (MM!)
+						i(198979),	-- Time Capsule Letter
+						i(198430),	-- Time Capsule (QI!)
 					},
 				}),
 				q(70268, {	-- Memories Revived
@@ -1041,14 +1122,24 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["sourceQuests"] = { 66001 },	-- A Last Hope, -- TODO: Wasnt available when picking up 65997, but available before 66001....
 				["provider"] = { "n", 194525 },	-- Apprentice Caretaker Zefren
 				["coord"] = { 54.4, 30.8, THE_WAKING_SHORES },
+				["g"] = {
+					i(198511),	-- Building Materials (QI!)
+				},
 			}),
 			q(66112, {	-- Always Be Crafting
 				["sourceQuests"] = { 66110 },	-- Give Peace a Chance
 				["provider"] = { "n", 187261 },	-- Grun Ashbeard
 				["coord"] = { 76.4, 34.6, THE_WAKING_SHORES },
+				["g"] = {
+					i(190386),	-- Primal Earthen Core (QI!)
+					i(194548),	-- Primal Molten Core (QI!)
+				},
 			}),
 			q(66612, {	-- Crabtender's Quandry
-				["sourceQuests"] = { 66114 },	-- For the Benefit of the Queen
+				["sourceQuests"] = {
+					65439,	-- To the Dragon Isles! (H)
+					67700,	-- To the Dragon Isles! (A)
+				},
 				["provider"] = { "n", 196827 },	-- Crabtender Kad'irsza
 				["coord"] = { 59.7, 51.2, THE_WAKING_SHORES },
 			}),
@@ -1080,7 +1171,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["provider"] = { "n", 193955 },	-- Lillistazsa
 				["coord"] = { 59.9, 70.4, THE_WAKING_SHORES },
 				["g"] = {
+					i(198345),	-- Glass Bead (QI!)
 					i(198857),	-- Lucky Duck (TOY!)
+					i(198344),	-- Scrap of Fabric (QI!)
+					i(198343),	-- Soft Ruby Feather (QI!)
 				},
 			}),
 			q(66101, {	-- From Such Great Heights
@@ -1101,7 +1195,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				},
 			}),
 			q(71141, {	-- Gills with Gall
-				["sourceQuests"] = { 66114 },	-- For the Benefit of the Queen
+				["sourceQuests"] = {
+					65439,	-- To the Dragon Isles! (H)
+					67700,	-- To the Dragon Isles! (A)
+				},
 				["provider"] = { "n", 193304 },	-- Ru'Kroszk
 				["coord"] = { 59.7, 51.2, THE_WAKING_SHORES },
 			}),
@@ -1123,6 +1220,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["coord"] = { 76.6, 33.6, THE_WAKING_SHORES },
 				["sourceQuestNumRequired"] = 1,
 				["classes"] = { ROGUE },
+				["g"] = {
+					i(198133),	-- Golden Expedition Compass (QI!
+					i(198135),	-- Jeb's Supply Pack (QI!)
+					i(198139),	-- Jeb's Underwear
+					i(198134),	-- Shiny Surveyor Scope (QI!)
+				},
 			}),
 			q(69965, {	-- Quality Assurance
 				["sourceQuests"] = { 66110 },	-- Give Peace a Chance
@@ -1134,6 +1237,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["coord"] = { 37.4, 71.8, THE_WAKING_SHORES },
 				["g"] = {
 					i(194384),	-- Elemental Binding Ring
+					i(191278),	-- Molten Binding Rings (QI!)
 				},
 			}),
 			q(70414, {	-- Shaky Grounds
@@ -1160,10 +1264,16 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["races"] = { DRACTHYR_ALLIANCE, DRACTHYR_HORDE },
 			}),
 			q(70159, {	-- A Taste of Home
-				["provider"] = { "n", 194462 },	 -- Talon Scaralesh
+				["provider"] = { "n", 194462 },	-- Talon Scaralesh
 				["coord"] = { 47.1, 82.9, THE_WAKING_SHORES },
 				["classes"] = { EVOKER },
 				["races"] = { DRACTHYR_HORDE },
+				["g"] = {
+					i(198447),	-- Bilgewater-Imported Imitation Crab (QI!)
+					i(198445),	-- Charred Zandali Chilis (QI!)
+					i(198446),	-- Fine Suramar Vintage (QI!)
+					i(198530),	-- Raw Zandali Chilis (QI!)
+				},
 			}),
 			q(70164, {	-- A Tinker's Chance
 				["provider"] = { "n", 194136 },	-- Eralshek
@@ -1172,6 +1282,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["races"] = { DRACTHYR_ALLIANCE, DRACTHYR_HORDE },
 			}),
 			q(70742, {	-- Runs in the Family
+				["sourceQuests"] = { 70446 },	-- A Personal History
 				["provider"] = { "n", 192795 },	-- Scalecommander Emberthal
 				["coord"] = { 44.7, 64.1, THE_WAKING_SHORES },
 				["classes"] = { EVOKER },
@@ -1226,6 +1337,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				q(66076, {	-- Ancient Hornswog
 					["provider"] = { "n", 187111 },	-- Ancient Hornswog
 					["coord"] = { 77.6, 22.2, THE_WAKING_SHORES },
+					["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_11_0_0 },
 				}),
 				q(66117, {	-- Clear the Battlefield
 					["sourceQuests"] = { 66116 },	-- The Primary Threat
@@ -1260,6 +1372,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 						66079,	-- Wrathion Awaits
 						DF_ACCOUNT_CAMPAIGN_QUEST,
 					},
+					["DisablePartySync"] = true,	-- TODO: Figure out what Quest blocks it
 					["coord"] = { 44.4, 82.1, THE_WAKING_SHORES },
 				}),
 				q(70751, {	-- Terillod the Devout
@@ -1383,113 +1496,121 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		}),
 	}),
 })));
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+	m(DRAGON_ISLES, {
+		m(THE_WAKING_SHORES, {
+			n(QUESTS, {
+				q(66898),	-- triggered during 'The Shadow of His Wings' (65691)
+				q(70872),	-- Quack Weekly Trigger (spellID 390284)
+				q(70262),	-- triggered with 'Memories Revived' (70268)
+				q(72353),	-- triggeres during 'Adventuring in the Dragon Isles' (72293) when any zone is chosen by player (spellID 394163)
+				q(70767),	-- triggers when 'Tale of the Outsider' becomes available for Tarjin the Blind
+				q(70768),	-- triggers when 'Tale of the Outsider' completes (spellID 388144)
+				q(70770),	-- triggers when 'Tale of the Elders' becomes available for Tarjin the Blind
+				q(70769),	-- triggers when 'Tale of the Elders' completes (spellID 388145)
+				q(70772),	-- triggers when 'Tale of the Warlord' becomes available for Tarjin the Blind
+				q(70771),	-- triggers when 'Tale of the Warlord' completes (spellID 388146)
+				q(70776),	-- triggers when 'Tale of the Magma Pact' becomes available for Tarjin the Blind
+				q(70775),	-- triggers when 'Tale of the Magma Pact' completes (spellID 388148)
+				q(70774),	-- triggers when 'Tale of the Slumbering' becomes available for Tarjin the Blind
+				q(70773),	-- triggers when 'Tale of the Slumbering' completes (spellID 388147)
+				q(70778),	-- triggers when 'Tale of the Weakling' becomes available for Tarjin the Blind
+				q(70777),	-- triggers when 'Tale of the Weakling' completes (spellID 388149)
+				q(72804),	-- Flag Weekly Tracking Quest [DNT] (spellID 397184) [triggers when 'Tale of the Phoenix' completes]
+				q(70218),	-- Dialogue before you can pick up the quest "A Dragon's Day Off"
 
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
-	m(THE_WAKING_SHORES, {
-		q(66898),	-- triggered during 'The Shadow of His Wings' (65691)
-		q(70872),	-- Quack Weekly Trigger (spellID 390284)
-		q(70262),	-- triggered with 'Memories Revived' (70268)
-		q(72353),	-- triggeres during 'Adventuring in the Dragon Isles' (72293) when any zone is chosen by player (spellID 394163)
-		q(70767),	-- triggers when 'Tale of the Outsider' becomes available for Tarjin the Blind
-		q(70768),	-- triggers when 'Tale of the Outsider' completes (spellID 388144)
-		q(70770),	-- triggers when 'Tale of the Elders' becomes available for Tarjin the Blind
-		q(70769),	-- triggers when 'Tale of the Elders' completes (spellID 388145)
-		q(70772),	-- triggers when 'Tale of the Warlord' becomes available for Tarjin the Blind
-		q(70771),	-- triggers when 'Tale of the Warlord' completes (spellID 388146)
-		q(70776),	-- triggers when 'Tale of the Magma Pact' becomes available for Tarjin the Blind
-		q(70775),	-- triggers when 'Tale of the Magma Pact' completes (spellID 388148)
-		q(70774),	-- triggers when 'Tale of the Slumbering' becomes available for Tarjin the Blind
-		q(70773),	-- triggers when 'Tale of the Slumbering' completes (spellID 388147)
-		q(70778),	-- triggers when 'Tale of the Weakling' becomes available for Tarjin the Blind
-		q(70777),	-- triggers when 'Tale of the Weakling' completes (spellID 388149)
-		q(72804),	-- Flag Weekly Tracking Quest [DNT] (spellID 397184) [triggers when 'Tale of the Phoenix' completes]
-		q(70218),	-- Dialogue before you can pick up the quest "A Dragon's Day Off"
-
-		-- TODO: how do we sort these types of things going forward? Also, is Skytop an actual quest or should this be a NYI/Never Implemented?
-		q(72178, {	-- Theory in Practice: Baron von Swoopenbite
-			["name"] = "Theory in Practice: Baron von Swoopenbite",
-			["sourceQuests"] = {
-				69901,	-- Bring In the Expert
-				69900,	-- Identifying the Source
-			},
-			["provider"] = { "n", 192298 },	-- Tyrgon
-			["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
-			["altQuests"] = {
-				-- 72178,	-- Theory in Practice: Baron von Swoopenbite
-				72174,	-- Theory in Practice: Bob
-				72179,	-- Theory in Practice: Lord Firegiggle
-				72177,	-- Theory in Practice: Mr.Nibbles
-				72176,	-- Theory in Practice: Toughscale
-			},
-		}),
-		q(72174, {	-- Theory in Practice: Bob
-			["name"] = "Theory in Practice: Bob",
-			["sourceQuests"] = {
-				69901,	-- Bring In the Expert
-				69900,	-- Identifying the Source
-			},
-			["provider"] = { "n", 192298 },	-- Tyrgon
-			["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
-			["altQuests"] = {
-				72178,	-- Theory in Practice: Baron von Swoopenbite
-				-- 72174,	-- Theory in Practice: Bob
-				72179,	-- Theory in Practice: Lord Firegiggle
-				72177,	-- Theory in Practice: Mr.Nibbles
-				72176,	-- Theory in Practice: Toughscale
-			},
-		}),
-		q(72179, {	-- Theory in Practice: Lord Firegiggle
-			["name"] = "Theory in Practice: Lord Firegiggle",
-			["sourceQuests"] = {
-				69901,	-- Bring In the Expert
-				69900,	-- Identifying the Source
-			},
-			["provider"] = { "n", 192298 },	-- Tyrgon
-			["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
-			["altQuests"] = {
-				72178,	-- Theory in Practice: Baron von Swoopenbite
-				72174,	-- Theory in Practice: Bob
-				-- 72179,	-- Theory in Practice: Lord Firegiggle
-				72177,	-- Theory in Practice: Mr.Nibbles
-				72176,	-- Theory in Practice: Toughscale
-			},
-		}),
-		q(72177, {	-- Theory in Practice: Mr.Nibbles
-			["name"] = "Theory in Practice: Mr.Nibbles",
-			["sourceQuests"] = {
-				69901,	-- Bring In the Expert
-				69900,	-- Identifying the Source
-			},
-			["provider"] = { "n", 192298 },	-- Tyrgon
-			["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
-			["altQuests"] = {
-				72178,	-- Theory in Practice: Baron von Swoopenbite
-				72174,	-- Theory in Practice: Bob
-				72179,	-- Theory in Practice: Lord Firegiggle
-				-- 72177,	-- Theory in Practice: Mr.Nibbles
-				72176,	-- Theory in Practice: Toughscale
-			},
-		}),
-		q(72176, {	-- Theory in Practice: Toughscale
-			["name"] = "Theory in Practice: Toughscale",
-			["sourceQuests"] = {
-				69901,	-- Bring In the Expert
-				69900,	-- Identifying the Source
-			},
-			["provider"] = { "n", 192298 },	-- Tyrgon
-			["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
-			["altQuests"] = {
-				72178,	-- Theory in Practice: Baron von Swoopenbite
-				72174,	-- Theory in Practice: Bob
-				72179,	-- Theory in Practice: Lord Firegiggle
-				72177,	-- Theory in Practice: Mr.Nibbles
-				-- 72176,	-- Theory in Practice: Toughscale
-			},
-		}),
-		q(72089, {	-- To Skytop Observatory
-			["name"] = "To Skytop Observatory",
-			["provider"] = { "n", 193287 },	-- Lord Andestrasz
-			["coord"] = { 57.7, 66.9, THE_WAKING_SHORES },
+				-- TODO: how do we sort these types of things going forward? Also, is Skytop an actual quest or should this be a NYI/Never Implemented?
+				q(72178, {	-- Theory in Practice: Baron von Swoopenbite
+					["name"] = "Theory in Practice: Baron von Swoopenbite",
+					["sourceQuests"] = {
+						69901,	-- Bring In the Expert
+						69900,	-- Identifying the Source
+					},
+					["provider"] = { "n", 192298 },	-- Tyrgon
+					["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
+					["altQuests"] = {
+						-- 72178,	-- Theory in Practice: Baron von Swoopenbite
+						72174,	-- Theory in Practice: Bob
+						72179,	-- Theory in Practice: Lord Firegiggle
+						72177,	-- Theory in Practice: Mr.Nibbles
+						72176,	-- Theory in Practice: Toughscale
+					},
+				}),
+				q(72174, {	-- Theory in Practice: Bob
+					["name"] = "Theory in Practice: Bob",
+					["sourceQuests"] = {
+						69901,	-- Bring In the Expert
+						69900,	-- Identifying the Source
+					},
+					["provider"] = { "n", 192298 },	-- Tyrgon
+					["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
+					["altQuests"] = {
+						72178,	-- Theory in Practice: Baron von Swoopenbite
+						-- 72174,	-- Theory in Practice: Bob
+						72179,	-- Theory in Practice: Lord Firegiggle
+						72177,	-- Theory in Practice: Mr.Nibbles
+						72176,	-- Theory in Practice: Toughscale
+					},
+				}),
+				q(72179, {	-- Theory in Practice: Lord Firegiggle
+					["name"] = "Theory in Practice: Lord Firegiggle",
+					["sourceQuests"] = {
+						69901,	-- Bring In the Expert
+						69900,	-- Identifying the Source
+					},
+					["provider"] = { "n", 192298 },	-- Tyrgon
+					["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
+					["altQuests"] = {
+						72178,	-- Theory in Practice: Baron von Swoopenbite
+						72174,	-- Theory in Practice: Bob
+						-- 72179,	-- Theory in Practice: Lord Firegiggle
+						72177,	-- Theory in Practice: Mr.Nibbles
+						72176,	-- Theory in Practice: Toughscale
+					},
+				}),
+				q(72177, {	-- Theory in Practice: Mr.Nibbles
+					["name"] = "Theory in Practice: Mr.Nibbles",
+					["sourceQuests"] = {
+						69901,	-- Bring In the Expert
+						69900,	-- Identifying the Source
+					},
+					["provider"] = { "n", 192298 },	-- Tyrgon
+					["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
+					["altQuests"] = {
+						72178,	-- Theory in Practice: Baron von Swoopenbite
+						72174,	-- Theory in Practice: Bob
+						72179,	-- Theory in Practice: Lord Firegiggle
+						-- 72177,	-- Theory in Practice: Mr.Nibbles
+						72176,	-- Theory in Practice: Toughscale
+					},
+				}),
+				q(72176, {	-- Theory in Practice: Toughscale
+					["name"] = "Theory in Practice: Toughscale",
+					["sourceQuests"] = {
+						69901,	-- Bring In the Expert
+						69900,	-- Identifying the Source
+					},
+					["provider"] = { "n", 192298 },	-- Tyrgon
+					["coord"] = { 46.0, 81.5, THE_WAKING_SHORES },
+					["altQuests"] = {
+						72178,	-- Theory in Practice: Baron von Swoopenbite
+						72174,	-- Theory in Practice: Bob
+						72179,	-- Theory in Practice: Lord Firegiggle
+						72177,	-- Theory in Practice: Mr.Nibbles
+						-- 72176,	-- Theory in Practice: Toughscale
+					},
+				}),
+				q(72089, {	-- To Skytop Observatory
+					["name"] = "To Skytop Observatory",
+					["provider"] = { "n", 193287 },	-- Lord Andestrasz
+					["coord"] = { 57.7, 66.9, THE_WAKING_SHORES },
+				}),
+				o(404260, {	-- Riddle Solved!
+					["timeline"] = { ADDED_10_1_5 },
+					["questID"] = 76451,
+					["coord"] = { 67.1, 56.8, THE_WAKING_SHORES},
+				}),
+			}),
 		}),
 	}),
 })));

@@ -1,15 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
-	inst(250, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {	-- Mana Tombs
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
+	inst(250, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {	-- Mana Tombs
 		["lore"] = "Its inhabitants are mostly ethereals opposing the Consortium. The ethereals of the Consortium cannot enter due to the anti-ethereal wards set by Nexus-Prince Shaffar; they have attempted to breach the gates with little success, but have still tested whether or not their efforts worked - often resulting in the spotaneous combustion (for lack of a better term) of the ethereal tester sent through the gate. According to the Consortium, the ethereals in the Mana-Tombs are robbing it blind and if you wish to do business with them, you'll have to aid in taking out the competition.",
-		["sins"] = {
-			[[~DUNGEON_FLOOR_MANATOMBS1]],
-			"Auchindoun: Mana-Tombs",
-			"Auchindoun: The Mana Tombs",
-			"Auchindoun: Managruft",
-		},
+		-- #if BEFORE MOP
+		["zone-text-names"] = { [[~DUNGEON_FLOOR_MANATOMBS1]] },	-- Mana Tombs
+		-- #endif
 		["coord"] = { 39.63, 57.67, TEROKKAR_FOREST },	-- Mana-Tombs, Terokkar Forest
 		["mapID"] = AUCHINDOUN_MANA_TOMBS,
 		["lvl"] = lvlsquish(61, 61, 15),
@@ -18,7 +15,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29583, {	-- Eckert the Mad
 					["qg"] = 21400,	-- Eckert
 					["coord"] = { 57.6, 53.6, TEROKKAR_FOREST },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(64, 64, 15),
@@ -26,14 +23,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29582, {	-- Grek's Crazy Night
 					["qg"] = 19606,	-- Grek
 					["coord"] = { 49.8, 45.3, TEROKKAR_FOREST },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(64, 64, 15),
 				}),
 				q(29574, {	-- Intriguing Specimens
 					["qg"] = 54694,	-- Mamdy the "Ologist"
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(62, 62, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Pandemonius' Essence
@@ -48,8 +45,8 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 22919,	-- Image of Commander Ameer
 					["sourceQuest"] = 10977,	-- Stasis Chambers of the Mana-Tombs
 					["coord"] = { 52.8, 15.0, BLADES_EDGE_MOUNTAINS },
-					["minReputation"] = { 933, REVERED },	-- The Consortium, Revered.
-					["maxReputation"] = { 933, EXALTED },	-- The Consortium, Exalted.
+					["minReputation"] = { FACTION_THE_CONSORTIUM, REVERED },	-- The Consortium, Revered.
+					["maxReputation"] = { FACTION_THE_CONSORTIUM, EXALTED },	-- The Consortium, Exalted.
 					["cost"] = {
 						{ "i", 31941, 1 },	-- Mark of the Nexus-King
 					},
@@ -60,9 +57,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 				q(10216,  {	-- Safety is Job One
-					["qg"] = 19670,	-- Artificer Morphalius
+					["providers"] = {
+						{ "n",  19670 },	-- Artificer Morphalius
+						{ "o", 183877 },	-- Ethereal Transporter Control Panel
+					},
 					["coord"] = { 39.4, 58.5, TEROKKAR_FOREST },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(64, 64, 15),
 					["groups"] = {
 						objective(1, {	-- 0/10 Ethereal Crypt Raider slain
@@ -81,7 +81,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29573, {	-- Safety is Job One
 					["qg"] = 54692,	-- Artificer Morphalius
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(62, 62, 15),
 					["groups"] = {
 						objective(1, {	-- 0/10 Ethereal Crypt Raider slain
@@ -98,8 +98,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						}),
 					},
 				}),
-				q(10218, bubbleDown({ ["timeline"] = { "removed 4.3.0.14732" } }, {	-- Someone Else's Hard Work Pays Off [Rewards also removed... :(]
-					["qg"] = 19671,	-- Cryo-Engineer Sha'heen
+				q(10218, bubbleDown({ ["timeline"] = { REMOVED_4_3_0 } }, {	-- Someone Else's Hard Work Pays Off [Rewards also removed... :(]
+					["providers"] = {
+						{ "n",  19671 },	-- Cryo-Engineer Sha'heen
+						{ "o", 183877 },	-- Ethereal Transporter Control Panel
+					},
 					["sourceQuest"] = 10216,	-- Safety Is Job One
 					["maps"] = { TEROKKAR_FOREST },
 					["lvl"] = lvlsquish(64, 64, 15),
@@ -117,7 +120,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
 						objective(1, {	--	Mana-Tombs Stasis Chamber Investigated
-							["provider"] = { "i", 32069 },	-- Mana-Tombs Stasis Chamber Key
+							["providers"] = {
+								{ "i",  32069 },	-- Mana-Tombs Stasis Chamber Key
+								{ "o", 185519 },	-- Mana-Tombs Stasis Chamber
+							},
 							["description"] = "Stasis Chamber is in the room to the left after the first boss.\n\nThis can only be completed on Heroic difficulty.",
 						}),
 					},
@@ -126,13 +132,13 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 22919,	-- Image of Commander Ameer
 					["sourceQuest"] = 10977,	-- Stasis Chambers of the Mana-Tombs
 					["coord"] = { 52.8, 15.0, BLADES_EDGE_MOUNTAINS },
-					["minReputation"] = { 933, EXALTED },	-- The Consortium, Exalted.
+					["minReputation"] = { FACTION_THE_CONSORTIUM, EXALTED },	-- The Consortium, Exalted.
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
 						i(32092),	-- The Eye of Haramad
 					},
 				}),
-				q(10165, bubbleDown({ ["timeline"] = { "removed 4.3.0.14732" } }, {	-- Undercutting the Competition [Rewards also removed... :(]
+				q(10165, bubbleDown({ ["timeline"] = { REMOVED_4_3_0 } }, {	-- Undercutting the Competition [Rewards also removed... :(]
 					["qg"] = 19674,	-- Nexus-Prince Haramad
 					["coord"] = { 39.4, 58.5, TEROKKAR_FOREST },
 					["lvl"] = lvlsquish(64, 64, 15),
@@ -148,7 +154,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				})),
 				q(29575, {	-- Undercutting the Competition
 					["qg"] = 54692,	-- Artificer Morphalius
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(62, 62, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Shaffar's Wrappings
@@ -158,15 +164,19 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 			}),
 			n(COMMON_BOSS_DROPS, {
-				-- #if AFTER 8.0.1.27326
-				currency(1704, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each.",
-				}),
-				-- #else
 				i(28558, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each.",
+					["timeline"] = { REMOVED_8_0_1 },
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
 				}),
-				-- #endif
+				currency(1704, {	-- Spirit Shard
+					["timeline"] = { ADDED_8_0_1 },
+					-- #if BEFORE 9.1.5
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #else
+					-- From 9.1.5 (specific patch uncomfirmed) this currency can be obtained regardless of whom controls the Spirit Towers in the Bone Wastes. This could have been true already from 8.0.1, but no reports seems to confirm it.
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #endif
+				}),
 			}),
 			n(ZONE_DROPS, {
 				i(29460),	-- Ethereum Prison Key
@@ -177,7 +187,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["cr"] = 18314,	-- Nexus Stalker
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(534, {	-- Pandemonius
 					["creatureID"] = 18341,
 					["groups"] = {
@@ -199,11 +209,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(25941),	-- Boots of the Outlander
 						-- #if BEFORE MOP
 						i(25940, {	-- Idol of the Claw
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 						i(72126, {	-- Pandemonius' Essence
-							["timeline"] = { "added 4.3.0.14942" },
+							["timeline"] = { ADDED_4_3_0 },
 						}),
 					},
 				}),
@@ -229,7 +239,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(27822),	-- Crystal Band of Valor
 						-- #endif
 						i(72127, {	-- Tavarok's Heart
-							["timeline"] = { "added 4.3.0.14942" },
+							["timeline"] = { ADDED_4_3_0 },
 						}),
 					},
 				}),
@@ -280,7 +290,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -328,11 +338,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							-- #endif
 							-- #if BEFORE MOP
 							i(27815, {	-- Totem of the Astral Winds
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 							i(72126, {	-- Pandemonius' Essence
-								["timeline"] = { "added 4.3.0.14942" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						},
 					}),
@@ -358,11 +368,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							-- #endif
 							i(27822),	-- Crystal Band of Valor
 							i(72127, {	-- Tavarok's Heart
-								["timeline"] = { "added 4.3.0.14942" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						},
 					}),
 					e(536, {	-- Yor
+						["provider"] = { "o", 185522 },	-- Shaffar's Stasis Chamber
 						["description"] = "Requires one of two keys unlocked via a quest chain in Blades Edge to open.\n\nOnly one member of your group needs the key.",
 						["cost"] = {
 							{ "i", 32079, 1 },	-- Shaffar's Stasis Chamber Key
@@ -386,10 +397,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 18344,
 						["groups"] = {
 							ach(671, {	-- Heroic: Mana-Tombs
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5071, {	-- Heroic: Mana-Tombs Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(27829),	-- Axe of the Nexus-Kings
 							i(27842),	-- Grand Scepter of the Nexus-Kings
@@ -437,7 +448,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35546),	-- Mana Tombs Reward Quest - Normal completion
 		q(35547),	-- Mana Tombs Reward Quest - Heroic completion
 		q(35548),	-- Mana-Tombs Bonus Objective - kill Yor

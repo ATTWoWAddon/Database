@@ -8,12 +8,13 @@ local MATURE_BLUE_DRAGON_SINEW = i(18704, {	-- Mature Blue Dragon Sinew
 local THE_EYE_OF_SHADOW = i(18665, {	-- The Eye of Shadow
 	["classes"] = { PRIEST },
 });
-root(ROOTS.Instances, tier(CLASSIC_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, {
 	n(WORLD_BOSSES, {
 		["isRaid"] = true,
 		["lvl"] = 60,
 		["groups"] = {
-			applyclassicphase(PHASE_TWO, bubbleDown({ ["timeline"] = { "removed 4.0.3" } }, n(6109, {	-- Azuregos
+			-- #if NOT SEASON_OF_DISCOVERY
+			applyclassicphase(PHASE_TWO, bubbleDown({ ["timeline"] = { REMOVED_4_0_3 } }, n(6109, {	-- Azuregos
 				["coord"] = { 53.3, 80.4, AZSHARA },
 				["isRaid"] = true,
 				-- #if ANYCLASSIC
@@ -29,23 +30,18 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					i(19132),	-- Crystal Adorned Crown
 					i(18208),	-- Drape of Benediction
 					i(18541),	-- Puissant Cape
+					i(18547),	-- Unmelting Ice Girdle
 					i(18545),	-- Leggings of Arcane Supremacy
 					i(19131),	-- Snowblind Shoes
-					i(18547),	-- Unmelting Ice Girdle
 				},
 			}))),
-			applyclassicphase(PHASE_FOUR, bubbleDown({ ["timeline"] = { "removed 4.0.3" } }, n(DRAGONS_OF_NIGHTMARE, {
+			-- #endif
+			applyclassicphase(PHASE_FOUR, bubbleDown({ ["timeline"] = { REMOVED_4_0_3 } }, n(DRAGONS_OF_NIGHTMARE, {
 				["coords"] = {
 					{ 51.2, 10.9, FERALAS },
 					{ 63.3, 27.8, THE_HINTERLANDS },
 					{ 45.4, 39.6, DUSKWOOD },
 					{ 94.2, 35.7, ASHENVALE },
-				},
-				["crs"] = {
-					14889,	-- Emeriss
-					14888,	-- Lethon
-					14890,	-- Taerar
-					14887,	-- Ysondre
 				},
 				["isRaid"] = true,
 				["lvl"] = 60,
@@ -66,19 +62,27 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						}),
 					}),
 					n(COMMON_BOSS_DROPS, {
-						i(20644),	-- Nightmare Engulfed Object
-						i(20619),	-- Acid Inscribed Greaves
-						i(20617),	-- Ancient Corroded Leggings
-						i(20616),	-- Dragonbone Wristguards
-						i(20615),	-- Dragonspur Wraps
-						i(20618),	-- Gloves of Delusional Power
-						i(20579),	-- Green Dragonskin Cloak
-						i(20580),	-- Hammer of Bestial Fury
-						i(20581),	-- Staff of Rampant Growth
-						i(20582),	-- Trance Stone
-						prof(SKINNING, {
-							i(20381),	-- Dreamscale
-						}),
+						["crs"] = {
+							14889,	-- Emeriss
+							14888,	-- Lethon
+							14890,	-- Taerar
+							14887,	-- Ysondre
+						},
+						["groups"] = {
+							i(20644),	-- Nightmare Engulfed Object
+							i(20619),	-- Acid Inscribed Greaves
+							i(20617),	-- Ancient Corroded Leggings
+							i(20616),	-- Dragonbone Wristguards
+							i(20615),	-- Dragonspur Wraps
+							i(20618),	-- Gloves of Delusional Power
+							i(20579),	-- Green Dragonskin Cloak
+							i(20580),	-- Hammer of Bestial Fury
+							i(20581),	-- Staff of Rampant Growth
+							i(20582),	-- Trance Stone
+							prof(SKINNING, {
+								i(20381),	-- Dreamscale
+							}),
+						},
 					}),
 					n(14889, {	-- Emeriss
 						-- #if ANYCLASSIC
@@ -140,7 +144,8 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					}),
 				},
 			}))),
-			applyclassicphase(PHASE_TWO, bubbleDown({ ["timeline"] = { "removed 2.0.1" } }, n(12397, {	-- Lord Kazzak / Highlord Kruul
+			-- #if NOT SEASON_OF_DISCOVERY
+			applyclassicphase(PHASE_TWO, bubbleDown({ ["timeline"] = { REMOVED_2_0_1 } }, n(12397, {	-- Lord Kazzak / Highlord Kruul
 				["coord"] = { 36.6, 75.8, BLASTED_LANDS },
 				["crs"] = { 18338 },	-- Highlord Kruul
 				["modelScale"] = 6.0,
@@ -160,6 +165,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					i(18543),	-- Ring of Entropy
 				},
 			}))),
+			-- #endif
 		},
 	}),
 }));

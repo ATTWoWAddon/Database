@@ -5,6 +5,7 @@ local ALIERON_SEAMOTH = 194967;
 local AQUATIC_MAW = 201400;
 local AWAKENED_FROST = 190329;
 local CERULEAN_SPINEFISH = 194968;
+local CHROMATIC_DUST = 194123;
 local LARGE_STURDY_FEMUR = 201402;
 local MASTODON_TUSK = 201403;
 local PRIMAL_BEAR_SPINE = 201399;
@@ -18,7 +19,7 @@ local TEMPORAL_DRAGONHEAD = 194969;
 local THOUSANDBITE_PIRANHA = 194966;
 local TUFT_OF_PRIMAL_WOOL = 201405;
 local WILDERCLOTH = 193050;
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(ISKAARA_TUSKARR, {
 		n(VENDORS, {
 			n(186449, {	-- Arvik
@@ -44,7 +45,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					199881,	-- Tuskarr Fisherman's Harpoon
 					199880,	-- Tuskarr Leviathan's Hook
 					199878,	-- Tuskarr Timber Splitter
-					199883,	-- Tuskarr Sharktooth Bolthrower
+					199883,	-- Tuskarr Sharktooth Bolt-Thrower
 					199882,	-- Tuskarr Mystic's Stave
 				}},
 			}),
@@ -81,7 +82,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					------ RENOWN 12 ------
 					199877,	-- Ensemble: Tuskarr Trader's Leather Armor
 					------ RENOWN 23 ------
-					199547,	-- Spine Reinforced Spaulders
+					199547,	-- Spine-Reinforced Spaulders
 					------ RENOWN 28 ------
 					199548,	-- Rugged Seaspawn Spaulders
 					199542,	-- Red Tufted Shoulderpads
@@ -89,7 +90,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					199541,	-- Grey Tufted Shoulderpads
 					199545,	-- Grey Depths Shoulderguards
 					199540,	-- Green Tufted Shoulderpads
-					199549,	-- Depth Delvers Spaulders
+					199549,	-- Depth-Delver's Spaulders
 					199546,	-- Crimson Depths Shoulderguards
 					199539,	-- Blue Tufted Shoulderpads
 					199550,	-- Bloody Shorestalker's Spaulders
@@ -188,23 +189,23 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 							},
 						}),
 					}, {	-- RENOWN 7 --
-						i(197101, {	-- Highland Drake: Bushy Brow (DM!)
+						i(197101, {	-- Highland Drake: Bushy Brow (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
 						}),
-						i(197155, {	-- Highland Drake: Finned Neck (DM!)
+						i(197155, {	-- Highland Drake: Finned Neck (MM!)
 							["timeline"] = { ADDED_10_0_7 },
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
 						}),
-						i(197114, {	-- Highland Drake: Multi-Horned Head (DM!)
+						i(197114, {	-- Highland Drake: Multi-Horned Head (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
 						}),
-						i(197132, {	-- Highland Drake: Spiked Cheek (DM!)
+						i(197132, {	-- Highland Drake: Spiked Cheek (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
@@ -263,21 +264,11 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						}),
 					}, {	-- RENOWN 11 --
 					}, {	-- RENOWN 12 --
-						i(199877, {	-- Ensemble: Tuskarr Trader's Leather Armor
+						iensemble(199877, {	-- Ensemble: Tuskarr Trader's Leather Armor
 							["cost"] = {
 								{ "i", TUFT_OF_PRIMAL_WOOL, 3 },
 								{ "i", MASTODON_TUSK, 2 },
 								{ "i", RESILIENT_LEATHER, 20 },
-							},
-							["g"] = {
-								i(199868),	-- Tuskarr Trader's Belt
-								i(199869),	-- Tuskarr Trader's Bindings
-								i(199865),	-- Tuskarr Trader's Gloves
-								i(199866),	-- Tuskarr Trader's Headgear
-								i(199867),	-- Tuskarr Trader's Leggings
-								i(199871),	-- Tuskarr Trader's Shoulderpads
-								i(199870),	-- Tuskarr Trader's Vest
-								i(199864),	-- Tuskarr Trader's Waders
 							},
 						}),
 						i(199872, {	-- Tuskarr Trader's Cloak
@@ -292,17 +283,17 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								{ "c", DRAGON_SUPPLIES, 25 },
 							},
 						}),
-						i(197153, {	-- Highland Drake: Bladed Tail (DM!)
+						i(197153, {	-- Highland Drake: Bladed Tail (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 100 },
 							},
 						}),
-						i(197139, {	-- Highland Drake: Large Spotted Pattern (DM!)
+						i(197139, {	-- Highland Drake: Large Spotted Pattern (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 100 },
 							},
 						}),
-						i(197123, {	-- Highland Drake: Thorn Horns (DM!)
+						i(197123, {	-- Highland Drake: Thorn Horns (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 100 },
 							},
@@ -390,7 +381,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								{ "i", RESILIENT_LEATHER, 10 },
 							},
 						}),
-						i(199858, {	-- Dark Tuskarr Traders Pack
+						i(199858, {	-- Dark Tuskarr Trader's Pack
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 500 },
 								{ "i", TALLSTRIDER_SINEW, 5 },
@@ -411,7 +402,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								{ "i", RESILIENT_LEATHER, 10 },
 							},
 						}),
-						i(199856, {	-- Rustic Tuskarr Traders Pack
+						i(199856, {	-- Rustic Tuskarr Trader's Pack
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 500 },
 								{ "i", TALLSTRIDER_SINEW, 5 },
@@ -432,7 +423,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								{ "i", TEMPORAL_DRAGONHEAD, 5 },
 							},
 						}),
-						i(199857, {	-- Tan Tuskarr Traders Pack
+						i(199857, {	-- Tan Tuskarr Trader's Pack
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 500 },
 								{ "i", TALLSTRIDER_SINEW, 5 },
@@ -486,25 +477,25 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 							},
 						}),
 					}, {	-- RENOWN 19 --
-						i(197012, {	-- Cliffside Wylderdrake: Blue Scales (DM!)
+						i(197012, {	-- Cliffside Wylderdrake: Blue Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_FROST, 1 },
 							},
 						}),
-						i(197390, {	-- Renewed Proto-Drake: Blue Scales (DM!)
+						i(197390, {	-- Renewed Proto-Drake: Blue Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_FROST, 1 },
 							},
 						}),
-						i(197612, {	-- Windborne Velocidrake: Blue Scales (DM!)
+						i(197612, {	-- Windborne Velocidrake: Blue Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_FROST, 1 },
 							},
 						}),
-						i(203350, {	-- Winding Slitherdrake: Blue Scales (DM!)
+						i(203350, {	-- Winding Slitherdrake: Blue Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_FROST, 1 },
@@ -572,11 +563,11 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						i(199882, {	-- Tuskarr Mystic's Stave
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 600 },
-								{ "i", AQUATIC_MAW, 2 },
+								{ "i", RUNED_WRITHEBARK, 3 },
 								{ "i", TUFT_OF_PRIMAL_WOOL, 3 },
 							},
 						}),
-						i(199883, {	-- Tuskarr Sharktooth Bolthrower
+						i(199883, {	-- Tuskarr Sharktooth Bolt-Thrower
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 600 },
 								{ "i", AQUATIC_MAW, 2 },
@@ -622,7 +613,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", RUNED_WRITHEBARK, 5 },
-								{ "i", MASTODON_TUSK, 2 },
+								{ "i", CHROMATIC_DUST, 5 },
 							},
 						}),
 					}, {	-- RENOWN 27 --
@@ -655,7 +646,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								{ "i", RESILIENT_LEATHER, 10 },
 							},
 						}),
-						i(199549, {	-- Depth Delvers Spaulders
+						i(199549, {	-- Depth-Delver's Spaulders
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 250 },
 								{ "i", TUFT_OF_PRIMAL_WOOL, 3 },
@@ -704,7 +695,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								{ "i", PRIMAL_BEAR_SPINE, 1 },
 							},
 						}),
-						i(199547, {	-- Spine Reinforced Spaulders
+						i(199547, {	-- Spine-Reinforced Spaulders
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 250 },
 								{ "i", TUFT_OF_PRIMAL_WOOL, 3 },
@@ -774,19 +765,19 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["coord"] = { 12.9, 48.6, THE_AZURE_SPAN },
 				["sym"] = {{"select","itemID",
 					------ RENOWN 7 ------
-					197101,	-- Highland Drake: Bushy Brow (DM!)
-					197155,	-- Highland Drake: Finned Neck (DM!)
-					197114,	-- Highland Drake: Multi-Horned Head (DM!)
-					197132,	-- Highland Drake: Spiked Cheek (DM!)
+					197101,	-- Highland Drake: Bushy Brow (MM!)
+					197155,	-- Highland Drake: Finned Neck (MM!)
+					197114,	-- Highland Drake: Multi-Horned Head (MM!)
+					197132,	-- Highland Drake: Spiked Cheek (MM!)
 					------ RENOWN 13 ------
-					197612,	-- Windborne Velocidrake: Blue Scales (DM!)
-					197390,	-- Renewed Proto-Drake: Blue Scales (DM!)
-					197012,	-- Cliffside Wylderdrake: Blue Scales (DM!)
+					197612,	-- Windborne Velocidrake: Blue Scales (MM!)
+					197390,	-- Renewed Proto-Drake: Blue Scales (MM!)
+					197012,	-- Cliffside Wylderdrake: Blue Scales (MM!)
 					------ RENOWN 19 ------
-					197123,	-- Highland Drake: Thorn Horns (DM!)
-					197139,	-- Highland Drake: Large Spotted Pattern (DM!)
-					197153,	-- Highland Drake: Bladed Tail (DM!)
-					203350, -- Winding Slitherdrake: Blue Scales (DM!)
+					197123,	-- Highland Drake: Thorn Horns (MM!)
+					197139,	-- Highland Drake: Large Spotted Pattern (MM!)
+					197153,	-- Highland Drake: Bladed Tail (MM!)
+					203350, -- Winding Slitherdrake: Blue Scales (MM!)
 				}},
 			}),
 			n(186554, {	-- Nunvuq
@@ -872,25 +863,18 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					------ RENOWN 26 ------
 					199855,	-- Burgandy Fisherman's Pack
 					199863,	-- Burgandy Tuskarr Backpack
-					199859,	-- Burgandy Tuskarr Traders Pack
+					199859,	-- Burgandy Tuskarr Trader's Pack
 					199854,	-- Dark Fisherman's Pack
 					199862,	-- Dark Tuskarr Backpack
-					199858,	-- Dark Tuskarr Traders Pack
+					199858,	-- Dark Tuskarr Trader's Pack
 					199852,	-- Rustic Fisherman's Pack
 					199860,	-- Rustic Tuskarr Backpack
-					199856,	-- Rustic Tuskarr Traders Pack
+					199856,	-- Rustic Tuskarr Trader's Pack
 					199853,	-- Tan Fisherman's Pack
 					199861,	-- Tan Tuskarr Backpack
-					199857,	-- Tan Tuskarr Traders Pack
+					199857,	-- Tan Tuskarr Trader's Pack
 				}},
 			}),
 		}),
-	}),
-})));
-
-root(ROOTS.HiddenQuestTriggers, tier(DF_TIER, bubbleDownSelf({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
-	n(ISKAARA_TUSKARR, {
-		-- Ensembles
-		q(70804),	-- Ensemble: Tuskarr Trader's Leather Armor
 	}),
 })));

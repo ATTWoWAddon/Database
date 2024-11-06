@@ -1,36 +1,18 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
--- #if ANYCLASSIC
 local legendary = function(itemID, creatureID)
-	if creatureID then
-		return i(itemID, {
-			["cr"] = creatureID,
-		});
-	else
-		return i(itemID);
-	end
+	return i(itemID, {
+		["collectible"] = false,
+		["cr"] = creatureID,
+		-- #if NOT ANYCLASSIC
+		["u"] = UNLEARNABLE,
+		-- #endif
+	});
 end;
--- #else
-local legendary = function(itemID, creatureID)
-	if creatureID then
-		return i(itemID, {
-			["collectible"] = false,
-			["cr"] = creatureID,
-			["u"] = 15,
-		});
-	else
-		return i(itemID, {
-			["collectible"] = false,
-			["u"] = 15,
-		});
-	end
-end;
--- #endif
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_TWO, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_TWO, {
 	inst(749, {	-- The Eye
 		["lore"] = "With Outland serving as the strategic battlefront in the ongoing Burning Crusade, the Naaru used Tempest Keep to reach the shattered land. However, when the Naaru set out from their stronghold, Prince Kael'thas and his blood elves quickly raided the dimensional fortress and assumed control over its satellite structures. Guided by some unknown purpose, Kael'thas manipulates the keep's otherworldly technologies, using them to harness the chaotic energies of the Netherstorm itself.",
-		["zone-text-areaID"] = 3842,	-- Tempest Keep
 		["coord"] = { 73.73, 63.71, NETHERSTORM },	-- The Eye, Netherstorm
 		["mapID"] = TEMPEST_KEEP_THE_EYE,
 		-- #if BEFORE WRATH
@@ -91,7 +73,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_TWO, {
 				["creatureID"] = 19514,
 				["groups"] = {
 					i(97557, {	-- Phoenix Hawk Hatchling (PET!)
-						["timeline"] = { "added 5.3.0.16758" },
+						["timeline"] = { ADDED_5_3_0 },
 					}),
 					i(29949),	-- Arcanite Steam-Pistol
 					i(29948),	-- Claw of the Phoenix
@@ -116,7 +98,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_TWO, {
 				["creatureID"] = 19516,
 				["groups"] = {
 					i(97555, {	-- Pocket Reaver (PET!)
-						["timeline"] = { "added 5.3.0.16758" },
+						["timeline"] = { ADDED_5_3_0 },
 					}),
 					i(30248, {	-- Pauldrons of the Vanquished Champion
 						["classes"] = { PALADIN, ROGUE, SHAMAN },
@@ -142,7 +124,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_TWO, {
 				["creatureID"] = 18805,
 				["groups"] = {
 					i(97556, {	-- Lesser Voidcaller (PET!)
-						["timeline"] = { "added 5.3.0.16758" },
+						["timeline"] = { ADDED_5_3_0 },
 					}),
 					i(29981),	-- Ethereum Life-Staff
 					i(29962),	-- Heartrazor
@@ -175,13 +157,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_TWO, {
 						-- #endif
 					}),
 					ach(5089, {	-- Tempest Keep Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					ach(885, {	-- Ashes of Al'ar
 						["provider"] = { "i", 32458 },	-- Ashes of Al'ar
-						-- #if BEFORE WRATH
-						["description"] = "Obtain the Ashes of Al'ar from Kael'thas Sunstrider in Tempest Keep.",
-						-- #endif
 						["filterID"] = MOUNTS,
 					}),
 					i(32458),	-- Ashes of Al'ar (MOUNT!)
@@ -209,11 +188,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_TWO, {
 					i(29997),	-- Band of the Ranger-General
 					i(30320, {	-- Bundle of Nether Spikes
 						["description"] = "Contains 6 stacks of Nether Spike arrows.",
-						["timeline"] = { "removed 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 						["cr"] = 21268,	-- Netherstrand Longbow
 						["groups"] = {
 							i(30319, {	-- Nether Spike
-								["timeline"] = { "removed 4.0.1" },
+								["timeline"] = { REMOVED_4_0_1 },
 							}),
 						},
 					}),
@@ -225,7 +204,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_TWO, {
 					legendary(30313, 21274),	-- Staff of Disintegration
 					legendary(30311, 21272),	-- Warp Slicer
 					i(32896, {	-- Scroll of the Sun
-						["timeline"] = { "removed 4.0.3" },	-- TODO: Determine exactly when to remove this.
+						["timeline"] = { REMOVED_4_0_3 },	-- TODO: Determine exactly when to remove this.
 						["groups"] = {
 							i(32897),	-- Mark of the Illidari
 						},

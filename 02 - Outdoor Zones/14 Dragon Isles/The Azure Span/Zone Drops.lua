@@ -4,6 +4,18 @@
 root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	m(THE_AZURE_SPAN, {
 		n(ZONE_DROPS, {
+			i(201368, {	-- Brackenhide Hollow Barbslinger
+				["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+			}),
+			i(201363, {	-- Brackenhide Hollow Maul
+				["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+			}),
+			i(201365, {	-- Brackenhide Gnoll Guard
+				["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+			}),
+			i(201370, {	-- Brackenhide Skullcracker
+				["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+			}),
 			i(201422, {	-- Flash Frozen Meat
 				["crs"] = {
 					189653,	-- Snowhide Brute
@@ -29,11 +41,29 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				},
 				["coord"] = { 23.0, 43.6, THE_AZURE_SPAN },
 			}),
+			i(201369, {	-- Hollow Greatwood Pestilence
+				["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+			}),
+			i(201367, {	-- Hollow Hunter's Sticker
+				["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+			}),
+			i(201373, {	-- Imbu Net Cutter
+				["description"] = "Drops from Primal Mobs spawning around Tuskarr Chests or from Tuskarr Chests themselves.",
+			}),
+			i(201372, {	-- Imbu Tuskarr Axe
+				["description"] = "Drops from Primal Mobs spawning around Tuskarr Chests or from Tuskarr Chests themselves.",
+			}),
+			i(201376, {	-- Imbu Tuskarr Mace
+				["description"] = "Drops from Primal Mobs spawning around Tuskarr Chests or from Tuskarr Chests themselves.",
+			}),
+			i(201375, {	-- Imbu Warrior's Club
+				["description"] = "Drops from Primal Mobs spawning around Tuskarr Chests or from Tuskarr Chests themselves.",
+			}),
 			i(193882, {	-- Pattern: Acidic Hailstone Treads (RECIPE!)
 				["description"] = "Drops from Decayed Creatures around Bracken Hollow.",
 			}),
 			i(194312, {	-- Pattern: Gnoll Tent (RECIPE!)
-				["description"] = "Drops from Gnolls.",
+				["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
 			}),
 			i(193868, {	-- Pattern: Slimy Expulsion Boots (RECIPE!)
 				["description"] = "Drops from Decayed Creatures around Bracken Hollow.",
@@ -50,6 +80,15 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 			}),
 			i(198907),	-- Technique: Illusion Parchment: Chilling Wind (RECIPE!)
 			i(201735),	-- Technique: Highland Drake: Silver and Blue Armor (RECIPE!)
+			i(201378, {	-- Tuskarr Angler's Crossbow
+				["description"] = "Drops from Primal Mobs spawning around Tuskarr Chests or from Tuskarr Chests themselves.",
+			}),
+			i(201377, {	-- Tuskarr Elder's Staff
+				["description"] = "Drops from Primal Mobs spawning around Tuskarr Chests or from Tuskarr Chests themselves.",
+			}),
+			i(201374, {	-- Tuskarr Fishing Pike
+				["description"] = "Drops from Primal Mobs spawning around Tuskarr Chests or from Tuskarr Chests themselves.",
+			}),
 			i(201421, {	-- Tuskarr Jerky
 				["crs"] = {
 					195337,	-- Chief Dead Eye

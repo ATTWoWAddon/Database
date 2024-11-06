@@ -7,6 +7,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 			n(ACHIEVEMENTS, {
 				ach(17427),	-- Winterpelt Conversationalist
 			}),
+			n(MAILBOX, {
+				i(204254),	-- Sonova's Request
+			}),
 			n(QUESTS, {
 				-- Intro quests
 				q(72546, {	-- Academic Assistance
@@ -21,6 +24,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 					["minReputation"] = { FACTION_WINTERPELT_FURBOLG, UNFRIENDLY+2050 },
 					["provider"] = { "n", 189401 },	-- Sonova Snowden
 					["coord"] = { 65.4, 15.9, THE_AZURE_SPAN },
+					["g"] = {
+						i(202246),	-- Winterpelt Jewelry
+					},
 				}),
 				q(72588, {	-- Primalist Pillagers
 					["sourceQuests"] = {
@@ -29,6 +35,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 					["minReputation"] = { FACTION_WINTERPELT_FURBOLG, UNFRIENDLY+2050 },
 					["provider"] = { "n", 189401 },	-- Sonova Snowden
 					["coord"] = { 65.4, 15.9, THE_AZURE_SPAN },
+					["g"] = {
+						i(202244),	-- Frosty Foraged Foods (QI!)
+					},
 				}),
 
 				-- First time + Repeatable handins
@@ -76,7 +85,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 					["sourceQuests"] = {
 						72589,	-- Honor Their Sacrifice
 						72588,	-- Primalist Pillagers
-					 },
+					},
 					--["minReputation"] = { TODO, TODO },	-- Language Furbolg 25
 					["provider"] = { "n", 201065 },	-- Sonova Snowden
 					["coord"] = { 66.9, 12.7, THE_AZURE_SPAN },
@@ -115,12 +124,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 					--["minReputation"] = { TODO, TODO },	-- Language Furbolg 50
 					["provider"] = { "n", 199271 },	-- Elder Mhaz
 					["coord"] = { 57.4, 21.1, THE_AZURE_SPAN },
+					["g"] = {
+						i(202181),	-- Best-root Tuber (QI!)
+					},
 				}),
 				q(72553, {	-- More Effort, More Reward
 					["sourceQuests"] = { 72551 },	-- A Living History
 					--["minReputation"] = { TODO, TODO },	-- Language Furbolg 50
 					["provider"] = { "n", 199272 },	-- Matron Fherg
 					["coord"] = { 57.4, 20.9, THE_AZURE_SPAN },
+					["g"] = {
+						i(202185),	-- Chillwrought Worm Meat (QI!)
+					},
 				}),
 				q(72554, {	-- Break Him
 					["sourceQuests"] = {
@@ -169,8 +184,8 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 				q(72945, {	-- Our Path Ahead
 					["sourceQuests"] = { 72558 },	-- Our Honored Ancestors
 					--["minReputation"] = { TODO, TODO },	-- Language Furbolg 75
-					["provider"] = { "n", 199996 },	-- Ancestor Brazzok
-					["coord"] = { 66.0, 12.7, THE_AZURE_SPAN },
+					["provider"] = { "n", 199300 },	-- Ancestor Molg
+					["coord"] = { 67.0, 13.1, THE_AZURE_SPAN },
 				}),
 				q(72559, {	-- History Heist
 					["sourceQuests"] = { 72558 },	-- Our Honored Ancestors
@@ -179,6 +194,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 					["coord"] = { 67.0, 11.9, THE_AZURE_SPAN },
 					["g"] = {
 						i(202264),	-- Defender of the Winterpelt
+						i(198834),	-- Scribbled Bark Chunks (QI!)
 					},
 				}),
 
@@ -227,10 +243,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 15 }},
 							}),
 						}, {	-- Honored
-							i(197006, {	-- Cliffside Wylderdrake: Plated Nose (DM!)
+							i(197006, {	-- Cliffside Wylderdrake: Plated Nose (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 50 }},
 							}),
-							i(197129, {	-- Highland Drake: Sleek Horns (DM!)
+							i(197129, {	-- Highland Drake: Sleek Horns (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 50 }},
 							}),
 							i(204354, {	-- Hollowed Furbolg Food Pack
@@ -242,17 +258,17 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 							i(202282, {	-- Winterpelt Mending Totem
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 150 }},
 							}),
-							i(202273, {	-- Renewed Proto-Drake: Stubby Snout (DM!)
+							i(202273, {	-- Renewed Proto-Drake: Stubby Snout (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 50 }},
 							}),
-							i(197583, {	-- Windborne Velocidrake: Exposed Finned Back (DM!)
+							i(197583, {	-- Windborne Velocidrake: Exposed Finned Back (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 50 }},
 							}),
 						}, {	-- Revered
-							i(196995, {	-- Cliffside Wylderdrake: Spiked Horns (DM!)
+							i(196995, {	-- Cliffside Wylderdrake: Spiked Horns (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 100 }},
 							}),
-							i(197102, {	-- Highland Drake: Horned Chin (DM!)
+							i(197102, {	-- Highland Drake: Horned Chin (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 100 }},
 							}),
 							i(204355, {	-- Hollowed Winterpelt Food Pack
@@ -264,13 +280,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 							i(202289, {	-- Recipe: Firewater Sorbet (RECIPE!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 750 }},
 							}),
-							i(202279, {	-- Renewed Proto-Drake: Malevolent Horns (DM!)
+							i(202279, {	-- Renewed Proto-Drake: Malevolent Horns (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 100 }},
 							}),
 							i(203734, {	-- Snow Blanket (TOY!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 200 }},
 							}),
-							i(197629, {	-- Windborne Velocidrake: Spiked Neck (DM!)
+							i(197629, {	-- Windborne Velocidrake: Spiked Neck (MM!)
 								["cost"] = {{ "c", DRAGON_SUPPLIES, 100 }},
 							}),
 						}, {	-- Exalted
@@ -291,17 +307,20 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = ADDED_10_0_7 }, {
 		}),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, {
-	m(THE_AZURE_SPAN, {
-		q(73048),	-- Tell Little Toz 'Make sure to marry Fuzzy Feet immediately' during 'Ancestral Advice' (questID 72941)
-		q(73049),	-- Tell Little Toz 'Make sure to marry Bring Fur immediately' during 'Ancestral Advice' (questID 72941)
-		q(73050),	-- Tell Little Toz 'Make sure to murder Fuzzy Feet immediately' during 'Ancestral Advice' (questID 72941)
-		q(73051),	-- Tell Little Toz 'Make sure to murder Bring Fur immediately' during 'Ancestral Advice' (questID 72941)
-		q(73184),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain riches' during 'Our Path Ahead' (questID 72945)
-		q(73185),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain weapons' during 'Our Path Ahead' (questID 72945)
-		q(73186),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain a new home' during 'Our Path Ahead' (questID 72945)
-		q(73187),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain allies' during 'Our Path Ahead' (questID 72945)
-		q(73547),	-- Let Saza say goodbye to you after summoning the Ancients. Try not to cry like a little girl.
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }, {
+	m(DRAGON_ISLES, {
+		m(THE_AZURE_SPAN, {
+			header(HEADERS.Faction, FACTION_WINTERPELT_FURBOLG, {
+				q(73048),	-- Tell Little Toz 'Make sure to marry Fuzzy Feet immediately' during 'Ancestral Advice' (questID 72941)
+				q(73049),	-- Tell Little Toz 'Make sure to marry Bring Fur immediately' during 'Ancestral Advice' (questID 72941)
+				q(73050),	-- Tell Little Toz 'Make sure to murder Fuzzy Feet immediately' during 'Ancestral Advice' (questID 72941)
+				q(73051),	-- Tell Little Toz 'Make sure to murder Bring Fur immediately' during 'Ancestral Advice' (questID 72941)
+				q(73184),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain riches' during 'Our Path Ahead' (questID 72945)
+				q(73185),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain weapons' during 'Our Path Ahead' (questID 72945)
+				q(73186),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain a new home' during 'Our Path Ahead' (questID 72945)
+				q(73187),	-- Tell Kranac Sagesnow 'The Winterpelt must obtain allies' during 'Our Path Ahead' (questID 72945)
+				q(73547),	-- Let Saza say goodbye to you after summoning the Ancients. Try not to cry like a little girl.
+			}),
+		}),
 	}),
-}));
+})));

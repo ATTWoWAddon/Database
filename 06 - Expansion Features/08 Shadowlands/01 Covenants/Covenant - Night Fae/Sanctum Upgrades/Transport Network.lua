@@ -2,14 +2,14 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
 	n(NIGHT_FAE, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_ardenweald01",
+			["icon"] = 3641394,
 			["g"] = {
 				n(TRANSPORT_NETWORK, {
-					["icon"] = "Interface\\Icons\\Sanctum_features_transportationnetwork_ardenweald",
-					["g"] = sharedData({ ["icon"] = "Interface\\Icons\\Sanctum_features_transportationnetwork_ardenweald" }, {
+					["icon"] = 3854017,
+					["g"] = sharedData({ ["icon"] = 3854017 }, {
 						n(ACHIEVEMENTS, {
 							ach(14775, {	-- Mush Appreciated
 								["maps"] = { 1819 },	-- Fungal Terminus
@@ -19,7 +19,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							}),
 						}),
 						n(FACTIONS, {
-							faction(2463, {	-- Marasmius
+							faction(FACTION_MARASMIUS, {	-- Marasmius
 								["crs"] = { 167455 },	-- Marasmius
 								["maps"] = { 1819 },	-- Fungal Terminus
 							}),
@@ -42,6 +42,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 									["sourceQuests"] = { 57454 },	-- Silence in the Stalks
 									["provider"] = { "n", 157710 },	-- Cortinarius
 									["coord"] = { 33.2, 36.3, ARDENWEALD },
+									["g"] = {
+										i(171989),	-- Pouch of Spores (QI!)
+									},
 								}),
 								q(57463, {	-- My Way or the Hyphae
 									["sourceQuests"] = { 57459 },	-- Fighting For Fungus
@@ -52,6 +55,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 									["sourceQuests"] = { 57454 },	-- Silence in the Stalks
 									["provider"] = { "n", 157710 },	-- Cortinarius
 									["coord"] = { 33.2, 36.3, ARDENWEALD },
+									["g"] = {
+										i(172084),	-- Fungal Beacon (QI!)
+									},
 								}),
 								q(57454, {	-- Silence in the Stalks
 									["sourceQuests"] = { 63073 },	-- A Mycelial Network
@@ -62,6 +68,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 									["sourceQuests"] = { 57463 },	-- My Way or the Hyphae
 									["provider"] = { "n", 166982 },	-- Marasmius
 									["coord"] = { 29.5, 34.6, ARDENWEALD },
+									["g"] = {
+										i(178033),	-- Talkative Spore (QI!)
+									},
 								}),
 							}),
 							n(QUESTS, sharedData({
@@ -70,10 +79,26 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 								["coord"] = { 53.6, 52.7, 1819 },	-- The Ring
 								["isDaily"] = true,
 							}, {
-								q(62606),	-- A Blackthorn Blend
-								q(62608),	-- A Royal Treat
-								q(60175),	-- A Taste of Tirna Noch
-								q(62607),	-- Glittering Gritty Goodness
+								q(62606, {	-- A Blackthorn Blend
+									["g"] = {
+										i(183840),	-- Blackthorn Clay (QI!)
+									},
+								}),
+								q(62608, {	-- A Royal Treat
+									["g"] = {
+										i(183837),	-- Royal Peat (QI!)
+									},
+								}),
+								q(60175, {	-- A Taste of Tirna Noch
+									["g"] = {
+										i(178215),	-- Leafy Loam (QI!)
+									},
+								}),
+								q(62607, {	-- Glittering Gritty Goodness
+									["g"] = {
+										i(183836),	-- Shimmersilt (QI!)
+									},
+								}),
 								q(62614),	-- Hyphae Patrol: Eventide Grove
 								q(62615),	-- Hyphae Patrol: Gossamer Cliffs
 								q(62611),	-- Hyphae Patrol: Heartwood Grove
@@ -102,14 +127,29 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							}, {
 								q(62466),	-- Go Beyond! (1)
 								q(62263),	-- Go Beyond! (2)
-								q(62459),	-- Go Beyond! (3)
-								q(62417),	-- Go Beyond! (4)
+								q(62459, {	-- Go Beyond! (3)
+									["g"] = {
+										i(183725),	-- Moth Net (QI!)
+									},
+								}),
+								q(62417, {	-- Go Beyond! (4)
+									["g"] = {
+										i(183697),	-- Night Lily (QI!)
+									},
+								}),
 								q(60188, {	-- Go Beyond! (5)
-									i(178464),	-- Discarded Harp
-									i(178465),	-- Giant Silk Bundle
+									["g"] = {
+										i(178464),	-- Discarded Harp (QI!)
+										i(178465),	-- Giant Silk Bundle (QI!)
+									},
 								}),
 								q(62400),	-- Go Beyond! (6)
-								q(62465),	-- Go Beyond! (7)
+								q(62465, {	-- Go Beyond! (7)
+									["g"] = {
+										i(183792),	-- Artisan's Implement (QI!)
+										i(183791),	-- Pilfered Materials (QI!)
+									},
+								}),
 							})),
 						}),
 						n(VENDORS, {
@@ -137,37 +177,23 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 										i(183801, {	-- Vibrant Flutterwing (MOUNT!)
 											["cost"] = { { "c", ANIMA, 5000 } },
 										}),
-										i(184118, {	-- Arsenal: Winterborn Weapons
+										iensemble(184118, {	-- Arsenal: Winterborn Weapons
 											["cost"] = { { "c", ANIMA, 30000 } },
-											["g"] = {
-												i(180075),	-- Winterborn Bow
-												i(179496),	-- Winterborn Fang
-												i(179571),	-- Winterborn Harp
-												i(179582),	-- Winterborn Jaws
-												i(179545),	-- Winterborn Maul
-												i(179556),	-- Winterborn Scepter
-												i(182353),	-- Winterborn Shillelagh
-												i(179525),	-- Winterborn Spear
-												i(180001),	-- Winterborn Staff
-												i(180018),	-- Winterborn Wand
-												i(180256),	-- Winterborn Warglaive
-												i(179607),	-- Winterborn Bulwark (According to Wowhead comments 9.0.5 hotfix this)
-											},
 										}),
 										i(181305, {	-- Faewoven Bulb
 											["cost"] = { { "c", ANIMA, 3500 } },
 										}),
 										i(182661, {	-- Fun Guss (PET!)
-											["cost"] = { { "i", 163036, 250 } },
+											["cost"] = { { "i", POLISHED_PET_CHARM, 250 } },
 										}),
 										i(180638, {	-- Fuzzy Shimmermoth (PET!)
-											["cost"] = { { "i", 163036, 250 } },
+											["cost"] = { { "i", POLISHED_PET_CHARM, 250 } },
 										}),
 										i(181303, {	-- Night Courtier's Branches
 											["cost"] = { { "c", ANIMA, 3500 } },
 										}),
 										i(182674, {	-- Sir Reginald
-											["cost"] = { { "i", 163036, 250 } },
+											["cost"] = { { "i", POLISHED_PET_CHARM, 250 } },
 										}),
 										i(182181, {	-- Tiger Soul
 											["cost"] = { { "c", ANIMA, 1500 } },

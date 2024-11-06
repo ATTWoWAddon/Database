@@ -1,21 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	inst(547, {	-- Auchindoun
 		["lvl"] = 94,
 		["mapID"] = 593,
 		["coord"] = { 46.27, 73.92, TALADOR },
 		["groups"] = {
-			n(ACHIEVEMENTS, {
-				ach(9838, {	-- What A Strange, Interdimensional Trip It's Been
-					["collectible"] = false,
-					["g"] = {
-						crit(8),	-- Teron'gor
-					},
-				}),
-			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1185, {	-- Vigilant Kaathar
 					["crs"] = { 75839 },
 					["sym"] = {
@@ -81,7 +73,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(1185, {	-- Vigilant Kaathar
 					["crs"] = { 75839 },
 					["sym"] = {
@@ -99,7 +91,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, NECK},
 					},
 					["g"] = {
-						ach(9023),	-- ...They All Fall Down
+						ach(9023, {	-- ...They All Fall Down
+							["crs"] = { 76283 },	-- Malefic Defender
+						}),
 						i(110046),	-- Hammer of the Soulbinder
 						i(110047),	-- Soulcutter Mageblade
 					},
@@ -135,7 +129,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(1185, {	-- Vigilant Kaathar
 					["crs"] = { 75839 },
 					["sym"] = {
@@ -190,7 +184,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35960),	-- Auchindoun Reward Quest
 		q(34539),	-- Draenor Challenge Mode - Bronze Addition (Nth)
 		q(34527),	-- Draenor Challenge Mode - Consolation (Nth)

@@ -118,61 +118,60 @@ local T5_PRIDEFUL_GROUP = {
 	i(181316),		-- Silvertip Dredwing (MOUNT!)
 };
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
 	n(NIGHT_FAE, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_ardenweald01",
+			["icon"] = 3641394,
 			["g"] = {
 				n(QUEENS_CONSERVATORY, {
 					["maps"] = { 1662 },	-- Queen's Conservatory
 					["g"] = {
 						n(ACHIEVEMENTS, {
 							ach(14676, {	-- Divine Spirit Savior
-								crit(1, {	-- Infuse Divine Martial Spirit
+								crit(51504, {	-- Infuse Divine Martial Spirit
 									["provider"] = { "i", 178878 },	-- Divine Martial Spirit
 								}),
-								crit(2, {	-- Infuse Divine Dutiful Spirit
+								crit(51505, {	-- Infuse Divine Dutiful Spirit
 									["provider"] = { "i", 178879 },	-- Divine Dutiful Spirit
 								}),
-								crit(3, {	-- Infuse Divine Prideful Spirit
+								crit(51506, {	-- Infuse Divine Prideful Spirit
 									["provider"] = { "i", 178884 },	-- Divine Prideful Spirit
 								}),
-								crit(4, {	-- Infuse Divine Untamed Spirit
+								crit(51507, {	-- Infuse Divine Untamed Spirit
 									["provider"] = { "i", 177700 },	-- Divine Untamed Spirit
 								}),
 							}),
 							ach(14675, {	-- Spirit Talker
-								crit(1, {	-- Infuse Greater Martial Spirit
+								crit(51500, {	-- Infuse Greater Martial Spirit
 									["provider"] = { "i", 178877 },	-- Greater Martial Spirit
 								}),
-								crit(2, {	-- Infuse Greater Dutiful Spirit
+								crit(51501, {	-- Infuse Greater Dutiful Spirit
 									["provider"] = { "i", 178880 },	-- Greater Dutiful Spirit
 								}),
-								crit(3, {	-- Infuse Prideful Spirit [This one is missing 'Greater' in-game]
+								crit(51502, {	-- Infuse Prideful Spirit [This one is missing 'Greater' in-game]
 									["provider"] = { "i", 178883 },	-- Greater Prideful Spirit
 								}),
-								crit(4, {	-- Infuse Greater Untamed Spirit
+								crit(51503, {	-- Infuse Greater Untamed Spirit
 									["provider"] = { "i", 177699 },	-- Greater Untamed Spirit
 								}),
 							}),
 							ach(14670, {	-- That's the Spirit
-								-- [These are in a different order]
-								crit(1, {	-- Infuse Untamed Spirit
+								crit(51499, {	-- Infuse Untamed Spirit
 									["provider"] = { "i", 177698 },	-- Untamed Spirit
 								}),
-								crit(2, {	-- Infuse Martial Spirit
-									["provider"] = { "i", 178874 },	-- Martial Spirit
-								}),
-								crit(3, {	-- Infuse Dutiful Spirit
+								crit(51497, {	-- Infuse Dutiful Spirit
 									["provider"] = { "i", 178881 },	-- Dutiful Spirit
 								}),
-								crit(4, {	-- Infuse Prideful Spirit [Yes this one is missing 'Greater' in-game]
+								crit(51496, {	-- Infuse Martial Spirit
+									["provider"] = { "i", 178874 },	-- Martial Spirit
+								}),
+								crit(51498, {	-- Infuse Prideful Spirit [Yes this one is missing 'Greater' in-game]
 									["provider"] = { "i", 178882 },	-- Prideful Spirit
 								}),
 							}),
 						}),
 						n(TIER_ONE, {
-							["icon"] = "Interface\\Icons\\Ability_ardenweald_shaman",
+							["icon"] = 3636849,
 							["g"] = {
 								n(QUESTS, {
 									q(62624, {	-- The Queen's Conservatory
@@ -223,7 +222,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							},
 						}),
 						n(TIER_TWO, {
-							["icon"] = "Interface\\Icons\\Ability_ardenweald_deathknight",
+							["icon"] = 3636837,
 							["g"] = {
 								n(ACHIEVEMENTS, {
 									ach(14677),	-- Spiritual Observations
@@ -266,24 +265,44 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 										["provider"] = { "n", 174273 },	-- Falir the Shifting
 										["coord"] = { 24.0, 53.3, 1662 },
 										["isWeekly"] = true,
+										["g"] = {
+											i(176921),	-- Temporal Leaves
+											i(176922),	-- Wild Nightbloom
+											i(176832),	-- Wildseed Root Grain
+										},
 									}),
 									q(62450, {	-- A Spirit's Heart
 										["sourceQuests"] = { 62454 },	-- A Rare and Unusual Spirit (2)
 										["provider"] = { "n", 174329 },	-- Falir the Shifting
 										["coord"] = { 24.0, 53.3, 1662 },
 										["isWeekly"] = true,
+										["g"] = {
+											i(176921),	-- Temporal Leaves
+											i(176922),	-- Wild Nightbloom
+											i(176832),	-- Wildseed Root Grain
+										},
 									}),
 									q(62452, {	-- A Spirit's Might
 										["sourceQuests"] = { 62454 },	-- A Rare and Unusual Spirit (2)
 										["provider"] = { "n", 174329 },	-- Falir the Shifting
 										["coord"] = { 24.0, 53.3, 1662 },
 										["isWeekly"] = true,
+										["g"] = {
+											i(176921),	-- Temporal Leaves
+											i(176922),	-- Wild Nightbloom
+											i(176832),	-- Wildseed Root Grain
+										},
 									}),
 									q(62445, {	-- A Spirit's Pride
 										["sourceQuests"] = { 62454 },	-- A Rare and Unusual Spirit (2)
 										["provider"] = { "n", 174329 },	-- Falir the Shifting
 										["coord"] = { 24.0, 53.3, 1662 },
 										["isWeekly"] = true,
+										["g"] = {
+											i(176921),	-- Temporal Leaves
+											i(176922),	-- Wild Nightbloom
+											i(176832),	-- Wildseed Root Grain
+										},
 									}),
 									q(62442, {	-- Aid the Covenant
 										["sourceQuests"] = { 59999 },	-- Rebirth of the Grove
@@ -352,7 +371,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							},
 						}),
 						n(TIER_THREE, {
-							["icon"] = "Interface\\Icons\\Ability_ardenweald_mage",
+							["icon"] = 3636841,
 							["g"] = {
 								n(ACHIEVEMENTS, {
 									ach(14780),	-- Meditation Master
@@ -426,7 +445,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							},
 						}),
 						n(TIER_FOUR, {
-							["icon"] = "Interface\\Icons\\Ability_ardenweald_priest",
+							["icon"] = 3636847,
 							["g"] = {
 								n(ACHIEVEMENTS, {
 									ach(14789),	-- All Spirits Great and Small
@@ -474,7 +493,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							},
 						}),
 						n(TIER_FIVE, {
-							["icon"] = "Interface\\Icons\\Ability_ardenweald_paladin_winter",
+							["icon"] = 3636846,
 							["g"] = {
 								o(350978, {	-- Queen's Conservatory Cache
 									header(HEADERS.Item, 178879, {	-- Divine Dutiful Spirit
@@ -502,74 +521,21 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 									n(174403, {	-- Seed Merchant Daybreak <Queen's Conservatory>
 										["coord"] = { 34.6, 60.6, 1662 },
 										["g"] = {
-											i(184111, {	-- Ensemble: Conservator's Guise
+											iensemble(184111, {	-- Ensemble: Conservator's Guise
 												["cost"] = { { "c", ANIMA, 12500 } },
-												["classes"] = { HUNTER, SHAMAN },
-												["g"] = {
-													i(181933),	-- Conservator's Scale Armguards
-													i(181939),	-- Conservator's Scale Boots
-													i(181934),	-- Conservator's Scale Buckle
-													i(181938),	-- Conservator's Scale Gloves
-													i(181880, {	-- Conservator's Scale Greatcloak
-														["description"] = "This cloak is awarded from the Queen's Conservatory Rank 5 Set if purchased by a Mail Character.",
-													}),
-													i(181937),	-- Conservator's Scale Guise
-													i(181940),	-- Conservator's Scale Hauberk
-													i(181936),	-- Conservator's Scale Legguards
-													i(181935),	-- Conservator's Scale Spaulders
-													i(181978),	-- Conservator's Scale Vestments
-												},
+												["classes"] = MAIL_CLASSES,
 											}),
-											i(184112, {	-- Ensemble: Conservator's Raiment
+											iensemble(184112, {	-- Ensemble: Conservator's Raiment
 												["cost"] = { { "c", ANIMA, 12500 } },
-												["classes"] = { DRUID, ROGUE, MONK, DEMONHUNTER },
-												["g"] = {
-													i(179781),	-- Conservator's Leather Anklewraps
-													i(179784),	-- Conservator's Leather Armguards
-													i(179799),	-- Conservator's Leather Belt
-													i(179802),	-- Conservator's Leather Bracers
-													i(179790),	-- Conservator's Leather Britches
-													i(179778),	-- Conservator's Leather Cape
-													i(179787),	-- Conservator's Leather Crest
-													i(179796, {	-- Conservator's Leather Mantle
-														["description"] = "This cloak is awarded from the Queen's Conservatory Rank 5 Set if purchased by a Leather Character.",
-													}),
-													i(179793),	-- Conservator's Leather Vestment
-												},
+												["classes"] = LEATHER_CLASSES,
 											}),
-											i(184113, {	-- Ensemble: Conservator's Regalia
+											iensemble(184113, {	-- Ensemble: Conservator's Regalia
 												["cost"] = { { "c", ANIMA, 12500 } },
-												["classes"] = { PRIEST, MAGE, WARLOCK },
-												["g"] = {
-													i(179675),	-- Conservator's Silken Amice
-													i(179669),	-- Conservator's Silken Cowl
-													i(179681),	-- Conservator's Silken Cuffs
-													i(179625, {	-- Conservator's Silken Drape
-														["description"] = "This cloak is awarded from the Queen's Conservatory Rank 5 Set if purchased by a Cloth Character.",
-													}),
-													i(179666),	-- Conservator's Silken Handwraps
-													i(179672),	-- Conservator's Silken Leggings
-													i(179655),	-- Conservator's Silken Raiment
-													i(179662),	-- Conservator's Silken Sandals
-													i(179678),	-- Conservator's Silken Sash
-												},
+												["classes"] = CLOTH_CLASSES,
 											}),
-											i(184110, {	-- Ensemble: Conservator's Warbark
+											iensemble(184110, {	-- Ensemble: Conservator's Warbark
 												["cost"] = { { "c", ANIMA, 12500 } },
-												["classes"] = { PALADIN, WARRIOR, DEATHKNIGHT },
-												["g"] = {
-													i(179902),	-- Conservator's Ironwood Chestplate
-													i(179633, {	-- Conservator's Ironwood Cloak
-														["description"] = "This cloak is awarded from the Queen's Conservatory Rank 5 Set if purchased by a Plate Character.",
-													}),
-													i(179900),	-- Conservator's Ironwood Gauntlets
-													i(179896),	-- Conservator's Ironwood Girdle
-													i(179899),	-- Conservator's Ironwood Greathelm
-													i(179898),	-- Conservator's Ironwood Greaves
-													i(179897),	-- Conservator's Ironwood Pauldrons
-													i(179901),	-- Conservator's Ironwood Sabatons
-													i(179895),	-- Conservator's Ironwood Vambraces
-												},
+												["classes"] = PLATE_CLASSES,
 											}),
 										},
 									}),
@@ -588,12 +554,3 @@ for _,g in ipairs({T2_DUTIFUL_GROUP,T2_MARTIAL_GROUP,T2_UNTAMED_GROUP,T2_PRIDEFU
 		t.customCollect = nil;
 	end
 end
-
-root(ROOTS.NeverImplemented, {
-	tier(SL_TIER, {
-		n(NIGHT_FAE, {
-			i(179775),	-- Conservator's Leather Tunic (reported as not being awarded from ensemble 184112)
-			i(179659),	-- Conservator's Silken Tunic
-		})
-	}),
-});

@@ -8,7 +8,7 @@ for filterID,filterData in pairs({
 	-- Armor Types
 	[1] = {
 		readable = "Held in Off-Hand",
-		icon = "Interface/Icons/inv_misc_orb_01",
+		icon = 134333,
 		constant = "HELD_IN_OFF_HAND",
 		text = {
 			en = [[~INVTYPE_HOLDABLE]],
@@ -21,7 +21,7 @@ for filterID,filterData in pairs({
 		text = {
 			-- #if AFTER LEGION
 			-- TODO: Check when this was changed from Bucklers
-			en = [[~GetItemSubClassInfo(4,5)]],
+			en = WOWAPI_GetItemSubClassInfo(4,5),
 			-- #else
 			en = "Cosmetic",
 			-- #endif
@@ -29,12 +29,12 @@ for filterID,filterData in pairs({
 	},
 	[3] = {
 		readable = "Cloaks",
-		icon = "Interface/Icons/inv_misc_cape_11",
+		icon = 133763,
 		constant = "CLOAKS",
 		text = {
 			-- #if AFTER LEGION
 			-- TODO: Check when this was added
-			en = [[~GetItemSubClassInfo(8,3)]],
+			en = WOWAPI_GetItemSubClassInfo(8,3),
 			-- #else
 			en = [[~INVTYPE_CLOAK]],	-- This actually says "Back", there isn't a great alternative.
 			-- #endif
@@ -42,47 +42,47 @@ for filterID,filterData in pairs({
 	},
 	[4] = {
 		readable = "Cloth",
-		icon = "Interface/Icons/inv_chest_cloth_21",
+		icon = 132662,
 		constant = "CLOTH",
 		text = {
-			en = [[~GetItemSubClassInfo(4,1)]],
+			en = WOWAPI_GetItemSubClassInfo(4,1),
 		},
 	},
 	[5] = {
 		readable = "Leather",
-		icon = "Interface/Icons/inv_chest_leather_09",
+		icon = 132724,
 		constant = "LEATHER",
 		text = {
-			en = [[~GetItemSubClassInfo(4,2)]],
+			en = WOWAPI_GetItemSubClassInfo(4,2),
 		},
 	},
 	[6] = {
 		readable = "Mail",
-		icon = "Interface/Icons/inv_chest_chain_05",
+		icon = 132627,
 		constant = "MAIL",
 		text = {
-			en = [[~GetItemSubClassInfo(4,3)]],
+			en = WOWAPI_GetItemSubClassInfo(4,3),
 		},
 	},
 	[7] = {
 		readable = "Plate",
-		icon = "Interface/Icons/inv_chest_plate01",
+		icon = 132736,
 		constant = "PLATE",
 		text = {
-			en = [[~GetItemSubClassInfo(4,4)]],
+			en = WOWAPI_GetItemSubClassInfo(4,4),
 		},
 	},
 	[8] = {
 		readable = "Shields",
-		icon = "Interface/Icons/inv_shield_06",
+		icon = 134952,
 		constant = "SHIELDS",
 		text = {
-			en = [[~GetItemSubClassInfo(4,6)]],
+			en = WOWAPI_GetItemSubClassInfo(4,6),
 		},
 	},
 	[9] = {
 		readable = "Tabards",
-		icon = "Interface/Icons/inv_shirt_guildtabard_01",
+		icon = 135026,
 		constant = "TABARDS",
 		text = {
 			en = [[~INVTYPE_TABARD]],
@@ -90,7 +90,7 @@ for filterID,filterData in pairs({
 	},
 	[10] = {
 		readable = "Shirts",
-		icon = "Interface/Icons/inv_shirt_grey_01",
+		icon = 135025,
 		constant = "SHIRTS",
 		text = {
 			en = [[~INVTYPE_BODY]],
@@ -100,11 +100,9 @@ for filterID,filterData in pairs({
 	-- Special Weapon Types
 	[11] = {
 		readable = "Artifacts",
-		icon = "Interface/Icons/Paladin_Protection",
+		icon = 535594,
 		constant = "ARTIFACTS",
-		-- #if AFTER LEGION
 		export = true,
-		-- #endif
 		text = {
 			en = "Artifacts",
 			de = "Artefakte",
@@ -117,135 +115,135 @@ for filterID,filterData in pairs({
 	-- Weapon Types
 	[20] = {
 		readable = "Daggers",
-		icon = "Interface/Icons/inv_weapon_shortblade_01",
+		icon = 135637,
 		constant = "DAGGERS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,15)]],
+			en = WOWAPI_GetItemSubClassInfo(2,15),
 		},
 	},
 	[21] = {
 		readable = "One-Handed Axes",
-		icon = "Interface/Icons/inv_axe_17",
+		icon = 132408,
 		constant = "ONE_HANDED_AXES",
 		text = {
-			en = [[~GetItemSubClassInfo(2,0)]],
+			en = WOWAPI_GetItemSubClassInfo(2,0),
 		},
 	},
 	[22] = {
 		readable = "Two-Handed Axes",
-		icon = "Interface/Icons/inv_axe_09",
+		icon = 132400,
 		constant = "TWO_HANDED_AXES",
 		text = {
-			en = [[~GetItemSubClassInfo(2,1)]],
+			en = WOWAPI_GetItemSubClassInfo(2,1),
 		},
 	},
 	[23] = {
 		readable = "One-Handed Maces",
-		icon = "Interface/Icons/inv_mace_02",
+		icon = 133477,
 		constant = "ONE_HANDED_MACES",
 		text = {
-			en = [[~GetItemSubClassInfo(2,4)]],
+			en = WOWAPI_GetItemSubClassInfo(2,4),
 		},
 	},
 	[24] = {
 		readable = "Two-Handed Maces",
-		icon = "Interface/Icons/inv_hammer_16",
+		icon = 133053,
 		constant = "TWO_HANDED_MACES",
 		text = {
-			en = [[~GetItemSubClassInfo(2,5)]],
+			en = WOWAPI_GetItemSubClassInfo(2,5),
 		},
 	},
 	[25] = {
 		readable = "One-Handed Swords",
-		icon = "Interface/Icons/inv_sword_04",
+		icon = 135274,
 		constant = "ONE_HANDED_SWORDS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,7)]],
+			en = WOWAPI_GetItemSubClassInfo(2,7),
 		},
 	},
 	[26] = {
 		readable = "Two-Handed Swords",
-		icon = "Interface/Icons/inv_sword_07",
+		icon = 135277,
 		constant = "TWO_HANDED_SWORDS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,8)]],
+			en = WOWAPI_GetItemSubClassInfo(2,8),
 		},
 	},
 	[27] = {
 		readable = "Wands",
-		icon = "Interface/Icons/inv_wand_02",
+		icon = 135464,
 		constant = "WANDS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,19)]],
+			en = WOWAPI_GetItemSubClassInfo(2,19),
 		},
 	},
 	[28] = {
 		readable = "Staves",
-		icon = "Interface/Icons/inv_staff_27",
+		icon = 135164,
 		constant = "STAVES",
 		text = {
-			en = [[~GetItemSubClassInfo(2,10)]],
+			en = WOWAPI_GetItemSubClassInfo(2,10),
 		},
 	},
 	[29] = {
 		readable = "Polearms",
-		icon = "Interface/Icons/inv_spear_04",
+		icon = 135127,
 		constant = "POLEARMS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,6)]],
+			en = WOWAPI_GetItemSubClassInfo(2,6),
 		},
 	},
 	[30] = {
 		readable = "Spears",	-- Unused
-		icon = "Interface/Icons/inv_spear_01",
+		icon = 135124,
 		--constant = "SPEARS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,17)]],
+			en = WOWAPI_GetItemSubClassInfo(2,17),
 		},
 	},
 	[31] = {
 		readable = "Guns",
-		icon = "Interface/Icons/inv_weapon_rifle_01",
+		icon = 135610,
 		constant = "GUNS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,3)]],
+			en = WOWAPI_GetItemSubClassInfo(2,3),
 		},
 	},
 	[32] = {
 		readable = "Bows",
-		icon = "Interface/Icons/inv_weapon_bow_05",
+		icon = 135493,
 		constant = "BOWS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,2)]],
+			en = WOWAPI_GetItemSubClassInfo(2,2),
 		},
 	},
 	[33] = {
 		readable = "Crossbows",
-		icon = "Interface/Icons/inv_weapon_crossbow_01",
+		icon = 135530,
 		constant = "CROSSBOWS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,18)]],
+			en = WOWAPI_GetItemSubClassInfo(2,18),
 		},
 	},
 	[34] = {
 		readable = "Fist Weapons",
-		icon = "Interface/Icons/inv_misc_monsterclaw_02",
+		icon = 134295,
 		constant = "FIST_WEAPONS",
 		text = {
-			en = [[~GetItemSubClassInfo(2,13)]],
+			en = WOWAPI_GetItemSubClassInfo(2,13),
 		},
 	},
 	[35] = {
 		readable = "Warglaives",
 		-- #if AFTER TBC
-		icon = "Interface/Icons/inv_weapon_glave_01",
+		icon = 135561,
 		-- #else
-		icon = "Interface/Icons/inv_sword_07",
+		icon = 135277,
 		-- #endif
 		constant = "WARGLAIVES",
 		text = {
 			-- #if AFTER LEGION
-			en = [[~GetItemSubClassInfo(2,9)]],
+			en = WOWAPI_GetItemSubClassInfo(2,9),
 			-- #else
 			en = "Warglaives",
 			-- #endif
@@ -253,19 +251,19 @@ for filterID,filterData in pairs({
 	},
 	[36] = {
 		readable = "Thrown",
-		icon = "Interface/Icons/inv_throwingknife_02",
+		icon = 135426,
 		constant = "THROWN",
 		text = {
 			-- #if AFTER WRATH
 			en = [[~INVTYPE_THROWN]],
 			-- #else
-			en = [[~GetItemSubClassInfo(2,16)]],
+			en = WOWAPI_GetItemSubClassInfo(2,16),
 			-- #endif
 		},
 	},
 	[37] = {
 		readable = "Ammo",
-		icon = "Interface/Icons/inv_ammo_bullet_01",
+		icon = 132383,
 		constant = "AMMO",
 		text = {
 			en = [[~INVTYPE_AMMO]],
@@ -275,7 +273,7 @@ for filterID,filterData in pairs({
 	-- Accessories
 	[50] = {
 		readable = "Miscellaneous",
-		icon = "Interface/Icons/Spell_Misc_Drink",
+		icon = 135999,
 		constant = "MISCELLANEOUS",
 		text = {
 			en = [[~AUCTION_CATEGORY_MISCELLANEOUS]],
@@ -283,7 +281,7 @@ for filterID,filterData in pairs({
 	},
 	[51] = {
 		readable = "Neck",
-		icon = "Interface/Icons/INV_Jewelry_Necklace_02",
+		icon = 133289,
 		constant = "NECK",
 		text = {
 			en = [[~INVTYPE_NECK]],
@@ -291,7 +289,7 @@ for filterID,filterData in pairs({
 	},
 	[52] = {
 		readable = "Finger",
-		icon = "Interface/Icons/INV_Jewelry_Ring_04",
+		icon = 133346,
 		constant = "FINGER",
 		text = {
 			en = [[~INVTYPE_FINGER]],
@@ -299,7 +297,7 @@ for filterID,filterData in pairs({
 	},
 	[53] = {
 		readable = "Trinket",
-		icon = "Interface/Icons/INV_Trinket_Naxxramas05",
+		icon = 135443,
 		constant = "TRINKET",
 		text = {
 			en = [[~INVTYPE_TRINKET]],
@@ -308,14 +306,14 @@ for filterID,filterData in pairs({
 	[54] = {
 		readable = "Relic / Libram / Idols",
 		-- #if AFTER LEGION
-		icon = "Interface/Icons/inv_staff_2h_felfireraid_d_03",
+		icon = 1109960,
 		-- #else
-		icon = "Interface/Icons/Inv_relics_libramofhope",
+		icon = 134916,
 		-- #endif
 		constant = "RELIC",
 		text = {
 			-- #if AFTER LEGION
-			en = [[~GetItemSubClassInfo(3,11)]],
+			en = WOWAPI_GetItemSubClassInfo(3,11),
 			-- #else
 			en = [[~INVTYPE_RELIC]],
 			-- #endif
@@ -323,11 +321,7 @@ for filterID,filterData in pairs({
 	},
 	[55] = {
 		readable = "Consumables (Artifact Power, etc)",
-		-- #if AFTER WRATH
-		icon = "Interface/Icons/INV_Drink_25_HoneyTea",
-		-- #else
-		icon = "Interface/Icons/Inv_drink_07",
-		-- #endif
+		icon = 132812,
 		constant = "CONSUMABLES",
 		text = {
 			en = [[~AUCTION_CATEGORY_CONSUMABLES]],
@@ -341,12 +335,12 @@ for filterID,filterData in pairs({
 		icon = [[~_.asset("Interface_Zone_drop")]],
 		constant = "REAGENTS",
 		text = {
-			en = [[~GetItemClassInfo(5)]],
+			en = WOWAPI_GetItemClassInfo(5),
 		},
 	},
 	[57] = {
 		readable = "Profession Equipment",
-		icon = "Interface/Icons/inv_fishingpole_02",
+		icon = 132932,
 		constant = "PROFESSION_EQUIPMENT",
 		text = {
 			-- #if AFTER 10.0.2
@@ -358,7 +352,7 @@ for filterID,filterData in pairs({
 	},
 	[58] = {
 		readable = "Containers",	-- Tier Tokens, Timeless Isle BoA gear tokens, Bags of loot, etc
-		icon = "Interface/Icons/Inv_box_01",
+		icon = 132594,
 		constant = "CONTAINERS",
 		text = {
 			en = [[~AUCTION_CATEGORY_CONTAINERS]],
@@ -366,7 +360,7 @@ for filterID,filterData in pairs({
 	},
 	[59] = {
 		readable = "Class Books (Classic Spells, Ashran Books, etc)",
-		icon = "Interface/Icons/INV_Misc_Book_03",
+		icon = 133735,
 		constant = "CLASS_BOOKS",
 		text = {
 			en = "Class Books",
@@ -377,7 +371,7 @@ for filterID,filterData in pairs({
 	},
 	[60] = {
 		readable = "S.E.L.F.I.E. Camera",
-		icon = "Interface/Icons/inv_misc_-selfiecamera_01",
+		icon = 1109100,
 		constant = "SELFIE_CAMERA",
 		text = {
 			en = "S.E.L.F.I.E. Camera",
@@ -393,10 +387,10 @@ for filterID,filterData in pairs({
 	},
 	[61] = {
 		readable = "Gems",
-		icon = "Interface/Icons/inv_misc_gem_ruby_02",
+		icon = 134129,
 		constant = "GEMS",
 		text = {
-			en = [[~GetItemClassInfo(3)]],
+			en = WOWAPI_GetItemClassInfo(3),
 		},
 	},
 	
@@ -427,7 +421,7 @@ for filterID,filterData in pairs({
 	},
 	[103] = {
 		readable = "Illusions",
-		icon = "Interface/Icons/inv_inscription_weaponscroll03",
+		icon = 237174,
 		constant = "ILLUSIONS",
 		text = {
 			en = "Illusions",
@@ -456,26 +450,15 @@ for filterID,filterData in pairs({
 	},
 	[106] = {
 		readable = "Holiday",
-		icon = "Interface/Icons/INV_Holiday_Christmas_Present_01",
+		icon = 133202,
 		constant = "HOLIDAY",
 		text = {
 			en = [[~CALENDAR_FILTER_WEEKLY_HOLIDAYS]],
 		},
 	},
-	[107] = {
-		readable = "Vignettes",
-		icon = "Interface/Icons/Inv_misc_head_human_01",
-		constant = "VIGNETTES",
-		text = {
-			en = "Vignettes",
-			fr = "Vignettes",
-			ru = "Особые",
-			cn = "事件",
-		},
-	},
 	[108] = {
 		readable = "Music Rolls",
-		icon = "Interface/Icons/Inv_misc_punchcards_yellow",
+		icon = 134394,
 		constant = "MUSIC_ROLLS",
 		text = {
 			en = [[~ENABLE_MUSIC.." "..ROLL]],
@@ -499,10 +482,10 @@ for filterID,filterData in pairs({
 	},
 	[111] = {
 		readable = "Glyph",
-		icon = "Interface/Icons/Inv_glyph_minorwarrior",
+		icon = 254306,
 		constant = "GLYPHS",
 		text = {
-			en = [[~GetItemClassInfo(16)]],
+			en = WOWAPI_GetItemClassInfo(16),
 		},
 	},
 	[112] = {
@@ -515,7 +498,7 @@ for filterID,filterData in pairs({
 	},
 	[113] = {
 		readable = "Bags",
-		icon = "Interface/Icons/INV_Misc_Bag_08",
+		icon = 133633,
 		constant = "BAGS",
 		text = {
 			en = [[~INVTYPE_BAG]],
@@ -524,14 +507,14 @@ for filterID,filterData in pairs({
 	[114] = {
 		readable = "Mount Equipment",
 		-- #if AFTER 8.2.0
-		icon = "Interface/Icons/inv_blacksmith_leystonehoofplates_orange",
+		icon = 1534178,
 		-- #else
-		icon = "Interface/Icons/Ability_mount_ridinghorse",
+		icon = 132261,
 		-- #endif
 		constant = "MOUNT_EQUIPMENT",
 		text = {
 			-- #if AFTER 8.2.0
-			en = [[~GetItemSubClassInfo(13,0)]],
+			en = WOWAPI_GetItemSubClassInfo(13,0),
 			-- #else
 			en = "Mount Equipment",
 			-- #endif
@@ -539,7 +522,7 @@ for filterID,filterData in pairs({
 	},
 	[115] = {
 		readable = "Keys",
-		icon = "Interface/Icons/Inv_misc_key_03",
+		icon = 134237,
 		constant = "KEYS",
 		text = {
 			en = "Keys",
@@ -547,7 +530,7 @@ for filterID,filterData in pairs({
 	},
 	[200] = {
 		readable = "Recipes",
-		icon = "Interface/Icons/inv_scroll_05",
+		icon = 134941,
 		constant = "RECIPES",
 		text = {
 			en = [[~AUCTION_CATEGORY_RECIPES]],
@@ -555,7 +538,7 @@ for filterID,filterData in pairs({
 	},
 	[999] = {
 		readable = "Event Item",
-		icon = "Interface/Icons/inv_holiday_christmas_wrapping_01",
+		icon = 133205,
 		constant = "EVENT_ITEMS",
 		text = {
 			en = "Event Item",

@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(STORMSONG_VALLEY, {
 		n(ZONE_DROPS, {
 			i(161344, {	-- Abyssal Fragment
@@ -12,6 +12,17 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 						["coord"] = { 73.5, 23.6, STORMSONG_VALLEY },
 						["crs"] = { 140474 },	-- Adherent of the Abyss
 					}),
+				},
+			}),
+			i(163699, {	-- Annealed Honey Amulet
+				["races"] = ALLIANCE_ONLY,
+				["coord"] = { 69.2, 68.8, STORMSONG_VALLEY },
+				["crs"] = {
+					134147,	-- Beehemoth
+					133429,	-- Bubbling Mead
+					141901,	-- Bumbling Bee
+					134155,	-- Enraged Swarmer
+					131663,	-- Flowing Honey
 				},
 			}),
 			i(163573, {	-- Goldenmane (MOUNT!)
@@ -44,7 +55,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				},
 			}),
 		}),
-		n(ZONE_DROPS, bubbleDown({["bonusID"] = 4796, }, {
+		n(ZONE_DROPS, {
 			i(159217),	-- Sagehold Circlet
 			i(159222),	-- Sagehold Mantle
 			i(159199),	-- Sagehold Cloak
@@ -72,7 +83,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			i(159198),	-- Brineworks Vambraces
 			i(159192),	-- Brineworks Gauntlets
 			i(159193),	-- Brineworks Girdle
-		})),
+		}),
 	}),
 })));
 
@@ -81,7 +92,7 @@ root(ROOTS.HiddenQuestTriggers, m(KUL_TIRAS, {
 		n(QUESTS, {
 			-- HQTs for Nazjatar Blood Serpent - TODO: Move the mount with these questIDs into the secrets?
 			q(53428),	-- Using 'Abhorrent Essence of the Abyss' (itemID 161345), 'Offer Abhorrent Essence' (spellID 277122))
-			q(53429),	-- Killing 'Adherent of the Abyss' (npcID 140474)
+			q(53429),	-- Killing 'Adherent of the Abyss' (npcID 140474) / Looting Nazjatar Blood Serpent
 			q(53477),	-- Using 'Aether of the Abyss' (itemID 163929), 'Absorbing' (spellID 280636)
 		}),
 	}),

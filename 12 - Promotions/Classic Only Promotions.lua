@@ -1,16 +1,22 @@
 -----------------------------------------------------
 --        P R O M O T I O N S   M O D U L E        --
 -----------------------------------------------------
-root(ROOTS.Promotions, bubbleDown({ ["u"] = BLIZZARD_BALANCE }, {
+root(ROOTS.Promotions, bubbleDown({ ["u"] = REAL_MONEY }, {
 	-- #if ANYCLASSIC
-	tier(TBC_TIER, {
-		["timeline"] = { "added 2.5.1" },
+	expansion(EXPANSION.TBC, {
+		["timeline"] = { ADDED_2_5_1 },
 		["groups"] = {
 			-- 2021 5th May until 5th Nov 2021
 			q(63768, {	-- Imp in a Ball
 				["qg"] = 17249,	-- Landro Longshot <The Black Flame>
-				["altQuests"] = { 63767 },	-- Imp in a Ball (Cities)
-				["coord"] = { 28.0, 75.8, STRANGLETHORN_VALE },
+				["altQuests"] = { 63767 },	-- Imp in a Ball (Innkeepers)
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 42.6, 71.6, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 28.2, 75.8, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["maps"] = {
 					THE_EXODAR,
 					IRONFORGE,
@@ -44,8 +50,14 @@ root(ROOTS.Promotions, bubbleDown({ ["u"] = BLIZZARD_BALANCE }, {
 			-- 2022 13th Feb until 13th Aug 2022
 			q(65285, {	-- Goblin Gumbo Kettle
 				["qg"] = 17249,	-- Landro Longshot <The Black Flame>
-				["altQuests"] = { 65284 },	-- Goblin Gumbo Kettle (Cities)
-				["coord"] = { 28.0, 75.8, STRANGLETHORN_VALE },
+				["altQuests"] = { 65284 },	-- Goblin Gumbo Kettle (Innkeepers)
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 42.6, 71.6, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 28.2, 75.8, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["maps"] = {
 					THE_EXODAR,
 					IRONFORGE,
@@ -77,8 +89,14 @@ root(ROOTS.Promotions, bubbleDown({ ["u"] = BLIZZARD_BALANCE }, {
 			-- 2022 14th July until 15th January 2023
 			q(65562, {	-- Tabard of Flame
 				["qg"] = 17249,	-- Landro Longshot <The Black Flame>
-				["altQuests"] = { 65561 },	-- Tabard of Flame (Cities)
-				["coord"] = { 28.0, 75.8, STRANGLETHORN_VALE },
+				["altQuests"] = { 65561 },	-- Tabard of Flame (Innkeepers)
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 42.6, 71.6, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 28.2, 75.8, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["maps"] = {
 					THE_EXODAR,
 					IRONFORGE,
@@ -109,14 +127,19 @@ root(ROOTS.Promotions, bubbleDown({ ["u"] = BLIZZARD_BALANCE }, {
 			}),
 		},
 	}),
-	tier(WOTLK_TIER, {
-		["timeline"] = { "added 3.4.0" },
+	expansion(EXPANSION.WRATH, {
+		["timeline"] = { ADDED_3_4_0 },
 		["groups"] = {
-			-- 2022 11th November until 15th January 2023
-			q(72522, {	-- Festering Emerald Drake
-				["qg"] = 28687,	-- Amisi Azuregaze <Innkeeper>
-				["altQuests"] = { 72523 },	-- Imp in a Ball (Cities)
-				["coord"] = { 50.0, 39.6, NORTHREND_DALARAN },
+			q(72523, {	-- Festering Emerald Drake [2022 11th November until 15th January 2023]
+				["qg"] = 17249,	-- Landro Longshot <The Black Flame>
+				["altQuests"] = { 72522 },	-- Festering Emerald Drake (Innkeepers)
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 42.6, 71.6, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 28.2, 75.8, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["maps"] = {
 					THE_EXODAR,
 					IRONFORGE,
@@ -149,10 +172,88 @@ root(ROOTS.Promotions, bubbleDown({ ["u"] = BLIZZARD_BALANCE }, {
 				},
 				["u"] = REMOVED_FROM_GAME,
 			}),
-			-- 2023 17th January until 31st July 2023
-			q(70862, {	-- Hoplet
-				["qg"] = 28687,	-- Amisi Azuregaze <Innkeeper>
-				["coord"] = { 50.0, 39.6, NORTHREND_DALARAN },
+			q(74941, {	-- Flurky [2023 17th January until 31st July 2023]
+				["qg"] = 17249,	-- Landro Longshot <The Black Flame>
+				["altQuests"] = { 74940 },	-- Flurky (Innkeepers)
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 42.6, 71.6, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 28.2, 75.8, STRANGLETHORN_VALE },
+					-- #endif
+				},
+				["maps"] = {
+					THE_EXODAR,
+					IRONFORGE,
+					STORMWIND_CITY,
+					UNDERCITY,
+					THUNDER_BLUFF,
+					ORGRIMMAR,
+					SILVERMOON_CITY,
+					SHATTRATH_CITY,
+				},
+				["crs"] = {
+					5111,	-- Innkeeper Firebrew <Innkeeper>
+					6740,	-- Innkeeper Allison <Innkeeper>
+					6746,	-- Innkeeper Pala <Innkeeper>
+					6929,	-- Innkeeper Gryshka <Innkeeper>
+					19232,	-- Innkeeper Haelthol <Innkeeper> (SCYRER)
+					28687,	-- Amisi Azuregaze
+					29532,	-- Ajay Green
+					31557,	-- Uda the Beast
+					32413,	-- Isirami Fairwind
+				},
+				["groups"] = {
+					i(187794),	-- Flurky
+				},
+			}),
+			q(75492, {	-- Glub [2023 17th January until 31st July 2023]
+				["qg"] = 17249,	-- Landro Longshot <The Black Flame>
+				["altQuests"] = { 75491 },	-- Glub (Innkeepers)
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 42.6, 71.6, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 28.2, 75.8, STRANGLETHORN_VALE },
+					-- #endif
+				},
+				["maps"] = {
+					THE_EXODAR,
+					IRONFORGE,
+					STORMWIND_CITY,
+					UNDERCITY,
+					THUNDER_BLUFF,
+					ORGRIMMAR,
+					SILVERMOON_CITY,
+					SHATTRATH_CITY,
+				},
+				["crs"] = {
+					5111,	-- Innkeeper Firebrew <Innkeeper>
+					6740,	-- Innkeeper Allison <Innkeeper>
+					6746,	-- Innkeeper Pala <Innkeeper>
+					6929,	-- Innkeeper Gryshka <Innkeeper>
+					19232,	-- Innkeeper Haelthol <Innkeeper> (SCYRER)
+					28687,	-- Amisi Azuregaze
+					29532,	-- Ajay Green
+					31557,	-- Uda the Beast
+					32413,	-- Isirami Fairwind
+				},
+				["groups"] = {
+					i(204982, {	-- Glub
+						-- Description is under the 6 Months Promo?
+					}),
+				},
+			}),
+			q(70863, {	-- Hoplet [2023 17th January until 31st July 2023]
+				["qg"] = 17249,	-- Landro Longshot <The Black Flame>
+				["altQuests"] = { 70862 },	-- Hoplet (Innkeepers)
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 42.6, 71.6, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 28.2, 75.8, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["maps"] = {
 					THE_EXODAR,
 					IRONFORGE,
@@ -181,63 +282,11 @@ root(ROOTS.Promotions, bubbleDown({ ["u"] = BLIZZARD_BALANCE }, {
 					}),
 				},
 			}),
-			q(75491, {	-- Glub
-				["qg"] = 28687,	-- Amisi Azuregaze <Innkeeper>
-				["coord"] = { 50.0, 39.6, NORTHREND_DALARAN },
-				["maps"] = {
-					THE_EXODAR,
-					IRONFORGE,
-					STORMWIND_CITY,
-					UNDERCITY,
-					THUNDER_BLUFF,
-					ORGRIMMAR,
-					SILVERMOON_CITY,
-					SHATTRATH_CITY,
-				},
-				["crs"] = {
-					5111,	-- Innkeeper Firebrew <Innkeeper>
-					6740,	-- Innkeeper Allison <Innkeeper>
-					6746,	-- Innkeeper Pala <Innkeeper>
-					6929,	-- Innkeeper Gryshka <Innkeeper>
-					19232,	-- Innkeeper Haelthol <Innkeeper> (SCYRER)
-					28687,	-- Amisi Azuregaze
-					29532,	-- Ajay Green
-					31557,	-- Uda the Beast
-					32413,	-- Isirami Fairwind
-				},
-				["groups"] = {
-					i(204982, {	-- Glub
-						-- Description is under the 6 Months Promo?
-					}),
-				},
+			i(207097, {	-- Nightmarish Emerald Drake
+				["description"] = "Obtained if you set up a 12 Month WoW Subscription after 27th October 2023.",
 			}),
-			q(74940, {	-- Flurky
-				["qg"] = 28687,	-- Amisi Azuregaze <Innkeeper>
-				["coord"] = { 50.0, 39.6, NORTHREND_DALARAN },
-				["maps"] = {
-					THE_EXODAR,
-					IRONFORGE,
-					STORMWIND_CITY,
-					UNDERCITY,
-					THUNDER_BLUFF,
-					ORGRIMMAR,
-					SILVERMOON_CITY,
-					SHATTRATH_CITY,
-				},
-				["crs"] = {
-					5111,	-- Innkeeper Firebrew <Innkeeper>
-					6740,	-- Innkeeper Allison <Innkeeper>
-					6746,	-- Innkeeper Pala <Innkeeper>
-					6929,	-- Innkeeper Gryshka <Innkeeper>
-					19232,	-- Innkeeper Haelthol <Innkeeper> (SCYRER)
-					28687,	-- Amisi Azuregaze
-					29532,	-- Ajay Green
-					31557,	-- Uda the Beast
-					32413,	-- Isirami Fairwind
-				},
-				["groups"] = {
-					i(187794),	-- Flurky
-				},
+			i(209877, {	-- Cypress
+				["description"] = "Obtained if you set up a 6 Month WoW Subscription after 10th January 2024.",
 			}),
 		},
 	}),

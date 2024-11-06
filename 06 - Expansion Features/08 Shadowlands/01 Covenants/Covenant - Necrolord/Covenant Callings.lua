@@ -2,15 +2,15 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	n(NECROLORD, {
 		["customCollect"] = "SL_COV_NEC",
 		["maps"] = { SEAT_OF_THE_PRIMUS },
 		["g"] = {
 			n(COVENANT_CALLINGS, sharedData({
-					["sourceQuests"] = { 59609 },	-- No Rest For the Dead
-					["repeatable"] = true,
-					["customCollect"] = "SL_COV_NEC",
+				["sourceQuests"] = { 59609 },	-- No Rest For the Dead
+				["repeatable"] = true,
+				["customCollect"] = "SL_COV_NEC",
 			}, {
 				q(62694, {	-- A Calling in Maldraxxus
 					["sourceQuests"] = { 62835 },	-- A Call to Service
@@ -29,29 +29,15 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 					},
 				}),
 				q(60426, {	-- A Call to Bastion
-					--["provider"] = { "n",  },	--
-					--["coord"] = { , MALDRAXXUS },
+					["provider"] = { "n", 167210 },	-- Tabulator Killham
+					["coord"] = { 59.6, 43.5, SEAT_OF_THE_PRIMUS },
 					["g"] = {
 						i(181732),	-- Tribute of the Ambitious
 					},
 				}),
 				q(60433, {	-- A Call to Revendreth
-					--["provider"] = { "n",  },	--
-					--["coord"] = { , MALDRAXXUS },
-					["g"] = {
-						i(181732),	-- Tribute of the Ambitious
-					},
-				}),
-				q(60379, {	-- A Source of Sorrowvine
-					--["provider"] = { "n",  },	--
-					--["coord"] = { , MALDRAXXUS },
-					["g"] = {
-						i(181732),	-- Tribute of the Ambitious
-					},
-				}),
-				q(60371, {	-- A Wealth of Wealdwood
-					--["provider"] = { "n",  },	--
-					--["coord"] = { , MALDRAXXUS },
+					["provider"] = { "n", 167210 },	-- Tabulator Killham
+					["coord"] = { 59.6, 43.5, SEAT_OF_THE_PRIMUS },
 					["g"] = {
 						i(181732),	-- Tribute of the Ambitious
 					},
@@ -72,7 +58,10 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 				}),
 				q(60396, {	-- Aiding Maldraxxus
 					["provider"] = { "n", 158339 },	-- Sergeant Romark
-					["coord"] = { 54.2, 68.8, MALDRAXXUS },
+					["coords"] = {
+						{ 54.2, 68.8, MALDRAXXUS },
+						{ 47.8, 29.1, SEAT_OF_THE_PRIMUS },
+					},
 					["g"] = {
 						i(181732),	-- Tribute of the Ambitious
 					},
@@ -95,13 +84,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 					["provider"] = { "n", 167207 },	-- Sabbath Nightshade
 					["coord"] = { 43.2, 47.8, SEAT_OF_THE_PRIMUS },
 					["g"] = {
-						i(181732),	-- Tribute of the Ambitious
-					},
-				}),
-				q(60376, {	-- Bonemetal Bonanza
-					--["provider"] = { "n",  },	--
-					--["coord"] = { , MALDRAXXUS },
-					["g"] = {
+						i(184561),	-- Anima Embers (QI!)
 						i(181732),	-- Tribute of the Ambitious
 					},
 				}),
@@ -133,17 +116,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 						i(181733),	-- Tribute of the Duty-Bound
 					},
 				}),
-				q(60363, {	-- Gildenite Grab
-					--["provider"] = { "n",  },	--
-					--["coord"] = { , MALDRAXXUS },
-					["g"] = {
-						i(181732),	-- Tribute of the Ambitious
-					},
-				}),
 				q(60416, {	-- Rare Resources
-					--["provider"] = { "n",  },	--
-					--["coord"] = { , MALDRAXXUS },
+					["provider"] = { "n", 167201 },	-- Gatherer Zaya
+					["coord"] = { 46.8, 38.6, SEAT_OF_THE_PRIMUS },
 					["g"] = {
+						i(179327),	-- Coin of Brokerage (QI!)
 						i(181732),	-- Tribute of the Ambitious
 					},
 				}),
@@ -156,35 +133,35 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 				}),
 				q(60408, {	-- Training Our Forces
 					["provider"] = { "n", 167209 },	-- Niall Kugal
-					--["coord"] = { 54.4, 67.8,  }, this had Bastion map, should be fixed
+					["coord"] = { 51.8, 28.8, SEAT_OF_THE_PRIMUS },
 					["g"] = {
 						i(181732),	-- Tribute of the Ambitious [Live Reward]
 					},
 				}),
 				q(60402, {	-- Training in Ardenweald
 					["provider"] = { "n", 167209 },	-- Niall Kugal
-					--["coord"] = { 54.4, 67.8,  }, this had Bastion map, should be fixed
+					["coord"] = { 51.8, 28.8, SEAT_OF_THE_PRIMUS },
 					["g"] = {
 						i(181732),	-- Tribute of the Ambitious
 					},
 				}),
 				q(60405, {	-- Training in Bastion
 					["provider"] = { "n", 167209 },	-- Niall Kugal
-					--["coord"] = { 54.4, 67.8,  }, this had Bastion map, should be fixed
+					["coord"] = { 51.8, 28.8, SEAT_OF_THE_PRIMUS },
 					["g"] = {
 						i(181732),	-- Tribute of the Ambitious
 					},
 				}),
 				q(60411, {	-- Training in Revendreth
 					["provider"] = { "n", 167209 },	-- Niall Kugal
-					--["coord"] = { 54.4, 67.8,  }, this had Bastion map, should be fixed
+					["coord"] = { 51.8, 28.8, SEAT_OF_THE_PRIMUS },
 					["g"] = {
 						i(181556),	-- Tribute of the Court
 					},
 				}),
 				q(60429, {	-- Troubles at Home
-				--	["provider"] = { "n",  },	--
-				--	["coord"] = { , MALDRAXXUS },
+					["provider"] = { "n", 167210 },	-- Tabulator Killham <Battle Reckoner>
+					["coord"] = { 59.7, 43.7, SEAT_OF_THE_PRIMUS },
 					["g"] = {
 						i(181733),	-- Tribute of the Duty-Bound
 					},
@@ -192,4 +169,4 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 			})),
 		},
 	}),
-}));
+})));

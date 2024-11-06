@@ -1,8 +1,15 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
-
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+local ASPIRANTS_EQUIPMENT_CACHE = i(167744, {	-- Aspirant's Equipment Cache
+	["sym"] = {
+		{ "sub", "pvp_gear_base", EXPANSION.BFA, SEASON_CORRUPTED, PVP_ASPIRANT },{"merge"},	-- BFA header > Season 4 header > Aspirant gear header
+		{ "pop" },	-- discard Aspirant / Combatant Gear header
+		{ "pop" },	-- discard item type headers
+		{ "modID", 47 },	-- blue.  still the wrong iLvl because i can't also apply 2, but it looks better
+	},
+})
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(BORALUS, {
 		n(QUESTS, {
 			pvp(n(PVP, {
@@ -25,20 +32,19 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				}),
 				q(54978, {	-- Against Overwhelming Odds
 					["provider"] = { "n", 135614 },	-- Master Mathias Shaw
-					["isWeekly"] = true,
 					["coord"] = { 70.4, 27.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
+					["isWeekly"] = true,
 					["g"] = {
 						i(167100, {	-- Alliance Champion's Cache
-							["modID"] = 53,	-- ilvl 415
+							["modID"] = 53,	-- iLvl 415
 							["sym"] = {
-								{ "select", "headerID", WARFRONT },
-								{ "pop" },	-- Discard the War Effort Header and acquire the children.
-								{ "where", "mapID", ARATHI_HIGHLANDS },
-								{ "pop" },	-- Discard the Map Header and acquire the children.
-								{ "where", "headerID", COMMON_BOSS_DROPS },	-- Select the Common Boss Drop Header.
-								{ "pop" },	-- Discard the Common Boss Drop Header and acquire the children.
-								{ "modID", 53 },	-- iLvl 415
+								{"select", "headerID", WAR_EFFORT },	-- Find the War Effort Header
+								{"find", "mapID", ARATHI_HIGHLANDS },	-- Find Arathi Highlands
+								{"find", "headerID", COMMON_BOSS_DROPS},	-- Find the Common Boss Drop Header.
+								{"find", "headerID", FACTION_HEADER_ALLIANCE},	-- Select the Faction Header.
+								{"extract","sourceID"},	-- Extract Sources
+								{"modID", 53},	-- Apply specific modID
 							},
 						}),
 					},
@@ -49,14 +55,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -66,14 +65,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -84,14 +76,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -101,14 +86,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -118,14 +96,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -135,14 +106,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.2, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -152,14 +116,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -169,14 +126,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -186,14 +136,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -203,14 +146,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["coord"] = { 56.4, 26.0, BORALUS },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
-						i(167744, {	-- Aspirant's Equipment Cache
-							["sym"] = {
-								{ "sub", "pvp_gear_base", BFA_TIER, SEASON_CORRUPTED, PVP_ASPIRANT },	-- BFA header > Season 4 header > Aspirant gear header
-								{ "pop" },	-- discard Aspirant / Combatant Gear header
-								{ "pop" },	-- discard item type headers
-								{ "modID", 47 },	-- blue.  still the wrong ilvl because i can't also apply 2, but it looks better
-							},
-						}),
+						ASPIRANTS_EQUIPMENT_CACHE,
 						i(169614),	-- Call to Arms Distinction
 					},
 				}),
@@ -330,6 +266,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },	-- Mission Command Table
 										["coord"] = { 70.5, 27.2, BORALUS },
 										["races"] = ALLIANCE_ONLY,
+										["g"] = {
+											i(162977),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -370,6 +309,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },		-- Mission Command Table
 										["races"] = ALLIANCE_ONLY,
 										["coord"] = { 70.5, 27.2, BORALUS },
+										["g"] = {
+											i(162646),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -410,6 +352,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },	-- Mission Command Table
 										["races"] = ALLIANCE_ONLY,
 										["coord"] = { 70.5, 27.2, BORALUS },
+										["g"] = {
+											i(162577),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -427,6 +372,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },	-- Mission Command Table
 										["races"] = ALLIANCE_ONLY,
 										["coord"] = { 70.5, 27.2, BORALUS },
+										["g"] = {
+											i(163602),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -450,6 +398,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },		-- Mission Command Table
 										["races"] = ALLIANCE_ONLY,
 										["coord"] = { 70.5, 27.2, BORALUS },
+										["g"] = {
+											i(162553),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -473,6 +424,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },	-- Mission Command Table
 										["races"] = ALLIANCE_ONLY,
 										["coord"] = { 70.5, 27.2, BORALUS },
+										["g"] = {
+											i(162604),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -490,6 +444,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },	-- Mission Command Table
 										["races"] = ALLIANCE_ONLY,
 										["coord"] = { 70.5, 27.2, BORALUS },
+										["g"] = {
+											i(163597),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -513,6 +470,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },	-- Mission Command Table
 										["races"] = ALLIANCE_ONLY,
 										["coord"] = { 70.5, 27.2, BORALUS },
+										["g"] = {
+											i(163039),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -530,6 +490,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 										["provider"] = { "n", 138704 },	-- Mission Command Table
 										["coord"] = { 70.5, 27.2, BORALUS },
 										["races"] = ALLIANCE_ONLY,
+										["g"] = {
+											i(163572),	-- Mission Report (QI!)
+										},
 									}),
 								},
 							}),
@@ -554,6 +517,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 124289 },	-- "Risky" Liz Seminario <Fur Trader>
 				["races"] = ALLIANCE_ONLY,
 				["coord"] = { 72.2, 16.2, BORALUS },
+				["g"] = {
+					i(159751),	-- Bundle of Warm Furs (QI!)
+				},
 			}),
 			q(52453, {	-- A Forlorn Hope
 				["sourceQuests"] = { 52449 },	-- The Mysterious Island
@@ -564,7 +530,6 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			q(58674, {	-- A Gathering of Champions
 				["sourceQuests"] = {
 					58631,	-- Into Dreams
-					58632,	-- Ny'alotha, the Waking City: The Corruptor's End
 				},
 				["provider"] = { "n", 135614 },	-- Master Mathias Shaw
 				["coord"] = { 70.4, 27.0, BORALUS },
@@ -577,6 +542,8 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["g"] = {
 					a(ach(12741)),	-- Giving a Scrap (A)
+					i(160266),	-- Scrapped Cloth (QI!)
+					i(160267),	-- Tattered Pants (QI!)
 				},
 			}),
 			q(52762, {	-- A Local Guide
@@ -602,6 +569,13 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 140732 },	-- Flynn Fairwind
 				["coord"] = { 67.7, 22.1, BORALUS },
 				["races"] = ALLIANCE_ONLY,
+				["groups"] = {
+					o_repeated({
+						i(161438),	-- Large Azerite Grenade (QI!)
+						o(296252),	-- Box of Lare Azerite Grenades
+						o(293134),	-- Lare Azerite Grenade
+					}),
+				},
 			}),
 			q(51488, {	-- Archived Knowledge
 				["sourceQuests"] = { 51487 },	-- Searching for Answers
@@ -639,7 +613,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(52128, {	-- Ferry Pass
-				["sourceQuests"] = { 47186 },	-- Sanctum of Sages
+				["sourceQuests"] = { 46729 },	-- The Old Knight
 				["provider"] = { "n", 122370 },	-- Cyrus Crestfall
 				["coord"] = { 68.0, 21.9, BORALUS },
 				["races"] = ALLIANCE_ONLY,
@@ -657,6 +631,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 140495 },	-- Katherine Proudmoore
 				["coord"] = { 67.0, 36.2, TIRAGARDE_SOUND },
 				["races"] = ALLIANCE_ONLY,
+				["groups"] = {
+					i(161437),	-- Shipping Contract (QI!)
+				},
 			}),
 			q(50787, {	-- Make Our Case
 				["sourceQuests"] = { 50795 },	-- Prepare for Trouble
@@ -813,7 +790,10 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["provider"] = { "n", 122370 },	-- Cyrus Crestfall
 				["coord"] = { 67.9, 22.0, BORALUS },
 				["races"] = ALLIANCE_ONLY,
-				["lvl"] = 115,	-- wowhead says 110.  it's wrong.  tol dagor doesn't unlock until 115, and that's the other requirement to make this quest available.
+				["lvl"] = 10,
+				["g"] = {
+					i(163161),	-- Tol Dagor Master Key (QI!)
+				}
 			}),
 			q(49715, {	-- Trouble at Greystone Keep
 				-- ["sourceQuests"] = { 50790 },	-- Hot Pursuit	-- TODO maybe earlier? maybe none?

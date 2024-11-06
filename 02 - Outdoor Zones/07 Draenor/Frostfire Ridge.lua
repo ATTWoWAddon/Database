@@ -6,7 +6,7 @@ root(ROOTS.Zones, {
 	m(DRAENOR, {
 		m(FROSTFIRE_RIDGE, {
 			["lore"] = "Frostfire Ridge is a zone in north-western Draenor. It is home to the Frostwolf clan and the Thunderlord clan. The ogre stronghold-turned Horde capital, Bladespire Citadel is located here. When Draenor shattered and became Outland, Frostfire Ridge and Gorgrond were pressed together to become the Blade's Edge Mountains. Several recognizable landmarks in Blade's Edge Mountains can be found in Frostfire, such as the Circle of Blood and the rock spires jutting from the earth.",
-			["icon"] = "Interface\\Icons\\achievement_zone_frostfire",
+			["icon"] = 1031536,
 			["maps"] = {
 				526,	-- Turgall's Den (1st floor)
 				527,	-- Turgall's Den (2nd floor)
@@ -24,29 +24,17 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 37204,	-- Rekindling an Old Flame
 					}),
 					ach(9534),	-- Delectable Ogre Delicacies (Bloodmaul Stronghold)
-					ach(8937, {	-- Explore Frostfire Ridge
-						crit(1),		-- Bladespire Citadel
-						crit(2),		-- Bloodmaul Stronghold
-						crit(3),		-- Bones of Agurak
-						crit(4),		-- Colossal's Fall
-						crit(5),		-- Daggermaw Ravine
-						crit(6),		-- Frostwind Crag
-						crit(7),		-- Grimfrost Hill
-						crit(8),		-- Grom'gar
-						crit(9),		-- Iron Siegeworks
-						crit(10),		-- Iron Waystation
-						crit(11),		-- Magnarok
-						crit(12),		-- Stonefang Outpost
-						crit(13),		-- The Boneslag
-						crit(14),		-- The Cracking Plains
-						crit(15),		-- Wor'gol
-					}),
+					explorationAch(8937),	-- Explore Frostfire Ridge
 					ach(9606, {	-- Frostfire Fridge
 						["races"] = HORDE_ONLY,
+						["sym"] = {{ "achievement_criteria" }},
+					}),
+					ach(9471, {		-- Frostwolf Orcs
+						["races"] = HORDE_ONLY,
 						["g"] = {
-							crit(1),	-- Bonus Objective: Forbidden Glacier
-							crit(2),	-- Bonus Objective: Frostbite Hollow
-							crit(3),	-- Bonus Objective: Grimfrost Hill
+							title(282, {	-- <Name> of the Frostwolves
+								["races"] = HORDE_ONLY,
+							}),
 						},
 					}),
 					ach(9529, {	-- On the Shadow's Trail [H]
@@ -59,18 +47,18 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["collectible"] = false,	-- We want to hide the achievement after the finished the criteria for the zone since they can't earn anything more here
 						["g"] = {
-							crit(1),	-- Assault on the Iron Siegeworks
-							crit(2),	-- Assault on Stonefury Cliffs
-							crit(3),	-- Assault on Magnarok
+							crit(26244),	-- Assault on the Iron Siegeworks
+							crit(26245),	-- Assault on Stonefury Cliffs
+							crit(26247),	-- Assault on Magnarok
 						},
 					}),
 					ach(9562, {	-- Securing Draenor (H)
 						["races"] = HORDE_ONLY,
 						["collectible"] = false,	-- We want to hide the achievement after the finished the criteria for the zone since they can't earn anything more here
 						["g"] = {
-							crit(1),	-- Assault on the Iron Siegeworks
-							crit(2),	-- Assault on Stonefury Cliffs
-							crit(3),	-- Assault on Magnarok
+							crit(26225),	-- Assault on the Iron Siegeworks
+							crit(26226),	-- Assault on Stonefury Cliffs
+							crit(26228),	-- Assault on Magnarok
 						},
 					}),
 					ach(9536),	-- Slagnarok (Magnarok)
@@ -85,26 +73,7 @@ root(ROOTS.Zones, {
 					}),
 					ach(8671, {	-- You'll Get Caught Up In The... Frostfire!
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							crit(1, {	-- Foothold in a Savage Land
-								["sourceQuest"] = 34775,	-- Mission Probable
-							}),
-							crit(2, {	-- Siege of Bladespire Citadel
-								["sourceQuest"] = 33527,	-- Last Steps
-							}),
-							crit(3, {	-- Defense of Wor'gol
-								["sourceQuest"] = 33473,	-- Back to Bladespire Citadel
-							}),
-							crit(4, {	-- Ga'nar's Vengeance
-								["sourceQuest"] = 32796,	-- To the Garrison
-							}),
-							crit(5, {	-- Thunder's Fall
-								["sourceQuest"] = 33828,	-- The Master Siegesmith
-							}),
-							crit(6, {	-- The Battle of Thunder Pass
-								["sourceQuest"] = 34124,	-- The Battle of Thunder Pass
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 				}),
 				petbattle(filter(BATTLE_PETS, {
@@ -133,6 +102,33 @@ root(ROOTS.Zones, {
 						}),
 					},
 				})),
+				explorationHeader({
+					exploration(6864),	-- Bladespire Citadel
+					exploration(6962),	-- Bladespire Ravine
+					exploration(6875),	-- Bladespire Throne
+					exploration(7013),	-- Bloodmaul Stronghold
+					exploration(6994),	-- Bones of Agurak
+					exploration(6775),	-- Colossal's Fall
+					exploration(6744),	-- Daggermaw Ravine
+					exploration(6742),	-- Frostwind Crag
+					exploration(6817),	-- Grimfrost Hill
+					exploration(6779),	-- Grom'gar
+					exploration(6983),	-- Iron Siegeworks
+					exploration(7076, {	-- Iron Waystation
+						-- CRIEVE NOTE: I was initially able to collect this, but if you collect Bones of Agurak, it gets masked behind it.
+						["collectible"] = false,
+					}),
+					exploration(6784),	-- Magnarok
+					exploration(6777),	-- Stonefang Outpost
+					exploration(6964),	-- Stonefang Ridge
+					exploration(6968),	-- Stonefury Cliffs
+					exploration(6776),	-- The Boneslag
+					exploration(6774),	-- The Cracking Plains
+					exploration(6869),	-- Wor'gol
+				}),
+				n(FACTIONS, {
+					faction(FACTION_FROSTWOLF_ORCS, {["races"] = HORDE_ONLY}),	-- Frostwolf Orcs
+				}),
 				n(FLIGHT_PATHS, {
 					fp(1387, {	-- Bladespire Citadel, Frostfire Ridge
 						["coord"] = { 24.4, 37.2, FROSTFIRE_RIDGE },
@@ -170,7 +166,7 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 					}),
 				}),
-				petbattles({ "added 6.0.1" }, {
+				petbattles({ ADDED_6_0_2 }, {
 					n(87122, {	-- Gargra <Grand Master Pet Tamer>
 						["coord"] = { 68.6, 64.6, FROSTFIRE_RIDGE },
 					}),
@@ -207,40 +203,42 @@ root(ROOTS.Zones, {
 					}),
 					q(33815, {	-- A Song of Frost and Fire
 						["provider"] = { "n", 76411 },	-- Farseer Drek'Thar
-						["coord"] = { 40.7, 67.0, FROSTFIRE_RIDGE },
-						["races"] = HORDE_ONLY,
 						["sourceQuests"] = {
+							-- #if AFTER 7.3.5
 							49545,	-- Warchief's Command: Frostfire Ridge!
+							-- #endif
 							33868,	-- The Home of the Frostwolves
 						},
+						["coord"] = { 40.7, 67.0, FROSTFIRE_RIDGE },
+						["races"] = HORDE_ONLY,
 					}),
 					q(34280, {	-- All is Revealed
 						["provider"] = { "n", 72874 },	-- Archmage Khadgar
+						["sourceQuest"] = 34230,	-- Eye Need That
 						["coord"] = { 31.7, 11.8, FROSTFIRE_RIDGE },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 34230,	-- Eye Need That
 					}),
 					q(36132, {	-- Anglin' In Our Garrison
 						["provider"] = { "n", 79896 },	-- Mokugg Lagerpounder
-						["coord"] = { 55.7, 75.3, FROSTFIRE_RIDGE },
-						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 36131,	-- Proving Your Worth
+						["coord"] = { 55.7, 75.3, FROSTFIRE_RIDGE },
 						["requireSkill"] = FISHING,
+						["races"] = HORDE_ONLY,
 						["g"] = {
 							garrisonBuilding(64),	-- Fishing Shack
 						},
 					}),
 					q(33344, {	-- Armed and Dangerous
 						["provider"] = { "n", 75186 },	-- Thrall
+						["sourceQuest"] = 33410,	-- The Butcher of Bladespire
 						["coord"] = { 70.7, 78.5, 527 },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 33410,	-- The Butcher of Bladespire
 					}),
 					q(32804, {	-- Articles of the Fallen
 						["provider"] = { "n", 74223 },	-- Kal'gor the Honorable
+						["sourceQuest"] = 32791,	-- Let the Hunt Begin!
 						["coord"] = { 46.3, 32.0, FROSTFIRE_RIDGE },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 32791,	-- Let the Hunt Begin!
 					}),
 					q(34321, {	-- Ashes of the Past
 						["provider"] = { "n", 77998 },	-- Molthron
@@ -248,80 +246,64 @@ root(ROOTS.Zones, {
 					}),
 					q(34070, {	-- At the End of Your Rope
 						["provider"] = { "n", 77210 },	-- Scout Ruk'Gan
-						["coord"] = { 82.6, 69.8, FROSTFIRE_RIDGE },
-						["races"] = HORDE_ONLY,
 						["sourceQuests"] = {
 							34067,	-- A Collection of Coils
 							34264,	-- A Collection of Coils
 							34069,	-- Getting the Points
 							34093,	-- Getting the Points
 						},
+						["coord"] = { 82.6, 69.8, FROSTFIRE_RIDGE },
+						["races"] = HORDE_ONLY,
 					}),
 					q(35106, {	-- Avenge and Reclaim
-						["sourceQuests"] = { 35104 },	-- The Apprentice
-						["requireSkill"] = ALCHEMY,
 						["provider"] = { "n", 81210 },	-- Ang'kra
+						["sourceQuests"] = { 35104 },	-- The Apprentice
 						["coord"] = { 37.8, 47.4, FROSTFIRE_RIDGE },
+						["requireSkill"] = ALCHEMY,
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							i(109558, {		-- A Treatise on the Alchemy of Draenor
-								["description"] = "This is a reward for completing the introductory Alchemy questline that can drop from any Draenor mob. Also sold at the Alchemy Lab for 100 gold.",
-								["filterID"] = MISC,
-								["g"] = {
-									recipe(156587),	-- Alchemical Catalyst
-									recipe(156585),	-- Crescent Oil
-									recipe(175865),	-- Draenic Invisibility Potion
-									recipe(175867),	-- Draenic Living Action Potion
-									recipe(156582),	-- Draenic Mana Potion
-									recipe(175853),	-- Draenic Swiftness Potion
-									recipe(175866),	-- Draenic Water Breathing Elixir
-									recipe(175869),	-- Draenic Water Walking Elixir
-									recipe(175868),	-- Pure Rage Potion
-									recipe(175880),	-- Secrets of Draenor Alchemy
-								},
-							}),
+						["g"] = appendGroups(DRAENOR_ALCHEMY, {
 							i(111812),	-- Alchemy Lab, lvl 1
-						},
+						}),
 					}),
 					q(33473, {	-- Back to Bladespire Citadel
 						["provider"] = { "n", 74272 },	-- Farseer Drek'Thar
+						["sourceQuest"] = 33470,	-- Pool of Visions
 						["coord"] = { 16.7, 57.8, FROSTFIRE_RIDGE },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 33470,	-- Pool of Visions
 					}),
 					q(34375, {	-- Back to Work
-						["coord"] = { 51.2, 39.6, FROSTWALL },
-						["races"] = HORDE_ONLY,
 						["provider"] = { "n", 78466 },	-- Gazlowe
 						["sourceQuest"] = 34364,	-- For the Horde!
+						["coord"] = { 51.2, 39.6, FROSTWALL },
+						["races"] = HORDE_ONLY,
 					}),
 					q(34729, {	-- Blood Oath of Na'Shra
 						["provider"] = { "n", 76452 },	-- Weaponsmith Na'Shra
+						["sourceQuest"] = 33838,	-- Smeltcraft
 						["coord"] = { 64.7, 39.8, FROSTFIRE_RIDGE },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 33838,	-- Smeltcraft
 						["g"] = {
 							follower(179),	-- Weaponsmith Na'Shra
 						},
 					}),
 					q(34073, {	-- Burn Them Down
 						["provider"] = { "n", 77210 },	-- Scout Ruk'Gan
+						["sourceQuest"] = 34072,	-- Tar Get of Opportunity
 						["coord"] = { 82.6, 69.8, FROSTFIRE_RIDGE },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 34072,	-- Tar Get of Opportunity
 					}),
 					q(36457, {	-- Bypassing Security
 						["provider"] = { "n", 85439 },	-- Raleigh Puule
-						["coord"] = { 21.0, 56.0, FROSTFIRE_RIDGE },
-						["races"] = HORDE_ONLY,
-						["requireSkill"] = INSCRIPTION,
 						["sourceQuest"] = 36435,	-- Unintelligible Intelligence
+						["coord"] = { 21.0, 56.0, FROSTFIRE_RIDGE },
+						["requireSkill"] = INSCRIPTION,
+						["races"] = HORDE_ONLY,
 					}),
 					q(36516, {	-- Cut 'Em Out!
-						["requireSkill"] = LEATHERWORKING,
-						["sourceQuests"] = { 36505 },	-- A Warrior's Shroud
 						["provider"] = { "n", 85751 },	-- Gaoda Hidecleaver
+						["sourceQuests"] = { 36505 },	-- A Warrior's Shroud
 						["coord"] = { 20.6, 60.2, FROSTFIRE_RIDGE },
+						["requireSkill"] = LEATHERWORKING,
 						["races"] = HORDE_ONLY,
 						["g"] = {
 							DRAENOR_LEATHERWORKING,
@@ -331,9 +313,9 @@ root(ROOTS.Zones, {
 					}),
 					q(33546, {	-- Deeds Left Undone
 						["provider"] = { "n", 74273 },	-- Durotan
+						["sourceQuest"] = 33526,	-- These Colors Don't Run
 						["coord"] = { 43.5, 23.2, 526 },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 33526,	-- These Colors Don't Run
 					}),
 					q(35341, {	-- Defection of Gronnstalker Rokash
 						["provider"] = { "n", 79229 },	-- Gronnstalker Rokash
@@ -1167,6 +1149,21 @@ root(ROOTS.Zones, {
 							i(110687),	-- Ogre Belly Chain Link
 						},
 					}),
+					warchiefscommand(q(49545, {	-- Warchief's Command: Frostfire Ridge!
+						-- Share Quest = 'You have completed that quest'
+						-- Party Sync + Share Quest = 'You have completed that quest'
+						-- Party Sync + WoD Chromie Time + Share Quest = 'You have completed that quest'
+						-- If anyone actually has a verifed way of obtaining this quest on a character which has already established their Garrison, please update this
+						["description"] = "Currently no verified way to actually obtain this quest on a character which has established their Garrison.\n\nOther characters will be able to obtain this Quest from the Warboard after completion of 'The Home of the Frostwolves' (33868) if completing the Tanaan intro quests, or possibly from the Warboard during WoD Chromie Time.",
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["sourceQuest"]	= 33868,	-- The Home of the Frostwolves
+						-- It's reported you can somehow find this quest on the Warboard simply by being in WoD Chromie Time, but this was not the case for a new lvl 10
+						-- Taking the initial quest to the Dark Portal, then returning to Orgrimmar to access the Warboard also did not help
+						-- Additionally, it can be shared to a character who has not established their Garrison without any known pre-requisites being completed
+						["isBreadcrumb"] = true,
+						["DisablePartySync"] = true,
+					})),
 					q(36207, {	-- Waruk the Frostforger
 						["provider"] = { "n", 78989 },	-- Axe-Shaper Kugra
 						["races"] = HORDE_ONLY,
@@ -1305,29 +1302,14 @@ root(ROOTS.Zones, {
 						q(34505, {	-- Forbidden Glacier
 							["coord"] = { 25.5, 55.0, FROSTFIRE_RIDGE },
 							["races"] = HORDE_ONLY,
-							["g"] = {
-								crit(1, {
-									["achievementID"] = 9606,	-- Frostfire Fridge
-								}),
-							},
 						}),
 						q(33145, {	-- Grimfrost Hill
 							["coord"] = { 65.1, 47.7, FROSTFIRE_RIDGE },
 							["races"] = HORDE_ONLY,
-							["g"] = {
-								crit(3, {
-									["achievementID"] = 9606,	-- Frostfire Fridge
-								}),
-							},
 						}),
 						q(34501, {	-- Frostbite Hollow
 							["coord"] = { 66.1, 18.0, FROSTFIRE_RIDGE },
 							["races"] = HORDE_ONLY,
-							["g"] = {
-								crit(2, {
-									["achievementID"] = 9606,	-- Frostfire Fridge
-								}),
-							},
 						}),
 					}),
 				}),
@@ -1347,9 +1329,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 62.6, 42.4, FROSTFIRE_RIDGE },
 						["g"] = {
 							o(224686, {	-- Devourer's Gutstone
-								["icon"] = "Interface\\Icons\\INV_Elemental_Primal_Fire",
+								["icon"] = 132847,
 								["g"] = {
-									i(112110),  -- Carapace Shield of the Devourer
+									i(112110),	-- Carapace Shield of the Devourer
 								},
 							}),
 						},
@@ -1466,9 +1448,13 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(50992, {	-- Gorok
+						["description"] = "Gorok has a respawn timer between 5-16 hours. Mount drop rate is 100% for all participants.",
 						["coords"] = {	-- **Coords unconfirmed, relied on wowhead**
 							{ 64.6, 52.0, FROSTFIRE_RIDGE },
 							{ 63.4, 79.6, FROSTFIRE_RIDGE },
+							{ 58.4, 19.2, FROSTFIRE_RIDGE },
+							{ 52.2, 50.4, FROSTFIRE_RIDGE },
+							{ 23.1, 65.6, FROSTFIRE_RIDGE },
 						},
 						["g"] = {
 							i(116674),	-- Great Greytusk (MOUNT!)
@@ -1575,18 +1561,34 @@ root(ROOTS.Zones, {
 							i(116794),	-- Garn Nighthowl (MOUNT!)
 						},
 					}),
-					n(87622, {	-- Ogom the Mangler
+					n(87622, bubbleDownSelf({	-- Ogom the Mangler
+						["timeline"] = { ADDED_6_0_3, REMOVED_8_0_1 },
+						-- #if AFTER 8.0.1
+						["isBounty"] = true,
+						-- #endif
+					}, {
 						["questID"] = 37402,
 						["isDaily"] = true,
 						["coords"] = {	-- **Coords unconfirmed, relied on wowhead**
 							{ 84.4, 48.0, FROSTFIRE_RIDGE },
 							{ 86.6, 48.6, FROSTFIRE_RIDGE },
 						},
-						["u"] = 45,	-- Broken Loot
-						["g"] = {
-							un(45, i(119366)),	-- Ogom's Manacles
+						["description"] = translate({
+							color = "FF0000";
+							en = "Ogom the Mangler seems just to spawn when you are doing the Daily 'Assault on the Iron Siegeworks'. This Quest wasn't active since the start of Legion and the buyable Quest 'Missive: Assault on the Iron Siegeworks' does not work either.",
+							es = "Ogom the Mangler parece aparecer cuando estás realizando el 'Asalto a los Sitios de Hierro' diario. Esta misión no estuvo activa desde el inicio de Legion y la misión comprable 'Misiva: Asalto a los Sitios de Hierro' tampoco funciona.",
+							de = "Ogom der Mangler scheint gerade dann zu erscheinen, wenn Sie den täglichen „Angriff auf das Eiserne Belagerungswerk“ durchführen. Diese Quest war seit Beginn von Legion nicht mehr aktiv und die käufliche Quest „Missive: Angriff auf das Eiserne Belagerungswerk“ funktioniert auch nicht.",
+							fr = "Ogom le Mangler semble apparaître lorsque vous effectuez l'« Assaut quotidien sur les usines de siège de fer ». Cette quête n'était plus active depuis le début de Legion et la quête achetable « Missive : Assaut sur les usines de siège de fer » ne fonctionne pas non plus.",
+							it = "Ogom the Mangler sembra apparire solo quando stai eseguendo l'\"Assalto alle officine d'assedio di ferro\" giornaliero. Questa missione non era attiva dall'inizio di Legion e neanche la missione acquistabile \"Missiva: Assalto alle officine d'assedio di ferro\" funziona.",
+							pt = "Ogom, o Mangler, parece surgir apenas quando você está fazendo o 'Assalto ao Cerco de Ferro' diário. Esta missão não estava ativa desde o início de Legion e a missão comprável 'Missiva: Assault on the Iron Siegeworks' também não funciona.",
+							ru = "Огом Уничтожитель появляется только при выполнении ежедневного задания 'Штурм осадного лагеря Железной Орды'. Данное задание не было доступно со старта Легиона, а приобретаемое в гарнизоне задание 'Донесение: Штурм осадного лагеря Железной Орды' тоже не помогает.",
+							ko = "약탈자 오곰은 일일 '철 공성 작업장 공격'을 수행할 때 생성되는 것 같습니다. 이 퀘스트는 Legion이 시작된 이후 활성화되지 않았으며 구매 가능한 퀘스트 'Missive: Iron Siegeworks 공격'도 작동하지 않습니다.",
+							cn = "绞肉机奥戈姆似乎只是在你做每日突袭钢铁军工厂的时候刷新的。这个任务从军团开始后就没有激活过，可购买的任务密报：突袭钢铁军工厂也不能用了。",
+						}),
+						["groups"] = {
+							i(119366),	-- Ogom's Manacles
 						},
-					}),
+					})),
 					n(78606, {	-- Pale Fishmonger
 						["questID"] = 34470,
 						["coord"] = { 28.2, 66.6, FROSTFIRE_RIDGE },
@@ -1737,7 +1739,6 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(226983, {	-- Crag-Leaper's Cache
-						["modelID"] = 65118,
 						["questID"] = 33940,
 						["coord"] = { 42.65, 31.74, FROSTFIRE_RIDGE },
 						["g"] = {
@@ -1954,7 +1955,7 @@ root(ROOTS.Zones, {
 						["questID"] = 34647,
 						["coord"] = { 24.0, 12.9, FROSTFIRE_RIDGE },
 						["g"] = {
-							currency(824),	-- Garrison Cache
+							currency(824),	-- Garrison Resources
 						},
 					}),
 					o(224613, {	-- Spectator's Chest
@@ -1980,7 +1981,6 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(220641, {	-- Thunderlord Cache
-						["modelID"] = 65118,
 						["questID"] = 32803,
 						["coord"] = { 34.2, 23.4, FROSTFIRE_RIDGE },
 						["g"] = {
@@ -2026,7 +2026,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(33443),	-- Barrier Destroyed - triggers upon reaching the top of the walkway with rolling fireballs in Bladespire Citadel during "Great Balls of Fire!" (questID 33408)
 		q(33847),	-- Flag: Seen Ga'nar Rolling Out - triggers when going into Chillfang's cave immediately upon getting to Draenor
 		q(33909),	-- Flag: Seen Ga'nar Rolling Out to Bladespire - triggers shortly after reaching Wor'gol during "Den of Wolves" (questID 34379)

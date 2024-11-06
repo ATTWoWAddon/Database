@@ -2,92 +2,55 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 -- #if BEFORE 4.0.3
-local OnTooltipForRatchet = [[function(t)
+ExportDB.OnTooltipDB.ForRatchet = [[~function(t, tooltipInfo)
 	local reputation = t.reputation;
 	if reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
-		if reputation < 0 then
-			local repPerKill = isHuman and 5.5 or 5;
-			local x, n = math.ceil((42000 - t.reputation) / repPerKill), math.ceil(84000 / repPerKill);
-			GameTooltip:AddDoubleLine("Kill Pirates near Ratchet", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-
-			local repPerKill = isHuman and 2.75 or 2.5;
-			local x, n = math.ceil((42000 - t.reputation) / repPerKill), math.ceil(84000 / repPerKill);
-			GameTooltip:AddDoubleLine("Kill Pirates in Tanaris", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-		else
-			if reputation < 20999 then
-				local repPerKill = isHuman and 5.5 or 5;
-				local x, n = math.ceil((20999 - t.reputation) / repPerKill), math.ceil(20999 / repPerKill);
-				GameTooltip:AddDoubleLine("Kill Pirates near Ratchet (To 11999 Honored)", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-			end
-
-			local repPerKill = isHuman and 2.75 or 2.5;
-			local x, n = math.ceil((42000 - t.reputation) / repPerKill), math.ceil(42000 / repPerKill);
-			GameTooltip:AddDoubleLine("Kill Pirates in Tanaris", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+		local addRepInfo = _.Modules.FactionData.AddReputationTooltipInfo;
+		if reputation < 20999 then
+			addRepInfo(tooltipInfo, reputation, "Kill Pirates in Ratchet (To 11999 Honored)", 5, 20999);
 		end
+		addRepInfo(tooltipInfo, reputation, "Kill Pirates in Tanaris", 2.5, 42000);
 	end
 end]];
 root(ROOTS.Zones, m(KALIMDOR, {
 	m(THE_BARRENS, {
 		["lore"] = "The Barrens is a vast, arid savannah. Dust devils swirl across the dry land and canyons cut the earth. Despite its inhospitable nature, numerous trade routes, including the major Gold Road, cross the Barrens. Centaur raiding parties are a constant threat, as are lions and thunder lizards. The orcs and tauren drove the quilboar tribes out of their lands, and the creatures now lair in the Barrens.\n\nIronforge dwarves have discovered a great Titan ruin in this region, and an enormous dig site and settlement has sprung up around it. Called Bael Modan, this fortified city is a common stop for the caravans that trundle across the dusty landscape. The goblin city of Ratchet, full of clanging coins, shining lights and debauchery, sprawls on the Barrens' eastern coast.",
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\achievement_zone_barrens_01",
-		-- #endif
+		["icon"] = 236717,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
-				explorationAch(750, {	-- Explore The Barrens
-					-- #if BEFORE WRATH
-					["description"] = "Explore The Barrens, revealing the covered areas of the world map.",
-					-- #endif
-				}),
+				explorationAch(750),	-- Explore The Barrens
 			}),
-			-- #if ANYCLASSIC
-			n(EXPLORATION, explorationBatch({
-				["200:185:340:234"] = 1700,	-- Agama'gor
-				["128:128:431:479"] = 359,	-- Bael Modan
-				["155:128:335:462"] = 1701,	-- Blackthorn Ridge
-				["120:110:555:0"] = 381,	-- Boulder Lode Mine
-				["125:165:442:298"] = 1698,	-- Bramblescar
-				["145:125:365:350"] = 378,	-- Camp Taurajo
-				["128:105:419:63"] = 384,	-- Dreadmist Peak
-				["100:165:564:52"] = 379,	-- Far Watch Post
-				["210:150:355:402"] = 390,	-- Field of Giants
-				["125:115:492:63"] = 1704,	-- Grol'dom Farm
-				["128:128:306:130"] = 1702,	-- Honor's Stand
-				["175:185:365:177"] = 387,	-- Lushwater Oasis
-				["150:120:527:307"] = 385,	-- Northwatch Hold
-				["115:110:507:294"] = 1697,	-- Raptor Grounds
-				["125:125:556:189"] = 392,	-- Ratchet
-				["155:115:407:553"] = 1316,	-- Razorfen Downs
-				["128:128:341:537"] = 1717,	-- Razorfen Kraul
-				["155:155:431:118"] = 380,	-- The Crossroads
-				["200:145:317:29"] = 383,	-- The Dry Hills
-				["120:125:384:115"] = 386,	-- The Forgotten Pools
-				["95:100:581:247"] = 391,	-- The Merchant Coast
-				["128:100:412:0"] = 1703,	-- The Mor'shan Rampart
-				["170:120:456:0"] = 382,	-- The Sludge Fen
-				["155:128:481:211"] = 388,	-- The Stagnant Oasis
-				["140:128:498:119"] = 1699,	-- Thorn Hill
-				--[[
-				[401] = 16,                              -- The Tidus Stair
-				[458] = 17,                              -- Gold Road
-				[720] = 18,                              -- Fray Island
-				[815] = 19,                              -- Southfury River
-				[1156] = 21,                             -- Southern Barrens
-				[1157] = 22,                             -- Southern Gold Road
-				[1599] = 26,                             -- Mor'shan Base Camp
-				[1718] = 40,                             -- The Great Lift
-				[2138] = 41,                             -- Dreadmist Den
-				[2157] = 42,                             -- Bael'dun Keep
-				[2319] = 43,                             -- The Great Sea
-				[2757] = 44,                             -- Shrine of the Fallen Warrior
-				]]--
-			})),
-			-- #endif
+			explorationHeader({
+				exploration(1700),	-- Agama'gor
+				exploration(359),	-- Bael Modan
+				exploration(1701),	-- Blackthorn Ridge
+				exploration(381),	-- Boulder Lode Mine
+				exploration(1698),	-- Bramblescar
+				exploration(378),	-- Camp Taurajo
+				exploration(384),	-- Dreadmist Peak
+				exploration(379),	-- Far Watch Post
+				exploration(390),	-- Field of Giants
+				exploration(1704),	-- Grol'dom Farm
+				exploration(1702),	-- Honor's Stand
+				exploration(387),	-- Lushwater Oasis
+				exploration(385),	-- Northwatch Hold
+				exploration(1697),	-- Raptor Grounds
+				exploration(392),	-- Ratchet
+				exploration(1316),	-- Razorfen Downs
+				exploration(1717),	-- Razorfen Kraul
+				exploration(380),	-- The Crossroads
+				exploration(383),	-- The Dry Hills
+				exploration(386),	-- The Forgotten Pools
+				exploration(391),	-- The Merchant Coast
+				exploration(1703),	-- The Mor'shan Rampart
+				exploration(382),	-- The Sludge Fen
+				exploration(388),	-- The Stagnant Oasis
+				exploration(1699),	-- Thorn Hill
+			}),
 			n(FACTIONS, {
-				faction(470, {	-- Ratchet
-					["icon"] = "Interface\\Icons\\INV_Misc_Coin_01",
-					["OnTooltip"] = OnTooltipForRatchet,
+				faction(FACTION_RATCHET, {	-- Ratchet
+					["icon"] = 133784,
+					["OnTooltip"] = [[_.OnTooltipDB.ForRatchet]],
 					["maps"] = { TANARIS },
 				}),
 			}),
@@ -95,7 +58,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				fp(77, {	-- Camp Taurajo, The Barrens
 					["cr"] = 10378,	-- Omusa Thunderhorn <Wind Rider Master>
 					["coord"] = { 44.4, 59.0, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 				fp(25, {	-- Crossroads, The Barrens
@@ -121,12 +84,48 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["description"] = "Drops from fishing in the Sludge Fen.",
 				}),
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			spell(921, {	-- Pickpocketing
+				["classes"] = { ROGUE },
+				["groups"] = {
+					applyclassicphase(SOD_PHASE_ONE, i(208768, {	-- Buccaneer's Matchbox
+						["coord"] = { 63.6, 49.2, THE_BARRENS },
+						["classes"] = { ROGUE },
+						["crs"] = {
+							3384,	-- Southsea Privateer
+							3383,	-- Southsea Cutthroat
+							3381,	-- Southsea Brigand
+							3382,	-- Southsea Cannoneer
+						},
+					})),
+				},
+			}),
+			-- #endif
 			n(QUESTS, {
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_TWO, q(79007, {	-- ...and that note you found (H)
+					["providers"] = {
+						{ "o", 415106 },	-- Burned-Out Remains
+						{ "o", 424010 },	-- Nailed Plank
+					},
+					["coords"] = {
+						{ 46.4, 73.9, THE_BARRENS },
+						{ 37.5, 50.8, WESTFALL },
+					},
+					["timeline"] = { "added 1.15.1" },
+					["races"] = HORDE_ONLY,
+					["lvl"] = 14,
+					["groups"] = {
+						i(2459),	-- Swiftness Potion
+						i(3388),	-- Strong Troll's Blood Potion
+					},
+				})),
+				-- #endif
 				q(1153, {	-- A New Ore Sample
 					["qg"] = 3433,	-- Tatternack Steelforge
 					["sourceQuest"] = 893,	-- Weapons of Choice
 					["coord"] = { 45.10, 57.69, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { THOUSAND_NEEDLES },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 25,
@@ -140,7 +139,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(6741, {	-- Orcish War Sword
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -148,7 +147,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 5052,	-- Blood Shards of Agamaggan
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5075, 4 }},	-- Blood Shard
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
@@ -158,7 +157,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 5052,	-- Blood Shards of Agamaggan
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5075, 4 }},	-- Blood Shard
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
@@ -190,7 +189,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 848,	-- Fungal Spores
 					["coord"] = { 51.44, 30.15, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { THUNDER_BLUFF },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
@@ -202,7 +201,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(2459),	-- Swiftness Potion
 						-- #endif
 						i(5340, {	-- Cauldron Stirrer
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -210,7 +209,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 5052,	-- Blood Shards of Agamaggan
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 17,
 					["groups"] = {
@@ -238,15 +237,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 879,	-- Betrayal from Within (1/2)
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 17,
 					["groups"] = {
 						i(5316, {	-- Barkshell Tunic
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5317, {	-- Dry Moss Tunic
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -254,7 +253,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 878,	-- Tribes at War
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5075, 1 }},	-- Blood Shard
 					["races"] = HORDE_ONLY,
 					["lvl"] = 14,
@@ -266,7 +265,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 1825,	-- Speak with Thun'grim
 					["coord"] = { 57.23, 30.34, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { HILLSBRAD_FOOTHILLS, RAZORFEN_KRAUL, STONETALON_MOUNTAINS },
 					["cost"] = { { "i", 3575, 10 } },	-- Iron Bar
 					["classes"] = { WARRIOR },
@@ -298,20 +297,20 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5878,	-- Thun'grim Firegaze
 					["sourceQuest"] = 1838,	-- Brutal Armor
 					["coord"] = { 57.23, 30.34, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARRIOR },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
 					["groups"] = {
 						i(7133, {	-- Brutal Hauberk
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(1522, {	-- Call of Fire (1/5) [Orgrimmar]
 					["qg"] = 5892,	-- Searn Firewarder
 					["coord"] = { 37.8, 37.4, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -320,7 +319,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(1523, {	-- Call of Fire (1/5) [Thunder Bluff]
 					["qg"] = 5906,	-- Xanis Flameweaver
 					["coord"] = { 25.2, 21, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -329,7 +328,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2983, {	-- Call of Fire (1/5) [Durotar]
 					["qg"] = 3173,	-- Swart <Shaman Trainer>
 					["coord"] = { 54.4, 42.6, DUROTAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -338,7 +337,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2984, {	-- Call of Fire (1/5) [Mulgore]
 					["qg"] = 3066,	-- Narm Skychaser <Shaman Trainer>
 					["coord"] = { 48.4, 59.2, MULGORE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { SHAMAN },
 					["isBreadcrumb"] = true,
@@ -356,7 +355,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						2984,	-- Call of Fire (1/5) [Mulgore]
 					},
 					["coord"] = { 55.8, 20, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { SHAMAN },
 					["lvl"] = lvlsquish(10, 10, 5),
@@ -364,7 +363,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- CRIEVE NOTE: This isn't collectible in Classic.
 					["groups"] = {
 						i(6653, {	-- Torch of the Dormant Flame
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 					-- #endif
@@ -373,7 +372,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5900,	-- Telf Joolam
 					["sourceQuest"] = 1524,	-- Call of Fire (2/5)
 					["coord"] = { 38.6, 58.8, DUROTAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { SHAMAN },
 					["lvl"] = lvlsquish(10, 10, 5),
@@ -392,7 +391,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 3199,	-- Burning Blade Cultist
 						}),
 						i(6636, {	-- Fire Sapta
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -403,7 +402,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 1525,	-- Call of Fire (3/5)
 					["coord"] = { 38.6, 58.8, DUROTAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { SHAMAN },
 					["lvl"] = lvlsquish(10, 10, 5),
@@ -425,7 +424,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 1526,	-- Call of Fire (4/5)
 					["coord"] = { 38.9, 58.2, DUROTAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { SHAMAN },
 					["lvl"] = lvlsquish(10, 10, 5),
@@ -436,7 +435,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						-- #if NOT ANYCLASSIC
 						i(6654, {	-- Torch of the Eternal Flame
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #endif
 					},
@@ -444,7 +443,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2985, {	-- Call of Water (1/9) [Durotar]
 					["qg"] = 3173,	-- Swart <Shaman Trainer>
 					["coord"] = { 54.4, 42.6, DUROTAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -453,7 +452,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2986, {	-- Call of Water (1/9) [Mulgore]
 					["qg"] = 3066,	-- Narm Skychaser <Shaman Trainer>
 					["coord"] = { 48.4, 59.2, MULGORE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -462,7 +461,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(1528, {	-- Call of Water (1/9) [Orgrimmar]
 					["qg"] = 5892,	-- Searn Firewarder
 					["coord"] = { 38.0, 37.7, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -471,7 +470,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(1529, {	-- Call of Water (1/9) [Thunder Bluff]
 					["qg"] = 5906,	-- Xanis Flameweaver
 					["coord"] = { 25.2, 20.5, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -481,11 +480,12 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5901,	-- Islen Waterseer
 					["sourceQuests"] = {
 						2985,	-- Call of Water (1/9) [Durotar]
+						2986,	-- Call of Water (1/9) [Mulgore]
 						1528,	-- Call of Water (1/9) [Orgrimmar]
 						1529,	-- Call of Water (1/9) [Thunder Bluff]
 					},
 					["coord"] = { 65.8, 43.8, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -494,7 +494,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5899,	-- Brine
 					["sourceQuest"] = 1530,	-- Call of Water (2/9)
 					["coord"] = { 43.4, 77.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -512,7 +512,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5899,	-- Brine
 					["sourceQuest"] = 1535,	-- Call of Water (3/9)
 					["coord"] = { 43.4, 77.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { HILLSBRAD_FOOTHILLS },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
@@ -531,7 +531,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5899,	-- Brine
 					["sourceQuest"] = 1536,	-- Call of Water (4/9)
 					["coord"] = { 43.4, 77.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ASHENVALE },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
@@ -553,13 +553,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 1534,	-- Call of Water (5/9)
 					["coord"] = { 43.4, 77.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
 					["groups"] = {
 						i(6637, {	-- Water Sapta
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -567,7 +567,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5901,	-- Islen Waterseer
 					["sourceQuest"] = 1534,	-- Call of Water (6/9)
 					["coord"] = { 65.8, 43.8, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { SILVERPINE_FOREST },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
@@ -587,7 +587,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["provider"] = { "o", 113791 },	-- Brazier of Everfount
 					["sourceQuest"] = 1534,	-- Call of Water (7/9)
 					["coord"] = { 38.3, 44.6, SILVERPINE_FOREST },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -599,7 +599,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 100,	-- Call of Water (8/9)
 					["coord"] = { 38.6, 44.6, SILVERPINE_FOREST },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -614,14 +614,14 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 7007,	-- Tiev Mordune
 					["sourceQuest"] = 100,	-- Call of Water (8/9)
 					["coord"] = { 37.3, 44.1, SILVERPINE_FOREST },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
 					["lvl"] = 20,
 					["groups"] = {
 						i(6637, {	-- Water Sapta
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -655,22 +655,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(59584, {	-- Foolhardy Bracers
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59583, {	-- Marauding Belt
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131221, {	-- Marauding Cord
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(5346, {	-- Orcish Battle Bow
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old rewards, quest reused
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old rewards, quest reused
 						}),
 						i(5344, {	-- Pointed Axe
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old rewards, quest reused
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old rewards, quest reused
 						}),
 						i(5345, {	-- Stonewood Hammer
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old rewards, quest reused
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old rewards, quest reused
 						}),
 					},
 				}),
@@ -690,7 +690,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 41.8, 38.7, THE_BARRENS },
 						{ 45.0, 62.2, THE_BARRENS },
 					},
-					["timeline"] = { "removed 4.0.1" },
+					["timeline"] = { REMOVED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 11,
 				}),
@@ -698,7 +698,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3292,	-- Brewmaster Drohn
 					["sourceQuest"] = 819,	-- Chen's Empty Keg (1/3)
 					["coord"] = { 62.27, 38.39, THE_BARRENS },
-					["timeline"] = { "removed 4.0.1" },
+					["timeline"] = { REMOVED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 11,
 					["groups"] = {
@@ -729,7 +729,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(4952, {	-- Stormstout
-							["timeline"] = { "removed 4.0.1" },
+							["timeline"] = { REMOVED_4_0_1 },
 						}),
 					},
 				}),
@@ -737,7 +737,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3292,	-- Brewmaster Drohn
 					["sourceQuest"] = 821,	-- Chen's Empty Keg (2/3)
 					["coord"] = { 62.27, 38.39, THE_BARRENS },
-					["timeline"] = { "removed 4.0.1" },
+					["timeline"] = { REMOVED_4_0_1 },
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
 					["lvl"] = 11,
@@ -761,7 +761,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(4953, {	-- Trogg Brew / Trogg Ale [CATA+]
-							["timeline"] = { "removed 4.0.1" },
+							["timeline"] = { REMOVED_4_0_1 },
 						}),
 					},
 				}),
@@ -769,7 +769,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6546,	-- Tabetha
 					["sourceQuest"] = 1799,	-- Fragments of the Orb of Orahil
 					["coord"] = { 46, 57, DUSTWALLOW_MARSH },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 35,
 					["groups"] = {
@@ -787,7 +787,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						4739,	-- In Search of Menara Voidrender (Undercity)
 					},
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5770, 1 }},	-- Robes of Arcana
 					["classes"] = { WARLOCK },
 					["lvl"] = 31,
@@ -796,7 +796,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6266,	-- Menara Voidrender
 					["sourceQuest"] = 1796,	-- Components for the Enchanted Gold Bloodrobe (1/5)
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 3577, 1 }},	-- Gold Bar
 					["classes"] = { WARLOCK },
 					["lvl"] = 31,
@@ -805,7 +805,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 2670,	-- Xizk Goodstitch
 					["sourceQuest"] = 4781,	-- Components for the Enchanted Gold Bloodrobe (2/5)
 					["coord"] = { 28.6, 76.8, STRANGLETHORN_VALE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 31,
 				}),
@@ -813,7 +813,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6266,	-- Menara Voidrender
 					["sourceQuest"] = 4782,	-- Components for the Enchanted Gold Bloodrobe (3/5)
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DESOLACE },
 					["classes"] = { WARLOCK },
 					["lvl"] = 31,
@@ -840,7 +840,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6266,	-- Menara Voidrender
 					["sourceQuest"] = 4783,	-- Components for the Enchanted Gold Bloodrobe (4/5)
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ARATHI_HIGHLANDS },
 					["cost"] = { { "i", 6265, 1 } },	-- Soul Shard
 					["classes"] = { WARLOCK },
@@ -892,22 +892,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						-- #endif
 						i(59539, {	-- Mankrik's Old Wedding Garments
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59540, {	-- Quilboar Skin Gloves
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59541, {	-- Mankrik's Boar Slicer
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131227, {	-- Quilboar Linked Gauntlets
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(5314, {	-- Boar Hunter's Cape
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old rewards, quest reused
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old rewards, quest reused
 						}),
 						i(6477, {	-- Grassland Sash
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old rewards, quest reused
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old rewards, quest reused
 						}),
 					},
 				}),
@@ -927,13 +927,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 9456,	-- Warlord Krom'zar
 						}),
 						i(59591, {	-- Shield of the Barrens
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59592, {	-- Suppressor's Wand
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59593, {	-- Deathgate Shield
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -941,7 +941,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3387,	-- Jorn Skyseer
 					["sourceQuest"] = 907,	-- Enraged Thunder Lizards
 					["coord"] = { 44.86, 59.13, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 					["groups"] = {
@@ -954,13 +954,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(5302, {	-- Cobalt Buckler
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5306, {	-- Wind Rider Staff
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5299, {	-- Gloves of the Moon
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -968,7 +968,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3448,	-- Tonga Runetotem
 					["sourceQuest"] = 6128,	-- Gathering the Cure
 					["coord"] = { 52.2, 31.8, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { DRUID },
 					["lvl"] = 14,
@@ -978,40 +978,76 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 12296,	-- Sickly Gazelle
 						}),
 						i(15866, {	-- Veildust Medicine Bag
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78266, {	-- Dark Iron Ordinance
+					["qg"] = 211653,	-- Grizzby
+					["sourceQuest"] = 78284,	-- Grizzby HQT
+					["coord"] = { 61.8, 39.4, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { WETLANDS, ARATHI_HIGHLANDS },
+					["lvl"] = 20,
+					["groups"] = {
+						objective(1, {	-- 0/20 Dark Iron Ordinance
+							["provider"] = { "i", 210138 },	-- Dark Iron Ordinance
+							["coord"] = { 61.4, 29.6, WETLANDS },
+							["crs"] = {
+								1051,	-- Dark Iron Dwarf
+								1052,	-- Dark Iron Saboteur
+								1053,	-- Dark Iron Tunneler
+								1054,	-- Dark Iron Demolitionist
+							},
+						}),
+					},
+				})),
+				-- #endif
 				q(1069, {	-- Deepmoss Spider Eggs
 					["qg"] = 3446,	-- Mebok Mizzyrix
 					["coord"] = { 62.37, 37.32, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { STONETALON_MOUNTAINS },
 					["lvl"] = 15,
 					["groups"] = {
 						objective(1, {	-- 0/15 Deepmoss Egg
 							["providers"] = {
 								{ "i", 5570 },	-- Deepmoss Egg
-								{ "i", 19542 },	-- Deepmoss Eggs
+								{ "o", 19542 },	-- Deepmoss Eggs
 							},
 						}),
 					},
 				}),
+				q(1716, {	-- Devourer of Souls [Stormwind City]
+					["qg"] = 6122,	-- Gakin the Darkbinder
+					["sourceQuest"] = 1717,	-- Gakin's Summons (Succubus)
+					-- #if AFTER WRATH
+					["coord"] = { 39.2, 85.2, STORMWIND_CITY },
+					-- #else
+					["coord"] = { 25.4, 78.4, STORMWIND_CITY },
+					-- #endif
+					["timeline"] = { REMOVED_4_0_3 },
+					["races"] = { HUMAN, GNOME },
+					["classes"] = { WARLOCK },
+					["isBreadcrumb"] = true,
+					["lvl"] = 20,
+				}),
 				q(862, {	-- Dig Rat Stew
 					["qg"] = 3443,	-- Grub
 					["coord"] = { 55.31, 31.79, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 5051, 8 } },	-- Dig Rat
 					["requireSkill"] = COOKING,
 					["races"] = HORDE_ONLY,
 					["lvl"] = 15,
 					["groups"] = {
 						i(10919, {	-- Apothecary Gloves
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5478),	-- Dig Rat Stew
 						i(5487, {	-- Recipe: Dig Rat Stew (RECIPE!)
-							["timeline"] = { "removed 4.3.0" },
+							["timeline"] = { REMOVED_4_3_0 },
 						}),
 					},
 				}),
@@ -1026,6 +1062,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 67.6, 39.3, NORTHERN_BARRENS },
 					-- #else
 					["qg"] = 3429,	-- Thork
+					["sourceQuest"] = 854,	-- Journey to the Crossroads
 					["coord"] = { 51.50, 30.86, THE_BARRENS },
 					-- #endif
 					["races"] = HORDE_ONLY,
@@ -1058,7 +1095,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 1511,	-- Ken'zigla's Draught
 					["coord"] = { 44.6, 59.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { ORC, UNDEAD },
 					["classes"] = { WARLOCK },
 					["lvl"] = 20,
@@ -1108,7 +1145,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(868, {	-- Egg Hunt
 					["qg"] = 3428,	-- Korran
 					["coord"] = { 51.07, 29.62, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 17,
 					["groups"] = {
@@ -1120,10 +1157,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(6503, {	-- Harlequin Robes
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(6502, {	-- Violet Scale Armor
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1131,7 +1168,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3387,	-- Jorn Skyseer
 					["sourceQuest"] = 882,	-- Ishamuhale
 					["coord"] = { 44.86, 59.13, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 					["groups"] = {
@@ -1144,11 +1181,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78265, {	-- Fish Oil
+					["qg"] = 211653,	-- Grizzby
+					["sourceQuest"] = 78284,	-- Grizzby HQT
+					["coord"] = { 61.8, 39.4, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["cost"] = { { "i", 17058, 24 } },	-- Fish Oil
+					["maps"] = { ARATHI_HIGHLANDS, BLACKFATHOM_DEEPS, DESOLACE, DUSTWALLOW_MARSH, FERALAS, HILLSBRAD_FOOTHILLS, STRANGLETHORN_VALE, SWAMP_OF_SORROWS, WETLANDS },
+					["lvl"] = 20,
+				})),
+				-- #endif
 				q(1503, {	-- Forged Steel
 					["qg"] = 5878,	-- Thun'grim Firegaze
 					["sourceQuest"] = 1502,	-- Thun'grim Firegaze
 					["coord"] = { 57.23, 30.34, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
 					["lvl"] = 10,
@@ -1161,16 +1209,16 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["coord"] = { 55.0, 26.6, THE_BARRENS },
 						}),
 						i(7326, {	-- Thun'grim's Axe
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(7327, {	-- Thun'grim's Dagger
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(7328, {	-- Thun'grim's Mace
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(7329, {	-- Thun'grim's Sword
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					}
 				}),
@@ -1183,7 +1231,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						4969,	-- Knowledge of the Orb of Orahil [Undercity]
 					},
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DESOLACE, DUSTWALLOW_MARSH },
 					["classes"] = { WARLOCK },
 					["lvl"] = 35,
@@ -1198,15 +1246,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(898, {	-- Free From the Hold
 					["qg"] = 3465,	-- Gilthares Firebough
 					["coord"] = { 61.96, 54.97, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 13,
 					["groups"] = {
 						i(5311, {	-- Buckled Boots
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5312, {	-- Riveted Gauntlets
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1231,7 +1279,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(843, {	-- Gann's Reclamation
 					["qg"] = 3341,	-- Gann Stonespire
 					["coord"] = { 46.08, 76.37, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 17,
 					["groups"] = {
@@ -1252,7 +1300,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3448,	-- Tonga Runetotem
 					["sourceQuest"] = 6127,	-- The Principal Source [H]
 					["coord"] = { 52.2, 31.8, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 2449, 5 }},	-- Earthroot
 					["races"] = HORDE_ONLY,
 					["classes"] = { DRUID },
@@ -1266,75 +1314,6 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 					},
-				}),
-				q(3634, {	-- Gnome Engineering
-					["providers"] = {
-						{ "n", 3494 },	-- Tinkerwiz <Journeyman Engineer>
-						{ "i", 10789 },	-- Manual of Engineering Disciplines
-					},
-					["altQuests"] = {
-						3526,	-- Goblin Engineering
-						3629,	-- Goblin Engineering
-						3630,	-- Gnome Engineering
-						3632,	-- Gnome Engineering
-						3633,	-- Goblin Engineering
-						--3634,	-- Gnome Engineering
-						3635,	-- Gnome Engineering
-						3637,	-- Gnome Engineering
-						4181,	-- Goblin Engineering
-					},
-					["description"] = "Requires 200 Engineering to start this quest.",
-					["coord"] = { 62.6, 36.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.1" },
-					["requireSkill"] = ENGINEERING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 30,
-				}),
-				q(3637, {	-- Gnome Engineering
-					["providers"] = {
-						{ "n", 3494 },	-- Tinkerwiz <Journeyman Engineer>
-						{ "i", 10789 },	-- Manual of Engineering Disciplines
-					},
-					["altQuests"] = {
-						3526,	-- Goblin Engineering
-						3629,	-- Goblin Engineering
-						3630,	-- Gnome Engineering
-						3632,	-- Gnome Engineering
-						3633,	-- Goblin Engineering
-						3634,	-- Gnome Engineering
-						3635,	-- Gnome Engineering
-						--3637,	-- Gnome Engineering
-						4181,	-- Goblin Engineering
-					},
-					["description"] = "Requires 200 Engineering to start this quest.",
-					["coord"] = { 62.6, 36.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.1" },
-					["requireSkill"] = ENGINEERING,
-					["races"] = HORDE_ONLY,
-					["lvl"] = 30,
-				}),
-				q(3633, {	-- Goblin Engineering
-					["providers"] = {
-						{ "n", 3494 },	-- Tinkerwiz <Journeyman Engineer>
-						{ "i", 10789 },	-- Manual of Engineering Disciplines
-					},
-					["altQuests"] = {
-						3526,	-- Goblin Engineering
-						3629,	-- Goblin Engineering
-						3630,	-- Gnome Engineering
-						3632,	-- Gnome Engineering
-						--3633,	-- Goblin Engineering
-						3634,	-- Gnome Engineering
-						3635,	-- Gnome Engineering
-						3637,	-- Gnome Engineering
-						4181,	-- Goblin Engineering
-					},
-					["description"] = "Requires 200 Engineering to start this quest.",
-					["coord"] = { 62.6, 36.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.1" },
-					["requireSkill"] = ENGINEERING,
-					["races"] = HORDE_ONLY,
-					["lvl"] = 30,
 				}),
 				q(875, {	-- Harpy Lieutenants
 					["qg"] = 3449,	-- Darsok Swiftdagger
@@ -1386,14 +1365,17 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6244,	-- Takar the Seer
 					["sourceQuest"] = 1716,	-- Devourer of Souls [Stormwind City]
 					["coord"] = { 49.2, 57.0, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ASHENVALE },
 					["races"] = { HUMAN, GNOME },
 					["classes"] = { WARLOCK },
 					["lvl"] = 20,
 					["groups"] = {
 						objective(1, {	-- 0/1 Heartswood
-							["provider"] = { "i", 6912 },	-- Heartswood
+							["providers"] = {
+								{ "i", 6912 },	-- Heartswood
+								{ "o", 93192 },	-- Heartswood
+							},
 							["coord"] = { 31, 31, ASHENVALE },
 						}),
 					},
@@ -1424,19 +1406,19 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 3396,	-- Hezrul Bloodmark
 						}),
 						i(59585, {	-- Lushwater Cloak
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59586, {	-- Gloves of Unfocused Rage
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59587, {	-- Fractured Belt
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131220, {	-- Hands of Unfocused Rage
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(5351, {	-- Bounty Hunter's Ring
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old rewards, quest reused
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old rewards, quest reused
 						}),
 					},
 				}),
@@ -1444,7 +1426,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 8582,	-- Kadrak
 					["sourceQuest"] = 3513,	-- The Runed Scroll
 					["coord"] = { 48.12, 5.42, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { STONETALON_MOUNTAINS },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 15,
@@ -1457,17 +1439,17 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["coord"] = { 29.8, 17.6, STONETALON_MOUNTAINS },
 						}),
 						i(10653, {	-- Trailblazer Boots
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(10654, {	-- Jutebraid Gloves
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4736, {	-- In Search of Menara Voidrender (Ironforge)
 					["qg"] = 5172,	-- Briarthorn
 					["coord"] = { 50.2, 6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1476,7 +1458,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4737, {	-- In Search of Menara Voidrender (Orgrimmar)
 					["qg"] = 3326,	-- Zevrost
 					["coord"] = { 48.4, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1485,7 +1467,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4738, {	-- In Search of Menara Voidrender (Stormwind)
 					["qg"] = 461,	-- Demisette Cloyce
 					["coord"] = { 25.4, 78.2, STORMWIND_CITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1494,7 +1476,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4739, {	-- In Search of Menara Voidrender (Undercity)
 					["qg"] = 4563,	-- Kaal Soulreaper
 					["coord"] = { 86, 15.6, UNDERCITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1524,7 +1506,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3388,	-- Mahren Skyseer
 					["sourceQuest"] = 874,	-- Mahren Skyseer
 					["coord"] = { 65.83, 43.85, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 					["groups"] = {
@@ -1538,13 +1520,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 3476,	-- Isha Awak
 						}),
 						i(5356, {	-- Branding Rod
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5357, {	-- Ward of the Vale
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5355, {	-- Beastmaster's Girdle
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1552,7 +1534,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3387,	-- Jorn Skyseer
 					["sourceQuest"] = 3261,	-- Jorn Skyseer
 					["coord"] = { 44.86, 59.13, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 					["groups"] = {
@@ -1577,14 +1559,14 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3338,	-- Sergra Darkthorn
 					["sourceQuest"] = 905,	-- The Angry Scytheclaws
 					["coord"] = { 52.23, 31.01, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 				}),
 				q(854, {	-- Journey to the Crossroads
 					["qg"] = 3418,	-- Kirge Sternhorn
 					["coord"] = { 44.8, 58.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { TAUREN },
 					["isBreadcrumb"] = true,
 					["lvl"] = 9,
@@ -1592,7 +1574,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4967, {	-- Knowledge of the Orb of Orahil [Orgrimmar]
 					["qg"] = 3326,	-- Zevrost
 					["coord"] = { 48.4, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1601,7 +1583,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4965, {	-- Knowledge of the Orb of Orahil [Ironforge]
 					["qg"] = 5172,	-- Briarthorn
 					["coord"] = { 50.2, 6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1610,7 +1592,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4968, {	-- Knowledge of the Orb of Orahil [Stormwind]
 					["qg"] = 461,	-- Demisette Cloyce
 					["coord"] = { 25.4, 78.2, STORMWIND_CITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1619,7 +1601,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4969, {	-- Knowledge of the Orb of Orahil [Undercity]
 					["qg"] = 4563,	-- Kaal Soulreaper
 					["coord"] = { 86, 15.6, UNDERCITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1646,27 +1628,61 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 3394,	-- Barak Kodobane
 						}),
 						i(59551, {	-- Tangled Thread Gloves
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59552, {	-- Belt of the Forgotten Pool
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59553, {	-- Highstrider Boots
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131218, {	-- Cord of the Forgotten Pool
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 					},
 				}),
 				q(883, {	-- Lakota'mani
 					["provider"] = { "i", 5099 },	-- Hoof of Lakota'mani
 					["coord"] = { 47.6, 51.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cr"] = 3474,	-- Lakota'mani
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78287, {	-- Let Me Make You An Offer [A]
+					["providers"] = {
+						{ "n", 211653 },	-- Grizzby
+						{ "i", 211447 },	-- Arms Shipment
+					},
+					["sourceQuests"] = {
+						78265,	-- Fish Oil
+						78266,	-- Dark Iron Ordinance
+						78267,	-- Shredder Turbochargers
+					},
+					["coord"] = { 61.8, 39.4, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { STORMWIND_CITY },
+					["races"] = ALLIANCE_ONLY,
+					["lvl"] = 20,
+				})),
+				applyclassicphase(SOD_PHASE_ONE, q(78288, {	-- Let Me Make You An Offer [H]
+					["providers"] = {
+						{ "n", 211653 },	-- Grizzby
+						{ "i", 211447 },	-- Arms Shipment
+					},
+					["sourceQuests"] = {
+						78265,	-- Fish Oil
+						78266,	-- Dark Iron Ordinance
+						78267,	-- Shredder Turbochargers
+					},
+					["coord"] = { 61.8, 39.4, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { ORGRIMMAR },
+					["races"] = HORDE_ONLY,
+					["lvl"] = 20,
+				})),
+				-- #endif
 				q(1060, {	-- Letter to Jin'Zil
 					["providers"] = {
 						{ "n", 3449 },	-- Darsok Swiftdagger
@@ -1674,14 +1690,14 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 876,	-- Serena Bloodfeather
 					["coord"] = { 51.62, 30.90, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 15,
 				}),
 				q(4921, {	-- Lost in Battle
 					["qg"] = 3432,	-- Mankrik
 					["coord"] = { 51.95, 31.58, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 14,
 					["groups"] = {
@@ -1698,7 +1714,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 1515,	-- Dogran's Captivity
 					["coord"] = { 43.2, 47.8, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { ORC, UNDEAD },
 					["classes"] = { WARLOCK },
 					["lvl"] = 20,
@@ -1707,7 +1723,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3387,	-- Jorn Skyseer
 					["sourceQuest"] = 913,	-- Cry of the Thunderhawk
 					["coord"] = { 44.86, 59.13, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 9,
 				}),
@@ -1723,7 +1739,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(9267, {	-- Mending Old Wounds
 					["qg"] = 16418,	-- Mupsi Shacklefridd
 					["coord"] = { 61.22, 37.86, THE_BARRENS },
-					["maxReputation"] = { 470, NEUTRAL },	-- Ratchet, must be less than Neutral
+					["maxReputation"] = { FACTION_RATCHET, NEUTRAL },	-- Ratchet, must be less than Neutral
 					["cost"] = {
 						{ "i", 2589, 40 },	-- Linen Cloth
 						{ "i", 3371, 4 },	-- Empty Vial
@@ -1734,7 +1750,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(896, {	-- Miner's Fortune
 					["qg"] = 3453,	-- Wharfmaster Dizzywig
 					["coord"] = { 63.35, 38.45, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 13,
 					["groups"] = {
 						objective(1, {	-- 0/1 Cats Eye Emerald
@@ -1748,7 +1764,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						i(5335, {	-- A Sack of Coins
 							i(4957, {	-- Old Moneybag
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						}),
 					},
@@ -1757,7 +1773,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 7233,	-- Taskmaster Fizzule
 					["sourceQuest"] = 2458,	-- Deep Cover
 					["coord"] = { 55.4, 5.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 20,
@@ -1786,28 +1802,34 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 							["cost"] = {{ "i", 8072, 1 }},	-- Silixiz's Tower Key
 						}),
-						i(18160),	-- Recipe: Thistle Tea (RECIPE!)
+						i(7678,	{	-- Recipe: Thistle Tea (RECIPE!)
+							["timeline"] = { REMOVED_1_3_0 },
+						}),
+						i(18160, {	-- Recipe: Thistle Tea (RECIPE!)
+							["timeline"] = { ADDED_1_3_0, REMOVED_4_0_3 },
+						}),
 					}
 				}),
 				q(3301, {	-- Mura Runetotem
 					["qg"] = 3448,	-- Tonga Runetotem
 					["sourceQuest"] = 880,	-- Altered Beings
 					["coord"] = { 52.26, 31.92, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
+					["maps"] = { SILVERPINE_FOREST },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 					["groups"] = {
 						i(59557, {	-- Belt of Unwanted Aid
-							["timeline"] = { "added 4.0.1", "removed 4.0.3" },
+							["timeline"] = { ADDED_4_0_1, REMOVED_4_0_3 },
 						}),
 						i(59556, {	-- Shield of Inner Glow
-							["timeline"] = { "added 4.0.1", "removed 4.0.3" },
+							["timeline"] = { ADDED_4_0_1, REMOVED_4_0_3 },
 						}),
 						i(10820, {	-- Jackseed Belt
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(10821, {	-- Sower's Cloak
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1815,16 +1837,16 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3484,	-- Kil'hala <Journeyman Tailor>
 					["sourceQuest"] = 1945,	-- Laughing Sisters
 					["coord"] = { 52.2, 31.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { UNDEAD, TROLL },
 					["classes"] = { MAGE },
 					["lvl"] = 26,
 					["groups"] = {
 						i(7512, {	-- Nether-lace Robe
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(9515, {	-- Nether-lace Tunic
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1832,7 +1854,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3464,	-- Gazrog
 					["sourceQuest"] = 1509,	-- News of Dogran (1/2)
 					["coord"] = { 51.8, 30.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = { ORC, UNDEAD },
 					["lvl"] = 20,
@@ -1841,7 +1863,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 9316,	-- Wenikee Boltbucket
 					["sourceQuest"] = 3921,	-- Wenikee Boltbucket
 					["coord"] = { 49.05, 11.17, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 					["groups"] = {
@@ -1857,7 +1879,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5878,	-- Thun'grim Firegaze
 					["sourceQuest"] = 1838,	-- Brutal Armor
 					["coord"] = { 57.2, 30.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { THUNDER_BLUFF },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
@@ -1866,7 +1888,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(884, {	-- Owatanka
 					["provider"] = { "i", 5102 },	-- Owatanka's Tailspike
 					["coord"] = { 49.6, 59.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cr"] = 3473,	-- Owatanka
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
@@ -1875,7 +1897,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3453,	-- Wharfmaster Dizzywig
 					["sourceQuest"] = 1039,	-- The Barrens Port(Darnassus)
 					["coord"] = { 63.35, 38.45, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { STRANGLETHORN_VALE },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 25,
@@ -1885,7 +1907,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["sourceQuest"] = 1505,	-- Veteran Uzzek
 					["coord"] = { 61.38, 21.11, THE_BARRENS },
 					["description"] = "Completing this quest prevents you from accepting \"Speak with Dillinger\" and \"Ulag the Cleaver\" in Silverpine Forest.",
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DUROTAR },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
@@ -1926,13 +1948,16 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 7161,	-- Wrenix the Wretched
 					["sourceQuest"] = 2382,	-- Wrenix of Ratchet
 					["coord"] = { 63, 36.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { ROGUE },
 					["lvl"] = 16,
 					["groups"] = {
 						objective(1, {	-- 0/1 Southsea Treasure
-							["provider"] = { "i", 7968 },	-- Southsea Treasure
+							["providers"] = {
+								{ "i",   7968 },	-- Southsea Treasure
+								{ "o", 123462 },	-- The Jewel of the Southsea
+							},
 							["coord"] = { 64.8, 45.4, THE_BARRENS },
 							["cr"] = 7168,	-- Polly
 						}),
@@ -1982,19 +2007,19 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						-- #endif
 						i(59580, {	-- Sharp Poker
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59581, {	-- Smart Shoes
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59582, {	-- Shrewd Crossbow
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131223, {	-- Smart Sandals
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(5343, {	-- Barkeeper's Cloak
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old reward, quest repurposed
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old reward, quest repurposed
 						}),
 						i(5342),	-- Raptor Punch
 					},
@@ -2022,11 +2047,29 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					-- #endif
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78702, {	-- Raszel Ander
+					["qg"] = 6247,	-- Doan Karhan
+					["sourceQuest"] = 78684,	-- Mysterious Traveler
+					["coord"] = { 49.2, 57.2, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { WARLOCK },
+					["lvl"] = 20,
+					["groups"] = {
+						i(210980, {	-- Rune of Metamorphosis
+							["classes"] = { WARLOCK },
+							["groups"] = {
+								recipe(403938),	-- Engrave Gloves - Metamorphosis
+							},
+						}),
+					},
+				})),
+				-- #endif
 				q(5046, {	-- Razorhide
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 5052,	-- Blood Shards of Agamaggan
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5075, 4 }},	-- Blood Shard
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
@@ -2035,7 +2078,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(6541, {	-- Report to Kadrak (The Barrens)
 					["qg"] = 3429,	-- Thork
 					["coord"] = { 51.50, 30.86, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 17,
@@ -2043,7 +2086,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(6542, {	-- Report to Kadrak (Stonetalon Mountains)
 					["qg"] = 11821,	-- Darn Talongrip
 					["coord"] = { 73.23, 94.91, STONETALON_MOUNTAINS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 17,
@@ -2067,7 +2110,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 4961,	-- Cleansing of the Orb of Orahil
 					["coord"] = { 46, 57, DUSTWALLOW_MARSH },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 35,
 				}),
@@ -2075,7 +2118,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3341,	-- Gann Stonespire
 					["sourceQuest"] = 843,	-- Gann's Reclamation
 					["coord"] = { 46.08, 76.37, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 17,
 					["groups"] = {
@@ -2109,7 +2152,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3341,	-- Gann Stonespire
 					["sourceQuest"] = 846,	-- Revenge of Gann (1/2)
 					["coord"] = { 46.08, 76.37, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 17,
 					["groups"] = {
@@ -2121,7 +2164,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["coord"] = { 46, 85, THE_BARRENS },
 						}),
 						i(5313, {	-- Totemic Clan Ring
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -2144,7 +2187,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 3922,	-- Nugget Slugs
 					["coord"] = { 49.05, 11.17, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 				}),
@@ -2152,7 +2195,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 5052,	-- Blood Shards of Agamaggan
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5075, 4 }},	-- Blood Shard
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
@@ -2175,20 +2218,48 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(5341),	-- Spore-Covered Tunic
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78680, {	-- Rumors Abound
+					["qg"] = 6247,	-- Doan Karhan
+					["sourceQuest"] = 1740,	-- The Orb of Soran'ruk
+					["coord"] = { 49.2, 57.2, THE_BARRENS },
+					["description"] = "Climb each of the towers, you'll likely need a group or a friend capable of surviving long enough to give you about 3 seconds of uninterupted looting time.",
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { REDRIDGE_MOUNTAINS, DARKSHORE },
+					["classes"] = { WARLOCK },
+					["lvl"] = 20,
+					["groups"] = {
+						objective(1, {	-- 0/1 Orb of Des
+							["providers"] = {
+								{ "i", 210765 },	-- Orb of Des
+								{ "o", 411710 },	-- Orb of Des
+							},
+							["coord"] = { 80.2, 49.5, REDRIDGE_MOUNTAINS },
+						}),
+						objective(2, {	-- 0/1 Bough of Altek
+							["providers"] = {
+								{ "i", 210763 },	-- Bough of Altek
+								{ "o", 411715 },	-- Bough of Altek
+							},
+							["coord"] = { 56.3, 26.4, DARKSHORE },
+						}),
+					},
+				})),
+				-- #endif
 				q(894, {	-- Samophlange (1/4)
 					["providers"] = {
 						{ "n", 3442 },	-- Sputtervalve
 						{ "i", 5088 },	-- Control Console Operating Manual
 					},
 					["coord"] = { 62.98, 37.21, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 10,
 				}),
 				q(900, {	-- Samophlange (2/4)
 					["provider"] = { "o", 4141 },	-- Control Console
 					["sourceQuest"] = 894,	-- Samophlange (1/4)
 					["coord"] = { 52.41, 11.60, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 10,
 					["groups"] = {
 						objective(1, {	-- Shut off Main Control Valve
@@ -2209,7 +2280,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["provider"] = { "o", 4141 },	-- Control Console
 					["sourceQuest"] = 900,	-- Samophlange (2/4)
 					["coord"] = { 52.41, 11.60, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 10,
 					["groups"] = {
 						objective(1, {	-- 0/1 Console Key
@@ -2226,14 +2297,14 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 901,	-- Samophlange (3/4)
 					["coord"] = { 52.41, 11.60, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 10,
 					["groups"] = {
 						i(5324, {	-- Engineer's Hammer
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5325, {	-- Welding Shield
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -2241,7 +2312,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 9317,	-- Rilli Greasygob
 					["sourceQuest"] = 3923,	-- Rilli Greasygob
 					["coord"] = { 76.49, 24.47, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 					["groups"] = {
@@ -2253,10 +2324,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(11854, {	-- Samophlange Screwdriver
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11855, {	-- Tork Wrench
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #if BEFORE 4.0.3
 						i(11147, {	-- Samophlange Manual Cover
@@ -2275,7 +2346,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(2996, {	-- Seeking Strahad (Orgrimmar)
 					["qg"] = 5875,	-- Gan'rul Bloodeye
 					["coord"] = { 48.2, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { ORC, UNDEAD },
 					["classes"] = { WARLOCK },
 					["isBreadcrumb"] = true,
@@ -2288,7 +2359,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #else
 					["coord"] = { 25.4, 78.4, STORMWIND_CITY },
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { WARLOCK },
 					["isBreadcrumb"] = true,
@@ -2297,7 +2368,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(3001, {	-- Seeking Strahad (Undercity)
 					["qg"] = 5675,	-- Carendin Halgar
 					["coord"] = { 85, 25.6, UNDERCITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = { ORC, UNDEAD },
 					["classes"] = { WARLOCK },
 					["isBreadcrumb"] = true,
@@ -2328,22 +2399,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 3452,	-- Serena Bloodfeather
 						}),
 						i(59588, {	-- Cutthroat Band
-							["timeline"] = { "added 4.0.3.13287" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59589, {	-- Bloodfeather Ring
-							["timeline"] = { "added 4.0.3.13287" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59590, {	-- Darsok's Ring
-							["timeline"] = { "added 4.0.3.13287" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(5321, {	-- Elegant Shortsword
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5279, {	-- Harpy Skinner
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5318, {	-- Zhovur Axe
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -2351,7 +2422,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3441,	-- Melor Stonehoof
 					["sourceQuest"] = 861,	-- The Hunter's Way
 					["coord"] = { 61.52, 80.91, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 10,
@@ -2360,7 +2431,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6254,	-- Acolyte Wytula
 					["altQuests"] = { 4963 }, -- Shard of an Infernal
 					["coord"] = { 62.5, 35.5, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DESOLACE },
 					["classes"] = { WARLOCK },
 					["lvl"] = 35,
@@ -2385,7 +2456,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6252, -- Acolyte Magaz
 					["altQuests"] = { 4962 }, -- Shard of a Felhound
 					["coord"] = { 62.6, 35.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DESOLACE },
 					["classes"] = { WARLOCK },
 					["lvl"] = 35,
@@ -2400,6 +2471,44 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78909, {	-- Shifting Scale Talisman
+					["qg"] = 214208,	-- N'ora Anyheart <Scholar of Exotic Fauna>
+					["sourceQuest"] = 78908,	--  Speak to N'ora
+					["coord"] = { 62.0, 39.4, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["OnUpdate"] = [[_.OnUpdateForCrafter]],
+					["cost"] = {
+						{ "i", 10940, 40 },	-- Strange Dust
+						{ "i", 10939, 5 },	-- Greater Magic Essence
+						{ "i", 10978, 2 },	-- Small Glimmering Shard
+						{ "i", 211419, 1 },	-- Handful of Shifting Scales
+						{ "g", 50000 },		-- 5g
+					},
+					["groups"] = {
+						i(211420, {	-- Shifting Scale Talisman
+							["timeline"] = { REMOVED_2_0_1 },
+						}),
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, q(78267, {	-- Shredder Turbochargers
+					["qg"] = 211653,	-- Grizzby
+					["sourceQuest"] = 78284,	-- Grizzby HQT
+					["coord"] = { 61.8, 39.4, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["maps"] = { STONETALON_MOUNTAINS },
+					["lvl"] = 20,
+					["groups"] = {
+						objective(1, {	-- 0/16 Shredder Turbocharger
+							["provider"] = { "i", 210146 },	-- Shredder Turbocharger
+							["coord"] = { 62.6, 52.8, STONETALON_MOUNTAINS },
+							["cost"] = { { "i", 210147, 25 } },	-- Shredder Autosalvage Unit
+							["description"] = "This may take a more than 25 salvage units. It's ~50% chance to salvage the right item.",
+							["cr"] = 214129,	-- Venture Co. Light Shredder
+						}),
+					},
+				})),
+				-- #endif
 				q(887, {	-- Southsea Freebooters
 					-- #if AFTER CATA
 					["qg"] = 3453,	-- Wharfmaster Dizzywig
@@ -2428,6 +2537,55 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						-- #endif
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, n(createHeader({	-- Speak to Grizzby
+					readable = "Speak to Grizzby",
+					icon = 131038,
+					text = {
+						en = "Speak to Grizzby",
+						es = "Habla con el Grizzby",
+						de = "Sprich mit Grizzby",
+						fr = "Parlez à Grizzby",
+						it = "Parla con Grizzby",
+						pt = "Fale com o Grizzby",
+						ru = "Поговорите с Grizzby",
+						ko = "그리즈비와 대화",
+						cn = "与灰熊交谈",
+					},
+				}), {
+					["questID"] = 78284,	-- Grizzby HQT
+					["qg"] = 211653,	-- Grizzby
+					["coord"] = { 61.8, 39.4, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["lvl"] = 20,
+				})),
+				applyclassicphase(SOD_PHASE_ONE, n(createHeader({	-- Speak to N'ora
+					readable = "Speak to N'ora",
+					icon = 131038,
+					text = {
+						en = "Speak to N'ora",
+						es = "Habla con el N'ora",
+						de = "Sprich mit N'ora",
+						fr = "Parlez à N'ora",
+						it = "Parla con N'ora",
+						pt = "Fale com o N'ora",
+						ru = "Поговорите с Н'ора",
+						ko = "노라와 대화",
+						cn = "与奈奥拉谈",
+					},
+				}), {
+					["providers"] = {
+						{ "i", 211419 },	-- Handful of Shifting Scales
+						{ "n", 214208 },	-- N'ora Anyheart <Scholar of Exotic Fauna>
+					},
+					["questID"] = 78908,	-- N'ora HQT
+					["coord"] = { 62.0, 39.4, THE_BARRENS },
+					["description"] = "You need to loot the Handful of Shifting Scales before this quest will be displayed to you.",
+					["timeline"] = { REMOVED_2_0_1 },
+					["OnUpdate"] = [[_.OnUpdateForCrafter]],
+					["lvl"] = 20,
+				})),
+				-- #endif
 				q(1823, {	-- Speak with Ruga
 					["qgs"] = {
 						3354,	-- Sorek
@@ -2439,7 +2597,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 57.4, 87.2, THUNDER_BLUFF },
 						{ 47.2, 17, UNDERCITY },
 					},
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
 					["lvl"] = 20,
@@ -2448,7 +2606,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6394,	-- Ruga Ragetotem
 					["sourceQuest"] = 1824,	-- Trial at the Field of Giants
 					["coord"] = { 44.68, 59.42, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
 					["lvl"] = 20,
@@ -2457,17 +2615,40 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 5052,	-- Blood Shards of Agamaggan
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5075, 10 }},	-- Blood Shard
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
 					["lvl"] = 14,
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_TWO, q(79192, {	-- Stepping Stones
+					["providers"] = {
+						{ "o", 417072 },	-- Nailed Plank
+						{ "o", 424010 },	-- Nailed Plank
+					},
+					["sourceQuests"] = {
+						79008,	-- ...and that note you found (A)
+						79007,	-- ...and that note you found (H)
+					},
+					["coords"] = {
+						{ 46.4, 73.8, THE_BARRENS },
+						{ 37.5, 50.8, WESTFALL },
+					},
+					["maps"] = { STONETALON_MOUNTAINS },
+					["timeline"] = { "added 1.15.1" },
+					["lvl"] = 14,
+					["groups"] = {
+						i(3334),	-- Farmer's Shovel
+						i(221498),	-- Sturdy Lunchbox
+					},
+				})),
+				-- #endif
 				q(888, {	-- Stolen Booty
 					["qg"] = 3391,	-- Gazlowe
 					["sourceQuest"] = 892,	-- The Missing Shipment (2/2)
 					["coord"] = { 62.68, 36.24, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 9,
 					["groups"] = {
 						objective(1, {	-- 0/1 Shipment of Boots
@@ -2485,10 +2666,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["coord"] = { 63.6, 49.2, THE_BARRENS },
 						}),
 						i(5337, {	-- Wayfaring Gloves
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5320, {	-- Padded Lamellar Boots
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -2496,7 +2677,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3464,	-- Gazrog
 					["sourceQuest"] = 869,	-- Raptor Thieves
 					["coord"] = { 51.93, 30.32, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 9,
 					["groups"] = {
@@ -2508,17 +2689,17 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["coord"] = { 58.0, 53.9, THE_BARRENS },
 						}),
 						i(11853, {	-- Rambling Boots
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(2694, {	-- Settler's Leggings
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4487, {	-- Summon Felsteed (1/2) (Ironforge)
 					["qg"] = 5172,	-- Briarthorn
 					["coord"] = { 50.2, 6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
@@ -2527,7 +2708,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(3631, {	-- Summon Felsteed (1/2) (Orgrimmar)
 					["qg"] = 3326,	-- Zevrost
 					["coord"] = { 48.4, 45.6, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -2536,7 +2717,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4488, {	-- Summon Felsteed (1/2) (Stormwind)
 					["qg"] = 461,	-- Demisette Cloyce <Warlock Trainer>
 					["coord"] = { 25.4, 78.2, STORMWIND_CITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
@@ -2545,7 +2726,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(4489, {	-- Summon Felsteed (1/2) (Undercity)
 					["qg"] = 4563,	-- Kaal Soulreaper
 					["coord"] = { 86, 15.6, UNDERCITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -2560,7 +2741,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						4489,	-- Summon Felsteed (1/2) (Undercity)
 					},
 					["coord"] = { 62.6, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 40,
 					["groups"] = {
@@ -2602,7 +2783,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6236,	-- Klannoc Macleod
 					["sourceQuest"] = 1718,	-- The Islander
 					["coord"] = { 66.6, 49, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARRIOR },
 					["lvl"] = 30,
 					["groups"] = {
@@ -2664,17 +2845,17 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(59549, {	-- Sunscale Cloak
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59550, {	-- Darkthorn Piercer
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
 				q(886, {	-- The Barrens Oases
 					["qg"] = 5769,	-- Arch Druid Hamuul Runetotem
 					["coord"] = { 78.63, 28.56, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 10,
@@ -2688,7 +2869,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						["sourceQuest"] = 1805,	-- Tome of the Cabal (3/3) (H)
 					},
 					["coord"] = { 62.6, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 30,
 					["groups"] = {
@@ -2700,47 +2881,47 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						recipe(691),	-- Summon Felhunter
 						-- #endif
 						i(22244, {	-- Box of Souls
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4964, {	-- The Completed Orb of Dar'Orahil
 					["qg"] = 6266,	-- Menara Voidrender
-					["altQuests"] = { 4975 },	-- The Completed Orb of Noh'Orahil
 					["sourceQuests"] = {
 						4976,	-- Returning the Cleansed Orb
 						4962,	-- Shard of a Felhound
 					},
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["lockCriteria"] = { 1, "questID", 4975 },	-- The Completed Orb of Noh'Orahil (mutually exclusive)
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 35,
 					["groups"] = {
 						i(15108, {	-- Orb of Dar'Orahil
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(15106, {	-- Staff of Dar'Orahil
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4975, {	-- The Completed Orb of Noh'Orahil
 					["qg"] = 6266,	-- Menara Voidrender
-					["altQuests"] = { 4964 },	-- The Completed Orb of Dar'Orahil
 					["sourceQuests"] = {
 						4976,	-- Returning the Cleansed Orb
 						4963,	-- Shard of an Infernal
 					},
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["lockCriteria"] = { 1, "questID", 4964 },	-- The Completed Orb of Dar'Orahil (mutually exclusive)
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 35,
 					["groups"] = {
 						i(15107, {	-- Orb of Noh'Orahil
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(15105, {	-- Staff of Noh'Orahil
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -2748,15 +2929,44 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6266,	-- Menara Voidrender
 					["sourceQuest"] = 4784,	-- Components for the Enchanted Gold Bloodrobe (5/5)
 					["coord"] = { 62.4, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 31,
 					["groups"] = {
 						i(6900, {	-- Enchanted Gold Bloodrobe
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, q(78681, {	-- The Conjuring
+					["providers"] = {
+						{ "n",   6247 },	-- Doan Karhan
+						{ "o", 412224 },	-- Dark Ritual Stone
+					},
+					["sourceQuest"] = 78680,	-- Rumors Abound
+					["description"] = "After obtaining the blood, interact with the altar near the obelisk dedicated to Grommash Hellscream to begin a ritual, summoning a few waves of demons that must be defeated using Drain Soul while standing inside the purple rune on the ground. Defeat the final Searing Infernal this way to cause the Mysterious Traveler to appear.",
+					["coords"] = {
+						{ 49.2, 57.2, THE_BARRENS },
+						{ 79.0, 80.3, ASHENVALE },
+					},
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { WARLOCK },
+					["lvl"] = 20,
+					["groups"] = {
+						objective(1, {	-- 0/10 Blood of the Legion
+							["provider"] = { "i", 210966 },	-- Blood of the Legion
+							["coord"] = { 84.2, 71.6, ASHENVALE },
+							["crs"] = {
+								11697,	-- Mannoroc Lasher
+								6115,	-- Felguard
+								6073,	-- Searing Infernal
+								6071,	-- Legion Hound
+							},
+						}),
+					},
+				})),
+				-- #endif
 				q(872, {	-- The Disruption Ends / The Far Watch Offensive [CATA+]
 					-- #if AFTER CATA
 					["qg"] = 3337,	-- Kargal Battlescar
@@ -2796,22 +3006,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						-- #endif
 						i(59542, {	-- Thornweaver Leggings
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59543, {	-- Pigman Belt
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59544, {	-- Kargal's Breastplate
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131224, {	-- Pigman Waistband
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(5275, {	-- Binding Girdle
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5328, {	-- Cinched Belt
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -2827,22 +3037,22 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["lvl"] = lvlsquish(13, 13, 5),
 					["groups"] = {
 						i(59577, {	-- Sputtervalve Gun
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59578, {	-- Bracers of Angry Mutterings
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59579, {	-- Nozzlepot Leggings
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131222, {	-- Nozzlepot Legwraps
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(5326, {	-- Flaring Baton
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5327, {	-- Greasy Tinker's Pants
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -2906,16 +3116,16 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						-- #endif
 						i(5309, {	-- Privateer Musket
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old reward, quest repurposed, original quest name was The Guns of Northwatch
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old reward, quest repurposed, original quest name was The Guns of Northwatch
 						}),
 						i(5310, {	-- Sea Dog Britches
-							["timeline"] = { "removed 4.0.3" },	-- NOTE: Old reward, quest repurposed, original quest name was The Guns of Northwatch
+							["timeline"] = { REMOVED_4_0_3 },	-- NOTE: Old reward, quest repurposed, original quest name was The Guns of Northwatch
 						}),
 					},
 				}),
 				q(897, {	-- The Harvester
 					["provider"] = { "i", 5138 },	-- Harvester's Head
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 				}),
@@ -2946,7 +3156,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							{ 57.6, 87.2, THUNDER_BLUFF },
 						},
 					},
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARRIOR },
 					["lvl"] = 30,
 				}),
@@ -2957,7 +3167,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 887,	-- Southsea Freebooters
 					["coord"] = { 62.68, 36.24, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 9,
 				}),
 				q(892, {	-- The Missing Shipment (2/2)
@@ -2967,12 +3177,12 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 890,	-- The Missing Shipment (1/2)
 					["coord"] = { 63.35, 38.45, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 9,
 				}),
 				q(3513, {	-- The Runed Scroll
 					["provider"] = { "i", 10621 },	-- Runed Scroll
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 15,
 				}),
@@ -3005,7 +3215,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(857, {	-- The Tear of the Moons
 					["qg"] = 3421,	-- Feegly the Exiled
 					["coord"] = { 48.95, 86.32, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 22,
 					["groups"] = {
@@ -3022,7 +3232,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6236,	-- Klannoc Macleod
 					["sourceQuest"] = 1719,	-- The Affray
 					["coord"] = { 68.6, 49, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ALTERAC_MOUNTAINS },
 					["classes"] = { WARRIOR },
 					["isBreadcrumb"] = true,
@@ -3054,7 +3264,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5810,	-- Uzzek
 					["sourceQuest"] = 1498,	-- Path of Defense
 					["coord"] = { 61.38, 21.11, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DUROTAR },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
@@ -3072,7 +3282,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					}),
 					["qg"] = 6251,	-- Strahad Farsan
 					["coord"] = { 62.6, 35.4, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["lvl"] = 30,
 				},
@@ -3087,17 +3297,23 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						["sourceQuest"] = 1801,	-- Tome of the Cabal (1/3) (H)
 						["coord"] = { 76.6, 36.8, UNDERCITY },
 					}),
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { HILLSBRAD_FOOTHILLS, THOUSAND_NEEDLES },
 					["classes"] = { WARLOCK },
 					["lvl"] = 30,
 					["groups"] = {
 						objective(1, {	-- 0/1 Moldy Tome
-							["provider"] = { "i", 6931 },	-- Moldy Tome
+							["providers"] = {
+								{ "i", 6931 },	-- Moldy Tome
+								{ "o", 92013 },	-- Tome of the Cabal
+							},
 							["coord"] = { 27.8, 72.9, HILLSBRAD_FOOTHILLS },
 						}),
 						objective(2, {	-- 0/1 Tattered Manuscript
-							["provider"] = { "i", 6997 },	-- Tattered Manuscript
+							["providers"] = {
+								{ "i", 6997 },	-- Tattered Manuscript
+								{ "o", 92423 },	-- Damaged Chest
+							},
 							["coord"] = { 43.5, 32.7, THOUSAND_NEEDLES },
 						}),
 					},
@@ -3119,7 +3335,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						["sourceQuest"] = 1803,	-- Tome of the Cabal (2/3) (H)
 						["coord"] = { 76.6, 36.8, UNDERCITY },
 					}),
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { WETLANDS },
 					["classes"] = { WARLOCK },
 					["lvl"] = 30,
@@ -3137,7 +3353,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 6394,	-- Ruga Ragetotem
 					["sourceQuest"] = 1823,	-- Speak with Ruga
 					["coord"] = { 44.68, 59.42, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
 					["lvl"] = 20,
@@ -3153,14 +3369,14 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							},
 						}),
 						i(7120, {	-- Ruga's Bulwark
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(878, {	-- Tribes at War
 					["qg"] = 3430,	-- Mangletooth
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 14,
 					["groups"] = {
@@ -3178,7 +3394,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				q(959, {	-- Trouble at the Docks
 					["qg"] = 3665,	-- Crane Operator Bigglefuzz
 					["coord"] = { 63.1, 37.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { WAILING_CAVERNS },
 					["lvl"] = 14,
 					["groups"] = {
@@ -3193,7 +3409,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5878,	-- Thun'grim Firegaze
 					["sourceQuest"] = 1838,	-- Brutal Armor
 					["coord"] = { 57.2, 30.2, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DUROTAR },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
@@ -3222,13 +3438,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["cr"] = 3395,	-- Verog the Dervish
 						}),
 						i(59566, {	-- Robe of Shame
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(59567, {	-- Murderous Bracers
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131219, {	-- Murderous Cuffs
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 					},
 				}),
@@ -3244,7 +3460,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 49.4, 60.4, MULGORE },
 						{ 80.3, 32.4, ORGRIMMAR },
 					},
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["classes"] = { WARRIOR },
 					["lvl"] = 10,
@@ -3272,28 +3488,28 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 						-- #endif
 						i(49560, {	-- Proof of Death
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(49543, {	-- Seaworthy Leggings
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(49548, {	-- Gazlowe's Gloves
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(49446, {	-- Retainer Vest
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(131225, {	-- Gazlowe's Grips
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(131226, {	-- Retainer Tunic
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 					},
 				}),
 				q(885, {	-- Washte Pawne
 					["provider"] = { "i", 5103 },	-- Washte Pawne's Feather
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cr"] = 3472,	-- Washte Pawne
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
@@ -3302,21 +3518,21 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 5901,	-- Islen Waterseer
 					["sourceQuest"] = 220,	-- Call of Water (6/9)
 					["coord"] = { 65.8, 43.8, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
 					["lvl"] = 20,
 					["groups"] = {
 						i(6637, {	-- Water Sapta
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(893, {	-- Weapons of Choice
 					["qg"] = 3433,	-- Tatternack Steelforge
 					["coord"] = { 45.10, 57.69, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 17,
 					["groups"] = {
@@ -3330,10 +3546,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							["provider"] = { "i", 5094 },	-- Razormane War Shield
 						}),
 						i(5322, {	-- Demolition Hammer
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(5323, {	-- Everglow Lantern
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -3344,7 +3560,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["sourceQuest"] = 902,	-- Samophlange (4/4)
 					["coord"] = { 62.98, 37.21, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 10,
 				}),
@@ -3354,7 +3570,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ "i", 6462 },	-- Secure Crate
 					},
 					["coord"] = { 51.44, 30.15, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 9,
 				}),
@@ -3362,7 +3578,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["qg"] = 3430,	-- Mangletooth
 					["sourceQuest"] = 5052,	-- Blood Shards of Agamaggan
 					["coord"] = { 44.55, 59.26, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = {{ "i", 5075, 4 }},	-- Blood Shard
 					["races"] = HORDE_ONLY,
 					["repeatable"] = true,
@@ -3392,7 +3608,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 46.0, 45.6, THE_BARRENS },
 					},
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["crs"] = {
 						5799,	-- Hannah Bladeleaf <Alliance Outrunner>
@@ -3401,7 +3617,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["groups"] = {
 						i(10621, {	-- Runed Scroll
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -3431,8 +3647,8 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["description"] = "Roams around the waterfall just outside the Wailing Caverns dungeon portal.",
 					["groups"] = {
-						i(5423),  -- Boahn's Fang
-						i(5422),  -- Brambleweed Leggings
+						i(5423),	-- Boahn's Fang
+						i(5422),	-- Brambleweed Leggings
 					},
 				}),
 				n(5838, {	-- Brokespear
@@ -3455,7 +3671,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["groups"] = {
 						i(7559, {	-- Runic Cane
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 05.09.2023
 						}),
 					},
 				}),
@@ -3474,8 +3690,30 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 44.4, 75.6, THE_BARRENS },
 					},
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, n(209797, {	-- Bruuz
+					["coord"] = { 64.8, 39.8, THE_BARRENS },
+					["cost"] = {{ "i", 208773, 1 }},	-- Fishing Harpoon
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { WARRIOR, HUNTER },
+					["groups"] = {
+						i(208777, {	-- Rune of the Sniper
+							["classes"] = { HUNTER },
+							["groups"] = {
+								recipe(416091),	-- Engrave Pants - Sniper Training
+							},
+						}),
+						i(208778, {	-- Rune of Quick Strike
+							["classes"] = { WARRIOR },
+							["groups"] = {
+								recipe(425443),	-- Engrave Gloves - Quick Strike
+							},
+						}),
+					},
+				})),
+				-- #endif
 				n(5851, {	-- Captain Gerogg Hammertoe <Bael'dun Captain of the Guard>
 					-- #if AFTER CATA
 					["coord"] = { 49.8, 89.6, SOUTHERN_BARRENS },
@@ -3484,6 +3722,36 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["races"] = HORDE_ONLY,
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_TWO, n(218931, {	-- Dark Rider
+					["provider"] = { "i", 216941 },	-- Ariden's Sigil
+					["coord"] = { 52, 36, THE_BARRENS },
+					["groups"] = {
+						i(216949),	-- Heavy Dalaran Relic
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, n(209742, {	-- Desert Mirage
+					["description"] = "Cast Dispel or Purge on it.",
+					["coord"] = { 55.0, 35.4, THE_BARRENS },
+					["classes"] = { PRIEST, SHAMAN },
+					["groups"] = {
+						i(208758, {	-- Earthen Rune
+							["timeline"] = { REMOVED_2_0_1 },
+							["classes"] = { SHAMAN },
+							["groups"] = {
+								recipe(410107),	-- Engrave Pants - Way of Earth
+							},
+						}),
+						i(205932, {	-- Prophecy of a King's Demise
+							["timeline"] = { REMOVED_2_0_1 },
+							["classes"] = { PRIEST },
+							["groups"] = {
+								recipe(402849),	-- Engrave Gloves - Shadow Word - Death
+							},
+						}),
+					},
+				})),
+				-- #endif
 				n(5849, {	-- Digger Flameforge <Excavation Specialist>
 					-- #if AFTER CATA
 					["coord"] = { 47.8, 88.2, SOUTHERN_BARRENS },
@@ -3496,7 +3764,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 							-- #if BEFORE 4.0.3
 							["description"] = "This item is only naturally accessible to Horde players due to the allegiance of the mobs that drop this item. If you were to sell this item on the Neutral AH you might be able to fetch a pretty penny to collectors.",
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 11.09.2023
 						}),
 					},
 				}),
@@ -3530,10 +3798,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["groups"] = {
 						i(4768, {	-- Adept's Gloves
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- 03.09.2023 Data Discord
 						}),
 						i(4771, {	-- Harvest Cloak
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 					},
 				}),
@@ -3567,7 +3835,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["groups"] = {
 						i(1539, {	-- Gnarled Hermit's Staff
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 					},
 				}),
@@ -3579,10 +3847,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["groups"] = {
 						i(5183, {	-- Pulsating Hydra Heart
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 						i(5182, {	-- Shiver Blade
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- 03.09.2023 Data Discord
 						}),
 					},
 				}),
@@ -3612,8 +3880,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						i(2035, {	-- Sword of the Night Sky
 							-- #if BEFORE 4.0.3
 							["description"] = "This item is only naturally accessible to Horde players due to the allegiance of the mobs that drop this item. If you were to sell this item on the Neutral AH you might be able to fetch a pretty penny to collectors.",
+							-- #else
+							["description"] = "The mob dropping this item is friendly to the alliance.",
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 					},
 				}),
@@ -3624,6 +3894,24 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 62.0, 33.6, THE_BARRENS },
 					-- #endif
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, n(209607, {	-- Lieutenant Stonebrew
+					["providers"] = {
+						{ "i", 208739 },	-- Horde Warbanner
+						{ "o", 407291 },	-- Alliance Warbanner
+					},
+					["coord"] = { 62.6, 56.2, THE_BARRENS },
+					["races"] = HORDE_ONLY,
+					["groups"] = {
+						i(208741, {	-- Rune of Endless Rage
+							["classes"] = { WARRIOR },
+							["groups"] = {
+								recipe(403489),	-- Engrave Gloves - Endless Rage
+							},
+						}),
+					},
+				})),
+				-- #endif
 				n(5848, {	-- Malgin Barleybrew <Bael'dun Morale Officer>
 					-- #if AFTER CATA
 					["coord"] = { 47.4, 85.8, SOUTHERN_BARRENS },
@@ -3632,6 +3920,21 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["races"] = HORDE_ONLY,
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, n(209524, {	-- Patrolling Cheetah
+					["description"] = "Drop a trap in its path to remove its speed buff.",
+					["coord"] = { 44.4, 55.4, THE_BARRENS },
+					["classes"] = { HUNTER },
+					["groups"] = {
+						i(208701, {	-- Rune of Beast Mastery
+							["classes"] = { HUNTER },
+							["groups"] = {
+								recipe(410110),	-- Engrave Gloves - Beast Mastery
+							},
+						}),
+					},
+				})),
+				-- #endif
 				n(3470, {	-- Rathorian
 					-- #if AFTER CATA
 					["coord"] = { 41.6, 39.6, NORTHERN_BARRENS },
@@ -3640,10 +3943,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["groups"] = {
 						i(5111, {  -- Rathorian's Cape
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 						i(5112, {  -- Ritual Blade
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 					},
 				}),
@@ -3675,7 +3978,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["groups"] = {
 						i(5138, {	-- Harvester's Head
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 							["races"] = HORDE_ONLY,
 						}),
 					},
@@ -3725,7 +4028,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 					["groups"] = {
 						i(1355, {	-- Buckskin Cape
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 05.09.2023
 						}),
 					},
 				}),
@@ -3777,10 +4080,10 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						{ 60.7, 13.4, THE_BARRENS },
 						-- #endif
 					},
-					["timeline"] = { "added 3.2.0.10072" },
+					["timeline"] = { ADDED_3_2_0 },
 					["groups"] = {
 						i(48118, {	-- Leaping Hatchling (PET!)
-							["timeline"] = { "added 3.2.0.10072" },
+							["timeline"] = { ADDED_3_2_0 },
 						}),
 					},
 				}),
@@ -3812,6 +4115,135 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			n(TREASURES, {
+				applyclassicphase(SOD_PHASE_ONE, i(208682, {	-- Abandoned Snapjaw Egg
+					["provider"] = { "o", 407117 },	-- Abandoned Snapjaw Nest
+					["coord"] = { 44, 22, THE_BARRENS },
+					["classes"] = { DRUID },
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(209847, {	-- Arcanic Systems Manual
+					["provider"] = { "o", 409700 },	-- Manual
+					["coord"] = { 56.3, 8.8, THE_BARRENS },
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(208800, {	-- Baxtan: On Destructive Magics
+					["provider"] = { "o", 407566 },	-- Goblin Tome
+					["coord"] = { 62.7, 36.3, THE_BARRENS },
+				})),
+				applyclassicphase(SOD_PHASE_ONE, o(407510, {	-- Etched Carving
+					["provider"] = { "o", 407505 },	-- Etched Carving
+					["description"] = "Stand on the green dot and read the inscription to activate the hidden path. Blink from green dot to green dot without taking any steps or losing the Path of no Steps debuff.\n\nOnce you've reached the last green dot, you'll see another large carving. Blink to it and quickly read the inscription before the buff falls off to earn the Rune.",
+					["coord"] = { 45.5, 80.0, THE_BARRENS },
+					["classes"] = { MAGE },
+					["groups"] = {
+						i(208799, {	-- Spell Notes: Living Bomb
+							["classes"] = { MAGE },
+							["groups"] = {
+								recipe(415936),	-- Engrave Gloves - Living Bomb
+							},
+						}),
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(208739, {	-- Horde Warbanner
+					["provider"] = { "o", 407289 },	-- Horde Warbanner
+					["coord"] = { 52.2, 31.1, THE_BARRENS },
+					["races"] = HORDE_ONLY,
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(208771, {	-- Rune of Blade Dance
+					["providers"] = {
+						{ "o", 407454 },	-- Gunpowder Keg
+						{ "i", 208768 },	-- Buccaneer's Matchbox
+						{ "o", 407453 },	-- Southsea Loot Stash
+					},
+					["coord"] = { 62, 45, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { ROGUE },
+					["groups"] = {
+						recipe(400099),	-- Engrave Pants - Blade Dance
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(208750, {	-- Rune of Channeling
+					["provider"] = { "o", 407347 },	-- Altar of Thorns
+					["description"] = "Channel Health Funnel to 0 health while standing on the Altar of Thorns. You will be healed to full and granted the Rune.",
+					["coord"] = { 58.2, 26.7, THE_BARRENS },
+					["classes"] = { WARLOCK },
+					["groups"] = {
+						recipe(403932),	-- Engrave Chest - Master Channeler
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(208687, {	-- Rune of Lacerate
+					["providers"] = {
+						{ "i", 208682 },	-- Abandoned Snapjaw Egg
+						{ "o", 407120 },	-- Empty Snapjaw Nest
+						{ "n", 209511 },	-- Oasis Snapjaw Hatchling
+					},
+					["description"] = "Bring the Abandoned Snapjaw Egg to an empty nest and interact with the hatchling afterward.",
+					["coord"] = { 48, 40, THE_BARRENS },
+					["classes"] = { DRUID },
+					["groups"] = {
+						recipe(416049),	-- Engrave Gloves - Lacerate
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(208772, {	-- Rune of Saber Slash
+					["provider"] = { "o", 407457 },	-- Stable Hand's Trunk
+					["description"] = "Head to Northwatch Hold. As you pass the main gate look to your left, you'll see a stable with a chest on the roof. Go up and around to the right and jump down onto the wall behind the stable. Once there you can jump to the roof and loot the chest for the Rune. You need lockpicking (80) to open this chest.",
+					--["coord"] = { , THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { ROGUE },
+					["groups"] = {
+						recipe(424984),	-- Engrave Gloves - Saber Slash
+					},
+				})),
+				applyclassicphase(SOD_PHASE_ONE, i(208744, {	-- Rune of Shadowbolts
+					["providers"] = {
+						{ "i", 208743 },	-- Soul of Greed
+						{ "o", 407312 },	-- Hungry Idol
+					},
+					["coord"] = { 57.08, 9.73, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { WARLOCK },
+					["groups"] = {
+						recipe(403936),	-- Engrave Gloves - Shadow Bolt Volley
+					},
+				})),
+			}),
+			-- #endif
+			n(TREASURES, {
+				o(3642, {	-- Kolkars' Booty
+					-- #if SEASON_OF_DISCOVERY
+					["providers"] = {
+						{ "o", 152618 },	-- Kolkars' Booty
+						{ "o", 152608 },	-- Kolkars' Booty
+					},
+					-- #endif
+					["description"] = "Contains random low level greens.",
+					["coords"] = {
+						{ 43.0, 23.5, THE_BARRENS },
+						{ 52.8, 41.8, THE_BARRENS },
+						{ 44.3, 37.7, THE_BARRENS },
+					},
+					["cost"] = {{ "i", 5020, 1 }},	-- Kolkar Booty Key
+					-- #if SEASON_OF_DISCOVERY
+					["groups"] = {
+						applyclassicphase(SOD_PHASE_ONE, i(208689, {	-- Ferocious Idol
+							["classes"] = { DRUID },
+							["groups"] = {
+								recipe(410023),	-- Engrave Pants - Savage Roar
+							},
+						})),
+						applyclassicphase(SOD_PHASE_ONE, i(208754, {	-- Spell Notes: TENGI RONEERA
+							["classes"] = { MAGE },
+						})),
+						applyclassicphase(SOD_PHASE_ONE, i(206382, {	-- Tempest Icon
+							["classes"] = { SHAMAN },
+							["groups"] = {
+								recipe(410097),	-- Engrave Gloves - Water Shield
+							},
+						})),
+					},
+					-- #endif
+				}),
+			}),
 			n(VENDORS, {
 				n(3495, {	-- Gagsprocket <Engineering Goods>
 					-- #if AFTER CATA
@@ -3820,11 +4252,11 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 62.7, 36.3, THE_BARRENS },
 					-- #endif
 					["groups"] = {
-						i(18648, {	-- Schematic: Green Firework
+						i(18648, {	-- Schematic: Green Firework (RECIPE!)
 							["isLimited"] = true,
 						}),
 						-- #if AFTER TBC
-						i(14639, {	-- Schematic: Minor Recombobulator
+						i(14639, {	-- Schematic: Minor Recombobulator (RECIPE!)
 							["isLimited"] = true,
 						}),
 						-- #endif
@@ -3863,6 +4295,81 @@ root(ROOTS.Zones, m(KALIMDOR, {
 						}),
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, n(211653, {	-- Grizzby
+					["sourceQuests"] = {
+						78297,	-- You've Got Yourself A Deal [A]
+						78304,	-- You've Got Yourself A Deal [H]
+					},
+					["coord"] = { 61.8, 39.4, THE_BARRENS },
+					["lvl"] = 20,
+					["groups"] = {
+						i(210822, {	-- Harmonious Epiphany
+							["classes"] = { PRIEST },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(415995),	-- Engrave Chest - Serendipity
+							},
+						}),
+						i(210820, {	-- Rune of Sacrifice
+							["cost"] = 50000,	-- 5g
+							["classes"] = { PALADIN },
+							["groups"] = {
+								recipe(410010),	-- Engrave Pants - Divine Sacrifice
+							},
+						}),
+						i(210654, {	-- Spell Notes: Rewind Time
+							["classes"] = { MAGE },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(401761),	-- Engrave Gloves - Rewind Time
+							},
+						}),
+						i(210818, {	-- Rune of Lone Wolf
+							["classes"] = { HUNTER },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(410122),	-- Engrave Chest - Lone Wolf
+							},
+						}),
+						i(210817, {	-- Rune of Survival
+							["classes"] = { DRUID },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(416042),	-- Engrave Chest - Survival of the Fittest
+							},
+						}),
+						i(210825, {	-- Rune of the Warbringer
+							["classes"] = { WARRIOR },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(425445),	-- Engrave Chest - Warbringer
+							},
+						}),
+						i(210824, {	-- Rune of the Pact
+							["classes"] = { WARLOCK },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(425476),	-- Engrave Pants - Demonic Pact
+							},
+						}),
+						i(210653, {	-- Rune of Main Gauche
+							["classes"] = { ROGUE },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(424990),	-- Engrave Gloves - Main Gauche
+							},
+						}),
+						i(210823, {	-- Rune of Dual Wield Specialization
+							["classes"] = { SHAMAN },
+							["cost"] = 50000,	-- 5g
+							["groups"] = {
+								recipe(410096),	-- Engrave Chest - Dual Wield Specialization
+							},
+						}),
+					},
+				})),
+				-- #endif
 				-- #if AFTER 3.1.0.9626
 				n(3443, {	-- Grub
 					-- #if AFTER CATA
@@ -3874,7 +4381,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["groups"] = {
 						i(5051),	-- Dig Rat
 						i(44977, {	-- Recipe: Dig Rat Stew (RECIPE!)
-							["timeline"] = { "added 3.1.0.9626", "deleted 4.3.0.15005" },
+							["timeline"] = { ADDED_3_1_0, DELETED_4_3_0 },
 						}),
 					},
 				}),
@@ -3886,10 +4393,12 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 52.2, 31.8, THE_BARRENS },
 					-- #endif
 					["races"] = HORDE_ONLY,
+					["sym"] = {{"select","itemID",
+						16059,	-- Common Brown Shirt
+						3428,	-- Common Grey Shirt
+						16060,	-- Common White Shirt
+					}},
 					["groups"] = {
-						i(16059),	-- Common Brown Shirt
-						i(3428),	-- Common Gray Shirt
-						i(16060),	-- Common White Shirt
 						i(4790, {	-- Inferno Cloak
 							["isLimited"] = true,
 						}),
@@ -3925,7 +4434,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(3683, {	-- Kiknikle <Stylish Clothier>
 					["coord"] = { 41.8, 38.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(5772, {	-- Pattern: Red Woolen Bag
@@ -3949,6 +4458,13 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 62.8, 38.2, THE_BARRENS },
 					-- #endif
 					["groups"] = {
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_ONE, i(208773, {	-- Fishing Harpoon
+							["timeline"] = { REMOVED_2_0_1 },
+							["classes"] = { WARRIOR, HUNTER },
+							["cost"] = 526,	-- 5s 26c
+						})),
+						-- #endif
 						i(6330),	-- Recipe: Bristle Whisker Catfish (RECIPE!)
 						i(6368),	-- Recipe: Rainbow Fin Albacore (RECIPE!)
 					},
@@ -3997,7 +4513,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				}),
 				n(3684, {	-- Pizznukle <Leather Armor Merchant>
 					["coord"] = { 41.8, 38.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(4788, {	-- Agile Boots
@@ -4011,11 +4527,11 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				-- #if AFTER 3.1.0.9626
 				n(3392, {	-- Prospector Khazgorm <Explorers' League>
 					["coord"] = { 47.8, 85.6, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(44977, {	-- Recipe: Dig Rat Stew (RECIPE!)
-							["timeline"] = { "added 3.1.0.9626", "deleted 4.3.0.15005" },
+							["timeline"] = { ADDED_3_1_0, DELETED_4_3_0 },
 						}),
 					},
 				}),
@@ -4028,7 +4544,7 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					-- #endif
 					["groups"] = {
 						i(20855, {	-- Design: Wicked Moonstone Ring
-							["timeline"] = { "added 2.0.1.6180" },
+							["timeline"] = { ADDED_2_0_1 },
 							["isLimited"] = true,
 						}),
 						i(6272, {	-- Pattern: Blue Linen Robe
@@ -4189,15 +4705,28 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					},
 				}),
 				i(5092, {	-- Charred Razormane Wand
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
+					-- #if BEFORE 4.0.3
 					["cr"] = 3458,	-- Razormane Seer
+					["coords"] = {
+						{ 42.6, 79.0, THE_BARRENS },
+						{ 43.0, 83.2, THE_BARRENS },
+					},
+					-- #elseif AFTER 10.1.7
+					["cr"] = 37661,	-- Razormane Seer
+					["coords"] = {
+						{ 41.8, 82.8, SOUTHERN_BARRENS },
+						{ 43.2, 84.4, SOUTHERN_BARRENS },
+						{ 23.4, 35.4, SOUTHERN_BARRENS },
+					},
+					-- #endif
 				}),
 				i(5107, {	-- Deckhand's Shirt
 					-- #if AFTER 4.0.3
 					["description"] = "Incredibly rare drop from Fray Island.",
 					-- #else
 					["description"] = "While technically this shirt does still drop in retail, the drop rate is reduced from fairly common to 1 in 12k with the Cataclysm. For the purposes of collecting, get it now and stock up on extras!",
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					-- #endif
 					["crs"] = {
 						-- #if BEFORE 4.0.3
@@ -4212,20 +4741,80 @@ root(ROOTS.Zones, m(KALIMDOR, {
 					["coord"] = { 48.8, 84.8, THE_BARRENS },
 					["cr"] = 3444,	-- Dig Rat
 				}),
+				i(5020, {	-- Kolkar Booty Key
+					["coords"] = {
+						{ 44.4, 23.6, THE_BARRENS },
+						{ 47.4, 41.8, THE_BARRENS },
+						{ 53.6, 40.0, THE_BARRENS },
+					},
+					["crs"] = {
+						3272,	-- Kolkar Wrangler
+						3273,	-- Kolkar Stormer
+						3394,	-- Barak Kodobane
+					},
+				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, i(208765, {	-- Helping Hand (Closed)
+					["provider"] = { "i", 208766 },	-- Helping Hand (Open)
+					["description"] = "The hand will open when you ressurect another player.",
+					["coord"] = { 55.6, 27.2, THE_BARRENS },
+					["classes"] = { PRIEST },
+					["crs"] = {
+						3268,	-- Razormane Thornweaver
+						3267,	-- Razormane Water Seeker
+						3266,	-- Razormane Defender
+						3265,	-- Razormane Hunter
+					},
+					["groups"] = {
+						i(205905, {	-- Memory of a Devout Champion
+							["classes"] = { PRIEST },
+							["groups"] = {
+								recipe(425215),	-- Engrave Chest - Twisted Faith
+							},
+						}),
+					},
+				})),
+				-- #endif
 				i(5093, {	-- Razormane Backstabber
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
+					-- #if BEFORE 4.0.3
 					["crs"] = {
 						3457,	-- Razormane Stalker
 						3456,	-- Razormane Pathfinder
 					},
+					["coords"] = {
+						{ 41.8, 79.6, THE_BARRENS },
+						{ 43.8, 83.2, THE_BARRENS },
+					},
+					-- #elseif AFTER 10.1.7
+					["cr"] = 37560,	-- Razormane Pathfinder
+					["coords"] = {
+						{ 43.4, 82.0, SOUTHERN_BARRENS },
+						{ 41.6, 81.4, SOUTHERN_BARRENS },
+						{ 43.6, 86.2, SOUTHERN_BARRENS },
+					},
+					-- #endif
 				}),
 				i(5094, {	-- Razormane War Shield
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
+					-- #if BEFORE 4.0.3
 					["cr"] = 3459,	-- Razormane Warfrenzy
+					["coords"] = {
+						{ 41.6, 79.0, THE_BARRENS },
+						{ 42.2, 81.6, THE_BARRENS },
+					},
+					-- #elseif AFTER 10.1.7
+					["cr"] = 37660,	-- Razormane Warfrenzy
+					["coords"] = {
+						{ 38.0, 81.8, SOUTHERN_BARRENS },
+						{ 43.6, 82.6, SOUTHERN_BARRENS },
+						{ 44.6, 87.8, SOUTHERN_BARRENS },
+					},
+					-- #endif
 				}),
 				-- #if AFTER 4.2.0.10000
 				i(44977, {	-- Recipe: Dig Rat Stew (RECIPE!)
-					["timeline"] = { "added 3.1.0.9626", "deleted 4.3.0.15005" },
+					["timeline"] = { ADDED_3_1_0, DELETED_4_3_0 },
 					["crs"] = {
 						39153,	-- Excavation Raider
 						3376,	-- Bael'dun Soldier
@@ -4240,6 +4829,15 @@ root(ROOTS.Zones, m(KALIMDOR, {
 				i(6661, {	-- Recipe: Savory Deviate Delight (RECIPE!)
 					["description"] = "Can drop from any mob in the Barrens.",
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_ONE, i(208743, {	-- Soul of Greed
+					["description"] = "Use Drain Soul on him.",
+					["coord"] = { 56.2, 8.6, THE_BARRENS },
+					["timeline"] = { REMOVED_2_0_1 },
+					["classes"] = { WARLOCK },
+					["cr"] = 3445,	-- Supervisor Lugwizzle
+				})),
+				-- #endif
 			}),
 		},
 	}),

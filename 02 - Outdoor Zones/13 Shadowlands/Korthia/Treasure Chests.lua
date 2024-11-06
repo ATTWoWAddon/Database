@@ -5,6 +5,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 	m(KORTHIA, {
 		n(TREASURES, {
 			n(REWARDS, {
+				i(187055),	-- Pouch of Rune Chits (QI!)
 				i(185962),	-- Rune Chit
 			}),
 			o(369194, {	-- Anima Laden Egg
@@ -223,7 +224,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 					i(186748),	-- Vault Guardian's Visor
 				}),
 				i(187442),	-- Scholar's Ancient Pack
-				i(187008),	-- Recipe: Porous Rock Candy
+				i(187008),	-- Recipe: Porous Rock Candy (RECIPE!)
 				-- Objects
 				o(369333, {	-- Nest of Unusual Materials
 					["coord"] = { 41.0, 39.7, KORTHIA },
@@ -263,6 +264,12 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 					});
 				},
 			}),
+			o(369234, {	-- Offering Key
+				["coord"] = { 43.6, 67.4, KORTHIA },
+				["g"] = {
+					i(187033),	-- Small Offering Key
+				},
+			}),
 			o(369297, {	-- Pile of Bones
 				["description"] = "Piles of Bones, Relic Caches, and Shardhide Stashes all share a series of 5 daily quests.\n\nThe daily lockout is ONLY for receiving Relic Fragments - you can still loot the treasures after the final quest is collected for the day; you just won't receive any fragments.",
 				["coords"] = {
@@ -290,7 +297,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 				["isDaily"] = true,
 				["g"] = {
 					i(186999),	-- Pattern: Pallid Bone Flute (RECIPE!)
-					i(187007),	-- Recipe: Bonemeal Bread
+					i(187007),	-- Recipe: Bonemeal Bread (RECIPE!)
 					i(187442),	-- Scholar's Ancient Pack
 				},
 			}),
@@ -328,7 +335,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 				["questID"] = 64565,
 				["isDaily"] = true,
 				["g"] = {
-					i(186993),	-- Design: Porous Stone Statue
+					i(186993),	-- Design: Porous Stone Statue (RECIPE!)
 				},
 			}),
 			o(369296, {	-- Shardhide Stash

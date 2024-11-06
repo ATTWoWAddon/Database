@@ -1,22 +1,22 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
 	n(LOAMM_NIFFEN, {
 		faction(FACTION_GLIMMEROGG_RACER, bubbleDownSelf({ ["minReputation"] = { FACTION_LOAMM_NIFFEN, 7 } }, {
 			n(ACHIEVEMENTS, {
 				ach(17741, {	-- Slow and Steady Wins the Race
 					i(205231),	-- Roggy (PET!)
-					crit(1, {	-- Bashful wins
+					crit(59148, {	-- Bashful wins
 						["sourceQuests"] = { 75662 },	-- A Race To The Finish
 					}),
-					crit(2, {	-- Tricky wins
+					crit(59149, {	-- Tricky wins
 						["sourceQuests"] = { 75706 },	-- A Race To The Finish
 					}),
-					crit(3, {	-- Brulee wins
+					crit(59150, {	-- Brulee wins
 						["sourceQuests"] = { 75707 },	-- A Race To The Finish
 					}),
-					crit(4, {	-- Roggy wins
+					crit(59151, {	-- Roggy wins
 						["sourceQuests"] = { 75708 },	-- A Race To The Finish
 					}),
 				}),
@@ -74,8 +74,14 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				q(74516),	-- A Snail's Pace
 				q(74517),	-- All Terrain Snail
 				q(74519),	-- Good for Goo
-				q(74520),	-- Less Cargo
-				q(74518),	-- Resistance Training
+				q(74520, {	-- Less Cargo
+					i(204273),	-- Stolen Supplies (QI!)
+				}),
+				q(74518, {	-- Resistance Training
+					i(204067),	-- Glowing Crystal (QI!)
+					i(204070),	-- Magma Crystal (QI!)
+					i(204069),	-- Sulfuric Crystal (QI!)
+				}),
 				q(74515),	-- Snail Mail
 				q(74514, {	-- The Slowest Fan Club
 					i(204178),	-- Snailcatcher Net
@@ -106,7 +112,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				}),
 				q(75706, {	-- A Race To The Finish
 					["repeatable"] = true,
-			 		["g"] = {
+					["g"] = {
 						i(205121),	-- Tricky (PET!)
 					},
 				}),
@@ -118,9 +124,12 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 		})),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, {
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
 	n(LOAMM_NIFFEN, {
-		q(75710),	-- After turn in 'A Race To The Finish' (questID 75662) (spellID 409255)
+		header(HEADERS.Faction, FACTION_GLIMMEROGG_RACER, {
+			n(QUESTS, {
+				q(75710),	-- After turn in 'A Race To The Finish' (questID 75662) (spellID 409255)
+			}),
+		}),
 	}),
-}));
+})));

@@ -1,8 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(800, {	-- Court of Stars
 		["coord"] = { 51.0, 65.6, SURAMAR },
 		["maps"] = { 761, 762, 763 },
@@ -29,12 +28,33 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					["lvl"] = 110,
 				}),
 			}),
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
+				cr(104215, e(1718, {	-- Patrol Captain Gerdo
+				})),
+				cr(104217, e(1719, {	-- Talixae Flamewreath
+					i(201994, {	-- Felsworn Covenant Crossbow
+						["timeline"] = { ADDED_11_0_2 },
+					}),
+				})),
+				cr(104218, e(1720, {	-- Advisor Melandrus
+					i(137856),	-- Design: Righteous Dawnlight Medallion [Rank 3] (RECIPE!)
+					i(128594),	-- Formula: Enchant Neck - Mark of the Distant Army [Rank 2] (RECIPE!)
+					i(137929),	-- Pattern: Gravenscale Grips [Rank 3] (RECIPE!)
+					i(127926),	-- Recipe: Potion of Deadly Grace [Rank 2] (RECIPE!)
+					i(201995, {	-- Crux of Blind Faith
+						["timeline"] = { ADDED_11_0_2 },
+					}),
+					i(201996, {	-- Edge of the First Blade
+						["timeline"] = { ADDED_11_0_2 },
+					}),
+				})),
+			}),
 			n(MYTHIC_PLUS, sharedDataSelf({ ["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {
 				i(201995),	-- Crux of Blind Faith
 				i(201996),	-- Edge of the First Blade
 				i(201994),	-- Felsworn Covenant Crossbow
 			})),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				cr(104215, e(1718, {	-- Patrol Captain Gerdo
 					i(134268),	-- Arcane Defender's Gauntlets
 					i(134415),	-- Arcanist's Resonant Robes
@@ -63,10 +83,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137492),	-- Flamewreath Spark
 				})),
 				cr(104218, e(1720, {	-- Advisor Melandrus
-					i(137856),	-- Design: Righteous Dawnlight Medallion [Rank 3] (RECIPE!)
-					i(128594),	-- Formula: Enchant Neck - Mark of the Distant Army [Rank 2] (RECIPE!)
-					i(137929),	-- Pattern: Gravenscale Grips [Rank 3] (RECIPE!)
-					i(127926),	-- Recipe: Potion of Deadly Grace [Rank 2] (RECIPE!)
 					i(134432),	-- Amice of the Unfurling Tempest
 					i(134271),	-- Arcane Defender's Pants
 					i(137489),	-- Arcane-Bound Gale Chain
@@ -86,9 +102,11 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137493),	-- Edge of the First Blade
 				})),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
-					ach(10611),	-- Dropping some Eaves
+					ach(10611, {	-- Dropping Some Eaves
+						["description"] = "Don't let any of the 5 Sentries complete their Sound Alarm cast, disable the 5 beacons before engaging the first boss, kill all 3 demons separately before pulling Talixae and then guess spy on the first try.",
+					}),
 				}),
 				cr(104215, e(1718, {	-- Patrol Captain Gerdo
 					ach(10610),	-- Waiting for Gerdo
@@ -121,10 +139,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				cr(104218, e(1720, {	-- Advisor Melandrus
 					ach(10816),	-- Mythic: Court of Stars
 					ach(10865),	-- Mythic: Court of Stars Guild Run
-					i(137856),	-- Design: Righteous Dawnlight Medallion [Rank 3] (RECIPE!)
-					i(128594),	-- Formula: Enchant Neck - Mark of the Distant Army [Rank 2] (RECIPE!)
-					i(137929),	-- Pattern: Gravenscale Grips [Rank 3] (RECIPE!)
-					i(127926),	-- Recipe: Potion of Deadly Grace [Rank 2] (RECIPE!)
 					i(134432),	-- Amice of the Unfurling Tempest
 					i(134271),	-- Arcane Defender's Pants
 					i(137489),	-- Arcane-Bound Gale Chain

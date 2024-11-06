@@ -1,14 +1,9 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_THREE, {
 	inst(751, {	-- The Black Temple
 		["lore"] = "When Illidan the Betrayer fled to Outland after the Third War, he ousted the Temple's ruler - the pit lord Magtheridon - and claimed his throne as the lord of the blasted world. Following his defeat at the hands of Arthas Menethil, Illidan returned to the Black Temple where he resides to this day. Neither his activities nor mental state are known at this time. While Malfurion has stated that Illidan has become mad and delusional, believing that he killed Arthas and accomplished the mission Kil'jaeden had sent him on.\n\nDespite the bitter retribution of his enemies, Illidan has begun to tighten his grip on Outland from within the profaned sanctum, where he awaits any and all who would challenge his rule.",
-		["zone-text-areaID"] = 3959,	-- Black Temple
-		["sins"] = {
-			"Black Temple",
-			"Temple noir",
-		},
 		["coord"] = { 71.0, 46.5, SHADOWMOON_VALLEY },	-- Black Temple, Shadowmoon Valley
 		["maps"] = {
 			THE_BLACK_TEMPLE,
@@ -28,29 +23,26 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 		["lvl"] = lvlsquish(70, 68, 30),	-- The attunement quests were originally level 70 required, but once removed, level 68s could zone in.
 		["groups"] = {
 			n(ACHIEVEMENTS, {
-				achWithRep(958, 1012, {	-- Sworn to the Deathsworn
-					-- #if BEFORE WRATH
-					["description"] = "Raise your reputation with the Ashtongue Deathsworn to Exalted.",
-					-- #endif
-				}),
+				ach(11748, {["timeline"] = {ADDED_7_2_0}}),	-- Black is the New Black (Black Temple)
+				achWithRep(958, FACTION_ASHTONGUE_DEATHSWORN),	-- Sworn to the Deathsworn
 			}),
 			n(FACTIONS, {
-				faction(1012),	-- Ashtongue Deathsworn
+				faction(FACTION_ASHTONGUE_DEATHSWORN),	-- Ashtongue Deathsworn
 			}),
 			n(QUESTS, {
 				q(10985, {	-- A Distraction for Akama (legacy version)
 					["qg"] = 18528,	-- Xi'ri
 					["sourceQuest"] = 10949,	-- Entry Into the Black Temple
 					["coord"] = { 65.2, 44.0, SHADOWMOON_VALLEY },
-					["timeline"] = { "removed 3.0.1" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["lvl"] = lvlsquish(70, 70, 30),
 					["groups"] = {
 						ach(431, {	-- Hand of A'dal (Achievement)
 							["sourceQuest"] = 10985,	-- A Distraction for Akama
-							["timeline"] = { "removed 3.0.1" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 						title(39, {	-- Hand of A'dal
-							["timeline"] = { "removed 3.0.1" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 						i(32649),	-- Medallion of Karabor
 					},
@@ -61,7 +53,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 					["sourceQuest"] = 10949,	-- Entry Into the Black Temple
 					["altQuests"] = { 10985 },	-- A Distraction for Akama (legacy version)
 					["coord"] = { 65.2, 43.9, SHADOWMOON_VALLEY },
-					["timeline"] = { "added 3.0.1" },
+					["timeline"] = { ADDED_3_0_2 },
 					["lvl"] = lvlsquish(70, 70, 30),
 					["groups"] = {
 						i(32649),	-- Medallion of Karabor
@@ -94,6 +86,9 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 						13429,	-- A Distraction for Akama
 						-- #endif
 					},
+					-- #if AFTER 3.0.1
+					["sourceQuestNumRequired"] = 1,
+					-- #endif
 					["lvl"] = lvlsquish(70, 70, 30),
 				}),
 				q(10959, {	-- The Fall of the Betrayer
@@ -117,56 +112,59 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 			}),
 			n(VENDORS, {
 				n(23159, {	-- Okuno <Ashtongue Deathsworn Quartermaster>
-					i(32429),	-- Pattern: Boots of Shackled Souls (RECIPE!)
-					i(32430, {	-- Pattern: Bracers of Shackled Souls (RECIPE!)
-						r(40000, {	-- Bracers of Shackled Souls
-							["timeline"] = { ADDED_2_1_0, REMOVED_4_0_3 },
-						}),
-						r(52733, {	-- Bracers of Shackled Souls
-							["timeline"] = { ADDED_4_0_3 },
-						}),
-					}),
-					i(32431),	-- Pattern: Greaves of Shackled Souls (RECIPE!)
-					i(32447),	-- Pattern: Night's End
-					i(32436),	-- Pattern: Redeemed Soul Cinch (RECIPE!)
-					i(32435),	-- Pattern: Redeemed Soul Legguards (RECIPE!)
-					i(32433),	-- Pattern: Redeemed Soul Moccasins (RECIPE!)
-					i(32434),	-- Pattern: Redeemed Soul Wristguards (RECIPE!)
-					i(32438),	-- Pattern: Soulguard Bracers
-					i(32440),	-- Pattern: Soulguard Girdle
-					i(32439),	-- Pattern: Soulguard Leggings
-					i(32437),	-- Pattern: Soulguard Slippers
-					i(32432),	-- Pattern: Waistguard of Shackled Souls (RECIPE!)
-					i(32442),	-- Plans: Shadesteel Bracers (RECIPE!)
-					i(32444),	-- Plans: Shadesteel Girdle (RECIPE!)
-					i(32443),	-- Plans: Shadesteel Greaves (RECIPE!)
-					i(32441),	-- Plans: Shadesteel Sabots (RECIPE!)
-					i(32490, {	-- Ashtongue Talisman of Acumen
-						["classes"] = { PRIEST },
-					}),
-					i(32486, {	-- Ashtongue Talisman of Equilibrium
-						["classes"] = { DRUID },
-					}),
-					i(32488, {	-- Ashtongue Talisman of Insight
-						["classes"] = { MAGE },
-					}),
-					i(32492, {	-- Ashtongue Talisman of Lethality
-						["classes"] = { ROGUE },
-					}),
-					i(32493, {	-- Ashtongue Talisman of Shadows
-						["classes"] = { WARLOCK },
-					}),
-					i(32487, {	-- Ashtongue Talisman of Swiftness
-						["classes"] = { HUNTER },
-					}),
-					i(32485, {	-- Ashtongue Talisman of Valor
-						["classes"] = { WARRIOR },
-					}),
-					i(32491, {	-- Ashtongue Talisman of Vision
-						["classes"] = { SHAMAN },
-					}),
-					i(32489, {	-- Ashtongue Talisman of Zeal
-						["classes"] = { PALADIN },
+					["groups"] = bubbleDownClassicRep(FACTION_ASHTONGUE_DEATHSWORN, {
+						{		-- Neutral
+						}, {	-- Friendly
+							i(32429),	-- Pattern: Boots of Shackled Souls (RECIPE!)
+							i(32430, {	-- Pattern: Bracers of Shackled Souls (RECIPE!)
+								r(40000, {["timeline"] = {ADDED_2_1_0, REMOVED_3_0_3}}),
+							}),
+							i(32436),	-- Pattern: Redeemed Soul Cinch (RECIPE!)
+							i(32435),	-- Pattern: Redeemed Soul Legguards (RECIPE!)
+							i(32438),	-- Pattern: Soulguard Bracers (RECIPE!)
+							i(32440),	-- Pattern: Soulguard Girdle (RECIPE!)
+							i(32442),	-- Plans: Shadesteel Bracers (RECIPE!)
+							i(32444),	-- Plans: Shadesteel Girdle (RECIPE!)
+						}, {	-- Honored
+							i(32431),	-- Pattern: Greaves of Shackled Souls (RECIPE!)
+							i(32447),	-- Pattern: Night's End (RECIPE!)
+							i(32433),	-- Pattern: Redeemed Soul Moccasins (RECIPE!)
+							i(32434),	-- Pattern: Redeemed Soul Wristguards (RECIPE!)
+							i(32439),	-- Pattern: Soulguard Leggings (RECIPE!)
+							i(32437),	-- Pattern: Soulguard Slippers (RECIPE!)
+							i(32432),	-- Pattern: Waistguard of Shackled Souls (RECIPE!)
+							i(32443),	-- Plans: Shadesteel Greaves (RECIPE!)
+							i(32441),	-- Plans: Shadesteel Sabots (RECIPE!)
+						}, {	-- Revered
+						}, {	-- Exalted
+							i(32490, {	-- Ashtongue Talisman of Acumen
+								["classes"] = { PRIEST },
+							}),
+							i(32486, {	-- Ashtongue Talisman of Equilibrium
+								["classes"] = { DRUID },
+							}),
+							i(32488, {	-- Ashtongue Talisman of Insight
+								["classes"] = { MAGE },
+							}),
+							i(32492, {	-- Ashtongue Talisman of Lethality
+								["classes"] = { ROGUE },
+							}),
+							i(32493, {	-- Ashtongue Talisman of Shadows
+								["classes"] = { WARLOCK },
+							}),
+							i(32487, {	-- Ashtongue Talisman of Swiftness
+								["classes"] = { HUNTER },
+							}),
+							i(32485, {	-- Ashtongue Talisman of Valor
+								["classes"] = { WARRIOR },
+							}),
+							i(32491, {	-- Ashtongue Talisman of Vision
+								["classes"] = { SHAMAN },
+							}),
+							i(32489, {	-- Ashtongue Talisman of Zeal
+								["classes"] = { PALADIN },
+							}),
+						},
 					}),
 				}),
 			}),
@@ -208,16 +206,16 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 				i(32897),	-- Mark of the Illidari
 			}),
 			-- #if AFTER 7.2.5.23910
-			d(NORMAL_RAID, {
+			d(DIFFICULTY.RAID.NORMAL, {
 				["lvl"] = 68,
-				["ignoreBonus"] = 1,
+				["ignoreBonus"] = true,
 				["groups"] = {
 			-- #endif
 					e(1582, {	-- High Warlord Naj'entus
 						["creatureID"] = 22887,
 						["groups"] = {
 							i(122104, {	-- Leviathan Hatchling (PET!)
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(32248),	-- Halberd of Desolation
 							i(32236),	-- Rising Tide
@@ -239,7 +237,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 						["creatureID"] = 22898,
 						["groups"] = {
 							i(122106, {	-- Abyssius (PET!)
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(32262),	-- Syphon of the Nathrezim
 							i(32254),	-- The Brutalizer
@@ -255,7 +253,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 							i(32261),	-- Band of the Abyssal Lord
 							-- #if BEFORE MOP
 							i(32257, {	-- Idol of the White Stag
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 						},
@@ -286,7 +284,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 							i(32325),	-- Rifle of the Stoic Guardian
 							-- #if BEFORE MOP
 							i(32326, {	-- Twisted Blades of Zarak
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 							i(32329),	-- Cowl of Benevolence
@@ -299,7 +297,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 							i(32510),	-- Softstep Boots of Tracking
 							-- #if BEFORE MOP
 							i(32330, {	-- Totem of Ancestral Guidance
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 						},
@@ -326,13 +324,13 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 						["creatureID"] = 23418,
 						["groups"] = {
 							i(122107, {	-- Fragment of Anger (PET!)
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(122109, {	-- Fragment of Desire (PET!)
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(122108, {	-- Fragment of Suffering (PET!)
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(32332),	-- Torch of the Damned
 							i(32363),	-- Naaru-Blessed Life Rod
@@ -353,11 +351,17 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 						["creatureID"] = 22947,
 						["groups"] = {
 							i(122110, {	-- Sister of Temptation (PET!)
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
-							i(31101),	-- Pauldrons of the Forgotten Conqueror
-							i(31103),	-- Pauldrons of the Forgotten Protector
-							i(31102),	-- Pauldrons of the Forgotten Vanquisher
+							i(31101, {	-- Pauldrons of the Forgotten Conqueror
+								["classes"] = { PALADIN, PRIEST, WARLOCK },
+							}),
+							i(31103, {	-- Pauldrons of the Forgotten Protector
+								["classes"] = { WARRIOR, HUNTER, SHAMAN },
+							}),
+							i(31102, {	-- Pauldrons of the Forgotten Vanquisher
+								["classes"] = { ROGUE, MAGE, DRUID },
+							}),
 							i(32369),	-- Blade of Savagery
 							i(32370),	-- Nadina's Pendant of Purity
 							i(32365),	-- Heartshatter Breastplate
@@ -365,7 +369,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 							i(32366),	-- Shadowmaster's Boots
 							-- #if BEFORE MOP
 							i(32368, {	-- Tome of the Lightbringer
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 						},
@@ -379,9 +383,15 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 							22952,	-- Veras Darkshadow
 						},
 						["groups"] = {
-							i(31098),	-- Leggings of the Forgotten Conqueror
-							i(31100),	-- Leggings of the Forgotten Protector
-							i(31099),	-- Leggings of the Forgotten Vanquisher
+							i(31098, {	-- Leggings of the Forgotten Conqueror
+								["classes"] = { PALADIN, PRIEST, WARLOCK },
+							}),
+							i(31100, {	-- Leggings of the Forgotten Protector
+								["classes"] = { WARRIOR, HUNTER, SHAMAN },
+							}),
+							i(31099, {	-- Leggings of the Forgotten Vanquisher
+								["classes"] = { ROGUE, MAGE, DRUID },
+							}),
 							i(32376),	-- Forest Prowler's Helm
 							i(32373),	-- Helm of the Illidari Shatterer
 							i(32518),	-- Veil of Turning Leaves
@@ -399,7 +409,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 								-- #endif
 							}),
 							ach(5091, {	-- The Black Temple Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							applyclassicphase(TBC_PHASE_THREE_GLAIVEPRIO, ach(426, {	-- Warglaives of Azzinoth
 								["providers"] = {
@@ -408,11 +418,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 								},
 								["classes"] = { DEATHKNIGHT, DEMONHUNTER, MONK, ROGUE, WARRIOR },
 								-- #if BEFORE WRATH
-								["description"] = "Wielder of a set of Warglaives of Azzinoth.",
 								["OnUpdate"] = [[function(t)
 									local collected = true;
 									for i,provider in ipairs(t.providers) do
-										if provider[1] == "i" and GetItemCount(provider[2], true) == 0 then
+										if provider[1] == "i" and ]] .. WOWAPI_GetItemCount("provider[2]") .. [[ == 0 then
 											collected = false;
 											break;
 										end
@@ -424,13 +433,19 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_THREE, {
 								-- #endif
 							})),
 							i(122196, {	-- Music Roll: The Burning Legion
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							applyclassicphase(TBC_PHASE_THREE_GLAIVEPRIO, i(32837)),	-- Warglaive of Azzinoth (LEGENDARY! MH)
 							applyclassicphase(TBC_PHASE_THREE_GLAIVEPRIO, i(32838)),	-- Warglaive of Azzinoth (LEGENDARY! OH)
-							i(31089),	-- Chestguard of the Forgotten Conqueror
-							i(31091),	-- Chestguard of the Forgotten Protector
-							i(31090),	-- Chestguard of the Forgotten Vanquisher
+							i(31089, {	-- Chestguard of the Forgotten Conqueror
+								["classes"] = { PALADIN, PRIEST, WARLOCK },
+							}),
+							i(31091, {	-- Chestguard of the Forgotten Protector
+								["classes"] = { WARRIOR, HUNTER, SHAMAN },
+							}),
+							i(31090, {	-- Chestguard of the Forgotten Vanquisher
+								["classes"] = { ROGUE, MAGE, DRUID },
+							}),
 							i(32374),	-- Zhar'doom, Greatstaff of the Devourer
 							i(32500),	-- Crystal Spire of Karabor
 							i(32471),	-- Shard of Azzinoth

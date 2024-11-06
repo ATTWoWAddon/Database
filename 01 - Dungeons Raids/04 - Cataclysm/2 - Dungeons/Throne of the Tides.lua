@@ -1,12 +1,11 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON};
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
-	inst(65, {	-- Throne of the Tides
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
+	applyclassicphase(CATA_PHASE_ONE, inst(65, {	-- Throne of the Tides
 		["mapID"] = 322,
 		["maps"] = { 323 },
-		["coord"] = { 71.00, 29.00, 204 },	-- Abyssal Depths, Vashj'ir
+		["coord"] = { 71.00, 29.00, VASHJIR_ABYSSAL_DEPTHS },	-- Abyssal Depths, Vashj'ir
 		["groups"] = {
 			n(QUESTS, {
 				q(28834, {	-- Rescue the Earthspeaker!
@@ -45,6 +44,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(65658),	-- Stonespeaker's Belt
 					},
 				}),
+				q(28798, {	-- Waters of Elune
+					["provider"] = { "o", 207406 },	-- Strange Fountain
+					["requireSkill"] = ARCHAEOLOGY,
+					["isRepeatable"] = true,
+				}),
 			}),
 			n(ZONE_DROPS, {
 				["crs"] = {
@@ -65,7 +69,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					i(55261),	-- Ring of the Great Whale
 				},
 			}),
-			d(NORMAL_DUNGEON, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
+			d(DIFFICULTY.DUNGEON.NORMAL, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
 				e(101, {	-- Lady Naz'jar
 					["crs"] = { 40586 },	-- Lady Naz'jar
 					["groups"] = {
@@ -79,7 +83,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				e(102, {	-- Commander Ulthok
 					["crs"] = { 40765 },	-- Commander Ulthok
 					["groups"] = {
-						i(55204), -- Caridean Epaulettes
+						i(55204), -- Caridean Epaulets
 						i(55228), -- Cerith Spire Staff
 						i(55205), -- Chromis Chestpiece
 						i(55206), -- Eagle Ray Cloak
@@ -93,6 +97,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55236), -- Anthia's Ring
 						i(55235), -- Decapod Slippers
 						i(55237), -- Porcelain Crab
+						-- #if BEFORE MOP
+						i(55248, {	-- Conch of Thundering Waves
+							["timeline"] = { REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 				e(104, {	-- Ozumat
@@ -115,7 +124,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				}),
 			})),
 			-- #if BEFORE 7.3.5
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(101, {	-- Lady Naz'jar
 					["crs"] = { 40586 },	-- Lady Naz'jar
 					["groups"] = {
@@ -130,7 +139,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				e(102, {	-- Commander Ulthok
 				["crs"] = { 40765 },	-- Commander Ulthok
 				["groups"] = {
-					i(56273), -- Caridean Epaulettes
+					i(56273), -- Caridean Epaulets
 					i(56271), -- Cerith Spire Staff
 					i(56274), -- Chromis Chestpiece
 					i(56275), -- Eagle Ray Cloak
@@ -144,6 +153,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56276), -- Anthia's Ring
 						i(56277), -- Decapod Slippers
 						i(56280), -- Porcelain Crab
+						-- #if BEFORE MOP
+						i(56279, {	-- Conch of Thundering Waves
+							["timeline"] = { REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 				e(104, {	-- Ozumat
@@ -166,17 +180,17 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				}),
 			}),
 			-- #else
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_HEROIC, {
 				e(101, {	-- Lady Naz'jar
 					["crs"] = { 40586 },	-- Lady Naz'jar
 					["groups"] = {
 						i(56269), -- Aurelian Mitre
 						i(56270), -- Entwined Nereis
-						i(157588, { -- Ironshell Pendant
+						i(157588, {	-- Ironshell Pendant
 							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(56266), -- Lightning Whelk Axe
-						i(157587, { -- Old One Eye's Cowl
+						i(157587, {	-- Old One Eye's Cowl
 							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(56267), -- Periwinkle Cloak
@@ -185,8 +199,8 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				}),
 				e(102, {	-- Commander Ulthok
 					["crs"] = { 40765 },	-- Commander Ulthok
-					["groups"] = {				
-						i(56273), -- Caridean Epaulettes
+					["groups"] = {
+						i(56273), -- Caridean Epaulets
 						i(56271), -- Cerith Spire Staff
 						i(56274), -- Chromis Chestpiece
 						i(56275), -- Eagle Ray Cloak
@@ -200,7 +214,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56276), -- Anthia's Ring
 						i(56277), -- Decapod Slippers
 						i(56280), -- Porcelain Crab
-						i(157586, { -- Stonespeaker's Spare Cinch
+						i(157586, {	-- Stonespeaker's Spare Cinch
 							["timeline"] = { ADDED_7_3_5 },
 						}),
 					},
@@ -215,7 +229,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56286), -- Mnemiopsis Gloves
 						i(56282), -- Nautilus Ring
 						i(56288), -- Pipefish Cord
-						i(157589, { -- Salty Shell-Studded Girdle
+						i(157589, {	-- Salty Shell-Studded Girdle
 							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(56290), -- Sea Star
@@ -225,11 +239,13 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(101, {	-- Lady Naz'jar
 					["crs"] = { 40586 },	-- Lady Naz'jar
 					["groups"] = {
-						ach(5285),	-- Old Faithful
+						ach(5285, {	-- Old Faithful
+							["timeline"] = { ADDED_4_0_3, REMOVED_10_2_0 },
+						}),
 					},
 				}),
 				e(104, {	-- Ozumat
@@ -237,17 +253,19 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				["groups"] = {
 						ach(5061),	-- Heroic: Throne of the Tides
 						ach(5135),	-- Heroic: Throne of the Tides Guild Run
-						ach(5286),	-- Prince of Tides
+						ach(5286, {	-- Prince of Tides
+							["timeline"] = { ADDED_4_0_3, REMOVED_10_2_0 },
+						}),
 					},
 				}),
 			}),
 			-- #endif
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35363),	-- Throne of the Tides Reward Quest - Normal completion
 		q(35365),	-- Throne of the Tides Reward Quest - Heroic completion / Timewalking completion
 		q(35364),	-- Throne of the Tides Bonus Reward - kill Mindbender Ghur'sha (Normal)

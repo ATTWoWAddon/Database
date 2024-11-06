@@ -2,7 +2,7 @@
 --     W O R L D   E V E N T S   M O D U L E       --
 -----------------------------------------------------
 root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADDED_9_0_1, REMOVED_9_0_2_LAUNCH } }, {
-	tier(SL_TIER, {
+	expansion(EXPANSION.SL, {
 		n(ACHIEVEMENTS, {
 			ach(14750, {	-- Death Rising
 				["sourceQuests"] = { 60871, 60869 },	-- With Hope in Hand (A, H)
@@ -50,12 +50,22 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 166383,	-- Commander Gregor
 				["sourceQuest"] = 60117,	-- Return of the Crusade (A)
 				["lvl"] = { 50 },
+				["g"] = {
+					i(177958),	-- Duskwood Report (QI!)
+					i(177960),	-- Elwynn Report (QI!)
+					i(177959),	-- Redridge Report (QI!)
+				},
 			}),
 			q(60725, {	-- Field Reports (H)
 				["coord"] = { 52.9, 77.3, ORGRIMMAR },
 				["qg"] = 169878,	-- Commander Throgg
 				["sourceQuest"] = 60670,	-- Return of the Crusade (H)
 				["lvl"] = { 50 },
+				["g"] = {
+					i(180232),	-- Dranosh'ar Blockade Report (QI!)
+					i(180233),	-- Far Watch Post Report (QI!)
+					i(180231),	-- Razor Hill Report (QI!)
+				},
 			}),
 			q(60766, {	-- Damned Intruders (A)
 				["coord"] = { 73.50, 47.20, DUSKWOOD },
@@ -74,12 +84,18 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 166184,	-- Lieutenant Vernon
 				["sourceQuest"] = 60766,	-- Damned Intruders (A)
 				["lvl"] = { 50 },
+				["g"] = {
+					i(178170),	-- Vernon's Field Report (QI!)
+				},
 			}),
 			q(60761, {	-- Return of the Scourge (H)
 				["coord"] = { 49.4, 59.3, NORTHERN_BARRENS },
 				["qg"] = 170084,	-- Lieutenant Althera
 				["sourceQuest"] = 60759,	-- Damned Intruders (H)
 				["lvl"] = { 50 },
+				["g"] = {
+					i(180269),	-- Althera's Field Report (QI!)
+				},
 			}),
 			q(61486, {	-- The Banshee's Champion (A)
 				["coord"] = { 65.55, 77.0, STORMWIND_CITY },
@@ -119,12 +135,18 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 168123,	-- Crusader Renn
 				["sourceQuest"] = 59877,	-- A Message from Icecrown (A)
 				["lvl"] = { 50 },
+				["g"] = {
+					i(183797),	-- Crusader's Dressing (A) (QI!)
+				},
 			}),
 			q(60004, {	-- A Valiant Effort (H)
 				["coord"] = { 71.0, 22.0, ICECROWN },
 				["qg"] = 168123,	-- Crusader Renn
 				["sourceQuest"] = 60727,	-- A Message from Icecrown (H)
 				["lvl"] = { 50 },
+				["g"] = {
+					i(183689),	-- Crusader's Dressing (H) (QI!)
+				},
 			}),
 			q(62157, {	-- Scouting from a Safe Distance
 				["coord"] = { 71.0, 22.0, ICECROWN },
@@ -154,6 +176,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 168880,	-- Sentry Joren
 				["sourceQuest"] = 62157,	-- Scouting from a Safe Distance
 				["lvl"] = { 50 },
+				["g"] = {
+					i(181497),	-- Interrogator's Key (QI!)
+				},
 			}),
 			q(62553, {	-- Delaying Their Efforts
 				["coord"] = { 71.0, 21.9, ICECROWN },
@@ -172,6 +197,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 167572,	-- Crystal Brightspark
 				["sourceQuest"] = 62157,	-- Scouting from a Safe Distance
 				["lvl"] = { 50 },
+				["g"] = {
+					i(183139),	-- Mature Spore Sample (QI!)
+				},
 			}),
 			q(59782, {	-- The Deathspeaker's Devout
 				["coord"] = { 66.0, 21.9, ICECROWN },
@@ -241,12 +269,19 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 170467,	-- Crusader Renn
 				["sourceQuest"] = 60828,	-- A New Foothold
 				["lvl"] = { 50 },
+				["g"] = {
+					i(181253),	-- Collaborator's Hood (QI!)
+					i(181254),	-- Collaborator's Robe (QI!)
+				},
 			}),
 			q(62185, {	-- Fighting for Attention
 				["coord"] = { 44.9, 44.7, ICECROWN },
 				["qg"] = 170467,	-- Crusader Renn
 				["sourceQuest"] = 60828,	-- A New Foothold
 				["lvl"] = { 50 },
+				["g"] = {
+					i(183698),	-- Torturer's Key (QI!)
+				},
 			}),
 			q(60861, {	-- Secrets in Shadows
 				["coord"] = { 44.9, 44.7, ICECROWN },
@@ -293,6 +328,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 173997,	-- Darkrider Arly
 				["sourceQuest"] = 60932,	-- Only Shadows Remain
 				["lvl"] = { 50 },
+				["g"] = {
+					i(183442),	-- Experimental Fluid (QI!)
+				},
 			}),
 			q(62295, {	-- Cleaning Out the Vault
 				["coord"] = { 42.8, 29.9, ICECROWN },
@@ -311,12 +349,18 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 170467,	-- Crusader Renn
 				["sourceQuest"] = 60932,	-- Only Shadows Remain
 				["lvl"] = { 50 },
+				["g"] = {
+					i(183832),	-- Salvaged Supplies (QI!)
+				},
 			}),
 			q(59851, {	-- Frozen Solid
 				["coord"] = { 44.9, 44.7, ICECROWN },
 				["qg"] = 170467,	-- Crusader Renn
 				["sourceQuest"] = 60932,	-- Only Shadows Remain
 				["lvl"] = { 50 },
+				["g"] = {
+					i(182199),	-- Brightspark's Bottled Blaze (QI!)
+				},
 			}),
 			q(59772, {	-- Research Ruination
 				-- i know i picked it up in this area, but not sure about the provider.  didn't realize it wasn't added until i turned it in
@@ -330,6 +374,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 170467,	-- Crusader Renn
 				["coord"] = { 44.9, 44.7, ICECROWN },
 				["lvl"] = { 50 },
+				["g"] = {
+					i(182313),	-- Satchel Charges (QI!)
+				},
 			}),
 			q(62484, {	-- Werk In Progress
 				["coord"] = { 35.3, 66.3, ICECROWN },
@@ -342,6 +389,10 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				["qg"] = 167577,	-- Brollen Wheatbeard
 				["sourceQuest"] = 60932,	-- Only Shadows Remain
 				["lvl"] = { 50 },
+				["g"] = {
+					i(183757),	-- Jagged Blade (QI!)
+					i(183758),	-- Battleworn Chainmail (QI!)
+				},
 			}),
 			-- repeatables below
 			q(62401, {	-- Strange Scourgestones
@@ -392,6 +443,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 					-- i(166482),	-- Deathguard's Greatsword
 					-- i(166802),	-- Plaguebringer's Spellblade
 				},
+			}),
+			n(COMMON_BOSS_DROPS, {
+				i(183616),	-- Accursed Keepsake
 			}),
 			-- rares spawn every 20 minutes
 			n(174065, {	-- Blood Queen Lana'thel (6)
@@ -623,7 +677,11 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 			n(165840, {	-- Quartermaster Lungren
 				["coord"] = { 53.1, 76.9, ORGRIMMAR },
 				["races"] = HORDE_ONLY,
-				["groups"] = bubbleDown({["cost"] = { { "c", 1754, 15 } }}, {
+				["groups"] = bubbleDown({
+					["cost"] = { { "c", 1754, 15 } },	-- Argent Commendation
+					["description"] = "While available on the vendor, the currency required to buy the item is unobtainable.",
+					}, 
+					{
 					i(183552, {	-- Argent Conscript's Drape
 						["classes"] = { MAGE, PRIEST, WARLOCK },
 					}),
@@ -671,12 +729,17 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 					i(180454),	-- Anti-Doom Broom
 					i(183621, {	-- Putrid Geist (PET!)
 						["cost"] = { { "c", 1754, 20 } },
+						["description"] = "While available on the vendor, the currency required to buy the item is unobtainable.",
 					}),
 				}),
 			}),
 			n(169718, {	-- Veteran Crusader Aliocha Segard
 				["coord"] = { 71.04, 21.66, ICECROWN },
-				["groups"] = bubbleDown({["cost"] = { { "c", 1754, 15 } }}, {
+				["groups"] = bubbleDown({
+					["cost"] = { { "c", 1754, 15 } },	-- Argent Commendation
+					["description"] = "While available on the vendor, the currency required to buy the item is unobtainable.",
+					}, 
+					{
 					-- Alliance items
 					i(183524, {	-- Argent Conscript's Drape
 						["classes"] = { MAGE, PRIEST, WARLOCK },
@@ -771,13 +834,18 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 					i(180454),	-- Anti-Doom Broom
 					i(183621, {	-- Putrid Geist (PET!)
 						["cost"] = { { "c", 1754, 20 } },
+						["description"] = "While available on the vendor, the currency required to buy the item is unobtainable.",
 					}),
 				}),
 			}),
 			n(165839, {	-- Quartermaster Renick <The Argent Crusade>
 				["coord"] = { 65.4, 76.8, STORMWIND_CITY },
 				["races"] = ALLIANCE_ONLY,
-				["groups"] = bubbleDown({["cost"] = { { "c", 1754, 15 } }}, {
+				["groups"] = bubbleDown({
+					["cost"] = { { "c", 1754, 15 } },	-- Argent Commendation
+					["description"] = "While available on the vendor, the currency required to buy the item is unobtainable.",
+					}, 
+					{
 					i(183524, {	-- Argent Conscript's Drape
 						["classes"] = { MAGE, PRIEST, WARLOCK },
 					}),
@@ -829,9 +897,13 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				}),
 			}),
 			n(173791, {	-- Crusader Adevald Ironbeard
-				["description"] = "Sells gear from the Shadowlands Pre-Launch event but you must have leftover tokens from the event to buy them.",
+				["description"] = "While this vendor and his items are still available, the currency required to buy the items is not.\nTagging the vendor and his goods as removed as otherwise they would show up as collectible.",
 				["coord"] = { 69.4, 23.3, ICECROWN },
-				["groups"] = sharedData({ ["cost"] = { { "c", 1754, 15 } } }, {	-- 15x Argent Commendation
+				["groups"] = bubbleDown({
+					["cost"] = { { "c", 1754, 15 } },	-- Argent Commendation
+					["description"] = "While available on the vendor, the currency required to buy the item is unobtainable.",
+					}, 
+					{
 				-- Alliance items
 					i(183524, {	-- Argent Conscript's Drape
 						["classes"] = { MAGE, PRIEST, WARLOCK },
@@ -926,12 +998,15 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 					i(180454),	-- Anti-Doom Broom
 					i(183621, {	-- Putrid Geist (PET!)
 						["cost"] = { { "c", 1754, 20 } },	-- 20x Argent Commendation
+						["description"] = "While available on the vendor, the currency required to buy the item is unobtainable.",
 					}),
 				}),
 			}),
 		}),
 		n(ZONE_DROPS, {
 			i(180720),	-- Darkened Scourgestone
+			i(180712),	-- Partially Digested Cloth
+			i(180719),	-- Partially Digested Leather
 		}),
 	}),
 })));

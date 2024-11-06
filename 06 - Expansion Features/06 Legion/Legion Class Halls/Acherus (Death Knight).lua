@@ -2,7 +2,7 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "added 7.0.3" } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.LEGION, bubbleDown({ ["timeline"] = { ADDED_7_0_3 } }, {
 	n(CLASS_HALL, {
 		cl(DEATHKNIGHT, bubbleDownSelf({ ["classes"] = { DEATHKNIGHT } }, {
 			["maps"] = { ACHERUS_THE_EBON_HOLD_THE_HEART_OF_ACHERUS, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },	-- Uppstairs/Down
@@ -36,7 +36,8 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					fp(1862),
 				}),
 				n(FOLLOWERS, bubbleDownSelf({
-					["u"] = 15,	-- Temporary troops
+					["collectible"] = false,
+					["u"] = UNLEARNABLE,	-- Temporary troops
 				}, {
 					follower(663),	-- Ebon Knights
 					follower(901),	-- Ebon Knights
@@ -102,7 +103,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							},
 							["maps"] = { 714 },	-- Niskara (Scenario Map)
 							["g"] = {
-								i(128402, { -- Maw of the Damned
+								i(128402, {	-- Maw of the Damned
 									artifact(107),	-- Maw of the Damned
 								}),
 							},
@@ -152,6 +153,11 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 								{ 72.8, 46.8, LEGION_DALARAN },
 								{ 58.2, 60.6, ACHERUS_THE_EBON_HOLD_THE_HEART_OF_ACHERUS },
 							},
+							["g"] = {
+								i(173527, {	-- Duskwood Scroll (QI!)
+									["timeline"] = { ADDED_9_0_1 },
+								}),
+							},
 						}),
 						q(40931, {	-- Following the Curse
 							["sourceQuest"] = 40930,	-- Apocalypse
@@ -174,7 +180,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["provider"] = { "n", 100812 },	-- Revil Kost
 							["coord"] = { 49.4, 74.6, DEADWIND_PASS },
 							["g"] = {
-								i(128403, { -- Apocalypse
+								i(128403, {	-- Apocalypse
 									artifact(110),	-- Standard
 								}),
 							},
@@ -185,7 +191,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["provider"] = { "n", 100812 },	-- Revil Kost
 							["coord"] = { 49.4, 74.6, DEADWIND_PASS },
 							["g"] = {
-								i(128403, { -- Apocalypse
+								i(128403, {	-- Apocalypse
 									artifact(110),	-- Standard
 								}),
 							},
@@ -215,13 +221,13 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["sourceQuestNumRequired"] = 1,
 						["provider"] = { "n", 97111 }, -- Illanna Dreadmoore
 						["coord"] = { 49.6, 52.6, ACHERUS_THE_EBON_HOLD_THE_HEART_OF_ACHERUS },
-						["timeline"] = { "added 7.0.3", "removed 8.0.1" },
+						["timeline"] = { ADDED_7_0_3, REMOVED_8_0_1 },
 					}),
 					q(39761, {	-- Advanced Runecarving
 						["sourceQuest"] = 39757, -- Keeping Your Edge
 						["provider"] = { "n", 97072 }, -- Grand Master Siegesmith Corvus
 						["coord"] = { 60.2, 60.0, ACHERUS_THE_EBON_HOLD_THE_HEART_OF_ACHERUS },
-						["timeline"] = { "added 7.0.3", "removed 8.0.1" },
+						["timeline"] = { ADDED_7_0_3, REMOVED_8_0_1 },
 					}),
 					q(44217, {	-- Armor Fit For A Deathlord
 						["sourceQuest"] = 39761, --Advanced Runecarving
@@ -519,13 +525,13 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["provider"] = { "n", 118433 },	-- Injured Ebon Knight
 						["coord"] = { 56.0, 30.7, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },
 						["isBreadcrumb"] = true,
-						["timeline"] = { "added 7.1.5", "removed 7.2.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_2_0 },
 					}),
 					q(46031, {	-- Investigate the Broken Shore
 						["sourceQuest"] = 46030,	-- An Urgent Warning
 						["provider"] = { "n", 93568 }, -- Siouxsie the Banshee
 						["coord"] = { 49.7, 51.3, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },
-						["timeline"] = { "added 7.1.5", "removed 7.2.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_2_0 },
 					}),
 					-- 7.2.0
 					q(45240, {	-- Making Preparations
@@ -622,25 +628,25 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(43877, {	-- Hitting the Books
 						["provider"] = { "n", 97111 },	-- Illanna Dreadmoore <Ebon Blade Archivist>
 						["coord"] = { 49.8, 56.2, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },
-						["timeline"] = { "added 7.0.3", "removed 7.3.0" },
+						["timeline"] = { ADDED_7_0_3, REMOVED_7_3_0 },
 					}),
 					q(46108, {	-- Knowledge is Power
 						["sourceQuest"] = 43877,	-- Hitting the Books
 						["provider"] = { "n", 97111 },	-- Illanna Dreadmoore <Ebon Blade Archivist>
 						["coord"] = { 49.8, 56.2, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },
-						["timeline"] = { "added 7.1.5", "removed 7.3.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_3_0 },
 					}),
 					q(46125, {	-- Furthering Knowledge
 						["sourceQuest"] = 46108,	-- Knowledge is Power
 						["provider"] = { "n", 97111 },	-- Illanna Dreadmoore <Ebon Blade Archivist>
 						["coord"] = { 49.8, 56.2, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },
-						["timeline"] = { "added 7.1.5", "removed 7.3.0" },
+						["timeline"] = { ADDED_7_1_5, REMOVED_7_3_0 },
 					}),
 					q(46789, {	-- Further Advancement
 						["sourceQuest"] = 45103, -- We Ride!
 						["provider"] = { "n", 93568 }, -- Siouxsie the Banshee
 						["coord"] = { 49.7, 51.3, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },
-						["timeline"] = { "added 7.2.0" },
+						["timeline"] = { ADDED_7_2_0 },
 					}),
 				}),
 				n(SPECIAL, {
@@ -656,7 +662,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["sourceQuest"] = 43268,	-- Tech It Up A Notch
 							["provider"] = { "n", 111634 },	-- Winter Payne
 							["coord"] = { 26.3, 23.4, ACHERUS_THE_EBON_HOLD_HALL_OF_COMMAND },
-							["timeline"] = { "added 7.0.3", "removed 8.0.1" },
+							["timeline"] = { ADDED_7_0_3, REMOVED_8_0_1 },
 						}),
 					}),
 					o(252395, {	-- Deathcharger Hitching Post
@@ -686,18 +692,18 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							i(38667),	-- Bloodbane's Gauntlets of Command
 							i(140538),	-- Broadaxe of the Ebon Blade
 							i(174485, {	-- Burning Greatsword of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(174662, {	-- Burning Saber of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(34657),	-- Choker of Damnation
 							i(38147),	-- Corrupted Band
 							i(174486, {	-- Crimson Greatsword of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(174659, {	-- Crimson Saber of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(140935, {	-- Deathlord's Armor Kit
 								["cost"] = { { "c", 1220, 2000 }, },	-- 2,000x Order Resources
@@ -734,10 +740,10 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							}),
 							i(38669),	-- Engraved Saronite Legplates
 							i(174488, {	-- Freezing Greatsword of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(174660, {	-- Freezing Saber of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(38633),	-- Greataxe of the Ebon Blade
 							i(38661),	-- Greathelm of the Scourge Champion
@@ -757,10 +763,10 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							i(38674),	-- Soul Harvester's Charm
 							i(38668),	-- The Plaguebringer's Girdle
 							i(174487, {	-- Unholy Greatsword of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(174661, {	-- Unholy Saber of the Ebon Blade
-								["timeline"] = { "added 8.3.0" },
+								["timeline"] = { ADDED_8_3_0 },
 							}),
 							i(38671),	-- Valanar's Signet Ring
 							i(140554),	-- Warsword of the Ebon Blade
@@ -796,7 +802,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 	}),
 })));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(40936),	-- Tracking: Revil Convinced - triggered during "Apocalypse" (questID 40930)
 		q(44587),	-- Tracking Quest: Fallen Steeds A - completed the "Fallen Steeds: Saddle of the Frozen Crown" mission
 		q(44588),	-- Tracking Quest: Fallen Steeds B - completed the "Fallen Steeds: The Baron's Saddle" mission

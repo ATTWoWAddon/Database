@@ -2,15 +2,18 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_2_0 } }, {
 	m(MECHAGON, {
 		n(RARES, {
+			n(COMMON_BOSS_DROPS, {
+				i(168908, {	-- Blueprint: Experimental Adventurer Augment
+					["description"] = "This blueprint will drop from the first rare you kill once you've reached Neutral with the Rustbolt Resistance.",
+				}),
+				i(168327),	-- Chain Ignitercoil
+			}),
 			--[[
 				R33-DR - 63.4, 57.0 interactive "data analyzer" npc. Possibly part of a puzzle?
 			]]--
-			i(168908, {	-- Blueprint: Experimental Adventurer Augment
-				["description"] = "This blueprint will drop from the first rare you kill once you've reached Neutral with the Rustbolt Resistance.",
-			}),
 			-- TODO:: See Hidden Quest Triggers.lua for remaining first kill id's needed
 			n(150306, {	-- Drill Rig
 				["description"] = "These rares are only available when the Drill Rig is an active construction project.  Speak to |Cff00991aWaren Gearheart|r |Cffffffff(73.0, 33.5)|r to see which construction projects are available.\r\rEach rare spawn is accompanied by a specific zonewide announcement.  Hover over each rare in the list to see its announcement.",
@@ -429,20 +432,6 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 					i(168749),	-- Performant Effective Logic Board
 				},
 			}),
-			-- Shared Rares Drop
-			i(168327),	-- Chain Ignitercoil
 		}),
 	}),
 })));
-
--- TODO: someone go out to mechagon and test stuff :P
--- root(ROOTS.HiddenQuestTriggers, {
--- 	m(KUL_TIRAS, {
--- 		m(MECHAGON, {
--- 			n(RARES, {
--- 				q(55907),	-- killing scrapclaw on Alliance?
--- 				q(56307),	-- killing scrapclaw on Horde?
--- 			}),
--- 		}),
--- 	}),
--- });

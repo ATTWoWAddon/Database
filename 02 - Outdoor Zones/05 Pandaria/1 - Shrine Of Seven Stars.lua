@@ -6,7 +6,7 @@ root(ROOTS.Zones, m(PANDARIA, {
 		["lore"] = "The Shrine of Seven Stars is an ancient mogu structure located south of Mogu'shan Palace in the eastern part of the Vale of Eternal Blossoms. It has been claimed by the Alliance and serves as the main hub of the faction in the continent of Pandaria, as opposed to the sanctuary cities serving as main hubs for both factions in previous expansions.",
 		["isRaid"] = true,
 		["races"] = ALLIANCE_ONLY,
-		["icon"] = "Interface\\Icons\\achievement_doublejeopardyally",
+		["icon"] = 462673,
 		["maps"] = {
 		--	393,	-- The Emperor's Step
 			394,	-- The Imperial Exchange
@@ -69,7 +69,7 @@ root(ROOTS.Zones, m(PANDARIA, {
 					["provider"] = { "n", 64085 },	-- Cullen Hammerbrow
 					["coord"] = { 71.27, 50.52, 393 },
 					["requireSkill"] = BLACKSMITHING,
-					["timeline"] = { "removed 8.0" },	-- no longer available due to the profession level changes
+					["timeline"] = { REMOVED_8_0_1 },	-- no longer available due to the profession level changes
 				}),
 				--[[
 				q(31390, {	-- The Klaxxi
@@ -883,6 +883,28 @@ root(ROOTS.Zones, m(PANDARIA, {
 						i(21219),	-- Recipe: Sagefish Delight (RECIPE!)
 						i(21099),	-- Recipe: Smoked Sagefish (RECIPE!)
 					},
+				}),
+				n(66678, {	-- Krystel <Spirit of Harmony Vendor>
+					["coord"] = { 84.6, 60.4, VALE_OF_ETERNAL_BLOSSOMS },
+					["races"] = IGNORED_VALUE,	-- technically available both factions
+					["groups"] = sharedData({
+						["cost"] = {{"i",76061,1}},	-- Spirit of Harmony
+					},{
+						i(72094),	-- Black Trillium Ore
+						i(74247),	-- Ethereal Shard
+						i(72092),	-- Ghost Iron Ore
+						i(72238),	-- Golden Lotus
+						i(72093),	-- Kyparite
+						i(72120),	-- Mist-Touched Leather
+						i(74250),	-- Mysterious Essence
+						-- i(89610),	-- Pandaria Herbs (non-specific content)
+						i(79101),	-- Prismatic Scale
+						i(76734),	-- Serpent's Eye
+						i(74249),	-- Spirit Dust
+						i(79255),	-- Starlight Ink
+						i(72103),	-- White Trillium Ore
+						i(72988),	-- Windwool Cloth
+					}),
 				}),
 				n(64052, {	-- Raishen the Needle <Tailoring Supplies>
 					["requireSkill"] = TAILORING,

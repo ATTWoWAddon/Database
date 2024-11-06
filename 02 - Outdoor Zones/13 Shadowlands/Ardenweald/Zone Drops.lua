@@ -4,6 +4,11 @@
 root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	m(ARDENWEALD, {
 		n(ZONE_DROPS, {
+			i(183877),	-- A Meandering Story
+			i(183881),	-- A Naughty Story
+			i(183880),	-- A Travel Journal
+			i(183878),	-- A Wandering Tale
+			i(183879),	-- An Escapist Novel
 			i(180478),	-- Champion's Pelt
 			i(180522),	-- Phaedrum Lockbox
 			i(174042, {	-- Pinch of Faerie Dust
@@ -61,19 +66,3 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 		}),
 	}),
 })));
-
-root(ROOTS.NeverImplemented, {
-	tier(SL_TIER, {
-		n(ARMOR, {
-			filter(CLOTH, {
-				i(179587),	-- Drust Mask
-				i(179588),	-- Drust Mask
-				i(179589),	-- Drust Mask
-				i(179590),	-- Drust Mask
-				i(179591),	-- Drust Mask
-				i(179592),	-- Drust Mask
-				i(179595),	-- Drust Mask
-			}),
-		}),
-	}),
-});

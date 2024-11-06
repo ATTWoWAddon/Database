@@ -2,7 +2,7 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "added 7.0.3" } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.LEGION, bubbleDown({ ["timeline"] = { ADDED_7_0_3 } }, {
 	n(CLASS_HALL, {
 		cl(PALADIN, bubbleDownSelf({ ["classes"] = { PALADIN } }, {
 			["maps"] = { SANCTUM_OF_LIGHT },
@@ -43,7 +43,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["name"] = "Traveler Found",
 							["description"] = "After talking to Prince Tortheldrin, you can talk to her/him for the next part of the chain. After you have done so, read Grand Inquisitor Isillien's Journal at Hearthglen in Western Plaguelands.",
 							["sourceQuest"] = 43682,	-- Book Presented
-							["timeline"] = { "added 7.0.3.21570" },
+							["timeline"] = { ADDED_7_0_3 },
 							["qgs"] = {
 								11609,	-- Alexia Ironknife
 								11608,	-- Bardu Sharpeye
@@ -82,7 +82,8 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					}),
 				}),
 				n(FOLLOWERS, bubbleDownSelf({
-					["u"] = 15,	-- Temporary troops
+					["collectible"] = false,
+					["u"] = UNLEARNABLE,	-- Temporary troops
 				}, {
 					follower(770),	-- Shieldbearer Phalanx
 					follower(843),	-- Shieldbearer Phalanx
@@ -140,6 +141,9 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["sourceQuests"] = { 42377 },	-- The Brother's Trail
 							["provider"] = { "n", 106337 },	-- Travard
 							["coord"] = { 72.0, 49.3, LEGION_DALARAN },
+							["g"] = {
+								i(173523),	-- Tirisfal Camp Scroll (QI!)
+							},
 						}),
 					}),
 					cl(PALADIN, PROTECTION, {
@@ -182,6 +186,11 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["sourceQuestNumRequired"] = 1,
 							["provider"] = { "n", 90259 },	-- Lord Maxwell Tyrosus
 							["coord"] = { 49.8, 72.4, SANCTUM_OF_LIGHT },
+							["g"] = {
+								i(173537, {	-- Glowing Hearthstone (QI!)
+									["timeline"] = { ADDED_9_0_1 },
+								}),
+							},
 						}),
 						q(42772, {	-- Sacred Ground
 							["sourceQuests"] = { 42770 },	-- Seeking Guidance
@@ -202,6 +211,11 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							["sourceQuests"] = { 42773 },	-- The Light Reveals
 							["provider"] = { "n", 108776 },	-- Lord Maxwell Tyrosus
 							["coord"] = { 52.1, 83.2, WESTERN_PLAGUELANDS },
+							["g"] = {
+								i(173538, {	-- Hippogryph Whistle (QI!)
+									["timeline"] = { ADDED_9_0_1 },
+								}),
+							},
 						}),
 						q(38376, {	-- The Search for the Highlord
 							["sourceQuests"] = { 42774 },	-- Hope Prevails
@@ -518,7 +532,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["coord"] = { 72.6, 25.8, BROKEN_SHORE },
 						["g"] = {
 							i(139690),	-- Breastplate of the Silver Hand
-							title(345),	-- Highlord %s
+							title(345),	-- Highlord <Name>
 						},
 					}),
 					q(43785, {	-- Champion: Arator the Redeemer
@@ -631,11 +645,15 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(45645, {	-- A Fool's Errand
 						["sourceQuests"] = { 45644 },	-- Oh Doloria, My Sweet Doloria
 						["provider"] = { "n", 117438 },	-- Doloria
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["coord"] = { 48.2, 41.0, LEGION_DALARAN },
 					}),
 					q(45566, {	-- A Knight's Belongings
 						["sourceQuests"] = { 45562 },	-- Kneel and Be Squired!
 						["provider"] = { "n", 117226 },	-- Maximillian of Northshire
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["coord"] = { 55.8, 16.2, HIGHMOUNTAIN },
 					}),
 					q(44220, {	-- Blessing of the Order
@@ -644,6 +662,8 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(45565, {	-- Further Training
 						["sourceQuests"] = { 45562 },	-- Kneel and Be Squired!
 						["provider"] = { "n", 117226 },	-- Maximillian of Northshire
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["coord"] = { 55.8, 16.2, HIGHMOUNTAIN },
 					}),
 					q(42844, {	-- Growing Power
@@ -653,6 +673,8 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(45562, {	-- Kneel and Be Squired!
 						["sourceQuests"] = { 45561 },	-- Seek Me Out
 						["provider"] = { "n", 117226 },	-- Maximillian of Northshire
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["coord"] = { 55.8, 16.2, HIGHMOUNTAIN },
 					}),
 					q(46074, {	-- Leather to Legendary
@@ -663,6 +685,8 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(45567, {	-- My Kingdom for a Horse
 						["sourceQuests"] = { 45562 },	-- Kneel and Be Squired!
 						["provider"] = { "n", 117226 },	-- Maximillian of Northshire
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["coord"] = { 55.8, 16.2, HIGHMOUNTAIN },
 					}),
 					q(45644, {	-- Oh Doloria, My Sweet Doloria
@@ -673,15 +697,19 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							45568,	-- They Stole Excaliberto!
 						},
 						["provider"] = { "n", 118009 },	-- Maximillian of Northshire
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["coord"] = { 55.8, 16.2, HIGHMOUNTAIN },
 					}),
 					q(45561, {	-- Seek Me Out
+						["description"] = "This quest will only trigger if you've already recruited |cffffff00Nerus Moonfang|r as a follower, as well as completing the Maximillian of Northshire quest chain in Un'Goro Crater starting with |cffffff00An Important Lesson|r. Once both of those criteria are met, you should receive mail the next time you enter your Order Hall which grants you the item to start this quest chain.",
 						["sourceQuests"] = {
 							24707,	-- The Ballad of Maximillian
 							46045,	-- Champion: Nerus Moonfang
 						},
 						["provider"] = { "i", 143900 },	-- Letter from Maximillian
-						["description"] = "This quest will only trigger if you've already recruited |cffffff00Nerus Moonfang|r as a follower, as well as completing the Maximillian of Northshire quest chain in Un'Goro Crater starting with |cffffff00An Important Lesson|r. Once both of those criteria are met, you should receive mail the next time you enter your Order Hall which grants you the item to start this quest chain.",
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 					}),
 					q(45770, {	-- Stirring in the Shadows
 						["sourceQuests"] = { 46074 },	-- Leather to Legendary
@@ -699,12 +727,16 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(45568, {	-- They Stole Excaliberto!
 						["sourceQuests"] = { 45562 },	-- Kneel and Be Squired
 						["provider"] = { "n", 117226 },	-- Maximillian of Northshire
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["coord"] = { 55.8, 16.2, HIGHMOUNTAIN },
 					}),
 					q(45813, {	-- Where Art Thou, My Sweet
 						["sourceQuests"] = { 45645 },	-- A Fool's Errand
 						["provider"] = { "n", 118088 },	-- Maximillian of Northshire <Knight-Errant>
 						["maps"] = { LEGION_DALARAN },
+						["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
+						["classes"] = { PALADIN },
 						["g"] = {
 							follower(1001),	-- Maximillian of Northshire
 						},
@@ -823,7 +855,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 	}),
 })));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(43578),	-- Looted Paladin Daily Mount
 		q(46767),	-- Maximillian 1 Week Cooldown - triggered after turning in "Champion: Nerus Moonfang" (questID 46045)
 		q(43688),	-- Shard Delivered - unlocking the Walking in the Shadows quest

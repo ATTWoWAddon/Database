@@ -1,9 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	inst(1182, {	-- Necrotic Wake
 		["coord"] = { 40.0, 55.3, BASTION },
 		["maps"] = {
@@ -38,7 +36,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2395, {	-- Blightbone
 					["crs"] = { 162691 },	-- Blightbone
 					["g"] = {
@@ -129,7 +127,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2396, {	-- Nalthor the Rimebinder
 					["crs"] = { 162693 },	-- Nalthor the Rimebinder
 					["g"] = {
@@ -137,7 +135,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(2391, {	-- Amarth, The Harvester
 					["crs"] = { 166855 },	-- Amarth, The Harvester
 					["g"] = {

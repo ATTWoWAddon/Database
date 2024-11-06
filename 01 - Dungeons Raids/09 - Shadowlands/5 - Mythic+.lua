@@ -1,9 +1,9 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	n(MYTHIC_PLUS, {
-		i(182173, {	-- Hyena Soul
+		ig(182173, {	-- Hyena Soul
 			["timeline"] = { ADDED_9_0_2, REMOVED_10_0_2_LAUNCH },
 		}),
 		header(HEADERS.Achievement, SEASON_PROUD, bubbleDownSelf({
@@ -33,7 +33,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 				i(187525),	-- Soultwisted Deathwalker (MOUNT!)
 			}),
 			ach(15327, {	-- Tormented Hero: Shadowlands Season 2
-				title(451),	-- <Name>, the Tormented Hero (TITLE!)
+				title(451),	-- <Name> the Tormented Hero (TITLE!)
 			}),
 			-- Keystone Hero
 			ach(15051, {	-- Keystone Hero: De Other Side
@@ -73,7 +73,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 			}),
 			ach(15506),		-- Shadowlands Keystone Hero: Season Three
 			ach(15691, {	-- Cryptic Hero: Shadowlands Season 3
-				title(458),	-- <Name>, the Cryptic Hero (TITLE!)
+				title(458),	-- <Name> the Cryptic Hero (TITLE!)
 			}),
 			-- Keystone Hero
 			ach(15051, {	-- Keystone Hero: De Other Side
@@ -96,8 +96,8 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 			}),
 			ach(15500, {	-- Keystone Hero: Tazavesh, the Veiled Market
 				spell(367416),	-- Path of the Streetwise Merchant
-				crit(1),	-- Tazavesh: Streets of Wonder
-				crit(2),	-- Tazavesh: So'leah's Gambit
+				crit(53264),	-- Tazavesh: Streets of Wonder
+				crit(53266),	-- Tazavesh: So'leah's Gambit
 			}),
 			ach(15045, {	-- Keystone Hero: The Necrotic Wake
 				spell(354462),	-- Path of the Courageous
@@ -117,7 +117,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 				i(192557),	-- Restoration Deathwalker (MOUNT!)
 			}),
 			ach(15756, {	-- Shrouded Hero: Shadowlands Season 4
-				title(466),	-- <Name>, the Shrouded Hero (TITLE!)
+				title(466),	-- <Name> the Shrouded Hero (TITLE!)
 			}),
 			-- Keystone Hero
 			ach(15695, {	-- Keystone Hero: Grimrail Depot
@@ -128,22 +128,22 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 			}),
 			ach(15693, {	-- Keystone Hero: Operation: Mechagon
 				spell(373274),	-- Path of the Scrappy Prince
-				crit(1),	-- Operation: Mechagon - Junkyard
-				crit(2),	-- Operation: Mechagon - Workshop
+				crit(53624),	-- Operation: Mechagon - Junkyard
+				crit(53625),	-- Operation: Mechagon - Workshop
 			}),
 			ach(15692, {	-- Keystone Hero: Return to Karazhan
 				spell(373262),	-- Path of the Fallen Guardian
-				crit(1),	-- Return to Karazhan: Lower
-				crit(2),	-- Return to Karazhan: Upper
+				crit(53622),	-- Return to Karazhan: Lower
+				crit(53623),	-- Return to Karazhan: Upper
 			}),
 			ach(15500, {	-- Keystone Hero: Tazavesh, the Veiled Market
 				spell(367416),	-- Path of the Streetwise Merchant
-				crit(1),	-- Tazavesh: Streets of Wonder
-				crit(2),	-- Tazavesh: So'leah's Gambit
+				crit(53264),	-- Tazavesh: Streets of Wonder
+				crit(53266),	-- Tazavesh: So'leah's Gambit
 			}),
 		})),
 	}),
-	d(MYTHIC_DUNGEON, bubbleDownSelf({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
-		i(182173),	-- Hyena Soul
+	d(DIFFICULTY.DUNGEON.MYTHIC, bubbleDownSelf({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+		ig(182173),	-- Hyena Soul
 	})),
 })));

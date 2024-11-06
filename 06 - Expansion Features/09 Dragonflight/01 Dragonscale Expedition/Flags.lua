@@ -1,12 +1,18 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+CARTOGRAPHERS_FLAG = createHeader({
+	readable = "Cartographer's Flag",
+	icon = 1723999,
+	text = {
+		en = WOWAPI_GetSpellName(382288),
+	},
+});
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(DRAGONSCALE_EXPEDITION, {
-		n(CARTOGRAPHERS_FLAG, {
+		n(CARTOGRAPHERS_FLAG, bubbleDownSelf({ ["minReputation"] = { FACTION_DRAGONSCALE_EXPEDITION, 7 } }, {
 			n(ACHIEVEMENTS, {
 				ach(15890, {	-- Dragonscale Expedition: The Highest Peaks
-					["minReputation"] = { 2507, 7 },	-- Dragonscale Expedition Renown 7
 					["description"] = "Requires Research Cartographer's Flag at Expedition Supply Kit.",
 					["coords"] = {
 						{ 73.4, 38.8, THE_WAKING_SHORES },
@@ -140,11 +146,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					["coord"] = { 36.9, 37.9, THE_FORBIDDEN_REACH },
 					["timeline"] = ADDED_10_0_7,
 				}),
-
-				-- PTR only? NYI probably
-				qNYI(73696),	-- Flag at 24.4, 55.6, THE_FORBIDDEN_REACH
-				qNYI(73702),	-- Flag at 80.5, 48.1, THE_FORBIDDEN_REACH
 			}),
-		}),
+		})),
 	}),
 })));

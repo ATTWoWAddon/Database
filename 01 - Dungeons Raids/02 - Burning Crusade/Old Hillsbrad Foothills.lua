@@ -5,15 +5,13 @@ local THOMAS_YANCE_GROUPS = {
 	i(25725),	-- Pattern: Riding Crop (RECIPE!)
 	i(23321),	-- Recruit's Robe
 };
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
-	inst(251, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {	-- Old Hillsbrad Foothills
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
+	inst(251, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {	-- Old Hillsbrad Foothills
 		["lore"] = "Old Hillsbrad Foothills is one of the timeways accessible in the Caverns of Time. The setting is seven years before WoW's present, to when the future Warchief Thrall was a slave of Aedelas Blackmoore, master of Durnholde Keep. The questing involves helping Thrall escape. The instance area in question spans from Southshore (where familiar personalities of WoW present can be found) to Tarren Mill.",
+		["description"] = "This is an event-triggered dungeon with the following steps:\n\n1. Talk to Erozion at the beginning of the dungeon to obtain a Pack of Incendiary Bombs.\n\n2. Traverse to the internment camps in Durnholde Keep and interact with a barrel in each building to start a fire and summon the first boss Lieutenant Drake.\n\n3. Find Thrall in the basement of the keep and follow him for the remainder of the dungeon.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 2367,	-- Old Hillsbrad Foothills
-		["sins"] = {
-			"Caverns of Time: Old Hillsbrad Foothills",
-			"The Escape from Durnholde",
-			"Flucht aus Durnholde",
-		},
+		-- #endif
 		["coord"] = { 26.8, 36.8, CAVERNS_OF_TIME },
 		["mapID"] = CAVERNS_OF_TIME_OLD_HILLSBRAD_FOOTHILLS,
 		["lvl"] = lvlsquish(63, 63, 15),
@@ -22,13 +20,13 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10284, {	-- Escape from Durnholde
 					["qg"] = 17876,	-- Thrall
 					["sourceQuest"] = 10283,	-- Taretha's Diversion
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(66, 66, 15),
 				}),
 				q(29599, {	-- Escape from Durnholde
 					["qg"] = 17876,	-- Thrall
 					["sourceQuest"] = 29598,	-- Taretha's Diversion
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(64, 64, 15),
 					["groups"] = {
 						i(29317),	-- Tempest's Touch
@@ -39,11 +37,13 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(12513, {	-- Nice Hat...
 					["qg"] = 28126,	-- Don Carlos
-					-- #if AFTER CATA
-					["coord"] = { 50.7, 27.5, TANARIS },
-					-- #else
-					["coord"] = { 53.9, 28.9, TANARIS },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 50.7, 27.5, TANARIS },
+						-- #else
+						{ 53.9, 28.9, TANARIS },
+						-- #endif
+					},
 					-- Races straight from Blizz api confirmed by Gaulish 9/27/20
 					["races"] = { HUMAN, DWARF, GNOME, KULTIRAN, DARKIRON, MECHAGNOME },
 					["lvl"] = lvlsquish(66, 66, 15),
@@ -56,11 +56,13 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(12515, {	-- Nice Hat...
 					["qg"] = 28126,	-- Don Carlos
-					-- #if AFTER CATA
-					["coord"] = { 50.7, 27.5, TANARIS },
-					-- #else
-					["coord"] = { 53.9, 28.9, TANARIS },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 50.7, 27.5, TANARIS },
+						-- #else
+						{ 53.9, 28.9, TANARIS },
+						-- #endif
+					},
 					-- Races straight from Blizz api confirmed by Gaulish 9/27/20
 					["races"] = exclude({ HUMAN, DWARF, GNOME, KULTIRAN, DARKIRON, MECHAGNOME }, ALL_RACES),
 					["lvl"] = lvlsquish(66, 66, 15),
@@ -74,17 +76,19 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10282, {	-- Old Hillsbrad
 					["qg"] = 20130,	-- Andormu <Keepers of Time>
 					["sourceQuest"] = 10277,	-- The Caverns of Time
-					-- #if AFTER CATA
-					["coord"] = { 41.8, 38.4, CAVERNS_OF_TIME },
-					-- #else
-					["coord"] = { 58.4, 54.3, TANARIS },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 41.8, 38.4, CAVERNS_OF_TIME },
+						-- #else
+						{ 58.4, 54.3, TANARIS },
+						-- #endif
+					},
 					["lvl"] = lvlsquish(66, 66, 15),
 				}),
 				q(10283, {	-- Taretha's Diversion
 					["qg"] = 18723,	-- Erozion
 					["sourceQuest"] = 10282,	-- Old Hillsbrad
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(66, 66, 15),
 					["groups"] = {
 						objective(1, {	-- Internment Lodges Set Ablaze
@@ -94,7 +98,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29598, {	-- Taretha's Diversion
 					["qg"] = 18723,	-- Erozion
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(64, 64, 15),
 					["groups"] = {
 						objective(1, {	-- Internment Lodges Set Ablaze
@@ -105,7 +109,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10285, {	-- Return to Andormu
 					["qg"] = 18723,	-- Erozion
 					["sourceQuest"] = 10284,	-- Escape from Durnholde
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(66, 66, 15),
 					["groups"] = {
 						i(29317),	-- Tempest's Touch
@@ -129,7 +133,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(28132, {	-- Don Carlos
 					["description"] = "This is a neutral mob that wanders the road.",
 					["groups"] = {
@@ -226,7 +230,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -254,10 +258,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["description"] = "This is a neutral mob that wanders the road.",
 						["groups"] = {
 							applyclassicphase(LEGION_PHASE_ONE, i(134019, {	-- Don Carlos' Famous Hat (TOY!)
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							})),
 							i(38506, {	-- Don Carlos' Famous Hat
-								["timeline"] = { "removed 7.0.3.22248" },
+								["timeline"] = { REMOVED_7_0_3 },
 							}),
 							i(38329),	-- Don Carlos' Hat
 						},
@@ -311,10 +315,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 18096,
 						["groups"] = {
 							ach(673, {	-- Heroic: The Escape From Durnholde
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5073, {	-- Heroic: The Escape From Durnholde Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(28222),	-- Reaver of the Infinites
 							-- #if AFTER 7.3.5
@@ -367,7 +371,7 @@ for i,o in ipairs({
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35542),	-- Old Hillsbrad Foothills Reward Quest - Normal completion
 		q(35543),	-- Old Hillsbrad Foothills Reward Quest - Heroic completion
 	}),

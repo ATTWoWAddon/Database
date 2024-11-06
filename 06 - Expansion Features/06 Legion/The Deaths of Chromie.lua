@@ -3,10 +3,9 @@
 -------------------------------------------------------------------
 
 root(ROOTS.ExpansionFeatures,
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		m(897, {	-- Death's of Chromie Scenario
 			["lvl"] = 110,
-			["achievementID"] = 11941,
 			["description"] = "The Chromie Scenario sends you through multiple timeways to defeat Chromie's attackers. As you gain reputation with Chromie by killing mobs in the scenario, you will unlock more powerful abilities for Chromie to help speed up your run. Unlike past solo scenarios like Withered Army Training, you do not need to worry about gearing up--your gear is scaled up to 1000 and your player level is increased as well to 112. You can also fly inside this scenario--unusual for instanced content.\n\nEach scenario attempt lasts 15 minutes and the ultimate goal is to defeat 8 timeways in one attempt. Progress can be speed up through obtaining items that grant extra time, buffs from Chromie, and items which auto-complete a timeway threat.",
 			["maps"] = { DRAGONBLIGHT, 898, 899, 900, 901, 902 },	-- Dragonblight / Scenario
 			["g"] = {
@@ -306,62 +305,15 @@ root(ROOTS.ExpansionFeatures,
 					ach(11941, {	-- Chromie Homie
 						title(361),		-- Title: Timelord
 					}),
+					faction(FACTION_CHROMIE),	-- Chromie
 					q(47906, {	-- The Deaths of Chromie
 						["coord"] = { 60.0, 54.5, DRAGONBLIGHT },
 						["provider"] = { "n", 27856 },	-- Chromie
 						["g"] = {
-							i(151692, { -- Ensemble: Chronoscryer's Finery
-								["ignoreBonus"] = true,
-								["g"] = {
-									i(151672),	-- Head
-									i(151682),	-- Shoulders
-									i(151679),	-- Chest
-									i(151688),	-- Bracers
-									i(151669),	-- Hands
-									i(151685),	-- Belt
-									i(151676),	-- Legs
-									i(151664),	-- Feet
-								},
-							}),
-							i(151693, { -- Ensemble: Riftscarred Vestments
-								["ignoreBonus"] = true,
-								["g"] = {
-									i(151674),	-- Head
-									i(151680),	-- Shoulders
-									i(151662),	-- Chest
-									i(151691),	-- Bracers
-									i(151667),	-- Hands
-									i(151687),	-- Belt
-									i(151678),	-- Legs
-									i(151666),	-- Feet
-								},
-							}),
-							i(151694, { -- Ensemble: Epoch Sentinel's Mail
-								["ignoreBonus"] = true,
-								["g"] = {
-									i(151673),	-- Head
-									i(151683),	-- Shoulders
-									i(151661),	-- Chest
-									i(151690),	-- Bracers
-									i(151670),	-- Hands
-									i(151686),	-- Belt
-									i(151677),	-- Legs
-									i(151665),	-- Feet
-								},
-							}),
-							i(151695, { -- Ensemble: Timewarden's Plate
-								["ignoreBonus"] = true,
-								["g"] = {
-									i(151671),	-- Head
-									i(151681),	-- Shoulders
-									i(151660),	-- Chest
-									i(151689),	-- Bracers
-									i(151668),	-- Hands
-									i(151684),	-- Belt
-									i(151675),	-- Legs
-									i(151663),	-- Feet
-								},
-							}),
+							iensemble(151692),	-- Ensemble: Chronoscryer's Finery
+							iensemble(151693),	-- Ensemble: Riftscarred Vestments
+							iensemble(151694),	-- Ensemble: Epoch Sentinel's Mail
+							iensemble(151695),	-- Ensemble: Timewarden's Plate
 						},
 					}),
 				}),
@@ -386,11 +338,7 @@ root(ROOTS.ExpansionFeatures,
 	})
 );
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
-		q(47920),	-- Ensemble: Timewarden's Plate
-		q(47921),	-- Ensemble: Chronoscryer's Finery
-		q(47922),	-- Ensemble: Epoch Sentinel's Mail
-		q(47923),	-- Ensemble: Riftscarred Vestments
+	expansion(EXPANSION.LEGION, {
 		q(48032),	-- FLAG - Hyjal Scene Seen - immediately upon entering Hyjal
 		q(47829),	-- FLAG - Hyjal Complete - kill the fiery behemoth
 		q(47830),	-- FLAG - Andorhal Complete
@@ -409,7 +357,7 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(47937),	-- Tracking Quest - kill Iceshatter
 		q(47935),	-- Tracking Quest - kill Icefist
 	}),
-	tier(SL_TIER, {
+	expansion(EXPANSION.SL, {
 		qNYI(64652),	-- unknown reason in Chromie Scenario
 	}),
 });

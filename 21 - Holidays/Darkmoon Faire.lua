@@ -1,45 +1,12 @@
 --------------------------------------------
 --     H O L I D A Y S  M O D U L E       --
 --------------------------------------------
-DARKMOON_FAIRE_HEADER = createHeader({
-	readable = "Darkmoon Faire",
-	constant = "DARKMOON_FAIRE_HEADER",
-	icon = [[~_.asset("Event_dmf")]],
-	eventID = EVENTS.DARKMOON_FAIRE,
-	-- #if BEFORE 4.3.0
-	eventIDs = {
-		-- #if AFTER TBC
-		376,	-- Terrokar Forest
-		-- #endif
-		374,	-- Elwynn Forest
-		375,	-- Thunder Bluff
-	},
-	-- #if BEFORE WRATH
-	-- We have a calendar to pull from in Wrath Classic. :)
-	eventSchedule = {
-		2, -- Active First Sunday of Every Month until following Saturday at Midnight(DMF)
-		2023, 5	-- May 2022 in Terrokar Forest (TBC) / Elwynn Forest (ERA) (active 05/07 at 00:00, end 05/14 at 00:00)
-	},
-	-- #endif
-	-- #endif
-	text = {
-		en = "Darkmoon Faire",
-		es = "Feria de la Luna Negra",
-		de = "Dunkelmond-Jahrmarkt",
-		fr = "Foire de Sombrelune",
-		it = "Fiera di Lunacupa",
-		pt = "Feira de Negraluna",
-		ru = "Ярмарка Новолуния",
-		ko = "다크문 유랑단",
-		cn = "暗月马戏团",
-	},
-});
-
 MINIGAMES_HEADER = createHeader({
 	readable = "Minigames",
-	icon = "Interface/Icons/inv_misc_ticket_darkmoon_01",
+	icon = 134481,
 	text = {
 		en = "Minigames",
+		cn = "小游戏",
 	},
 	description = {
 		en = "The following minigames cost one Darkmoon Game Token to play and have a daily quest that grants you prize tickets as well as a number of associated achievements.",
@@ -47,7 +14,7 @@ MINIGAMES_HEADER = createHeader({
 });
 DARKMOON_DANCE_HEADER = createHeader({
 	readable = "Darkmoon Dance",
-	icon = "Interface/Icons/spell_lifegivingspeed",
+	icon = 348567,
 	text = {
 		en = "Darkmoon Dance",
 		es = "Feria de la Luna Negra Juego de Baile",
@@ -57,7 +24,7 @@ DARKMOON_DANCE_HEADER = createHeader({
 		pt = "Feira de Negraluna Jogo da Dança",
 		ru = "Ярмарка Новолуния состязании танцоров",
 		ko = "다크문 유랑단 춤 게임",
-		cn = "暗月马戏团舞游戏",
+		cn = "暗月马戏团跳舞游戏",
 	},
 	description = {
 		en = "To play the Darkmoon Faire Dance game, talk to Simon Sezdans in front of the South Pavillion. Each attempt at the Darkmoon Faire Dance game costs one Darkmoon Game Token. Talking to Simon will also set the difficulty for your dance game:\n  Just something fun and easygoing! (Easy)\n  I'd like a little challenge! (Medium)\n  Show me your moves, don't hold back! (Hard)\n\nDarkmoon Dance Master is not a rhythm game like most dance games are, but a memory game instead. You will have a dancer next to you in the dancing arena, who will start a sequence of moves highlighted by runes in front of him. Easy games will have a sequence of 3 runes at a time, Medium games 4 runes, and Hard games 5 runes.\n\nThere are three possible runes: Chicken Dance (Yellow), Power Spin (Purple) and Fist Pump (Blue). Once the opponent finishes their sequence, you have 5 seconds to match the exact sequence used by the dancer. There is no punishment for taking your time to complete the sequence, as long as you do it in time and don't miss any steps.\n\nThe game ends after 5 rounds (if you complete all steps successfully), but can end prematurely if you miss too many steps. Missing no steps will grant you a perfect score.",
@@ -65,7 +32,7 @@ DARKMOON_DANCE_HEADER = createHeader({
 });
 FIREBIRDS_CHALLENGE_HEADER = createHeader({
 	readable = "Firebird's Challenge",
-	icon = "Interface/Icons/inv_shoulder_leather_firelandsdruid_d_01",
+	icon = 514340,
 	text = {
 		en = "Firebird's Challenge",
 		es = "El desafío del pájaro de fuego",
@@ -83,7 +50,7 @@ FIREBIRDS_CHALLENGE_HEADER = createHeader({
 });
 SHOOTING_GALLERY_HEADER = createHeader({
 	readable = "Shooting Gallery",
-	icon = "Interface/Icons/inv_weapon_rifle_01",
+	icon = 135610,
 	text = {
 		en = "Shooting Gallery",
 		es = "Galería de tiro",
@@ -101,7 +68,7 @@ SHOOTING_GALLERY_HEADER = createHeader({
 });
 WHACK_A_GNOLL_HEADER = createHeader({
 	readable = "Whack-a-Gnoll",
-	icon = "Interface/Icons/inv_hammer_32",
+	icon = 537060,
 	text = {
 		en = "Whack-a-Gnoll",
 		es = "Golpea al gnoll",
@@ -133,60 +100,61 @@ local TIER_FOUR_MAX_REPUTATION = { 909, NEUTRAL + 2500 };	-- Darkmoon Faire, mus
 local TIER_FIVE_MAX_REPUTATION = { 909, FRIENDLY + 2001 };	-- Darkmoon Faire, must be less than 2001 over Friendly
 local DECK_MAX_REPUTATION = { 909, EXALTED };	-- Darkmoon Faire, must be less than Exalted 999/1000.
 local DARKMOON_GAME_PRIZE = i(93724, {	-- Darkmoon Game Prize [Cataclysm Version]
-	["timeline"] = { "added 5.2.0.16408" },
+	["timeline"] = { ADDED_5_2_0 },
 });
 local DARKMOON_GAME_TOKEN = i(71083, {	-- Darkmoon Game Token [Cataclysm Version]
-	["timeline"] = { "added 4.3.0.15005" },
+	["timeline"] = { ADDED_4_3_0 },
 });
 local DARKMOON_PRIZE_TICKET = currency(515, {	-- Darkmoon Prize Ticket [Cataclysm Version]
-	["timeline"] = { "added 4.3.0.14732" },
+	["timeline"] = { ADDED_4_3_0 },
 });
 local TATTERED_DARKMOON_PRIZE_TICKET = i(19182, {	-- Tattered Darkmoon Faire Prize Ticket
-	["timeline"] = { "removed 4.3.0.15005" },
+	["timeline"] = { REMOVED_4_3_0 },
 });
 
 -- This is what every online guide ever says, but they're incorrect.
 -- The "More" quests appear to be infinitely repeatable, with 0 reputation gains.
 -- local TIER_FIVE_MAX_REPUTATION = { 909, HONORED - 1 };	-- Darkmoon Faire, must be less than Honored
 
-local OnTooltipForDarkmoonFaire = [[function(t)
+local OnTooltipForDarkmoonFaire = [[function(t, tooltipInfo)
 	local reputation = t.reputation;
 	if reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
+		local addRepInfo = _.Modules.FactionData.AddReputationTooltipInfo;
 -- #if AFTER TBC
-		local repPerDeckTurnIn = isHuman and 385 or 350;
-		local repPerTierTurnIn = isHuman and 275 or 250;
+		local repPerTierTurnIn = 250;
 -- #else
-		local repPerDeckTurnIn = isHuman and 165 or 150;
-		local repPerTierTurnIn = isHuman and 110 or 100;
+		local repPerTierTurnIn = 100;
 -- #endif
 		local tierOneMaxRep = ]] .. TIER_ONE_MAX_REPUTATION[2] .. [[;
 		if reputation < tierOneMaxRep then
-			local x, n = math.ceil((tierOneMaxRep - reputation) / repPerDeckTurnIn), math.ceil(tierOneMaxRep / repPerDeckTurnIn);
-			GameTooltip:AddDoubleLine("Complete Tier 1 Quests", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+			addRepInfo(tooltipInfo, reputation, "Complete Tier 1 Quests", repPerTierTurnIn, tierOneMaxRep);
+		else
+			local tierTwoMaxRep = ]] .. TIER_TWO_MAX_REPUTATION[2] .. [[;
+			if reputation < tierTwoMaxRep then
+				addRepInfo(tooltipInfo, reputation, "Complete Tier 2 Quests", repPerTierTurnIn, tierTwoMaxRep);
+			else
+				local tierThreeMaxRep = ]] .. TIER_THREE_MAX_REPUTATION[2] .. [[;
+				if reputation < tierThreeMaxRep then
+					addRepInfo(tooltipInfo, reputation, "Complete Tier 3 Quests", repPerTierTurnIn, tierThreeMaxRep);
+				else
+					local tierFourMaxRep = ]] .. TIER_FOUR_MAX_REPUTATION[2] .. [[;
+					if reputation < tierFourMaxRep then
+						addRepInfo(tooltipInfo, reputation, "Complete Tier 4 Quests", repPerTierTurnIn, tierFourMaxRep);
+					else
+						local tierFiveMaxRep = ]] .. TIER_FIVE_MAX_REPUTATION[2] .. [[;
+						if reputation < tierFiveMaxRep then
+							addRepInfo(tooltipInfo, reputation, "Complete Tier 5 Quests", repPerTierTurnIn, tierFiveMaxRep);
+						end
+					end
+				end
+			end
 		end
-		local tierTwoMaxRep = ]] .. TIER_TWO_MAX_REPUTATION[2] .. [[;
-		if reputation >= tierOneMaxRep and reputation < tierTwoMaxRep then
-			local x, n = math.ceil((tierTwoMaxRep - reputation) / repPerDeckTurnIn), math.ceil(tierTwoMaxRep / repPerDeckTurnIn);
-			GameTooltip:AddDoubleLine("Complete Tier 2 Quests", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-		end
-		local tierThreeMaxRep = ]] .. TIER_THREE_MAX_REPUTATION[2] .. [[;
-		if reputation >= tierTwoMaxRep and reputation < tierThreeMaxRep then
-			local x, n = math.ceil((tierThreeMaxRep - reputation) / repPerDeckTurnIn), math.ceil(tierThreeMaxRep / repPerDeckTurnIn);
-			GameTooltip:AddDoubleLine("Complete Tier 3 Quests", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-		end
-		local tierFourMaxRep = ]] .. TIER_FOUR_MAX_REPUTATION[2] .. [[;
-		if reputation >= tierThreeMaxRep and reputation < tierFourMaxRep then
-			local x, n = math.ceil((tierFourMaxRep - reputation) / repPerDeckTurnIn), math.ceil(tierFourMaxRep / repPerDeckTurnIn);
-			GameTooltip:AddDoubleLine("Complete Tier 4 Quests", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-		end
-		local tierFiveMaxRep = ]] .. TIER_FIVE_MAX_REPUTATION[2] .. [[;
-		if reputation >= tierFourMaxRep and reputation < tierFiveMaxRep then
-			local x, n = math.ceil((tierFiveMaxRep - reputation) / repPerDeckTurnIn), math.ceil(tierFiveMaxRep / repPerDeckTurnIn);
-			GameTooltip:AddDoubleLine("Complete Tier 5 Quests", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-		end
-		local x, n = math.ceil((42000 - reputation) / repPerDeckTurnIn), math.ceil(42000 / repPerDeckTurnIn);
-		GameTooltip:AddDoubleLine("Turn in Decks.", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+-- #if AFTER TBC
+		local repPerDeckTurnIn = 350;
+-- #else
+		local repPerDeckTurnIn = 150;
+-- #endif
+		addRepInfo(tooltipInfo, reputation, "Turn in Decks.", repPerDeckTurnIn, 42000);
 	end
 end]];
 
@@ -209,10 +177,10 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 		-- #if AFTER 4.3.0.15005
 		n(ACHIEVEMENTS, {
 			ach(6019, {	-- Come One, Come All!
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 			}),
 			ach(6028, {	-- Darkmoon Defender
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					crit(18649, {	-- Adventurer's Journal
 						["_quests"] = { 29458 },	-- The Captured Journal
@@ -226,7 +194,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			}),
 			ach(6029, {	-- Darkmoon Despoiler
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					crit(18649, {	-- Adventurer's Journal
 						["_quests"] = { 29458 },	-- The Captured Journal
@@ -258,7 +226,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			}),
 			ach(6027, {	-- Darkmoon Dungeoneer
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					crit(18644, {	-- A Treatise on Strategy
 						["_quests"] = { 29451 },	-- The Master Strategist
@@ -278,7 +246,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			}),
 			ach(6032, {	-- Faire Favors
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					crit(18300, {	-- Alchemy
 						["_quests"] = { 29506 },	-- A Fizzy Fusion
@@ -325,7 +293,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			}),
 			ach(6026, {	-- Fairegoer's Feast
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					crit(18252, {	-- Corn-Breaded Sausage
 						["provider"] = { "i", 44940 },
@@ -386,10 +354,10 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			ach(6025, {	-- I Was Promised a Pony
 				["provider"] = { "n", 55715 },	-- Darkmoon Pony
 				["coord"] = { 56.6, 81.6, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 			}),
 			ach(6020, {	-- Step Right Up
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					crit(18234, {	-- Cannon Blast
 						["_quests"] = { 29436 },	-- The Humanoid Cannonball
@@ -409,8 +377,28 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			}),
 			a(ach(6030, {	-- Taking the Show on the Road (A)
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
+					-- #if ANYCLASSIC
+					crit(18294, {	-- Dalaran
+						["maps"] = { NORTHREND_DALARAN },
+					}),
+					crit(18290, {	-- Darnassus
+						["maps"] = { DARNASSUS },
+					}),
+					crit(18291, {	-- The Exodar
+						["maps"] = { THE_EXODAR },
+					}),
+					crit(18289, {	-- Ironforge
+						["maps"] = { IRONFORGE },
+					}),
+					crit(18298, {	-- Shattrath City
+						["maps"] = { SHATTRATH_CITY },
+					}),
+					crit(18288, {	-- Stormwind City
+						["maps"] = { STORMWIND_CITY },
+					}),
+					-- #else
 					crit(27718, {	-- Dalaran
 						["maps"] = { NORTHREND_DALARAN },
 					}),
@@ -429,11 +417,32 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					crit(27727, {	-- Stormwind City
 						["maps"] = { STORMWIND_CITY },
 					}),
+					-- #endif
 				},
 			})),
 			h(ach(6031, {	-- Taking the Show on the Road (H)
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
+					-- #if ANYCLASSIC
+					crit(18294, {	-- Dalaran
+						["maps"] = { NORTHREND_DALARAN },
+					}),
+					crit(18295, {	-- Orgrimmar
+						["maps"] = { ORGRIMMAR },
+					}),
+					crit(18298, {	-- Shattrath City
+						["maps"] = { SHATTRATH_CITY },
+					}),
+					crit(18296, {	-- Silvermoon City
+						["maps"] = { SILVERMOON_CITY },
+					}),
+					crit(18297, {	-- Thunder Bluff
+						["maps"] = { THUNDER_BLUFF },
+					}),
+					crit(18299, {	-- Undercity
+						["maps"] = { UNDERCITY },
+					}),
+					-- #else
 					crit(27718, {	-- Dalaran
 						["maps"] = { NORTHREND_DALARAN },
 					}),
@@ -452,6 +461,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					crit(27723, {	-- Undercity
 						["maps"] = { UNDERCITY },
 					}),
+					-- #endif
 				},
 			})),
 		}),
@@ -469,7 +479,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 		n(DROPS, {
 			["description"] = "The following can drop from instanced content when a Darkmoon Adventurer's Guide is in your bags or purchased from the auction house.",
 			["provider"] = { "i", 71634 },	-- Darkmoon Adventurer's Guide
-			["timeline"] = { "added 4.3.0.14899" },
+			["timeline"] = { ADDED_4_3_0 },
 			["groups"] = {
 				-- PvE
 				i(71715, {	-- A Treatise on Strategy
@@ -504,9 +514,9 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			},
 		}),
 		n(FACTIONS, {
-			faction(909, {	-- Darkmoon Faire
+			faction(FACTION_DARKMOON_FAIRE, {	-- Darkmoon Faire
 				["icon"] = [[~_.asset("Event_dmf")]],
-				-- #if BEFOR 4.3.0
+				-- #if BEFORE 4.3.0
 				["OnTooltip"] = OnTooltipForDarkmoonFaire,
 				-- #endif
 			}),
@@ -526,10 +536,10 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["timeline"] = { ADDED_6_2_0 },
 			}),
 			i(93732, {	-- Darkmoon Fishing Cap
-				["timeline"] = { "added 5.2.0.16408" },
+				["timeline"] = { ADDED_5_2_0 },
 			}),
 			i(73953, {	-- Sea Pony (PET!)
-				["timeline"] = { "added 4.3.0.15005" },
+				["timeline"] = { ADDED_4_3_0 },
 			}),
 		}),
 		n(MINIGAMES_HEADER, {
@@ -538,7 +548,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				n(DARKMOON_DANCE_HEADER, {
 					["cr"] = 181097,	-- Simon Sezdans <Dance Master>
 					["coord"] = { 51.2, 74, DARKMOON_ISLAND },
-					["timeline"] = { "added 9.2.0" },
+					["timeline"] = { ADDED_9_2_0 },
 					["groups"] = {
 						n(ACHIEVEMENTS, {
 							ach(15221, {	-- Dancing Machine
@@ -548,43 +558,43 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 									15223,	-- Feeling It
 									15217,	-- Maniac on the Dance Floor
 								}},
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 								["groups"] = {
 									i(187689, {	-- Dance Dance Darkmoon (TOY!)
-										["timeline"] = { "added 9.2.0" },
+										["timeline"] = { ADDED_9_2_0 },
 									}),
 								},
 							}),
 							ach(15215, {	-- Can't Stop the Feeling
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 							ach(15213, {	-- Don't Stop Dancing
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 							ach(15212, {	-- First Dance
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 							ach(15223, {	-- Feeling It
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 							ach(15216, {	-- Make You Sweat
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 							ach(15217, {	-- Maniac on the Dance Floor
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 							ach(15222, {	-- You Got the Beat
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 							ach(15214, {	-- What a Feeling
-								["timeline"] = { "added 9.2.0" },
+								["timeline"] = { ADDED_9_2_0 },
 							}),
 						}),
 						q(64783, {	-- Dance Dance Darkmoon
 							["qg"] = 181097,	-- Simon Sezdans <Dance Master>
 							["coord"] = { 51.2, 74, DARKMOON_ISLAND },
-							["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-							["timeline"] = { "added 9.2.0" },
+							["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+							["timeline"] = { ADDED_9_2_0 },
 							["isDaily"] = true,
 							["groups"] = {
 								DARKMOON_GAME_PRIZE,
@@ -595,29 +605,29 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				n(FIREBIRDS_CHALLENGE_HEADER, {
 					["cr"] = 85546,	-- Ziggie Sparks
 					["coord"] = { 48.3, 71.3, DARKMOON_ISLAND },
-					["timeline"] = { "added 6.0.1.18566" },
+					["timeline"] = { ADDED_6_0_2 },
 					["groups"] = {
 						n(ACHIEVEMENTS, {
 							ach(9252, {	-- Brood of Alysrazor
-								["timeline"] = { "added 6.0.1.18566" },
+								["timeline"] = { ADDED_6_0_2 },
 								["groups"] = {
 									i(116115, {	-- Blazing Wings (TOY!)
-										["timeline"] = { "added 6.0.1.18566" },
+										["timeline"] = { ADDED_6_0_2 },
 									}),
 								},
 							}),
 							ach(9250, {	-- Flying High
-								["timeline"] = { "added 6.0.1.18566" },
+								["timeline"] = { ADDED_6_0_2 },
 							}),
 							ach(9251, {	-- Ringmaster
-								["timeline"] = { "added 6.0.1.18566" },
+								["timeline"] = { ADDED_6_0_2 },
 							}),
 						}),
 						q(36481, {	-- Firebird's Challenge
 							["qg"] = 85546,	-- Ziggie Sparks
 							["coord"] = { 48.3, 71.3, DARKMOON_ISLAND },
-							["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-							["timeline"] = { "added 6.0.1.18566" },
+							["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+							["timeline"] = { ADDED_6_0_2 },
 							["isDaily"] = true,
 							["groups"] = {
 								-- #if AFTER 5.2.0
@@ -632,18 +642,18 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				n(SHOOTING_GALLERY_HEADER, {
 					["cr"] = 14841,  -- Rinling
 					["coord"] = { 49.6, 60.8, DARKMOON_ISLAND },
-					["timeline"] = { "added 4.3.0" },
+					["timeline"] = { ADDED_4_3_0 },
 					["groups"] = {
 						n(ACHIEVEMENTS, {
 							ach(6022, {	-- Quick Shot
-								["timeline"] = { "added 4.3.0" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						}),
 						q(29438, {	-- He Shoots, He Scores!
 							["qg"] = 14841,  -- Rinling
 							["coord"] = { 49.6, 60.8, DARKMOON_ISLAND },
-							["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-							["timeline"] = { "added 4.3.0.14732" },
+							["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+							["timeline"] = { ADDED_4_3_0 },
 							["isDaily"] = true,
 							["groups"] = {
 								-- #if AFTER 5.2.0
@@ -658,15 +668,15 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				n(WHACK_A_GNOLL_HEADER, {
 					["cr"] = 54601,  -- Mola <Whack-a-Gnoll>
 					["coord"] = { 53.2, 54.3, DARKMOON_ISLAND },
-					["timeline"] = { "added 4.3.0" },
+					["timeline"] = { ADDED_4_3_0 },
 					["groups"] = {
 						-- #if AFTER 6.2.0.19890
 						n(ACHIEVEMENTS, {
 							ach(9983, {	-- That's Whack!
-								["timeline"] = { "added 6.2.0.19890" },
+								["timeline"] = { ADDED_6_2_0 },
 								["groups"] = {
 									i(123862, {	-- Hogs (PET!)
-										["timeline"] = { "added 6.2.0.19890" },
+										["timeline"] = { ADDED_6_2_0 },
 									}),
 								},
 							}),
@@ -675,8 +685,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						q(29463, {	-- It's Hammer Time
 							["qg"] = 54601,	-- Mola <Whack-a-Gnoll>
 							["coord"] = { 53.2, 54.3, DARKMOON_ISLAND },
-							["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-							["timeline"] = { "added 4.3.0.14732" },
+							["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+							["timeline"] = { ADDED_4_3_0 },
 							["isDaily"] = true,
 							["groups"] = {
 								-- #if AFTER 5.2.0
@@ -705,7 +715,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 5 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["lvl"] = 6,
@@ -726,14 +736,14 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 5 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["lvl"] = 15,
 				["groups"] = {
 					i(19298, {	-- Minor Darkmoon Prize
 						["description"] = "Contains a level 15-25 (usually uncommon quality) item.",
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -750,12 +760,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 10 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
 					i(19292, {	-- Last Month's Mutton
-						["timeline"] = { "removed 7.2.0" },
+						["timeline"] = { REMOVED_7_2_0 },
 					}),
 				},
 			}),
@@ -772,13 +782,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 12 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
 					i(19297, {	-- Lesser Darkmoon Prize
 						["description"] = "Contains a level 25-40 (usually uncommon quality) item.",
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -795,13 +805,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 40 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
 					i(19296, {	-- Greater Darkmoon Prize
 						["description"] = "Contains a level 40-55 (usually uncommon quality) item.",
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -818,12 +828,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "created 1.10.0", "added 2.0.1", "removed 4.3.0" },	-- This was not in WoW Classic.
+				["timeline"] = { CREATED_1_10_0, ADDED_2_0_1, REMOVED_4_3_0 },	-- This was not in WoW Classic.
 				["cost"] = { { "i", 19182, 40 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
 					i(22729, {	-- Schematic: Steam Tonk Controller (RECIPE!)
-						["timeline"] = { "created 1.10.0", "added 2.0.1" },	-- This was not in WoW Classic.
+						["timeline"] = { CREATED_1_10_0, ADDED_2_0_1 },	-- This was not in WoW Classic.
 					}),
 				},
 			}),
@@ -840,7 +850,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 50 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
@@ -860,12 +870,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 50 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
 					i(19293, {	-- Last Year's Mutton
-						["timeline"] = { "removed 7.2.0" },
+						["timeline"] = { REMOVED_7_2_0 },
 					}),
 				},
 			}),
@@ -882,12 +892,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 1200 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
 					i(19491, {	-- Amulet of the Darkmoon
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -904,12 +914,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["cost"] = { { "i", 19182, 1200 } },	-- Tattered Darkmoon Faire Prize Ticket
 				["repeatable"] = true,
 				["groups"] = {
 					i(19426, {	-- Orb of the Darkmoon
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -919,8 +929,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -932,8 +942,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -942,8 +952,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29506, {	-- A Fizzy Fusion
 				["qg"] = 14844,	-- Sylvannia
 				["coord"] = { 50.5, 69.5, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["cost"] = {
 					{ "i", 19299, 5 },	-- Fizzy Faire Drink
 					{ "i", 1645, 5 },	-- Moonberry Juice
@@ -977,7 +987,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			petbattle(q(36471, {	-- A New Darkmoon Challenger!
 				["qg"] = 85519,	-- Christoph VonFeasel
 				["coord"] = { 47.4, 62.2, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.0.1.18566" },
+				["timeline"] = { ADDED_6_0_2 },
 				["isDaily"] = true,
 				["groups"] = {
 					i(116062, {	-- Greater Darkmoon Pet Supplies
@@ -986,11 +996,11 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 							44820,	-- Red Ribbon Pet Leash
 							37460,	-- Rope Pet Leash
 						}},
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 						["groups"] = {
 							DARKMOON_PRIZE_TICKET,
 							i(116064, {	-- Syd the Squid (PET!)
-								["timeline"] = { "added 6.0.1.18566" },
+								["timeline"] = { ADDED_6_0_2 },
 							}),
 						},
 					}),
@@ -1002,8 +1012,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -1015,8 +1025,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14829 },	-- Yebb Neblegear
 				},
 				["coord"] = { 51.1, 82.0, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -1028,8 +1038,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14822 },	-- Sayge
 				},
 				["coord"] = { 53.6, 75.6, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -1051,7 +1061,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 15564, 8 } },	-- Rugged Armor Kit
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1060,8 +1070,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29508, {	-- Baby Needs Two Pair of Shoes
 				["qg"] = 14829,	-- Yebb Neblegear
 				["coord"] = { 51.1, 82.0, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = BLACKSMITHING,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -1092,8 +1102,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29520, {	-- Banners, Banners Everywhere!
 				["qg"] = 10445,	-- Selina Dourman
 				["coord"] = { 55.4, 54.8, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = TAILORING,
 				["cost"] = {
 					{ "i", 2320, 1 },	-- Coarse Thread
@@ -1138,7 +1148,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 7945, 1 }},	-- Big Black Mace
 				["lvl"] = 30,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1159,12 +1169,34 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
 				["cost"] = { { "i", 2309, 3 } },	-- Embossed Leather Boots
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79595, {	-- Carnival Boots [Tier 1]
+				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
+				["coords"] = {
+					{ 43.5, 71.1, ELWYNN_FOREST },
+					{ 36.2, 35.2, MULGORE },
+				},
+				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
+				["cost"] = { { "i", 2309, 3 } },	-- Embossed Leather Boots
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(7882, {	-- Carnival Jerkins [Tier 2]
 				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
 				-- #if AFTER 4.3.0
@@ -1181,12 +1213,35 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 2314, 3 } },	-- Toughened Leather Armor
 				["lvl"] = 10,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79592, {	-- Carnival Jerkins [Tier 2]
+				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
+				["coords"] = {
+					{ 43.5, 71.1, ELWYNN_FOREST },
+					{ 36.2, 35.2, MULGORE },
+				},
+				["maxReputation"] = TIER_TWO_MAX_REPUTATION,
+				["cost"] = { { "i", 2314, 3 } },	-- Toughened Leather Armor
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["lvl"] = 10,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(7889, {	-- Coarse Weightstone [Tier 1]
 				["qg"] = 14832,  -- Kerri Hicks <The Strongest Woman Alive!>
 				-- #if AFTER 4.3.0
@@ -1202,12 +1257,34 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
 				["cost"] = { { "i", 3240, 10 } },	-- Coarse Weightstone
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79593, {	-- Coarse Weightstone [Tier 1]
+				["qg"] = 14832,  -- Kerri Hicks <The Strongest Woman Alive!>
+				["coords"] = {
+					{ 40.5, 69.9, ELWYNN_FOREST },
+					{ 37.8, 39.8, MULGORE },
+				},
+				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
+				["cost"] = { { "i", 3240, 10 } },	-- Coarse Weightstone
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(7894, {	-- Copper Modulator [Tier 1]
 				["qg"] = 14841,  -- Rinling
 				-- #if AFTER 4.3.0
@@ -1223,12 +1300,34 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
 				["cost"] = { { "i", 4363, 5 } },	-- Copper Modulator
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79594, {	-- Copper Modulator [Tier 1]
+				["qg"] = 14841,  -- Rinling
+				["coords"] = {
+					{ 41.7, 70.7, ELWYNN_FOREST },
+					{ 37.1, 37.2, MULGORE },
+				},
+				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
+				["cost"] = { { "i", 4363, 5 } },	-- Copper Modulator
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(7884, {	-- Crocolisk Boy and the Bearded Murloc [Tier 4]
 				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
 				-- #if AFTER 4.3.0
@@ -1245,13 +1344,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 8185, 1 } },	-- Turtle Scale Leggings
 				["lvl"] = 30,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
-			applyclassicphase(PHASE_THREE, q(7907, {	-- Darkmoon Beast Deck
+			applyclassicphase(PHASE_THREE_DMF_CARDS, q(7907, {	-- Darkmoon Beast Deck
 				["providers"] = {
 					{ "i", 19228 },	-- Beasts Deck
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
@@ -1290,7 +1389,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 2.1.0.6655" },
+				["timeline"] = { ADDED_2_1_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(31856),	-- Darkmoon Card: Crusade
@@ -1313,7 +1412,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(42989),	-- Darkmoon Card: Berserker!
@@ -1326,12 +1425,36 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(79330),	-- Relic of Chi-Ji
 				},
 			})),
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, q(82055, {	-- Darkmoon Dunes Deck
+				["providers"] = {
+					{ "i", 221289 },	-- Dunes Deck
+					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
+				},
+				-- #if AFTER 4.3.0
+				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
+				-- #else
+				["coords"] = {
+					{ 41.2, 69.8, ELWYNN_FOREST },
+					{ 36.4, 38.0, MULGORE },
+					-- #if AFTER TBC
+					{ 34.2, 34.4, TEROKKAR_FOREST },
+					-- #endif
+				},
+				-- #endif
+				["maxReputation"] = DECK_MAX_REPUTATION,
+				["repeatable"] = true,
+				["groups"] = {
+					i(221309),	-- Darkmoon Card: Sandstorm
+				},
+			})),
+			-- #endif
 			applyclassicphase(CATA_PHASE_ONE, q(27667, {	-- Darkmoon Earthquake Deck
 				["providers"] = {
 					{ "i", 62046 },	-- Earthquake Deck
@@ -1339,13 +1462,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(62048),	-- Darkmoon Card: Earthquake
 				},
 			})),
-			applyclassicphase(PHASE_THREE, q(7929, {	-- Darkmoon Elementals Deck
+			applyclassicphase(PHASE_THREE_DMF_CARDS, q(7929, {	-- Darkmoon Elementals Deck
 				["providers"] = {
 					{ "i", 19267 },	-- Elementals Deck
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
@@ -1384,7 +1507,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 2.1.0.6655" },
+				["timeline"] = { ADDED_2_1_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(31858),	-- Darkmoon Card: Vengeance
@@ -1397,7 +1520,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(62049),	-- Darkmoon Card: Hurricane
@@ -1421,12 +1544,36 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 2.1.0.6655" },
+				["timeline"] = { ADDED_2_1_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(31859),	-- Darkmoon Card: Madness
 				},
 			})),
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, q(82056, {	-- Darkmoon Nightmares Deck
+				["providers"] = {
+					{ "i", 221299 },	-- Nightmares Deck
+					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
+				},
+				-- #if AFTER 4.3.0
+				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
+				-- #else
+				["coords"] = {
+					{ 41.2, 69.8, ELWYNN_FOREST },
+					{ 36.4, 38.0, MULGORE },
+					-- #if AFTER TBC
+					{ 34.2, 34.4, TEROKKAR_FOREST },
+					-- #endif
+				},
+				-- #endif
+				["maxReputation"] = DECK_MAX_REPUTATION,
+				["repeatable"] = true,
+				["groups"] = {
+					i(221310),	-- Darkmoon Card: Torment
+				},
+			})),
+			-- #endif
 			applyclassicphase(WRATH_PHASE_ONE, q(13326, {	-- Darkmoon Nobles Deck
 				["providers"] = {
 					{ "i", 44326 },	-- Nobles Deck
@@ -1444,7 +1591,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(44253),	-- Darkmoon Card: Greatness
@@ -1460,7 +1607,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(79329),	-- Relic of Niuzao
@@ -1469,7 +1616,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			petbattle(q(32175, {	-- Darkmoon Pet Battle!
 				["qg"] = 67370,	-- Jeremy Feasel
 				["coord"] = { 47.8, 62.6, DARKMOON_ISLAND },
-				["timeline"] = { "added 5.1.0.16139" },
+				["timeline"] = { ADDED_5_1_0 },
 				["isDaily"] = true,
 				["groups"] = {
 					i(91086, {	-- Darkmoon Pet Supplies
@@ -1478,17 +1625,41 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 							44820,	-- Red Ribbon Pet Leash
 							37460,	-- Rope Pet Leash
 						}},
-						["timeline"] = { "added 5.1.0.16139" },
+						["timeline"] = { ADDED_5_1_0 },
 						["groups"] = {
 							DARKMOON_PRIZE_TICKET,
 							i(91040, {	-- Darkmoon Eye (PET!)
-								["timeline"] = { "added 5.1.0.16139" },
+								["timeline"] = { ADDED_5_1_0 },
 							}),
 						},
 					}),
 				},
 			})),
-			applyclassicphase(PHASE_THREE, q(7927, {	-- Darkmoon Portals Deck
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, q(82057, {	-- Darkmoon Plagues Deck
+				["providers"] = {
+					{ "i", 221280 },	-- Plagues Deck
+					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
+				},
+				-- #if AFTER 4.3.0
+				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
+				-- #else
+				["coords"] = {
+					{ 41.2, 69.8, ELWYNN_FOREST },
+					{ 36.4, 38.0, MULGORE },
+					-- #if AFTER TBC
+					{ 34.2, 34.4, TEROKKAR_FOREST },
+					-- #endif
+				},
+				-- #endif
+				["maxReputation"] = DECK_MAX_REPUTATION,
+				["repeatable"] = true,
+				["groups"] = {
+					i(221307),	-- Darkmoon Card: Decay
+				},
+			})),
+			-- #endif
+			applyclassicphase(PHASE_THREE_DMF_CARDS, q(7927, {	-- Darkmoon Portals Deck
 				["providers"] = {
 					{ "i", 19277 },	-- Portals Deck
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
@@ -1527,7 +1698,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(42988),	-- Darkmoon Card: Illusion
@@ -1540,7 +1711,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(79331),	-- Relic of Yu'lon
@@ -1563,7 +1734,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 2.1.0.6655" },
+				["timeline"] = { ADDED_2_1_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(31857),	-- Darkmoon Card: Wrath
@@ -1576,7 +1747,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(79328),	-- Relic of Xuen (Agility)
@@ -1590,7 +1761,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(62050),	-- Darkmoon Card: Tsunami
@@ -1613,7 +1784,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				-- #endif
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(42990),	-- Darkmoon Card: Death
@@ -1626,14 +1797,14 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["repeatable"] = true,
 				["lvl"] = 85,
 				["groups"] = {
 					i(62047),	-- Darkmoon Card: Volcano
 				},
 			})),
-			applyclassicphase(PHASE_THREE, q(7928, {	-- Darkmoon Warlords Deck
+			applyclassicphase(PHASE_THREE_DMF_CARDS, q(7928, {	-- Darkmoon Warlords Deck
 				["providers"] = {
 					{ "i", 19257 },	-- Warlords Deck
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
@@ -1655,23 +1826,47 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					i(19287),	-- Darkmoon Card: Heroism
 				},
 			})),
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, q(82058, {	-- Darkmoon Wilds Deck
+				["providers"] = {
+					{ "i", 221272 },	-- Wilds Deck
+					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
+				},
+				-- #if AFTER 4.3.0
+				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
+				-- #else
+				["coords"] = {
+					{ 41.2, 69.8, ELWYNN_FOREST },
+					{ 36.4, 38.0, MULGORE },
+					-- #if AFTER TBC
+					{ 34.2, 34.4, TEROKKAR_FOREST },
+					-- #endif
+				},
+				-- #endif
+				["maxReputation"] = DECK_MAX_REPUTATION,
+				["repeatable"] = true,
+				["groups"] = {
+					i(221308),	-- Darkmoon Card: Overgrowth
+				},
+			})),
+			-- #endif
 			applyclassicphase(WRATH_PHASE_ONE, q(13311, {	-- Demons Deck
 				["providers"] = {
 					{ "i", 44158 },	-- Demons Deck
 					{ "n", 30481 },	-- Darkmoon Fortune Teller
 				},
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(44217, {	-- Darkmoon Dirk
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(44218, {	-- Darkmoon Executioner
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(44219, {	-- Darkmoon Magestaff
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 				},
 			})),
@@ -1681,8 +1876,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14829 },	-- Yebb Neblegear
 				},
 				["coord"] = { 51.6, 81.8, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 5.4.0.17271" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_5_4_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -1704,7 +1899,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 11404, 10 } },	-- Evil Bat Eye
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1713,8 +1908,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29517, {	-- Eyes on the Prizes
 				["qg"] = 14841,  -- Rinling
 				["coord"] = { 49.6, 60.8, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = LEATHERWORKING,
 				["cost"] = {
 					{ "i", 6529, 10 },	-- Shiny Bauble
@@ -1745,8 +1940,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29507, {	-- Fun for the Little Ones
 				["qg"] = 14847,	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["cost"] = { { "c", 393, 15 } },	-- Fossil Archaeology Fragments
 				["requireSkill"] = ARCHAEOLOGY,
 				["isMonthly"] = true,
@@ -1771,7 +1966,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 19933, 10 } },	-- Glowing Scorpid Blood
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1793,7 +1988,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 9313, 36 } },	-- Green Firework
 				["lvl"] = 20,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1815,7 +2010,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 3835, 3 } },	-- Green Iron Bracers
 				["lvl"] = 20,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1837,17 +2032,40 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 3486, 7 } },	-- Heavy Grinding Stone
 				["lvl"] = 10,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79590, {	-- Heavy Grinding Stone [Tier 2]
+				["qg"] = 14832,  -- Kerri Hicks <The Strongest Woman Alive!>
+				["coords"] = {
+					{ 40.5, 69.9, ELWYNN_FOREST },
+					{ 37.8, 39.8, MULGORE },
+				},
+				["maxReputation"] = TIER_TWO_MAX_REPUTATION,
+				["cost"] = { { "i", 3486, 7 } },	-- Heavy Grinding Stone
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["lvl"] = 10,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(29514, {	-- Herbs for Healing
 				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
 				["coord"] = { 55.0, 71.6, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = HERBALISM,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -1873,8 +2091,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29516, {	-- Keeping the Faire Sparkling
 				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
 				["coord"] = { 55.0, 71.6, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = JEWELCRAFTING,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -1904,14 +2122,14 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 30481 },	-- Darkmoon Fortune Teller
 				},
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(44215, {	-- Darkmoon Necklace
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(44213, {	-- Darkmoon Pendant
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 				},
 			})),
@@ -1919,14 +2137,14 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["qg"] = 55402,	-- Korgol Crushskull
 				["sourceQuest"] = 29760,	-- Pit Fighter
 				["coord"] = { 47.3, 78.9, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14732" },
+				["timeline"] = { ADDED_4_3_0 },
 				["cost"] = { { "i", 74034, 12 } },	-- Pit Fighter
 				["groups"] = {
 					ach(6024, {	-- Darkmoon Dominator
-						["timeline"] = { "added 4.3.0.14732" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(74035, {	-- Master Pit Fighter
-						["timeline"] = { "added 4.3.0.14732" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 				},
 			})),
@@ -1946,7 +2164,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 11590, 6 } },	-- Mechanical Repair Kit
 				["lvl"] = 30,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1968,7 +2186,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 15564, 8 } },	-- Rugged Armor Kit
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -1990,7 +2208,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 11404, 10 } },	-- Evil Bat Eye
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2012,7 +2230,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 12644, 8 } },	-- Dense Grinding Stone
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2034,7 +2252,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 19933, 10 } },	-- Glowing Scorpid Blood
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2056,7 +2274,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 15994, 6 } },	-- Thorium Widget
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2068,18 +2286,18 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 55402 },	-- Korgol Crushskull
 				},
 				["coord"] = { 47.3, 78.9, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14732" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					ach(6023, {	-- Darkmoon Duelist
-						["timeline"] = { "added 4.3.0.14732" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 				},
 			})),
 			q(29512, {	-- Putting the Carnies Back Together Again
 				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
 				["coord"] = { 55.0, 71.6, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732", "removed 8.0.1" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0, REMOVED_8_0_1 },
 				["requireSkill"] = FIRST_AID,
 				["isMonthly"] = true,
 				-- #if BEFORE 8.0.1
@@ -2098,8 +2316,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29509, {	-- Putting the Crunch in the Frog
 				["qg"] = 14845,	-- Stamp Thunderhorn
 				["coord"] = { 52.8, 67.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["cost"] = { { "i", 30817, 5 } },	-- x5 Simple Flour
 				["requireSkill"] = COOKING,
 				["isMonthly"] = true,
@@ -2118,8 +2336,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29510, {	-- Putting Trash to Good Use
 				["qg"] = 14822,	-- Sayge
 				["coord"] = { 53.2, 75.8, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = ENCHANTING,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -2146,8 +2364,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29518, {	-- Rearm, Reuse, Recycle
 				["qg"] = 14841,  -- Rinling
 				["coord"] = { 49.6, 60.8, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = MINING,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -2173,11 +2391,11 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(36477, {	-- Ring of Promises
 				["provider"] = { "i", 116068 },	-- Ring of Promises
 				["coord"] = { 74.8, 33.4, DARKMOON_ISLAND },	-- Entrance
-				["timeline"] = { "added 6.0.1.18566" },
+				["timeline"] = { ADDED_6_0_2 },
 				["cr"] = 85531,	-- Erinys
 				["groups"] = {
 					i(116067, {	-- Ring of Broken Promises (TOY!)
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					}),
 				},
 			}),
@@ -2197,7 +2415,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 12644, 8 } },	-- Dense Grinding Stone
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2209,20 +2427,20 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 30481 },	-- Darkmoon Fortune Teller
 				},
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(39507, {	-- Darkmoon Breastplate
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(131276, {	-- Darkmoon Chainmail
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 					i(38318, {	-- Darkmoon Robe
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(39509, {	-- Darkmoon Vest
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 				},
 			})),
@@ -2232,11 +2450,11 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 55103 },		-- Galissa Sundew
 				},
 				["coord"] = { 52.5, 88.7, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.2.0.19890" },
+				["timeline"] = { ADDED_6_2_0 },
 				["groups"] = {
 					i(127148, {	-- Sila's Secret Stash
 						["description"] = "This item contains 100 Darkmoon Faire Tickets.",
-						["timeline"] = { "added 6.2.0.19890" },
+						["timeline"] = { ADDED_6_2_0 },
 						["groups"] = {
 							DARKMOON_PRIZE_TICKET,
 						},
@@ -2258,12 +2476,34 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
 				["cost"] = { { "i", 5134, 5 } },	-- Small Furry Paw
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79588, {	-- Small Furry Paws [Tier 1]
+				["qg"] = 14829,	-- Yebb Neblegear
+				["coords"] = {
+					{ 40.2, 69.7, ELWYNN_FOREST },
+					{ 37.5, 39.6, MULGORE },
+				},
+				["maxReputation"] = TIER_ONE_MAX_REPUTATION,
+				["cost"] = { { "i", 5134, 5 } },	-- Small Furry Paw
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(7901, {	-- Soft Bushy Tails [Tier 3]
 				["qg"] = 14829,	-- Yebb Neblegear
 				-- #if AFTER 4.3.0
@@ -2280,7 +2520,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 4582, 5 } },	-- Soft Bushy Tail
 				["lvl"] = 20,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2299,7 +2539,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #endif
 				},
 				-- #endif
-				["description"] = "You need to throw down a Dark Iron Ale mug near her (hence why you need 2 of them) and wait for the jubling to come hopping to it, then she'll offer this quest.",
+				["description"] = "You need to throw down a Dark Iron Ale mug near Morja in Darkmoon Faire (hence why you need 2 of them), and wait for the jubling to come hopping to it. This might take a while. Then she'll offer this quest.",
 				["cost"] = { { "i", 11325, 2 } },	-- Dark Iron Ale Mug
 				["isMonthly"] = true,
 				["lvl"] = 10,
@@ -2312,8 +2552,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29513, {	-- Spoilin' for Salty Sea Dogs
 				["qg"] = 14845,	-- Stamp Thunderhorn
 				["coord"] = { 52.8, 67.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = FISHING,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -2333,28 +2573,28 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 30481 },	-- Darkmoon Fortune Teller
 				},
 				["maxReputation"] = DECK_MAX_REPUTATION,
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["repeatable"] = true,
 				["groups"] = {
 					i(39897, {	-- Azure Shoulderguards
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(39895, {	-- Cloaked Shoulderpads
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(39894, {	-- Darkcloth Shoulders
-						["timeline"] = { "added 3.0.2.8970" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					i(131277, {	-- Veiled Pauldrons
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 				},
 			})),
 			q(29511, {	-- Talkin' Tonks
 				["qg"] = 14841,  -- Rinling
 				["coord"] = { 49.6, 60.8, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = ENGINEERING,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -2380,8 +2620,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29519, {	-- Tan My Hide
 				["qg"] = 14833,  -- Chronos <He Who Never Forgets!>
 				["coord"] = { 55.0, 71.6, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["requireSkill"] = SKINNING,
 				["isMonthly"] = true,
 				["groups"] = {
@@ -2404,12 +2644,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29433, {	-- Test Your Strength
 				["qg"] = 14832,	-- Kerri Hicks <The Strongest Woman Alive!>
 				["coord"] = { 47.9, 67.1, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14732" },
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					objective(1, {	-- 0/250 Grisly Trophy
 						["providers"] = {
-							{ "i", 29433 },	-- Grisly Trophy
+							{ "i", 71096 },	-- Grisly Trophy
 							{ "i", 71634 },	-- Darkmoon Adventurer's Guide
 						},
 					}),
@@ -2422,8 +2662,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -2449,7 +2689,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #if AFTER 4.3.0
 					DARKMOON_PRIZE_TICKET,
 					i(71634, {	-- Darkmoon Adventurer's Guide
-						["timeline"] = { "added 4.3.0.14899" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					-- #else
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2476,7 +2716,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					-- #if AFTER 4.3.0
 					DARKMOON_PRIZE_TICKET,
 					i(71634, {	-- Darkmoon Adventurer's Guide
-						["timeline"] = { "added 4.3.0.14899" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					-- #else
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2489,8 +2729,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -2502,8 +2742,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -2525,7 +2765,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 5739, 3 } },	-- Barbaric Harness
 				["lvl"] = 20,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2547,7 +2787,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 15994, 6 } },	-- Thorium Widget
 				["lvl"] = 40,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
@@ -2559,8 +2799,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14847 },	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				},
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["isMonthly"] = true,
 				["groups"] = {
 					DARKMOON_PRIZE_TICKET,
@@ -2582,12 +2822,35 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 11407, 5 } },	-- Torn Bear Pelt
 				["lvl"] = 10,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79589, {	-- Torn Bear Pelts [Tier 2]
+				["qg"] = 14829,	-- Yebb Neblegear
+				["coords"] = {
+					{ 40.2, 69.7, ELWYNN_FOREST },
+					{ 37.5, 39.6, MULGORE },
+				},
+				["maxReputation"] = TIER_TWO_MAX_REPUTATION,
+				["cost"] = { { "i", 11407, 5 } },	-- Torn Bear Pelt
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["lvl"] = 10,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(7902, {	-- Vibrant Plumes [Tier 4]
 				["qg"] = 14829,	-- Yebb Neblegear
 				-- #if AFTER 4.3.0
@@ -2604,39 +2867,62 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["cost"] = { { "i", 5117, 5 } },	-- Vibrant Plume
 				["lvl"] = 30,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
 			q(7895, {	-- Whirring Bronze Gizmo [Tier 2]
-				["qg"] = 14829,	-- Yebb Neblegear
+				["qg"] = 14841,	-- Rinling
 				-- #if AFTER 4.3.0
-				["coord"] = { 51.6, 81.8, DARKMOON_ISLAND },
+				["coord"] = { 49.4, 60.8, DARKMOON_ISLAND },
 				-- #else
 				["coords"] = {
-					{ 40.2, 69.7, ELWYNN_FOREST },
-					{ 37.5, 39.6, MULGORE },
+					{ 41.6, 70.6, ELWYNN_FOREST },
+					{ 37, 37.4, MULGORE },
 					-- #if AFTER TBC
-					{ 34.3, 35.7, TEROKKAR_FOREST },
+					{ 34, 34.8, TEROKKAR_FOREST },
 					-- #endif
 				},
 				["maxReputation"] = TIER_TWO_MAX_REPUTATION,
 				["cost"] = { { "i", 4375, 7 } },	-- Whirring Bronze Gizmo
 				["lvl"] = 10,
 				-- #endif
-				["timeline"] = { "removed 4.3.0" },
+				-- #if SEASON_OF_DISCOVERY
+				["timeline"] = { REMOVED_1_5_0, ADDED_2_0_1, REMOVED_4_3_0 },
+				-- #else
+				["timeline"] = { REMOVED_4_3_0 },
+				-- #endif
 				["repeatable"] = true,
 				["groups"] = {
 					TATTERED_DARKMOON_PRIZE_TICKET,
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			-- CRIEVE NOTE: I don't know what the difference is.
+			-- Might be reputation maximums? The rep awarded is the same.
+			q(79591, {	-- Whirring Bronze Gizmo [Tier 2]
+				["qg"] = 14841,	-- Rinling
+				["coords"] = {
+					{ 41.6, 70.6, ELWYNN_FOREST },
+					{ 37, 37.4, MULGORE },
+				},
+				["maxReputation"] = TIER_TWO_MAX_REPUTATION,
+				["cost"] = { { "i", 4375, 7 } },	-- Whirring Bronze Gizmo
+				["timeline"] = { REMOVED_2_0_1 },
+				["repeatable"] = true,
+				["lvl"] = 10,
+				["groups"] = {
+					TATTERED_DARKMOON_PRIZE_TICKET,
+				},
+			}),
+			-- #endif
 			q(29515, {	-- Writing the Future
 				["qg"] = 14822,	-- Sayge
 				["coord"] = { 53.2, 75.8, DARKMOON_ISLAND },
-				["maxReputation"] = { 909, EXALTED },	-- Darkmoon Faire, Exalted.
-				["timeline"] = { "added 4.3.0.14732" },
+				["maxReputation"] = { FACTION_DARKMOON_FAIRE, EXALTED },	-- Darkmoon Faire, Exalted.
+				["timeline"] = { ADDED_4_3_0 },
 				["cost"] = { { "i", 39354, 5 } },	-- Light Parchment
 				["requireSkill"] = INSCRIPTION,
 				["isMonthly"] = true,
@@ -2667,13 +2953,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 19424 },	-- Sayge's Fortune #24
 					{ "n", 14822 },	-- Sayge
 				},
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["maps"] = { DEADMINES },
 				["repeatable"] = true,
 				["lvl"] = 10,
 				["groups"] = {
 					i(19425, {	-- Mysterious Lockbox
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -2683,12 +2969,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14822 },	-- Sayge
 				},
 				["coord"] = { 84.7, 64.4, ELWYNN_FOREST },
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["lvl"] = 10,
 				["groups"] = {
 					i(19425, {	-- Mysterious Lockbox
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -2698,12 +2984,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "n", 14822 },	-- Sayge
 				},
 				["coord"] = { 35, 61.5, MULGORE },
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["repeatable"] = true,
 				["lvl"] = 10,
 				["groups"] = {
 					i(19425, {	-- Mysterious Lockbox
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -2712,14 +2998,14 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 19443 },	-- Sayge's Fortune #25
 					{ "n", 14822 },	-- Sayge
 				},
-				["timeline"] = { "removed 4.3.0" },
+				["timeline"] = { REMOVED_4_3_0 },
 				["maps"] = { WAILING_CAVERNS },
 				["cr"] = 14822,	-- Sayge
 				["repeatable"] = true,
 				["lvl"] = 10,
 				["groups"] = {
 					i(19425, {	-- Mysterious Lockbox
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 				},
 			}),
@@ -2729,24 +3015,29 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["qg"] = 74056,	-- Malle Earnhard
 				["sourceQuest"] = 37910,	-- Welcome to the Darkmoon Races
 				["coord"] = { 48.9, 88.3, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.0.1.18322" },
+				["timeline"] = { ADDED_6_0_2 },
 				["isDaily"] = true,
 			}),
 			q(37868, {	-- More Big Racing!
 				["qg"] = 90473,	-- Patti Earnhard
 				["sourceQuest"] = 37911,	-- The Real Big Race
 				["coord"] = { 53.2, 87.6, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.0.1.18322" },
+				["timeline"] = { ADDED_6_0_2 },
 				["isDaily"] = true,
 			}),
 			q(29455, {	-- Target: Turtle
 				["qg"] = 54485,	-- Jessica Rogers
 				["coord"] = { 51.5, 77.1, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14732" },
+				["timeline"] = { ADDED_4_3_0 },
 				["isDaily"] = true,
 				["groups"] = {
 					ach(9894, {	-- Triumphant Turtle Tossing
-						i(122123),	-- Darkmoon Ring-Flinger (TOY!)
+						["timeline"] = { ADDED_6_1_0 },
+						["groups"] = {
+							i(122123, {	-- Darkmoon Ring-Flinger (TOY!)
+								["timeline"] = { ADDED_6_1_0 },
+							}),
+						},
 					}),
 					-- #if AFTER 5.2.0
 					DARKMOON_GAME_PRIZE,
@@ -2758,7 +3049,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29436, {	-- The Humanoid Cannonball
 				["qg"] = 15303,	-- Maxima Blastenheimer
 				["coord"] = { 52.4, 56.1, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14732" },
+				["timeline"] = { ADDED_4_3_0 },
 				["isDaily"] = true,
 				["groups"] = {
 					ach(6021),	-- Blastenheimer Bullseye
@@ -2773,7 +3064,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["qg"] = 90473,	-- Patti Earnhard
 				["sourceQuest"] = 37819,	-- Welcome to the Darkmoon Races
 				["coord"] = { 53.2, 87.6, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.0.1.18322" },
+				["timeline"] = { ADDED_6_0_2 },
 				["isDaily"] = true,
 				["groups"] = {
 					ach(9817, {	-- Big Powermonger: Gold
@@ -2825,7 +3116,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["qg"] = 74056,	-- Malle Earnhard
 				["sourceQuest"] = 37819,	-- Welcome to the Darkmoon Races
 				["coord"] = { 48.9, 88.3, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.0.1.18322" },
+				["timeline"] = { ADDED_6_0_2 },
 				["isDaily"] = true,
 				["groups"] = {
 					ach(9761, {	-- Darkmoon Racer Roadhog
@@ -2875,11 +3166,16 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(29434, {	-- Tonk Commander
 				["qg"] = 54605,	-- Finaly Coolshot
 				["coord"] = { 50.7, 65.1, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14732" },
+				["timeline"] = { ADDED_4_3_0 },
 				["isDaily"] = true,
 				["groups"] = {
 					ach(9885, {	-- Ace Tonk Commander
-						i(122122),	-- Darkmoon Tonk Controller (TOY!)
+						["timeline"] = { ADDED_6_1_0 },
+						["groups"] = {
+							i(122122, {	-- Darkmoon Tonk Controller (TOY!)
+								["timeline"] = { ADDED_6_1_0 },
+							}),
+						},
 					}),
 					-- #if AFTER 5.2.0
 					DARKMOON_GAME_PRIZE,
@@ -2891,7 +3187,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			q(37819, {	-- Welcome to the Darkmoon Races
 				["qg"] = 74056,	-- Malle Earnhard
 				["coord"] = { 48.9, 88.3, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.0.1.18322" },
+				["timeline"] = { ADDED_6_0_2 },
 				["groups"] = {
 					ach(9755),	-- Darkmoon Race Enthusiast
 					-- #if AFTER 5.2.0
@@ -2906,14 +3202,18 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 		pvp(n(PVP, {
 			o(209620, {	-- Darkmoon Treasure Chest
 				["coord"] = { 44.6, 78.9, DARKMOON_ISLAND },	-- Chest
+				-- Danny Donkey: The earliest report of the trinket being shareable is from 9.1.5.
+				-- #if AFTER 9.1.5
+				["description"] = "Protip: Disable autoloot before looting this chest, and do not empty it. Everyone can loot their trinket this way.",
+				-- #endif
 				["groups"] = {
 					i(74034, {	-- Pit Fighter
-						["timeline"] = { "added 4.3.0.14732" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(126949, {	-- Returning Champion
 						["description"] = "You need to have completed the Master Pit Fighter quest to loot this from the chest.",
 						["sourceQuest"] = 29761,	-- Master Pit Fighter
-						["timeline"] = { "added 6.2.0.19890" },
+						["timeline"] = { ADDED_6_2_0 },
 					}),
 				},
 			}),
@@ -2921,9 +3221,9 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 		-- #endif
 		-- #if AFTER 5.0.1.15799
 		n(RARES, {
-			n(58336, bubbleDownSelf({ ["timeline"] = { "added 5.0.1.15799" }, }, {	-- Darkmoon Rabbit
+			n(58336, bubbleDownSelf({ ["timeline"] = { ADDED_5_0_4 }, }, {	-- Darkmoon Rabbit
 				["coord"] = { 75.69, 78.17, DARKMOON_ISLAND },
-				["timeline"] = { "added 5.0.1.15799" },
+				["timeline"] = { ADDED_5_0_4 },
 				-- #if BEFORE 6.0.1
 				["isRaid"] = true,	-- This originally required a raid group. lol
 				-- #endif
@@ -2932,7 +3232,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					i(80008),	-- Darkmoon Rabbit (PET!)
 				},
 			})),
-			n(122899, bubbleDownSelf({ ["timeline"] = { "added 7.2.5.24026" }, }, {	-- Death Metal Knight
+			n(122899, bubbleDownSelf({ ["timeline"] = { ADDED_7_2_5 }, }, {	-- Death Metal Knight
 				["questID"] = 47767,
 				["description"] = "Death Metal Knight can be killed every hour on the half-hour, but he will only drop his rare loot once per month per character.",
 				["coords"] = {
@@ -2947,16 +3247,16 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						["description"] = "Four people fighting the Death Metal Knight will need to successfully perform the roles from Taking this Show on the Road.  This achievement technically does not require a group, but it would be easier to coordinate roles with one!",
 					}),
 					ach(11919, {	-- Taking this Show on the Road
-						crit(1, {	-- Guitarist
+						crit(37025, {	-- Guitarist
 							["description"] = "Get hit by one banshee wave; miss one bolt of light.",
 						}),
-						crit(2, {	-- Bassist
+						crit(37026, {	-- Bassist
 							["description"] = "Do not get hit by any banshee waves; miss one bolt of light.",
 						}),
-						crit(3, {	-- Drummer
+						crit(37027, {	-- Drummer
 							["description"] = "Do not get hit by any banshee waves; catch every bolt of light.",
 						}),
-						crit(4, {	-- Vocals
+						crit(37028, {	-- Vocals
 							["description"] = "Get hit by one banshee wave; catch every bolt of light.",
 						}),
 					}),
@@ -2969,7 +3269,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					i(151397),	-- Sweaty Wristbands
 				},
 			})),
-			n(71992, bubbleDownSelf({ ["timeline"] = { "added 5.4.0.17345" }, }, {	-- Moonfang <Darkmoon Den Mother>
+			n(71992, bubbleDownSelf({ ["timeline"] = { ADDED_5_4_0 }, }, {	-- Moonfang <Darkmoon Den Mother>
 				["coord"] = { 39.65, 44.07, DARKMOON_ISLAND },
 				["groups"] = {
 					i(101570),	-- Moon Moon (PET!)
@@ -2981,6 +3281,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			})),
 			n(204964, bubbleDownSelf({ ["timeline"] = { ADDED_10_1_5 } }, {	-- Twinkle <Madam Shadow's Minion>
 				["questID"] = 77158,
+				["isDaily"] = true,	-- maybe weekly/monthly?
 				["sourceQuest"] = 76430,	-- Beginning Impositions
 				["description"] = "Question Madam Shadow until you get punished.\n 1) Cast Corruption.\n 2) Cast Curse of Exhaustion\n 3) Cast Agony\n 4) Oh yeah, don't forget to RUN!\n\nNote: The QuestID on this NPC will become unobtainable after learning the Grimoire (if obtained elsewhere), though Party Sync can allow fighting the NPC again regardless.",
 				["classes"] = { WARLOCK },
@@ -3043,73 +3344,74 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			}),
 			i(93724, {	-- Darkmoon Game Prize
 				["description"] = "Awarded by completing a mini game quest.",
-				["timeline"] = { "added 5.2.0.16408" },
+				["timeline"] = { ADDED_5_2_0 },
 				["groups"] = {
 					i(78340, {	-- Cloak of the Darkmoon Faire
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(92959, {	-- Darkmoon "Cougar"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(92966, {	-- Darkmoon "Dragon"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(92967, {	-- Darkmoon "Gryphon"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(92968, {	-- Darkmoon "Murloc"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(92958, {	-- Darkmoon "Nightsaber"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(92969, {	-- Darkmoon "Rocket"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(92956, {	-- Darkmoon "Snow Leopard"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(77256, {	-- Darkmoon "Sword"
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(77158, {	-- Darkmoon "Tiger"
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(92970, {	-- Darkmoon "Wyvern"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(73762, {	-- Darkmoon Balloon (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(74981, {	-- Darkmoon Cub (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(91003, {	-- Darkmoon Hatchling (PET!)
 						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(73764, {	-- Darkmoon Monkey (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(73903, {	-- Darkmoon Tonk  (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(93730, {	-- Darkmoon Top Hat
-						["timeline"] = { "added 5.2.0.16408", "removed 8.2.5.31958" },
+						["timeline"] = { ADDED_5_2_0, REMOVED_8_2_5 },
 					}),
 					i(171364, {	-- Darkmoon Top Hat
-						["timeline"] = { "added 8.2.5.31958" },
+						["timeline"] = { ADDED_8_2_5 },
+						["description"] = "Does not stack with the 'WHEE'-buff from Darkmoon Faire, and will replace it!",
 					}),
 					i(73765, {	-- Darkmoon Turtle  (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(90899, {	-- Darkmoon Whistle (TOY!)
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(73905, {	-- Darkmoon Zeppelin  (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(97987, {	-- Well-Worn Blindfold
-						["timeline"] = { "added 5.3.0.16853", "deleted 7.0.3" },
+						["timeline"] = { ADDED_5_3_0, DELETED_7_0_3 },
 					}),
 				},
 			}),
@@ -3127,10 +3429,10 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			}),
 		}),
 		n(VENDORS, {
-			n(55072, bubbleDownSelf({ ["timeline"] = { "added 4.3.0.14942" }, }, {	-- Barum <Replica Armor Prizes>
+			n(55072, bubbleDownSelf({ ["timeline"] = { ADDED_4_3_0 }, }, {	-- Barum <Replica Armor Prizes>
 				["coord"] = { 47.5, 66.3, DARKMOON_ISLAND },
 				["groups"] = {
-					gs(1431, {	-- Battlegear of Valor
+					clWithoutLock(WARRIOR, {	-- Battlegear of Valor
 						darkmoonprizeticket(55, i(78319)),	-- Replica Belt of Valor
 						darkmoonprizeticket(55, i(78318)),	-- Replica Boots of Valor
 						darkmoonprizeticket(55, i(78321)),	-- Replica Bracers of Valor
@@ -3140,7 +3442,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78324)),	-- Replica Legplates of Valor
 						darkmoonprizeticket(75, i(78325)),	-- Replica Shoulders of Valor
 					}),
-					gs(1428, {	-- Beaststalker Armor
+					clWithoutLock(HUNTER, {	-- Beaststalker Armor
 						darkmoonprizeticket(55, i(78274)),	-- Replica Beaststalker's Belt
 						darkmoonprizeticket(55, i(78277)),	-- Replica Beaststalker's Bindings
 						darkmoonprizeticket(55, i(78272)),	-- Replica Beaststalker's Boots
@@ -3150,7 +3452,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78276)),	-- Replica Beaststalker's Pants
 						darkmoonprizeticket(75, i(78270)),	-- Replica Beaststalker's Tunic
 					}),
-					gs(1424, {	-- Dreadmist Raiment
+					clWithoutLock(WARLOCK, {	-- Dreadmist Raiment
 						darkmoonprizeticket(55, i(78222)),	-- Replica Dreadmist Belt
 						darkmoonprizeticket(55, i(78229)),	-- Replica Dreadmist Bracers
 						darkmoonprizeticket(75, i(78228)),	-- Replica Dreadmist Leggings
@@ -3160,7 +3462,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(55, i(78224)),	-- Replica Dreadmist Sandals
 						darkmoonprizeticket(55, i(78223)),	-- Replica Dreadmist Wraps
 					}),
-					gs(1430, {	-- Lightforge Armor
+					clWithoutLock(PALADIN, {	-- Lightforge Armor
 						darkmoonprizeticket(55, i(78302)),	-- Replica Lightforge Belt
 						darkmoonprizeticket(55, i(78309)),	-- Replica Lightforge Boots
 						darkmoonprizeticket(55, i(78304)),	-- Replica Lightforge Bracers
@@ -3170,7 +3472,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78305)),	-- Replica Lightforge Legplates
 						darkmoonprizeticket(75, i(78308)),	-- Replica Lightforge Spaulders
 					}),
-					gs(1425, {	-- Magister's Regalia
+					clWithoutLock(MAGE, {	-- Magister's Regalia
 						darkmoonprizeticket(55, i(78192)),	-- Replica Magister's Belt
 						darkmoonprizeticket(55, i(78193)),	-- Replica Magister's Bindings
 						darkmoonprizeticket(55, i(78186)),	-- Replica Magister's Boots
@@ -3180,7 +3482,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78191)),	-- Replica Magister's Mantle
 						darkmoonprizeticket(75, i(78190)),	-- Replica Magister's Robes
 					}),
-					gs(1427, {	-- Shadowcraft Armor
+					clWithoutLock(ROGUE, {	-- Shadowcraft Armor
 						darkmoonprizeticket(55, i(78259)),	-- Replica Shadowcraft Belt
 						darkmoonprizeticket(55, i(78256)),	-- Replica Shadowcraft Boots
 						darkmoonprizeticket(55, i(78255)),	-- Replica Shadowcraft Bracers
@@ -3190,7 +3492,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78261)),	-- Replica Shadowcraft Spaulders
 						darkmoonprizeticket(75, i(78254)),	-- Replica Shadowcraft Tunic
 					}),
-					gs(1429, {	-- The Elements
+					clWithoutLock(SHAMAN, {	-- The Elements
 						darkmoonprizeticket(55, i(78289)),	-- Replica Bindings of Elements
 						darkmoonprizeticket(55, i(78292)),	-- Replica Boots of Elements
 						darkmoonprizeticket(75, i(78286)),	-- Replica Coif of Elements
@@ -3200,7 +3502,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78288)),	-- Replica Pauldrons of Elements
 						darkmoonprizeticket(75, i(78290)),	-- Replica Vest of Elements
 					}),
-					gs(359, {	-- Vestments of the Devout
+					clWithoutLock(PRIEST, {	-- Vestments of the Devout
 						darkmoonprizeticket(55, i(78207)),	-- Replica Devout Belt
 						darkmoonprizeticket(55, i(78211)),	-- Replica Devout Bracers
 						darkmoonprizeticket(75, i(78205)),	-- Replica Devout Crown
@@ -3210,7 +3512,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(55, i(78210)),	-- Replica Devout Sandals
 						darkmoonprizeticket(75, i(78206)),	-- Replica Devout Skirt
 					}),
-					gs(1426, {	-- Wildheart Raiment
+					clWithoutLock(DRUID, {	-- Wildheart Raiment
 						darkmoonprizeticket(55, i(78244)),	-- Replica Wildheart Belt
 						darkmoonprizeticket(55, i(78243)),	-- Replica Wildheart Boots
 						darkmoonprizeticket(55, i(78240)),	-- Replica Wildheart Bracers
@@ -3222,10 +3524,10 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					}),
 				},
 			})),
-			n(57983, bubbleDownSelf({ ["timeline"] = { "added 4.3.0.14942" }, }, {	-- Baruma <Replica Armor Prizes>
+			n(57983, bubbleDownSelf({ ["timeline"] = { ADDED_4_3_0 }, }, {	-- Baruma <Replica Armor Prizes>
 				["coord"] = { 47.6, 66.0, DARKMOON_ISLAND },
 				["groups"] = {
-					gs(861, {	-- Battlegear of Heroism
+					clWithoutLock(WARRIOR, {	-- Battlegear of Heroism
 						darkmoonprizeticket(55, i(78333)),	-- Replica Belt of Heroism
 						darkmoonprizeticket(55, i(78326)),	-- Replica Boots of Heroism
 						darkmoonprizeticket(55, i(78327)),	-- Replica Bracers of Heroism
@@ -3235,7 +3537,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78331)),	-- Replica Legplates of Heroism
 						darkmoonprizeticket(75, i(78332)),	-- Replica Spaulders of Heroism
 					}),
-					gs(856, {	-- Beastmaster Armor
+					clWithoutLock(HUNTER, {	-- Beastmaster Armor
 						darkmoonprizeticket(55, i(78285)),	-- Replica Beastmaster's Belt
 						darkmoonprizeticket(55, i(78283)),	-- Replica Beastmaster's Bindings
 						darkmoonprizeticket(55, i(78279)),	-- Replica Beastmaster's Boots
@@ -3245,7 +3547,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78280)),	-- Replica Beastmaster's Pants
 						darkmoonprizeticket(75, i(78282)),	-- Replica Beastmaster's Tunic
 					}),
-					gs(857, {	-- Darkmantle Armor
+					clWithoutLock(ROGUE, {	-- Darkmantle Armor
 						darkmoonprizeticket(55, i(78265)),	-- Replica Darkmantle Belt
 						darkmoonprizeticket(55, i(78262)),	-- Replica Darkmantle Boots
 						darkmoonprizeticket(55, i(78264)),	-- Replica Darkmantle Bracers
@@ -3255,7 +3557,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78267)),	-- Replica Darkmantle Spaulders
 						darkmoonprizeticket(75, i(78269)),	-- Replica Darkmantle Tunic
 					}),
-					gs(854, {	-- Deathmist Rainment
+					clWithoutLock(WARLOCK, {	-- Deathmist Rainment
 						darkmoonprizeticket(55, i(78233)),	-- Replica Deathmist Belt
 						darkmoonprizeticket(55, i(78232)),	-- Replica Deathmist Bracers
 						darkmoonprizeticket(75, i(78231)),	-- Replica Deathmist Leggings
@@ -3265,7 +3567,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(55, i(78235)),	-- Replica Deathmist Sandals
 						darkmoonprizeticket(55, i(78236)),	-- Replica Deathmist Wraps
 					}),
-					gs(858, {	-- Feralheart Rainment
+					clWithoutLock(DRUID, {	-- Feralheart Rainment
 						darkmoonprizeticket(55, i(78246)),	-- Replica Feralheart Belt
 						darkmoonprizeticket(55, i(78251)),	-- Replica Feralheart Boots
 						darkmoonprizeticket(55, i(78253)),	-- Replica Feralheart Bracers
@@ -3275,7 +3577,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78247)),	-- Replica Feralheart Spaulders
 						darkmoonprizeticket(75, i(78252)),	-- Replica Feralheart Vest
 					}),
-					gs(855, {	-- Sorcerer's Regalia
+					clWithoutLock(MAGE, {	-- Sorcerer's Regalia
 						darkmoonprizeticket(55, i(78202)),	-- Replica Sorcerer's Belt
 						darkmoonprizeticket(55, i(78203)),	-- Replica Sorcerer's Bindings
 						darkmoonprizeticket(55, i(78196)),	-- Replica Sorcerer's Boots
@@ -3285,7 +3587,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78201)),	-- Replica Sorcerer's Mantle
 						darkmoonprizeticket(75, i(78200)),	-- Replica Sorcerer's Robes
 					}),
-					gs(859, {	-- Soulforge Armor
+					clWithoutLock(PALADIN, {	-- Soulforge Armor
 						darkmoonprizeticket(55, i(78311)),	-- Replica Soulforge Belt
 						darkmoonprizeticket(55, i(78310)),	-- Replica Soulforge Boots
 						darkmoonprizeticket(55, i(78317)),	-- Replica Soulforge Bracers
@@ -3295,7 +3597,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78315)),	-- Replica Soulforge Legplates
 						darkmoonprizeticket(75, i(78316)),	-- Replica Soulforge Spaulders
 					}),
-					gs(860, {	-- The Five Thunders
+					clWithoutLock(SHAMAN, {	-- The Five Thunders
 						darkmoonprizeticket(55, i(78296)),	-- Replica Bindings of The Five Thunders
 						darkmoonprizeticket(55, i(78298)),	-- Replica Boots of The Five Thunders
 						darkmoonprizeticket(75, i(78294)),	-- Replica Coif of The Five Thunders
@@ -3305,7 +3607,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						darkmoonprizeticket(75, i(78299)),	-- Replica Pauldrons of The Five Thunders
 						darkmoonprizeticket(75, i(78300)),	-- Replica Vest of The Five Thunders
 					}),
-					gs(360, {	-- Vestments of the Virtuous
+					clWithoutLock(PRIEST, {	-- Vestments of the Virtuous
 						darkmoonprizeticket(55, i(78218)),	-- Replica Virtuous Belt
 						darkmoonprizeticket(55, i(78215)),	-- Replica Virtuous Bracers
 						darkmoonprizeticket(75, i(78216)),	-- Replica Virtuous Crown
@@ -3319,31 +3621,31 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			})),
 			n(55278, {	-- Boomie Sparks <Fireworks>
 				["coord"] = { 48.2, 71.9, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14942" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					darkmoonprizeticket(10, i(74142, {	-- Darkmoon Firework
-						["timeline"] = { "added 4.3.0.14942" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(150, i(138202, {	-- Sparklepony XL (TOY!)
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					})),
 				},
 			}),
 			n(55305, {	-- Carl Goodup <Balloon Vendor>
 				["coord"] = { 49.3, 78.4, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14942" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					darkmoonprizeticket(90, i(73762, {	-- Darkmoon Balloon (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					i(75040, {	-- Flimsy Darkmoon Balloon
-						["timeline"] = { "added 4.3.0.14942" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(75041, {	-- Flimsy Green Balloon
-						["timeline"] = { "added 4.3.0.14942" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(75042, {	-- Flimsy Yellow Balloon (TOY!)
-						["timeline"] = { "added 4.3.0.14942" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					darkmoonprizeticket(90, i(164969, {	-- Horse Balloon (PET!)
 						["timeline"] = { ADDED_8_1_5 },
@@ -3358,223 +3660,223 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			}),
 			n(85484, {	-- Chester <Vestments and Oddities>
 				["coord"] = { 51.4, 75.0, DARKMOON_ISLAND },
-				["timeline"] = { "added 6.0.1.18566" },
+				["timeline"] = { ADDED_6_0_2 },
 				["groups"] = {
 					darkmoonprizeticket(90, i(116139, {	-- Haunting Memento (TOY!)
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					})),
 					darkmoonprizeticket(130, i(116138, {	-- Last Deck of Nemelex Xobeh
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					})),
 					darkmoonprizeticket(90, i(122238, {	-- Music Roll: Darkmoon Carousel
-						["timeline"] = { "added 6.1.0.19480" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(55, i(116134, {	-- Noble's Fancy Boots
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					})),
 					darkmoonprizeticket(75, i(116052, {	-- Nobleman's Coat
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					})),
 					darkmoonprizeticket(75, i(116133, {	-- Nobleman's Pantaloons
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					})),
 					darkmoonprizeticket(75, i(116137, {	-- Noblewoman's Finery
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					})),
 					darkmoonprizeticket(75, i(116136, {	-- Noblewoman's Skirt
-						["timeline"] = { "added 6.0.1.18566" },
+						["timeline"] = { ADDED_6_0_2 },
 					})),
 				},
 			}),
 			n(56335, {	-- Daenrand Dawncrest <Heirloom Prizes>
 				["coord"] = { 47.6, 66.7, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14942" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					darkmoonprizeticket(100, i(122338, {	-- Ancient Heirloom Armor Casing
 						["sym"] = { { "fill" } },	-- simply fill this item
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(120, i(122339, {	-- Ancient Heirloom Scabbard
 						["sym"] = { { "fill" } },	-- simply fill this item
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 
 					-- Old Heirlooms
 					darkmoonprizeticket(50, i(42944, {	-- Balanced Heartseeker
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(42943, {	-- Bloodied Arcanite Reaper
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(69893, {	-- Bloodsoaked Skullforge Reaver
-						["timeline"] = { "added 4.1.0.13812", "removed 6.1.0.19445" },
+						["timeline"] = { ADDED_4_1_0, REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(69889, {	-- Burnished Breastplate of Might
-						["timeline"] = { "added 4.1.0.13812", "removed 6.1.0.19445" },
+						["timeline"] = { ADDED_4_1_0, REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(69890, {	-- Burnished Pauldrons of Might
-						["timeline"] = { "added 4.1.0.13812", "removed 6.1.0.19445" },
+						["timeline"] = { ADDED_4_1_0, REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(79131, {	-- Burnished Warden Staff
-						["timeline"] = { "added 5.0.1.15464", "removed 6.1.0.19445" },
+						["timeline"] = { ADDED_5_0_4, REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42950, {	-- Champion Herod's Shoulders
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(48677, {	-- Champion's Deathdealer Breastplate
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(42946, {	-- Charmed Ancient Bone Bow
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42948, {	-- Devout Aurastone Hammer
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(42947, {	-- Dignified Headmaster's Charge
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(70, i(42992, {	-- Discerning Eye of the Beast
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(93902, {	-- Flamescarred Draconian Deflector
-						["timeline"] = { "added 5.2.0.16408", "removed 6.1.0.19445" },
+						["timeline"] = { ADDED_5_2_0, REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(93904, {	-- Musty Tome of the Lost
-						["timeline"] = { "added 5.2.0.16408", "removed 6.1.0.19445" },
+						["timeline"] = { ADDED_5_2_0, REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42951, {	-- Mystical Pauldrons of Elements
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(48683, {	-- Mystical Vest of Elements
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(48685, {	-- Polished Breastplate of Valor
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42949, {	-- Polished Spaulders of Valor
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(48687, {	-- Preened Ironfeather Breastplate
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42984, {	-- Preened Ironfeather Shoulders
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(48718, {	-- Repurposed Lava Dredger
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42952, {	-- Stained Shadowcraft Spaulders
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(48689, {	-- Stained Shadowcraft Tunic
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(70, i(42991, {	-- Swift Hand of Justice
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42985, {	-- Tattered Dreadmist Mantle
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(48691, {	-- Tattered Dreadmist Robe
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(42945, {	-- Venerable Dal'Rend's Sacred Charge
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(48716, {	-- Venerable Mass of McGowan
-						["timeline"] = { "removed 6.1.0.19445" },
+						["timeline"] = { REMOVED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(93903, {	-- Weathered Observer's Shield
-						["timeline"] = { "added 5.2.0.16408", "removed 6.1.0.19445" },
+						["timeline"] = { ADDED_5_2_0, REMOVED_6_1_0 },
 					})),
 
 					-- New Heirlooms
 					darkmoonprizeticket(50, i(122350, {	-- Balanced Heartseeker
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(122349, {	-- Bloodied Arcanite Reaper
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122389, {	-- Bloodsoaked Skullforge Reaver
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122387, {	-- Burnished Breastplate of Might
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122388, {	-- Burnished Pauldrons of Might
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(122363, {	-- Burnished Warden Staff
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122356, {	-- Champion Herod's Shoulders
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122379, {	-- Champion's Deathdealer Breastplate
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(122352, {	-- Charmed Ancient Bone Bow
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122354, {	-- Devout Aurastone Hammer
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(122353, {	-- Dignified Headmaster's Charge
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(70, i(122362, {	-- Discerning Eye of the Beast
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122391, {	-- Flamescarred Draconian Deflector
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122390, {	-- Musty Tome of the Lost
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122357, {	-- Mystical Pauldrons of Elements
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122380, {	-- Mystical Vest of Elements
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122381, {	-- Polished Breastplate of Valor
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122355, {	-- Polished Spaulders of Valor
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122382, {	-- Preened Ironfeather Breastplate
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122359, {	-- Preened Ironfeather Shoulders
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(75, i(122386, {	-- Repurposed Lava Dredger
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122358, {	-- Stained Shadowcraft Spaulders
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122383, {	-- Stained Shadowcraft Tunic
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(70, i(122361, {	-- Swift Hand of Justice
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122360, {	-- Tattered Dreadmist Mantle
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122384, {	-- Tattered Dreadmist Robe
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122351, {	-- Venerable Dal'Rend's Sacred Charge
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122385, {	-- Venerable Mass of McGowan
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 					darkmoonprizeticket(50, i(122392, {	-- Weathered Observer's Shield
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					})),
 				},
 			}),
@@ -3604,7 +3906,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			}),
 			n(55103, {	-- Galissa Sundew <Fishing Prizes>
 				["coord"] = { 52.5, 88.7, DARKMOON_ISLAND },
-				["timeline"] = { "added 5.4.2.17658" },
+				["timeline"] = { ADDED_5_4_2 },
 				["groups"] = {
 					darkmoondaggermaw(50, i(126925, {	-- Blorp (PET!)
 						["timeline"] = { ADDED_6_2_0 },
@@ -3613,7 +3915,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						["timeline"] = { ADDED_6_2_0 },
 					})),
 					darkmoondaggermaw(500, i(142398, {	-- Darkwater Skate (MOUNT!)
-						["timeline"] = { "added 7.1.0.22731" },
+						["timeline"] = { ADDED_7_1_0 },
 					})),
 					darkmoondaggermaw(25, i(124674, {	-- Day-Old Darkmoon Doughnut
 						["timeline"] = { ADDED_6_2_0 },
@@ -3621,22 +3923,22 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					darkmoondaggermaw(100, i(126930, {	-- Faded Treasure Map
 						["timeline"] = { ADDED_6_2_0 },
 					})),
-					darkmoondaggermaw(50, i(184689, {	-- Recipe: Extra Fancy Darkmoon Feast
-						["timeline"] = { "added 9.0.2.36639" },
+					darkmoondaggermaw(50, i(184689, {	-- Recipe: Extra Fancy Darkmoon Feast (RECIPE!)
+						["timeline"] = { ADDED_9_0_2_LAUNCH },
 					})),
-					darkmoondaggermaw(10, i(184683, {	-- Recipe: Extra Lemony Herb Filet
-						["timeline"] = { "added 9.0.2.36639" },
+					darkmoondaggermaw(10, i(184683, {	-- Recipe: Extra Lemony Herb Filet (RECIPE!)
+						["timeline"] = { ADDED_9_0_2_LAUNCH },
 					})),
-					darkmoondaggermaw(25, i(184625, {	-- Recipe: Extra Sugary Fish Feast
-						["timeline"] = { "added 9.0.2.36639" },
+					darkmoondaggermaw(25, i(184625, {	-- Recipe: Extra Sugary Fish Feast (RECIPE!)
+						["timeline"] = { ADDED_9_0_2_LAUNCH },
 					})),
-					darkmoondaggermaw(50, i(126929, {	-- Recipe: Fancy Darkmoon Feast
+					darkmoondaggermaw(50, i(126929, {	-- Recipe: Fancy Darkmoon Feast (RECIPE!)
 						["timeline"] = { ADDED_6_2_0 },
 					})),
-					darkmoondaggermaw(10, i(126928, {	-- Recipe: Lemon Herb Filet
+					darkmoondaggermaw(10, i(126928, {	-- Recipe: Lemon Herb Filet (RECIPE!)
 						["timeline"] = { ADDED_6_2_0 },
 					})),
-					darkmoondaggermaw(25, i(126927, {	-- Recipe: Sugar-Crusted Fish Feast
+					darkmoondaggermaw(25, i(126927, {	-- Recipe: Sugar-Crusted Fish Feast (RECIPE!)
 						["timeline"] = { ADDED_6_2_0 },
 					})),
 					darkmoondaggermaw(25, i(126931, {	-- Seafarer's Slidewhistle (TOY!)
@@ -3652,57 +3954,57 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["coord"] = { 47.7, 64.7, DARKMOON_ISLAND },
 				["groups"] = {
 					darkmoonprizeticket(90, i(78340, {	-- Cloak of the Darkmoon Faire
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(1, i(92959, {	-- Darkmoon "Cougar"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(1, i(92966, {	-- Darkmoon "Dragon"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(1, i(92967, {	-- Darkmoon "Gryphon"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(1, i(92968, {	-- Darkmoon "Murloc"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(1, i(92958, {	-- Darkmoon "Nightsaber"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(1, i(92969, {	-- Darkmoon "Rocket"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(1, i(92956, {	-- Darkmoon "Snow Leopard"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(20, i(77256, {	-- Darkmoon "Sword"
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(1, i(77158, {	-- Darkmoon "Tiger"
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(1, i(92970, {	-- Darkmoon "Wyvern"
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(90, i(73762, {	-- Darkmoon Balloon (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(1, i(19295)),	-- Darkmoon Flower
 					darkmoonprizeticket(75, i(78341, {	-- Darkmoon Hammer
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(50, i(97994, {	-- Darkmoon Seesaw (TOY!)
-						["timeline"] = { "added 5.3.0.16758" },
+						["timeline"] = { ADDED_5_3_0 },
 					})),
 					darkmoonprizeticket(1, i(19291)),	-- Darkmoon Storage Box
 					darkmoonprizeticket(10, i(93730, {	-- Darkmoon Top Hat
-						["timeline"] = { "added 5.2.0.16408", "removed 8.2.5.31958" },
+						["timeline"] = { ADDED_5_2_0, REMOVED_8_2_5 },
 					})),
 					darkmoonprizeticket(10, i(171364, {	-- Darkmoon Top Hat
-						["timeline"] = { "added 8.2.5.31958" },
+						["timeline"] = { ADDED_8_2_5 },
 					})),
 					darkmoonprizeticket(90, i(90899, {	-- Darkmoon Whistle (TOY!)
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					})),
 				},
 			}),
@@ -3722,45 +4024,45 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				["groups"] = {
 					-- #if AFTER 4.3.0
 					darkmoonprizeticket(90, i(73762, {	-- Darkmoon Balloon (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(90, i(74981, {	-- Darkmoon Cub (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(180, i(73766, {	-- Darkmoon Dancing Bear (MOUNT!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(1000, i(153485, {	-- Darkmoon Dirigible (MOUNT!)
-						["timeline"] = { "added 7.3.0.24781" },
+						["timeline"] = { ADDED_7_3_0 },
 					})),
 					darkmoonprizeticket(90, i(91003, {	-- Darkmoon Hatchling (PET!)
 						["timeline"] = { ADDED_5_1_0 },
 					})),
 					darkmoonprizeticket(90, i(73764, {	-- Darkmoon Monkey (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					-- #else
 					BIG_STICK,
 					DARING_DIRK,
 					-- #endif
 					i(19303, {	-- Darkmoon Necklace
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 					i(19302, {	-- Darkmoon Ring
-						["timeline"] = { "removed 4.3.0" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 					-- #if AFTER 4.3.0
 					darkmoonprizeticket(90, i(73903, {	-- Darkmoon Tonk  (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(90, i(73765, {	-- Darkmoon Turtle  (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(90, i(73905, {	-- Darkmoon Zeppelin  (PET!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					darkmoonprizeticket(180, i(72140, {	-- Swift Forest Strider (MOUNT!)
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					})),
 					-- #else
 					DENSE_SHORTBOW,
@@ -3774,7 +4076,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			n(14847, {	-- Professor Thaddeus Paleo <Darkmoon Cards>
 				["coord"] = { 51.9, 60.9, DARKMOON_ISLAND },
 				["groups"] = {
-					i(113135, bubbleDownSelf({ ["timeline"] = { "added 6.0.1.18379" }, }, {	-- Iron Joker
+					i(113135, bubbleDownSelf({ ["timeline"] = { ADDED_6_0_2 }, }, {	-- Iron Joker
 						["description"] = "You can trade in a joker for any one of the cards you are missing to Thaddeus Paleo at the Darkmoon Faire.",
 						["groups"] = {
 							i(112278),	-- Ace of Iron
@@ -3787,7 +4089,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 							i(112271),	-- Eight of Iron
 						},
 					})),
-					i(113142, bubbleDownSelf({ ["timeline"] = { "added 6.0.1.18379" }, }, {	-- Moon Joker
+					i(113142, bubbleDownSelf({ ["timeline"] = { ADDED_6_0_2 }, }, {	-- Moon Joker
 						["description"] = "You can trade in a joker for any one of the cards you are missing to Thaddeus Paleo at the Darkmoon Faire.",
 						["groups"] = {
 							i(112302),	-- Ace of the Moon
@@ -3801,18 +4103,18 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 						},
 					})),
 					darkmoonprizeticket(50, i(137790, {	-- Technique: Darkmoon Card of the Legion [Rank 2] (RECIPE!)
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					})),
 					darkmoonprizeticket(250, i(137791, {	-- Technique: Darkmoon Card of the Legion [Rank 3] (RECIPE!)
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					})),
 					darkmoonprizeticket(5, i(137745, {	-- Technique: Propehcy Tarot [Rank 2] (RECIPE!)
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					})),
 					darkmoonprizeticket(35, i(137746, {	-- Technique: Propehcy Tarot [Rank 3] (RECIPE!)
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					})),
-					i(113139, bubbleDownSelf({ ["timeline"] = { "added 6.0.1.18379" }, }, {	-- Visions Joker
+					i(113139, bubbleDownSelf({ ["timeline"] = { ADDED_6_0_2 }, }, {	-- Visions Joker
 						["description"] = "You can trade in a joker for any one of the cards you are missing to Thaddeus Paleo at the Darkmoon Faire.",
 						["groups"] = {
 							i(112286),	-- Ace of Visions
@@ -3825,7 +4127,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 							i(112279),	-- Eight of Visions
 						},
 					})),
-					i(113140, bubbleDownSelf({ ["timeline"] = { "added 6.0.1.18379" }, }, {	-- War Joker
+					i(113140, bubbleDownSelf({ ["timeline"] = { ADDED_6_0_2 }, }, {	-- War Joker
 						["description"] = "You can trade in a joker for any one of the cards you are missing to Thaddeus Paleo at the Darkmoon Faire.",
 						["groups"] = {
 							i(112294),	-- Ace of War
@@ -3844,62 +4146,62 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			n(56041, {	-- Rona Greenteeth
 				["description"] = "Rona serves food that she caught and prepared herself, though it's questionable what the food is made of. Sadly the vast majority of it has been removed from the game since 7.2.0.",
 				["coord"] = { 36.6, 58.6, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14942" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 
 					i(75029, {	-- Beer-Basted Short Ribs
 						["lore"] = "This may be made of dwarves.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 					i(75031, {	-- Draenic Dumplings
 						["lore"] = "This may be made of draenei.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 					i(75034, {	-- Forsaken Foie Gras
 						["lore"] = "This may be made of undead.",
-						["timeline"] = { "added 4.3.0.14942" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(75030, {	-- Gnomeregan Gnuggets
 						["lore"] = "This may be made of gnomes.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 					i(75033, {	-- Green Ham & Eggs
 						["lore"] = "This may be made of orcs. Hope the eggs are really gull ones...",
-						["timeline"] = { "added 4.3.0.14942" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(124640, {	-- Inky Black Potion
 						["description"] = "This item enables Dark Mode and helps make the racing circles easier to see.",
-						["timeline"] = { "added 7.2.5.23993" },
+						["timeline"] = { ADDED_7_2_5 },
 					}),
 					darkmoonprizeticket(1, i(19292, {	-- Last Month's Mutton
-						["timeline"] = { "removed 7.2.0" },
+						["timeline"] = { REMOVED_7_2_0 },
 					})),
 					darkmoonprizeticket(1, i(19293, {	-- Last Year's Mutton
-						["timeline"] = { "removed 7.2.0" },
+						["timeline"] = { REMOVED_7_2_0 },
 					})),
 					i(75032, {	-- Mulgore Meat Pie
 						["lore"] = "This may be made of tauren.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 					i(75036, {	-- Silvermoon Steak
 						["lore"] = "This may be made of blood elves.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 					i(75028, {	-- Stormwind Surprise
 						["lore"] = "This may be made of humans.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 					i(75027, {	-- Teldrassil Tenderloin
 						["lore"] = "This may be made of night elves.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 					i(75035, {	-- Troll Tartare
 						["lore"] = "This may be made of trolls.",
-						["timeline"] = { "added 4.3.0.14942", "removed 7.2.5.23993" },
+						["timeline"] = { ADDED_4_3_0, REMOVED_7_2_5 },
 					}),
 				},
 			}),
-			n(108785, bubbleDownSelf({ ["timeline"] = { "added 7.0.3.22345" }, }, {	-- Scarlet Quartermaster
+			n(108785, bubbleDownSelf({ ["timeline"] = { ADDED_7_0_3 }, }, {	-- Scarlet Quartermaster
 				["description"] = "You must be wearing Tabard of the Scarlet Crusade in order to purchase items from the Scarlet Quartermaster.  A tabard that has been transmogged will NOT work.",
 				["provider"] = { "i", 23192 },	-- Tabard of the Scarlet Crusade
 				["coord"] = { 58.2, 80.6, DARKMOON_ISLAND },
@@ -3907,28 +4209,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					i(138429, {	-- Cropped Tabard of the Scarlet Crusade
 						["cost"] = 250000000,	-- 25,000g
 					}),
-					i(138430, {	-- Ensemble: Chain of the Scarlet Crusade
+					iensemble(138430, {	-- Ensemble: Chain of the Scarlet Crusade
 						["cost"] = 100000000,	-- 10,000g
-						["groups"] = {
-							i(10329),	-- Scarlet Belt
-							i(10332),	-- Scarlet Boots
-							i(10328),	-- Scarlet Chestpiece
-							i(10331),	-- Scarlet Gauntlets
-							i(10330),	-- Scarlet Leggings
-							i(10333),	-- Scarlet Wristguards
-						},
-					}),
-					i(138431, {	-- Ensemble: Scale of the Scarlet Crusade
+					}), --No questid attached to this ensemble
+					iensemble(138431, {	-- Ensemble: Scale of the Scarlet Crusade
 						["cost"] = 100000000,	-- 10,000g
-						["groups"] = {
-							i(138424),	-- Scarlet Belt
-							i(138427),	-- Scarlet Boots
-							i(138423),	-- Scarlet Chestpiece
-							i(138426),	-- Scarlet Gauntlets
-							i(138425),	-- Scarlet Leggings
-							i(138428),	-- Scarlet Wristguards
-						},
-					}),
+					}), --No questid attached to this ensemble
 				},
 			})),
 			n(14845, {	-- Stamp Thunderhorn <Food Vendor>
@@ -3945,24 +4231,24 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				-- #endif
 				["groups"] = {
 					i(44940, {	-- Corn-Breaded Sausage
-						["timeline"] = { "added 3.0.9.9551" },
+						["timeline"] = { ADDED_3_1_0 },
 					}),
 					i(19306),	-- Crunchy Frog
 					i(19223),	-- Darkmoon Dog
 					i(19225),	-- Deep Fried Candybar
 					i(33254, {	-- Forest Strider Drumstick
-						["timeline"] = { "added 2.2.0.7091" },
+						["timeline"] = { ADDED_2_2_0 },
 					}),
 					i(33246, {	-- Funnel Cake
-						["timeline"] = { "added 2.2.0.7091" },
+						["timeline"] = { ADDED_2_2_0 },
 					}),
 					darkmoonprizeticket(50, i(162539, {	-- Hot Buttered Popcorn (TOY!)
-						["timeline"] = { "added 8.0.1.26530" },
+						["timeline"] = { ADDED_8_0_1 },
 					})),
 					i(19305),	-- Pickled Kodo Foot
 					i(19224),	-- Red Hot Wings
 					i(73260, {	-- Salty Sea Dog
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					i(19304),	-- Spiced Beef Jerky
 				},
@@ -3983,27 +4269,27 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					i(19300),	-- Bottled Winterspring Water
 					i(19222),	-- Cheap Beer
 					i(93208, {	-- Darkmoon P.I.E.
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(19221),	-- Darkmoon Special Reserve
 					i(19299),	-- Fizzy Faire Drink
 					i(33236, {	-- Fizzy Faire Drink "Classic"
-						["timeline"] = { "added 2.2.0.7091" },
+						["timeline"] = { ADDED_2_2_0 },
 					}),
 					i(44941, {	-- Fresh-Squeezed Limeade
-						["timeline"] = { "added 3.0.9.9551" },
+						["timeline"] = { ADDED_3_1_0 },
 					}),
 					i(33234, {	-- Iced Berry Slush
-						["timeline"] = { "added 2.2.0.7091" },
+						["timeline"] = { ADDED_2_2_0 },
 					}),
 					i(74822, {	-- Sasparilla Sinker
-						["timeline"] = { "added 4.3.0.15005" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 				},
 			}),
 			n(56069, {	-- Tatia Brine <Fishing Supplies>
 				["coord"] = { 52.37, 88.76, DARKMOON_ISLAND },
-				["timeline"] = { "added 4.3.0.14942" },
+				["timeline"] = { ADDED_4_3_0 },
 				["groups"] = {
 					i(6325),	-- Recipe: Brilliant Smallfish (RECIPE!)
 					i(6330),	-- Recipe: Bristle Whisker Catfish (RECIPE!)
@@ -4011,7 +4297,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 			}),
 		}),
 		category(3, {	-- Tarot Decks
-			applyclassicphase(PHASE_THREE, i(19228, {	-- Beasts Deck
+			applyclassicphase(PHASE_THREE_DMF_CARDS, i(19228, {	-- Beasts Deck
 				["cost"] = {
 					{ "i", 19227, 1 },	-- Ace of Beasts
 					{ "i", 19230, 1 },	-- Two of Beasts
@@ -4024,7 +4310,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(TBC_PHASE_THREE, i(31890, {	-- Blessings Deck
-				["timeline"] = { "added 2.1.0.6655" },
+				["timeline"] = { ADDED_2_1_0 },
 				["cost"] = {
 					{ "i", 31882, 1 },	-- Ace of Blessings
 					{ "i", 31889, 1 },	-- Two of Blessings
@@ -4037,7 +4323,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(WRATH_PHASE_ONE, i(44276, {	-- Chaos Deck
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 44277, 1 },	-- Ace of Chaos
 					{ "i", 44278, 1 },	-- Two of Chaos
@@ -4050,7 +4336,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(MOP_PHASE_ONE, i(79325, {	-- Crane Deck
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["cost"] = {
 					{ "i", 79299, 1 },	-- Ace of Cranes
 					{ "i", 79300, 1 },	-- Two of Cranes
@@ -4063,7 +4349,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(WRATH_PHASE_ONE, i(44158, {	-- Demons Deck
-				["timeline"] = { "added 3.0.2.8962" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 44143, 1 },	-- Ace of Demons
 					{ "i", 44154, 1 },	-- Two of Demons
@@ -4072,8 +4358,22 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 44157, 1 },	-- Five of Demons
 				},
 			})),
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, i(221289, {	-- Dunes Deck
+				["cost"] = {
+					{ "i", 221290, 1 },	-- Ace of Dunes
+					{ "i", 221291, 1 },	-- Two of Dunes
+					{ "i", 221292, 1 },	-- Three of Dunes
+					{ "i", 221293, 1 },	-- Four of Dunes
+					{ "i", 221294, 1 },	-- Five of Dunes
+					{ "i", 221295, 1 },	-- Six of Dunes
+					{ "i", 221296, 1 },	-- Seven of Dunes
+					{ "i", 221297, 1 },	-- Eight of Dunes
+				},
+			})),
+			-- #endif
 			applyclassicphase(CATA_PHASE_ONE, i(62046, {	-- Earthquake Deck
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["cost"] = {
 					{ "i", 61996, 1 },	-- Ace of Stones
 					{ "i", 61997, 1 },	-- Two of Stones
@@ -4085,7 +4385,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 62003, 1 },	-- Eight of Stones
 				},
 			})),
-			applyclassicphase(PHASE_THREE, i(19267, {	-- Elementals Deck
+			applyclassicphase(PHASE_THREE_DMF_CARDS, i(19267, {	-- Elementals Deck
 				["cost"] = {
 					{ "i", 19268, 1 },	-- Ace of Elementals
 					{ "i", 19269, 1 },	-- Two of Elementals
@@ -4098,7 +4398,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(TBC_PHASE_THREE, i(31907, {	-- Furies Deck
-				["timeline"] = { "added 2.1.0.6678" },
+				["timeline"] = { ADDED_2_1_0 },
 				["cost"] = {
 					{ "i", 31901, 1 },	-- Ace of Furies
 					{ "i", 31909, 1 },	-- Two of Furies
@@ -4111,7 +4411,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(CATA_PHASE_ONE, i(62045, {	-- Hurricane Deck
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["cost"] = {
 					{ "i", 62004, 1 },	-- Ace of the Winds
 					{ "i", 62005, 1 },	-- Two of the Winds
@@ -4124,7 +4424,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(TBC_PHASE_THREE, i(31914, {	-- Lunacy Deck
-				["timeline"] = { "added 2.1.0.6678" },
+				["timeline"] = { ADDED_2_1_0 },
 				["cost"] = {
 					{ "i", 31910, 1 },	-- Ace of Lunacy
 					{ "i", 31918, 1 },	-- Two of Lunacy
@@ -4137,7 +4437,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(WRATH_PHASE_ONE, i(44148, {	-- Mages Deck
-				["timeline"] = { "added 3.0.2.8962" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 44165, 1 },	-- Ace of Mages
 					{ "i", 44144, 1 },	-- Two of Mages
@@ -4146,8 +4446,22 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 44147, 1 },	-- Five of Mages
 				},
 			})),
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, i(221299, {	-- Nightmares Deck
+				["cost"] = {
+					{ "i", 221298, 1 },	-- Ace of Nightmares
+					{ "i", 221300, 1 },	-- Two of Nightmares
+					{ "i", 221301, 1 },	-- Three of Nightmares
+					{ "i", 221302, 1 },	-- Four of Nightmares
+					{ "i", 221303, 1 },	-- Five of Nightmares
+					{ "i", 221304, 1 },	-- Six of Nightmares
+					{ "i", 221305, 1 },	-- Seven of Nightmares
+					{ "i", 221306, 1 },	-- Eight of Nightmares
+				},
+			})),
+			-- #endif
 			applyclassicphase(WRATH_PHASE_ONE, i(44326, {	-- Nobles Deck
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 44268, 1 },	-- Ace of Nobles
 					{ "i", 44269, 1 },	-- Two of Nobles
@@ -4160,7 +4474,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(MOP_PHASE_ONE, i(79324, {	-- Ox Deck
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["cost"] = {
 					{ "i", 79291, 1 },	-- Ace of Oxen
 					{ "i", 79292, 1 },	-- Two of Oxen
@@ -4172,7 +4486,21 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 79298, 1 },	-- Eight of Oxen
 				},
 			})),
-			applyclassicphase(PHASE_THREE, i(19277, {	-- Portals Deck
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, i(221280, {	-- Plagues Deck
+				["cost"] = {
+					{ "i", 221281, 1 },	-- Ace of Plagues
+					{ "i", 221282, 1 },	-- Two of Plagues
+					{ "i", 221283, 1 },	-- Three of Plagues
+					{ "i", 221284, 1 },	-- Four of Plagues
+					{ "i", 221285, 1 },	-- Five of Plagues
+					{ "i", 221286, 1 },	-- Six of Plagues
+					{ "i", 221287, 1 },	-- Seven of Plagues
+					{ "i", 221288, 1 },	-- Eight of Plagues
+				},
+			})),
+			-- #endif
+			applyclassicphase(PHASE_THREE_DMF_CARDS, i(19277, {	-- Portals Deck
 				["cost"] = {
 					{ "i", 19276, 1 },	-- Ace of Portals
 					{ "i", 19278, 1 },	-- Two of Portals
@@ -4185,7 +4513,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(WRATH_PHASE_ONE, i(44259, {	-- Prisms Deck
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 44260, 1 },	-- Ace of Prisms
 					{ "i", 44261, 1 },	-- Two of Prisms
@@ -4198,7 +4526,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(WRATH_PHASE_ONE, i(37163, {	-- Rogues Deck
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 37140, 1 },	-- Ace of Rogues
 					{ "i", 37143, 1 },	-- Two of Rogues
@@ -4206,7 +4534,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(MOP_PHASE_ONE, i(79326, {	-- Serpent Deck
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["cost"] = {
 					{ "i", 79307, 1 },	-- Ace of Serpents
 					{ "i", 79308, 1 },	-- Two of Serpents
@@ -4219,7 +4547,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(TBC_PHASE_THREE, i(31891, {	-- Storms Deck
-				["timeline"] = { "added 2.1.0.6655" },
+				["timeline"] = { ADDED_2_1_0 },
 				["cost"] = {
 					{ "i", 31892, 1 },	-- Ace of Storms
 					{ "i", 31900, 1 },	-- Two of Storms
@@ -4232,7 +4560,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(WRATH_PHASE_ONE, i(37164, {	-- Swords Deck
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 37145, 1 },	-- Ace of Swords
 					{ "i", 37147, 1 },	-- Two of Swords
@@ -4241,7 +4569,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(MOP_PHASE_ONE, i(79323, {	-- Tiger Deck
-				["timeline"] = { "added 5.0.1.15781" },
+				["timeline"] = { ADDED_5_0_4 },
 				["cost"] = {
 					{ "i", 79283, 1 },	-- Ace of Tigers
 					{ "i", 79284, 1 },	-- Two of Tigers
@@ -4254,7 +4582,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(CATA_PHASE_ONE, i(62044, {	-- Tsunami Deck
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["cost"] = {
 					{ "i", 62012, 1 },	-- Ace of Waves
 					{ "i", 62013, 1 },	-- Two of Waves
@@ -4267,7 +4595,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(WRATH_PHASE_ONE, i(44294, {	-- Undeath Deck
-				["timeline"] = { "added 3.0.2.8970" },
+				["timeline"] = { ADDED_3_0_2 },
 				["cost"] = {
 					{ "i", 44286, 1 },	-- Ace of Undeath
 					{ "i", 44287, 1 },	-- Two of Undeath
@@ -4280,7 +4608,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 				},
 			})),
 			applyclassicphase(CATA_PHASE_ONE, i(62021, {	-- Volcanic Deck
-				["timeline"] = { "added 4.0.3.13287" },
+				["timeline"] = { ADDED_4_0_3 },
 				["cost"] = {
 					{ "i", 61988, 1 },	-- Ace of Embers
 					{ "i", 61989, 1 },	-- Two of Embers
@@ -4292,7 +4620,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 61995, 1 },	-- Eight of Embers
 				},
 			})),
-			applyclassicphase(PHASE_THREE, i(19257, {	-- Warlords Deck
+			applyclassicphase(PHASE_THREE_DMF_CARDS, i(19257, {	-- Warlords Deck
 				["cost"] = {
 					{ "i", 19258, 1 },	-- Ace of Warlords
 					{ "i", 19259, 1 },	-- Two of Warlords
@@ -4304,6 +4632,20 @@ root(ROOTS.Holidays, applyevent(EVENTS.DARKMOON_FAIRE, n(DARKMOON_FAIRE_HEADER, 
 					{ "i", 19265, 1 },	-- Eight of Warlords
 				},
 			})),
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, i(221272, {	-- Wilds Deck
+				["cost"] = {
+					{ "i", 221271, 1 },	-- Ace of Wilds
+					{ "i", 221273, 1 },	-- Two of Wilds
+					{ "i", 221274, 1 },	-- Three of Wilds
+					{ "i", 221275, 1 },	-- Four of Wilds
+					{ "i", 221276, 1 },	-- Five of Wilds
+					{ "i", 221277, 1 },	-- Six of Wilds
+					{ "i", 221278, 1 },	-- Seven of Wilds
+					{ "i", 221279, 1 },	-- Eight of Wilds
+				},
+			})),
+			-- #endif
 		}),
 	},
 })));
@@ -4318,11 +4660,11 @@ STURDY_RECURVE.u = nil;
 FINE_SHORTBOW.u = nil;
 
 root(ROOTS.HiddenQuestTriggers,{
-	tier(CATA_TIER, {
+	expansion(EXPANSION.CATA, {
 		q(30562),	-- [DNT] A Fizzy Fusion TRACKER - triggers after completing A Fizzy Fusion (questID 29506)
 		q(30561),	-- [DNT] Fun for the Little Ones TRACKER - triggers after completing Fun For the Little Ones (questID 29507)
 	}),
-	tier(MOP_TIER, {
+	expansion(EXPANSION.MOP, {
 		q(30557),	-- [DNT] A Captured Banner TRACKER - triggers after completing A Captured Banner (questID 29456)
 		q(30553),	-- [DNT] A Curious Crystal TRACKER - triggers after completing A Curious Crystal (questID 29443)
 		q(30556),	-- [DNT] A Wondrous Weapon TRACKER - triggers after completing A Wondrous Weapon (questID 29446)
@@ -4345,7 +4687,7 @@ root(ROOTS.HiddenQuestTriggers,{
 		q(30560),	-- [DNT] Tools of Divination TRACKER - triggers after completing Tools of Divination (questID 29464)
 		q(30546),	-- [DNT] Writing the Future TRACKER - triggers after completing Writing the Future (questID 29515)
 	}),
-	tier(BFA_TIER, {
+	expansion(EXPANSION.BFA, {
 		q(45038),	-- Hexsweeper lvl 1
 		q(45039),	-- Hexsweeper lvl 2
 		q(45040),	-- Hexsweeper lvl 3

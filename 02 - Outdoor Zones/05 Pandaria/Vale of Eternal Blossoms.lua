@@ -6,7 +6,7 @@ root(ROOTS.Zones, {
 	m(PANDARIA, {
 		m(VALE_OF_ETERNAL_BLOSSOMS, {
 			["lore"] = "The Vale of Eternal Blossoms is a zone at the center of the continent of Pandaria. The Vale has great cultural importance to both the pandaren and mogu, particularly the Mogu'shan Palace. Formerly known as a Cradle of Life and used as a place of experimentation by the Titans similar to Sholazar Basin and Un'goro Crater, this vale of golden flowers and trees served as the seat of power for the rulers of Pandaria, such as Emperor Shaohao and the mogu rulers following the death of Lei Shen.",
-			["icon"] = "Interface\\Icons\\achievement_zone_valeofeternalblossoms",
+			["icon"] = 618798,
 			["maps"] = {
 				395,	-- Guo-Lai Halls
 				396,	-- The Hall of the Serpent
@@ -16,51 +16,41 @@ root(ROOTS.Zones, {
 					ach(7318),	-- A Taste of History
 					ach(7323),	-- Collateral Damage
 					ach(7320),	-- Dog Pile
-					ach(6979, {	-- Explore Vale of Eternal Blossoms
-						crit(1),	-- Ruins of Guo-Lai
-						crit(2),	-- Mistfall Village
-						crit(3),	-- Mogu'shan Palace
-						crit(4),	-- Setting Sun Garrison
-						crit(5),	-- The Golden Stair
-						crit(6),	-- Shrine of Seven Stars
-						crit(7),	-- The Golden Pagoda
-						crit(8),	-- Tu Shen Burial Ground
-						crit(9),	-- Shrine of Two Moons
-						crit(10),	-- Whitepetal Lake
-						crit(11),	-- The Five Sisters
+					ach(7315, {	-- Eternally in the Vale
+						["timeline"] = { ADDED_5_0_4, REMOVED_5_4_0 },
 					}),
-					ach(7317),	-- One Many Army
+					explorationAch(6979),	-- Explore Vale of Eternal Blossoms
+					ach(7317, {		-- One Many Army
+						crit(20517),		-- Cracklefang
+						crit(20518),		-- Vicejaw
+						crit(20519),		-- General Temuja
+						crit(20520),		-- Shadowmaster Sydow
+						crit(20521, {		-- Aetha
+							["crs"] = { 58778 },
+						}),
+						crit(20522, {		-- Quid
+							["crs"] = { 58771 },
+						}),
+						crit(20523),		-- Spirit of Lao-Fe
+						crit(20524),		-- Baolai the Immolator
+						crit(20525),		-- Gaohun the Soul-Severer
+						crit(20526),		-- Bloodtip
+						crit(20527),		-- Wulon
+						crit(20528),		-- Gochao the Ironfist
+						crit(20529),		-- Huo-Shuang
+						crit(20530),		-- Bai-Jin the Butcher
+						crit(20531),		-- Kri'chon
+						crit(20532),		-- Vyraxxis
+					}),
 					ach(7324, {	-- One Step at a Time
-						crit(1),	-- Complete The Crumbling Hall without taking any damage.
-						crit(2),	-- Complete The Thunder Below without taking any damage.
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(7319, {	-- Ready for Raiding III
-						crit(1),	-- Survival Ring: Flames
-						crit(2),	-- Survival Ring: Blades
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(7322),	-- Roll Club
-					ach(6754, {	-- The Dark Heart of the Mogu
-						["collectible"] = false,
-						["g"] = {
-							crit(4, {	-- The Thunder King
-								["coord"] = { 40.1, 75.6, VALE_OF_ETERNAL_BLOSSOMS },
-							}),
-						},
-					}),
-					ach(6350, {	-- To All the Squirrels I Once Caressed?
-						["collectible"] = false,
-						["g"] = {
-							crit(5, {	-- Dancing Water Skimmer
-								["crs"] = { 65209 },	-- Dancing Water Skimmer
-							}),
-							crit(7, {	-- Gilded Moth
-								["crs"] = { 65205 },	-- Gilded Moth
-							}),
-							crit(8, {	-- Golden Civet
-								["crs"] = { 65206 },	-- Golden Civet
-							}),
-						},
-					}),
+					ach(6546),	-- The Golden Lotus
+					ach(6548),	-- The Lorewalkers
 				}),
 				battlepets({
 					pet(751),	-- Dancing Water Skimmer (PET!)
@@ -70,6 +60,31 @@ root(ROOTS.Zones, {
 					pet(749),	-- Golden Civet (PET!)
 					pet(750),	-- Golden Civet Kitten (PET!)
 					pet(752),	-- Yellow-Bellied Bullfrog (PET!)
+				}),
+				explorationHeader({
+					exploration(6149),	-- Ancestral Rise
+					exploration(6074),	-- Guo-Lai Halls
+					exploration(6144),	-- Jin Yang Road
+					exploration(6031),	-- Mistfall Village
+					exploration(6143),	-- Mogu'shan Palace
+					exploration(6032),	-- Ruins of Guo-Lai
+					exploration(6035),	-- Setting Sun Garrison
+					exploration(6553),	-- Shrine of Seven Stars
+					exploration(6142),	-- Shrine of Seven Stars
+					exploration(6141),	-- Shrine of Two Moons
+					exploration(6554),	-- Shrine of Two Moons
+					exploration(6055),	-- The Five Sisters
+					exploration(6036),	-- The Golden Pagoda
+					exploration(6033),	-- The Golden Stair
+					exploration(6560),	-- The Golden Terrace
+					exploration(6145),	-- The Summer Fields
+					exploration(6482),	-- The Summer Terrace
+					exploration(6037),	-- Tu Shen Burial Ground
+					exploration(6034),	-- Whitepetal Lake
+				}),
+				n(FACTIONS, {
+					faction(FACTION_GOLDEN_LOTUS),	-- Golden Lotus
+					faction(FACTION_THE_LOREWALKERS),	-- The Lorewalkers
 				}),
 				n(FLIGHT_PATHS, {
 					fp(1073, {	-- Serpent's Spine, Vale of Eternal Blossoms
@@ -159,7 +174,7 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 					}),
 					q(31377, {	-- Attack At The Temple of the Jade Serpent (H)
-						["sourceQuests"] = { 31511 },	-- A Witness to History
+						--["sourceQuests"] = { 31511 },	-- A Witness to History
 						["provider"] = { "n", 64001 },	-- Sage Lotusbloom
 						["isDaily"] = true,
 						["coord"] = { 62.7, 23.3, VALE_OF_ETERNAL_BLOSSOMS },
@@ -445,6 +460,9 @@ root(ROOTS.Zones, {
 							33230,	-- A Flash of Bronze...	(Horde)
 							37188,	-- A Flash of Bronze...	(NYI)
 							37194,	-- A Flash of Bronze...	(NYI)
+						},
+						["groups"] = {
+							i(104110),	-- Curious Bronze Timepiece (QI!)
 						},
 					}),
 					q(30635, {	-- Killing the Quilen
@@ -760,18 +778,19 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["u"] = REMOVED_FROM_GAME,
 					}),
-					q(31369, {	-- The Anglers (A)
+					q(31369, {	-- The Anglers [A]
 						["isBreadcrumb"] = true,
 						["provider"] = { "n", 64033 },	-- Master Angler Karu
 						["races"] = ALLIANCE_ONLY,
 						["coord"] = { 86.5, 60.2, VALE_OF_ETERNAL_BLOSSOMS },
-						["u"] = REMOVED_FROM_GAME,	-- tried: fresh character, capped character, character with no general fishing, character with fishing, characters with/without fishing who had and had not approached anglers area, character with/without fishing who had and had not spoken to the fishing trainer in valley of the four winds, and all the same stuff but with characters who did/did not have mop fishing specifically.  if these are available i can't think of any other circumstances under which to test!
+						["timeline"] = { REMOVED_5_1_0, ADDED_10_2_7 },
 					}),
-					q(31370, {	-- The Anglers
-						["isBreadcrumb"] = true,
+					q(31370, {	-- The Anglers [H]
+						["isBreadcrumb"] = true,	-- this wasn't available for me until I party synced, but no follow up quest on turn in... not sure what locks
 						["provider"] = { "n", 64010 },	-- Master Angler Karu
 						["races"] = HORDE_ONLY,
-						["u"] = REMOVED_FROM_GAME,
+						["coord"] = { 60.8, 23.6, VALE_OF_ETERNAL_BLOSSOMS },
+						["timeline"] = { REMOVED_5_1_0, ADDED_10_2_7 },
 					}),
 					q(30225, {	-- The Ashweb Matriarch
 						--["coord"] = { ???, ???, VALE_OF_ETERNAL_BLOSSOMS },	-- TODO
@@ -870,31 +889,31 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["u"] = REMOVED_FROM_GAME,
 					}),
-					q(31390, {	-- The Klaxxi (A)
+					q(31390, {	-- The Klaxxi [A]
 						["coord"] = { 84.4, 61.6, VALE_OF_ETERNAL_BLOSSOMS },
 						["races"] = ALLIANCE_ONLY,
 						["provider"] = { "n", 64488 },	-- Riki the Shifting Shadow
 						["isBreadcrumb"] = true,
 					}),
-					q(31391, {	-- The Klaxxi (H)
+					q(31391, {	-- The Klaxxi [H]
 						["coord"] = { 63.2, 20.8, VALE_OF_ETERNAL_BLOSSOMS },
 						["races"] = HORDE_ONLY,
 						["provider"] = { "n", 64534 },	-- Bowmaster Ku
 						["isBreadcrumb"] = true,
 					}),
-					q(31367, {	-- The Lorewalkers (A)
+					q(31367, {	-- The Lorewalkers [A]
 						["coord"] = { 85.6, 60.2, VALE_OF_ETERNAL_BLOSSOMS },
 						["provider"] = { "n", 64508 },	-- Scrollmaker Resshi
 						["isBreadcrumb"] = true,
 						["races"] = ALLIANCE_ONLY,
-						["u"] = REMOVED_FROM_GAME,
+						["timeline"] = { REMOVED_5_1_0, ADDED_10_2_7 },
 					}),
-					q(31368, {	-- The Lorewalkers (H)
+					q(31368, {	-- The Lorewalkers [H]
 						["coord"] = { 62.4, 21.6, VALE_OF_ETERNAL_BLOSSOMS },
 						["provider"] = { "n", 64531 },	-- Lena Stonebrush
 						["isBreadcrumb"] = true,
 						["races"] = HORDE_ONLY,
-						["u"] = REMOVED_FROM_GAME,
+						["timeline"] = { REMOVED_5_1_0, ADDED_10_2_7 },
 					}),
 					q(30645, {	-- The Might of Three
 						["coord"] = { 56.6, 43.6, VALE_OF_ETERNAL_BLOSSOMS },
@@ -1181,7 +1200,7 @@ root(ROOTS.Zones, {
 					n(58778, {	-- Aetha
 						["coord"] = { 35.0, 89.9, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(5, {	-- Aetha
+							crit(20521, {	-- Aetha
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1190,9 +1209,6 @@ root(ROOTS.Zones, {
 					n(50822, {	-- Ai-Ran the Shifting Cloud
 						["coord"] = { 42.8, 69.2, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(42, {	-- Ai-Ran the Shifting Cloud
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(86590),	-- Essence of the Breeze (TOY!)
 						},
 					}),
@@ -1213,7 +1229,7 @@ root(ROOTS.Zones, {
 					n(58949, {	-- Bai-Jin the Butcher
 						["coord"] = { 17.0, 48.7, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(14, {	-- Bai-Jin the Butcher
+							crit(20530, {	-- Bai-Jin the Butcher
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1222,7 +1238,7 @@ root(ROOTS.Zones, {
 					n(63695, {	-- Baolai the Immolator
 						["coord"] = { 28.7, 43.3, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(8, {	-- Baolai the Immolator
+							crit(20524, {	-- Baolai the Immolator
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1234,7 +1250,7 @@ root(ROOTS.Zones, {
 							{ 22.4, 26.7, 395 },	-- Entrance
 						},
 						["g"] = {
-							crit(10, {	-- Bloodtip
+							crit(20526, {	-- Bloodtip
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1243,7 +1259,7 @@ root(ROOTS.Zones, {
 					n(58768, {	-- Cracklefang
 						["coord"] = { 46.4, 59.3, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(1, {	-- Cracklefang
+							crit(20517, {	-- Cracklefang
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1255,7 +1271,7 @@ root(ROOTS.Zones, {
 							{ 22.4, 26.7, 395 },	-- Entrance
 						},
 						["g"] = {
-							crit(9, {	-- Gaohun the Soul-Severer
+							crit(20525, {	-- Gaohun the Soul-Severer
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1267,7 +1283,7 @@ root(ROOTS.Zones, {
 							{ 28.9, 56.3, VALE_OF_ETERNAL_BLOSSOMS },
 						},
 						["g"] = {
-							crit(3, {	-- General Temuja
+							crit(20519, {	-- General Temuja
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1276,7 +1292,7 @@ root(ROOTS.Zones, {
 					n(62880, {	-- Gochao the Ironfist
 						["coord"] = { 26.86, 13.08, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(12, {	-- Gochao the Ironfist
+							crit(20528, {	-- Gochao the Ironfist
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1289,7 +1305,7 @@ root(ROOTS.Zones, {
 							{ 22.43, 26.75, 395 },	-- Entrance
 						},
 						["g"] = {
-							crit(13, {	-- Huo-Shuang
+							crit(20529, {	-- Huo-Shuang
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1298,25 +1314,19 @@ root(ROOTS.Zones, {
 					n(50749, {	-- Kal'tik the Blight
 						["coord"] = { 14.0, 58.6, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(21, {	-- Kal'tik the Blight
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(134023),	-- Bottled Tornado (TOY!)
 						},
 					}),
 					n(50349, {	-- Kang the Soul Thief
 						["coord"] = { 15.2, 35.2, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(28, {	-- Kang the Soul Thief
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(86571),	-- Kang's Bindstone (TOY!)
 						},
 					}),
 					n(63978, {	-- Kri'chon
 						["coord"] = { 6.27, 58.5, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(15, {	-- Kri'chon
+							crit(20531, {	-- Kri'chon
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1325,9 +1335,6 @@ root(ROOTS.Zones, {
 					n(50840, {	-- Major Nanners
 						["coord"] = { 30.7, 91.5, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(7, {	-- Major Nanners
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(86594),	-- Helpful Wikky's Whistle (TOY!)
 						},
 					}),
@@ -1337,16 +1344,13 @@ root(ROOTS.Zones, {
 							{ 34.8, 60.7, VALE_OF_ETERNAL_BLOSSOMS },
 						},
 						["g"] = {
-							crit(49, {	-- Moldo One-Eye
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(86586),	-- Panflute of Pandaria (TOY!)
 						},
 					}),
 					n(58771, {	-- Quid
 						["coord"] = { 66.4, 39.3, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(6, {	-- Quid
+							crit(20522, {	-- Quid
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1355,16 +1359,13 @@ root(ROOTS.Zones, {
 					n(50780, {	-- Sahn Tidehunter
 						["coord"] = { 69.4, 30.5, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(14, {	-- Sahn Tidehunter
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(86582),	-- Aqua Jewel (TOY!)
 						},
 					}),
 					n(63240, {	-- Shadowmaster Sydow
 						["coord"] = { 30.5, 78.4, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(4, {	-- Shadowmaster Sydow
+							crit(20520, {	-- Shadowmaster Sydow
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1373,7 +1374,7 @@ root(ROOTS.Zones, {
 					n(58817, {	-- Spirit of Lao-Fe
 						["coord"] = { 47.4, 65.6, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(7, {	-- Spirit of Lao-Fe
+							crit(20523, {	-- Spirit of Lao-Fe
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1382,16 +1383,13 @@ root(ROOTS.Zones, {
 					n(50359, {	-- Urgolax
 						["coord"] = { 39.5, 25.1, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(35, {	-- Urgolax
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(86575),	-- Chalice of Secrets (TOY!)
 						},
 					}),
 					n(58769, {	-- Vicejaw
 						["coord"] = { 37.4, 50.9, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(2, {	-- Vicejaw
+							crit(20518, {	-- Vicejaw
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1400,19 +1398,19 @@ root(ROOTS.Zones, {
 					n(63977, {	-- Vyraxxis
 						["coord"] = { 7.92, 33.8, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(16, {	-- Vyraxxis
+							crit(20532, {	-- Vyraxxis
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
 						},
 					}),
-					n(63510, {	-- Wulon
+					n(63509, {	-- Wulon
 						["coords"] = {
 							{ 45.3, 76.3, VALE_OF_ETERNAL_BLOSSOMS },
 							{ 40.2, 77.1, VALE_OF_ETERNAL_BLOSSOMS },
 						},
 						["g"] = {
-							crit(11, {	-- Wulon
+							crit(20527, {	-- Wulon
 								["achievementID"] = 7317,	-- One Many Army
 							}),
 							i(103624),	-- Treasures of the Vale
@@ -1421,9 +1419,6 @@ root(ROOTS.Zones, {
 					n(50336, {	-- Yorik Sharpeye
 						["coord"] = { 88.0, 44.3, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
-							crit(56, {	-- Yorik Sharpeye
-								["achievementID"] = 7439,	-- Glorious!
-							}),
 							i(86568),	-- Mr. Smite's Brass Compass (TOY!)
 						},
 					}),
@@ -1633,77 +1628,83 @@ root(ROOTS.Zones, {
 							{ 84.2, 62.7, VALE_OF_ETERNAL_BLOSSOMS },	-- Alliance
 							{ 63.2, 22.0, VALE_OF_ETERNAL_BLOSSOMS },	-- Horde
 						},
-						["g"] = {
-							i(89071),	-- Alani's Inflexible Ring
-							i(89527),	-- Amulet of Swirling Mists
-							i(89070),	-- Anji's Keepsake
-							i(89423),	-- Battleguard of Guo-Lai
-							i(89642),	-- Bracers of Eternal Resolve
-							i(89648),	-- Bracers of Inner Light
-							i(89430),	-- Breastplate of the Golden Pagoda
-							i(89421),	-- Cuirass of the Twin Monoliths
-							i(89420),	-- Dawnblade's Chestguard
-							i(89797),	-- Golden Lotus Tabard
-							i(89531),	-- Gorget of Usurped Kings
-							i(93215),	-- Grand Commendation of the Golden Lotus
-							i(89341),	-- Imperion Spaulders
-							i(89663),	-- Leggings of Twisted Vines
-							i(89073),	-- Leven's Circle of Hope
-							i(89340),	-- Mantle of the Golden Sun
-							i(89343),	-- Mindbender Shoulders
-							i(89432, {	-- Mistfall Robes
-								["cost"] = 5019100,	-- 501g 91s
-							}),
-							i(89232),	-- Mogu Rune of Paralysis
-							i(89528),	-- Necklace of Jade Pearls
-							i(89347),	-- Paleblade Shoulderguards
-							i(86235),	-- Pattern: Angerhide Leg Armor (RECIPE!)
-							i(86237),	-- Pattern: Chestguard of Earthen Harmony (RECIPE!)
-							i(86371),	-- Pattern: Gloves of Creation
-							i(86273),	-- Pattern: Gloves of Earthen Harmony (RECIPE!)
-							i(86376),	-- Pattern: Greater Cerulean Spellthread
-							i(86375),	-- Pattern: Greater Pearlescent Spellthread
-							i(86274),	-- Pattern: Greyshadow Chestguard (RECIPE!)
-							i(86275),	-- Pattern: Greyshadow Gloves (RECIPE!)
-							i(86276),	-- Pattern: Ironscale Leg Armor (RECIPE!)
-							i(86277),	-- Pattern: Lifekeeper's Gloves (RECIPE!)
-							i(86278),	-- Pattern: Lifekeeper's Robe (RECIPE!)
-							i(86370),	-- Pattern: Robes of Creation
-							i(86295),	-- Pattern: Shadowleather Leg Armor (RECIPE!)
-							i(86369),	-- Pattern: Spelltwister's Gloves
-							i(86368),	-- Pattern: Spelltwister's Grand Robe
-							i(86308),	-- Pattern: Wildblood Gloves (RECIPE!)
-							i(86309),	-- Pattern: Wildblood Vest (RECIPE!)
-							i(89529),	-- Pendant of Endless Inquisition
-							i(87781, {	-- Azure Riding Crane (MOUNT!)
-								["cost"] = 5000000,	-- 500g
-							}),
-							i(87782, {	-- Golden Riding Crane (MOUNT!)
-								["cost"] = 25000000,	-- 2,500g
-							}),
-							i(87783, {	-- Regal Riding Crane (MOUNT!)
-								["cost"] = 15000000,	-- 1,500g
-							}),
-							i(89069),	-- Ring of the Golden Stair
-							i(89434),	-- Robe of the Five Sisters
-							i(89429),	-- Robes of the Setting Sun
-							i(89649),	-- Serrated Forearm Guards
-							i(89346),	-- Shoulders of Autumnlight
-							i(89072),	-- Simple Harmonious Ring
-							i(89662),	-- Snowpack Waders
-							i(89431, {	-- Softfoot Silentwrap
-								["cost"] = 5001400,	-- 500g 14s
-							}),
-							i(89345),	-- Stonetoe Spaulders
-							i(89653),	-- Surehand Grips
-							i(89339),	-- Tenderheart Shoulders
-							i(89643),	-- Tranquility Bindings
-							i(89530),	-- Triumphant Conqueror's Chain
-							i(89433),	-- Vestments of Thundering Skies
-							i(89652),	-- Wandering Friar's Gloves
-							i(89342),	-- Whitepetal Shouldergarb
-							i(89344),	-- Windwalker Spaulders
-						},
+						["g"] = bubbleDownClassicRep(FACTION_GOLDEN_LOTUS, {
+							{		-- Neutral
+								i(89071),	-- Alani's Inflexible Ring
+								i(89527),	-- Amulet of Swirling Mists
+								i(89070),	-- Anji's Keepsake
+								i(89423),	-- Battleguard of Guo-Lai
+								i(89642),	-- Bracers of Eternal Resolve
+								i(89648),	-- Bracers of Inner Light
+								i(89430),	-- Breastplate of the Golden Pagoda
+								i(89421),	-- Cuirass of the Twin Monoliths
+								i(89420),	-- Dawnblade's Chestguard
+								i(89531),	-- Gorget of Usurped Kings
+								i(89341),	-- Imperion Spaulders
+								i(89663),	-- Leggings of Twisted Vines
+								i(89073),	-- Leven's Circle of Hope
+								i(89340),	-- Mantle of the Golden Sun
+								i(89343),	-- Mindbender Shoulders
+								i(89432, {	-- Mistfall Robes
+									["cost"] = 5019100,	-- 501g 91s
+								}),
+								i(89232),	-- Mogu Rune of Paralysis
+								i(89528),	-- Necklace of Jade Pearls
+								i(89347),	-- Paleblade Shoulderguards
+								i(89529),	-- Pendant of Endless Inquisition
+								i(89069),	-- Ring of the Golden Stair
+								i(89434),	-- Robe of the Five Sisters
+								i(89429),	-- Robes of the Setting Sun
+								i(89649),	-- Serrated Forearm Guards
+								i(89346),	-- Shoulders of Autumnlight
+								i(89072),	-- Simple Harmonious Ring
+								i(89662),	-- Snowpack Waders
+								i(89431, {	-- Softfoot Silentwrap
+									["cost"] = 5001400,	-- 500g 14s
+								}),
+								i(89345),	-- Stonetoe Spaulders
+								i(89653),	-- Surehand Grips
+								i(89339),	-- Tenderheart Shoulders
+								i(89643),	-- Tranquility Bindings
+								i(89530),	-- Triumphant Conqueror's Chain
+								i(89433),	-- Vestments of Thundering Skies
+								i(89652),	-- Wandering Friar's Gloves
+								i(89342),	-- Whitepetal Shouldergarb
+								i(89344),	-- Windwalker Spaulders
+							}, {	-- Friendly
+							}, {	-- Honored
+								i(86235),	-- Pattern: Angerhide Leg Armor (RECIPE!)
+								i(86237),	-- Pattern: Chestguard of Earthen Harmony (RECIPE!)
+								i(86371),	-- Pattern: Gloves of Creation
+								i(86273),	-- Pattern: Gloves of Earthen Harmony (RECIPE!)
+								i(86376),	-- Pattern: Greater Cerulean Spellthread
+								i(86375),	-- Pattern: Greater Pearlescent Spellthread
+								i(86274),	-- Pattern: Greyshadow Chestguard (RECIPE!)
+								i(86275),	-- Pattern: Greyshadow Gloves (RECIPE!)
+								i(86276),	-- Pattern: Ironscale Leg Armor (RECIPE!)
+								i(86277),	-- Pattern: Lifekeeper's Gloves (RECIPE!)
+								i(86278),	-- Pattern: Lifekeeper's Robe (RECIPE!)
+								i(86370),	-- Pattern: Robes of Creation
+								i(86295),	-- Pattern: Shadowleather Leg Armor (RECIPE!)
+								i(86369),	-- Pattern: Spelltwister's Gloves
+								i(86368),	-- Pattern: Spelltwister's Grand Robe
+								i(86308),	-- Pattern: Wildblood Gloves (RECIPE!)
+								i(86309),	-- Pattern: Wildblood Vest (RECIPE!)
+							}, {	-- Revered
+								i(93215),	-- Grand Commendation of the Golden Lotus
+							}, {	-- Exalted
+								i(89797),	-- Golden Lotus Tabard
+								i(87781, {	-- Reins of the Azure Riding Crane (MOUNT!)
+									["cost"] = 5000000,	-- 500g
+								}),
+								i(87782, {	-- Reins of the Golden Riding Crane (MOUNT!)
+									["cost"] = 25000000,	-- 2,500g
+								}),
+								i(87783, {	-- Reins of the Regal Riding Crane (MOUNT!)
+									["cost"] = 15000000,	-- 1,500g
+								}),
+							},
+						}),
 					}),
 					n(66973, {	-- Kai Featherfall <Phoenix Egg Trader>
 						["coord"] = { 82.2, 34.0, VALE_OF_ETERNAL_BLOSSOMS },
@@ -1834,135 +1835,157 @@ root(ROOTS.Zones, {
 						["coord"] = { 82.0, 29.3, VALE_OF_ETERNAL_BLOSSOMS },
 						["g"] = {
 							i(137788, {	-- Technique: Songs of Peace (RECIPE!)
-								["timeline"] = { "added 7.0.3" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
 					n(64001, {	-- Sage Lotusbloom <The August Celestials Quartermaster>
 						["coord"] = { 62.7, 23.3, VALE_OF_ETERNAL_BLOSSOMS },
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							i(89799),	-- August Celestials Tabard
-							i(88880),	-- Battle Shadow Bracers
-							i(89532),	-- Bladesong Cloak
-							i(88876),	-- Boots of the High Adept
-							i(88892),	-- Bracers of Inlaid Jade
-							i(88879),	-- Braided Black and White Bracer
-							i(88865),	-- Bramblestaff Boots
-							i(88883),	-- Brewmaster Chani's Bracers
-							i(89124),	-- Celestial Offering
-							i(88885),	-- Clever Ashyo's Armbands
-							i(89533),	-- Cloak of Ancient Curses
-							i(89537),	-- Cloak of the Silent Mountain
-							i(88881),	-- Fallen Sentinel Bracers
-							i(88744),	-- Fingers of the Loneliest Monk
-							i(84561),	-- Formula: Enchant Bracer - Exceptional Strength (RECIPE!)
-							i(84557),	-- Formula: Enchant Bracer - Greater Agility (RECIPE!)
-							i(84559),	-- Formula: Enchant Bracer - Super Intellect (RECIPE!)
-							i(88749),	-- Gauntlets of Jade Sutras
-							i(88741),	-- Gloves of Red Feathers
-							i(88746),	-- Gloves of the Overwhelming Swarm
-							i(93224),	-- Grand Commendation of the August Celestials
-							i(89665),	-- Leggings of Ponderous Advance
-							i(89659),	-- Leggings of Unfinished Conquest
-							i(88893),	-- Minh's Beaten Bracers
-							i(89668),	-- Mountain Stream Ringmail
-							i(88743),	-- Ogo's Elder Gloves
-							i(86377),	-- Pattern: Royal Satchel
-							i(89534),	-- Pressed Flower Cloak
-							i(88884),	-- Quillpaw Family Bracers
-							i(88748),	-- Ravenmane's Gloves
-							i(89667),	-- Refurbished Zandalari Vestment
-							i(89304, {	-- Thundering August Cloud Serpent (MOUNT!)
-								["cost"] = 100000000,	-- 10,000g
-							}),
-							i(89535),	-- Ribcracker's Cloak
-							i(88867),	-- Sandals of the Elder Sage
-							i(88745),	-- Sentinel Commander's Gauntlets
-							i(88866),	-- Steps of the War Serpent
-							i(88877),	-- Storm-Sing Sandals
-							i(88747),	-- Streetfighter's Iron Knuckles
-							i(89658),	-- Subversive Leggings
-							i(88742),	-- Sunspeaker's Flared Gloves
-							i(88862),	-- Tankiss Warstompers
-							i(88882),	-- Tiger-Striped Wristguards
-							i(88868),	-- Tukka-Tuk's Hairy Boots
-							i(89669),	-- Undergrowth Stalker Chestpiece
-							i(89664),	-- Valiant's Shinguards
-							i(89666),	-- Vestment of the Ascendant Tribe
-							i(88878),	-- Void Flame Slippers
-							i(88864),	-- Yu'lon Guardian Boots
-						},
+						["g"] = bubbleDownClassicRep(FACTION_THE_AUGUST_CELESTIALS, {
+							{		-- Neutral
+								i(88880),	-- Battle Shadow Bracers
+								i(89532),	-- Bladesong Cloak
+								i(88876),	-- Boots of the High Adept
+								i(88892),	-- Bracers of Inlaid Jade
+								i(88879),	-- Braided Black and White Bracer
+								i(88865),	-- Bramblestaff Boots
+								i(88883),	-- Brewmaster Chani's Bracers
+								i(88885),	-- Clever Ashyo's Armbands
+								i(89533),	-- Cloak of Ancient Curses
+								i(89537),	-- Cloak of the Silent Mountain
+								i(88881),	-- Fallen Sentinel Bracers
+								i(88744),	-- Fingers of the Loneliest Monk
+								i(88749),	-- Gauntlets of Jade Sutras
+								i(88741),	-- Gloves of Red Feathers
+								i(88746),	-- Gloves of the Overwhelming Swarm
+								i(89665),	-- Leggings of Ponderous Advance
+								i(89659),	-- Leggings of Unfinished Conquest
+								i(88893),	-- Minh's Beaten Bracers
+								i(89668),	-- Mountain Stream Ringmail
+								i(88743),	-- Ogo's Elder Gloves
+								i(89534),	-- Pressed Flower Cloak
+								i(88884),	-- Quillpaw Family Bracers
+								i(88748),	-- Ravenmane's Gloves
+								i(89667),	-- Refurbished Zandalari Vestment
+								i(89535),	-- Ribcracker's Cloak
+								i(88867),	-- Sandals of the Elder Sage
+								i(88745),	-- Sentinel Commander's Gauntlets
+								i(88866),	-- Steps of the War Serpent
+								i(88877),	-- Storm-Sing Sandals
+								i(88747),	-- Streetfighter's Iron Knuckles
+								i(89658),	-- Subversive Leggings
+								i(88742),	-- Sunspeaker's Flared Gloves
+								i(88862),	-- Tankiss Warstompers
+								i(88882),	-- Tiger-Striped Wristguards
+								i(88868),	-- Tukka-Tuk's Hairy Boots
+								i(89669),	-- Undergrowth Stalker Chestpiece
+								i(89664),	-- Valiant's Shinguards
+								i(89666),	-- Vestment of the Ascendant Tribe
+								i(88878),	-- Void Flame Slippers
+								i(88864),	-- Yu'lon Guardian Boots
+							}, {	-- Friendly
+							}, {	-- Honored
+								i(89124),	-- Celestial Offering
+							}, {	-- Revered
+								i(84561),	-- Formula: Enchant Bracer - Exceptional Strength (RECIPE!)
+								i(84557),	-- Formula: Enchant Bracer - Greater Agility (RECIPE!)
+								i(84559),	-- Formula: Enchant Bracer - Super Intellect (RECIPE!)
+								i(93224),	-- Grand Commendation of the August Celestials
+							}, {	-- Exalted
+								i(89799),	-- August Celestials Tabard
+								i(86377),	-- Pattern: Royal Satchel
+								i(89304, {	-- Reins of the Thundering August Cloud Serpent (MOUNT!)
+									["cost"] = 100000000,	-- 10,000g
+								}),
+							},
+						}),
 					}),
 					n(64032, {	-- Sage Whiteheart <The August Celestials Quartermaster>
 						["coord"] = { 84.6, 63.8, VALE_OF_ETERNAL_BLOSSOMS },
 						["races"] = ALLIANCE_ONLY,
-						["g"] = {
-							i(89799),	-- August Celestials Tabard
-							i(88880),	-- Battle Shadow Bracers
-							i(89532),	-- Bladesong Cloak
-							i(88876),	-- Boots of the High Adept
-							i(88892),	-- Bracers of Inlaid Jade
-							i(88879),	-- Braided Black and White Bracer
-							i(88865),	-- Bramblestaff Boots
-							i(88883),	-- Brewmaster Chani's Bracers
-							i(89124),	-- Celestial Offering
-							i(88885),	-- Clever Ashyo's Armbands
-							i(89533),	-- Cloak of Ancient Curses
-							i(89537),	-- Cloak of the Silent Mountain
-							i(88881),	-- Fallen Sentinel Bracers
-							i(88744),	-- Fingers of the Loneliest Monk
-							i(84561),	-- Formula: Enchant Bracer - Exceptional Strength (RECIPE!)
-							i(84557),	-- Formula: Enchant Bracer - Greater Agility (RECIPE!)
-							i(84559),	-- Formula: Enchant Bracer - Super Intellect (RECIPE!)
-							i(88749),	-- Gauntlets of Jade Sutras
-							i(88741),	-- Gloves of Red Feathers
-							i(88746),	-- Gloves of the Overwhelming Swarm
-							i(93224),	-- Grand Commendation of the August Celestials
-							i(89665),	-- Leggings of Ponderous Advance
-							i(89659),	-- Leggings of Unfinished Conquest
-							i(88893),	-- Minh's Beaten Bracers
-							i(89668),	-- Mountain Stream Ringmail
-							i(88743),	-- Ogo's Elder Gloves
-							i(86377),	-- Pattern: Royal Satchel
-							i(89534),	-- Pressed Flower Cloak
-							i(88884),	-- Quillpaw Family Bracers
-							i(88748),	-- Ravenmane's Gloves
-							i(89667),	-- Refurbished Zandalari Vestment
-							i(89304, {	-- Thundering August Cloud Serpent (MOUNT!)
-								["cost"] = 100000000,	-- 10,000g
-							}),
-							i(89535),	-- Ribcracker's Cloak
-							i(88867),	-- Sandals of the Elder Sage
-							i(88745),	-- Sentinel Commander's Gauntlets
-							i(88866),	-- Steps of the War Serpent
-							i(88877),	-- Storm-Sing Sandals
-							i(88747),	-- Streetfighter's Iron Knuckles
-							i(89658),	-- Subversive Leggings
-							i(88742),	-- Sunspeaker's Flared Gloves
-							i(88862),	-- Tankiss Warstompers
-							i(88882),	-- Tiger-Striped Wristguards
-							i(88868),	-- Tukka-Tuk's Hairy Boots
-							i(89669),	-- Undergrowth Stalker Chestpiece
-							i(89664),	-- Valiant's Shinguards
-							i(89666),	-- Vestment of the Ascendant Tribe
-							i(88878),	-- Void Flame Slippers
-							i(88864),	-- Yu'lon Guardian Boots
-						},
+						["g"] = bubbleDownClassicRep(FACTION_THE_AUGUST_CELESTIALS, {
+							{		-- Neutral
+								i(88880),	-- Battle Shadow Bracers
+								i(89532),	-- Bladesong Cloak
+								i(88876),	-- Boots of the High Adept
+								i(88892),	-- Bracers of Inlaid Jade
+								i(88879),	-- Braided Black and White Bracer
+								i(88865),	-- Bramblestaff Boots
+								i(88883),	-- Brewmaster Chani's Bracers
+								i(88885),	-- Clever Ashyo's Armbands
+								i(89533),	-- Cloak of Ancient Curses
+								i(89537),	-- Cloak of the Silent Mountain
+								i(88881),	-- Fallen Sentinel Bracers
+								i(88744),	-- Fingers of the Loneliest Monk
+								i(88749),	-- Gauntlets of Jade Sutras
+								i(88741),	-- Gloves of Red Feathers
+								i(88746),	-- Gloves of the Overwhelming Swarm
+								i(89665),	-- Leggings of Ponderous Advance
+								i(89659),	-- Leggings of Unfinished Conquest
+								i(88893),	-- Minh's Beaten Bracers
+								i(89668),	-- Mountain Stream Ringmail
+								i(88743),	-- Ogo's Elder Gloves
+								i(89534),	-- Pressed Flower Cloak
+								i(88884),	-- Quillpaw Family Bracers
+								i(88748),	-- Ravenmane's Gloves
+								i(89667),	-- Refurbished Zandalari Vestment
+								i(89535),	-- Ribcracker's Cloak
+								i(88867),	-- Sandals of the Elder Sage
+								i(88745),	-- Sentinel Commander's Gauntlets
+								i(88866),	-- Steps of the War Serpent
+								i(88877),	-- Storm-Sing Sandals
+								i(88747),	-- Streetfighter's Iron Knuckles
+								i(89658),	-- Subversive Leggings
+								i(88742),	-- Sunspeaker's Flared Gloves
+								i(88862),	-- Tankiss Warstompers
+								i(88882),	-- Tiger-Striped Wristguards
+								i(88868),	-- Tukka-Tuk's Hairy Boots
+								i(89669),	-- Undergrowth Stalker Chestpiece
+								i(89664),	-- Valiant's Shinguards
+								i(89666),	-- Vestment of the Ascendant Tribe
+								i(88878),	-- Void Flame Slippers
+								i(88864),	-- Yu'lon Guardian Boots
+							}, {	-- Friendly
+							}, {	-- Honored
+								i(89124),	-- Celestial Offering
+							}, {	-- Revered
+								i(84561),	-- Formula: Enchant Bracer - Exceptional Strength (RECIPE!)
+								i(84557),	-- Formula: Enchant Bracer - Greater Agility (RECIPE!)
+								i(84559),	-- Formula: Enchant Bracer - Super Intellect (RECIPE!)
+								i(93224),	-- Grand Commendation of the August Celestials
+							}, {	-- Exalted
+								i(89799),	-- August Celestials Tabard
+								i(86377),	-- Pattern: Royal Satchel
+								i(89304, {	-- Reins of the Thundering August Cloud Serpent (MOUNT!)
+									["cost"] = 100000000,	-- 10,000g
+								}),
+							},
+						}),
 					}),
 					n(64605, {	-- Tan Shin Tiao <Lorewalkers Quartermaster>
 						["coord"] = { 82.2, 29.4, VALE_OF_ETERNAL_BLOSSOMS },
-						["g"] = {
-							i(89363, {	-- Red Flying Cloud (MOUNT!)
-								["cost"] = 6000000,	-- 600g
-							}),
-							i(93230),	-- Grand Commendation of the Lorewalkers
-							i(89795),	-- Lorewalkers Tabard
-							i(104198, {	-- Mantid Artifact Hunter's Kit
-								["cost"] = { { "i", 87399, 2 }, },	-- 2x Restored Artifact
-							}),
-							i(122221),	-- Music Roll: Song of Liu Lang
-						},
+						["g"] = bubbleDownClassicRep(FACTION_THE_LOREWALKERS, {
+							{		-- Neutral
+							}, {	-- Friendly
+							}, {	-- Honored
+							}, {	-- Revered
+								i(93230),	-- Grand Commendation of the Lorewalkers
+								i(122221, {	-- Music Roll: Song of Liu Lang
+									["timeline"] = { ADDED_6_1_0 },
+								}),
+							}, {	-- Exalted
+								i(89363, {	-- Red Flying Cloud (MOUNT!)
+									["cost"] = 6000000,	-- 600g
+								}),
+								i(87548),	-- Lorewalker's Lodestone
+								i(87549),	-- Lorewalkers Map
+								i(89795),	-- Lorewalkers Tabard
+								i(104198, {	-- Mantid Artifact Hunter's Kit
+									["cost"] = { { "i", 87399, 2 }, },	-- 2x Restored Artifact
+								}),
+							},
+						}),
 					}),
 				}),
 				n(ZONE_DROPS, {
@@ -1971,12 +1994,24 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(90470),	-- Design: Jade Owl
 							i(90471),	-- Design: Sapphire Cub
-							i(101768),	-- Recipe: Farmer's Delight
-							i(101770),	-- Recipe: Fluffy Silkfeather Omelet
-							i(101767),	-- Recipe: Mango Ice (RECIPE!)
-							i(101765),	-- Recipe: Seasoned Pomfruit Slices
-							i(101766),	-- Recipe: Spiced Blossom Soup
-							i(101769),	-- Recipe: Stuffed Lushrooms
+							i(101768, {	-- Recipe: Farmer's Delight (RECIPE!)
+								["timeline"] = { ADDED_5_4_0 },
+							}),
+							i(101770, {	-- Recipe: Fluffy Silkfeather Omelet (RECIPE!)
+								["timeline"] = { ADDED_5_4_0 },
+							}),
+							i(101767, {	-- Recipe: Mango Ice (RECIPE!)
+								["timeline"] = { ADDED_5_4_0 },
+							}),
+							i(101765, {	-- Recipe: Seasoned Pomfruit Slices (RECIPE!)
+								["timeline"] = { ADDED_5_4_0 },
+							}),
+							i(101766, {	-- Recipe: Spiced Blossom Soup (RECIPE!)
+								["timeline"] = { ADDED_5_4_0 },
+							}),
+							i(101769, {	-- Recipe: Stuffed Lushrooms (RECIPE!)
+								["timeline"] = { ADDED_5_4_0 },
+							}),
 							i(90815),	-- Relic of Guo-Lai
 							i(103624),	-- Treasures of the Vale
 							i(102541),	-- Aged Balsamic Vinegar
@@ -1986,6 +2021,13 @@ root(ROOTS.Zones, {
 							i(76061, {	-- Spirit of Harmony
 								["cost"] = { { "i", 89112, 10 } },	-- 10x Mote of Harmony (adding as this is the only Sourced entry for the Spirit of Harmony currently)
 							}),
+						},
+					}),
+					i(85582, {	-- Shao-Tien Cage Key
+						["crs"] = {
+							63641,	-- Shao-Tien Torturer
+							63610,	-- Shao-Tien Dominator
+							63611,	-- Shao-Tien Soul-Caller
 						},
 					}),
 					i(86547),	-- Skyshard
@@ -1999,7 +2041,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers,{
-	tier(MOP_TIER, {
+	expansion(EXPANSION.MOP, {
 		q(31652),	-- Roll Club: Serpent's Spine Tracking Quest
 	}),
 });

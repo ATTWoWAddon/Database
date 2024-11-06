@@ -1,12 +1,16 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
+local VAULT_OF_THE_INCARNATES = 2390;
+local SymRaidVault = function(ClassID, DiffID)
+	return {{"sub","instance_tier",1200,DiffID,ClassID}};
+end
 local function bo(questID, isWeekly)
     return { ["questID"] = questID, ["isWeekly"] = isWeekly };
 end
 
 local ELEMENTAL_OVERFLOW = 2118;
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(PRIMAL_STORMS, {
 		["maps"] = { VALDRAKKEN },
 		["g"] = {
@@ -127,6 +131,11 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						16461,	-- Stormed Off
 						16502,	-- Storming the Runway
 					}},
+					["g"] = {
+						i(192774, {	-- Coralscale Salamanther (MOUNT!)
+							["timeline"] = { ADDED_10_2_6 },
+						}),
+					},
 				}),
 				ach(16490, {	-- Storm Chaser
 					-- Meta Achievement
@@ -139,58 +148,58 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				}),
 				ach(16461, {	-- Stormed Off
 					["g"] = {
-						crit(1, {
+						crit(55461, {
 							["_npcs"] = { 193648 },	-- Infernum
 						}),
-						crit(2, {
+						crit(55462, {
 							["_npcs"] = { 193645 },	-- Crystalus
 						}),
-						crit(3, {
+						crit(55463, {
 							["_npcs"] = { 193644 },	-- Bouldron
 						}),
-						crit(4, {
+						crit(55464, {
 							["_npcs"] = { 193647 },	-- Karantun
 						}),
-						crit(5, {
+						crit(55465, {
 							["_npcs"] = { 193686 },	-- Neela Firebane
 						}),
-						crit(6, {
+						crit(55466, {
 							["_npcs"] = { 193682 },	-- Rouen Icewind
 						}),
-						crit(7, {
+						crit(55467, {
 							["_npcs"] = { 193680 },	-- Zurgaz Corebreaker
 						}),
-						crit(8, {
+						crit(55468, {
 							["_npcs"] = { 193684 },	-- Pipspark Thundersnap
 						}),
-						crit(9, {
+						crit(55469, {
 							["_npcs"] = { 193652 },	-- Grizzlerock
 						}),
-						crit(10, {
+						crit(55470, {
 							["_npcs"] = { 193674 },	-- Voraazka
 						}),
-						crit(11, {
+						crit(55471, {
 							["_npcs"] = { 193675 },	-- Kain Firebrand
 						}),
-						crit(12, {
+						crit(55472, {
 							["_npcs"] = { 193677 },	-- Maeleera <First Iceblade>
 						}),
-						crit(13, {
+						crit(55473, {
 							["_npcs"] = { 193678 },	-- Fieraan <Second Iceblade>
 						}),
-						crit(14, {
+						crit(55474, {
 							["_npcs"] = { 193679 },	-- Leerain <Third Iceblade>
 						}),
-						crit(15, {
+						crit(55475, {
 							["_npcs"] = { 193653 },	-- Gaelzion <Progeny of Air>
 						}),
-						crit(16, {
+						crit(55476, {
 							["_npcs"] = { 193654 },	-- Gravlion <Progeny of Earth>
 						}),
-						crit(17, {
+						crit(55477, {
 							["_npcs"] = { 193650 },	-- Emblazion <Progeny of Fire>
 						}),
-						crit(18, {
+						crit(55478, {
 							["_npcs"] = { 193655 },	-- Frozion <Progeny of Water>
 						}),
 					},
@@ -220,6 +229,12 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					193674,	-- Voraazka
 					193680,	-- Zurgaz Corebreaker
 				},
+				["maps"] = {
+					OHNAHRAN_PLAINS,
+					THALDRASZUS,
+					THE_AZURE_SPAN,
+					THE_WAKING_SHORES,
+				},
 				["g"] = {
 					i(194641),	-- Design: Elemental Lariat (RECIPE!)
 					i(200199),	-- Elements' Burden
@@ -233,18 +248,33 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 			}),
 			n(HEIRLOOMS, {
-				i(199686, {	-- Unstable Elemental Confluence
-					["cost"] = {
-						{ "i", 199837, 1 },	-- 1x Dimmed Primeval Earth
-						{ "i", 199836, 1 },	-- 1x Dimmed Primeval Fire
-						{ "i", 199838, 1 },	-- 1x Dimmed Primeval Storm
-						{ "i", 199839, 1 },	-- 1x Dimmed Primeval Water
-					},
-				}),
+				["maps"] = {
+					OHNAHRAN_PLAINS,
+					THALDRASZUS,
+					THE_AZURE_SPAN,
+					THE_WAKING_SHORES,
+				},
+				["g"] = {
+					i(199686, {	-- Unstable Elemental Confluence
+						["cost"] = {
+							{ "i", 199837, 1 },	-- 1x Dimmed Primeval Earth
+							{ "i", 199836, 1 },	-- 1x Dimmed Primeval Fire
+							{ "i", 199838, 1 },	-- 1x Dimmed Primeval Storm
+							{ "i", 199839, 1 },	-- 1x Dimmed Primeval Water
+						},
+					}),
+				},
 			}),
 			petbattle(filter(BATTLE_PETS, {
 				pet(3384, {	-- Storm-Touched Bluefeather (PET!)
-					["maps"] = { THALDRASZUS, THE_PRIMALIST_FUTURE },
+					["maps"] = {
+						THALDRASZUS,
+						-- #IF BEFORE 10.2.6
+						-- Blizzard removed from spawning inside the sub-zone
+						-- ref: https://us.forums.blizzard.com/en/wow/t/disable-primalist-future-primal-storm-chance/1824419/4
+						THE_PRIMALIST_FUTURE
+						-- #ENDIF
+					},
 				}),
 				pet(3354, {	-- Storm-Touched Ottuk (PET!)
 					["maps"] = { THE_AZURE_SPAN },
@@ -267,7 +297,10 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					{ 48.6, 25.2, THE_AZURE_SPAN },
 					{ 58.8, 68.4, THE_AZURE_SPAN },
 					{ 60.7, 56.3, THALDRASZUS },
+					-- #IF BEFORE 10.2.6
+					-- Blizzard removed from spawning inside the sub-zone
 					{ 53.4, 26.2, THE_PRIMALIST_FUTURE },
+					-- #ENDIF
 				},
 			},{
 				header(HEADERS.Spell, 368847, sharedData({	-- Firestorm
@@ -499,32 +532,294 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				}),
 			}),
 			n(REWARDS, {
+				["maps"] = {
+					OHNAHRAN_PLAINS,
+					THALDRASZUS,
+					THE_AZURE_SPAN,
+					THE_WAKING_SHORES,
+				},
 				-- #if after 10.0.7
-				["sym"] = {{"select","mapID",THE_FORBIDDEN_REACH},{"pop"},
-							{"where","headerID",ZONE_REWARDS},{"pop"},
-							{"exclude","itemID",202196},	-- Zskera Vault Key
+				["sym"] = {
+					{"select","mapID",THE_FORBIDDEN_REACH},{"pop"},
+					{"where","headerID",ZONE_REWARDS},{"pop"},
+					{"exclude","itemID",202196},	-- Zskera Vault Key
 				},
 				-- #endif
 				["g"] = {
-					i(200183),	-- Echo of the Cave (PET!)
-					i(200260),	-- Echo of the Depths (PET!)
-					i(200263),	-- Echo of the Heights (PET!)
-					i(200255),	-- Echo of the Inferno (PET!)
-					i(200675),	-- Elemental Overflow Cluster
+						i(200183),	-- Echo of the Cave (PET!)
+						i(200260),	-- Echo of the Depths (PET!)
+						i(200263),	-- Echo of the Heights (PET!)
+						i(200255),	-- Echo of the Inferno (PET!)
+						i(200675),	-- Elemental Overflow Cluster
 
-					-- Enchanting knowledge drops (one-time)
-					i(201356),	-- Glimmer of Fire
-					i(201357),	-- Glimmer of Frost
-					i(201358),	-- Glimmer of Air
-					i(201359),	-- Glimmer of Earth
+						-- Enchanting knowledge drops (one-time)
+						i(201356),	-- Glimmer of Fire
+						i(201357),	-- Glimmer of Frost
+						i(201358),	-- Glimmer of Air
+						i(201359),	-- Glimmer of Earth
 
-					i(199749),	-- Primal Air Core
-					i(199691),	-- Primal Earth Core
-					i(199750),	-- Primal Fire Core
-					i(199748),	-- Primal Water Core
-					currency(2118),	-- Elemental Overflow
+						i(199749),	-- Primal Air Core
+						i(199691),	-- Primal Earth Core
+						i(199750),	-- Primal Fire Core
+						i(199748),	-- Primal Water Core
+						currency(2118),	-- Elemental Overflow
 				},
 			}),
+			-- #if AFTER TWW
+			--[[ technically primal storm mobs can also drop primal gear which can be upgraded to s1 tier set, but can farm them on forbidden reach. Way more rares & not time based. Uncommented Catalyst ~Goldenshacal 1st Sep 2024
+			o(382621, {	-- Revival Catalyst Console
+				["description"] = "The Revival Catalyst is a system that allows you convert Primalist Items from Primal Storm Events or a Normal Mode Non-set items from the Vault of the Incarnates Raid into your class' Normal Transmog Set.\n\nIf you upgrade your Primal Storm Item to 3/3 Upgrades, you will instead unlock your classes' Heroic Vault of the Incarnes Transmog Set.\nThe catalyst is in Tyrhold in Thaldraszus, Dragon Isles.\n\nMake sure to equip your item first before converting it.",
+				["coord"] = { 60.6, 53.8, THALDRASZUS },
+				["modelScale"] = 4,
+				["g"] = bubbleDown({ ["modID"] = 4 }, {
+					d(DIFFICULTY.RAID.NORMAL, {
+						["description"] = "",
+						["g"] = bubbleDown({ ["modID"] = 3 }, {
+							cl(DEATHKNIGHT, {
+								["sym"] = SymRaidVault(DEATHKNIGHT, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200413),	-- Drape of the Haunted Frostbrood
+									i(200411),	-- Girdle of the Haunted Frostbrood
+									i(200406),	-- Sabatons of the Haunted Frostbrood
+									i(200412),	-- Vambraces of the Haunted Frostbrood
+								},
+							}),
+							cl(DEMONHUNTER, {
+								["sym"] = SymRaidVault(DEMONHUNTER, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200343),	-- Skybound Avenger's Boots
+									i(200350),	-- Skybound Avenger's Cape
+									i(200348),	-- Skybound Avenger's Waistwrap
+									i(200349),	-- Skybound Avenger's Wristbands
+								},
+							}),
+							cl(DRUID, {
+								["sym"] = SymRaidVault(DRUID, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200358),	-- Lost Landcaller's Bindings
+									i(200359),	-- Lost Landcaller's Laena
+									i(200352),	-- Lost Landcaller's Moccasins
+									i(200357),	-- Lost Landcaller's Sash
+								},
+							}),
+							cl(EVOKER, {
+								["sym"] = SymRaidVault(EVOKER, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200385),	-- Bracers of the Awakened
+									i(200384),	-- Chain of the Awakened
+									i(200386),	-- Shroud of the Awakened
+									i(200379),	-- Treads of the Awakened
+								},
+							}),
+							cl(HUNTER, {
+								["sym"] = SymRaidVault(HUNTER, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200393),	-- Stormwing Harrier's Belt
+									i(200395),	-- Stormwing Harrier's Plumage
+									i(200388),	-- Stormwing Harrier's Sabatons
+									i(200394),	-- Stormwing Harrier's Wristguards
+								},
+							}),
+							cl(MAGE, {
+								["sym"] = SymRaidVault(MAGE, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200323),	-- Crystal Scholar's Cape
+									i(200321),	-- Crystal Scholar's Cinch
+									i(200322),	-- Crystal Scholar's Cuffs
+									i(200316),	-- Crystal Scholar's Footwraps
+								},
+							}),
+							cl(MONK, {
+								["sym"] = SymRaidVault(MONK, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200367),	-- Cuffs of the Waking Fist
+									i(200368),	-- Drape of the Waking Fist
+									i(200361),	-- Gaiters of the Waking Fist
+									i(200366),	-- Girdle of the Waking Fist
+								},
+							}),
+							cl(PALADIN, {
+								["sym"] = SymRaidVault(PALADIN, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200421),	-- Virtuous Silver Bracers
+									i(200422),	-- Virtuous Silver Cloak
+									i(200420),	-- Virtuous Silver Faulds
+									i(200415),	-- Virtuous Silver Greatboots
+								},
+							}),
+							cl(PRIEST, {
+								["sym"] = SymRaidVault(PRIEST, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200332),	-- Draconic Hierophant's Drape
+									i(200330),	-- Draconic Hierophant's Sash
+									i(200325),	-- Draconic Hierophant's Slippers
+									i(200331),	-- Draconic Hierophant's Wristbands
+								},
+							}),
+							cl(ROGUE, {
+								["sym"] = SymRaidVault(ROGUE, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200377),	-- Vault Delver's Camouflage
+									i(200370),	-- Vault Delver's Shinguards
+									i(200376),	-- Vault Delver's Sweatbands
+									i(200375),	-- Vault Delver's Utility Belt
+								},
+							}),
+							cl(SHAMAN, {
+								["sym"] = SymRaidVault(SHAMAN, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200403),	-- Cuffs of Infused Earth
+									i(200402),	-- Faulds of Infused Earth
+									i(200404),	-- Greatcloak of Infused Earth
+									i(200397),	-- Treads of Infused Earth
+								},
+							}),
+							cl(WARLOCK, {
+								["sym"] = SymRaidVault(WARLOCK, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200339),	-- Scalesworn Cultist's Girdle
+									i(200341),	-- Scalesworn Cultist's Runedrape
+									i(200334),	-- Scalesworn Cultist's Sandals
+									i(200340),	-- Scalesworn Cultist's Wristwraps
+								},
+							}),
+							cl(WARRIOR, {
+								["sym"] = SymRaidVault(WARRIOR, DIFFICULTY.RAID.NORMAL),
+								["g"] = {
+									i(200424),	-- Boots of the Walking Mountain
+									i(200430),	-- Bracers of the Walking Mountain
+									i(200429),	-- Core of the Walking Mountain
+									i(200431),	-- Drape of the Walking Mountain
+								},
+							}),
+						}),
+					}),
+					d(DIFFICULTY.RAID.HEROIC, {
+						["description"] = "",
+						["g"] = bubbleDown({ ["bonusID"] = 1 }, {
+							cl(DEATHKNIGHT, {
+								["sym"] = SymRaidVault(DEATHKNIGHT, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200413),	-- Drape of the Haunted Frostbrood
+									i(200411),	-- Girdle of the Haunted Frostbrood
+									i(200406),	-- Sabatons of the Haunted Frostbrood
+									i(200412),	-- Vambraces of the Haunted Frostbrood
+								},
+							}),
+							cl(DEMONHUNTER, {
+								["sym"] = SymRaidVault(DEMONHUNTER, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200343),	-- Skybound Avenger's Boots
+									i(200350),	-- Skybound Avenger's Cape
+									i(200348),	-- Skybound Avenger's Waistwrap
+									i(200349),	-- Skybound Avenger's Wristbands
+								},
+							}),
+							cl(DRUID, {
+								["sym"] = SymRaidVault(DRUID, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200358),	-- Lost Landcaller's Bindings
+									i(200359),	-- Lost Landcaller's Laena
+									i(200352),	-- Lost Landcaller's Moccasins
+									i(200357),	-- Lost Landcaller's Sash
+								},
+							}),
+							cl(EVOKER, {
+								["sym"] = SymRaidVault(EVOKER, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200385),	-- Bracers of the Awakened
+									i(200384),	-- Chain of the Awakened
+									i(200386),	-- Shroud of the Awakened
+									i(200379),	-- Treads of the Awakened
+								},
+							}),
+							cl(HUNTER, {
+								["sym"] = SymRaidVault(HUNTER, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200393),	-- Stormwing Harrier's Belt
+									i(200395),	-- Stormwing Harrier's Plumage
+									i(200388),	-- Stormwing Harrier's Sabatons
+									i(200394),	-- Stormwing Harrier's Wristguards
+								},
+							}),
+							cl(MAGE, {
+								["sym"] = SymRaidVault(MAGE, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200323),	-- Crystal Scholar's Cape
+									i(200321),	-- Crystal Scholar's Cinch
+									i(200322),	-- Crystal Scholar's Cuffs
+									i(200316),	-- Crystal Scholar's Footwraps
+								},
+							}),
+							cl(MONK, {
+								["sym"] = SymRaidVault(MONK, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200367),	-- Cuffs of the Waking Fist
+									i(200368),	-- Drape of the Waking Fist
+									i(200361),	-- Gaiters of the Waking Fist
+									i(200366),	-- Girdle of the Waking Fist
+								},
+							}),
+							cl(PALADIN, {
+								["sym"] = SymRaidVault(PALADIN, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200421),	-- Virtuous Silver Bracers
+									i(200422),	-- Virtuous Silver Cloak
+									i(200420),	-- Virtuous Silver Faulds
+									i(200415),	-- Virtuous Silver Greatboots
+								},
+							}),
+							cl(PRIEST, {
+								["sym"] = SymRaidVault(PRIEST, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200332),	-- Draconic Hierophant's Drape
+									i(200330),	-- Draconic Hierophant's Sash
+									i(200325),	-- Draconic Hierophant's Slippers
+									i(200331),	-- Draconic Hierophant's Wristbands
+								},
+							}),
+							cl(ROGUE, {
+								["sym"] = SymRaidVault(ROGUE, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200377),	-- Vault Delver's Camouflage
+									i(200370),	-- Vault Delver's Shinguards
+									i(200376),	-- Vault Delver's Sweatbands
+									i(200375),	-- Vault Delver's Utility Belt
+								},
+							}),
+							cl(SHAMAN, {
+								["sym"] = SymRaidVault(SHAMAN, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200403),	-- Cuffs of Infused Earth
+									i(200402),	-- Faulds of Infused Earth
+									i(200404),	-- Greatcloak of Infused Earth
+									i(200397),	-- Treads of Infused Earth
+								},
+							}),
+							cl(WARLOCK, {
+								["sym"] = SymRaidVault(WARLOCK, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200339),	-- Scalesworn Cultist's Girdle
+									i(200341),	-- Scalesworn Cultist's Runedrape
+									i(200334),	-- Scalesworn Cultist's Sandals
+									i(200340),	-- Scalesworn Cultist's Wristwraps
+								},
+							}),
+							cl(WARRIOR, {
+								["sym"] = SymRaidVault(WARRIOR, DIFFICULTY.RAID.HEROIC),
+								["g"] = {
+									i(200424),	-- Boots of the Walking Mountain
+									i(200430),	-- Bracers of the Walking Mountain
+									i(200429),	-- Core of the Walking Mountain
+									i(200431),	-- Drape of the Walking Mountain
+								},
+							}),
+						}),
+					}),
+				}),
+			}),
+			--]]
+			-- #endif
 			n(VENDORS, {
 				n(196516, {	-- Mythressa
 					["coord"] = { 38.1, 37.7, VALDRAKKEN },

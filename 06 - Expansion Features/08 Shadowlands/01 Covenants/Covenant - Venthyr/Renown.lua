@@ -5,7 +5,7 @@ local WISPS_OF_MEMORY = i(186472, {	-- Wisps of Memory
 	["description"] = "Rewarded at 52, 67 and 76 Renown.",
 });
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
 	n(VENTHYR, {
 		n(RENOWN, {
 			["description"] = "These are rewards automatically granted by reaching a specific level of Renown.",
@@ -19,26 +19,22 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				i(186476,  {	-- Sinfall Gravewing (MOUNT!)
 					["description"] = "Requires Renown 45.",
 				}),
+				--[[
 				title_gendered(429, 430, {	-- Count / Countess (TITLE!)
 					["description"] = "Requires Renown 40.",
 				}),
-				--title(429),	-- Count %s
-				--title(430),	-- Countess %s
+				]]--
+				title_male(429, {	-- Count <Name>
+					["description"] = "Requires Renown 40.",
+				}),
+				title_female(430, {	-- Countess <Name>
+					["description"] = "Requires Renown 40.",
+				}),
 				title(444, {	-- Sin Eater (TITLE!)
 					["description"] = "Requires Renown 80.",
 				}),
-				i(186507,  {	-- Harvester's Court Attire
+				iensemble(186507,  {	-- Harvester's Court Attire
 					["description"] = "Requires Renown 60.",
-					["g"] = {
-						i(185064),	-- Harvester's Court Cloak
-						i(185059),	-- Harvester's Court Handwraps
-						i(185060),	-- Harvester's Court Hood
-						i(185061),	-- Harvester's Court Leggings
-						i(185062),	-- Harvester's Court Sash
-						i(185058),	-- Harvester's Court Slippers
-						i(185057),	-- Harvester's Court Vestments
-						i(185063),	-- Harvester's Court Wraps
-					},
 				}),
 				i(188003, {	-- Crate of Revendreth Reserve
 					["description"] = "Rewarded at 15 and 24 Renown.",
@@ -68,7 +64,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 
 WISPS_OF_MEMORY.customCollect = nil;
 
-root(ROOTS.HiddenQuestTriggers, tier(SL_TIER, {
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, {
 	n(VENTHYR, {
 		n(RENOWN, {
 			q(62750),	-- hitting Renown 19
@@ -94,9 +90,6 @@ root(ROOTS.HiddenQuestTriggers, tier(SL_TIER, {
 			q(64135),	-- hitting Renown 59
 			q(64375),	-- hitting Renown 60
 			q(64453),	-- hitting Renown 67
-			q(63630),	-- learning Ensemble: Harvester's Court Attire (Renown reward)
-			q(63637),	-- learning Ensemble: Sinful Inquisitor's Vestments (Renown reward)
-
 			q(64578),	-- triggered after watching Kael'thas/The Accuser RP (spellID 358161)
 			q(64454),	-- Renown 76
 			-- 9.1.5 New HQTS

@@ -1,15 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(253, {	-- Shadow Labyrinth
 		["lore"] = "Auchindoun is a former draenei holy site and Horde fortress in the middle of the Bone Wastes in Outland's Terokkar Forest. It was a hallowed ground until the Shadow Council took over, summoned an extremely powerful demon as old as time itself, and destroyed half of Terokkar Forest in the process. Different factions now vie for power in this magical spot: Ethereals suck the arcane energy from the Mana-Tombs, the Burning Legion harvests souls inside the Auchenai Crypts, arakkoa zealots work dark magic in the Sethekk Halls, and the Shadow Council plots its domination of Outland from within the Shadow Labyrinth.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3789,	-- Shadow Labyrinth
-		["sins"] = {
-			"Auchindoun: Shadow Labyrinth",
-			"Auchindoun: The Shadow Labyrinth",
-			"Auchindoun: Schattenlabyrinth",
-		},
+		-- #endif
 		["coord"] = { 39.63, 73.55, TEROKKAR_FOREST },	-- Shadow Labyrinth, Terokkar Forest
 		["mapID"] = AUCHINDOUN_SHADOW_LABYRINTH,
 		-- #if BEFORE CATA
@@ -22,7 +19,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 			n(QUESTS, {
 				q(29645, {	-- Ambassador Hellmaw
 					["qg"] = 54890,	-- Field Commander Mahfuun
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- 0/12 Cabal Ritualist slain
@@ -36,18 +33,18 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10178, {	-- Find Spy To'gun
 					["qg"] = 19496,	-- Spy Grik'tha
 					["coord"] = { 39.9, 72.3, TEROKKAR_FOREST },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 20),
 				}),
 				q(29640, {	-- Find Spy To'gun
 					["qg"] = 54891,	-- Spy Grik'tha
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 				}),
 				q(10095, {	-- Into the Heart of the Labyrinth
 					["provider"] = { "o", 182947 },	-- The Codex of Blood
 					["sourceQuest"] = 10094,	-- The Codex of Blood
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 20),
 					["groups"] = {
 						objective(1, {	-- Murmur slain
@@ -62,7 +59,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29644, {	-- Into the Heart of the Labyrinth
 					["provider"] = { "o", 182947 },	-- The Codex of Blood
 					["sourceQuest"] = 29643,	-- The Codex of Blood
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["groups"] = {
 						objective(1, {	-- Murmur slain
 							["provider"] = { "n", 18708 },	-- Murmur
@@ -87,13 +84,13 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10094, {	-- The Codex of Blood
 					["qg"] = 19542,	-- Field Commander Mahfuun
 					["sourceQuest"] = 10177,	-- Trouble at Auchindoun
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 20),
 				}),
 				q(29643, {	-- The Codex of Blood
 					["qg"] = 54890,	-- Field Commander Mahfuun
 					["coord"] = {50.4, 45.3, SHATTRATH_CITY },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 20),
 				}),
 				q(10666, {	-- The Lexicon Demonica
@@ -110,11 +107,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10091, {	-- The Soul Devices
 					["qg"] = 18891,	-- Spy To'gun
 					["sourceQuest"] = 10178,	-- Find Spy To'gun
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 20),
 					["groups"] = {
 						objective(1, {	-- 0/5 Soul Device
-							["provider"] = { "i", 27480 },	-- Soul Device
+							["providers"] = {
+								{ "i",  27480 },	-- Soul Device
+								{ "o", 182940 },	-- Soul Device
+							},
 						}),
 						i(28174),	-- Shattrath Wraps
 						i(28171),	-- Spymistress' Wristguards
@@ -125,11 +125,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29641, {	-- The Soul Devices
 					["qg"] = 18891,	-- Spy To'gun
 					["sourceQuest"] = 29640,	-- Find Spy To'gun
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 20),
 					["groups"] = {
 						objective(1, {	-- 0/5 Soul Device
-							["provider"] = { "i", 27480 },	-- Soul Device
+							["providers"] = {
+								{ "i",  27480 },	-- Soul Device
+								{ "o", 182940 },	-- Soul Device
+							},
 						}),
 						i(28174),	-- Shattrath Wraps
 						i(28171),	-- Spymistress' Wristguards
@@ -155,14 +158,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10177, {	-- Trouble at Auchindoun
 					["qg"] = 18893,	-- Spymistress Mehlisah Highcrown
 					["coord"] = { 50.2, 45.4, SHATTRATH_CITY },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(68, 68, 20),
 				}),
 				q(29642, {	-- Trouble at Auchindoun
 					["qg"] = 18893,	-- Spymistress Mehlisah Highcrown
 					["coord"] = { 50.2, 45.4, SHATTRATH_CITY },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					-- This was available to a character with 29643 already completed, the follow up of this 'breadcrumb'...
 					-- ["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(68, 68, 20),
@@ -172,26 +175,33 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 			}),
 			n(COMMON_BOSS_DROPS, {
-				-- #if AFTER 8.0.1.27326
-				currency(1704, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each.",
-				}),
-				-- #else
 				i(28558, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each.",
+					["timeline"] = { REMOVED_8_0_1 },
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
 				}),
-				-- #endif
+				currency(1704, {	-- Spirit Shard
+					["timeline"] = { ADDED_8_0_1 },
+					-- #if BEFORE 9.1.5
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #else
+					-- From 9.1.5 (specific patch uncomfirmed) this currency can be obtained regardless of whom controls the Spirit Towers in the Bone Wastes. This could have been true already from 8.0.1, but no reports seems to confirm it.
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #endif
+				}),
 			}),
 			n(ZONE_DROPS, {
 				i(24514, {	-- First Key Fragment
-					["cr"] = 22890,	-- First Fragment Guardian
+					["providers"] = {
+						{ "o", 182196 },	-- Arcane Container
+						{ "n",  22890 },	-- First Fragment Guardian
+					},
 					["coord"] = { 82.6, 30.8, AUCHINDOUN_SHADOW_LABYRINTH },
 				}),
 				i(23607, {	-- Plans: Felsteel Helm
 					["cr"] = 18830,	-- Cabal Fanatic
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(544, {	-- Ambassador Hellmaw
 					["creatureID"] = 18731,
 					["groups"] = {
@@ -203,7 +213,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(27884),	-- Ornate Boots of the Sanctified
 						-- #if BEFORE MOP
 						i(27886, {	-- Idol of the Emerald Queen
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 					},
@@ -262,11 +272,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(30532),	-- Kirin Tor Master's Trousers
 						-- #endif
 						i(27902),	-- Silent Slippers of Meditation
-						i(24309),	-- Pattern: Spellstrike Pants
+						i(24309),	-- Pattern: Spellstrike Pants (RECIPE!)
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -302,7 +312,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(27884),	-- Ornate Boots of the Sanctified
 							-- #if BEFORE MOP
 							i(27886, {	-- Idol of the Emerald Queen
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 						},
@@ -340,7 +350,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 								-- #endif
 							}),
 							ach(5075, {	-- Heroic: Shadow Labyrinth Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(27903),	-- Sonic Spear
 							i(27905),	-- Greatsword of Horrid Dreams
@@ -356,7 +366,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(29261),	-- Girdle of Ferocity
 							i(30532),	-- Kirin Tor Master's Trousers
 							i(27902),	-- Silent Slippers of Meditation
-							i(24309),	-- Pattern: Spellstrike Pants
+							i(24309),	-- Pattern: Spellstrike Pants (RECIPE!)
 							applyclassicphase(TBC_PHASE_ONE, i(23572)),	-- Primal Nether
 							i(33840),	-- Murmur's Whisper
 							i(31722),	-- Murmur's Essence
@@ -369,7 +379,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35519),	-- The Shadow Labyrinth Reward Quest - Normal completion
 		q(35520),	-- The Shadow Labyrinth Reward Quest - Heroic completion
 	}),

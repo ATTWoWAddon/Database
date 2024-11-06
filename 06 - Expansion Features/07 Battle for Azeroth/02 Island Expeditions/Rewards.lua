@@ -2,9 +2,9 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(BFA_TIER, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.BFA, {
 	n(ISLAND_EXPEDITIONS, {
-		n(REWARDS, {
+		n(SCENARIO_COMPLETION, {
 			["description"] = "These are the random rewards you can receive by completing an Island Expedition or by purchasing the salvage boxes from vendors. It is estimated that winning will give you a higher chance to receive a reward.\n\nIf you receive something not listed here, please screenshot and submit it to our Discord.",
 			["g"] = bubbleDown({["modID"] = 0}, {
 				i(173950, {	-- Crestfall Salvage
@@ -511,7 +511,6 @@ root(ROOTS.ExpansionFeatures, tier(BFA_TIER, {
 				}),
 				i(173997, {	-- Whispering Reef Salvage
 					["modID"] = 14,
-					["cost"] = { { "c", 1710, 120 }, },	-- 120 Seafarer's Dubloons
 					["sym"] = {{"sub","common_island_expedition_salvage"}},
 					["g"] = {
 						n(ARMOR, {
@@ -547,7 +546,6 @@ root(ROOTS.ExpansionFeatures, tier(BFA_TIER, {
 				}),
 				i(173987, {	-- Elemental Salvage
 					["modID"] = 14,
-					["cost"] = { { "c", 1710, 75 }, },	-- 75 Seafarer's Dubloons
 					["sym"] = {{"sub","common_island_expedition_salvage"}},
 					["g"] = {
 						n(ARMOR, {
@@ -606,7 +604,6 @@ root(ROOTS.ExpansionFeatures, tier(BFA_TIER, {
 				}),
 				i(173995, {	-- Venture Co 'Salvage'
 					["modID"] = 14,
-					["cost"] = { { "c", 1710, 50 }, },	-- 50 Seafarer's Dubloons
 					["sym"] = {{"sub","common_island_expedition_salvage"}},
 					["g"] = {
 						n(ARMOR, {
@@ -701,6 +698,8 @@ root(ROOTS.ExpansionFeatures, tier(BFA_TIER, {
 					i(166501, {	-- Soggy Page
 						["description"] = "|CFFFF0000Turn in to Collector Kojo in Stormsong Valley (Alliance) or Zuldazar (Horde) for Tortollan Seekers rep.|r",
 					}),
+					i(173736),	-- Layered Information Kernel of E-steam
+					i(174521),	-- Transferable Kernel of E-steam
 					i(163470),	-- Ancient Crypt Key
 					i(163478),	-- Battered Twilight Scale
 					i(163472),	-- Bloodwake Drinking Horn
@@ -770,20 +769,3 @@ root(ROOTS.ExpansionFeatures, tier(BFA_TIER, {
 		}),
 	}),
 }));
-root(ROOTS.NeverImplemented, {
-	tier(BFA_TIER, {
-		n(ISLAND_EXPEDITIONS, {
-			filter(TOYS, {
-				i(163922),	-- Used for a toy, you never can get the actual item
-				i(163923),	-- Used for a toy, you never can get the actual item
-			}),
-			i(164286),	-- Plundered Runecaster's Mantle
-			i(164285),	-- Plundered Shoveltusk-Hide Shoulders
-			i(164287),	-- Plundered Dragonrider Spaulders
-			i(164288),	-- Plundered Gjalerbron Pauldrons
-		}),
-		filter(PLATE, {
-			i(164525),	-- Rattling Bone Greatbelt
-		}),
-	}),
-});

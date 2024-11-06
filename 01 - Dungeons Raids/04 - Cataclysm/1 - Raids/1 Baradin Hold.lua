@@ -2,18 +2,28 @@
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
 
-root(ROOTS.Instances, tier(CATA_TIER, {
-	inst(75, {	-- Baradin Hold
-		["isRaid"] = true,
-		["sharedLockout"] = 1,
-		["lvl"] = 85,
+root(ROOTS.Instances, expansion(EXPANSION.CATA, {
+	applyclassicphase(CATA_PHASE_ONE, inst(75, bubbleDownSelf({ ["timeline"] = { ADDED_4_0_3 }, }, {	-- Baradin Hold
 		["mapID"] = 282,
-		["coord"] = { 46.1, 47.9, 244 },
+		["coord"] = { 46.1, 47.9, TOL_BARAD },
+		["sharedLockout"] = 1,
+		["isRaid"] = true,
+		["lvl"] = 85,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
-				ach(5425),	-- Baradin Hold Guild Run
+				applyclassicphase(CATA_PHASE_HOUR_OF_TWILIGHT, ach(5425, {	-- Baradin Hold Guild Run
+					crit(15480, {	-- Argaloth
+						["_npcs"] = { 47120 },	-- Argaloth
+					}),
+					crit(18478, {	-- Occu'thar
+						["_npcs"] = { 52363 },	-- Occu'thar
+					}),
+					crit(18479, {	-- Alizabal, Mistress of Hate
+						["_npcs"] = { 55869 },	-- Alizabal, Mistress of Hate
+					}),
+				})),
 			}),
-			e(139, {	-- Argaloth
+			applyclassicphase(CATA_PHASE_ONE, e(139, {	-- Argaloth
 				["creatureID"] = 47120,
 				["groups"] = {
 					ach(5416),	-- Pit Lord Argaloth
@@ -154,8 +164,8 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					a(i(60800)),	-- Vicious Gladiator's Medallion of Tenacity (Alliance)
 					h(i(60807)),	-- Vicious Gladiator's Medallion of Tenacity (Horde)
 				},
-			}),
-			e(339, {	-- Alizabal, Mistress of Hate
+			})),
+			applyclassicphase(CATA_PHASE_HOUR_OF_TWILIGHT, e(339, bubbleDownSelf({ ["timeline"] = { ADDED_4_3_0 }, }, {	-- Alizabal, Mistress of Hate
 				["creatureID"] = 55869,
 				["groups"] = {
 					ach(6108),	-- Alizabal
@@ -311,8 +321,8 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					a(i(73536)),	-- Cataclysmic Gladiator's Medallion of Tenacity (Alliance)
 					h(i(73537)),	-- Cataclysmic Gladiator's Medallion of Tenacity (Horde)
 				},
-			}),
-			e(140, {	-- Occu'thar
+			}))),
+			applyclassicphase(CATA_PHASE_RAGE_OF_THE_FIRELANDS, e(140, bubbleDownSelf({ ["timeline"] = { ADDED_4_2_0 }, }, {	-- Occu'thar
 				["creatureID"] = 52363,
 				["groups"] = {
 					ach(6045),	-- Occu'thar
@@ -468,7 +478,7 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					a(i(70392)),	-- Ruthless Gladiator's Medallion of Tenacity (Alliance)
 					h(i(70395)),	-- Ruthless Gladiator's Medallion of Tenacity (Horde)
 				},
-			}),
+			}))),
 		},
-	}),
+	}))),
 }));

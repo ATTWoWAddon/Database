@@ -1,9 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	inst(1189, {	-- Sanguine Depths
 		["coord"] = { 51.0, 30.1, REVENDRETH },
 		["maps"] = {
@@ -16,7 +14,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					["provider"] = { "n", 166689 },	-- General Draven
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2388, {	-- Kryxis the Voracious
 					["crs"] = { 162100 },	-- Kryxis the Voracious
 					["g"] = {
@@ -104,7 +102,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2407, {	-- General Kaal
 					["crs"] = {
 						162133,	-- General Kaal (during gauntlet)
@@ -115,7 +113,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
 					ach(14290),	-- I Only Have Eyes For You
 				}),

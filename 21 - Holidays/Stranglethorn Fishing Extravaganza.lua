@@ -3,7 +3,7 @@
 --------------------------------------------
 STRANGLETHORN_FISHING_EXTRAVAGANZA_HEADER = createHeader({
 	readable = "Stranglethorn Fishing Extravaganza",
-	icon = "Interface\\Icons\\inv_misc_fish_06",
+	icon = [[_.asset("Holiday_STV_Fishing")]],
 	eventID = EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA,
 	text = {
 		en = "Stranglethorn Fishing Extravaganza",
@@ -18,16 +18,11 @@ STRANGLETHORN_FISHING_EXTRAVAGANZA_HEADER = createHeader({
 	},
 });
 
-local BOOTS_OF_THE_BAY = i(50287, {	-- Boots of the Bay
-	["timeline"] = { "added 3.3.0.10772" },
-});
-local DREAD_PIRATE_RING = i(122529, {	-- Dread Pirate Ring
-	["timeline"] = { "added 6.1.0.19480" },
-});
 root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STRANGLETHORN_FISHING_EXTRAVAGANZA_HEADER, {
 	["description"] = "The Stranglethorn Fishing Extravaganza is a weekly fishing event held every Sunday in Stranglethorn Vale. There is a highly competitive fishing contest and a more casual rare fish turn-in for this event.",
 	["maps"] = {
 		-- #if AFTER CATA
+		NORTHERN_STRANGLETHORN,
 		THE_CAPE_OF_STRANGLETHORN,
 		-- #else
 		STRANGLETHORN_VALE,
@@ -41,7 +36,6 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 					{ "i", 19970 },	-- Arcanite Fishing Pole
 					{ "i", 19979 },	-- Hook of the Master Angler
 				},
-				["description"] = "Win the Booty Bay fishing contest.",
 				-- #endif
 				["requireSkill"] = FISHING,
 			}),
@@ -49,11 +43,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 		n(QUESTS, {
 			q(8194, {	-- Apprentice Angler
 				["qg"] = 15078,	-- Jang <Fishmaster Apprentice>
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["requireSkill"] = FISHING,
 				["repeatable"] = true,
 				["cost"] = {
@@ -84,11 +80,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 			}),
 			q(8193, {	-- Master Angler / Grand Prize (after 5.1.0)
 				["qg"] = 15077,	-- Riggle Bassbait <Fishmaster>
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["requireSkill"] = FISHING,
 				["repeatable"] = true,
 				["cost"] = {
@@ -97,17 +95,23 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 				["groups"] = {
 					i(19970),	-- Arcanite Fishing Pole
 					i(19979),	-- Hook of the Master Angler
-					BOOTS_OF_THE_BAY,
-					DREAD_PIRATE_RING,
+					-- #if AFTER 5.1.0
+					i(50287),	-- Boots of the Bay,
+					i(122529, {	-- Dread Pirate Ring
+						["timeline"] = { ADDED_6_1_0 },
+					}),
+					-- #endif
 				},
 			}),
 			q(8225, {	-- Rare Fish - Brownell's Blue Striped Racer
 				["qg"] = 15079,	-- Fishbot 5000
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["requireSkill"] = FISHING,
 				["repeatable"] = true,
 				["cost"] = {
@@ -119,11 +123,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 			}),
 			q(8224, {	-- Rare Fish - Dezian Angelfish
 				["qg"] = 15079,	-- Fishbot 5000
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["requireSkill"] = FISHING,
 				["repeatable"] = true,
 				["cost"] = {
@@ -136,11 +142,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 			q(8221, {	-- Rare Fish - Keefer's Angelfish
 				["qg"] = 15079,	-- Fishbot 5000
 				["requireSkill"] = FISHING,
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["repeatable"] = true,
 				["cost"] = {
 					{ "i", 19805, 1 },	-- Keefer's Angelfish
@@ -152,36 +160,42 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 			-- #if AFTER 5.1.0
 			q(32435, {	-- Second Prize
 				["qg"] = 15077,	-- Riggle Bassbait <Fishmaster>
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["requireSkill"] = FISHING,
 				["repeatable"] = true,
 				["cost"] = {
 					{ "i", 19807, 40 },	-- Speckled Tastyfish
 				},
-				["timeline"] = { "added 5.1.0", "removed 7.1.0.22900" },
+				["timeline"] = { ADDED_5_1_0, REMOVED_7_1_0 },
 				["groups"] = {
-					BOOTS_OF_THE_BAY,
-					DREAD_PIRATE_RING,
+					i(50287),	-- Boots of the Bay,
+					i(122529, {	-- Dread Pirate Ring
+						["timeline"] = { ADDED_6_1_0, REMOVED_7_1_0 },
+					}),
 					i(19971),	-- High Test Eternium Fishing Line
 				},
 			}),
 			q(32436, {	-- Third Prize
 				["qg"] = 15077,	-- Riggle Bassbait <Fishmaster>
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
 				["requireSkill"] = FISHING,
 				["repeatable"] = true,
 				["cost"] = {
 					{ "i", 19807, 40 },	-- Speckled Tastyfish
 				},
-				["timeline"] = { "added 5.1.0", "removed 7.1.0.22900" },
+				["timeline"] = { ADDED_5_1_0, REMOVED_7_1_0 },
 				["groups"] = {
 					i(19971),	-- High Test Eternium Fishing Line
 				},
@@ -189,24 +203,43 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 			-- #endif
 			q(44765, {	-- Stranglethorn Fishing Extravaganza
 				["qg"] = 15077,	-- Riggle Bassbait <Fishmaster>
-				-- #if AFTER CATA
-				["coord"] = { 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
-				-- #else
-				["coord"] = { 27.4, 76.9, STRANGLETHORN_VALE },
-				-- #endif
-				["timeline"] = { "added 7.1.0.22900" },
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 41.4, 73.0, THE_CAPE_OF_STRANGLETHORN },
+					-- #else
+					{ 27.4, 76.9, STRANGLETHORN_VALE },
+					-- #endif
+				},
+				["timeline"] = { ADDED_7_1_0 },
 				["requireSkill"] = FISHING,
 				["isWorldQuest"] = true,
 				["groups"] = {
 					i(19970),	-- Arcanite Fishing Pole
-					BOOTS_OF_THE_BAY,
-					DREAD_PIRATE_RING,
+					i(50287),	-- Boots of the Bay,
+					i(122529),	-- Dread Pirate Ring,
 					i(19979),	-- Hook of the Master Angler
 					i(19971),	-- High Test Eternium Fishing Line
 				},
 			}),
 		}),
 		prof(FISHING, {
+			-- #if AFTER 5.1.0
+			n(SPECIAL, {
+				["description"] = "Tastyfish and the other special event fish can be fished up from any pool within Stranglethorn for two hours once the event has started, even if winners have been found.",
+				["providers"] = {
+					{ "o", 180901 },	-- Bloodsail Wreckage
+					{ "o", 216761 },	-- Mixed Ocean School
+					{ "o", 216764 },	-- Sagefish School
+				},
+				["g"] = {
+					i(19803),	-- Brownell's Blue Striped Racer
+					i(19806),	-- Dezian Queenfish
+					i(19805),	-- Keefer's Angelfish
+					i(19808),	-- Rockhide Strongfish
+					i(19807),	-- Speckled Tastyfish
+				}
+			}),
+			-- #else
 			o(180248, {	-- School of Tastyfish
 				i(19803),	-- Brownell's Blue Striped Racer
 				i(19806),	-- Dezian Queenfish
@@ -214,6 +247,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.STRANGLETHORN_FISHING_EXTRAVAGANZA, n(STR
 				i(19808),	-- Rockhide Strongfish
 				i(19807),	-- Speckled Tastyfish
 			}),
+			-- #endif
 		}),
 	},
 })));

@@ -3,8 +3,8 @@
 -------------------------------------------------------------------
 
 root(ROOTS.ExpansionFeatures,
-	tier(BFA_TIER, {
-		n(WARFRONT, {
+	expansion(EXPANSION.BFA, {
+		n(WAR_EFFORT, {
 			n(-253, {	-- Horde War Campaign
 				["races"] = HORDE_ONLY,
 				["g"] = {
@@ -13,28 +13,28 @@ root(ROOTS.ExpansionFeatures,
 							["races"] = HORDE_ONLY,
 							["maps"] = { THE_GREAT_SEAL, HALL_OF_CHRONICLERS, DAZARALOR },	-- Dazar'alor
 							["g"] = {
-								crit(1, {	-- Drustvar Foothold
+								crit(40200, {	-- Drustvar Foothold
 									["sourceQuests"] = { 51985 },	-- Return to Zuldazar (Drustvar Foothold)
 								}),
-								crit(2, {	-- Tiragarde Sound Foothold
+								crit(40453, {	-- Tiragarde Sound Foothold
 									["sourceQuests"] = { 51984 },	-- Return to Zuldazar (Tiragarde Sound Foothold)
 								}),
-								crit(3, {	-- Stormsong Valley Foothold
+								crit(40509, {	-- Stormsong Valley Foothold
 									["sourceQuests"] = { 51986 },	-- Return to Zuldazar (Stormsong Valley Foothold)
 								}),
-								crit(4, {	-- The First Assault
+								crit(40454, {	-- The First Assault
 									["sourceQuests"] = { 51601 },	-- The Bridgeport Ride
 								}),
-								crit(5, {	-- The Marshal's Grave
+								crit(40510, {	-- The Marshal's Grave
 									["sourceQuests"] = { 51789 },	-- What Remains of Marshal M. Valentine
 								}),
-								crit(6, {	-- Death of a Tidesage
+								crit(40511, {	-- Death of a Tidesage
 									["sourceQuests"] = { 52122 },	-- To Be Forsaken
 								}),
-								crit(7, {	-- At the Bottom of the Sea
+								crit(40867, {	-- At the Bottom of the Sea
 									["sourceQuests"] = { 52978 },	-- With Prince in Tow
 								}),
-								crit(8, {	-- The Strike on Boralus
+								crit(40868, {	-- The Strike on Boralus
 									["sourceQuests"] = { 53003 },	-- A Cycle of Hatred
 								}),
 							},
@@ -42,16 +42,16 @@ root(ROOTS.ExpansionFeatures,
 						ach(13466, {	-- Tides of Vengeance
 							["races"] = HORDE_ONLY,
 							["g"] = {
-								crit(1, {	-- The Day is Won
+								crit(44256, {	-- The Day is Won
 									["sourceQuests"] = { 53981 },	-- The Day is Won
 								}),
-								crit(2, {	-- Mekkatorque's Battle Plans
+								crit(44259, {	-- Mekkatorque's Battle Plans
 									["sourceQuests"] = { 54022 },	-- Mekkatorque's Battle Plans
 								}),
-								crit(3, {	-- Through the Front Door
+								crit(44257, {	-- Through the Front Door
 									["sourceQuests"] = { 54179 },	-- Through the Front Door
 								}),
-								crit(4, {	-- Fly Out to Meet Them
+								crit(44258, {	-- Fly Out to Meet Them
 									["sourceQuests"] = { 54280 },	-- Fly Out to Meet Them
 								}),
 							},
@@ -277,6 +277,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 138677 },	-- Rexxar
 							["coord"] = { 51.7, 29.9, STORMSONG_VALLEY },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160565),	-- Fading Umbral Wand (QI!)
+							},
 						}),
 						q(51675, {	-- Hunt Them Down
 							["sourceQuests"] = { 51587 },	-- Onward!
@@ -350,6 +353,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 137742 },	-- Shadow Hunter Ty'jin
 							["coord"] = { 87.3, 50.0, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160260),	-- Fogsail Cannonball (QI!)
+							},
 						}),
 						q(51440, {	-- A Change in Direction
 							["sourceQuests"] = {
@@ -368,6 +374,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 137742 },	-- Shadow Hunter Ty'jin
 							["coord"] = { 87.3, 50.0, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160405),	-- Goblin-Engineered Hand Cannon (QI!)
+							},
 						}),
 						q(51442, {	-- I'm the Captain Now
 							["sourceQuests"] = {
@@ -467,6 +476,10 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 138285 },	-- Nathanos Blightcaller
 							["coord"] = { 72.0, 51.8, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160511),	-- Length of Chain (QI!)
+								i(160512),	-- Sail Canvas (QI!)
+							},
 						}),
 						q(51593, {	-- Bridgeport Investigation
 							["sourceQuests"] = { 51591 },	-- Our Mountain Now
@@ -494,12 +507,19 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 138287 },	-- Lilian Voss
 							["coord"] = { 77.5, 49.9, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160555),	-- Ashvane Explosives (QI!)
+							},
 						}),
 						q(51597, {	-- Gunpowder Research
 							["sourceQuests"] = { 51595 },	-- Explosivity
 							["provider"] = { "n", 138287 },	-- Lilian Voss
 							["coord"] = { 77.5, 49.9, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160553),	-- Ashvane Explosives Formula (QI!)
+								i(160552),	-- Gunpowder Manufacturing Guide (QI!)
+							},
 						}),
 						q(51598, {	-- A Bit of Chaos
 							["sourceQuests"] = { 51595 },	-- Explosivity
@@ -529,8 +549,9 @@ root(ROOTS.ExpansionFeatures,
 							["isBreadcrumb"] = true,
 							["provider"] = { "n", 135691 },	-- Nathanos Blightcaller
 							["races"] = HORDE_ONLY,
-							["minReputation"] = { 2157, FRIENDLY+4500 },
-							["description"] = "Relog if this doesn't appear upon hitting the reputation requirement",
+							["minReputation"] = { FACTION_THE_HONORBOUND, FRIENDLY+4500 },
+							["description"] = "Relog (outside of Dazar'alor) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(51784, {	-- A Stroll Through a Cemetery
 							["sourceQuests"] = {
@@ -558,6 +579,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 139062 },	-- Lilian Voss
 							["coord"] = { 61.3, 51.1, DRUSTVAR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(152480),	-- Gravebloom (QI!)
+							},
 						}),
 						q(51788, {	-- The Crypt Keeper
 							["sourceQuests"] = {
@@ -568,12 +592,18 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 135691 },	-- Nathanos Blightcaller
 							["coord"] = { 61.4, 51.1, DRUSTVAR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160736),	-- Valentine's Key (QI!)
+							},
 						}),
 						q(51789, {	-- What Remains of Marshal M. Valentine
 							["sourceQuests"] = { 51788 },	-- The Crypt Keeper
 							["provider"] = { "n", 135691 },	-- Nathanos Blightcaller
 							["coord"] = { 61.4, 51.1, DRUSTVAR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160939),	-- Valentine's Log (QI!)
+							},
 						}),
 						-- Death of a Tidesage
 						q(53066, {	-- Operation: Water Wise
@@ -581,8 +611,9 @@ root(ROOTS.ExpansionFeatures,
 							["isBreadcrumb"] = true,	-- were these removed?  it used to be automatically offered upon meeting a rep requirement, but it didn't pop up for me even though i already had the reputation
 							["provider"] = { "n", 135691 },	-- Nathanos Blightcaller
 							["races"] = HORDE_ONLY,
-							["minReputation"] = { 2157, HONORED+3000 },
-							["description"] = "Relog if this doesn't appear upon hitting the reputation requirement",
+							["minReputation"] = { FACTION_THE_HONORBOUND, HONORED+3000 },
+							["description"] = "Relog (outside of Dazar'alor) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(51797, {	-- Tracking Tidesages
 							["sourceQuests"] = {
@@ -604,12 +635,18 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 139101 },	-- Lilian Voss
 							["coord"] = { 62.6, 31.9, STORMSONG_VALLEY },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160901),	-- Val'kyr Horn (QI!)
+							},
 						}),
 						q(51818, {	-- Commander and Captain
 							["sourceQuests"] = { 51798 },	-- No Price Too High
 							["provider"] = { "n", 139098 },	-- Thomas Zelling
 							["coord"] = { 62.6, 31.9, STORMSONG_VALLEY },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(160745),	-- Book of Forbidden Magics (QI!)
+							},
 						}),
 						q(51819, {	-- Scattering Our Enemies
 							["sourceQuests"] = { 51798 },	-- No Price Too High
@@ -645,8 +682,9 @@ root(ROOTS.ExpansionFeatures,
 							["isBreadcrumb"] = true,	-- were these removed?  it used to be automatically offered upon meeting a rep requirement, but it didn't pop up for me even though i already had the reputation
 							["provider"] = { "n", 135691 },	-- Nathanos Blightcaller
 							["races"] = HORDE_ONLY,
-							["minReputation"] = { 2157, HONORED+7500 },
-							["description"] = "Relog if this doesn't appear upon hitting the reputation requirement",
+							["minReputation"] = { FACTION_THE_HONORBOUND, HONORED+7500 },
+							["description"] = "Relog (outside of Dazar'alor) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(52764, {	-- Journey to the Middle of Nowhere
 							["sourceQuests"] = {
@@ -732,8 +770,9 @@ root(ROOTS.ExpansionFeatures,
 							["isBreadcrumb"] = true,
 							["provider"] = { "n", 141644 },	-- Nathanos Blightcaller
 							["races"] = HORDE_ONLY,
-							["minReputation"] = { 2157, REVERED },
-							["description"] = "Relog if this doesn't appear upon hitting the reputation requirement",
+							["minReputation"] = { FACTION_THE_HONORBOUND, REVERED },
+							["description"] = "Relog (outside of Dazar'alor) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(52183, {	-- When a Plan Comes Together
 							["sourceQuests"] = {
@@ -770,12 +809,20 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 140487 },	-- Thomas Zelling
 							["coord"] = { 71.0, 84.8, BORALUS },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(161336),	-- Compass of Clarity (QI!)
+								i(161335),	-- Curio of the Depths (QI!)
+								i(161334),	-- Key of the Sea (QI!)
+							},
 						}),
 						q(52188, {	-- Tidesage Teachings
 							["sourceQuests"] = { 52185 },	-- A Well Placed Portal
 							["provider"] = { "n", 140487 },	-- Thomas Zelling
 							["coord"] = { 71.0, 84.8, BORALUS },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(162106),	-- Tome of Tidesage Research (QI!)
+							},
 						}),
 						q(52189, {	-- Forfeit Souls
 							["sourceQuests"] = { 52185 },	-- A Well Placed Portal
@@ -792,6 +839,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 140487 },	-- Thomas Zelling
 							["coord"] = { 71.0, 84.8, BORALUS },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(162579)	-- Abyssal Scepter (QI!)
+							},
 						}),
 						q(52990, {	-- Return to the Harbor
 							["sourceQuests"] = { 52190 },	-- Gaining the Upper Hand
@@ -832,12 +882,18 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 134711 },	-- Lady Sylvanas Windrunner
 							["coord"] = { 48.4, 71.4, ORGRIMMAR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(164778),	-- Abyssal Scepter (QI!)
+							},
 						}),
 						q(53851, {	-- Our War Continues
 							["sourceQuests"] = { 53003 },	-- A Cycle of Hatred
 							["provider"] = { "n", 135691 },	-- Nathanos Blightcaller
 							["coord"] = { 58.4, 62.6, ZULDAZAR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(164778),	-- Abyssal Scepter (QI!)
+							},
 						}),
 						q(53852, {	-- Azerite Denied
 							["sourceQuests"] = {
@@ -847,12 +903,18 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 135691 },	-- Nathanos Blightcaller
 							["coord"] = { 58.4, 62.6, ZULDAZAR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(164778),	-- Abyssal Scepter (QI!)
+							},
 						}),
 						q(53856, {	-- The Fury of the Horde
 							["sourceQuests"] = { 53852 },	-- Azerite Denied
 							["provider"] = { "n", 145422 },	-- Rexxar
 							["coord"] = { 47.5, 21.8, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(164778),	-- Abyssal Scepter (QI!)
+							},
 						}),
 						q(53879, {	-- Cleaning Out the Estate
 							["sourceQuests"] = { 53856 },	-- The Fury of the Horde
@@ -871,6 +933,11 @@ root(ROOTS.ExpansionFeatures,
 							},
 							["coord"] = { 48.9, 25.0, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(164778),	-- Abyssal Scepter (QI!)
+								i(164917),	-- Azerite Bomb Cluster (QI!)
+								i(165225),	-- Azerite Rifle (QI!)
+							},
 						}),
 						q(53913, {	-- With Honor
 							["sourceQuests"] = {
@@ -910,6 +977,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 145751 },	-- Trade Prince Gallywix
 							["coord"] = { 36.2, 72.0, ZULDAZAR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(166309),	-- Azerite Vacuumizer (QI!)
+							},
 						}),
 						q(54124, {	-- Avoiding Lawsuits 101
 							["sourceQuests"] = { 53941 },	-- A Mech for a Goblin
@@ -961,6 +1031,10 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "i", 164987 },	-- Alliance Battle Plans
 							["races"] = HORDE_ONLY,
 							["maps"] = { TIRAGARDE_SOUND },
+							["g"] = {
+								i(164987),	-- Alliance Battle Plans (QI!)
+								i(164989),	-- Mekkatorque's Battle Plans (QI!)
+							},
 						}),
 						q(54028, {	-- Mech versus Airship
 							["sourceQuests"] = {
@@ -989,18 +1063,28 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 147088 },	-- Arcanist Valtrois
 							["coord"] = { 82.9, 49.5, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(165702),	-- Shard of Vesara (QI!)
+							},
 						}),
 						q(54176, {	-- Be More Uniform
 							["sourceQuests"] = { 54121 },	-- Breaking Out Ashvane
 							["provider"] = { "n", 147088 },	-- Arcanist Valtrois
 							["coord"] = { 82.9, 49.5, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(165697),	-- Captain's Overcoat (QI!)
+								i(165698),	-- Proudmoore Equipment (QI!)
+							},
 						}),
 						q(54177, {	-- A Brilliant Distraction
 							["sourceQuests"] = { 54121 },	-- Breaking Out Ashvane
 							["provider"] = { "n", 146931 },	-- Rexxar
 							["coord"] = { 83.0, 49.6, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(165690),	-- Volatile Azerite (QI!)
+							},
 						}),
 						q(54178, {	-- Catching a Ride
 							["sourceQuests"] = {
@@ -1088,6 +1172,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 147155 },	-- Patch
 							["coord"] = { 50.3, 78.4, NAZMIR },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(165710),	-- A.F.M.O.D. Part (QI!)
+							},
 						}),
 						q(54213, {	-- It's Alive!
 							["sourceQuests"] = {
@@ -1209,6 +1296,11 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 149842 },	-- Baine Bloodhoof
 							["coord"] = { 85.8, 45.8, TIRAGARDE_SOUND },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(167073),	-- Apothecary's Key (QI!)
+								i(167074),	-- Captain's Key (QI!)
+								i(167072),	-- Navigator's Key (QI!)
+							},
 						}),
 						q(54997, {	-- Dead in the Water
 							["sourceQuests"] = { 54958 },	-- Ships in the Night
@@ -1231,6 +1323,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 150311 },	-- Thomas Zelling
 							["coord"] = { 76.3, 42.7, DUSTWALLOW_MARSH },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(167228),	-- Charm of Returning (QI!)
+							},
 						}),
 						q(55034, {	-- Under False Colors (Sylvanas Version)
 							["sourceQuests"] = {
@@ -1241,6 +1336,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 150311 },	-- Thomas Zelling
 							["coord"] = { 76.3, 42.7, DUSTWALLOW_MARSH },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(167228),	-- Charm of Returning (QI!)
+							},
 						}),
 						-- The Warfang Event (Baine's imprisoning)
 						q(55047, {	-- Securing Warfang Hold
@@ -1265,6 +1363,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 150690 },	-- Boss Mida
 							["coord"] = { 51.0, 32.9, STORMSONG_VALLEY },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(167078),	-- Electronic Mayhem Projector (QI!)
+							},
 						}),
 						q(55049, {	-- Communication Breakdown
 							["sourceQuests"] = {
@@ -1535,6 +1636,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 156440 },	-- Nathanos Blightcaller
 							["coord"] = { 50.4, 76.1, 1534 },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(171365),	-- Put on disguise (QI!)
+							},
 						}),
 						q(57149, {	-- Propaganda Takedown
 							["altQuests"] = { 54109 },	-- Queen's Favor
@@ -1567,6 +1671,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 156425 },	-- Dark Ranger Lenara
 							["coord"] = { 50, 91.3, 1534 },
 							["races"] = HORDE_ONLY,
+							["g"] = {
+								i(172203),	-- Cracked Hearthstone (QI!)
+							},
 						}),
 						q(57147, {	-- Not My Warchief
 							["altQuests"] = { 54109 },	-- Queen's Favor

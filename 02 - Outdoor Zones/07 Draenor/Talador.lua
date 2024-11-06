@@ -72,7 +72,7 @@ root(ROOTS.Zones, {
 	m(DRAENOR, {
 		m(TALADOR, {
 			["lore"] = "Talador is the sanctuary of the draenei people. At its heart rests Shattrath City, the great metropolis, and the spiritual well of Auchindoun, where the souls of departed draenei reside. Bathed in a perpetual autumn hue, its beautiful olemba forests, gardens and settlements are at risk of decimation by the Iron Horde and the Burning Legion.",
-			["icon"] = "Interface\\Icons\\achievement_zone_talador",
+			["icon"] = 1060985,
 			["maps"] = {
 				536,	-- Tomb of Lights
 				537,	-- Tomb of Souls
@@ -84,118 +84,44 @@ root(ROOTS.Zones, {
 					ach(9635),		-- Bobbing for Orcs
 					ach(9634),		-- Charged Up
 					ach(9633, {		-- Cut off the Head (Shattrath City)
-						crit(1),		-- Bombardier Gu'gok
-						crit(2),		-- Gug'tol
-						crit(3),		-- Haakun the All-Consuming
-						crit(4),		-- Felfire Consort
-						crit(5),		-- Avatar of Socrethar
-						crit(6),		-- Sargerei War Council
-						crit(7),		-- Legion Vanguard
-						crit(8),		-- Xothear, the Destroyer
+						crit(26465),		-- Bombardier Gu'gok
+						crit(26466),		-- Gug'tol
+						crit(26467),		-- Haakun the All-Consuming
+						crit(26468),		-- Felfire Consort
+						crit(26469),		-- Avatar of Socrethar
+						crit(26470),		-- Sargerei War Council
+						crit(26579),		-- Legion Vanguard
+						crit(26580),		-- Xothear, the Destroyer
 					}),
 					ach(8920,  {	-- Don't Let the Tala-door Hit You on the Way Out (A) (unlocks ability to buy Talador Treasure Map from Grakis in Stormshield)
 						["races"] = ALLIANCE_ONLY,
-						["g"] = {
-							crit(1, {	-- Establishing your Outpost
-								["sourceQuests"] = {
-									34711,	-- Due Cause to Celebrate (Arcane Sanctum)
-									34981,	-- The Only Way to Travel (Artillery Tower)
-								},
-							}),
-							crit(2, {	-- The Battle for Shattrath
-								["sourceQuest"] = 34099,	-- The Battle for Shattrath
-							}),
-							crit(3, {	-- The Plight of the Arakkoa
-								["sourceQuest"] = 33582,	-- Kura's Vengeance
-							}),
-							crit(4, {	-- In the Shadows of Auchindoun
-								["sourceQuest"] = 34154,	-- Destination: Unknown
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(8919,  {	-- Don't Let the Tala-door Hit You on the Way Out (H) (unlocks ability to buy Gorgrond Treasure Map from Srikka in Warspear)
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							crit(1, {	-- Establishing your Armory
-								["sourceQuests"] = {
-									34712,	-- Due Cause to Celebrate (Arcane Sanctum)
-									34971,	-- The Only Way to Travel (Artillery Tower)
-								},
-							}),
-							crit(2, {	-- The Battle for Shattrath
-								["sourceQuest"] = 33731,	-- The Battle for Shattrath
-							}),
-							crit(3, {	-- The Plight of the Arakkoa
-								["sourceQuest"] = 33582,	-- Kura's Vengeance
-							}),
-							crit(4, {	-- In the Shadows of Auchindoun
-								["sourceQuest"] = 34564,	-- Destination: Unknown
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
-					ach(8940, {		-- Explore Talador
-						crit(1),		-- Aruuna
-						crit(2),		-- Auchindoun
-						crit(3),		-- Duskfall Island
-						crit(4),		-- Court of Souls
-						crit(5),		-- Fort Wrynn
-						crit(6),		-- Gordal Fortress
-						crit(7),		-- Gul'rok
-						crit(8),		-- The Path of Glory
-						crit(9),		-- Orunai Coast
-						crit(10),		-- Anchorite's Sojourn
-						crit(11),		-- Shattrath City
-						crit(12),		-- Telmor
-						crit(13),		-- Tomb of Lights
-						crit(14),		-- Tuurem
-						crit(15),		-- Zangarra
-					}),
+					explorationAch(8940),		-- Explore Talador
 					ach(9486),		-- Goodness Gracious
 					ach(9638, {		-- Heralds of the Legion (Shattrath City)
-						crit(1),		-- Orumo the Observer
-						crit(2),		-- Lord Korinak
-						crit(3),		-- Lady Demlash
-						crit(4),		-- Shadowflame Terrorwalker
-						crit(5),		-- Kurlosh Doomfang
-						crit(6),		-- Matron of Sin
-						crit(7),		-- Vigilant Paarthos
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9674,  {	-- I Want More Talador
-						crit(1, {	-- Bonus Objective: Aruuna's Desolation
-							["sourceQuest"] = 34639,	-- Aruuna's Desolation
-						}),
-						crit(2, {	-- Bonus Objective: Court of Souls
-							["sourceQuest"] = 34667,	-- Court of Souls
-						}),
-						crit(3, {	-- Bonus Objective: Kuuro's Claim or Zangarra
-							["sourceQuests"] = {
-								37421,	-- Kuuro's Claim
-								37422,	-- Zangarra
-							},
-						}),
-						crit(4, {	-- Bonus Objective: Mor'gran Logworks or Orunai Coast
-							["sourceQuests"] = {
-								35237,	-- Mor'gran Logworks
-								35236,	-- Orunai Coast
-							},
-						}),
-						crit(5, {	-- Bonus Objective: Zorkra's Fall
-							["sourceQuest"] = 34660,	-- Zorkra's Fall
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9637),		-- Poor Communication
 					ach(9564,  {	-- Securing Draenor (A)
 						["collectible"] = false,
 						["races"] = ALLIANCE_ONLY,
 						["g"] = {
-							crit(12),	-- Assault on Shattrath Harbor
+							crit(26258),	-- Assault on Shattrath Harbor
 						},
 					}),
 					ach(9562,  {	-- Securing Draenor (Horde)
 						["collectible"] = false,
 						["races"] = HORDE_ONLY,
 						["g"] = {
-							crit(7),	-- Assault on Shattrath Harbor
+							crit(26242),	-- Assault on Shattrath Harbor
 						},
 					}),
 					ach(9632),		-- The Power Is Yours
@@ -261,6 +187,35 @@ root(ROOTS.Zones, {
 						}),
 					},
 				})),
+				explorationHeader({
+					exploration(6925),	-- Anchorite's Sojourn
+					exploration(6948),	-- Archenon Siegeyard
+					exploration(6924),	-- Aruuna
+					exploration(7084),	-- Aruuna's Desolation
+					exploration(7200),	-- Auchindoun
+					exploration(7389),	-- Bladefury's Command
+					exploration(6916),	-- Court of Souls
+					exploration(6918),	-- Deathweb Hollow
+					exploration(6927),	-- Duskfall Island
+					exploration(7097),	-- Fort Wrynn
+					exploration(7112),	-- Frostwolf Overlook
+					exploration(7176),	-- Gordal Foothills
+					exploration(7131),	-- Gordal Fortress
+					exploration(6761),	-- Gul'rok
+					exploration(6950),	-- Mor'gran Logworks
+					exploration(7251),	-- Orunai Bay
+					exploration(6947),	-- Orunai Coast
+					exploration(6762),	-- Shattrath City Center
+					exploration(7421),	-- Shattrath Commons
+					exploration(7418),	-- Shattrath Port Authority
+					exploration(7455),	-- Shattrath Residential District
+					exploration(6920),	-- Telmor
+					exploration(7391),	-- The Path of Glory
+					exploration(6926),	-- Veil Shadar
+					exploration(7098),	-- Vol'jin's Pride
+					exploration(7115),	-- Zangarra
+					exploration(7090),	-- Zorkra's Fall
+				}),
 				n(FLIGHT_PATHS, {
 					fp(1451, {	-- Anchorite's Sojourn, Talador
 						["coord"] = { 80.0, 56.6, TALADOR },
@@ -307,7 +262,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 80.4, 25.4, TALADOR },
 					}),
 				}),
-				petbattles({ "added 6.0.1" }, {
+				petbattles({ ADDED_6_0_2 }, {
 					n(87125, {	-- Taralune <Grand Master Pet Tamer>
 						["coord"] = { 49.0, 80.4, TALADOR },
 					}),
@@ -776,7 +731,7 @@ root(ROOTS.Zones, {
 					}),
 					q(33944, {	-- And the Elekk Too?!
 						["coord"] = { 30.9, 70.8, TALADOR },
-						["icon"] = "Interface\\Icons\\inv_pet_baby_elekk_blue",
+						["icon"] = 656597,
 					}),
 					q(33967, {	-- Antivenin
 						["provider"] = { "n", 78028 },	-- Soulbinder Tuulani
@@ -835,7 +790,9 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = {
 							34676,	-- The Critical Path (board)
 							37183,	-- The Critical Path (bodrick grey)
+							-- #if AFTER 7.3.5
 							49565,	-- Hero's Call: Talador!
+							-- #endif
 							36495,	-- News From Talador
 						},
 					}),
@@ -846,12 +803,14 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = {
 							34681,	-- It's a Matter of Strategy (rokhan)
 							36953,	-- It's a Matter of Strategy (board)
+							-- #if AFTER 7.3.5
 							49547,	-- Warchief's Command: Talador!
+							-- #endif
 						},
 					}),
 					q(33761, {	-- Barum's Notes
-						--["objectID"] = 225778,	-- Barum's Notes
-						["icon"] = "Interface\\Icons\\trade_archaeology_draenei_tome",
+						["provider"] = {"o",225778},	-- Barum's Notes
+						["icon"] = 442732,
 						["coord"] = { 76.2, 42.7, TALADOR },
 						["sourceQuests"] = {
 							34566,	-- At Your Command
@@ -884,15 +843,11 @@ root(ROOTS.Zones, {
 					}),
 					q(33740, {	-- Burning Sky
 						["provider"] = { "n", 75896 },	-- Crystal-Shaper Barum
-						["coord"] = { 73.0, 38.7, 353 },
+						["coord"] = { 73.0, 38.7, TALADOR },
 						["sourceQuests"] = {
 							34685,	-- As The Smoke Rises (breadcrumb)
-							34566,	-- At Your Command
-							36843,	-- They Came From Above
-							34624,	-- Gas Guzzlers (alliance, artillery tower)
-							34573,	-- Iridium Recovery (alliance, artillery tower)
-							34875,	-- Next Steps (alliance, arcane sanctum)
-							34571,	-- Out of Jovite (alliance, artillery tower)
+							34711,	-- Due Cause to Celebrate(A)
+							34712,	-- Due Cause to Celebrate(H)
 						},
 					}),
 					q(34406, {	-- Caught In The Chaos
@@ -941,18 +896,18 @@ root(ROOTS.Zones, {
 					q(34091, {	-- Decommissioned Mission
 						["coord"] = { 61.7, 27.5, TALADOR },
 						["races"] = ALLIANCE_ONLY,
-						["icon"] = "Interface\\Icons\\ability_mount_shreddermount",
+						["icon"] = 894222,
+						["provider"] = {"o",225726},	-- Iron Shredder Decommission Orders
 						["sourceQuests"] = {
 							34947,	-- Shredder Manual
 							34087,	-- Through the Looking Glass
 						},
-						--["objectID"] = 225726,	-- Iron Shredder Decommission Orders
 					}),
 					q(33720, {	-- Decommissioned Mission
 						["coord"] = { 59.9, 16.4, TALADOR },
 						["races"] = HORDE_ONLY,
-						["icon"] = "Interface\\Icons\\ability_mount_shreddermount",
-						--["objectID"] = 225726,	-- Iron Shredder Decommission Orders
+						["icon"] = 894222,
+						["provider"] = {"o",225726},	-- Iron Shredder Decommission Orders
 						["sourceQuests"] = {
 							34948,	-- Shredder Manual
 							33754,	-- Through the Looking Glass
@@ -1078,6 +1033,8 @@ root(ROOTS.Zones, {
 					}),
 					q(34400, {	-- Frenzied Manafeeders
 						["provider"] = { "n", 78534 },	-- Ageilaa
+						["description"] = "High-level players may require |cff0070ddSoft Foam Sword|r to lower creature health to 10%.",
+						["crs"] = { 78390 }, -- Frenzied Manafeeder NPC
 						["coord"] = { 49.8, 56.1, TALADOR },
 					}),
 					q(34777, {	-- Gatekeepers of Auchindoun
@@ -1100,8 +1057,14 @@ root(ROOTS.Zones, {
 							i(113023),	-- Foolproof Targeting Mechanism
 						},
 					}),
+					heroscall(q(49565, {	-- Hero's Call: Talador!
+						["timeline"] = { ADDED_7_3_5 },
+						["DisablePartySync"] = true,
+						["isBreadcrumb"] = true,
+						["lvl"] = 94,
+					})),
 					q(34163, {	-- Hiding in the Shadows
-						--["objectID"] = 227737,	-- Shadow Council Communicator
+						["provider"] = {"o",227737},	-- Shadow Council Communicator
 						["coord"] = { 37.2, 79.3, TALADOR },
 						["sourceQuests"] = {
 							34092,	-- Desperate Measures
@@ -1177,8 +1140,8 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(33988, {	-- Invasion of the Soul Eaters
-						--["objectID"] = 227069,	-- Hastily Written Note
-						["icon"] = "Interface\\Icons\\trade_archaeology_silverscrollcase",
+						["provider"] = {"o",227069},	-- Hastily Written Note
+						["icon"] = 454060,
 						["coord"] = { 49.1, 88.0, TALADOR },
 						["sourceQuests"] = {
 							34240,	-- Scheduled Pickup (Alliance)
@@ -1270,8 +1233,8 @@ root(ROOTS.Zones, {
 					}),
 					q(34465, {	-- Mystical Hat
 						["coord"] = { 45.2, 37.0, TALADOR },
-						["icon"] = "Interface\\Icons\\inv_helmet_65",
-						--["objectID"] = 229331,	-- A Mystical hat
+						["icon"] = 133167,
+						["provider"] = {"o",229331},	-- A Mystical hat
 					}),
 					q(34013, {	-- Never Forget
 						["provider"] = { "n", 78083 },	-- Defender Artaal
@@ -1650,7 +1613,11 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 79612 },	-- Knight-Lord Dranarus
 						["coord"] = { 71.8, 29.7, TALADOR },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 34971,	-- The Only Way to Travel
+						["sourceQuests"] = {
+							34972,	-- Armor Up
+							34949,	-- Joining the Ranks
+						},
+						["sourceQuestNumRequired"] = 1,
 						["isBreadcrumb"] = true,
 					}),
 					q(33580, {	-- The Purge of Veil Shadar
@@ -1700,6 +1667,7 @@ root(ROOTS.Zones, {
 					}),
 					q(36843, {	-- They Came From Above
 						["sourceQuests"] = { 34579 },	-- Gas Guzzlers
+						["lockCriteria"] = { 1, "questID", 33740 },	-- Burning Sky
 						["provider"] = { "n", 86522 },	-- Akhan
 						["coord"] = { 67.4, 42.2, TALADOR },
 						["isBreadcrumb"] = true,
@@ -1895,6 +1863,12 @@ root(ROOTS.Zones, {
 							i(112536),	-- Talador Sentinel Belt
 						},
 					}),
+					warchiefscommand(q(49547, {	-- Warchief's Command: Talador!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+						["lvl"] = 94,
+					})),
 					q(34351, {	-- We Must Construct Additional Pylons
 						["provider"] = { "n", 77737 },	-- Soulbinder Tuulani
 						["coord"] = { 68.4, 19.3, 536 },
@@ -1981,9 +1955,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(5, {	-- Avatar of Socrethar
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119378),	-- Socrethar's Stone
 						},
 					}),
@@ -1996,9 +1967,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(1, {	-- Bombardier Gu'gok
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119413),	-- Gu'gok's Rangefinder
 						},
 					}),
@@ -2040,9 +2008,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 47.6, 32.9, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(4, {	-- Felfire Consort
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119386),	-- Consort's Promise Ring
 						},
 					}),
@@ -2084,6 +2049,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(85572, {	-- Grrbrrgle
+						["provider"] = { "o", 235673 },	-- A Restless Crate
 						["description"] = "Click on the Restless Crate.",
 						["questID"] = 36919,
 						["coord"] = { 22.2, 74.2, TALADOR },
@@ -2097,9 +2063,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 47.6, 39.0, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(2, {	-- Gug'tol
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119402),	-- Gurg'tol's Imp Imperator
 						},
 					}),
@@ -2109,9 +2072,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 48.1, 25.2, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(3, {	-- Haakun the All-Consuming
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119403),	-- Sargerei Soulbiter
 						},
 					}),
@@ -2151,8 +2111,8 @@ root(ROOTS.Zones, {
 					n(78872, {	-- Klikixx
 						["questID"] = 34498,
 						["coords"] = {
-							{ 61.1, 83.9, TALADOR },	-- cave
-							{ 66.8, 85.6, TALADOR },	-- klikixx
+							{ 61.1, 83.9, TALADOR },	-- Deathweb Hollow Cave Entrance
+							{ 66.8, 85.6, TALADOR },	-- Klikixx
 						},
 						["g"] = {
 							i(116125),	-- Klikixx's Webspinnner (TOY!)
@@ -2164,9 +2124,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 37.4, 37.6, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(5, {	-- Kurlosh Doomfang
-								["achievementID"] = 9638,	-- Heralds of the Legion
-							}),
 							i(119394),	-- Kurlosh's Kidneyslicer
 						},
 					}),
@@ -2176,9 +2133,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 33.6, 37.8, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(3, {	-- Lady Demlash
-								["achievementID"] = 9638,	-- Heralds of the Legion
-							}),
 							i(119352),	-- Demlash's Dashing Robe
 						},
 					}),
@@ -2189,9 +2143,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 37.96, 20.8, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(7, {	-- Legion Vanguard
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119385),	-- Vanguard's Linebreaking Bracer
 						},
 					}),
@@ -2208,9 +2159,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 31.0, 26.8, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(2, {	-- Lord Korinak
-								["achievementID"] = 9638,	-- Heralds of the Legion
-							}),
 							i(119388),	-- Doomlord's Seal of Command
 						},
 					}),
@@ -2220,9 +2168,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 38.8, 49.8, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(6, {	-- Matron of Sin
-								["achievementID"] = 9638,	-- Heralds of the Legion
-							}),
 							i(119353),	-- Matron's Supple Gloves
 						},
 					}),
@@ -2237,15 +2182,12 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(87668, {	-- Orumo the Observer
-						["description"] = "Requires 5 players to summon. Have one person stand on each of the runes around Orumo to make him attackable.",
+						["description"] = "Requires 5 players standing on the runes in front of Orumo to release him from the Demonic Field and make him attackable.\nUltimately, you can summon him with 5 of your own characters.\nBy placing them in front of the runes and then logging onto each of your 5 characters, you will have just enough time from the first to the last to release him.",
 						["questID"] = 37344,
 						["isDaily"] = true,
 						["coord"] = { 31.4, 47.6, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(1, {	-- Orumo the Observer
-								["achievementID"] = 9638,	-- Heralds of the Legion
-							}),
 							i(119170),	-- Eye of Observation (PET!)
 							i(119375),	-- Chained Orb of Omniscience
 						},
@@ -2257,8 +2199,33 @@ root(ROOTS.Zones, {
 							i(116112),	-- Ra'kahn's Bite
 						},
 					}),
-					v(37337,   {	-- Sargerei War Council
-						["description"] = "Patrols the area in roughly a circle.",
+					n(createHeader({	-- Sargerei War Council
+						readable = "Sargerei War Council",
+						icon = 136156,
+						text = {
+							en = "Sargerei War Council",
+							es = "Consejo de guerra Sargerei",
+							de = "Kriegsrat der Sargerei",
+							fr = "Conseil de guerre sargereï",
+							it = "Concilio di Guerra Sargerei",
+							pt = "Conselho de Guerra Sargerei",
+							ru = "Саргерайский военный совет",
+							ko = "살게레이 전쟁의회",
+							cn = "萨格雷战争议会",
+						},
+						description = {
+							en = "Patrols the area in roughly a circle.",
+							es = "Patrulla el área aproximadamente en un círculo.",
+							de = "Streift ungefähr im Kreis durch das Gebiet.",
+							fr = "Patrouille dans la zone en formant à peu près un cercle.",
+							it = "Pattuglia l'area approssimativamente in cerchio.",
+							pt = "Patrulha a área aproximadamente em círculo.",
+							ru = "Патрулирует территорию примерно по кругу.",
+							ko = "대략 원을 그리며 해당 지역을 순찰합니다.",
+							cn = "大致绕一圈巡逻。",
+						},
+					}), {
+						["questID"] = 37337,
 						["isDaily"] = true,
 						["crs"] = {
 							88071,	-- Strategist Ankor
@@ -2272,9 +2239,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(6, {	-- Sargerei War Council
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119350),	-- Sargerei Councillor's Drape
 						},
 					}),
@@ -2284,9 +2248,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 41.0, 42.0, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(4, {	-- Shadowflame Terrorwalker
-								["achievementID"] = 9638,	-- Heralds of the Legion
-							}),
 							i(119393),	-- Searing Shadowflame Axe
 						},
 					}),
@@ -2313,6 +2274,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(51015, {	-- Silthide
+						["description"] = "Silthide has a respawn timer between 12-28 hours. Mount drop rate is 100% for all participants.",
 						["coords"] = {	-- **Coords unconfirmed, relied on wowhead**
 							{ 62.0, 33.2, TALADOR },
 							{ 62.6, 46.0, TALADOR },
@@ -2332,7 +2294,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(77634, {	-- Taladorantula
-						["description"] = "Kill small spiders around the egg sacs until you see warnings. The third warning should spawn the mob.",
+						["description"] = "Kill small spiders around the egg sacs until you see warnings. The third warning should spawn the Taladorantula.",
 						["questID"] = 34171,
 						["coord"] = { 59.0, 87.4, TALADOR },
 						["g"] = {
@@ -2363,9 +2325,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(7, {	-- Vigilant Paarthos
-								["achievementID"] = 9638,	-- Heralds of the Legion
-							}),
 							i(119383),	-- Shoulderplates of the Vigilant
 						},
 					}),
@@ -2399,9 +2358,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 37.6, 14.6, TALADOR },
 						["lvl"] = 100,
 						["g"] = {
-							crit(8, {	-- Xothear, the Destroyer
-								["achievementID"] = 9633,	-- Cut off the Head
-							}),
 							i(119371),	-- Mantle of the Destroyer
 						},
 					}),
@@ -2432,10 +2388,14 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(228024, {	-- Aruuna Mining Cart
+						["description"] = "Inside Aruuna Crystal Mine.",
 						["questID"] = 34260,
-						["coord"] = { 81.8, 34.9, TALADOR },
+						["coords"] = {
+							{ 78.1, 35.6, TALADOR }, -- Aruuna Crystal Mine Entrance
+							{ 81.8, 34.9, TALADOR }, -- Aruuna Mining Cart
+						},
 						["g"] = {
-							i(109118),	-- Blackrock Ore
+							--i(109118),	-- Blackrock Ore
 						},
 					}),
 					o(228016, {	-- Barrel of Fish
@@ -2453,6 +2413,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(229354, {	-- Bright Coin
+						["description"] = "Below the bridge.",
 						["questID"] = 34471,
 						["coord"] = { 73.5, 51.4, TALADOR },
 						["g"] = {
@@ -2475,7 +2436,10 @@ root(ROOTS.Zones, {
 					}),
 					o(227996, {	-- Curious Deathweb Egg
 						["questID"] = 34239,
-						["coord"] = { 66.5, 86.9, TALADOR },
+						["coords"] = {
+							{ 61.1, 83.9, TALADOR },	-- Deathweb Hollow Cave Entrance
+							{ 66.5, 86.9, TALADOR },	-- Curious Deathweb Egg
+						},
 						["g"] = {
 							i(117569),	-- Giant Deathweb Egg (TOY!)
 						},
@@ -2508,7 +2472,10 @@ root(ROOTS.Zones, {
 					o(236483, {	-- Gift of the Ancients
 						["description"] = "Turn each statue to face the center.",
 						["questID"] = 36829,
-						["coord"] = { 28.4, 74.2, TALADOR },
+						["coords"] = {
+							{ 27.8, 75.6, TALADOR },	-- Cave Entrance
+							{ 28.4, 74.2, TALADOR },	-- Gift of the Ancients
+						},
 						["g"] = {
 							i(118686),	-- Signet Ring of Gehs'taal
 						},
@@ -2537,13 +2504,18 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(227953, {	-- Jug of Aged Ironwine
+						["description"] = "Inside the cave at the base of Orunai Delta. Guarded by Murdor the Drunk.",
 						["questID"] = 34233,
-						["coord"] = { 65.5, 11.4, TALADOR },
+						["coords"] = {
+							{ 64.8, 9.2,  TALADOR },	-- Cave Entrance
+							{ 65.5, 11.4, TALADOR },	-- Jug of Aged Ironwine
+						},
 						["g"] = {
 							i(117568),	-- Jug of Ironwine
 						},
 					}),
 					o(228025, {	-- Keluu's Belongings
+						["description"] = "Below the bridge.",
 						["questID"] = 34261,
 						["coord"] = { 75.7, 41.4, TALADOR },
 					}),
@@ -2622,9 +2594,11 @@ root(ROOTS.Zones, {
 					}),
 					o(228483, {	-- Rusted Lockbox
 						["questID"] = 34276,
-						["description"] = "Swim down to the bottom of the cavern.",
-						["modelID"] = 34286,
-						["coord"] = { 66.0, 85.1, TALADOR },
+						["description"] = "Inside Deathweb Hollow. Swim down to the bottom of the cavern.",
+						["coords"] = {
+							{ 61.1, 83.9, TALADOR },	-- Deathweb Hollow Cave Entrance
+							{ 66.0, 85.1, TALADOR },	-- Rusted Lockbox
+						},
 						["sym"] = COMMON_TREASURE_SYM,
 					}),
 					o(228018, {	-- Soulbinder's Reliquary
@@ -2653,9 +2627,16 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(230643, {	-- Teroclaw Nest
-						["description"] = "Can be found at the base of trees near Aruuna, the Tomb of Lights and Vol'jin's Pride.",
+						["description"] = "Can be found at the base of trees near Aruuna, the Tomb of Lights and Vol'jin's Pride guarded by Teroclaw Chicks.\nCan be looted 1 time per character.",
 						["questID"] = 35162,
 						["modelScale"] = 2,
+						["coords"] = {
+							{ 72.76, 35.59, TALADOR },
+							{ 70.92, 35.61, TALADOR },
+							{ 72.33, 37.01, TALADOR },
+							{ 73.41, 30.68, TALADOR },
+							{ 70.75, 31.96, TALADOR },
+						},
 						["g"] = {
 							i(112699),	-- Teroclaw Hatchling (PET!)
 						},
@@ -2669,7 +2650,10 @@ root(ROOTS.Zones, {
 					}),
 					o(228019, {	-- Webbed Sac
 						["questID"] = 34255,
-						["coord"] = { 65.4, 88.6, TALADOR },
+						["coords"] = {
+							{ 61.1, 83.9, TALADOR },	-- Deathweb Hollow Cave Entrance
+							{ 65.4, 88.6, TALADOR },	-- Webbed Sac
+						},
 						["g"] = {
 							i(116129),	-- Desiccated Orc's Coin Pouch
 						},
@@ -2690,34 +2674,34 @@ root(ROOTS.Zones, {
 						["coord"] = { 45.2, 38.8, TALADOR },
 						["g"] = {
 							i(54436, {	-- Blue Clockwork Rocket Bot (PET!)
-								["timeline"] = { "added 3.3.3.11573" },
+								["timeline"] = { ADDED_3_3_3 },
 							}),
 							i(95621, {	-- Warbot (PET!)
-								["timeline"] = { "added 5.2.0.16539" },
+								["timeline"] = { ADDED_5_2_0 },
 							}),
 							i(54343, {	-- Blue Crashin' Thrashin' Racer Controller (TOY!)
-								["timeline"] = { "added 3.3.3.11573" },
+								["timeline"] = { ADDED_3_3_3 },
 							}),
 							i(104324, {	-- Foot Ball (TOY!)
-								["timeline"] = { "added 5.4.0.17227" },
+								["timeline"] = { ADDED_5_4_0 },
 							}),
 							i(137663, {	-- Soft Foam Sword (TOY!)
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(104323, {	-- The Swineskin (TOY!)
-								["timeline"] = { "added 5.4.0.17227" },
+								["timeline"] = { ADDED_5_4_0 },
 							}),
 							i(54438, {	-- Tiny Blue Ragdoll (TOY!)
-								["timeline"] = { "added 3.3.3.11573" },
+								["timeline"] = { ADDED_3_3_3 },
 							}),
 							i(54437, {	-- Tiny Green Ragdoll (TOY!)
-								["timeline"] = { "added 3.3.3.11573" },
+								["timeline"] = { ADDED_3_3_3 },
 							}),
 							i(44606, {	-- Toy Train Set Toy (TOY!)
-								["timeline"] = { "added 3.0.2.8982" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							i(45057, {	-- Wind-Up Train Wrecker Toy (TOY!)
-								["timeline"] = { "added 3.1.0.9626" },
+								["timeline"] = { ADDED_3_1_0 },
 							}),
 						},
 					}),
@@ -2772,30 +2756,20 @@ root(ROOTS.Zones, {
 						["coord"] = { 71.6, 30.2, TALADOR },
 						["races"] = HORDE_ONLY,
 						["g"] = {
-							i(23799, {	-- Schematic: Adamantite Rifle
-								["requireSkill"] = ENGINEERING,
+							i(23799, {	-- Schematic: Adamantite Rifle (RECIPE!)
 								["isLimited"] = true,
-								["f"] = RECIPES,
 							}),
-							i(23807, {	-- Schematic: Adamantite Scope
-								["requireSkill"] = ENGINEERING,
+							i(23807, {	-- Schematic: Adamantite Scope (RECIPE!)
 								["isLimited"] = true,
-								["f"] = RECIPES,
 							}),
-							i(23803, {	-- Schematic: Cogspinner Goggles
-								["requireSkill"] = ENGINEERING,
+							i(23803, {	-- Schematic: Cogspinner Goggles (RECIPE!)
 								["isLimited"] = true,
-								["f"] = RECIPES,
 							}),
-							i(23816, {	-- Schematic: Fel Iron Toolbox
-								["requireSkill"] = ENGINEERING,
+							i(23816, {	-- Schematic: Fel Iron Toolbox (RECIPE!)
 								["isLimited"] = true,
-								["f"] = RECIPES,
 							}),
-							i(23805, {	-- Schematic: Ultra-Spectropic Detection Goggles
-								["requireSkill"] = ENGINEERING,
+							i(23805, {	-- Schematic: Ultra-Spectropic Detection Goggles (RECIPE!)
 								["isLimited"] = true,
-								["f"] = RECIPES,
 							}),
 						},
 					}),
@@ -2839,7 +2813,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(34935),	-- After Wall Greeting - triggers during "Dropping In" after taking the portal (questID 34913 & 34879)
 		q(34560),	-- Armory
 		q(34568),	-- Armory

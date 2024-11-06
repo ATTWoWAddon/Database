@@ -10,74 +10,54 @@ local HUNGRY_NETHER_RAYS_GROUPS = {
 local UNHOLY_ENCHANT = i(16248, {	-- Formula: Enchant Weapon - Unholy (RECIPE!)
 	["cr"] = 16810,	-- Bonechewer Backbreaker
 });
-local OnTooltipForSkyguard = [[function(t)
+ExportDB.OnTooltipDB.ForSkyguard = [[~function(t, tooltipInfo)
 	local reputation = t.reputation;
 	if reputation < 42000 then
-		GameTooltip:AddLine("Protip: Join a rep farming group.", 1, 0.5, 0.5);
-
-		local isHuman = _.RaceIndex == 1;
-		local repPerKill = isHuman and 5.5 or 5;
-		local x, n = math.ceil((42000 - reputation) / repPerKill), math.ceil(42000 / repPerKill);
-		GameTooltip:AddDoubleLine("Kill Arokkoa.", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-
-		local repPerKill = isHuman and 110 or 100;
-		local x, n = math.ceil((42000 - reputation) / repPerKill), math.ceil(42000 / repPerKill);
-		GameTooltip:AddDoubleLine("Summon Bosses.", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-
-		local repPerTurnIn = isHuman and 165 or 150;
-		local x, n = math.ceil((42000 - reputation) / repPerTurnIn), math.ceil(42000 / repPerTurnIn);
-		GameTooltip:AddDoubleLine("Turn in Shadow Dust.", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-		GameTooltip:AddDoubleLine(" ", (x * 6) .. " Dust to go!", 1, 1, 1);
+		local addRepInfo = _.Modules.FactionData.AddReputationTooltipInfo;
+		tinsert(tooltipInfo, { left = "Protip: Join a rep farming group.", r = 1, g = 0.5, b = 0.5 });
+		addRepInfo(tooltipInfo, reputation, "Kill Arokkoa.", 5, 42000);
+		addRepInfo(tooltipInfo, reputation, "Summon Bosses.", 100, 42000);
+		addRepInfo(tooltipInfo, reputation, "Turn in Shadow Dust.", 150, 42000);
+		_.Modules.FactionData.AddReputationTooltipInfoWithMultiplier(tooltipInfo, reputation, "Total Dust", 150, 42000, 6);
 	end
 end]];
 root(ROOTS.Zones, {
 	m(OUTLAND, applyclassicphase(TBC_PHASE_ONE, {
-		m(TEROKKAR_FOREST, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {
+		m(TEROKKAR_FOREST, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {
 			["lore"] = "Terokkar Forest is a zone in central Outland that is home to Shattrath City, as well as quest hubs for level 15-30 players. The northern half of Terokkar is lush and the quests cover the threat of the Arakoaa and magic-addicted elves. The souther half is a wasteland known as the Bone Wastes, created when the Shadow Council blew up Auchindoun. There is also a daily quest hub, Skettis, for players with flying mounts--rewards include vanity items.",
-			-- #if AFTER WRATH
-			["icon"] = "Interface\\Icons\\achievement_zone_terrokar",
-			-- #endif
+			["icon"] = 236847,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
-					explorationAch(867, {	-- Explore Terokkar Forest
-						-- #if BEFORE WRATH
-						["description"] = "Explore Terokkar Forest, revealing the covered areas of the world map.",
-						-- #endif
-					}),
-					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, achWithRep(894, 1031, {	-- Flying High Over Skettis
-						-- #if BEFORE WRATH
-						["description"] = "Raise your reputation with the Sha'tari Skyguard to Exalted.",
-						-- #endif
+					explorationAch(867),	-- Explore Terokkar Forest
+					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, achWithRep(894, FACTION_SHATARI_SKYGUARD, {	-- Flying High Over Skettis
+						
 					})),
 					ach(726, {	-- Mr. Pinchy's Magical Crawdad Box
 						["provider"] = { "i", 27445 },	-- Magical Crawdad Box
-						-- #if BEFORE WRATH
-						["description"] = "Fish your way to Mr. Pinchy's Magical Crawdad Box.",
-						-- #endif
 						["requireSkill"] = FISHING,
 					}),
 					ach(905, {	-- Old Man Barlowned
-						["timeline"] = { "added 3.0.1" },
+						["timeline"] = { ADDED_3_0_2 },
 						["requireSkill"] = FISHING,
 						["groups"] = {
 							crit(5706, {	-- Crocolisks in the City
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 								["_quests"] = { 11665 },
 							}),
 							crit(5707, {	-- Bait Bandits
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 								["_quests"] = { 11666 },
 							}),
 							crit(5708, {	-- Felblood Fillet
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 								["_quests"] = { 11669 },
 							}),
 							crit(5709, {	-- The One That Got Away
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 								["_quests"] = { 11667 },
 							}),
 							crit(5710, {	-- Shrimpin' Ain't Easy
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 								["_quests"] = { 11668 },
 							}),
 						},
@@ -122,59 +102,56 @@ root(ROOTS.Zones, {
 							10028,	-- Vessels of Power
 						},
 						-- #else
-						-- #if BEFORE WRATH
-						["description"] = "Complete 63 quests in Terokkar Forest.",
-						-- #endif
 						["OnClick"] = [[_.CommonAchievementHandlers.LOREMASTER_OnClick]],
 						["OnTooltip"] = [[_.CommonAchievementHandlers.LOREMASTER_OnTooltip]],
 						["OnUpdate"] = [[_.CommonAchievementHandlers.LOREMASTER_OnUpdate]],
 						["rank"] = 63,
 						-- #endif
 						-- #else
-						["groups"] = {
-							crit(1, {	-- The Skettis Offensive
-								["sourceQuest"] = 10879,	-- The Skettis Offensive
-							}),
-							crit(2, {	-- Refugee Caravan
-								["sourceQuests"] = {
-									10878,	-- Before Darkness Falls
-									10031,	-- Helping the Lost Find Their Way
-									10852,	-- Missing Friends
-									10896,	-- The Infested Protectors
-									10881,	-- The Shadow Tomb
-									10842,	-- Vengeful Souls
-								},
-							}),
-							crit(3, {	-- Sha'tari Base Camp
-								["sourceQuests"] = {
-									10915,	-- The Fallen Exarch
-									10926,	-- Return to Sha'tari Base Camp
-									10930,	-- The Big Bone Worm
-									-- TODO: verify below:
-									10923,	-- Evil Draws Near
-									10873,	-- Taken in the Night
-								},
-							}),
-							crit(4, {	-- The Warden's Secret
-								["sourceQuests"] = {
-									9951,	-- It's Watching You!
-									10005,	-- Letting Earthbinder Tavgren Know
-								},
-							}),
-							crit(5, {	-- Allerian Stronghold
-								["sourceQuests"] = {
-									10042,	-- Kill the Shadow Council!
-									10035,	-- Torgos!
-									10022,	-- The Elusive Ironjaw
-									-- TODO: not 100% sure if every quest below is required
-									10012,	-- Fel Orc Plans
-									10007,	-- Thinning the Ranks
-									10869,	-- Thin the Flock
-									9986,	-- Stymying the Arakkoa
-									10028,	-- Vessels of Power
-								},
-							}),
-						},
+						-- ["groups"] = {
+						-- 	crit(1, {	-- The Skettis Offensive
+						-- 		["sourceQuest"] = 10879,	-- The Skettis Offensive
+						-- 	}),
+						-- 	crit(2, {	-- Refugee Caravan
+						-- 		["sourceQuests"] = {
+						-- 			10878,	-- Before Darkness Falls
+						-- 			10031,	-- Helping the Lost Find Their Way
+						-- 			10852,	-- Missing Friends
+						-- 			10896,	-- The Infested Protectors
+						-- 			10881,	-- The Shadow Tomb
+						-- 			10842,	-- Vengeful Souls
+						-- 		},
+						-- 	}),
+						-- 	crit(3, {	-- Sha'tari Base Camp
+						-- 		["sourceQuests"] = {
+						-- 			10915,	-- The Fallen Exarch
+						-- 			10926,	-- Return to Sha'tari Base Camp
+						-- 			10930,	-- The Big Bone Worm
+						-- 			-- TODO: verify below:
+						-- 			10923,	-- Evil Draws Near
+						-- 			10873,	-- Taken in the Night
+						-- 		},
+						-- 	}),
+						-- 	crit(4, {	-- The Warden's Secret
+						-- 		["sourceQuests"] = {
+						-- 			9951,	-- It's Watching You!
+						-- 			10005,	-- Letting Earthbinder Tavgren Know
+						-- 		},
+						-- 	}),
+						-- 	crit(5, {	-- Allerian Stronghold
+						-- 		["sourceQuests"] = {
+						-- 			10042,	-- Kill the Shadow Council!
+						-- 			10035,	-- Torgos!
+						-- 			10022,	-- The Elusive Ironjaw
+						-- 			-- TODO: not 100% sure if every quest below is required
+						-- 			10012,	-- Fel Orc Plans
+						-- 			10007,	-- Thinning the Ranks
+						-- 			10869,	-- Thin the Flock
+						-- 			9986,	-- Stymying the Arakkoa
+						-- 			10028,	-- Vessels of Power
+						-- 		},
+						-- 	}),
+						-- },
 						-- #endif
 					}),
 					ach(1272, {	-- Terror of Terokkar (H)
@@ -216,58 +193,55 @@ root(ROOTS.Zones, {
 							10036,	-- Torgos!
 						},
 						-- #else
-						-- #if BEFORE WRATH
-						["description"] = "Complete 68 quests in Terokkar Forest.",
-						-- #endif
 						["OnClick"] = [[_.CommonAchievementHandlers.LOREMASTER_OnClick]],
 						["OnTooltip"] = [[_.CommonAchievementHandlers.LOREMASTER_OnTooltip]],
 						["OnUpdate"] = [[_.CommonAchievementHandlers.LOREMASTER_OnUpdate]],
 						["rank"] = 68,
 						-- #endif
 						-- #else
-						["groups"] = {
-							crit(1, {	-- The Skettis Offensive
-								["sourceQuest"] = 10879,	-- The Skettis Offensive
-							}),
-							crit(2, {	-- Refugee Caravan
-								["sourceQuests"] = {
-									10878,	-- Before Darkness Falls
-									10031,	-- Helping the Lost Find Their Way
-									10852,	-- Missing Friends
-									10896,	-- The Infested Protectors
-									10881,	-- The Shadow Tomb
-									10842,	-- Vengeful Souls
-								},
-							}),
-							crit(3, {	-- Sha'tari Base Camp
-								["sourceQuests"] = {
-									10915,	-- The Fallen Exarch
-									10926,	-- Return to Sha'tari Base Camp
-									10930,	-- The Big Bone Worm
-									-- TODO: verify below:
-									10923,	-- Evil Draws Near
-									10873,	-- Taken in the Night
-								},
-							}),
-							crit(4, {	-- The Warden's Secret
-								["sourceQuests"] = {
-									9951,	-- It's Watching You!
-									10005,	-- Letting Earthbinder Tavgren Know
-								},
-							}),
-							crit(5, {	-- Stonebreaker Hold
-								["sourceQuests"] = {
-									10013,	-- An Unseen Hand
-									10043,	-- Kill the Shadow Council
-									10791,	-- Welcoming the Wolf Spirit
-									-- TODO: Verify below:
-									10201,	-- And Now, the Moment of Truth
-									10868,	-- Arakkoa War Path
-									9987,	-- Stymying the Arakkoa
-									10036,	-- Torgos!
-								},
-							}),
-						},
+						-- ["groups"] = {
+						-- 	crit(1, {	-- The Skettis Offensive
+						-- 		["sourceQuest"] = 10879,	-- The Skettis Offensive
+						-- 	}),
+						-- 	crit(2, {	-- Refugee Caravan
+						-- 		["sourceQuests"] = {
+						-- 			10878,	-- Before Darkness Falls
+						-- 			10031,	-- Helping the Lost Find Their Way
+						-- 			10852,	-- Missing Friends
+						-- 			10896,	-- The Infested Protectors
+						-- 			10881,	-- The Shadow Tomb
+						-- 			10842,	-- Vengeful Souls
+						-- 		},
+						-- 	}),
+						-- 	crit(3, {	-- Sha'tari Base Camp
+						-- 		["sourceQuests"] = {
+						-- 			10915,	-- The Fallen Exarch
+						-- 			10926,	-- Return to Sha'tari Base Camp
+						-- 			10930,	-- The Big Bone Worm
+						-- 			-- TODO: verify below:
+						-- 			10923,	-- Evil Draws Near
+						-- 			10873,	-- Taken in the Night
+						-- 		},
+						-- 	}),
+						-- 	crit(4, {	-- The Warden's Secret
+						-- 		["sourceQuests"] = {
+						-- 			9951,	-- It's Watching You!
+						-- 			10005,	-- Letting Earthbinder Tavgren Know
+						-- 		},
+						-- 	}),
+						-- 	crit(5, {	-- Stonebreaker Hold
+						-- 		["sourceQuests"] = {
+						-- 			10013,	-- An Unseen Hand
+						-- 			10043,	-- Kill the Shadow Council
+						-- 			10791,	-- Welcoming the Wolf Spirit
+						-- 			-- TODO: Verify below:
+						-- 			10201,	-- And Now, the Moment of Truth
+						-- 			10868,	-- Arakkoa War Path
+						-- 			9987,	-- Stymying the Arakkoa
+						-- 			10036,	-- Torgos!
+						-- 		},
+						-- 	}),
+						-- },
 						-- #endif
 					}),
 				}),
@@ -281,46 +255,70 @@ root(ROOTS.Zones, {
 					}},
 					["groups"] = {
 						pet(514, {	-- Flayer Youngling (PET!)
-							["description"] = "Found in Razorthorn Rise on the border of Hellfire and Terokkar.",
+							["description"] = "Found in Razorthorn Rise, on the mountain range between Hellfire Peninsula and Terokkar Forest. Flying is required.",
 						}),
 						pet(517),	-- Warpstalker Hatchling (PET!)
 					},
 				}),
-				-- #if ANYCLASSIC
-				n(EXPLORATION, {
-					exploration(3684, "256:256:480:277"),	-- Allerian Stronghold
-					exploration(3894, "256:234:247:434"),	-- Auchenai Grounds
-					exploration(3719, "256:367:103:301"),	-- Bleeding Hollow Ruins
-					exploration(3685, "256:256:521:275"),	-- Bonechewer Ruins
-					exploration(3891, "256:256:377:272"),	-- Carrion Hill
-					exploration(3674, "256:256:314:0"),		-- Cenarion Thicket
-					exploration(3886, "256:208:321:460"),	-- Derelict Caravan
-					exploration(3681, "385:512:617:149"),	-- Firewing Point
-					exploration(3682, "512:256:143:171"),	-- Grangol'var Village
-					exploration(3860, "256:256:505:154"),	-- Raastok Glade
-					exploration(3858, "256:256:478:19"),	-- Razorthorn Shelf
-					exploration(3887, "128:256:316:268"),	-- Refugee Caravan
-					exploration(3893, "256:256:310:345"),	-- Ring of Observance
-					-- #if AFTER WRATH
-					exploration(3958),	-- Sha'tari Base Camp [NOTE: This might not be completable either...?]
+				explorationHeader({
+					exploration(3901),	-- Allerian Post
+					exploration(3684),	-- Allerian Stronghold
+					-- #if AFTER CATA
+					exploration(3894),	-- Auchenai Grounds (Wrath Classic: Can't be collected)
 					-- #endif
-					exploration(3957, { ["timeline"] = { "created 2.0.1" } }),	-- Sha'tari Outpost [NOTE: Only Crieve could complete this, using Exploration Restoration, but not reliably achievable.]
-					exploration(3888, "256:256:245:289"),	-- Shadow Tomb
-					exploration(3703, "512:512:104:4"),		-- Shattrath City
-					exploration(3679, "512:320:449:348"),	-- Skettis / Skethyl Mountains (3693) [Both of these proc'd it]
-					exploration(3683, "256:256:397:165"),	-- Stonebreaker Hold
-					exploration(3760),		-- The Barrier Hills (Nagrand)
-					exploration(3696, "256:256:116:4"),		-- The Barrier Hills
-					exploration(3697, "128:128:0:0"),		-- The Bone Wastes
-					exploration(3675, "256:512:455:34"),	-- Tuurem
-					exploration(3889, "256:256:222:362"),	-- Veil Rhaze
-					exploration(3892, "256:256:417:327"),	-- Writhing Mound
+					exploration(3688),	-- Auchindoun
+					exploration(3690),	-- Blackwind Lake
+					exploration(3973),	-- Blackwind Landing
+					exploration(3680),	-- Blackwind Valley
+					exploration(3719),	-- Bleeding Hollow Ruins
+					exploration(3685),	-- Bonechewer Ruins
+					-- #if AFTER CATA
+					exploration(3891),	-- Carrion Hill (Wrath Classic: Can't be collected)
+					-- #endif
+					exploration(3674),	-- Cenarion Thicket
+					--exploration(3886),	-- Derelict Caravan (Wrath Classic: Can't be collected)
+					exploration(3681),	-- Firewing Point
+					exploration(3682),	-- Grangol'var Village
+					exploration(3691),	-- Lake Ere'Noru
+					exploration(3692),	-- Lake Jorune
+					-- #if AFTER CATA
+					exploration(3978),	-- Lower Veil Shil'ak
+					-- #endif
+					exploration(3860),	-- Raastok Glade
+					exploration(3858),	-- Razorthorn Shelf
+					exploration(3887),	-- Refugee Caravan
+					exploration(3893),	-- Ring of Observance
+					exploration(3958),	-- Sha'tari Base Camp
+					exploration(3957),	-- Sha'tari Outpost
+					exploration(3888),	-- Shadow Tomb
+					exploration(3703),	-- Shattrath City
+					exploration(3859),	-- Silmyr Lake
+					exploration(3693),	-- Skethyl Mountains
+					exploration(3679),	-- Skettis
+					exploration(3902),	-- Stonebreaker Camp
+					exploration(3683),	-- Stonebreaker Hold
+					exploration(3696),	-- The Barrier Hills
+					exploration(3760),	-- The Barrier Hills (Nagrand)
+					exploration(3697),	-- The Bone Wastes
+					exploration(3890),	-- Tomb of Lights
+					exploration(3675),	-- Tuurem
+					-- #if AFTER CATA
+					exploration(3976),	-- Veil Ala'rak
+					-- #endif
+					exploration(3686),	-- Veil Lithic
+					exploration(3689),	-- Veil Reskk
+					-- #if AFTER CATA
+					exploration(3889),	-- Veil Rhaze (Wrath Classic: Can't be collected)
+					-- #endif
+					exploration(3678),	-- Veil Shalas
+					exploration(3676),	-- Veil Shienor
+					exploration(3677),	-- Veil Skith
+					--exploration(3892),	-- Writhing Mound (Wrath Classic: Can't be collected)
 				}),
-				-- #endif
 				n(FACTIONS, {
-					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, faction(1031, {	-- Sha'tari Skyguard
-						["icon"] = "Interface\\Icons\\ability_hunter_pet_netherray",
-						["OnTooltip"] = OnTooltipForSkyguard,
+					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, faction(FACTION_SHATARI_SKYGUARD, {	-- Sha'tari Skyguard
+						["icon"] = 132191,
+						["OnTooltip"] = [[_.OnTooltipDB.ForSkyguard]],
 					})),
 				}),
 				prof(FISHING, {
@@ -329,14 +327,12 @@ root(ROOTS.Zones, {
 					ach(1225, {	-- Outland Angler
 						["provider"] = { "o", 182957 },	-- Highland Mixed School
 						["criteriaID"] = 3869,	-- Highland Mixed School
-						["timeline"] = { "added 3.0.1" },
+						["timeline"] = { ADDED_3_0_2 },
 						["requireSkill"] = FISHING,
 					}),
 					-- #else
-					ach(1225, {	-- Outland Angler
-						["provider"] = { "o", 182957 },	-- Highland Mixed School
-						["criteriaID"] = 3627,	-- Highland Mixed School
-						["timeline"] = { "added 3.0.1" },
+					o(182957, {	-- Highland Mixed School
+						["timeline"] = { ADDED_3_0_2 },
 						["requireSkill"] = FISHING,
 					}),
 					-- #endif
@@ -357,14 +353,12 @@ root(ROOTS.Zones, {
 					ach(1225, {	-- Outland Angler
 						["provider"] = { "o", 182956 },	-- School of Darter
 						["criteriaID"] = 3868,	-- School of Darter
-						["timeline"] = { "added 3.0.1" },
+						["timeline"] = { ADDED_3_0_2 },
 						["requireSkill"] = FISHING,
 					}),
 					-- #else
-					ach(1225, {	-- Outland Angler
-						["provider"] = { "o", 182956 },	-- School of Darter
-						["criteriaID"] = 3628,	-- School of Darter
-						["timeline"] = { "added 3.0.1" },
+					o(182956, {	-- School of Darter
+						["timeline"] = { ADDED_3_0_2 },
 						["requireSkill"] = FISHING,
 					}),
 					-- #endif
@@ -391,7 +385,7 @@ root(ROOTS.Zones, {
 							objective(1, {	-- 0/1 Blackfin Darter
 								["provider"] = { "i", 34865 },	-- Blackfin Darter
 							}),
-							i(34863),  -- Bag of Fishing Treasures
+							i(34863),	-- Bag of Fishing Treasures
 						},
 					}),
 					q(11665, {  -- Crocolisks in the City
@@ -417,7 +411,7 @@ root(ROOTS.Zones, {
 							objective(1, {	-- 0/1 Monstrous Felblood Snapper
 								["provider"] = { "i", 34867 },	-- Monstrous Felblood Snapper
 							}),
-							i(34863),  -- Bag of Fishing Treasures
+							i(34863),	-- Bag of Fishing Treasures
 						},
 					}),
 					q(11668, {	-- Shrimpin' Ain't Easy
@@ -430,7 +424,7 @@ root(ROOTS.Zones, {
 							objective(1, {	-- 0/10 Giant Freshwater Shrimp
 								["provider"] = { "i", 34866 },	-- Giant Freshwater Shrimp
 							}),
-							i(34863),  -- Bag of Fishing Treasures
+							i(34863),	-- Bag of Fishing Treasures
 						},
 					}),
 					q(11667, {	-- The One That Got Away
@@ -443,7 +437,7 @@ root(ROOTS.Zones, {
 							objective(1, {	-- 0/1 World's Largest Mudfish
 								["provider"] = { "i", 34868 },	-- World's Largest Mudfish
 							}),
-							i(34863),  -- Bag of Fishing Treasures
+							i(34863),	-- Bag of Fishing Treasures
 						},
 					}),
 					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, q(11885, {	-- Adversarial Blood
@@ -451,6 +445,21 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 11029,	-- A Shabby Disguise
 						["coord"] = { 64.2, 66.9, TEROKKAR_FOREST },
 						["groups"] = {
+							objective(1, {	-- 0/1 Darkscreecher Akkarai slain
+								["provider"] = { "n", 23161 },	-- Darkscreecher Akkarai
+							}),
+							objective(2, {	-- 0/1 Karrog slain
+								["provider"] = { "n", 23165 },	-- Karrog
+							}),
+							objective(3, {	-- 0/1 Gezzarak the Huntress slain
+								["provider"] = { "n", 23163 },	-- Gezzarak the Huntress
+							}),
+							objective(4, {	-- 0/1 Vakkiz the Windrager slain
+								["providers"] = {
+									{ "n", 23162},	-- Vakkiz the Windrager
+									{ "n", 23204},	-- Vakkiz the Windrager
+								},
+							}),
 							i(32720),	-- Time-Lost Offering
 						},
 					})),
@@ -488,14 +497,14 @@ root(ROOTS.Zones, {
 							{ 68.4, 74.0, TEROKKAR_FOREST },
 							{ 75.0, 86.2, TEROKKAR_FOREST },
 						},
-						["maxReputation"] = { 1031, EXALTED },	-- Sha'tari Skyguard, Exalted
+						["maxReputation"] = { FACTION_SHATARI_SKYGUARD, EXALTED },	-- Sha'tari Skyguard, Exalted
 						["isDaily"] = true,
 					})),
 					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, q(11008, {	-- Fires Over Skettis
 						["qg"] = 23048,	-- Sky Sergeant Doryn
 						["sourceQuest"] = 11098,	-- To Skettis!
 						["coord"] = { 64.5, 66.7, TEROKKAR_FOREST },
-						["maxReputation"] = { 1031, EXALTED },	-- Sha'tari Skyguard, Exalted
+						["maxReputation"] = { FACTION_SHATARI_SKYGUARD, EXALTED },	-- Sha'tari Skyguard, Exalted
 						["isDaily"] = true,
 						["groups"] = {
 							objective(1, {	-- 0/20 Monstrous Kaliri Egg Destroyed
@@ -505,7 +514,7 @@ root(ROOTS.Zones, {
 								},
 							}),
 							ach(1275, {	-- Bombs Away
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 						},
 					})),
@@ -534,7 +543,7 @@ root(ROOTS.Zones, {
 						["qg"] = 23042,	-- Severin <Skyguard Medic>
 						["sourceQuest"] = 11004,	-- World of Shadows
 						["coord"] = { 64.1, 66.9, TEROKKAR_FOREST },
-						["maxReputation"] = { 1031, EXALTED },	-- Sha'tari Skyguard, Exalted
+						["maxReputation"] = { FACTION_SHATARI_SKYGUARD, EXALTED },	-- Sha'tari Skyguard, Exalted
 						["cost"] = {{ "i", 32388, 6 }},	-- Shadow Dust
 						["repeatable"] = true,
 						["groups"] = {
@@ -545,12 +554,23 @@ root(ROOTS.Zones, {
 						["qg"] = 23038,	-- Sky Commander Adaris
 						["sourceQuest"] = 11004,	-- World of Shadows
 						["coord"] = { 64.1, 66.9, TEROKKAR_FOREST },
+						["groups"] = {
+							objective(1, {	-- 0/1 Talonpriest Ishaal slain
+								["provider"] = { "n", 23066 },	-- Talonpriest Ishaal
+							}),
+							objective(2, {	-- 0/1 Talonpriest Skizzik slain
+								["provider"] = { "n", 23067 },	-- Talonpriest Skizzik
+							}),
+							objective(3, {	-- 0/1 Talonpriest Zellek slain
+								["provider"] = { "n", 23068 },	-- Talonpriest Zellek
+							}),
+						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, q(11074, {	-- Tokens of the Descendants
 						["qg"] = 23306,	-- Hazzik
 						["sourceQuest"] = 11885,	-- Adversarial Blood
 						["coord"] = { 64.2, 66.9, TEROKKAR_FOREST },
-						["maxReputation"] = { 1031, EXALTED },	-- Sha'tari Skyguard, Exalted
+						["maxReputation"] = { FACTION_SHATARI_SKYGUARD, EXALTED },	-- Sha'tari Skyguard, Exalted
 						["cost"] = {
 							{ "i", 32715, 1 },	-- Akkarai's Talons
 							{ "i", 32716, 1 },	-- Gezzarak's Claws
@@ -568,10 +588,13 @@ root(ROOTS.Zones, {
 						["coord"] = { 64.1, 66.9, TEROKKAR_FOREST },
 						["cr"] = 21838,	-- Terokk
 						["groups"] = {
+							objective(1, {	-- 0/1 Terokk slain
+								["provider"] = { "n", 21838 },	-- Terokk
+							}),
 							i(32831),	-- Jeweled Rod
 							-- #if BEFORE MOP
 							i(32832, {	-- Scout's Throwing Knives
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 							i(32830),	-- Severin's Cane
@@ -590,12 +613,27 @@ root(ROOTS.Zones, {
 						["qg"] = 22446,	-- Commander Ra'vaj
 						["coord"] = { 31.0, 76.1, TEROKKAR_FOREST },
 						["sourceQuest"] = 10913,	-- An Improper Burial
+						["groups"] = {
+							objective(1, {	-- 0/12 Auchenai Initiate slain
+								["provider"] = { "n", 21284 },	-- Auchenai Initiate
+							}),
+							objective(2, {	-- 0/5 Auchenai Doomsayer slain
+								["provider"] = { "n", 21285 },	-- Auchenai Doomsayer
+							}),
+						},
 					}),
 					q(10112, {	-- A Personal Favor
 						["qg"] = 18484,	-- Wind Trader Lathrai
 						["coord"] = { 72.2, 30.7, SHATTRATH_CITY },
 						["sourceQuest"] = 9979,	-- Wind Trader Lathrai
 						["groups"] = {
+							objective(1, {	-- 0/5 Lathrai's Stolen Goods
+								["provider"] = { "i", 27861 },	-- Lathrai's Stolen Goods
+								["crs"] = {
+									18452,	-- Skithian Dreadhawk
+									18453,	-- Skithian Windripper
+								},
+							}),
 							i(31724),	-- Arakkoa Divining Rod
 							i(25927),	-- Consortium Cloak of the Quick
 							i(25928),	-- Ethereal Healing Pendant
@@ -609,40 +647,91 @@ root(ROOTS.Zones, {
 					q(10013, {	-- An Unseen Hand
 						["provider"] = { "o", 182549 },	-- Fel Orc Plans
 						["sourceQuest"] = 10000,	-- An Unwelcome Presence
-						["coord"] = { 63.4, 42.7, TEROKKAR_FOREST },
+						["coord"] = { 67.9, 53.5, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
 					}),
 					q(10000, {	-- An Unwelcome Presence
 						["qg"] = 18383,	-- Kurgatok
 						["coord"] = { 48.8, 45.7, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/12 Warped Peon slain
+								["provider"] = { "n", 18595 },	-- Warped Peon
+							}),
+						},
 					}),
 					q(10201, {	-- And Now, the Moment of Truth
 						["qg"] = 18385,	-- Rakoria
 						["coord"] = { 50.1, 44.9, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 9993,	-- Olemba Seed Oil
+						["groups"] = {
+							objective(1, {	-- 0/1 Have Grek Test Olemba Oil
+								["provider"] = { "n", 19606 },	-- Grek
+							}),
+						},
 					}),
 					q(10868, {	-- Arakkoa War Path
 						["qg"] = 18712,	-- Advisor Faila
 						["coord"] = { 48.9, 44.6, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/14 Shienor Talonite slain
+								["provider"] = { "n", 18449 },	-- Shienor Talonite
+							}),
+							objective(2, {	-- 0/6 Shienor Sorcerer slain
+								["provider"] = { "n", 18450 },	-- Shienor Sorcerer
+							}),
+						},
 					}),
 					q(9996, {	-- Attack on Firewing Point (A)
 						["qg"] = 21006,	-- Lieutenant Meridian
 						["coord"] = { 69.6, 44.6, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 10444,	-- Report to the Allerian Post
+						["groups"] = {
+							objective(1, {	-- 0/10 Firewing Defender slain
+								["provider"] = { "n", 5355 },	-- Firewing Defender
+							}),
+							objective(2, {	-- 0/10 Firewing Bloodwarder slain
+								["provider"] = { "n", 1410 },	-- Firewing Bloodwarder
+							}),
+							objective(3, {	-- 0/10 Firewing Warlock slain
+								["provider"] = { "n", 16769 },	-- Firewing Warlock
+							}),
+						},
 					}),
 					q(9997, {	-- Attack on Firewing Point (H)
 						["qg"] = 21007,	-- Sergeant Chawni
 						["coord"] = { 63.2, 42.3, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 10448,	-- Report to Stonebreaker Camp
+						["groups"] = {
+							objective(1, {	-- 0/10 Firewing Defender slain
+								["provider"] = { "n", 5355 },	-- Firewing Defender
+							}),
+							objective(2, {	-- 0/10 Firewing Bloodwarder slain
+								["provider"] = { "n", 1410 },	-- Firewing Bloodwarder
+							}),
+							objective(3, {	-- 0/10 Firewing Warlock slain
+								["provider"] = { "n", 16769 },	-- Firewing Warlock
+							}),
+						},
 					}),
 					q(10878, {	-- Before Darkness Falls -- aa
 						["qg"] = 22370,	-- Mekeda
 						["coord"] = { 37.6, 50.8, TEROKKAR_FOREST },
+						["groups"] = {
+							objective(1, {	-- 0/8 Cabal Skirmisher slain
+								["provider"] = { "n", 21661 },	-- Cabal Skirmisher
+							}),
+							objective(2, {	-- 0/4 Cabal Spell-weaver slain
+								["provider"] = { "n", 21902 },	-- Cabal Spell-weaver
+							}),
+							objective(3, {	-- 0/2 Cabal Initiate slain
+								["provider"] = { "n", 21907 },	-- Cabal Initiate
+							}),
+						},
 					}),
 					q(9978, {	-- By Any Means Necessary
 						["qg"] = 18446,	-- Earthbinder Tavgren
@@ -663,6 +752,19 @@ root(ROOTS.Zones, {
 					q(9971, {	-- Clues in the Thicket
 						["qg"] = 18446,	-- Earthbinder Tavgren
 						["coord"] = { 44.3, 26.3, TEROKKAR_FOREST },
+						["groups"] = {
+							objective(1, {	-- 0/1 Strange Object examined
+								["provider"] = { "o", 183789 },	-- Strange Object
+							}),
+						},
+					}),
+					q(10104, {	-- Concerns About Tuurem
+						["qg"] = 18008,	-- Ikuti
+						["altQuests"] = { 9793 },	-- The Fate of Tuurem
+						["coord"] = { 41.8, 27.2, ZANGARMARSH },
+						["races"] = ALLIANCE_ONLY,
+						["isBreadcrumb"] = true,
+						["lvl"] = lvlsquish(62, 62, 10),
 					}),
 					q(10922, {	-- Digging Through Bones -- aa
 						["qg"] = 22458,	-- Chief Archaeologist Letoll
@@ -703,6 +805,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 31.0, 76.5, TEROKKAR_FOREST },
 						["sourceQuest"] = 10877,	-- The Dread Relic
 						["groups"] = {
+							objective(1, {	-- 0/1 Teribus the Cursed slain
+								["provider"] = { "n", 22441 },	-- Teribus the Cursed
+							}),
 							i(31816),	-- Dragonbone Greatsword
 							i(31817),	-- Dragonbone Shoulders
 							i(31818),	-- Dragonbone Talisman
@@ -722,23 +827,45 @@ root(ROOTS.Zones, {
 					q(10920, {	-- For the Fallen
 						["qg"] = 22462,	-- Vindicator Haylen
 						["coord"] = { 49.7, 76.1, TEROKKAR_FOREST },
+						["groups"] = {
+							objective(1, {	-- 0/20 Dreadfang Widow slain
+								["provider"] = { "n", 18467 },	-- Dreadfang Widow
+							}),
+						},
 					}),
 					q(10929, {	-- Fumping
 						["qg"] = 22481,	-- Dwarfowitz
 						["coord"] = { 30.9, 76.1, TEROKKAR_FOREST },
 						["sourceQuest"] = 10922,	-- Digging Through Bones
+						["groups"] = {
+							objective(1, {	-- 0/8 Mature Bone Sifter Carcass
+								["provider"] = { "i", 31814 },	-- Mature Bone Sifter Carcass
+								["cr"] = 22482,	-- Mature Bone Sifter
+							}),
+						},
 					}),
 					q(10031, {	-- Helping the Lost Find Their Way
 						["qg"] = 19417,	-- Ramdor the Mad
 						["coord"] = { 35.1, 66.2, TEROKKAR_FOREST },
 						["sourceQuest"] = 10030,	-- Recover the Bones
 						["groups"] = {
+							objective(1, {	-- 0/10 Lost Spirit slain
+								["provider"] = { "n", 18460 },	-- Lost Spirit
+							}),
+							objective(2, {	-- 0/10 Broken Skeleton slain
+								["provider"] = { "n", 16805 },	-- Broken Skeleton
+							}),
 							i(31725),	-- Cilice of Suffering
 							i(25951),	-- Fleet Refugee's Boots
 							i(25948),	-- Girdle of the Penitent
 							i(25949),	-- Gloves of the Afterlife
 						},
 					}),
+					heroscall(q(39188, {	-- Hero's Call: Terokkar Forest!
+						["timeline"] = { ADDED_6_2_0 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 62,
+					})),
 					q(10227, {	-- I See Dead Draenei -- aa
 						["qg"] = 19697,	-- Ha'lei
 						["coord"] = { 35.0, 65.0, TEROKKAR_FOREST },
@@ -747,6 +874,14 @@ root(ROOTS.Zones, {
 						["qg"] = 18484,	-- Wind Trader Lathrai
 						["coord"] = { 72.2, 30.7, SHATTRATH_CITY },
 						["sourceQuest"] = 10112,	-- A Personal Favor
+						["groups"] = {
+							objective(1, {	-- 0/1 Sealed Box
+								["providers"] = {
+									{ "i", 25727 },	-- Sealed Box
+									{ "o", 182542 },	-- Sealed Box
+								},
+							}),
+						},
 					}),
 					q(9951, {	-- It's Watching You! -- aa
 						["qg"] = 18424,	-- Warden Treelos
@@ -760,6 +895,9 @@ root(ROOTS.Zones, {
 							{ 45.1, 20.8, TEROKKAR_FOREST },
 						},
 						["groups"] = {
+							objective(1, {	-- 0/1 Naphthal'ar slain
+								["provider"] = { "n", 18438 },	-- Naphthal'ar
+							}),
 							i(28026),	-- Crazy Cenarion Cloak
 							i(25542),	-- Lucky Circle of the Fool
 							i(28027),	-- Lunatic's Choker
@@ -773,6 +911,15 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 10040,	-- Who Are They? (A)
 						["groups"] = {
+							objective(1, {	-- 0/10 Shadowy Executioner slain
+								["provider"] = { "n", 16519 },	-- Shadowy Executioner
+							}),
+							objective(2, {	-- 0/10 Shadowy Summoner slain
+								["provider"] = { "n", 17088 },	-- Shadowy Summoner
+							}),
+							objective(3, {	-- 0/1 Shadowmaster Grieve slain
+								["provider"] = { "n", 18720 },	-- Shadowmaster Grieve
+							}),
 							i(25933),	-- Extra Sharp Blade
 							i(25935),	-- Invincible Stave
 							i(25934),	-- Spiked Destroyer
@@ -784,6 +931,15 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 10041,	-- Who Are They?
 						["groups"] = {
+							objective(1, {	-- 0/10 Shadowy Executioner slain
+								["provider"] = { "n", 16519 },	-- Shadowy Executioner
+							}),
+							objective(2, {	-- 0/10 Shadowy Summoner slain
+								["provider"] = { "n", 17088 },	-- Shadowy Summoner
+							}),
+							objective(3, {	-- 0/1 Shadowmaster Grieve slain
+								["provider"] = { "n", 18720 },	-- Shadowmaster Grieve
+							}),
 							i(25933),	-- Extra Sharp Blade
 							i(25935),	-- Invincible Stave
 							i(25934),	-- Spiked Destroyer
@@ -821,11 +977,21 @@ root(ROOTS.Zones, {
 							9793,	-- The Fate of Tuurem
 							10104,	-- Concerns About Tuurem
 						},
+						["groups"] = {
+							objective(1, {	-- 0/10 Warp Stalker slain
+								["provider"] = { "n", 18464 },	-- Warp Stalker
+							}),
+						},
 					}),
 					q(10027, {	-- Magical Disturbances
 						["qg"] = 18383,	-- Kurgatok
 						["coord"] = { 48.8, 45.7, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/10 Warp Stalker slain
+								["provider"] = { "n", 18464 },	-- Warp Stalker
+							}),
+						},
 					}),
 					q(10852, {	-- Missing Friends
 						["qg"] = 22365,	-- Ethan
@@ -840,22 +1006,52 @@ root(ROOTS.Zones, {
 							10105,	-- News for Rakoria
 							9796,	-- News from Zangarmarsh
 						},
+						["groups"] = {
+							objective(1, {	-- 0/30 Olemba Seed
+								["providers"] = {
+									{ "i", 25745 },	-- Olemba Seed
+									{ "o", 182541 },	-- Olemba Cone
+								},
+							}),
+						},
 					}),
 					q(9992, {	-- Olemba Seeds
 						["qg"] = 18390,	-- Ros'eleth
 						["coord"] = { 57.4, 55.4, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/30 Olemba Seed
+								["providers"] = {
+									{ "i", 25745 },	-- Olemba Seed
+									{ "o", 182541 },	-- Olemba Cone
+								},
+							}),
+						},
 					}),
 					q(10023, {	-- Patriarch Ironjaw
 						["qg"] = 18384,	-- Malukaz
 						["coord"] = { 50.2, 46.4, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 10018,	-- Vestments of the Wolf Spirit
+						["groups"] = {
+							objective(1, {	-- 0/1 Ironjaw's Pelt
+								["provider"] = { "i", 25837 },	-- Ironjaw's Pelt
+								["cr"] = 18670,	-- Ironjaw
+							}),
+						},
 					}),
 					q(10030, {	-- Recover the Bones
 						["qg"] = 18675,	-- Soolaveen
 						["coord"] = { 37.1, 49.5, TEROKKAR_FOREST },
 						["sourceQuest"] = 10840,	-- The Tomb of Lights
+						["groups"] = {
+							objective(1, {	-- 0/10 Restless Bones
+								["providers"] = {
+									{ "i", 25842 },	-- Restless Bones
+									{ "o", 182584 },	-- Restless Bones
+								},
+							}),
+						},
 					}),
 					q(10448, {	-- Report to Stonebreaker Camp
 						["qg"] = 18447,	-- Tooki
@@ -940,16 +1136,48 @@ root(ROOTS.Zones, {
 							39188,	-- Hero's Call: Terokkar Forest!
 							-- #endif
 						},
+						["groups"] = {
+							objective(1, {	-- 0/4 Teromoth Sample
+								["provider"] = { "i", 25672 },	-- Teromoth Sample
+								["cr"] = 18468,	-- Teromoth
+							}),
+							objective(2, {	-- 0/4 Vicious Teromoth Sample
+								["provider"] = { "i", 24279 },	-- Vicious Teromoth Sample
+								["cr"] = 18437,	-- Vicious Teromoth
+							}),
+						},
 					}),
 					q(9986, {	-- Stymying the Arakkoa (A)
 						["qg"] = 18389,	-- Thander
 						["coord"] = { 57.8, 54.2, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/1 Ashkaz slain
+								["provider"] = { "n", 18539 },	-- Ashkaz
+							}),
+							objective(2, {	-- 0/1 Ayit slain
+								["provider"] = { "n", 18540 },	-- Ayit
+							}),
+							objective(3, {	-- 0/1 Urdak slain
+								["provider"] = { "n", 18541 },	-- Urdak
+							}),
+						},
 					}),
 					q(9987, {	-- Stymying the Arakkoa (H)
 						["qg"] = 18386,	-- Rokag
 						["coord"] = { 49.0, 44.6, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/1 Ashkaz slain
+								["provider"] = { "n", 18539 },	-- Ashkaz
+							}),
+							objective(2, {	-- 0/1 Ayit slain
+								["provider"] = { "n", 18540 },	-- Ayit
+							}),
+							objective(3, {	-- 0/1 Urdak slain
+								["provider"] = { "n", 18541 },	-- Urdak
+							}),
+						},
 					}),
 					q(10862, {	-- Surrender to the Horde
 						["qg"] = 18386,	-- Rokag
@@ -967,6 +1195,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 49.7, 76.2, TEROKKAR_FOREST },
 						["sourceQuest"] = 10920,	-- For the Fallen
 						["groups"] = {
+							objective(1, {	-- 0/1 Terokkarantula slain
+								["provider"] = { "n", 20682 },	-- Terokkarantula
+							}),
 							i(31821),	-- Blade of Retribution
 							i(31820),	-- Blessed Signet Ring
 							i(31819),	-- Noble Plate Pauldrons
@@ -978,6 +1209,10 @@ root(ROOTS.Zones, {
 						["coord"] = { 30.9, 76.1, TEROKKAR_FOREST },
 						["sourceQuest"] = 10929,	-- Fumping
 						["groups"] = {
+							objective(1, {	-- 0/1 Enormous Bone Worm Organs
+								["provider"] = { "i", 31826 },	-- Enormous Bone Worm Organs
+								["cr"] = 22038,	-- Hai'shulud
+							}),
 							i(31756),	-- Dib'Muad's Crysknife
 							i(31758),	-- Revered Mother's Crysknife
 							i(31759),	-- Shani's Crysknife
@@ -986,6 +1221,14 @@ root(ROOTS.Zones, {
 					q(10877, {	-- The Dread Relic -- aa
 						["qg"] = 22456,	-- Oakun
 						["coord"] = { 31.0, 76.5, TEROKKAR_FOREST },
+						["groups"] = {
+							objective(1, {	-- 0/1 Dread Relic
+								["providers"] = {
+									{ "i", 31697 },	-- Dread Relic
+									{ "o", 185220 },	-- Massive Treasure Chest
+								},
+							}),
+						},
 					}),
 					q(10022, {	-- The Elusive Ironjaw
 						["qg"] = 18387,	-- Bertelm
@@ -993,6 +1236,10 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 10016,	-- Timber Worg Tails
 						["groups"] = {
+							objective(1, {	-- 0/1 Ironjaw's Pelt
+								["provider"] = { "i", 25837 },	-- Ironjaw's Pelt
+								["cr"] = 18670,	-- Ironjaw
+							}),
 							i(25974),	-- Helm of Lupine Cunning
 							i(25976),	-- Helm of Lupine Grace
 							i(25977),	-- Helm of Lupine Ferocity
@@ -1007,6 +1254,20 @@ root(ROOTS.Zones, {
 							10908,	-- Speak with Rilak the Redeemed
 							10862,	-- Surrender to the Horde
 						},
+						["groups"] = {
+							objective(1, {	-- 0/1 Eye of Veil Reskk
+								["providers"] = {
+									{ "i", 25638 },	-- Eye of Veil Reskk
+									{ "o", 185200 },	-- Eye of Veil Reskk
+								},
+							}),
+							objective(2, {	-- 0/1 Eye of Veil Shienor
+								["providers"] = {
+									{ "i", 25642 },	-- Eye of Veil Shienor
+									{ "o", 185201 },	-- Eye of Veil Shienor
+								},
+							}),
+						},
 					}),
 					q(10915, {	-- The Fallen Exarch
 						["qg"] = 22446,	-- Commander Ra'vaj
@@ -1018,6 +1279,17 @@ root(ROOTS.Zones, {
 							i(31796),	-- Sha'tari Marksman's Gloves
 							i(31794),	-- Sha'tari Vindicator's Legplates
 						},
+					}),
+					q(9793, {	-- The Fate of Tuurem
+						["providers"] = {
+							{ "n", 18004 },	-- Vindicator Idaar
+							{ "i", 24415 },	-- Vindicator Idaar's Letter
+						},
+						["altQuests"] = { 10104 },	-- Concerns About Tuurem
+						["coord"] = { 68.2, 50.0, ZANGARMARSH },
+						["races"] = ALLIANCE_ONLY,
+						["isBreadcrumb"] = true,
+						["lvl"] = lvlsquish(62, 62, 10),
 					}),
 					q(10446, {	-- The Final Code (A)
 						["qg"] = 21006,	-- Lieutenant Meridian
@@ -1048,24 +1320,57 @@ root(ROOTS.Zones, {
 						["coord"] = { 69.6, 44.2, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 9998,	-- Unruly Neighbors
+						["groups"] = {
+							objective(1, {	-- 0/1 Lisaile Fireweaver slain
+								["provider"] = { "n", 18583 },	-- Lisaile Fireweaver
+							}),
+						},
 					}),
 					q(10003, {	-- The Firewing Liaison (H)
 						["qg"] = 18566,	-- Shadowstalker Kaide
 						["coord"] = { 63.4, 42.7, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 10000,	-- An Unwelcome Presence
+						["groups"] = {
+							objective(1, {	-- 0/1 Lisaile Fireweaver slain
+								["provider"] = { "n", 18583 },	-- Lisaile Fireweaver
+							}),
+						},
 					}),
 					q(10896, {	-- The Infested Protectors -- aa
 						["qg"] = 22420,	-- Lakotae
 						["coord"] = { 37.9, 51.7, TEROKKAR_FOREST },
+						["groups"] = {
+							objective(1, {	-- 0/25 Wood Mite slain
+								["provider"] = { "n", 22419 },	-- Wood Mite
+							}),
+						},
 					}),
 					q(10881, {	-- The Shadow Tomb
 						["qg"] = 22370,	-- Mekeda
 						["coord"] = { 37.6, 50.8, TEROKKAR_FOREST },
 						["sourceQuest"] = 10880,	-- Cabal Orders
 						["groups"] = {
+							objective(1, {	-- 0/1 Drape of Arunen
+								["providers"] = {
+									{ "i", 31709 },	-- Drape of Arunen
+									{ "o", 185224 },	-- Cabal Chest
+								},
+							}),
+							objective(2, {	-- 0/1 Gavel of K'alen
+								["providers"] = {
+									{ "i", 31710 },	-- Gavel of K'alen
+									{ "o", 185225 },	-- Cabal Chest
+								},
+							}),
+							objective(3, {	-- 0/1 Scroll of Atalor
+								["providers"] = {
+									{ "i", 31708 },	-- Scroll of Atalor
+									{ "o", 185226 },	-- Cabal Chest
+								},
+							}),
 							i(31730, {	-- Heirloom Signet of Convalescence
-								["timeline"] = { "removed 3.2.0" },
+								["timeline"] = { REMOVED_3_2_0 },
 							}),
 							i(31729),	-- Heirloom Signet of Valor
 							i(31728),	-- Heirloom Signet of Willpower
@@ -1085,11 +1390,27 @@ root(ROOTS.Zones, {
 						["coord"] = { 37.5, 50.8, TEROKKAR_FOREST },
 						-- TODO: verify sourceQuest. I was able to pick it up without doing Missing Friends as of 8.Dec.2019. Friendly with lower city, "Sha'tari Base Camp" quests completed
 						["sourceQuest"] = 10852,	-- Missing Friends
+						["groups"] = {
+							objective(1, {	-- 0/10 Ethereal Nethermancer slain
+								["provider"] = { "n", 21370 },	-- Ethereal Nethermancer
+							}),
+							objective(2, {	-- 0/10 Ethereal Plunderer slain
+								["provider"] = { "n", 21368 },	-- Ethereal Plunderer
+							}),
+						},
 					}),
 					q(10869, {	-- Thin the Flock
 						["qg"] = 18713,	-- Lieutenant Gravelhammer
 						["coord"] = { 57.6, 55.6, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/14 Shienor Talonite slain
+								["provider"] = { "n", 18449 },	-- Shienor Talonite
+							}),
+							objective(2, {	-- 0/6 Shienor Sorcerer slain
+								["provider"] = { "n", 18450 },	-- Shienor Sorcerer
+							}),
+						},
 					}),
 					q(10007, {	-- Thinning the Ranks
 						["qg"] = 18565,	-- Theloria Shadecloak
@@ -1097,6 +1418,12 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 9998,	-- Unruly Neighbors
 						["groups"] = {
+							objective(1, {	-- 0/10 Bonechewer Devastator slain
+								["provider"] = { "n", 16772 },	-- Bonechewer Devastator
+							}),
+							objective(2, {	-- 0/6 Bonechewer Backbreaker slain
+								["provider"] = { "n", 16810 },	-- Bonechewer Backbreaker
+							}),
 							i(25973),	-- Dark Augur's Wand
 							i(25972),	-- Deadeye's Piece
 							i(25971),	-- Stout Oak Longbow
@@ -1106,6 +1433,17 @@ root(ROOTS.Zones, {
 						["qg"] = 18387,	-- Bertelm
 						["races"] = ALLIANCE_ONLY,
 						["coord"] = { 58.2, 54.8, TEROKKAR_FOREST },
+						["groups"] = {
+							objective(1, {	-- 0/12 Timber Worg Tail
+								["provider"] = { "i", 25807 },	-- Timber Worg Tail
+								["crs"] = {
+									18476,	-- Timber Worg
+									18477,	-- Timber Worg Alpha
+									18670,	-- Ironjaw
+									18706,	-- Bonechewer Riding Wolf
+								},
+							}),
+						},
 					}),
 					q(10035, {	-- Torgos! (A)
 						["qg"] = 18704,	-- Taela Everstride
@@ -1113,6 +1451,10 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 10033,	-- WANTED: Bonelashers Dead!
 						["groups"] = {
+							objective(1, {	-- 0/1 Tail Feather of Torgos
+								["provider"] = { "i", 25852 },	-- Tail Feather of Torgos
+								["cr"] = 18707,	-- Torgos
+							}),
 							i(25937),	-- Terokkar Tablet of Precision
 							i(25936),	-- Terokkar Tablet of Vim
 						},
@@ -1123,6 +1465,10 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 10034,	-- WANTED: Bonelashers Dead!
 						["groups"] = {
+							objective(1, {	-- 0/1 Tail Feather of Torgos
+								["provider"] = { "i", 25852 },	-- Tail Feather of Torgos
+								["cr"] = 18707,	-- Torgos
+							}),
 							i(25937),	-- Terokkar Tablet of Precision
 							i(25936),	-- Terokkar Tablet of Vim
 						},
@@ -1131,12 +1477,23 @@ root(ROOTS.Zones, {
 						["qg"] = 18387,	-- Bertelm
 						["coord"] = { 58.2, 54.8, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/12 Warped Peon slain
+								["provider"] = { "n", 18595 },	-- Warped Peon
+							}),
+						},
 					}),
 					q(10861, {	-- Veil Lithic: Preemptive Strike
 						["qg"] = 22272,	-- Kirrik the Awakened
 						["coord"] = { 37.6, 51.6, TEROKKAR_FOREST },
 						["sourceQuest"] = 10848,	-- Veil Rhaze: Unliving Evil
 						["groups"] = {
+							objective(1, {	-- 0/3 Hatchlings Redeemed
+								["provider"] = { "o", 185211 },	-- Cursed Egg
+							}),
+							objective(2, {	-- 0/3 Malevolent Hatchling slain
+								["provider"] = { "n", 22337 },	-- Malevolent Hatchling
+							}),
 							i(25958),	-- Eagle Engraved Bracers
 							i(25959),	-- Feathered Armbands
 							i(25961),	-- Feathered Wrist Cuffs
@@ -1148,6 +1505,15 @@ root(ROOTS.Zones, {
 						["coord"] = { 37.6, 51.6, TEROKKAR_FOREST },
 						["sourceQuest"] = 10839,	-- Veil Skith: Darkstone of Terokk
 						["groups"] = {
+							objective(1, {	-- 0/4 Deathtalon Spirit slain
+								["provider"] = { "n", 21198 },	-- Deathtalon Spirit
+							}),
+							objective(2, {	-- 0/4 Screeching Spirit slain
+								["provider"] = { "n", 21200 },	-- Screeching Spirit
+							}),
+							objective(3, {	-- 0/2 Spirit Raven slain
+								["provider"] = { "n", 21324 },	-- Spirit Raven
+							}),
 							i(31762),	-- Feather-Wrapped Bow
 							i(31761),	-- Talonbranch Wand
 						},
@@ -1157,6 +1523,18 @@ root(ROOTS.Zones, {
 						["coord"] = { 37.6, 51.6, TEROKKAR_FOREST },
 						["sourceQuest"] = 10861,	-- Veil Lithic: Preemptive Strike
 						["groups"] = {
+							objective(1, {	-- 0/1 Sapphire Fire Extinguished
+								["provider"] = { "o", 185216 },	-- Sapphire Signal Fire
+							}),
+							objective(2, {	-- 0/1 Emerald Fire Extinguished
+								["provider"] = { "o", 185217 },	-- Emerald Signal Fire
+							}),
+							objective(3, {	-- 0/1 Violet Fire Extinguished
+								["provider"] = { "o", 185218 },	-- Violet Signal Fire
+							}),
+							objective(4, {	-- 0/1 Bloodstone Fire Extinguished
+								["provider"] = { "o", 185219 },	-- Bloodstone Signal Fire
+							}),
 							i(25966),	-- Arakkoa Sage's Shawl
 							i(25965),	-- Cloak of Grasping Talons
 							i(25963),	-- Kokorek's Signet
@@ -1168,11 +1546,14 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 10849,	-- Seek Out Kirrik
 					}),
 					q(10842, {	-- Vengeful Souls
-						["qg"] = 21465,	-- High Priest Orglum
+						["qg"] = 22278,	-- High Priest Orglum
 						["coord"] = { 37.5, 50.8, TEROKKAR_FOREST },
 						-- TODO: verify sourceQuest. I was able to pick it up without doing Missing Friends as of 8.Dec.2019. Friendly with lower city, "Sha'tari Base Camp" quests completed
 						--["sourceQuest"] = 10852,	-- Missing Friends
 						["groups"] = {
+							objective(1, {	-- 0/5 Vengeful Draenei Slain
+								["provider"] = { "n", 21636 },	-- Vengeful Draenei
+							}),
 							i(31615),	-- Ancient Draenei Arcane Relic
 							i(31617),	-- Ancient Draenei War Talisman
 						},
@@ -1182,22 +1563,50 @@ root(ROOTS.Zones, {
 						["coord"] = { 57.4, 55.4, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 9992,	-- Olemba Seeds
+						["groups"] = {
+							objective(1, {	-- 0/8 Draenei Vessel
+								["providers"] = {
+									{ "i", 25841 },	-- Draenei Vessel
+									{ "o", 182581 },	-- Draenei Vessel
+								},
+							}),
+						},
 					}),
 					q(10018, {	-- Vestments of the Wolf Spirit
 						["qg"] = 18384,	-- Malukaz
 						["coord"] = { 50.2, 46.4, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/12 Timber Worg Pelt
+								["provider"] = { "i", 25812 },	-- Timber Worg Pelt
+								["crs"] = {
+									18476,	-- Timber Worg
+									18477,	-- Timber Worg Alpha
+									18706,	-- Bonechewer Riding Wolf
+								},
+							}),
+						},
 					}),
 					q(10033, {	-- WANTED: Bonelashers Dead! (A)
 						["provider"] = { "o", 182587 },	-- Wanted Poster
 						["coord"] = { 57.6, 54.7, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
+						["groups"] = {
+							objective(1, {	-- 0/20 Bonelasher slain
+								["provider"] = { "n", 18470 },	-- Bonelasher
+							}),
+						},
 					}),
 					q(10034, {	-- WANTED: Bonelashers Dead! (H)
 						["provider"] = { "o", 182588 },	-- Wanted Poster
 						["coord"] = { 49.8, 45.3, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
 					}),
+					warchiefscommand(q(39182, {	-- Warchief's Command: Terokkar Forest!
+						["timeline"] = { ADDED_6_2_0 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+					})),
 					q(10791, {	-- Welcoming the Wolf Spirit
 						["qg"] = 18384,	-- Malukaz
 						["coord"] = { 50.2, 46.4, TEROKKAR_FOREST },
@@ -1227,6 +1636,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 63.3, 42.7, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
 						["groups"] = {
+							objective(1, {	-- 0/10 Bonechewer Devastator slain
+								["provider"] = { "n", 16772 },	-- Bonechewer Devastator
+							}),
+							objective(2, {	-- 0/6 Bonechewer Backbreaker slain
+								["provider"] = { "n", 16810 },	-- Bonechewer Backbreaker
+							}),
 							i(25973),	-- Dark Augur's Wand
 							i(25972),	-- Deadeye's Piece
 							i(25971),	-- Stout Oak Longbow
@@ -1493,25 +1908,28 @@ root(ROOTS.Zones, {
 				}),
 				n(REWARDS, {
 					i(35348, bubbleDownSelf({ ["timeline"] = { ADDED_2_4_0 } }, {	-- Bag of Fishing Treasures
-						["description"] = "This bag is exclusive to the Crocolisk in the City Daily Quest.",
+						["description"] = "This bag is exclusive to the daily quest 'Crocolisk in the City'.",
 						["groups"] = {
 							i(34834),	-- Recipe: Captain Rumsey's Lager (RECIPE!)
+							i(34828),	-- Antique Silver Cufflinks
 							i(34837),	-- The 2 Ring
 							i(35350),	-- Chuck (PET!)
 							i(34826),	-- Gold Wedding Band
 							i(33818),	-- Muckbreath (PET!)
 							i(34827),	-- Noble's Monocle
 							i(34829),	-- Ornate Drinking Stein
+							i(34859),	-- Razor Sharp Fillet Knife
 							i(35349),	-- Snarly (PET!)
 							i(33816),	-- Toothy (PET!)
 							i(33820),	-- Weather-Beaten Fishing Hat
-							i(34109),	-- Weather-Beaten Journal
+							i(34109),	-- Weather-Beaten Journal (RECIPE!)
 						},
 					})),
 					i(34863, bubbleDownSelf({ ["timeline"] = { ADDED_2_4_0 } }, {	-- Bag of Fishing Treasures
 						["description"] = "Shared reward bag for all the non-Croc dailies.",
 						["groups"] = {
 							i(34834),	-- Recipe: Captain Rumsey's Lager (RECIPE!)
+							i(34828),	-- Antique Silver Cufflinks
 							i(34831),	-- Eye of the Sea
 							i(34826),	-- Gold Wedding Band
 							i(34827),	-- Noble's Monocle
@@ -1519,7 +1937,7 @@ root(ROOTS.Zones, {
 							i(34859),	-- Razor Sharp Fillet Knife
 							i(34836),	-- Spun Truesilver Fishing Line
 							i(33820),	-- Weather-Beaten Fishing Hat
-							i(34109),	-- Weather-Beaten Journal
+							i(34109),	-- Weather-Beaten Journal (RECIPE!)
 						},
 					})),
 				}),
@@ -1535,21 +1953,29 @@ root(ROOTS.Zones, {
 					}),
 					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, n(23367, {	-- Grella <Skyguard Quartermaster>
 						["coord"] = { 64.3, 66.2, TEROKKAR_FOREST },
-						["groups"] = {
-							i(32771),	-- Airman's Ribbon Gallantry
-							i(32319),	-- Blue Riding Nether Ray (MOUNT!)
-							i(32314),	-- Green Riding Nether Ray (MOUNT!)
-							i(38628, {	-- Nether Ray Fry (PET!)
-								["timeline"] = { ADDED_2_4_2 },
-							}),
-							i(32316),	-- Purple Riding Nether Ray (MOUNT!)
-							i(32317),	-- Red Riding Nether Ray (MOUNT!)
-							i(32318),	-- Silver Riding Nether Ray (MOUNT!)
-							i(32770),	-- Skyguard Silver Cross
-							i(32445),	-- Skyguard Tabard
-							i(32539),	-- Skyguard's Drape
-							i(32538),	-- Skywitch's Drape
-						},
+						["groups"] = bubbleDownClassicRep(FACTION_SHATARI_SKYGUARD, {
+							{		-- Neutral
+							}, {	-- Friendly
+								i(32722),	-- Enriched Terocone Juice
+							}, {	-- Honored
+								i(32721),	-- Skyguard Rations
+							}, {	-- Revered
+								i(32539),	-- Skyguard's Drape
+								i(32538),	-- Skywitch's Drape
+							}, {	-- Exalted
+								i(32771),	-- Airman's Ribbon Gallantry
+								i(32319),	-- Blue Riding Nether Ray (MOUNT!)
+								i(32314),	-- Green Riding Nether Ray (MOUNT!)
+								i(38628, {	-- Nether Ray Fry (PET!)
+									["timeline"] = { ADDED_2_4_2 },
+								}),
+								i(32316),	-- Purple Riding Nether Ray (MOUNT!)
+								i(32317),	-- Red Riding Nether Ray (MOUNT!)
+								i(32318),	-- Silver Riding Nether Ray (MOUNT!)
+								i(32770),	-- Skyguard Silver Cross
+								i(32445),	-- Skyguard Tabard
+							},
+						}),
 					})),
 					n(19296, {	-- Innkeeper Biribi <Innkeeper>
 						["coord"] = { 56.6, 53.2, TEROKKAR_FOREST },
@@ -1584,7 +2010,7 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["groups"] = {
 							i(25848, {	-- Formula: Runed Adamantite Rod (RECIPE!)
-								["timeline"] = { "added 2.0.1", "removed 5.0.4" },
+								["timeline"] = { ADDED_2_0_1, REMOVED_5_0_4 },
 							}),
 							i(27699),	-- Recipe: Golden Fish Sticks (RECIPE!)
 							i(27700),	-- Recipe: Spicy Crawdad (RECIPE!)
@@ -1593,92 +2019,48 @@ root(ROOTS.Zones, {
 					n(19772, {	-- Spirit Sage Gartok
 						["coord"] = { 49.8, 46.6, TEROKKAR_FOREST },
 						["races"] = HORDE_ONLY,
-						["groups"] = pvp({
-							i(28553, {	-- Band of the Exorcist
-								["cost"] = { { "c", 1704, 50 }, },	-- 50x Spirit Shard
-							}),
-							i(28576, {	-- Exorcist's Chain Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28574, {	-- Exorcist's Dragonhide Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28759, {	-- Exorcist's Dreadweave Hood
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28560, {	-- Exorcist's Lamellar Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28561, {	-- Exorcist's Leather Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28577, {	-- Exorcist's Linked Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28758, {	-- Exorcist's Mail Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28559, {	-- Exorcist's Plate Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28761, {	-- Exorcist's Scaled Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28760, {	-- Exorcist's Silk Hood
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28575, {	-- Exorcist's Wyrmhide Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28555, {	-- Seal of the Exorcist
-								["cost"] = { { "c", 1704, 50 }, },	-- 50x Spirit Shard
-							}),
-						}),
+						["groups"] = {
+							spiritshard(50, i(28553)),	-- Band of the Exorcist
+							spiritshard(50, i(28555)),	-- Seal of the Exorcist
+							spiritshard(18, i(28576)),	-- Exorcist's Chain Helm
+							spiritshard(18, i(28574)),	-- Exorcist's Dragonhide Helm
+							spiritshard(18, i(28759)),	-- Exorcist's Dreadweave Hood
+							spiritshard(18, i(28560)),	-- Exorcist's Lamellar Helm
+							spiritshard(18, i(28561)),	-- Exorcist's Leather Helm
+							spiritshard(18, i(28577)),	-- Exorcist's Linked Helm
+							spiritshard(18, i(28758)),	-- Exorcist's Mail Helm
+							spiritshard(18, i(28559)),	-- Exorcist's Plate Helm
+							spiritshard(18, i(28761)),	-- Exorcist's Scaled Helm
+							spiritshard(18, i(28760)),	-- Exorcist's Silk Hood
+							spiritshard(18, i(28575)),	-- Exorcist's Wyrmhide Helm
+							spiritshard(8, i(28557)),	-- Quickened Starfire Diamond
+							spiritshard(8, i(28556)),	-- Swift Windfire Diamond
+							spiritshard(2, i(32947)),	-- Auchenai Healing Potion
+							spiritshard(2, i(32948)),	-- Auchenai Mana Potion
+						},
 					}),
 					n(19773, {	-- Spirit Sage Zran
 						["coord"] = { 56.0, 53.6, TEROKKAR_FOREST },
 						["races"] = ALLIANCE_ONLY,
-						["groups"] = pvp({
-							i(28553, {	-- Band of the Exorcist
-								["cost"] = { { "c", 1704, 50 }, },	-- 50x Spirit Shard
-							}),
-							i(28576, {	-- Exorcist's Chain Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28574, {	-- Exorcist's Dragonhide Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28759, {	-- Exorcist's Dreadweave Hood
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28560, {	-- Exorcist's Lamellar Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28561, {	-- Exorcist's Leather Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28577, {	-- Exorcist's Linked Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28758, {	-- Exorcist's Mail Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28559, {	-- Exorcist's Plate Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28761, {	-- Exorcist's Scaled Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28760, {	-- Exorcist's Silk Hood
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28575, {	-- Exorcist's Wyrmhide Helm
-								["cost"] = { { "c", 1704, 18 }, },	-- 18x Spirit Shard
-							}),
-							i(28555, {	-- Seal of the Exorcist
-								["cost"] = { { "c", 1704, 50 }, },	-- 50x Spirit Shard
-							}),
-						}),
+						["groups"] = {
+							spiritshard(50, i(28553)),	-- Band of the Exorcist
+							spiritshard(50, i(28555)),	-- Seal of the Exorcist
+							spiritshard(18, i(28576)),	-- Exorcist's Chain Helm
+							spiritshard(18, i(28574)),	-- Exorcist's Dragonhide Helm
+							spiritshard(18, i(28759)),	-- Exorcist's Dreadweave Hood
+							spiritshard(18, i(28560)),	-- Exorcist's Lamellar Helm
+							spiritshard(18, i(28561)),	-- Exorcist's Leather Helm
+							spiritshard(18, i(28577)),	-- Exorcist's Linked Helm
+							spiritshard(18, i(28758)),	-- Exorcist's Mail Helm
+							spiritshard(18, i(28559)),	-- Exorcist's Plate Helm
+							spiritshard(18, i(28761)),	-- Exorcist's Scaled Helm
+							spiritshard(18, i(28760)),	-- Exorcist's Silk Hood
+							spiritshard(18, i(28575)),	-- Exorcist's Wyrmhide Helm
+							spiritshard(8, i(28557)),	-- Quickened Starfire Diamond
+							spiritshard(8, i(28556)),	-- Swift Windfire Diamond
+							spiritshard(2, i(32947)),	-- Auchenai Healing Potion
+							spiritshard(2, i(32948)),	-- Auchenai Mana Potion
+						},
 					}),
 					n(19038, {	-- Supply Officer Mills <Rations>
 						["coord"] = { 55.8, 53.0, TEROKKAR_FOREST },
@@ -1690,6 +2072,13 @@ root(ROOTS.Zones, {
 					}),
 				}),
 				n(ZONE_DROPS, {
+					i(25719, {	-- Arakkoa Feather
+						-- #if BEFORE 8.2.5
+						["description"] = "Drops commonly from any Arakkoa in Terokkar Forest, except the Sethekk Halls. Can be turned in to the NPC named Vekax for Outcast's Cache and reputation with the Lower City up to Honored. Each turn in requires 30 Arakkoa Feathers. Vekax can be found in the northwestern section of the Lower City in Shattrath.",
+						-- #else
+						["description"] = "Drops commonly from any Arakkoa in Terokkar Forest, except the Sethekk Halls. Can be turned in to the NPC named Vekax for Outcast's Cache and reputation with the Lower City up to Honored, and again when at Exalted. Each turn in requires 30 Arakkoa Feathers. Vekax can be found in the northwestern section of the Lower City in Shattrath.",
+						-- #endif
+					}),
 					i(34491, {    -- Pattern: Bag of Many Hides (RECIPE!)
 						["crs"] = {
 							22143,    -- Gordunni Back-Breaker
@@ -1729,10 +2118,3 @@ appendGroups({
 
 -- Remove the phase flag.
 UNHOLY_ENCHANT.u = nil;
-
--- #if AFTER TBC
--- These quests trigger after specific events occur in the zone.
-root(ROOTS.HiddenQuestTriggers, {
-	q(10925),	-- Evil Draws Near - completed with quest 10923
-	q(11072),	-- Adversarial Blood - completed with quest 11885
-});

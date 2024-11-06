@@ -1,21 +1,22 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(CLASSIC_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, {
 	inst(240, {	-- Wailing Caverns
 		-- #if BEFORE MOP
 		["lore"] = "Recently, a night elf druid named Naralex discovered a network of underground caverns within the heart of the Barrens. Dubbed the 'Wailing Caverns', these natural caves were filled with steam fissures which produced long, mournful wails as they vented. Naralex believed he could use the caverns' underground springs to restore lushness and fertility to the Barrens - but to do so would require siphoning the energies of the fabled Emerald Dream.\n\nOnce connected to the Dream, however, the druid's vision somehow became a nightmare. Soon the Wailing Caverns began to change - the waters turned foul and the once-docile creatures inside metamorphosed into vicious, deadly predators. It is said that Naralex himself still resides somewhere inside the heart of the labyrinth, trapped beyond the edges of the Emerald Dream. Even his former acolytes have been corrupted by their master's waking nightmare - transformed into the wicked Druids of the Fang.",
 		-- #endif
+		-- #if BEFORE WRATH
 		["zone-text-areaID"] = 718,	-- Wailing Caverns
-		["sins"] = {
-			"The Wailing Caverns",
-		},
-		["mapID"] = WAILING_CAVERNS,
-		-- #if AFTER CATA
-		["coord"] = { 55.19, 66.09, 11 },	-- Wailing Caverns, Northern Barrens
-		-- #else
-		["coord"] = { 45.9, 35.7, THE_BARRENS },
 		-- #endif
+		["mapID"] = WAILING_CAVERNS,
+		["coords"] = {
+			-- #if AFTER CATA
+			{ 55.19, 66.09, 11 },	-- Wailing Caverns, Northern Barrens
+			-- #else
+			{ 45.9, 35.7, THE_BARRENS },
+			-- #endif
+		},
 		["lvl"] = lvlsquish(10, 12, 8),
 		["groups"] = {
 			n(QUESTS, {
@@ -25,7 +26,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["groups"] = {
 					q(26870, {	-- Cleansing the Caverns
 						["qg"] = 5768,	-- Ebru
-						["timeline"] = { "added 4.0.3.13277" },
+						["timeline"] = { ADDED_4_0_3 },
 						["lvl"] = lvlsquish(15, 15, 8),
 						["groups"] = {
 							objective(1, {	-- 0/1 Lord Cobrahn slain
@@ -44,10 +45,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(65985),	-- Cleansed Pauldrons
 							i(65961),	-- Cobrahn's Boots
 							i(131615, {	-- Cobrahn's Scale Gloves
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(131616, {	-- Pytha's Chain Boots
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(66003),	-- Pytha's Vest
 							i(65937),	-- Serpentis' Gloves
@@ -56,7 +57,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					q(1487, {	-- Deviate Eradication
 						["qg"] = 5768,	-- Ebru <Disciple of Naralex>
 						["coord"] = { 46.0, 35.7, THE_BARRENS },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["lvl"] = 15,
 						["groups"] = {
 							objective(1, {	-- 0/7 Deviate Ravager slain
@@ -72,36 +73,36 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 								["provider"] = { "n", 5056 },	-- Deviate Dreadfang
 							}),
 							i(6476, {	-- Pattern: Deviate Scale Belt (RECIPE!)
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(8071, {	-- Sizzle Stick
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(6481, {	-- Dagmire Gauntlets
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						},
 					}),
 					q(1486, {	-- Deviate Hides
 						["qg"] = 5767,	-- Nalpak <Disciple of Naralex>
 						["coord"] = { 46.0, 35.7, THE_BARRENS },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["lvl"] = 13,
 						["groups"] = {
 							objective(1, {	-- 0/20 Deviate Hide
 								["provider"] = { "i", 6443 },	-- Deviate Hide
 							}),
 							i(6480, {	-- Slick Deviate Leggings
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(918, {	-- Deviate Hide Pack
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						},
 					}),
 					q(26872, {	-- Deviate Hides
 						["qg"] = 5767,	-- Nalpak
-						["timeline"] = { "added 4.0.3.13277" },
+						["timeline"] = { ADDED_4_0_3 },
 						["lvl"] = lvlsquish(15, 15, 8),
 						["groups"] = {
 							objective(1, {	-- 0/10 Deviate Hide
@@ -110,10 +111,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						},
 					}),
 					q(1489, {	-- Hamuul Runetotem
-						["qg"] = 3448,	-- Tonga Runetotem
+						["providers"] = {
+							{ "n", 3448 },	-- Tonga Runetotem
+							{ "i", 10414 },	-- Sample Snapjaw Shell
+						},
 						["sourceQuest"] = 880,	-- Altered Beings
 						["coord"] = { 52.3, 31.9, THE_BARRENS },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["races"] = HORDE_ONLY,
 						["lvl"] = 10,
 					}),
@@ -122,7 +126,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["sourceQuest"] = 6981,	-- The Glowing Shard
 						["description"] = "She lives in a house on top of the mountain.",
 						["coord"] = { 48.2, 32.8, THE_BARRENS },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["lvl"] = 15,
 						["races"] = ALLIANCE_ONLY,
 						["groups"] = {
@@ -130,10 +134,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 								["provider"] = { "i", 10649 },	-- Nightmare Shard
 							}),
 							i(10657, {	-- Talbar Mantle
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(10658, {	-- Quagmire Galoshes
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						},
 					}),
@@ -142,7 +146,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["sourceQuest"] = 6981,	-- The Glowing Shard
 						["description"] = "She lives in a house on top of the mountain.",
 						["coord"] = { 48.2, 32.8, THE_BARRENS },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["lvl"] = 15,
 						["races"] = HORDE_ONLY,
 						["groups"] = {
@@ -150,10 +154,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 								["provider"] = { "i", 10649 },	-- Nightmare Shard
 							}),
 							i(10657, {	-- Talbar Mantle
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(10658, {	-- Quagmire Galoshes
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						},
 					}),
@@ -161,7 +165,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["qg"] = 5770,	-- Nara Wildmane
 						["sourceQuest"] = 1490,	-- Nara Wildmane
 						["coord"] = { 75.6, 31.2, THUNDER_BLUFF },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["races"] = HORDE_ONLY,
 						["lvl"] = 10,
 						["groups"] = {
@@ -178,10 +182,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 								["provider"] = { "i", 9741 },	-- Gem of Serpentis
 							}),
 							i(6505, {	-- Crescent Staff
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(6504, {	-- Wingblade
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						},
 					}),
@@ -189,32 +193,38 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["qg"] = 5769,	-- Arch Druid Hamuul Runetotem
 						["sourceQuest"] = 1489,	-- Hamuul Runetotem
 						["coord"] = { 74.7, 30.2, THUNDER_BLUFF },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["races"] = HORDE_ONLY,
 						["lvl"] = 10,
 					}),
 					q(26873, {	-- Preemptive Methods
 						["qg"] = 5767,	-- Nalpak
-						["timeline"] = { "added 4.0.3.13277" },
+						["timeline"] = { ADDED_4_0_3 },
 						["lvl"] = lvlsquish(15, 15, 8),
 						["groups"] = {
 							objective(1, {	-- 0/5 Serpentbloom
-								["provider"] = { "i", 5339 },	-- Serpentbloom
+								["providers"] = {
+									{ "i", 5339 },	-- Serpentbloom
+									{ "o", 13891 },	-- Serpentbloom
+								},
 							}),
 						},
 					}),
 					q(962, {	-- Serpentbloom
 						["qg"] = 3419,	-- Apothecary Zamah <Royal Apothecary Society>
 						["coord"] = { 23.6, 21.4, THUNDER_BLUFF },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["races"] = HORDE_ONLY,
 						["lvl"] = 14,
 						["groups"] = {
 							objective(1, {	-- 0/10 Serpentbloom
-								["provider"] = { "i", 5339 },	-- Serpentbloom
+								["providers"] = {
+									{ "i", 5339 },	-- Serpentbloom
+									{ "o", 13891 },	-- Serpentbloom
+								},
 							}),
 							i(10919, {	-- Apothecary Gloves
-								["timeline"] = { "removed 4.0.3.13277" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						},
 					}),
@@ -222,7 +232,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["qg"] = 3446,	-- Mebok Mizzyrix
 						["sourceQuest"] = 865,	-- Raptor Horns
 						["coord"] = { 62.4, 37.6, THE_BARRENS },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["lvl"] = 13,
 						["groups"] = {
 							objective(1, {	-- 0/6 Wailing Essence
@@ -239,27 +249,35 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["provider"] = { "i", 10441 },	-- Glowing Shard
 						["qg"] = 3442,	-- Sputtervalve <Tinkers' Union>
 						["coord"] = { 63.0, 37.2, THE_BARRENS },
-						["timeline"] = { "removed 4.0.3.13277" },
+						["timeline"] = { REMOVED_4_0_3 },
 					}),
 				},
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			n(TREASURES, {
+				applyclassicphase(SOD_PHASE_ONE, i(209846, {	-- Secrets of the Dreamers
+					["provider"] = { "o", 409692 },	-- Scrolls
+					["coord"] = { 52.83, 54.70, THE_BARRENS },
+				})),
+			}),
+			-- #endif
 			n(VENDORS, {
 				n(5783, {	-- Kalldan Felmoon <Specialist Leatherworking Supplies>
 					["coord"] = { 45.9, 35.7, THE_BARRENS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["groups"] = {
 						i(6474, {	-- Pattern: Deviate Scale Cloak (RECIPE!)
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(6475, {	-- Pattern: Deviate Scale Gloves (RECIPE!)
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 			}),
 			n(ZONE_DROPS, {
 				i(48114, {	-- Deviate Hatchling (PET!)
-					["timeline"] = { "added 3.2.0.10026" },
+					["timeline"] = { ADDED_3_2_0 },
 					["crs"] = {
 						3637,	-- Deviate Guardian
 						3636,	-- Deviate Ravager
@@ -271,7 +289,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				n(3840, {	-- Druid of the Fang
 					i(10413),	-- Gloves of the Fang
 					i(132743, {	-- Slither-Scale Gauntlets
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 					i(208015, bubbleDown({ ["timeline"] = { ADDED_10_1_5 } }, {	-- Stuffed Deviate Scale Pouch
 						i(208016),	-- Deviate Scale Pouch
@@ -294,18 +312,18 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["groups"] = {
 					i(9739),	-- Gem of Anacondra
 					i(151427, {	-- Snake-Charmer's Casque
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(132737, {	-- Cavern Slitherer Pauldrons
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 					i(5404),	-- Serpent's Shoulders
 					i(151426, {	-- Lady Anacondra's Satin Cuffs
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(10412),	-- Belt of the Fang
 					i(132740, {	-- Slither-Scale Cord
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 					i(6446),	-- Snakeskin Bag
 				},
@@ -316,7 +334,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					i(13245),	-- Kresh's Back
 					i(6447),	-- Worn Turtle Shell Shield
 					i(151430, {	-- Hematite Tortoise Pendant
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 				},
 			}),
@@ -326,14 +344,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					i(9740),	-- Gem of Pythas
 					i(6472),	-- Stinging Viper
 					i(151429, {	-- Lord Pythas' Pauldrons
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(6473),	-- Armor of the Fang
 					i(132739, {	-- Slither-Scale Hauberk
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 					i(151428, {	-- Slumbersilk Waistcord
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 				},
 			}),
@@ -345,7 +363,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					i(6460),	-- Cobrahn's Grasp
 					i(10410),	-- Leggings of the Fang
 					i(132742, {	-- Slither-Scale Britches
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 				},
 			}),
@@ -372,7 +390,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					i(10411),	-- Footpads of the Fang
 					i(6459),	-- Savage Trodders
 					i(132741, {	-- Slither-Scale Boots
-						["timeline"] = { "added 7.0.3.22248" },
+						["timeline"] = { ADDED_7_0_3 },
 					}),
 				},
 			}),
@@ -393,8 +411,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						-- #endif
 					}),
 					ach(5039, {	-- Wailing Caverns Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_ONE, i(209838, {	-- Hypnotic Crystal
+						["timeline"] = { REMOVED_2_0_1 },
+						["classes"] = { HUNTER },
+					})),
+					-- #endif
 					i(10441),	-- Glowing Shard
 					i(6461),	-- Slime-Encrusted Pads
 					i(6627),	-- Mutant Breastplate
@@ -406,7 +430,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 }));
 -- #if AFTER 6.0.1
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35303),	-- Wailing Caverns Reward Quest — Normal completion
 		q(35307),	-- Wailing Caverns Bonus Objective
 	}),

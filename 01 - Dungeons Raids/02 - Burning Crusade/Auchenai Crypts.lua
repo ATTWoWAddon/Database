@@ -1,15 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
-	inst(247, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {	-- Auchenai Crypts
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
+	inst(247, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {	-- Auchenai Crypts
 		["lore"] = "Auchenai Crypts is the main seat of power for the Auchenai - a renegade religious sect of draenei led by the Exarch Maladaar. The crypts are populated by these draenei and the unliving creatures they have summoned. The most important remains interred within the crypt are those of D'ore, one of the naaru. D'ore perished in the collision that brought Oshu'gun (and the draenei) to Draenor. In death, D'ore entered its void stage. The dark energies exuded by this phenomenon resulted, directly or indirectly, in the evils that have since befallen the crypts.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3790,	-- Auchenai Crypts
-		["sins"] = {
-			"Auchindoun: Auchenai Crypts",
-			"Auchindoun: Auchenaikrypta",
-			"Auchindoun: Crypts",
-		},
+		-- #endif
 		["coord"] = { 34.34, 65.61, TEROKKAR_FOREST },	-- Auchenai Crypts, Terokkar Forest
 		["maps"] = {
 			AUCHINDOUN_AUCHENAI_CRYPTS,	-- Halls of Hereafter
@@ -34,7 +31,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 19698,	-- Greatfather Aldrimus
 					["sourceQuest"] = 10253,	-- Levixus the Soul Caller
 					["coord"] = { 35.1, 65.2, TEROKKAR_FOREST },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(64, 64, 15),
 					["groups"] = {
 						objective(1, {	-- Exarch Maladaar slain
@@ -50,13 +47,13 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 19698,	-- Greatfather Aldrimus
 					["sourceQuest"] = 10253,	-- Levixus the Soul Caller
 					["coord"] = { 35.0, 65.2, TEROKKAR_FOREST },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(64, 64, 15),
 				}),
 				q(29591, {	-- Raging Spirits
 					["qg"] = 54698,	-- Tormented Soulpriest
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(63, 63, 15),
 					["groups"] = {
 						objective(1, {	-- 0/5 Angered Skeleton slain
@@ -72,7 +69,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29590, {	-- The Dead Watcher
 					["qg"] = 54725,	-- Draenei Spirit
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(63, 63, 15),
 					["groups"] = {
 						objective(1, {	-- Shirrak the Dead Watcher slain
@@ -83,7 +80,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29596, {	-- The End of the Exarch
 					["qg"] = 54725,	-- Draenei Spirit
 					["sourceQuest"] = 29595,	-- Everything Will Be Alright
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(63, 63, 15),
 					["groups"] = {
 						objective(1, {	-- Exarch Maladaar slain
@@ -118,15 +115,19 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 			}),
 			n(COMMON_BOSS_DROPS, {
-				-- #if AFTER 8.0.1.27326
-				currency(1704, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each.",
-				}),
-				-- #else
 				i(28558, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each.",
+					["timeline"] = { REMOVED_8_0_1 },
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
 				}),
-				-- #endif
+				currency(1704, {	-- Spirit Shard
+					["timeline"] = { ADDED_8_0_1 },
+					-- #if BEFORE 9.1.5
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #else
+					-- From 9.1.5 (specific patch uncomfirmed) this currency can be obtained regardless of whom controls the Spirit Towers in the Bone Wastes. This could have been true already from 8.0.1, but no reports seems to confirm it.
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #endif
+				}),
 			}),
 			n(ZONE_DROPS, {
 				i(22544, {	-- Formula: Enchant Boots - Dexterity (RECIPE!)
@@ -136,7 +137,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["cr"] = 18497,	-- Auchenai Monk
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(523, {	-- Shirrak the Dead Watcher
 					["creatureID"] = 18371,
 					["groups"] = {
@@ -194,7 +195,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -241,10 +242,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 18373,
 						["groups"] = {
 							ach(672, {	-- Heroic: Auchenai Crypts
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5072, {	-- Heroic: Auchenai Crypts Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							-- #if AFTER 7.3.5
 							i(27412),	-- Ironstaff of Regeneration
@@ -293,7 +294,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35544),	-- Auchinai Crypts Reward Quest - Normal completion
 		q(35545),	-- Auchinai Crypts Reward Quest - Heroic completion
 	}),

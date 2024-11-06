@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+CLIMBING = createHeader({
+	readable = "Climbing",
+	icon = 4562583,
+	text = {
+		en = WOWAPI_GetSpellName(365311),
+	},
+});
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(DRAGONSCALE_EXPEDITION, {
-		n(CLIMBING, {
+		n(CLIMBING, bubbleDownSelf({ ["minReputation"] = { FACTION_DRAGONSCALE_EXPEDITION, 6 } }, {
 			n(ACHIEVEMENTS, {
 				ach(16625),	-- Belay On!
 				ach(16588),	-- How Did These Get Here?
@@ -13,32 +20,29 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				ach(16623),	-- Toe Tension
 			}),
 			n(QUESTS, {
-					-- RENOWN 6 --
+				------ RENOWN 6 ------
 				q(69855, {	-- A Climber's Calling
-					["minReputation"] = { 2507, 6 },	-- Dragonscale Expedition Renown 6
 					["description"] = "Spawns Anywhere on Dragon Isles.",
 					["provider"] = { "n", 196643 },	-- Doc Nanners
 					["maps"] = { THE_WAKING_SHORES, OHNAHRAN_PLAINS, THE_AZURE_SPAN, THALDRASZUS, VALDRAKKEN },
 				}),
 				q(72524, {	-- Basic Climbing Gear
-					["minReputation"] = { 2507, 6 },	-- Dragonscale Expedition Renown 6
 					["sourceQuests"] = { 69855 },	-- A Climber's Calling
 					["provider"] = { "n", 187700 },	-- Pathfinder Jab
 					["coord"] = { 47.3, 83.4, THE_WAKING_SHORES },
 				}),
 				q(66351, {	-- Smoke Over the Mountain
-					["minReputation"] = { 2507, 6 },	-- Dragonscale Expedition Renown 6
 					["sourceQuests"] = { 72524 },	-- Basic Climbing Gear
 					["provider"] = { "n", 187700 },	-- Pathfinder Jab
 					["coord"] = { 47.3, 83.4, THE_WAKING_SHORES },
 				}),
 				q(65421, {	-- Climb Every Mountain
-					["minReputation"] = { 2507, 6 },	-- Dragonscale Expedition Renown 6
 					["sourceQuests"] = { 66351 },	-- Smoke Over the Mountain
 					["provider"] = { "n", 181039 },	-- Rocky Dustbeard
 					["coord"] = { 62.4, 50.5, THE_WAKING_SHORES },
 					["g"] = {
 						ach(16624),	-- Which Knot Was It Again?
+						i(191138),	-- Clinging Gustbloom Sample (QI!)
 					},
 				}),
 			}),
@@ -99,26 +103,28 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					["coord"] = { 56.7, 35.3, THALDRASZUS },
 				}),
 			})),
-		}),
+		})),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(DRAGONSCALE_EXPEDITION, {
-		q(72560),	-- Triggered after completing Climb Every Mountain (questID 65421)
-		q(71997),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (66070)
-		q(71998),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (64768)
-		q(71999),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70652)
-		q(72001),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70655)
-		q(72002),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (???)
-		q(72003),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70658)
-		q(72005),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70654)
-		q(72006),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70661)
-		q(72007),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70656)
-		q(66478),	-- Rescuing the Marmot (188912) during Brightblade's Bones (66070) (requires Lost Banana 191951) (spellID 371687)
-		q(75208),	-- looted lost supply while on climbing WQ 75060 (A Veritable Dumping Ground)
-		q(75207),	-- looted lost supply while on climbing WQ 75061 (No Mushroom For Ever)
-		q(75210),	-- looted lost supply while on climbing WQ 75062 (Crystalline Conundrum)
-		q(75206),	-- looted lost supply while on climbing WQ 75058 (Spearheading Acquisitio)
+		n(CLIMBING, {
+			q(72560),	-- Triggered after completing Climb Every Mountain (questID 65421)
+			q(71997),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (66070)
+			q(71998),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (64768)
+			q(71999),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70652)
+			q(72001),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70655)
+			q(72002),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (???)
+			q(72003),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70658)
+			q(72005),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70654)
+			q(72006),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70661)
+			q(72007),	-- looted bonus supplies (Enchanted Compass) while on climbing WQ (70656)
+			q(66478),	-- Rescuing the Marmot (188912) during Brightblade's Bones (66070) (requires Lost Banana 191951) (spellID 371687)
+			q(75208),	-- looted lost supplies while on climbing WQ 75060 (A Veritable Dumping Ground)
+			q(75207),	-- looted lost supplies while on climbing WQ 75061 (No Mushroom For Ever)
+			q(75210),	-- looted lost supplies while on climbing WQ 75062 (Crystalline Conundrum)
+			q(75206),	-- looted lost supplies while on climbing WQ 75058 (Spearheading Acquisitio)
+			q(77692),	-- looted lost supplies while on climbing WQ 77156 (Botanical Redistribution)
+		}),
 	}),
 })));

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
-local GRATEFUL = currency(GRATEFUL);
+local GRATEFUL_CURRENCY = currency(GRATEFUL);
 local SHRIEKERS_VOICEBOX = i(180713);
 local DREDBATSKIN_JERKIN = i(183720);
 local FORGEMASTERS_MANYFOLD_RAPIER = i(180489);
@@ -13,8 +13,8 @@ local HARIKA_THE_HORRID = n(165290, {	-- Harika the Horrid
 	["g"] = {
 		q(59607, {	-- Takin' Down the Beast
 			["description"] = "If this quest is offered, it must be completed to spawn the rare.",
+			["provider"] = { "n", 165327 },	-- Wingsmash
 			["repeatable"] = true,
-			["crs"] = { 165327 },	-- Wingsmash
 			["coord"] = { 46.30, 77.86, REVENDRETH },
 			["cost"] = { { "i", 176397, 1 } },	-- 1x Dredhollow Bolt
 		}),
@@ -37,18 +37,19 @@ local FORGEMASTER_MADALAV = n(159496, {	-- Forgemaster Madalav
 	},
 });
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
 	n(VENTHYR, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_revendreth01",
+			["icon"] = 3641397,
 			["g"] = {
 				n(ANIMA_CONDUCTOR, {
-					["icon"] = "Interface\\Icons\\Sanctum_features_animadiversion_revendreth",
-					["g"] = sharedData({ ["icon"] = "Interface\\Icons\\Sanctum_features_animadiversion_revendreth" }, {
+					["icon"] = 3854016,
+					["g"] = sharedData({ ["icon"] = 3854016 }, {
 						n(REWARDS, {
-							["description"] = "Every Activity within Anima Conductor Rewards this.",
 							["g"] = {
-								GRATEFUL,
+								currency(GRATEFUL, {
+									["description"] = "Grateful Offerings can be collected once you have unlocked the Anima Conductor in for your covenant.\n Once unlocked, you can loot them from Covenant Callings (higher Conductor => more Offerings), Patterns Within Patterns Weekly Quest in Zereth Morthis and from special rares & treasures, based on the channeling of your Anima Conductor.",
+								}),
 							},
 						}),
 						n(TIER_ONE, {
@@ -79,7 +80,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 									["isDaily"] = true,
 									["coord"] = { 46.0, 29.1, REVENDRETH },
 									["g"] = {
-										i(182768),	-- The Enchanted Dragon (unknown if interesting yet)
+										i(182768, {	-- The Enchanted Dragon
+											i(182766),	-- Golden Egg
+										}),
 									},
 								}),
 							}),
@@ -90,11 +93,17 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 									-- ["sourceQuests"] = { ? },	--
 									["provider"] = { "n", 173038 },	-- John the Reanimator
 									["coord"] = { 71.5, 76.3, REVENDRETH },
+									["g"] = {
+										i(182291),	-- Anima Cage (QI!)
+									},
 								}),
 								q(61733, {	-- Big Bag of Creepers
 									-- ["sourceQuests"] = { ? },	--
 									["provider"] = { "n", 173127 },	-- Thinman
 									["coord"] = { 71.4, 74.4, REVENDRETH },
+									["g"] = {
+										i(182583),	-- Mire Creeper (QI!)
+									},
 								}),
 								q(61734, {	-- Census of Sins
 									["provider"] = { "n", 173532 },	-- Lady Sinrender
@@ -103,6 +112,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 								q(61707, {	-- Crumbled Reality
 									["provider"] = { "n", 173036 },	-- Thickman
 									["coord"] = { 71.3, 74.5, REVENDRETH },
+									["g"] = {
+										i(182158),	-- Infused Rubble (QI!)
+									},
 								}),
 								q(61846, {	-- Edict of Doom: Dredbats
 									-- ["sourceQuests"] = { ? },	--
@@ -130,6 +142,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 								q(61849, {	-- Take the Bite Out of 'Em
 									["provider"] = { "n", 173630 },	-- Partially-eaten Iger
 									["coord"] = { 71.2, 74.4, REVENDRETH },
+									["g"] = {
+										i(182692),	-- Venthyr Fang (QI!)
+									},
 								}),
 							})),
 							n(WORLD_QUESTS, {
@@ -150,6 +165,6 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 	}),
 })));
 
-for _,t in ipairs({HARIKA_THE_HORRID,FORGEMASTER_MADALAV,GRATEFUL,SHRIEKERS_VOICEBOX,DREDBATSKIN_JERKIN,FORGEMASTERS_MANYFOLD_RAPIER}) do
+for _,t in ipairs({HARIKA_THE_HORRID,FORGEMASTER_MADALAV,GRATEFUL_CURRENCY,SHRIEKERS_VOICEBOX,DREDBATSKIN_JERKIN,FORGEMASTERS_MANYFOLD_RAPIER}) do
 	t.customCollect = nil;
 end

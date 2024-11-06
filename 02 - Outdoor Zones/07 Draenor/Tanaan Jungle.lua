@@ -6,117 +6,29 @@ root(ROOTS.Zones, {
 	m(DRAENOR, {
 		m(TANAAN_JUNGLE, {
 			["lore"] = "Tanaan Jungle is a zone in eastern Draenor. It is seat of the Iron Horde's dominion over Draenor and home to the Bleeding Hollow clan, as well as the recently constructed Dark Portal that serves as a time-space gateway between Draenor and Azeroth. The Azerothian expedition mounts a counter-offensive against Iron Horde's operations in their homeworld in a desperate bid to shut down the gateway, with heavy losses that force the remnants to escape elsewhere in order to find allies.",
-			["icon"] = "Interface\\Icons\\achievement_zone_tanaanjungle",
+			["icon"] = 1048305,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					a(ach(10068, {	-- Draenor's Last Stand (Tanaan Jungle) [A]
-						crit(1),		-- Ironhold Harbor
-						crit(2),		-- Ruins of Kra'nak
-						crit(3),		-- Temple of Sha'naar
-						crit(4),		-- The Fel Forge
-						crit(5),		-- The Iron Front
-						crit(6),		-- Throne of Kil'jaeden
-						crit(7),		-- Zeth'gol
+						["sym"] = {{ "achievement_criteria" }},
 					})),
 					h(ach(10075, {	-- Draenor's Last Stand (Tanaan Jungle) [H]
-						crit(1),		-- Ironhold Harbor
-						crit(2),		-- Ruins of Kra'nak
-						crit(3),		-- Temple of Sha'naar
-						crit(4),		-- The Fel Forge
-						crit(5),		-- The Iron Front
-						crit(6),		-- Throne of Kil'jaeden
-						crit(7),		-- Zeth'gol
+						["sym"] = {{ "achievement_criteria" }},
 					})),
-					ach(10260, {	-- Explore Tanaan Jungle
-						crit(1),		-- Zeth'Kur
-						crit(2),		-- Rangari Refuge
-						crit(3),		-- Fang'rila
-						crit(4),		-- The Fel Forge
-						crit(5),		-- Hellfire Citadel
-						crit(6),		-- The Iron Front
-						crit(7),		-- Ironhold Harbor
-						crit(8),		-- Throne of Kil'jaeden
-						crit(9),		-- Ruins of Kra'nak
-						crit(10),		-- Lion's Watch
-						crit(11),		-- Zorammarsh
-						crit(12),		-- Temple of Sha'naar
-						crit(13),		-- Vol'mar
-						crit(14),		-- Zeth'Gol
-					}),
+					explorationAch(10260),	-- Explore Tanaan Jungle
 					ach(10061, {	-- Hellbane
-						crit(1),		-- Terrorfist, Son of Kormrok
-						crit(2),		-- Deathtalon, Avatar of Iskar
-						crit(3),		-- Vengeance, Avatar of Velhari
-						crit(4),		-- Doomroller, Mar'tak's Creation
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(10069),		-- I Came, I Clawed, I Conquered
 					ach(10070, {	-- Jungle Stalker
-						crit(1),		-- Podlord Wakkawam
-						crit(2),		-- Bramblefell
-						crit(3),		-- Zeter'el
-						crit(4),		-- Felspark
-						crit(5),		-- Imp-Master Valessa
-						crit(6),		-- Lady Oran
-						crit(7),		-- Jax'zor
-						crit(8),		-- Ceraxas
-						crit(9),		-- Mistress Thavra
-						crit(10),		-- Cindral the Wildfire
-						crit(11),		-- Sergeant Mor'grak
-						crit(12),		-- Varyx the Damned
-						crit(13),		-- Rasthe
-						crit(14),		-- Painmistress Selora
-						crit(15),		-- Grand Warlock Nethekurse
-						crit(16),		-- Steelsnout
-						crit(17),		-- Magwia
-						crit(18),		-- Commander Krag'goth
-						crit(19),		-- Tho'gar Gorefist
-						crit(20),		-- Grannok
-						crit(21),		-- Szirek the Twisted
-						crit(22),		-- The Iron Houndmaster
-						crit(23),		-- Bilkor the Thrower
-						crit(24),		-- Rogond the Tracker
-						crit(25),		-- Dorg the Bloody
-						crit(26),		-- Drivnul
-						crit(27),		-- Bloodhunter Zulk
-						crit(28),		-- Relgor
-						crit(29),		-- Broodlord Ixkor
-						crit(30),		-- Soulslicer
-						crit(31),		-- Gloomtalon
-						crit(32),		-- Krell the Serene
-						crit(33),		-- The Blackfang
-						crit(34),		-- Thromma the Gutslicer
-						crit(35),		-- Belgork
-						crit(36),		-- Sylissa
-						crit(37),		-- Rendrak
-						crit(38),		-- The Night Haunter
-						crit(39),		-- The Goreclaw
-						crit(40),		-- Gorabosh
-						crit(41),		-- Driss Vile
-						crit(42),		-- Captain Ironbeard
-						crit(43),		-- Glub'glok
-						crit(44),		-- Felbore
-						crit(45),		-- Akrrilo
-						crit(46),		-- Rendarr
-						crit(47),		-- Eyepiercer
-						crit(48),		-- Bleeding Hollow Horror
-						crit(49),		-- Kris'kar the Unredeemed
-						crit(50),		-- Executor Riloth
-						crit(51),		-- Argosh the Destroyer
-						crit(52),		-- Zoug the Heavy
-						crit(53),		-- Harbormaster Korak
-						crit(54),		-- Shadowthrash
-						crit(55),		-- Felsmith Damorka
-						crit(56),		-- Putre'thar
-						crit(57),		-- Xanzith the Everlasting
-						crit(58),		-- Overlord Ma'gruth
-						crit(59),		-- Captain Grok'mar
-						crit(60),		-- Commander Org'mok
-						ach(10259),		-- Jungle Hunter
+						["sym"] = {{ "achievement_criteria" }},
+						["groups"] = {
+							ach(10259),		-- Jungle Hunter
+						},
 					}),
 					ach(10262, {	-- Jungle Treasure Master
 						ach(10261),		-- Jungle Treasure Hunter
 					}),
-					
 					ach(10334, {	-- Predator
 						title(59),	-- Predator
 					}),
@@ -152,6 +64,22 @@ root(ROOTS.Zones, {
 							title(318),	-- of the Jungle
 						},
 					}),
+					ach(10350, {	-- Tanaan Diplomat (Alliance)
+						["races"] = ALLIANCE_ONLY,
+						["g"] = {
+							crit(28981),	-- Hand of the Prophet
+							crit(28980),	-- Order of the Awakened
+							crit(28979),	-- The Saberstalkers
+						},
+					}),
+					ach(10349, {	-- Tanaan Diplomat (Horde)
+						["races"] = HORDE_ONLY,
+						["g"] = {
+							crit(28980),	-- Order of the Awakened
+							crit(28979),	-- The Saberstalkers
+							crit(28978),	-- Vol'jin's Headhunters
+						},
+					}),
 				}),
 				petbattle(filter(BATTLE_PETS, {
 					["sym"] = {{"select","speciesID",
@@ -163,211 +91,166 @@ root(ROOTS.Zones, {
 					}},
 					["groups"] = {
 						ach(10052, {	-- Tiny Terrors in Tanaan
-						n(94601, {	-- Felsworn Sentry
-							["questID"] = 39157,
-							["isDaily"] = true,
-							["coord"] = { 26.0, 31.6, TANAAN_JUNGLE },
+							n(94601, {	-- Felsworn Sentry
+								["questID"] = 39157,
+								["isDaily"] = true,
+								["coord"] = { 26.0, 31.6, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94637, {	-- Corrupted Thundertail
+								["questID"] = 39160,
+								["isDaily"] = true,
+								["coord"] = { 53.0, 65.2, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94638, {	-- Chaos Pup
+								["questID"] = 39161,
+								["isDaily"] = true,
+								["coord"] = { 25.0, 76.2, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94639, {	-- Cursed Spirit
+								["questID"] = 39162,
+								["isDaily"] = true,
+								["coord"] = { 31.4, 38.0, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94640, {	-- Felfly
+								["questID"] = 39163,
+								["isDaily"] = true,
+								["coord"] = { 55.8, 80.8, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94641, {	-- Tainted Maulclaw
+								["questID"] = 39164,
+								["isDaily"] = true,
+								["coord"] = { 43.4, 84.6, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94642, {	-- Direflame
+								["questID"] = 39165,
+								["isDaily"] = true,
+								["coord"] = { 57.8, 37.2, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94643, {	-- Mirecroak
+								["questID"] = 39166,
+								["isDaily"] = true,
+								["coord"] = { 42.2, 71.6, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94644, {	-- Dark Gazer
+								["questID"] = 39167,
+								["isDaily"] = true,
+								["coord"] = { 54.0, 29.8, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94645, {	-- Bleakclaw
+								["questID"] = 39168,
+								["isDaily"] = true,
+								["coord"] = { 15.8, 44.6, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94646, {	-- Vile Blood of Draenor
+								["questID"] = 39169,
+								["isDaily"] = true,
+								["coord"] = { 44.0, 45.8, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94647, {	-- Dreadwalker
+								["questID"] = 39170,
+								["isDaily"] = true,
+								["coord"] = { 47.2, 52.6, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94648, {	-- Netherfist
+								["questID"] = 39171,
+								["isDaily"] = true,
+								["coord"] = { 48.4, 35.6, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94649, {	-- Skrillix
+								["questID"] = 39172,
+								["isDaily"] = true,
+								["coord"] = { 48.4, 31.2, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+							n(94650, {	-- Defiled Earth
+								["questID"] = 39173,
+								["isDaily"] = true,
+								["coord"] = { 75.4, 37.4, TANAAN_JUNGLE },
+								["g"] = {
+									i(127751, {	-- Fel-Touched Pet Supplies
+										["sym"] = { { "fill" } },
+									}),
+								},
+							}),
+						}),
+						i(127751, {	-- Fel-Touched Pet Supplies
+							["description"] = "Fel-Touched Pet Supplies is the reward for defeating any of the Tiny Terrors in Tanaan. You can defeat each Tiny Terror once per character per day.|r",
 							["g"] = {
-								crit(1,  {	-- Felsworn Sentry
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
+								i(127753),	-- Nightmare Bell (PET!)
+								i(127754),	-- Periwinkle Calf (PET!)
+								i(118105),	-- Seaborne Spore (PET!)
+								i(118101),	-- Zangar Spore (PET!)
 							},
 						}),
-						n(94637, {	-- Corrupted Thundertail
-							["questID"] = 39160,
-							["isDaily"] = true,
-							["coord"] = { 53.0, 65.2, TANAAN_JUNGLE },
-							["g"] = {
-								crit(2,  {	-- Corrupted Thundertail
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94638, {	-- Chaos Pup
-							["questID"] = 39161,
-							["isDaily"] = true,
-							["coord"] = { 25.0, 76.2, TANAAN_JUNGLE },
-							["g"] = {
-								crit(3,  {	-- Chaos Pup
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94639, {	-- Cursed Spirit
-							["questID"] = 39162,
-							["isDaily"] = true,
-							["coord"] = { 31.4, 38.0, TANAAN_JUNGLE },
-							["g"] = {
-								crit(4,  {	-- Cursed Spirit
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94640, {	-- Felfly
-							["questID"] = 39163,
-							["isDaily"] = true,
-							["coord"] = { 55.8, 80.8, TANAAN_JUNGLE },
-							["g"] = {
-								crit(5,  {	-- Felfly
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94641, {	-- Tainted Maulclaw
-							["questID"] = 39164,
-							["isDaily"] = true,
-							["coord"] = { 43.4, 84.6, TANAAN_JUNGLE },
-							["g"] = {
-								crit(6,  {	-- Tainted Maulclaw
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94642, {	-- Direflame
-							["questID"] = 39165,
-							["isDaily"] = true,
-							["coord"] = { 57.8, 37.2, TANAAN_JUNGLE },
-							["g"] = {
-								crit(7,  {	-- Direflame
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94643, {	-- Mirecroak
-							["questID"] = 39166,
-							["isDaily"] = true,
-							["coord"] = { 42.2, 71.6, TANAAN_JUNGLE },
-							["g"] = {
-								crit(8,  {	-- Mirecroak
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94644, {	-- Dark Gazer
-							["questID"] = 39167,
-							["isDaily"] = true,
-							["coord"] = { 54.0, 29.8, TANAAN_JUNGLE },
-							["g"] = {
-								crit(9,  {	-- Dark Gazer
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94645, {	-- Bleakclaw
-							["questID"] = 39168,
-							["isDaily"] = true,
-							["coord"] = { 15.8, 44.6, TANAAN_JUNGLE },
-							["g"] = {
-								crit(10, {	-- Bleakclaw
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94646, {	-- Vile Blood of Draenor
-							["questID"] = 39169,
-							["isDaily"] = true,
-							["coord"] = { 44.0, 45.8, TANAAN_JUNGLE },
-							["g"] = {
-								crit(11, {	-- Vile Blood of Draenor
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94647, {	-- Dreadwalker
-							["questID"] = 39170,
-							["isDaily"] = true,
-							["coord"] = { 47.2, 52.6, TANAAN_JUNGLE },
-							["g"] = {
-								crit(12, {	-- Dreadwalker
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94648, {	-- Netherfist
-							["questID"] = 39171,
-							["isDaily"] = true,
-							["coord"] = { 48.4, 35.6, TANAAN_JUNGLE },
-							["g"] = {
-								crit(13, {	-- Netherfist
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94649, {	-- Skrillix
-							["questID"] = 39172,
-							["isDaily"] = true,
-							["coord"] = { 48.4, 31.2, TANAAN_JUNGLE },
-							["g"] = {
-								crit(14, {	-- Skrillix
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-						n(94650, {	-- Defiled Earth
-							["questID"] = 39173,
-							["isDaily"] = true,
-							["coord"] = { 75.4, 37.4, TANAAN_JUNGLE },
-							["g"] = {
-								crit(15, {	-- Defiled Earth
-									["achievementID"] = 10052,	-- Tiny Terrors in Tanaan
-								}),
-								i(127751, {	-- Fel-Touched Pet Supplies
-									["sym"] = { { "fill" } },
-								}),
-							},
-						}),
-					}),
-					i(127751, {	-- Fel-Touched Pet Supplies
-						["description"] = "Fel-Touched Pet Supplies is the reward for defeating any of the Tiny Terrors in Tanaan. You can defeat each Tiny Terror once per character per day.|r",
-						["g"] = {
-							i(127753),	-- Nightmare Bell (PET!)
-							i(127754),	-- Periwinkle Calf (PET!)
-							i(118105),	-- Seaborne Spore (PET!)
-							i(118101),	-- Zangar Spore (PET!)
-						},
-					}),
 						pet(1468),	--  Bloodbeak (PET!)
 						pet(1586),	--  Cerulean Moth (PET!)
 						pet(1581, {	--  Fen Crab (PET!)
@@ -376,6 +259,37 @@ root(ROOTS.Zones, {
 						pet(1591),	--  Violet Firefly (PET!)
 					},
 				})),
+				explorationHeader({
+					exploration(7536),	-- Aktar's Post
+					exploration(7717),	-- Bleeding Hollow Hunting Grounds
+					exploration(7641),	-- Fang'rila
+					exploration(7525),	-- Farlight Terrace
+					exploration(7716),	-- Hellfire Citadel
+					exploration(7723),	-- Ironhold Approach
+					exploration(7515),	-- Ironhold Harbor
+					exploration(7522),	-- Lion's Watch
+					exploration(7655),	-- Rangari Refuge
+					exploration(7524),	-- Ruins of Kra'nak
+					exploration(7718),	-- Scuttler's Coast
+					exploration(7526),	-- Temple of Sha'naar
+					exploration(7722),	-- The Broken Rampart
+					exploration(7615),	-- The Fel Forge
+					exploration(7719),	-- The Felblight
+					exploration(7527),	-- The Iron Front
+					exploration(7538),	-- Throne of Kil'jaeden
+					exploration(7721),	-- Thundertail Wallow
+					exploration(7523),	-- Vol'mar
+					exploration(7720),	-- Warcamp Gromdar
+					exploration(7539),	-- Zeth'Gol
+					exploration(7514),	-- Zeth'Kur
+					exploration(7604),	-- Zorammarsh
+				}),
+				n(FACTIONS, {
+					faction(FACTION_HAND_OF_THE_PROPHET, {["races"] = ALLIANCE_ONLY}),	-- Hand of The Prophet
+					faction(FACTION_ORDER_OF_THE_AWAKENED),	-- Order of the Awakened
+					faction(FACTION_THE_SABERSTALKERS),	-- The Saberstalkers
+					faction(FACTION_VOLJINS_HEADHUNTERS, {["races"] = HORDE_ONLY}),	-- Vol'jin's Headhunters
+				}),
 				n(FLIGHT_PATHS, {
 					fp(1643, {	-- Aktar's Post, Tanaan Jungle
 						["coord"] = { 26.0, 38.8, TANAAN_JUNGLE },
@@ -412,7 +326,10 @@ root(ROOTS.Zones, {
 						["description"] = "In order to learn these recipes, you have to take the appropriate gemcutter module to this NPC and then right-click to learn how to craft it.",
 						["coord"] = { 25.8, 39.7, TANAAN_JUNGLE },
 						["requireSkill"] = JEWELCRAFTING,
-						["g"] = {
+						["g"] = sharedData({
+							-- These Recipes should only cached when learned and not disabled via NPC interact
+							["isEnableTypeRecipe"] = true,
+						},{
 							recipe(187634, {	-- Immaculate Critical Strike Taladite
 								["cost"] = { { "i", 127771, 1 } },	-- Gemcutter Module: Critical Strike
 							}),
@@ -421,14 +338,12 @@ root(ROOTS.Zones, {
 							}),
 							recipe(187636, {	-- Immaculate Mastery Taladite
 								["cost"] = { { "i", 127773, 1 } },	-- Gemcutter Module: Mastery
+								["u"] = REMOVED_FROM_GAME,	-- Brawlers Guild removed thus this item is no longer available to buy
 							}),
 							recipe(187640, {	-- Immaculate Stamina Taladite
 								["cost"] = { { "i", 127775, 1 } },	-- Gemcutter Module: Stamina
 							}),
-							-- recipe(187639, {	-- Immaculate Versatility Taladite
-							-- 	["cost"] = { { "i", 123123123123, 1 } },
-							-- }),
-						},
+						}),
 					}),
 				}),
 				n(QUESTS, {
@@ -600,7 +515,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 17.5, 45.1, TANAAN_JUNGLE },
 						["sourceQuest"] = 39176,	-- Mastery of Taladite
 						["g"] = {
-							recipe(187639),	-- Immaculate Versatility Taladite
+							recipe(187639, {	-- Immaculate Versatility Taladite
+								["isEnableTypeRecipe"] = true,
+							}),
 						},
 					}),
 					q(39565, {	-- Rumble in the Jungle
@@ -632,11 +549,13 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 38445,
 						["isBreadcrumb"] = true,	-- The Assault Base
+						["DisablePartySync"] = true,
 					}),
 					q(39423, {	-- Shipyard Report
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 37935,
 						["isBreadcrumb"] = true,	-- The Assault Base
+						["DisablePartySync"] = true,
 					}),
 					q(38445, {	-- The Assault Base
 						["provider"] = { "n", 91923 },	-- Exarch Naielle
@@ -706,21 +625,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 58.4, 60.2, TANAAN_JUNGLE },
 							["races"] = ALLIANCE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(1, {
-									["achievementID"] = 10068,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(37940, {	-- Assault on Ironhold Harbor (H)
 							["coord"] = { 61.4, 45.8, TANAAN_JUNGLE },
 							["races"] = HORDE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(1, {
-									["achievementID"] = 10075,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(37866, {	-- Assault on Ironhold Harbor (A)
 							["coord"] = { 39.0, 38.0, TANAAN_JUNGLE },
@@ -764,21 +673,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 58.4, 60.2, TANAAN_JUNGLE },
 							["races"] = ALLIANCE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(4, {
-									["achievementID"] = 10068,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38441, {	-- Assault on the Fel Forge (H)
 							["coord"] = { 61.4, 45.8, TANAAN_JUNGLE },
 							["races"] = HORDE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(4, {
-									["achievementID"] = 10075,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(39445, {	-- Assault on the Fel Forge (A)
 							["coord"] = { 50.0, 44.0, TANAAN_JUNGLE },
@@ -802,21 +701,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 58.4, 60.2, TANAAN_JUNGLE },
 							["races"] = ALLIANCE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(2, {
-									["achievementID"] = 10068,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38252, {	-- Assault on the Ruins of Kra'nak (H)
 							["coord"] = { 61.4, 45.8, TANAAN_JUNGLE },
 							["races"] = HORDE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(2, {
-									["achievementID"] = 10075,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(37938, {	-- Assault on the Ruins of Kra'nak (A)
 							["coord"] = { 23.0, 37.0, TANAAN_JUNGLE },
@@ -842,21 +731,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 58.4, 60.2, TANAAN_JUNGLE },
 							["races"] = ALLIANCE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(3, {
-									["achievementID"] = 10068,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38449, {	-- Assault on the Temple of Sha'naar (H)
 							["coord"] = { 61.4, 45.8, TANAAN_JUNGLE },
 							["races"] = HORDE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(3, {
-									["achievementID"] = 10075,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(37966, {	-- Assault on the Temple of Sha'naar (A)
 							["coord"] = { 30.0, 71.0, TANAAN_JUNGLE },
@@ -882,21 +761,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 58.4, 60.2, TANAAN_JUNGLE },
 							["races"] = ALLIANCE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(6, {
-									["achievementID"] = 10068,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38586, {	-- Assault on the Throne of Kil'jaeden (H)
 							["coord"] = { 61.4, 45.8, TANAAN_JUNGLE },
 							["races"] = HORDE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(6, {
-									["achievementID"] = 10075,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38587, {	-- Assault on the Throne of Kil'jaeden (A)
 							["coord"] = { 54.0, 25.0, TANAAN_JUNGLE },
@@ -932,21 +801,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 58.4, 60.2, TANAAN_JUNGLE },
 							["races"] = ALLIANCE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(5, {
-									["achievementID"] = 10068,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38047, {	-- Battle At The Iron Front (H)
 							["coord"] = { 61.4, 45.8, TANAAN_JUNGLE },
 							["races"] = HORDE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(5, {
-									["achievementID"] = 10075,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38051, {	-- Battle At The Iron Front (A)
 							["coord"] = { 14.0, 57.0, TANAAN_JUNGLE },
@@ -984,21 +843,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 58.4, 60.2, TANAAN_JUNGLE },
 							["races"] = ALLIANCE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(7, {
-									["achievementID"] = 10068,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38044, {	-- Bleeding the Bleeding Hollow (H)
 							["coord"] = { 61.4, 45.8, TANAAN_JUNGLE },
 							["races"] = HORDE_ONLY,
 							["isDaily"] = true,
-							["g"] = {
-								crit(7, {
-									["achievementID"] = 10075,	-- Draenor's Last Stand
-								}),
-							},
 						}),
 						q(38043, {	-- Bleeding the Bleeding Hollow (A)
 							["coord"] = { 22.0, 50.0, TANAAN_JUNGLE },
@@ -1031,20 +880,12 @@ root(ROOTS.Zones, {
 						["questID"] = 39399,
 						["isDaily"] = true,
 						["coord"] = { 54.2, 80.8, TANAAN_JUNGLE },
-						["g"] = {
-							crit(45, {	-- Akrrilo slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
-						},
 					}),
 					n(91871, {	-- Argosh the Destroyer
 						["questID"] = 38430,
 						["isDaily"] = true,
 						["coord"] = { 52.6, 40.6, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(51, {	-- Argosh the Destroyer slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127326),	-- Fel Destroyer Crossbow
 						},
 					}),
@@ -1053,9 +894,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 35.6, 46.8, TANAAN_JUNGLE },
 						["g"] = {
-							crit(35, {	-- Belgork slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127650),	-- Belgork's Bastion
 							i(126950, {	-- Equipment Blueprint: Bilge Pump
 								["questID"] = 38932,	-- Equipment Blueprint: Bilge Pump
@@ -1067,9 +905,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 23.6, 52.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(23, {	-- Bilkor the Thrower slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127307),	-- Battle-Scuffed Spaulders
 						},
 					}),
@@ -1081,9 +916,6 @@ root(ROOTS.Zones, {
 							{ 44.6, 77.5, TANAAN_JUNGLE },	-- Cave Entrance
 						},
 						["g"] = {
-							crit(48, {	-- Bleeding Hollow Horror slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127654),	-- Burning Agony
 						},
 					}),
@@ -1095,9 +927,6 @@ root(ROOTS.Zones, {
 							{ 21.0, 53.0, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(27, {	-- Bloodhunter Zulk slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127303),	-- Zulk's Sneaky Slippers
 						},
 					}),
@@ -1109,9 +938,6 @@ root(ROOTS.Zones, {
 							{ 39.2, 68.8, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(2, {	-- Bramblefell slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127652),	-- Felflame Campfire (TOY!)
 						},
 					}),
@@ -1120,9 +946,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 57.6, 67.2, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(29, {	-- Broodlord Ixkor slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127349),	-- Silver Chitin Ring
 						},
 					}),
@@ -1131,9 +954,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 48.6, 57.4, TANAAN_JUNGLE },
 						["g"] = {
-							crit(59, {	-- Captain Grok'mar slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127664),	-- Grokmar's Greaves of Fortification
 						},
 					}),
@@ -1142,9 +962,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 36.6, 79.8, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(42, {	-- (The Real) Captain Ironbeard slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127659),	-- Ghostly Iron Buccaneer's Hat (TOY!)
 							i(128257, {	-- Equipment Blueprint: Ghostly Spyglass
 								["questID"] = 39365,	-- Equipment Blueprint: Ghostly Spyglass
@@ -1157,9 +974,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 31.6, 68.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(8, {	-- Ceraxas slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							q(38428,{	-- A Fel Puppy Of My Own
 								["qgs"] = { 90426 },	-- Abandoned Fel Pup
 								["coord"] = { 31.7, 67.1, TANAAN_JUNGLE },
@@ -1174,9 +988,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 44.6, 37.6, TANAAN_JUNGLE },
 						["g"] = {
-							crit(10, {	-- Cindral the Wildfire slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127660),	-- Contained Flame
 							i(128255, {	-- Equipment Blueprint: Ice Cutter
 								["questID"] = 39363,	-- Equipment Blueprint: Ice Cutter
@@ -1188,9 +999,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 15.0, 53.9, TANAAN_JUNGLE },
 						["g"] = {
-							crit(18, {	-- Commander Krag'goth slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127319),	-- Krag'goth's Iron Gauntlets
 						},
 					}),
@@ -1202,9 +1010,6 @@ root(ROOTS.Zones, {
 							{ 48.0, 44.8, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(60, {	-- Commander Org'mok
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127313),	-- Org'mok's Riding Chaps
 						},
 					}),
@@ -1213,9 +1018,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 22.8, 40.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(2, {	-- Deathtalon, Avatar of Iskar slain
-								["achievementID"] = 10061,	-- Hellbane
-							}),
 							i(128025, {	-- Rattling Iron Cage
 								i(116669),	-- Armored Razorback (MOUNT!)
 								i(116658),	-- Tundra Icehoof (MOUNT!)
@@ -1229,9 +1031,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 47.0, 52.6, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(4, {	-- Doomroller, Mar'tak's Creation
-								["achievementID"] = 10061,	-- Hellbane
-							}),
 							i(128025, {	-- Rattling Iron Cage
 								i(116669),	-- Armored Razorback (MOUNT!)
 								i(116658),	-- Tundra Icehoof (MOUNT!)
@@ -1249,9 +1048,6 @@ root(ROOTS.Zones, {
 						},
 						["isDaily"] = true,
 						["g"] = {
-							crit(25, {	-- Dorg the Bloody slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127301),	-- Bloody Aberration Strap
 						},
 					}),
@@ -1260,11 +1056,7 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 83.4, 43.6, TANAAN_JUNGLE },
 						["g"] = {
-							i(108631, {	-- Crashin' Thrashin' Roller Controller (TOY!)
-								crit(5, {	-- Crashin' Thrashin' Roller
-									["achievementID"] = 10353,	-- Iron Armada
-								}),
-							}),
+							i(108631),	-- Crashin' Thrashin' Roller Controller (TOY!)
 						},
 					}),
 					n(93028, {	-- Driss Vile
@@ -1272,9 +1064,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 20.2, 53.4, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(41, {	-- Driss Vile slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127331),	-- Double-Scoped Long Rifle
 						},
 					}),
@@ -1283,9 +1072,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 25.7, 46.1, TANAAN_JUNGLE },
 						["g"] = {
-							crit(26, {	-- Drivnul slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127298),	-- Blood-Infused Leggings
 						},
 					}),
@@ -1294,9 +1080,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 49.8, 36.2, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(50, {	-- Executor Riloth slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127323),	-- Bracers of Endless Suffering
 						},
 					}),
@@ -1305,11 +1088,6 @@ root(ROOTS.Zones, {
 						["questID"] = 39379,
 						["isDaily"] = true,
 						["coord"] = { 54.2, 80.8, TANAAN_JUNGLE },
-						["g"] = {
-							crit(47, {	-- Eyepiercer slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
-						},
 					}),
 					n(98408, {	-- Fel Overseer Mudlump
 						["questID"] = 40107,
@@ -1328,9 +1106,6 @@ root(ROOTS.Zones, {
 							{ 28.6, 50.8, TANAAN_JUNGLE },	-- felbore
 						},
 						["g"] = {
-							crit(44, {	-- Felbore slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127350),	-- Fel Imbued Band
 						},
 					}),
@@ -1339,9 +1114,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 45.8, 47.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(55, {	-- Felsmith Damorka slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127302),	-- Chemical Resistant Apron
 							i(128258, {	-- Equipment Blueprint: Felsmoke Launchers
 								["questID"] = 39366,	-- Equipment Blueprint: Felsmoke Launchers
@@ -1357,9 +1129,6 @@ root(ROOTS.Zones, {
 							{ 52.2, 27.4, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(4, {	-- Felspark slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127656),	-- Fel Singed Wraps
 						},
 					}),
@@ -1368,9 +1137,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 63.6, 81.2, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(31, {	-- Gloomtalon slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127306),	-- Gloomtalon's Spare Kilt
 						},
 					}),
@@ -1379,9 +1145,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 34.6, 78.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(43, {	-- Glub'glok slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127317),	-- Murktide's Coveted Chestplate
 						},
 					}),
@@ -1390,11 +1153,7 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 80.6, 56.4, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							i(108633, {	-- Crashin' Thrashin' Cannon Controller (TOY!)
-								crit(4, {	-- Crashin' Thrashin' Cannon
-									["achievementID"] = 10353,	-- Iron Armada
-								}),
-							}),
+							i(108633),	-- Crashin' Thrashin' Cannon Controller (TOY!)
 						},
 					}),
 					n(92941, {	-- Gorabosh
@@ -1402,9 +1161,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 33.3, 35.8, TANAAN_JUNGLE },
 						["g"] = {
-							crit(40, {	-- Gorabosh slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127304),	-- Cave Keeper Wraps
 						},
 					}),
@@ -1416,9 +1172,6 @@ root(ROOTS.Zones, {
 							{ 46.2, 42.8, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(15, {	-- Grand Warlock Nethekurse slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127299),	-- Nehtekurse's Robe of Contempt
 						},
 					}),
@@ -1427,9 +1180,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 16.0, 59.2, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(20, {	-- Grannok slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127649),	-- Trophy-Skull Choker
 						},
 					}),
@@ -1438,9 +1188,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 39.6, 32.6, TANAAN_JUNGLE },
 						["g"] = {
-							crit(53, {	-- Harbormaster Korak slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127309),	-- Korak's Reinforced Iron Tunic
 						},
 					}),
@@ -1463,9 +1210,6 @@ root(ROOTS.Zones, {
 							{ 31.0, 71.4, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(5, {	-- Imp-Master Valessa slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127655),	-- Sassy Imp (TOY!)
 						},
 					}),
@@ -1474,9 +1218,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 26.6, 75.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(7, {	-- Jax'zor slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127322),	-- Fel Burnished Waistguard
 						},
 					}),
@@ -1490,9 +1231,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 52.0, 83.9, TANAAN_JUNGLE },
 						["g"] = {
-							crit(32, {	-- Krell the Serene slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127418),	-- Soothing Incense Brazier
 						},
 					}),
@@ -1504,9 +1242,6 @@ root(ROOTS.Zones, {
 							{ 42.4, 68.7, TANAAN_JUNGLE },	-- Cave Entrance
 						},
 						["g"] = {
-							crit(49, {	-- Kris'kar the Unredeemed slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127653),	-- Wingblade of Reckoning
 						},
 					}),
@@ -1515,16 +1250,13 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 25.6, 76.6, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(6, {	-- Lady Oran slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127316),	-- Oran's Cuffs of Malice
 						},
 					}),
 					n(96240, {	-- Lok'goron Hashslinger
 						["coord"] = { 40.4, 45.8, TANAAN_JUNGLE },
 						["g"] = {
-							i(128501),	-- Recipe: Fel Eggs and Ham
+							i(128501),	-- Recipe: Fel Eggs and Ham (RECIPE!)
 						},
 					}),
 					n(93002, {	-- Magwia
@@ -1532,9 +1264,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 52.1, 65.1, TANAAN_JUNGLE },
 						["g"] = {
-							crit(17, {	-- Magwia slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127332),	-- Riverbeast Molar Club
 						},
 					}),
@@ -1543,9 +1272,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 26.0, 79.4, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(9, {	-- Mistress Thavra slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127300),	-- Shivan Shoulders of Scorn
 						},
 					}),
@@ -1554,9 +1280,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 53.0, 19.6, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(58, {	-- Overlord Ma'gruth slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127320),	-- Mo'gruth's Discarded Parade Helm
 						},
 					}),
@@ -1565,9 +1288,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 53.6, 21.6, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(14, {	-- Painmistress Selora slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127297),	-- Selora's Crown of Thorns
 						},
 					}),
@@ -1579,9 +1299,6 @@ root(ROOTS.Zones, {
 							{ 16.8, 49.6, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(1, {	-- Podlord Wakkawam slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127336),	-- Rod of the One True Podlord
 						},
 					}),
@@ -1593,9 +1310,6 @@ root(ROOTS.Zones, {
 							{ 57.6, 23.2, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(56, {	-- Putrethar slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127657),	-- Encroaching Void
 						},
 					}),
@@ -1604,9 +1318,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 17.4, 42.7, TANAAN_JUNGLE },
 						["g"] = {
-							crit(13, {	-- Rasthe slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127661),	-- Fang of Rasthe
 						},
 					}),
@@ -1615,9 +1326,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 26.3, 54.3, TANAAN_JUNGLE },
 						["g"] = {
-							crit(28, {	-- Relgor slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127335),	-- Relgor's Master Glaive
 						},
 					}),
@@ -1635,11 +1343,6 @@ root(ROOTS.Zones, {
 						["questID"] = 39400,
 						["isDaily"] = true,
 						["coord"] = { 54.2, 80.8, TANAAN_JUNGLE },
-						["g"] = {
-							crit(46, {	-- Rendarr slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
-						},
 					}),
 					n(92627, {	-- Rendrak
 						["description"] = "Collect 10x Smelly Musk Gland from the Direwing Predators (Bats) in Zorammarsh. Once you have all 10, combine them to lure Rendrak. If you leave Zorammarsh, the Smelly Musk Glands will vanish from your bags.",
@@ -1650,9 +1353,6 @@ root(ROOTS.Zones, {
 							{ 42.4, 77.6, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(37, {	-- Rendrak slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127356),	-- Musky Bat Fur Cloak
 						},
 					}),
@@ -1661,9 +1361,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 20.4, 49.5, TANAAN_JUNGLE },
 						["g"] = {
-							crit(24, {	-- Rogond the Tracker slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127314),	-- Rogond's Tracking Shoulderguards
 						},
 					}),
@@ -1685,9 +1382,6 @@ root(ROOTS.Zones, {
 							{ 42.8, 36.6, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(11, {	-- Sergeant Mor'grak slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127318),	-- Iron Cleated Warboots
 						},
 					}),
@@ -1696,9 +1390,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 49.8, 61.3, TANAAN_JUNGLE },
 						["g"] = {
-							crit(54, {	-- Shadowthrash slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127665),	-- Warpscaled Wristwraps
 						},
 					}),
@@ -1707,11 +1398,7 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 88.2, 55.4, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							i(108634, {	-- Crashin' Thrashin' Mortar Controller (TOY!)
-								crit(3, {	-- Crashin' Thrashin' Mortar
-									["achievementID"] = 10353,	-- Iron Armada
-								}),
-							}),
+							i(108634),	-- Crashin' Thrashin' Mortar Controller (TOY!)
 						},
 					}),
 					n(92495, {	-- Soulslicer
@@ -1719,9 +1406,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 62.6, 72.2, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(30, {	-- Soulslicer slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127315),	-- Glowing Felskull Belt
 						},
 					}),
@@ -1730,9 +1414,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 65.6, 36.7, TANAAN_JUNGLE },
 						["g"] = {
-							crit(16, {	-- Steelsnout slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127357),	-- Steelsnout's Steely Hide
 						},
 					}),
@@ -1741,9 +1422,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 41.0, 78.7, TANAAN_JUNGLE },
 						["g"] = {
-							crit(36, {	-- Sylissa slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127311),	--  Serpentine Gloves
 						},
 					}),
@@ -1753,9 +1431,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 16.2, 56.3, TANAAN_JUNGLE },
 						["g"] = {
-							crit(21, {	-- Szirek the Twisted slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127296),	-- Twisted Taboo Handwraps
 						},
 					}),
@@ -1767,9 +1442,6 @@ root(ROOTS.Zones, {
 							{ 15.6, 63.4, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(1, {	-- Terrorfist, Son of Kormrok slain
-								["achievementID"] = 10061,	-- Hellbane
-							}),
 							i(128025, {	-- Rattling Iron Cage
 								i(116669),	-- Armored Razorback (MOUNT!)
 								i(116658),	-- Tundra Icehoof (MOUNT!)
@@ -1783,9 +1455,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 49.6, 74.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(33, {	-- The Blackfang slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127330),	-- The Black Fang
 						},
 					}),
@@ -1794,21 +1463,16 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 34.6, 72.6, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(39, {	-- The Goreclaw slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127305),	-- Frayed Hunting Cowl
 						},
 					}),
 					n(92977, {	-- The Iron Houndmaster
 						["description"] = "Capture Strongpoint (West) to make him spawn.",
+						["crs"] = { 92969 },	-- Strongpoint
 						["questID"] = 38751,
 						["isDaily"] = true,
 						["coord"] = { 13.1, 57.0, TANAAN_JUNGLE },
 						["g"] = {
-							crit(22, {	-- The Iron Houndmaster slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127321),	-- Iron Houndmaster's Pauldrons
 						},
 					}),
@@ -1829,9 +1493,6 @@ root(ROOTS.Zones, {
 							{ 44.0, 78.2, TANAAN_JUNGLE },
 						},
 						["g"] = {
-							crit(38, {	-- The Night Haunter slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127355),	-- Haunter's Kurzed Cloak
 						},
 					}),
@@ -1840,9 +1501,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 13.6, 56.8, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(19, {	-- Tho'gar Gorefist slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127310),	-- Sabatons of Radiating Ire
 						},
 					}),
@@ -1851,9 +1509,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 34.0, 44.7, TANAAN_JUNGLE },
 						["g"] = {
-							crit(34, {	-- Thromma the Gutslicer slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127327),	-- Thromma's Gutslicer
 						},
 					}),
@@ -1862,9 +1517,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 27.6, 32.7, TANAAN_JUNGLE },
 						["g"] = {
-							crit(12, {	-- Varyx the Damned slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127351),	-- Varyx's Dark Oath Band
 						},
 					}),
@@ -1873,9 +1525,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 32.6, 74.0, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(3, {	-- Vengeance, Avatar of Velhari slain
-								["achievementID"] = 10061,	-- Hellbane
-							}),
 							i(128025, {	-- Rattling Iron Cage
 								i(116669),	-- Armored Razorback (MOUNT!)
 								i(116658),	-- Tundra Icehoof (MOUNT!)
@@ -1889,9 +1538,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 60.2, 21.6, TANAAN_JUNGLE },	-- **Coords unconfirmed, relied on wowhead**
 						["g"] = {
-							crit(57, {	-- Xanzith the Everlasting slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127658),	-- Eye of the Beholder
 							i(128232, {	-- Equipment Blueprint: High Intensity Fog Lights
 								["questID"] = 39356,	-- Equipment Blueprint: High Intensity Fog Lights
@@ -1911,9 +1557,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 48.4, 28.6, TANAAN_JUNGLE },
 						["g"] = {
-							crit(3, {	-- Zeter'el slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127340),	-- Felfire Lit Greatsword
 						},
 					}),
@@ -1922,9 +1565,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 37.0, 32.84, TANAAN_JUNGLE },
 						["g"] = {
-							crit(52, {	-- Zoug the Heavy slain
-								["achievementID"] = 10070,	-- Jungle Stalker
-							}),
 							i(127308),	-- Zoug's Lifting Belt
 							i(128252, {	-- Equipment Blueprint: True Iron Rudder
 								["questID"] = 39360,	-- Equipment Blueprint: True Iron Rudder
@@ -2027,7 +1667,10 @@ root(ROOTS.Zones, {
 					}),
 					o(241600, {	-- Discarded Helm
 						["questID"] = 38702,
-						["coord"] = { 49.9, 81.2, TANAAN_JUNGLE },
+						["coords"] = {
+							{ 49.9, 81.2, TANAAN_JUNGLE },
+							{ 51.3, 79.5, TANAAN_JUNGLE },	-- Cave Entrance
+						},
 						["g"] = {
 							i(127312),	-- Fallen Adventurer's Helm
 						},
@@ -2075,7 +1718,7 @@ root(ROOTS.Zones, {
 							38463,	-- The Cipher of Damnation [H]
 						},
 						["g"] = {
-							i(128309),  -- Shard of Cyrukh (PET!)
+							i(128309),	-- Shard of Cyrukh (PET!)
 						},
 					}),
 					o(241712, {	-- Ironbeard's Treasure
@@ -2328,42 +1971,48 @@ root(ROOTS.Zones, {
 							{ 60.4, 46.6, TANAAN_JUNGLE },	-- Horde accessible
 							{ 57.8, 59.4, TANAAN_JUNGLE },	-- Alliance accessible
 						},
-						["g"] = {
-							i(128478, {	-- Blazing Firehawk (PET!)
-								["cost"] = { { "c", 823, 2000 }, },	-- 2,000x Apexis Crystal
-							}),
-							i(128441, {	-- Contract: Solar Priest Vayx
-								["cost"] = { { "c", 823, 1000 }, },	-- 1,000x Apexis Crystal
-								["g"] = {
-									follower(582),  -- Solar Priest Vayx
-								},
-							}),
-							-- currency(1191, {	-- Valor
-							un(REMOVED_FROM_GAME, i(127785)),	-- Crystallized Fel
-							-- }),
-							i(128502, {	-- Hunter's Seeking Crystal
-								["cost"] = 10000000,	-- 1,000g
-							}),
-							i(128503, {	-- Master Hunter's Seeking Crystal
-								["cost"] = {
-									{ "g", 50000000 },	-- 5,000g
-									{ "i", 128502, 1 },	-- Hunter's Seeking Crystal
-								},
-							}),
-							i(128450),	-- Order of the Awakened Tabard
-							i(123974, {	-- Corrupted Dreadwing (MOUNT!)
-								["cost"] = { { "c", 823, 150000 }, },	-- 150,000x Apexis Crystal
-							}),
-							i(122283, {	-- Rukhmar's Sacred Memory (TOY!)
-								["cost"] = { { "c", 823, 50000 }, },	-- 50,000x Apexis Crystal
-							}),
-							i(128487, {	-- Ship: The Awakener
-								["races"] = ALLIANCE_ONLY,
-							}),
-							i(128488, {	-- Ship: The Awakener
-								["races"] = HORDE_ONLY,
-							}),
-						},
+						["g"] = bubbleDownClassicRep(FACTION_ORDER_OF_THE_AWAKENED, {
+							{		-- Neutral
+								-- currency(1191, {	-- Valor
+								un(REMOVED_FROM_GAME, i(127785)),	-- Crystallized Fel
+								-- }),
+							}, {	-- Friendly
+								i(123974, {	-- Reins of the Corrupted Dreadwing (MOUNT!)
+									["cost"] = { { "c", 823, 150000 }, },	-- 150,000x Apexis Crystal
+								}),
+							}, {	-- Honored
+								i(128441, {	-- Contract: Solar Priest Vayx
+									["cost"] = { { "c", 823, 1000 }, },	-- 1,000x Apexis Crystal
+									["g"] = {
+										follower(582),	-- Solar Priest Vayx
+									},
+								}),
+								i(128502, {	-- Hunter's Seeking Crystal
+									["cost"] = 10000000,	-- 1,000g
+								}),
+							}, {	-- Revered
+								i(128503, {	-- Master Hunter's Seeking Crystal
+									["cost"] = {
+										{ "g", 50000000 },	-- 5,000g
+										{ "i", 128502, 1 },	-- Hunter's Seeking Crystal
+									},
+								}),
+								i(122283, {	-- Rukhmar's Sacred Memory (TOY!)
+									["cost"] = { { "c", 823, 50000 }, },	-- 50,000x Apexis Crystal
+								}),
+							}, {	-- Exalted
+								i(128478, {	-- Blazing Firehawk (PET!)
+									["cost"] = { { "c", 823, 2000 }, },	-- 2,000x Apexis Crystal
+								}),
+								i(128450),	-- Order of the Awakened Tabard
+								i(128487, {	-- Ship: The Awakener
+									["races"] = ALLIANCE_ONLY,
+								}),
+								i(128488, {	-- Ship: The Awakener
+									["races"] = HORDE_ONLY,
+								}),
+							},
+						}),
 					}),
 					n(96130, {	-- Ravenspeaker Thelnaas <Order of the Awakened>
 						["coords"] = {
@@ -2431,56 +2080,55 @@ root(ROOTS.Zones, {
 					n(96014, {	-- Shadow Hunter Denjai <Vol'jin's Headhunters>
 						["coord"] = { 61.6, 45.6, TANAAN_JUNGLE },
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							i(128490, {	-- Blueprint: Oil Rig
-								["questID"] = 39561,
-								["cost"] = 12000000,	-- 1,200g
-							}),
-							i(128440, {	-- Contract: Dowser Bigspark
-								["cost"] = 6000000,	-- 600g
-								["g"] = {
-									follower(581),	-- Dowser Goodwell
-								},
-							}),
-							i(128526, {	-- Deathtusk Felboar (H) (MOUNT!)
-								["cost"] = 25000000,	-- 2,500g
-							}),
-							i(128475, {	-- Empowered Augment Rune
-								["cost"] = 60000000,	-- 6,000g
-							}),
-							i(128472, {	-- Ensemble: Battlegear of the Frostwolves
-								["cost"] = 5000000,	-- 500g
-								["g"] = {
-									i(128455),	-- Frostwolf Spaulders
-									i(128456),	-- Frostwolf Tunic
-									i(128461),	-- Frostwolf Bracers
-									i(128457),	-- Frostwolf Mitts
-									i(128458),	-- Frostwolf Belt
-									i(128459),	-- Frostwolf Leggings
-									i(128460),	-- Frostwolf Snowstalkers
-								},
-							}),
-							i(128251, {	-- Equipment Blueprint: Tuskarr Fishing Net
-								["questID"] = 39359,	-- Equipment Blueprint: Tuskarr Fishing Net
-							}),
-							i(128489, {	-- Equipment Blueprint: Unsinkable
-								["questID"] = 39358,	-- Equipment Blueprint: Unsinkable
-								["cost"] = 9000000,	-- 900g
-							}),
-							i(128471),	-- Frostwolf Grint's Battlegear (TOY!)
-							i(127269, {	-- Ship Blueprint: Battleship
-								["cost"] = 5500000,	-- 550g
-								["sourceQuest"] = 39604,	-- I Sunk Your Battleship
-							}),
-							i(128294, {	-- Trade Agreement: Arakkoa Outcasts
-								["questID"] = 37485,
-								["cost"] = 25000000,	-- 2,500g
-							}),
-							i(113212, {	-- Treasure Map: Tanaan Jungle
-								["questID"] = 39463,
-								["cost"] = 6000000,	-- 600g
-							}),
-						},
+						["g"] = bubbleDownClassicRep(FACTION_VOLJINS_HEADHUNTERS, {
+							{		-- Neutral
+							}, {	-- Friendly
+								i(127269, {	-- Ship Blueprint: Battleship
+									["cost"] = 5500000,	-- 550g
+									["sourceQuest"] = 39604,	-- I Sunk Your Battleship
+								}),
+								i(128451),	-- Vol'jin's Headhunters Battle Standard
+							}, {	-- Honored
+								i(128440, {	-- Contract: Dowser Bigspark
+									["cost"] = 6000000,	-- 600g
+									["g"] = {
+										follower(581),	-- Dowser Goodwell
+									},
+								}),
+								i(128251, {	-- Equipment Blueprint: Tuskarr Fishing Net
+									["questID"] = 39359,	-- Equipment Blueprint: Tuskarr Fishing Net
+								}),
+								i(113212, {	-- Treasure Map: Tanaan Jungle
+									["questID"] = 39463,
+									["cost"] = 6000000,	-- 600g
+								}),
+							}, {	-- Revered
+								i(128490, {	-- Blueprint: Oil Rig
+									["questID"] = 39561,
+									["cost"] = 12000000,	-- 1,200g
+								}),
+								iensemble(128472, {	-- Ensemble: Battlegear of the Frostwolves
+									["classes"] = LEATHER_CLASSES,
+									["cost"] = 5000000,	-- 500g
+								}),
+								i(128489, {	-- Equipment Blueprint: Unsinkable
+									["questID"] = 39358,	-- Equipment Blueprint: Unsinkable
+									["cost"] = 9000000,	-- 900g
+								}),
+								i(128471),	-- Frostwolf Grunt's Battlegear (TOY!)
+								i(128294, {	-- Trade Agreement: Arakkoa Outcasts
+									["questID"] = 37485,
+									["cost"] = 25000000,	-- 2,500g
+								}),
+							}, {	-- Exalted
+								i(128526, {	-- Deathtusk Felboar (H) (MOUNT!)
+									["cost"] = 25000000,	-- 2,500g
+								}),
+								i(128475, {	-- Empowered Augment Rune
+									["cost"] = 60000000,	-- 6,000g
+								}),
+							},
+						}),
 					}),
 					n(95650, {	-- Skoller
 						["description"] = "Talk to him and you will receive the toy.",
@@ -2492,87 +2140,93 @@ root(ROOTS.Zones, {
 					n(90974, {	-- Vindicator Krethos <Hand of the Prophet>
 						["coord"] = { 58.4, 60.4, TANAAN_JUNGLE },
 						["races"] = ALLIANCE_ONLY,
-						["g"] = {
-							i(128444, {	-- Blueprint: Oil Rig
-								["questID"] = 39561,
-								["cost"] = 12000000,	-- 1,200g
-							}),
-							i(128445, {	-- Contract: Dowser Bigspark
-								["cost"] = 6000000,	-- 600g
-								["g"] = {
-									follower(581),	-- Dowser Bigspark
-								},
-							}),
-							i(128527, {	-- Deathtusk Felboar (A) (MOUNT!)
-								["cost"] = 25000000,	-- 2,500g
-							}),
-							i(128482, {	-- Empowered Augment Rune
-								["cost"] = 60000000,	-- 6,000g
-							}),
-							i(128473, {	-- Ensemble: Ceremonial Karabor Finery
-								["cost"] = 5000000,	-- 500g
-								["g"] = {
-									i(128469),	-- Ceremonial Bracers of Karabor
-									i(128468),	-- Ceremonial Crown of Karabor
-									i(128466),	-- Ceremonial Gloves of Karabor
-									i(128470),	-- Ceremonial Leggings of Karabor
-									i(128464),	-- Ceremonial Robe of Karabor
-									i(128467),	-- Ceremonial Sash of Karabor
-									i(128463),	-- Ceremonial Shoulderpads of Karabor
-									i(128465),	-- Ceremonial Slippers of Karabor
-								},
-							}),
-							i(128491, {	-- Equipment Blueprint: Tuskarr Fishing Net
-								["questID"] = 39359,	-- Equipment Blueprint: Tuskarr Fishing Net
-							}),
-							i(128250, {	-- Equipment Blueprint: Unsinkable
-								["questID"] = 39358,	-- Equipment Blueprint: Unsinkable
-								["cost"] = 9000000,	-- 900g
-							}),
-							i(128462),	-- Karabor Councilor's Attire (TOY!)
-							i(128492, {	-- Ship Blueprint: Battleship
-								["cost"] = 5500000,	-- 550g
-								["sourceQuest"] = 39601,	-- I Sunk Your Battleship
-							}),
-							i(128294, {	-- Trade Agreement: Arakkoa Outcasts
-								["questID"] = 37485,
-								["cost"] = 25000000,	-- 2,500g
-							}),
-							i(128474, {	-- Treasure Map: Tanaan Jungle
-								["questID"] = 39463,
-								["cost"] = 6000000,	-- 600g
-							}),
-						},
+						["g"] = bubbleDownClassicRep(FACTION_HAND_OF_THE_PROPHET, {
+							{		-- Neutral
+							}, {	-- Friendly
+								i(128452),	-- Hand of the Prophet Battle Standard
+								i(128492, {	-- Ship Blueprint: Battleship
+									["cost"] = 5500000,	-- 550g
+									["sourceQuest"] = 39601,	-- I Sunk Your Battleship
+								}),
+							}, {	-- Honored
+								i(128445, {	-- Contract: Dowser Bigspark
+									["cost"] = 6000000,	-- 600g
+									["g"] = {
+										follower(581),	-- Dowser Bigspark
+									},
+								}),
+								i(128491, {	-- Equipment Blueprint: Tuskarr Fishing Net
+									["questID"] = 39359,	-- Equipment Blueprint: Tuskarr Fishing Net
+								}),
+								i(128474, {	-- Treasure Map: Tanaan Jungle
+									["questID"] = 39463,
+									["cost"] = 6000000,	-- 600g
+								}),
+							}, {	-- Revered
+								i(128444, {	-- Blueprint: Oil Rig
+									["questID"] = 39561,
+									["cost"] = 12000000,	-- 1,200g
+								}),
+								iensemble(128473, {	-- Ensemble: Ceremonial Karabor Finery
+									["classes"] = CLOTH_CLASSES,
+									["cost"] = 5000000,	-- 500g
+								}),
+								i(128250, {	-- Equipment Blueprint: Unsinkable
+									["questID"] = 39358,	-- Equipment Blueprint: Unsinkable
+									["cost"] = 9000000,	-- 900g
+								}),
+								i(128462),	-- Karabor Councilor's Attire (TOY!)
+								i(128294, {	-- Trade Agreement: Arakkoa Outcasts
+									["questID"] = 37485,
+									["cost"] = 25000000,	-- 2,500g
+								}),
+							}, {	-- Exalted
+								i(128527, {	-- Deathtusk Felboar (A) (MOUNT!)
+									["cost"] = 25000000,	-- 2,500g
+								}),
+								i(128482, {	-- Empowered Augment Rune
+									["cost"] = 60000000,	-- 6,000g
+								}),
+							},
+						}),
 					}),
 					n(92805, {	-- Z'tenga the Walker <Saberstalker Quartermaster>
 						["coord"] = { 55.2, 74.8, TANAAN_JUNGLE },
-						["g"] = {
-							i(128481, {	-- Bristling Hellboar (MOUNT!)
-								["cost"] = { { "i", 124099, 5000 }, },	-- 5,000x Blackfang Claw
-							}),
-							i(128439, {	-- Contract: Pallas
-								["cost"] = { { "i", 124099, 100 }, },	-- 100x Blackfang Claw
-								["g"] = {
-									follower(580),	-- Pallas
-								},
-							}),
-							i(124094, {	-- Major Blackfang Challenge Totem
-								["description"] = "\nUsed to summon Rendarr.\n\n",
-							}),
-							i(124093, {	-- Minor Blackfang Challenge Totem
-								["description"] = "\nUsed to summon Akrrilo.\n\n",
-							}),
-							i(124095, {	-- Prime Blackfang Challenge Totem
-								["description"] = "\nUsed to summon Eyepiercer.\n\n",
-							}),
-							i(128449),	-- Saberstalkers Tabard
-							i(128477, {	-- Savage Cub (PET!)
-								["cost"] = { { "i", 124099, 1500 }, },	-- 1,500x Blackfang Claw
-							}),
-							i(116671, {	-- Wild Goretusk (MOUNT!)
-								["cost"] = { { "i", 124099, 1000 }, },	-- 1,000x Blackfang Claw
-							}),
-						},
+						["g"] = bubbleDownClassicRep(FACTION_THE_SABERSTALKERS, {
+							{		-- Neutral
+								i(124094, {	-- Major Blackfang Challenge Totem
+									["description"] = "\nUsed to summon Rendarr.\n\n",
+								}),
+								i(124093, {	-- Minor Blackfang Challenge Totem
+									["description"] = "\nUsed to summon Akrrilo.\n\n",
+								}),
+								i(124095, {	-- Prime Blackfang Challenge Totem
+									["description"] = "\nUsed to summon Eyepiercer.\n\n",
+								}),
+							}, {	-- Friendly
+								i(128453),	-- Saberstalkers Battle Standard
+							}, {	-- Honored
+								i(128439, {	-- Contract: Pallas
+									["cost"] = { { "i", 124099, 100 }, },	-- 100x Blackfang Claw
+									["g"] = {
+										follower(580),	-- Pallas
+									},
+								}),
+								i(116671, {	-- Wild Goretusk (MOUNT!)
+									["cost"] = { { "i", 124099, 1000 }, },	-- 1,000x Blackfang Claw
+								}),
+							}, {	-- Revered
+								i(128446),	-- Saberstalker Teachings: Trailblazer
+								i(128477, {	-- Savage Cub (PET!)
+									["cost"] = { { "i", 124099, 1500 }, },	-- 1,500x Blackfang Claw
+								}),
+							}, {	-- Exalted
+								i(128481, {	-- Bristling Hellboar (MOUNT!)
+									["cost"] = { { "i", 124099, 5000 }, },	-- 5,000x Blackfang Claw
+								}),
+								i(128449),	-- Saberstalkers Tabard
+							},
+						}),
 					}),
 				}),
 				n(ZONE_DROPS, {
@@ -2693,7 +2347,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(38836),	-- Aktar's Post - Aktar's Post visited
 		q(39306),	-- Call to Arms - chosen during "Bring the Reinforcements"
 		q(39183),	-- FLAG - Immaculate Critical Strike Taladite - learning Immaculate Critical Strike Taladite at an Apexis Gemcutter
@@ -2730,8 +2384,7 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(38231),	-- Tracking Event: Shrine Found - triggers during quest "Get a Clue" (questID 38213), clue #2
 		q(39564),	-- Vignette: Murktide Alpha - learning Saberstalker's Teachings: Trailblazer
 	}),
-	tier(BFA_TIER, {
-		q(50678),	-- learning Ensemble: Battlegear of the Frostwolves
-		q(50680),	-- learning Ensemble: Ceremonial Karabor Finery
+	expansion(EXPANSION.LEGION, {
+		q(47285),	-- Triggers together with obtaining Equipment Blueprint: Tuskarr Fishing Net
 	}),
 });

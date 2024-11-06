@@ -12,7 +12,7 @@ local TALLSTRIDER_SINEW = 201404;
 local DRACONIUM_ORE = 188658;
 local RUNED_WRITHEBARK = 194863;
 local LARGE_STURDY_FEMUR = 201402;
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(MARUUK_CENTAUR, {
 		n(VENDORS, {
 			n(195547, {	-- Farrier Rondare
@@ -85,24 +85,24 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						}),
 					}, {	-- RENOWN 4 --
 					}, {	-- RENOWN 5 --
-						i(197630, {	-- Windborne Velocidrake: Feathered Neck (DM!)
+						i(197630, {	-- Windborne Velocidrake: Feathered Neck (MM!)
 							["timeline"] = { ADDED_10_0_7 },
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
 						}),
-						i(197596, {	-- Windborne Velocidrake: Horned Jaw (DM!)
+						i(197596, {	-- Windborne Velocidrake: Horned Jaw (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
 						}),
-						i(197604, {	-- Windborne Velocidrake: Ox Horns (DM!)
+						i(197604, {	-- Windborne Velocidrake: Ox Horns (MM!)
 							["timeline"] = { ADDED_10_0_7 },
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
 						}),
-						i(197610, {	-- Windborne Velocidrake: Yellow Horns (DM!)
+						i(197610, {	-- Windborne Velocidrake: Yellow Horns (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 50 },
 							},
@@ -220,6 +220,11 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					}, {	-- RENOWN 9 --
 					}, {	-- RENOWN 10 --
 					}, {	-- RENOWN 11 --
+						i(200613, {	-- Aylaag Windstone Fragment
+							["cost"] = {
+								{ "c", DRAGON_SUPPLIES, 50 },
+							},
+						}),
 						i(200457, {	-- Ohn'ahran Plainswalker Boots
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 150 },
@@ -359,24 +364,24 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								{ "c", DRAGON_SUPPLIES, 25 },
 							},
 						}),
-						i(197587, {	-- Windborne Velocidrake: Feathered Back (DM!)
+						i(197587, {	-- Windborne Velocidrake: Feathered Back (MM!)
 							["timeline"] = { ADDED_10_0_7 },
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 100 },
 							},
 						}),
-						i(197591, {	-- Windborne Velocidrake: Hairy Head (DM!)
+						i(197591, {	-- Windborne Velocidrake: Hairy Head (MM!)
 							["timeline"] = { ADDED_10_0_7 },
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 100 },
 							},
 						}),
-						i(197618, {	-- Windborne Velocidrake: Long Snout (DM!)
+						i(197618, {	-- Windborne Velocidrake: Long Snout (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 100 },
 							},
 						}),
-						i(197623, {	-- Windborne Velocidrake: Spiked Tail (DM!)
+						i(197623, {	-- Windborne Velocidrake: Spiked Tail (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 100 },
 							},
@@ -493,25 +498,25 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						i(194499),	-- Plans: Khaz'gorite Leatherworker's Knife (RECIPE!)
 						i(194497),	-- Plans: Khaz'gorite Skinning Knife (RECIPE!)
 					}, {	-- RENOWN 19 --
-						i(197011, {	-- Cliffside Wylderdrake: Green Scales (DM!)
+						i(197011, {	-- Cliffside Wylderdrake: Green Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_AIR, 1 },
 							},
 						}),
-						i(197143, {	-- Highland Drake: Green Scales (DM!)
+						i(197143, {	-- Highland Drake: Green Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_AIR, 1 },
 							},
 						}),
-						i(197389, {	-- Renewed Proto-Drake: Green Scales (DM!)
+						i(197389, {	-- Renewed Proto-Drake: Green Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_AIR, 1 },
 							},
 						}),
-						i(203352, {	-- Winding Slitherdrake: Green Scales (DM!)
+						i(203352, {	-- Winding Slitherdrake: Green Scales (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 400 },
 								{ "i", AWAKENED_AIR, 1 },

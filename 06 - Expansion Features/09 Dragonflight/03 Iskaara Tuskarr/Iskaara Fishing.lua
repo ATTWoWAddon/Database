@@ -3,40 +3,40 @@
 -------------------------------------------------------------------
 ISKAARA_FISHING = createHeader({
 	readable = "Iskaara Fishing",
-	icon = "Interface\\Icons\\inv_polearm_2h_kultirasharpoon_a_01",
+	icon = 1911518,
 	text = {
 		en = "Iskaara Fishing",
 		ru = "Искарское рыболовство",
 		cn = "伊斯卡拉渔具",
 	},
 });
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(ISKAARA_TUSKARR, {
 		n(ISKAARA_FISHING, bubbleDownSelf({ ["minReputation"] = { FACTION_ISKAARA_TUSKARR, 4 } }, {
 			n(ACHIEVEMENTS, {
 				ach(16531),	-- A Whole Heap of Lunkers
 				ach(16322, {	-- Best in Slot
-					crit(1, {	-- Harpoon handle
+					crit(55019, {	-- Harpoon handle
 						["_quests"] = { 70795 },	-- Reinforced Irontree Harpoon Handle
 					}),
-					crit(2, {	-- Harpoon head
+					crit(55076, {	-- Harpoon head
 						["_quests"] = { 70797 },	-- Jagged Serevite Harpoon Head
 					}),
-					crit(3, {	-- Harpoon rope
+					crit(55024, {	-- Harpoon rope
 						["_quests"] = { 70799 },	-- Braided Seavine Harpoon Rope
 					}),
-					crit(4, {	-- Fishing net weights
+					crit(55021, {	-- Fishing net weights
 						["_quests"] = { 70801 },	-- Dense Draconium Net Weights
 					}),
-					crit(5, {	-- fishing net nots
+					crit(55022, {	-- fishing net nots
 						["_quests"] = { 70803 },	-- Double Imbu Knot
 					}),
 				}),
 				ach(16321, {	-- Cutting Tusk Equipment
-					crit(1, {	-- Iskaaran Harpoon
+					crit(55023, {	-- Iskaaran Harpoon
 						["_quests"] = { 70792 },	-- Iskaaran Harpoon
 					}),
-					crit(2, {	-- Iskaaran Fishing Net
+					crit(55020, {	-- Iskaaran Fishing Net
 						["_quests"] = { 70793 },	-- Iskaaran Fishing Net
 					}),
 				}),
@@ -51,9 +51,21 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				ach(16547),	-- Pulled!
 				ach(16317),	-- Secret Fishing Spots
 				ach(16553),	-- Taking From Nature
-				ach(16562),	-- That's not a Fish...
-				ach(16563),	-- We're Going to Need a Bigger Harpoon
-				ach(16546),	-- What's Down There?
+				ach(16562, {	-- That's not a Fish...
+					crit(55689, {	-- Cast the Spell - Summon Massive Lunker
+						["provider"] = { "i", 194701 },	-- Ominous Conch
+					}),
+				}),
+				ach(16563, {	-- We're Going to Need a Bigger Harpoon
+					crit(55689, {	-- Cast the Spell - Summon Massive Lunker
+						["provider"] = { "i", 194701 },	-- Ominous Conch
+					}),
+				}),
+				ach(16546, {	-- What's Down There?
+					crit(55689, {	-- Cast the Spell - Summon Massive Lunker
+						["provider"] = { "i", 194701 },	-- Ominous Conch
+					}),
+				}),
 			}),
 			n(QUESTS, {
 				------ RENOWN 4 ------
@@ -170,6 +182,9 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				q(71191, {	-- Net Worth
 					["provider"] = { "n", 197700 },	-- Gruff Fisher
 					["coord"] = { 58.6, 34.4, OHNAHRAN_PLAINS },
+					["g"] = {
+						i(200646),	-- Gruff Fisher's Net (QI!)
+					},
 				}),
 				q(72069, {	-- Subglacial Refill
 					["provider"] = { "n", 197700 },	-- Gruff Fisher
@@ -179,6 +194,9 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				q(71193, {	-- Underwater Menace
 					["provider"] = { "n", 197597 },	-- Cautious Fisher
 					["coord"] = { 57.2, 65.3, THALDRASZUS },
+					["g"] = {
+						i(200667),	-- Grim Morsel (QI!)
+					},
 				}),
 				q(72074, {	-- Highland Habitat
 					["provider"] = { "n", 197597 },	-- Cautious Fisher
@@ -227,14 +245,16 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["coord"] = { 12.8, 49.1, THE_AZURE_SPAN },
 				["isRepeatable"] = true,
 			}, {
+				q(72785),	-- Contribute Supplies: Draconium Nugget
+				q(72786),	-- Contribue Supplies: Strong Seavine
 				q(72787),	-- Contribute Supplies: Battered Imbu-made Net
+				q(72788),	-- Contribue Supplies: Irontree Branch
 				q(72789),	-- Contribue Supplies: Salinated Serevite
 				q(72790),	-- Contribute Supplies: Khaz'gorite-infused Resin
-				q(72786),	-- Contribue Supplies: Strong Seavine
-				q(72788),	-- Contribue Supplies: Irontree Branch
 				q(72791),	-- Contribute Supplies: Khaz'gorite Wire
 			})),
 			prof(TUSKARR_FISHING_GEAR, sharedData({
+				-- If you want to touch this specific file, check with contributor chat before.
 				["requireSkill"] = FISHING,	-- Minimum 25, but it shows in the tooltip
 			},{
 				["crs"] = { 195935 },
@@ -258,9 +278,9 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						r(387375),	-- Serevite Harpoon Head
 					})),
 					-- These "Recipes" show as learned, but when you have learned them, they dissapear causing ATT to think you no longer have them learned.
-
+					-- Commented out spellID due to odd use case where players who completed the upgrades/crafting and could no longer open the crafting window can't re-cache.
 					i(199847, {	-- Braided Seavine Harpoon Rope
-						["spellID"] = 388251,	-- Braided Seavine Harpoon Rope
+						--["spellID"] = 388251,	-- Braided Seavine Harpoon Rope
 						["questID"] = 70799,	-- Triggered after crafting 'Braided Seavine Harpoon Rope'
 						["cost"] = {
 							{ "i", 200081, 6 },	-- 6x Strong Seavine
@@ -268,7 +288,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						},
 					}),
 					i(199849, {	-- Dense Draconium Net Weight
-						["spellID"] = 388253,	-- Dense Draconium Net Weights
+						--["spellID"] = 388253,	-- Dense Draconium Net Weights
 						["questID"] = 70801,	-- Triggered after crafting 'Dense Draconium Net Weights'
 						["cost"] = {
 							{ "i", 200080, 6 },	-- 6x Draconium Nugget
@@ -276,7 +296,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						},
 					}),
 					i(199851, {	-- Double Imbu Knot
-						["spellID"] = 388255,	-- Double Imbu Knot
+						--["spellID"] = 388255,	-- Double Imbu Knot
 						["questID"] = 70803,	-- Triggered after crafting 'Double Imbu Knot'
 						["cost"] = {
 							{ "i", 200082, 6 },	-- 6x Battered Imbu-made Net
@@ -284,35 +304,35 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						},
 					}),
 					i(199848, {	-- Draconium Net Weights
-						["spellID"] = 388252,	-- Draconium Net Weights
+						--["spellID"] = 388252,	-- Draconium Net Weights
 						["questID"] = 70800,	-- Triggered after crafting 'Draconium Net Weights'
 						["cost"] = {
 							{ "i", 200080, 3 },	-- 3x Draconium Nugget
 						},
 					}),
 					i(199694, {	-- Flying Fish Bone Charm
-						["spellID"] = 387827,	-- Flying Fish Bone Charm
-						["questID"] = 67139,	-- Triggered after crafting 'Flying Fish Bone Charm'
+						--["spellID"] = 387827,	-- Flying Fish Bone Charm
+						["questID"] = 75642,	-- Triggered after crafting 'Flying Fish Bone Charm'
 						["cost"] = {
 							{ "i", 200075, 1 },	-- 1x Flying Fish Bones
 						},
 					}),
 					i(199850, {	-- Imbu Knot
-						["spellID"] = 388254,	-- Imbu Knot
+						--["spellID"] = 388254,	-- Imbu Knot
 						["questID"] = 70802,	-- Triggered after crafting 'Imbu Knot'
 						["cost"] = {
 							{ "i", 200082, 3 },	-- 3x Battered Imbu-made Net
 						},
 					}),
 					i(199698, {	-- Irontree Harpoon Handle
-						["spellID"] = 387836,	-- Irontree Harpoon Handle
+						--["spellID"] = 387836,	-- Irontree Harpoon Handle
 						["questID"] = 70794,	-- Triggered after crafting 'Irontree Harpoon Handle'
 						["cost"] = {
 							{ "i", 200083, 3 },	-- 3x Irontree Branch
 						},
 					}),
 					i(199695, {	-- Iskaaran Fishing Net
-						["spellID"] = 387828,	-- Iskaaran Fishing Net
+						--["spellID"] = 387828,	-- Iskaaran Fishing Net
 						["questID"] = 70793,	-- Triggered after crafting 'Iskaaran Fishing Net'
 						["cost"] = {
 							{ "i", 199925, 2 },	-- 2x Stone With Hole
@@ -320,7 +340,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						},
 					}),
 					i(194510, {	-- Iskaaran Harpoon
-						["spellID"] = 387831,	-- Iskaaran Harpoon
+						--["spellID"] = 387831,	-- Iskaaran Harpoon
 						["questID"] = 70792,	-- Triggered after crafting 'Iskaaran Harpoon'
 						["cost"] = {
 							{ "i", 200076, 1 },	-- 1x Harpoon Head
@@ -329,14 +349,14 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						},
 					}),
 					i(199696, {	-- Iskaaran Ice Axe
-						["spellID"] = 387832,	-- Iskaaran Ice Axe
+						--["spellID"] = 387832,	-- Iskaaran Ice Axe
 						["questID"] = 67141,	-- Triggered after crafting 'Iskaaran Ice Axe'
 						["cost"] = {
 							{ "i", 200078, 1 },	-- 1x Pickaxe Blade
 						},
 					}),
 					i(199845, {	-- Jagged Serevite Harpoon Head
-						["spellID"] = 388249,	-- Jagged Serevite Harpoon Head
+						--["spellID"] = 388249,	-- Jagged Serevite Harpoon Head
 						["questID"] = 70797,	-- Triggered after crafting 'Jagged Serevite Harpoon Head'
 						["cost"] = {
 							{ "i", 200084, 6 },	-- 6x Salinated Serevite
@@ -344,14 +364,14 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						},
 					}),
 					i(199697, {	-- Polished Basalt Bracelet
-						["spellID"] = 387833,	-- Polished Basalt Bracelet
+						--["spellID"] = 387833,	-- Polished Basalt Bracelet
 						["questID"] = 67140,	-- Triggered after crafting 'Polished Basalt Bracelet'
 						["cost"] = {
 							{ "i", 200079, 3 },	-- 3x Sea-Polished Basalt
 						},
 					}),
 					i(199641, {	-- Reinforced Irontree Harpoon Handle
-						["spellID"] = 387594,	-- Reinforced Irontree Harpoon Handle
+						--["spellID"] = 387594,	-- Reinforced Irontree Harpoon Handle
 						["questID"] = 70795,	-- Triggered after crafting 'Reinforced Irontree Harpoon Handle'
 						["cost"] = {
 							{ "i", 200083, 6 },	-- 6x Irontree Branch
@@ -359,14 +379,14 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 						},
 					}),
 					i(199846, {	-- Seavine Harpoon Rope
-						["spellID"] = 388250,	-- Seavine Harpoon Rope
+						--["spellID"] = 388250,	-- Seavine Harpoon Rope
 						["questID"] = 70798,	-- Triggered after crafting 'Seavine Harpoon Rope'
 						["cost"] = {
 							{ "i", 200081, 3 },	-- 3x Strong Seavine
 						},
 					}),
 					i(199844, {	-- Serevite Harpoon Head
-						["spellID"] = 387375,	-- Serevite Harpoon Head
+						--["spellID"] = 387375,	-- Serevite Harpoon Head
 						["questID"] = 70796,	-- Triggered after crafting 'Serevite Harpoon Head'
 						["cost"] = {
 							{ "i", 200084, 3 },	-- 3x Salinated Serevite
@@ -410,7 +430,10 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					["questID"] = 74078,
 					["g"] = {
 						i(200086),	-- Khaz'gorite-Infused Resin
-						i(200218),	-- Charred Fishing Pole
+						i(200218, {	-- Charred Fishing Pole
+							--["collectible"] = true,  -- Changed flag from false to true so that it can be collected.  Was able to collect with SS June 21, 2024
+							--if someone able to cache it - add description, please
+						}),
 					},
 				}),
 				n(193634, {	-- Swog'ranka <Lunker>
@@ -419,88 +442,96 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				}),
 			})),
 			n(REWARDS, {
-				i(200082, {	-- Battered Imbu-made Net
-					["description"] = "Obtained from Rare fishing pools.",
-					["providers"] = {
-						{ "o", 377938 },	-- Prismatic Leaper School
-						{ "o", 382180 },	-- Overheated Magma Thresher Pool
-						{ "n", 197596 },	-- Deep Ice Fishing Hole
-					},
-				}),
-				i(200080, {	-- Draconium Nugget
-					["description"] = "Obtained from Rare fishing pools.",
-					["providers"] = {
-						{ "o", 377938 },	-- Prismatic Leaper School
-						{ "o", 382180 },	-- Overheated Magma Thresher Pool
-						{ "n", 197596 },	-- Deep Ice Fishing Hole
-					},
-				}),
-				i(200081, {	-- Hardened Seavine
-					["description"] = "Obtained from Rare fishing pools.",
-					["providers"] = {
-						{ "o", 377938 },	-- Prismatic Leaper School
-						{ "o", 382180 },	-- Overheated Magma Thresher Pool
-						{ "n", 197596 },	-- Deep Ice Fishing Hole
-					},
-				}),
-				i(200083, {	-- Irontree Branch
-					["description"] = "Obtained from Rare fishing pools.",
-					["providers"] = {
-						{ "o", 377938 },	-- Prismatic Leaper School
-						{ "o", 382180 },	-- Overheated Magma Thresher Pool
-						{ "n", 197596 },	-- Deep Ice Fishing Hole
-					},
-				}),
-				i(200086, {	-- Khaz'gorite-Infused Resin
-					["description"] = "Obtained from Rares summoned by using Ominous Conch at Large Lunker Sightings.",
-					["providers"] = {
-						{ "n", 193706 },	-- Snufflegust
-						{ "n", 197411 },	-- Astray Splasher
-						{ "n", 193634 },	-- Swog'Ranka
-						{ "n", 193708 },	-- Skald the Impaler
-						{ "n", 193710 },	-- Seereel, the Spring
-						{ "n", 193735 },	-- Moth'go Deeploom
-						{ "n", 197371 },	-- Ravenous Tundra Bear
-					},
-				}),
-				i(200085, {	-- Khaz'gorite Wire
-					["description"] = "Obtained from Full Tuskarr Fishing Nets.",
-					["providers"] = {
-						{ "o", 382071 },	-- Full Fishing Net
-						{ "o", 379314 },	-- Full Fishing Net
-						{ "o", 381069 },	-- Full Fishing Net
-					},
-				}),
-				i(200084, {	-- Salinated Serevite
-					["description"] = "Obtained from Rare fishing pools.",
-					["providers"] = {
-						{ "o", 377938 },	-- Prismatic Leaper School
-						{ "o", 382180 },	-- Overheated Magma Thresher Pool
-						{ "n", 197596 },	-- Deep Ice Fishing Hole
-						--[[ Never got one from it and wowhead doesnt have data either. If confirmed, readd them ~Gold Jan 2023
-						{ "o", 382071 },	-- Full Fishing Net
-						{ "o", 379314 },	-- Full Fishing Net
-						{ "o", 381069 },	-- Full Fishing Net
-						--]]
-					},
-				}),
-				o(381514, {	-- Sea-Polished Basalt
-					-- i didn't save the coords, and wowhead doesn't know about it. probably need some fine-tuning and additional spawn locations, then remove description
-					["description"] = "Near landing points for Alliance/Horde in The Waking Shores. Rough coordinates.",
-					["coords"] = {
-						{ 80.0, 27.0, THE_WAKING_SHORES },
-					},
-					["g"] = {
-						i(200079),	-- Sea-Polished Basalt
-					},
-				}),
-				o(381512, {	-- Wooden Pole
-					["description"] = "Used to craft Iskaaran Harpoon.",
-					["coord"] = { 15.6, 44.5, THE_AZURE_SPAN },
-					["g"] = {
-						i(200077),	-- Wooden Pole
-					},
-				}),
+				["maps"] = {
+					OHNAHRAN_PLAINS,
+					THALDRASZUS,
+					THE_AZURE_SPAN,
+					THE_WAKING_SHORES,
+				},
+				["groups"] = {
+					i(200082, {	-- Battered Imbu-made Net
+						["description"] = "Obtained from fishing in Prismatic Leaper Schools, Overheated Magma Thresher Pools or Deep Ice Fishing Holes.",
+						["providers"] = {
+							{ "o", 377938 },	-- Prismatic Leaper School
+							{ "o", 382180 },	-- Overheated Magma Thresher Pool
+							{ "n", 197596 },	-- Deep Ice Fishing Hole
+						},
+					}),
+					i(200080, {	-- Draconium Nugget
+						["description"] = "Obtained from fishing in Prismatic Leaper Schools, Overheated Magma Thresher Pools or Deep Ice Fishing Holes.",
+						["providers"] = {
+							{ "o", 377938 },	-- Prismatic Leaper School
+							{ "o", 382180 },	-- Overheated Magma Thresher Pool
+							{ "n", 197596 },	-- Deep Ice Fishing Hole
+						},
+					}),
+					i(200081, {	-- Hardened Seavine
+						["description"] = "Obtained from fishing in Prismatic Leaper Schools, Overheated Magma Thresher Pools or Deep Ice Fishing Holes.",
+						["providers"] = {
+							{ "o", 377938 },	-- Prismatic Leaper School
+							{ "o", 382180 },	-- Overheated Magma Thresher Pool
+							{ "n", 197596 },	-- Deep Ice Fishing Hole
+						},
+					}),
+					i(200083, {	-- Irontree Branch
+						["description"] = "Obtained from fishing in Prismatic Leaper Schools, Overheated Magma Thresher Pools or Deep Ice Fishing Holes.",
+						["providers"] = {
+							{ "o", 377938 },	-- Prismatic Leaper School
+							{ "o", 382180 },	-- Overheated Magma Thresher Pool
+							{ "n", 197596 },	-- Deep Ice Fishing Hole
+						},
+					}),
+					i(200086, {	-- Khaz'gorite-Infused Resin
+						["description"] = "Obtained from Rares summoned by using Ominous Conch at Large Lunker Sightings.",
+						["providers"] = {
+							{ "n", 193706 },	-- Snufflegust
+							{ "n", 197411 },	-- Astray Splasher
+							{ "n", 193634 },	-- Swog'Ranka
+							{ "n", 193708 },	-- Skald the Impaler
+							{ "n", 193710 },	-- Seereel, the Spring
+							{ "n", 193735 },	-- Moth'go Deeploom
+							{ "n", 197371 },	-- Ravenous Tundra Bear
+						},
+					}),
+					i(200085, {	-- Khaz'gorite Wire
+						["description"] = "Obtained from Full Tuskarr Fishing Nets.",
+						["providers"] = {
+							{ "o", 382071 },	-- Full Fishing Net
+							{ "o", 379314 },	-- Full Fishing Net
+							{ "o", 381069 },	-- Full Fishing Net
+						},
+					}),
+					i(200084, {	-- Salinated Serevite
+						["description"] = "Obtained from fishing in Prismatic Leaper Schools, Overheated Magma Thresher Pools or Deep Ice Fishing Holes.",
+						["providers"] = {
+							{ "o", 377938 },	-- Prismatic Leaper School
+							{ "o", 382180 },	-- Overheated Magma Thresher Pool
+							{ "n", 197596 },	-- Deep Ice Fishing Hole
+							--[[ Never got one from it and wowhead doesnt have data either. If confirmed, re-add them ~Gold Jan 2023
+							{ "o", 382071 },	-- Full Fishing Net
+							{ "o", 379314 },	-- Full Fishing Net
+							{ "o", 381069 },	-- Full Fishing Net
+							--]]
+						},
+					}),
+					o(381514, {	-- Sea-Polished Basalt
+						-- i didn't save the coords, and wowhead doesn't know about it. probably need some fine-tuning and additional spawn locations, then remove description
+						["description"] = "Near landing points for Alliance/Horde in The Waking Shores. Rough coordinates.",
+						["coords"] = {
+							{ 80.0, 27.0, THE_WAKING_SHORES },
+						},
+						["g"] = {
+							i(200079),	-- Sea-Polished Basalt
+						},
+					}),
+					o(381512, {	-- Wooden Pole
+						["description"] = "Used to craft Iskaaran Harpoon.",
+						["coord"] = { 15.6, 44.5, THE_AZURE_SPAN },
+						["g"] = {
+							i(200077),	-- Wooden Pole
+						},
+					}),
+				},
 			}),
 			n(SPECIAL, sharedData({
 				["description"] = "Chance to spawn after using 5 |cffffffffOminous Conches|r at specific |cffffffffLarge Lunker Sighting|r Locations.\nWhich Lunker Sighting is up changes every week & if there is no fish icon, the pool is not up and you cannot spawn a Thresher at that location.",
@@ -544,21 +575,26 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 		})),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, {
-	m(THE_AZURE_SPAN, {
-		q(74370),	-- First weekly completion of 'Contribute Supplies: Battered Imbu-made Net'
-		q(74369),	-- First weekly completion of 'Contribute Supplies: Salinated Serevite'
-		q(74368),	-- First weekly completion of 'Contribute Supplies: Khaz'gorite-infused Resin'
-		q(74371),	-- First weekly completion of 'Contribute Supplies: Khaz'gorite Wire'
-		q(74372),	-- First weekly completion of 'Contribute Supplies: Strong Seavine'
-		q(74367),	-- First weekly completion of 'Contribute Supplies: Irontree Branch'
-		--
-		q(72828),	-- First weekly completion of 'Catch and Release: Scalebell Mackerel' (70199)
-		q(72827),	-- First weekly completion of 'Catch and Release: Thousandbite Piranha' (70200)
-		q(72826),	-- First weekly completion of 'Catch and Release: Aileron Seamoth' (70201)
-		q(72825),	-- First weekly completion of 'Catch and Release: Cerulean Spinefish' (70202)
-		q(72824),	-- First weekly completion of 'Catch and Release: Temporal Dragonhead' (70203)
-		q(72823),	-- First weekly completion of 'Catch and Release: Islefin Dorado' (70935)
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+	n(ISKAARA_TUSKARR, {
+		n(ISKAARA_FISHING, {
+			n(QUESTS, {
+				q(74370),	-- First weekly completion of 'Contribute Supplies: Battered Imbu-made Net'
+				q(74369),	-- First weekly completion of 'Contribute Supplies: Salinated Serevite'
+				q(74368),	-- First weekly completion of 'Contribute Supplies: Khaz'gorite-infused Resin'
+				q(74371),	-- First weekly completion of 'Contribute Supplies: Khaz'gorite Wire'
+				q(74372),	-- First weekly completion of 'Contribute Supplies: Strong Seavine'
+				q(74367),	-- First weekly completion of 'Contribute Supplies: Irontree Branch'
+				q(74373),	-- First weekly completion of 'Contribute Supplies: Draconium Nugget'
+				--
+				q(72828),	-- First weekly completion of 'Catch and Release: Scalebell Mackerel' (70199)
+				q(72827),	-- First weekly completion of 'Catch and Release: Thousandbite Piranha' (70200)
+				q(72826),	-- First weekly completion of 'Catch and Release: Aileron Seamoth' (70201)
+				q(72825),	-- First weekly completion of 'Catch and Release: Cerulean Spinefish' (70202)
+				q(72824),	-- First weekly completion of 'Catch and Release: Temporal Dragonhead' (70203)
+				q(72823),	-- First weekly completion of 'Catch and Release: Islefin Dorado' (70935)
+				q(67139),	-- Was tied to Flying Fish Charms but not the spellID causing issues for players
+			}),
+		}),
 	}),
-}));
+})));

@@ -7,7 +7,7 @@ PILGRIMS_BOUNTY_HEADER = createHeader({
 	icon = [[~_.asset("Holiday_Pilgrim")]],
 	eventID = EVENTS.PILGRIMS_BOUNTY,
 	text = {
-		en = [[~select(1,GetCategoryInfo(14981))]],
+		en = WOWAPI_GetCategoryName(14981),
 	},
 });
 local ALLIANCE_PILGRIM_MAPS = {
@@ -32,7 +32,7 @@ local HORDE_PILGRIM_MAPS = {
 };
 local ALL_PILGIM_MAPS = appendGroups(ALLIANCE_PILGRIM_MAPS, appendGroups(HORDE_PILGRIM_MAPS, {}));
 root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER, {
-	["timeline"] = { "added 3.1.0.9658" },
+	["timeline"] = { ADDED_3_1_0 },
 	["groups"] = {
 		-- #if AFTER WRATH
 		n(ACHIEVEMENTS, {
@@ -67,20 +67,19 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 						-- #endif
 					},
 				},
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				-- #if BEFORE MOP
 				["races"] = ALLIANCE_ONLY,
 				-- #endif
 				["groups"] = {
 					title(133, {	-- <Name> the Pilgrim [NOTE: WoWHead's ID is incorrect, don't look at this and freak out like I did. - Crieve]
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
 					}),
 					i(44810, {	-- Plump Turkey (PET!)
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
 					}),
 				},
 			}),
-			-- #if BEFORE MOP
 			ach(3656, {	-- Pilgrim
 				-- Meta Achievement should symlink the contained Achievements from Source
 				["sym"] = {
@@ -96,82 +95,43 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 						3559,				-- Turkey Lurkey
 					},
 				},
-				["timeline"] = { "added 3.2.2.10505", "deleted 5.0.1" },
+				["timeline"] = { ADDED_3_2_2, REMOVED_5_0_4 },
 				["races"] = HORDE_ONLY,
 				["groups"] = {
-					title(133, {	-- <Name> the Pilgrim [NOTE: WoWHead's ID is incorrect, don't look at this and freak out like I did. - Crieve]
-						["timeline"] = { "added 3.2.2.10505" },
-					}),
-					i(44810, {	-- Plump Turkey (PET!)
-						["timeline"] = { "added 3.2.2.10505" },
-					}),
+					title(133),	-- <Name> the Pilgrim [NOTE: WoWHead's ID is incorrect, don't look at this and freak out like I did. - Crieve]
+					i(44810),	-- Plump Turkey (PET!)
 				},
 			}),
-			-- #endif
 			ach(3579, {	-- "FOOD FIGHT!"
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["maps"] = ALL_PILGIM_MAPS,
 			}),
 			ach(3576, {	-- Now We're Cookin' (A)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
 				["maps"] = ALLIANCE_PILGRIM_MAPS,
 				["races"] = ALLIANCE_ONLY,
-				--[[
-				["groups"] = {
-					crit(1),	-- Candied Sweet Potato
-					crit(2),	-- Cranberry Chutney
-					crit(3),	-- Pumpkin Pie
-					crit(4),	-- Slow-Roasted Turkey
-					crit(5),	-- Spice Bread Stuffing
-				},
-				]]--
 			}),
 			ach(3577, {	-- Now We're Cookin' (H)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
 				["maps"] = HORDE_PILGRIM_MAPS,
 				["races"] = HORDE_ONLY,
-				--[[
-				["groups"] = {
-					crit(1),	-- Candied Sweet Potato
-					crit(2),	-- Cranberry Chutney
-					crit(3),	-- Pumpkin Pie
-					crit(4),	-- Slow-Roasted Turkey
-					crit(5),	-- Spice Bread Stuffing
-				},
-				]]--
 			}),
 			ach(3556, {	-- Pilgrim's Paunch (A)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
 				["maps"] = ALLIANCE_PILGRIM_MAPS,
 				["races"] = ALLIANCE_ONLY,
-				--[[
-				["groups"] = {
-					crit(1),	-- Darnassus
-					crit(2),	-- The Exodar
-					crit(3),	-- Ironforge
-					crit(4),	-- Stormwind
-				},
-				]]--
 			}),
 			ach(3557, {	-- Pilgrim's Paunch (H)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
 				["maps"] = HORDE_PILGRIM_MAPS,
 				["races"] = HORDE_ONLY,
-				--[[
-				["groups"] = {
-					crit(1),	-- Orgrimmar
-					crit(2),	-- Silvermoon City
-					crit(3),	-- Thunder Bluff
-					crit(4),	-- Undercity
-				},
-				]]--
 			}),
 			ach(3580, {	-- Pilgrim's Peril (A)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
 				["maps"] = HORDE_PILGRIM_MAPS,
 				["cost"] = {
@@ -180,17 +140,9 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 					{ "i", 46824, 1 },	-- Pilgrim's Robe
 				},
 				["races"] = ALLIANCE_ONLY,
-				--[[
-				["groups"] = {
-					crit(1),	-- Orgrimmar
-					crit(2),	-- Silvermoon City
-					crit(3),	-- Thunder Bluff
-					crit(4),	-- Undercity
-				},
-				]]--
 			}),
 			ach(3581, {	-- Pilgrim's Peril (H)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
 				["maps"] = ALLIANCE_PILGRIM_MAPS,
 				["cost"] = {
@@ -199,17 +151,9 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 					{ "i", 46824, 1 },	-- Pilgrim's Robe
 				},
 				["races"] = HORDE_ONLY,
-				--[[
-				["groups"] = {
-					crit(1),	-- Darnassus
-					crit(2),	-- The Exodar
-					crit(3),	-- Ironforge
-					crit(4),	-- Stormwind
-				},
-				]]--
 			}),
 			ach(3596, {	-- Pilgrim's Progress (A)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["maps"] = ALLIANCE_PILGRIM_MAPS,
 				["races"] = ALLIANCE_ONLY,
 				["groups"] = {
@@ -231,7 +175,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 				},
 			}),
 			ach(3597, {	-- Pilgrim's Progress (H)
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["maps"] = HORDE_PILGRIM_MAPS,
 				["races"] = HORDE_ONLY,
 				["groups"] = {
@@ -253,21 +197,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 				},
 			}),
 			ach(3558, {	-- Sharing is Caring
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
 				["maps"] = ALL_PILGIM_MAPS,
-				--[[
-				["groups"] = {
-					crit(1),	-- Candied Sweet Potatoes
-					crit(2),	-- Cranberry Chutney
-					crit(3),	-- Pumpkin Pie
-					crit(4),	-- Slow-Roasted Turkey
-					crit(5),	-- Spice Bread Stuffing
-				},
-				]]--
 			}),
 			ach(3582, {	-- Terokkar Turkey Time
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["maps"] = { AUCHINDOUN_SETHEKK_HALLS },
 				["cost"] = {
 					{ "i", 46723, 1 },	-- Pilgrim's Hat
@@ -278,7 +213,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 				["cr"] = 18473,	-- Talon King Ikiss
 			}),
 			ach(3578, {	-- The Turkinator
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["cr"] = 32820,	-- Wild Turkey
 				["maps"] = {
 					ELWYNN_FOREST,
@@ -292,22 +227,8 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 					-- #endif
 					{ "i", 44812 },	-- Turkey Shooter
 				},
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["sym"] = {{ "achievement_criteria" }},
-				--[[
-				["groups"] = {
-					crit(1),	-- Blood Elf Rogue
-					crit(2),	-- Dwarf Rogue
-					crit(3),	-- Gnome Rogue
-					crit(4),	-- Goblin Rogue
-					crit(5),	-- Human Rogue
-					crit(6),	-- Night Elf Rogue
-					crit(7),	-- Orc Rogue
-					crit(8),	-- Troll Rogue
-					crit(9),	-- Undead Rogue
-					crit(10),	-- Worgen Rogue
-				},
-				]]--
 			}),
 		}),
 		-- #endif
@@ -513,15 +434,18 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 			}),
 			q(14064, {	-- Sharing a Bountiful Feast (Alliance)
 				["qg"] = 34653,	-- Bountiful Table Hostess
+				["coords"] = {
+					{ 34.1, 51.0, ELWYNN_FOREST },
+				},
 				["maps"] = {
 					DARNASSUS,
 					DUN_MOROGH,
-					ELWYNN_FOREST,
 					-- #if AFTER BFA
 					DARKSHORE,
 					-- #endif
 				},
 				["races"] = ALLIANCE_ONLY,
+				["isYearly"] = true,
 			}),
 			q(14065, {	-- Sharing a Bountiful Feast (Horde)
 				["qg"] = 34654,	-- Bountiful Feast Hostess
@@ -532,6 +456,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 					HELLFIRE_PENINSULA,
 				},
 				["races"] = HORDE_ONLY,
+				["isYearly"] = true,
 			}),
 			q(14055, {	-- She Says Potato (Alliance)
 				["qg"] = 34744,	-- Jasper Moore
@@ -673,31 +598,31 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 			["maps"] = ALL_PILGIM_MAPS,
 			["groups"] = {
 				i(46723, {	-- Pilgrim's Hat
-					["timeline"] = { "added 3.2.2.10505" },
+					["timeline"] = { ADDED_3_2_2 },
 				}),
 				i(46800, {	-- Pilgrim's Attire
-					["timeline"] = { "added 3.2.2.10505" },
+					["timeline"] = { ADDED_3_2_2 },
 				}),
 				i(44785, {	-- Pilgrim's Dress
-					["timeline"] = { "added 3.2.2.10505" },
+					["timeline"] = { ADDED_3_2_2 },
 				}),
 				i(46824, {	-- Pilgrim's Robe
-					["timeline"] = { "added 3.2.2.10505" },
+					["timeline"] = { ADDED_3_2_2 },
 				}),
 				i(44788, {	-- Pilgrim's Boots
-					["timeline"] = { "added 3.2.2.10505" },
+					["timeline"] = { ADDED_3_2_2 },
 				}),
 				i(116404, {	-- Pilgrim's Bounty
-					["timeline"] = { "added 6.0.1.18566" },
+					["timeline"] = { ADDED_6_0_2 },
 					["groups"] = {
 						i(116401, {	-- Fine Pilgrim's Hat
-							["timeline"] = { "added 6.0.1.18566" },
+							["timeline"] = { ADDED_6_0_2 },
 						}),
 						i(116403, {	-- Bush Chicken (PET!)
-							["timeline"] = { "added 6.0.1.18566" },
+							["timeline"] = { ADDED_6_0_2 },
 						}),
 						i(116400, {	-- Silver-Plated Turkey Shooter (TOY!)
-							["timeline"] = { "added 6.0.1.18566" },
+							["timeline"] = { ADDED_6_0_2 },
 						}),
 					},
 				}),
@@ -725,7 +650,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 					34684,	-- Laha Farplain
 					34683,	-- Rose Standish
 				},
-				["groups"] = {
+				["groups"] = bubbleDown({ ["timeline"] = { ADDED_3_2_2 } }, {
 					i(44835),	-- Autumnal Herbs
 					i(46888, {	-- Bountiful Basket
 						["cost"] = {
@@ -760,7 +685,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.PILGRIMS_BOUNTY, n(PILGRIMS_BOUNTY_HEADER
 						},
 					}),
 					i(44853),	-- Honey
-				},
+				}),
 			}),
 			n(34685, {	-- Dalni Tallgrass <Pilgrim's Bounty Vendor>
 				["coord"] = { 46.6, 13.8, DUROTAR },

@@ -4,15 +4,17 @@
 -- #if AFTER 3.0.2
 WOW_ANNIVERSARY_ROOT = createHeader({
 	readable = "WoW's Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = EVENTS.WOW_ANNIVERSARY,
 	eventSchedule = {
 		1, -- Recurring, note that this changes every year.
-		11, 6, 10, 0,	-- 11/06 at 10:00 AM
-		11, 30, 10, 0	-- 11/30 at 10:00 AM
+		10, 22, 10, 0,	-- 10/22 at 10:00 AM
+		01, 07, 10, 0	-- 01/07 at 10:00 AM
 	},
 	text = {
 		en = "WoW's Anniversary",
+		ru = "Годовщина WoW",
+		cn = "魔兽世界周年庆",
 	},
 	description = {
 		en = "This is a yearly recurring event that occurs between the beginning of November and the end of the year.",
@@ -20,55 +22,55 @@ WOW_ANNIVERSARY_ROOT = createHeader({
 });
 WOW_ANNIVERSARY_FOUR = createHeader({
 	readable = "WoW's 4th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	--eventID = ,	--
 	text = {
-		en = [[~select(2,GetAchievementInfo(2398))]],
+		en = WOWAPI_GetAchievementName(2398),
 	},
 });
 WOW_ANNIVERSARY_FIVE = createHeader({
 	readable = "WoW's 5th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	--eventID = ,	--
 	text = {
-		en = [[~select(2,GetAchievementInfo(4400))]],
+		en = WOWAPI_GetAchievementName(4400),
 	},
 });
 WOW_ANNIVERSARY_SIX = createHeader({
 	readable = "WoW's 6th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	--eventID = ,	--
 	text = {
-		en = [[~select(2,GetAchievementInfo(5512))]],
+		en = WOWAPI_GetAchievementName(5512),
 	},
 });
 WOW_ANNIVERSARY_SEVEN = createHeader({
 	readable = "WoW's 7th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	--eventID = ,	--
 	text = {
-		en = [[~select(2,GetAchievementInfo(5863))]],
+		en = WOWAPI_GetAchievementName(5863),
 	},
 });
 WOW_ANNIVERSARY_EIGHT = createHeader({
 	readable = "WoW's 8th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	--eventID = ,	--
 	text = {
-		en = [[~select(2,GetAchievementInfo(6131))]],
+		en = WOWAPI_GetAchievementName(6131),
 	},
 });
 WOW_ANNIVERSARY_NINE = createHeader({
 	readable = "WoW's 9th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	--eventID = ,	--
 	text = {
-		en = [[~select(2,GetAchievementInfo(7853))]],
+		en = WOWAPI_GetAchievementName(7853),
 	},
 });
 WOW_ANNIVERSARY_TEN = createHeader({
 	readable = "WoW's 10th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 514,
 	eventSchedule = {
 		0, -- November 21st to January 5th 2015
@@ -76,12 +78,12 @@ WOW_ANNIVERSARY_TEN = createHeader({
 		2015, 01, 05,	-- 01/05/2015
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(8820))]],
+		en = WOWAPI_GetAchievementName(8820),
 	},
 });
 WOW_ANNIVERSARY_ELEVEN = createHeader({
 	readable = "WoW's 11th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 566,
 	eventSchedule = {
 		0, -- 2015/11/16 to 2015/11/30
@@ -89,12 +91,12 @@ WOW_ANNIVERSARY_ELEVEN = createHeader({
 		2015, 11, 30,	-- 11/30/2015
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(10058))]],
+		en = WOWAPI_GetAchievementName(10058),
 	},
 });
 WOW_ANNIVERSARY_TWELVE = createHeader({
 	readable = "WoW's 12th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 589,
 	eventSchedule = {
 		0, -- 2016/11/16 to 2016/11/30
@@ -102,12 +104,12 @@ WOW_ANNIVERSARY_TWELVE = createHeader({
 		2016, 11, 30,	-- 11/30/2016
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(10741))]],
+		en = WOWAPI_GetAchievementName(10741),
 	},
 });
 WOW_ANNIVERSARY_THIRTEEN = createHeader({
 	readable = "WoW's 13th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 693,
 	eventSchedule = {
 		0, -- November 16, 2017 to November 30, 2017
@@ -115,12 +117,12 @@ WOW_ANNIVERSARY_THIRTEEN = createHeader({
 		2017, 11, 30,	-- 11/30/2017
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(11848))]],
+		en = WOWAPI_GetAchievementName(11848),
 	},
 });
 WOW_ANNIVERSARY_FOURTEEN = createHeader({
 	readable = "WoW's 14th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 807,
 	eventSchedule = {
 		0, -- 2018/11/16 to 2018/11/30
@@ -128,12 +130,12 @@ WOW_ANNIVERSARY_FOURTEEN = createHeader({
 		2018, 11, 30,	-- 11/30/2018
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(12827))]],
+		en = WOWAPI_GetAchievementName(12827),
 	},
 });
 WOW_ANNIVERSARY_FIFTEEN = createHeader({
 	readable = "WoW's 15th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 808,
 	eventSchedule = {
 		0, -- November 5th, 2019 to January 7th, 2020
@@ -141,12 +143,12 @@ WOW_ANNIVERSARY_FIFTEEN = createHeader({
 		2020, 01, 7,	-- 01/07/2020
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(13917))]],
+		en = WOWAPI_GetAchievementName(13917),
 	},
 });
 WOW_ANNIVERSARY_SIXTEEN = createHeader({
 	readable = "WoW's 16th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 1181,
 	eventSchedule = {
 		0, -- November 1st, 2020 to November 22nd, 2020
@@ -154,12 +156,12 @@ WOW_ANNIVERSARY_SIXTEEN = createHeader({
 		2020, 11, 22,	-- 11/22/2020
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(14271))]],
+		en = WOWAPI_GetAchievementName(14271),
 	},
 });
 WOW_ANNIVERSARY_SEVENTEEN = createHeader({
 	readable = "WoW's 17th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 1225,
 	eventSchedule = {
 		0, -- 2021/11/15 to 2021/12/06
@@ -167,12 +169,12 @@ WOW_ANNIVERSARY_SEVENTEEN = createHeader({
 		2021, 12, 06,	-- 12/06/2021
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(14942))]],
+		en = WOWAPI_GetAchievementName(14942),
 	},
 });
 WOW_ANNIVERSARY_EIGHTEEN = createHeader({
 	readable = "WoW's 18th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
+	icon = 133783,
 	eventID = 1262,
 	eventSchedule = {
 		0, -- November 6th through November 27th
@@ -180,53 +182,257 @@ WOW_ANNIVERSARY_EIGHTEEN = createHeader({
 		2022, 11, 27,	-- 11/27/2022
 	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(15218))]],
+		en = WOWAPI_GetAchievementName(15218),
 	},
 });
 WOW_ANNIVERSARY_NINETEEN = createHeader({
 	readable = "WoW's 19th Anniversary",
-	icon = "Interface\\Icons\\inv_misc_celebrationcake_01",
-	--eventID = 1262,
-	--eventSchedule = {
-	--	0, -- November 6th through November 27th
-	--	2022, 11, 6,	-- 11/06/2022
-	--	2022, 11, 27,	-- 11/27/2022
-	--},
+	icon = 133783,
+	eventID = 1397,
+	eventSchedule = {
+		0, -- November 16th through December 7th
+		2023, 11, 16,	-- 11/16/2023
+		2023, 12, 7,	-- 12/07/2023
+	},
 	text = {
-		en = [[~select(2,GetAchievementInfo(18702))]],
+		en = WOWAPI_GetAchievementName(18702),
 	},
 });
+WOW_ANNIVERSARY_TWENTY = createHeader({
+	readable = "WoW's 20th Anniversary",
+	icon = 133783,
+	eventID = 1509,
+	eventSchedule = {
+		0, -- October 22nd through Jan 7th
+		2024, 10, 22,	-- 10/22/2024
+		2025, 01, 07,	-- 01/07/2025
+	},
+	text = {
+		en = WOWAPI_GetAchievementName(41220),
+	},
+	text = {
+		en = "WoW's 20th Anniversary",
+		cn = "魔兽世界二十周年",
+	},
+});
+local BRONZE_TOKEN = 3100;
+
+------ Encounter Constants ------
+local ROCCOR = 2663;
+local BAELGAR = 2664;
+local INCENDIUS = 2665;
+local ARGELMACH = 2666;
+local THE_SEVEN = 2667;
+local ANGERFORGE = 2668;
+local FLAMELASH = 2669;
+local DAGRAN = 2670;
+
+------ NPC Constants ------
+local GERSTAHN = 9018;
+local GREBMAR = 9319;
+local DARKVIRE = 9056;
+local PHALANX = 9502;
+local LOREGRAIN = 9024;
+
+------ EncounterToCRS ------
+local EncounterToCRS = {
+	[ROCCOR] = { 9025 },	-- Lord Roccor
+	[BAELGAR] = { 226303 },	-- Bael'Gar
+	[INCENDIUS] = { 9017 },	-- Lord Incendius
+	[ARGELMACH] = { 226306 },	-- Golem Lord Argelmach
+	[THE_SEVEN] = {
+		226307,	-- Anger'rel
+		226310,	-- Doom'rel
+		226309,	-- Dope'rel
+		226313,	-- Gloom'rel
+		226311,	-- Hate'rel
+		226312,	-- Seeth'rel
+		226308,	-- Vile'rel
+	},
+	[ANGERFORGE] = { 226316 },	-- General Angerforge
+	[FLAMELASH] = { 226302 },		-- Ambassador Flamelash
+	[DAGRAN] = {
+		226305,	-- Emperor Dagran Thaurissan
+		226314,	-- Moira Bronzebeard
+	},
+};
+
+------ EncounterToLoot ------
+local EncounterToLoot = {
+	[ROCCOR] = {
+		i(231457),	-- Bottled Magma
+		i(231395),	-- Earthslag Shoulders
+		i(231455),	-- Embershard Pendant
+		i(231456),	-- Heart of Roccor
+		i(231449),	-- Leggings of Frenzied Magic
+		i(231454),	-- Magma-Shot Boomstick
+		i(231445),	-- Mantle of Lost Hope
+		i(231397),	-- Rubicund Armguards
+		i(231453),	-- Shard Splinter
+		i(231394),	-- Stoneshell Guard
+	};
+	[BAELGAR] = {
+		i(231463),	-- Arbiter's Blade
+		i(231447),	-- Bloodclot Band
+		i(231409),	-- Force of Magma
+		i(231458),	-- Insolent Dark Iron's Vest
+		i(231408),	-- Lavacrest Leggings
+		i(231461),	-- Magma Giant's Crown
+		i(231462),	-- Molten Furnace
+		i(231410),	-- Rubidium Hammer
+		i(231411),	-- Sash of the Burning Heart
+	};
+	[INCENDIUS] = {
+		i(231404),	-- Cinderhide Armsplints
+		i(231407),	-- Emberplate Armguards
+		i(231464),	-- Flame-Tempered Skinner
+		i(231468),	-- Flamekeeper's Fire Blanket
+		i(231467),	-- Flamelord's Emberstaff
+		i(231406),	-- Flameweave Cuffs
+		i(231405),	-- Pyremail Wristguards
+	};
+	[ARGELMACH] = {
+		i(231472),	-- Argelmach's Breaking Bar
+		i(231471),	-- Golem Gearbox
+		i(231389),	-- Luminary Robe
+		i(231396),	-- Naglering
+		i(231423),	-- Omnicast Boots
+		i(231420),	-- Second Wind
+		i(231470),	-- Spare Golem Frame
+		i(231469),	-- Spare Golem Pauldrons
+	};
+	[THE_SEVEN] = {
+		i(231431),	-- Deathdealer Breastplate
+		i(231476),	-- Dope'rel's Calling Rune
+		i(231474),	-- Dope'rel's Finger Gloves
+		i(231430),	-- Ghostshroud
+		i(231434),	-- Haunting Specter Leggings
+		i(231427),	-- Impervious Giant
+		i(231432),	-- Legplates of the Eternal Guardian
+		i(231475),	-- Sabaton's of Anger'rel
+		i(231473),	-- The Fifth's Linked Treads
+		i(231428),	-- The Hammer of Grace
+	};
+	[ANGERFORGE] = {
+		i(231418),	-- Angerforge's Battle Axe
+		i(231480),	-- Anvilrage Dragoon's Trousers
+		i(231477),	-- Anvilrage Medic's Boots
+		i(231479),	-- Anvilrage Rogue's Belt of Knives
+		i(231482),	-- Dragoon's Volley Gun
+		i(231440),	-- Ebonsteel Spaulders
+		i(231478),	-- Flamekeeper's Handwraps
+		i(231414),	-- Force of Will
+		i(231435),	-- Guiding Stave of Wisdom
+		i(231419),	-- Lord General's Sword
+		i(231421),	-- Royal Decorated Armor
+		i(231481),	-- Sapper's Waistplate
+		i(231422),	-- Warstrife Leggings
+	};
+	[FLAMELASH] = {
+		i(231486),	-- Burning Spirit Tender's Mitts
+		i(231424),	-- Burst of Knowledge
+		i(231415),	-- Cape of the Fire Salamander
+		i(231412),	-- Circle of Flame
+		i(231484),	-- Fireguard's Lava-Dipped Cleaver
+		i(231413),	-- Flame Wrath
+		i(231483),	-- Flamelash's Fiery Spike
+		i(231485),	-- Flamewalker Scale Spaulders
+		i(231416),	-- Molten Fists
+	};
+	[DAGRAN] = {
+		i(231437),	-- Emperor's Seal
+		i(231417),	-- Hand of Justice
+		i(231439),	-- Hands of the Exalted Herald
+		i(231487),	-- Helm of the Molten Avatar
+		i(231436),	-- Imperial Jewel
+		i(231398),	-- Molten Ironfoe
+		i(231429),	-- Robes of the Royal Crown
+		i(231442),	-- Sash of the Grand Hunt
+		i(231438),	-- Swiftwalker Boots
+		i(231433),	-- Thaurissan's Royal Scepter
+	};
+};
+
+------ Zone Drops ----------
+local ZoneDropLoot = {
+	i(231501),	-- Aristocratic Cuffs
+	i(231507),	-- Battlechaser's Greaves
+	i(231506),	-- Blisterbane Wrap
+	i(231503),	-- Braincage
+	i(231499),	-- Doomforged Straightedge
+	i(231500),	-- Funeral Pyre Vestment
+	i(231502),	-- Mar Alom's Grip
+	i(231495),	-- Ribsplitter
+	i(231504),	-- Runed Golem Shackles
+	i(231497),	-- Searing Needle
+	i(231498),	-- Spire of the Stoneshaper
+	i(231505),	-- Stoneshield Cloak
+	i(231496),	-- The Judge's Gavel
+}
+
+------ Boss Functions ------
+local InstanceHelper = CreateInstanceHelper(EncounterToCRS, EncounterToLoot, ZoneDropLoot)
+local Boss, BossOnly, Difficulty, CommonBossDrops, ZoneDrops =
+InstanceHelper.Boss, InstanceHelper.BossOnly, InstanceHelper.Difficulty, InstanceHelper.CommonBossDrops, InstanceHelper.ZoneDrops
+
+-- Common Symlink Drops
+local SYM_ALL_BRD_DROPS = {{"select","headerID",WOW_ANNIVERSARY_TWENTY},{"pop"},
+{"where","instanceID",1301},{"pop"},
+{"where","headerID",VENDORS},{"extract","itemID"}}
+
+local function RelicCofferKeyPurchase(itemID)
+	local item = i(itemID, {
+		["cost"] = {
+			{"i",231510,40},	-- Timewarped Relic Coffer Key [L]
+			{"i",232365,40},	-- Timewarped Relic Coffer Key [N]
+			{"i",232366,40},	-- Timewarped Relic Coffer Key [H]
+		},
+	})
+	return item
+end
 
 root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, {
 	-- Stuff that's completely gone.
-	n(WOW_ANNIVERSARY_FOUR, bubbleDownSelf({ ["timeline"] = { ADDED_3_0_3, "removed 3.1.0" } }, {
+	n(WOW_ANNIVERSARY_FOUR, bubbleDownSelf({ ["timeline"] = { ADDED_3_0_3, REMOVED_3_1_0 } }, {
 		ach(2398),	-- 4th Anniversary
 		i(44819),	-- Baby Blizzard Bear (PET!)
 	})),
-	n(WOW_ANNIVERSARY_FIVE, bubbleDownSelf({ ["timeline"] = { "added 3.2.2", "removed 3.3.2" } }, {
+	n(WOW_ANNIVERSARY_FIVE, bubbleDownSelf({ ["timeline"] = { ADDED_3_2_2, REMOVED_3_3_2 } }, {
 		ach(4400),	-- 5th Anniversary
-		i(49362),	-- Onyxian Whelpling
+		i(49362),	-- Onyxian Whelpling (PET!)
 	})),
-	n(WOW_ANNIVERSARY_SIX, bubbleDownSelf({ ["timeline"] = { "added 4.0.1", "removed 4.2.2" } }, {
+	n(WOW_ANNIVERSARY_SIX, bubbleDownSelf({ ["timeline"] = { ADDED_4_0_1, REMOVED_4_2_2 } }, {
 		ach(5512),	-- 6th Anniversary
 	})),
-	n(WOW_ANNIVERSARY_SEVEN, bubbleDownSelf({ ["timeline"] = { "added 4.2.2", "removed 4.3" } }, {
+	n(WOW_ANNIVERSARY_SEVEN, bubbleDownSelf({ ["timeline"] = { ADDED_4_2_2, REMOVED_4_3_0 } }, {
 		ach(5863),	-- 7th Anniversary
 		i(71134),	-- Celebration Package
 	})),
-	n(WOW_ANNIVERSARY_EIGHT, bubbleDownSelf({ ["timeline"] = { "added 4.3.0", "removed 5.1.0.16309" } }, {
+	n(WOW_ANNIVERSARY_EIGHT, bubbleDownSelf({ ["timeline"] = { ADDED_4_3_0, REMOVED_5_1_0 } }, {
 		ach(6131),	-- 8th Anniversary
 		i(71134),	-- Celebration Package
 	})),
-	n(WOW_ANNIVERSARY_NINE, bubbleDownSelf({ ["timeline"] = { "added 5.1.0.16309", "removed 6.0.1.18125" } }, {
+	n(WOW_ANNIVERSARY_NINE, bubbleDownSelf({ ["timeline"] = { ADDED_5_1_0, REMOVED_6_0_2 } }, {
 		ach(7853),	-- 9th Anniversary
 		n(MAILBOX, {
 			i(90918),	-- Celebration Package
 		}),
 	})),
-	n(WOW_ANNIVERSARY_TEN, bubbleDownSelf({ ["timeline"] = { "added 6.0.1.18125", "removed 6.2.0.19953" } },{
+	n(WOW_ANNIVERSARY_TEN, bubbleDownSelf({ ["timeline"] = { ADDED_6_0_2, REMOVED_6_2_0 } },{
 		ach(8820, {	-- 10th Anniversary
 			i(115301),	-- Molten Corgi (PET!)
+		}),
+		ach(9729, {		-- Victory in Hillsbrad (Alliance)
+			["races"] = ALLIANCE_ONLY,
+			["g"] = {
+				title(280),		-- <Name>, Tarren Mill Terror
+			},
+		}),
+		ach(9566, {		-- Victory in Hillsbrad (Horde)
+			["races"] = HORDE_ONLY,
+			["g"] = {
+				title(281),		-- <Name>, Southshore Slayer
+			},
 		}),
 		n(MAILBOX, {
 			i(107224),	-- Celebration Package
@@ -238,7 +444,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 					i(115484),	-- Core Hound (MOUNT!)
 				}),
 				i(118574),	-- Hatespark the Tiny (PET!)
-				i(118572),	-- Illusion: Flames of Ragnaros
+				i(118572),	-- Illusion: Flames of Ragnaros (ILLUSION!)
 				i(118942),	-- Crown of Power
 				i(118941),	-- Crown of Woe
 				i(118939),	-- Crown of Destruction
@@ -246,7 +452,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			},
 		}),
 	})),
-	n(WOW_ANNIVERSARY_ELEVEN, bubbleDownSelf({ ["timeline"] = { "added 6.2.0.19953", "removed 6.2.0.19953" } },{
+	n(WOW_ANNIVERSARY_ELEVEN, bubbleDownSelf({ ["timeline"] = { ADDED_6_2_0, REMOVED_6_2_0 } },{
 		ach(10058),	-- 11th Anniversary
 		n(MAILBOX, {
 			i(128513, {	-- Anniversary Gift
@@ -261,7 +467,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_TWELVE, bubbleDown({ ["timeline"] = { "added 7.0.3.21414", "removed 7.2.5.23910" } },{
+	n(WOW_ANNIVERSARY_TWELVE, bubbleDown({ ["timeline"] = { ADDED_7_0_3, REMOVED_7_2_5 } },{
 		ach(10741),	-- 12th Anniversary
 		n(MAILBOX, {
 			i(139284, {	-- Anniversary Gift
@@ -285,7 +491,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_THIRTEEN, bubbleDown({ ["timeline"] = { "added 7.2.5.23910", "removed 7.2.5.23910" } },{
+	n(WOW_ANNIVERSARY_THIRTEEN, bubbleDown({ ["timeline"] = { ADDED_7_2_5, REMOVED_7_2_5 } },{
 		ach(11848),	-- 13th Anniversary
 		n(MAILBOX, {
 			i(147876, {	-- Anniversary Gift
@@ -311,7 +517,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_FOURTEEN, bubbleDown({ ["timeline"] = { "added 8.0.1.27326", "removed 8.2.5.31958" } },{
+	n(WOW_ANNIVERSARY_FOURTEEN, bubbleDown({ ["timeline"] = { ADDED_8_0_1, REMOVED_8_2_5 } },{
 		ach(12827),	-- 14th Anniversary
 		n(MAILBOX, {
 			i(162637, {	-- Anniversary Gift
@@ -323,7 +529,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_FIFTEEN, bubbleDown({ ["timeline"] = { "added 8.2.5.31958", "removed 9.0.1.36216" } },{
+	n(WOW_ANNIVERSARY_FIFTEEN, bubbleDown({ ["timeline"] = { ADDED_8_2_5, REMOVED_9_0_1 } },{
 		ach(13917),	-- 15th Anniversary
 		n(157113, {	-- Chromie
 			--	inst(2235, {	-- doesn't show up in-game
@@ -344,11 +550,11 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			},
 			["cr"] = 154233,	-- Chromie
 			["groups"] = {
-				d(TIMEWALKING_DUNGEON, {
+				d(DIFFICULTY.DUNGEON.TIMEWALKING, {
 					ach(13931, {	-- Memories of Fel, Frost and Fire
 						i(172012),	-- Obsidian Worldbreaker (MOUNT!)
 					}),
-					tier(TBC_TIER, {
+					expansion(EXPANSION.TBC, {
 						e(1572, {	-- Lady Vashj
 							["creatureID"] = 21212,	-- Lady Vashj
 							["groups"] = {
@@ -459,13 +665,11 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 								i(171498),	-- Savior's Grasp
 								i(171506),	-- Leggings of Eternity
 								i(171497),	-- Legguards of Endless Rage
-								i(122112, {	-- Hyjal Wisp (PET!)
-									["timeline"] = { "added 6.1.0.19445" },
-								}),
+								i(122112),	-- Hyjal Wisp (PET!)
 							},
 						}),
 					}),
-					tier(WOTLK_TIER, {
+					expansion(EXPANSION.WRATH, {
 						e(1605, {	-- Heigan the Unclean
 							["creatureID"] = 15936,	-- Heigan the Unclean
 							["groups"] = {
@@ -675,6 +879,12 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 								i(171600, {	-- Pride of the Kor'kron
 									["races"] = HORDE_ONLY,
 								}),
+								i(171528, {	-- Reign of the Dead
+									["races"] = HORDE_ONLY,
+								}),
+								i(171549, {	-- Reign of the Unliving
+									["races"] = ALLIANCE_ONLY,
+								}),
 								i(171611, {	-- Robes of the Sleepless
 									["races"] = HORDE_ONLY,
 								}),
@@ -720,9 +930,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 								i(171588, {	-- Westfall Saber
 									["races"] = ALLIANCE_ONLY,
 								}),
-								i(142085, {	-- Nerubian Swarmer (PET!)
-									["timeline"] = { "added 7.1.0.22731" },
-								}),
+								i(142085),	-- Nerubian Swarmer (PET!)
 							},
 						}),
 						e(1636, {	-- The Lich King
@@ -748,9 +956,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 								i(171573),	-- Warmace of Menethil
 								i(171579),	-- Windrunner's Heartseeker
 								i(50818),	-- Invincible (MOUNT!)
-								i(142098, {	-- Drudge Ghoul (PET!)
-									["timeline"] = { ADDED_7_1_0 },
-								}),
+								i(142098),	-- Drudge Ghoul (PET!)
 								i(122229),	-- Music Roll: Invincible
 								i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 									["sourceQuest"] = 38990,	-- The Call of Icecrown
@@ -758,7 +964,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 							},
 						}),
 					}),
-					tier(CATA_TIER,  {
+					expansion(EXPANSION.CATA,  {
 						e(167, {	-- Cho'gall
 							["creatureID"] = 43324,
 							["groups"] = {
@@ -900,7 +1106,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_SIXTEEN, bubbleDown({ ["timeline"] = { "added 9.0.1.36216", "removed 9.0.1.36216" } },{
+	n(WOW_ANNIVERSARY_SIXTEEN, bubbleDown({ ["timeline"] = { ADDED_9_0_1, REMOVED_9_0_1 } },{
 		ach(14271),	-- 16th Anniversary
 		n(MAILBOX, {
 			i(178513, {	-- Anniversary Gift
@@ -910,7 +1116,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_SEVENTEEN, bubbleDown({ ["timeline"] = { "added 9.1.5.41031", "removed 9.1.5.41359" } }, {
+	n(WOW_ANNIVERSARY_SEVENTEEN, bubbleDown({ ["timeline"] = { ADDED_9_1_5, REMOVED_9_1_5 } }, {
 		ach(14942),	-- WoW's 17th Anniversary
 		n(MAILBOX, {
 			i(185906, {	-- Anniversary Gift
@@ -920,7 +1126,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_EIGHTEEN, bubbleDown({ ["timeline"] = { "added 10.0.0.46455", "removed 10.0.2.46879" } }, {
+	n(WOW_ANNIVERSARY_EIGHTEEN, bubbleDown({ ["timeline"] = { ADDED_10_0_0, REMOVED_10_0_2_LAUNCH } }, {
 		ach(15218),	-- WoW's 18th Anniversary
 		n(MAILBOX, {
 			i(187710, {	-- Anniversary Gift
@@ -930,21 +1136,48 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
+	n(WOW_ANNIVERSARY_NINETEEN, bubbleDown({ ["timeline"] = { ADDED_10_2_0, REMOVED_10_2_0 } }, {
+		ach(18702),	-- WoW's 19th Anniversary
+		n(MAILBOX, {
+			i(208211, {	-- Anniversary Gift
+				i(208210),	-- Celebration Package
+				i(172013),	-- Celebration Firework
+				i(171177),	-- Invitation from the Timewalkers
+				i(208543, {	-- Lil' Frostwing (PET!)
+					ach(19192),	-- Lil' Frostwing
+				}),
+			}),
+		}),
+	})),
 
 	-- Stuff that's still in the game
-	n(WOW_ANNIVERSARY_TWELVE, bubbleDownSelf({ ["timeline"] = { "added 7.0.3.21414" } },{
+	n(WOW_ANNIVERSARY_TWELVE, bubbleDownSelf({ ["timeline"] = { ADDED_7_0_3 } },{
 		n(QUESTS, {
 			-- Correct answers is in the bottom
 			q(43461, {	-- A Time to Reflect
 				["qg"] = 110035,	-- Historian Jupa
 				["isDaily"] = true,
+				-- #if BEFORE 11.0.5
 				["coord"] = { 36.6, 74.6, ORGRIMMAR },
+				-- #else
+				["coords"] = {
+					{ 36.6, 74.6, ORGRIMMAR },
+					{ 62.8, 50.2, TANARIS },
+				},
+				-- #endif
 				["races"] = HORDE_ONLY,
 			}),
 			q(43323, {	-- A Time to Reflect
 				["qg"] = 110034,	-- Historian Llore
 				["isDaily"] = true,
+				-- #if BEFORE 11.0.5
 				["coord"] = { 84.6, 25.0, STORMWIND_CITY },
+				-- #else
+				["coords"] = {
+					{ 84.6, 25.0, STORMWIND_CITY },
+					{ 62.8, 50.2, TANARIS },
+				},
+				-- #endif
 				["races"] = ALLIANCE_ONLY,
 			}),
 		}),
@@ -997,15 +1230,36 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 					}),
 				},
 			}),
+			n(231351, {	-- Kieule <Souvenirs>
+				["coord"] = { 62.38, 49.92, TANARIS },
+				["g"] = {
+					--[[ No use yet, potential pets/toys?
+					i(140670),	-- Souvenir Elekk
+					i(140671),	-- Souvenir Raptor
+					i(118052),	-- Murloc Chew Toy
+					--]]
+					i(130151, {	-- The "Devilsaur" Lunchbox (TOY!)
+						["cost"] = { { "c", 1155, 1000 }, },	-- 1,000x Ancient Mana
+					}),
+				},
+			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_THIRTEEN, bubbleDownSelf({ ["timeline"] = { "added 7.2.5.23910" } },{
+	n(WOW_ANNIVERSARY_THIRTEEN, bubbleDownSelf({ ["timeline"] = { ADDED_7_2_5 } },{
 		n(QUESTS, {
 			q(47253, {	-- The Originals [Alliance]
+				-- #if BEFORE 11.0.5
 				["qg"] = 110034,	-- Historian Llore
+				-- #else
+				["qg"] = 223882,	-- Izaik Kadarov
+				-- #endif
 				["isDaily"] = true,
+				-- #if BEFORE 11.0.5
 				["races"] = ALLIANCE_ONLY,
 				["coord"] = { 51.5, 38.7, CAVERNS_OF_TIME },
+				-- #else
+				["coord"] = { 62.3, 51.8, TANARIS },
+				-- #endif
 				["sym"] = {{"select","npcID",
 					121818,	-- Lord Kazzak [Blasted Lands - Always up]
 					121820,	-- Azuregos [Azshara - Always Up]
@@ -1016,10 +1270,18 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 				}},
 			}),
 			q(47254, {	-- The Originals [Horde]
+				-- #if BEFORE 11.0.5
 				["qg"] = 110035,	-- Historian Jupa
+				-- #else
+				["qg"] = 223882,	-- Izaik Kadarov
+				-- #endif
 				["isDaily"] = true,
+				-- #if BEFORE 11.0.5
 				["races"] = HORDE_ONLY,
 				["coord"] = { 51.5, 38.7, CAVERNS_OF_TIME },
+				-- #else
+				["coord"] = { 62.3, 51.8, TANARIS },
+				-- #endif
 				["sym"] = {{"select","npcID",
 					121818,	-- Lord Kazzak [Blasted Lands - Always up]
 					121820,	-- Azuregos [Azshara - Always Up]
@@ -1066,6 +1328,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 					i(150381),	-- Flayed Doomguard Belt
 					i(150385),	-- Fel-Infused Leggings
 					i(150384),	-- Ring of Entropy
+					i(230011, {["timeline"] = { ADDED_11_0_5 }}),	-- Lil'Kaz (PET!)
 				},
 			}),
 			n(DRAGONS_OF_NIGHTMARE, {
@@ -1180,7 +1443,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_FOURTEEN, bubbleDownSelf({ ["timeline"] = { "added 8.0.1.27326" } },{
+	n(WOW_ANNIVERSARY_FOURTEEN, bubbleDownSelf({ ["timeline"] = { ADDED_8_0_1 } },{
 		n(VENDORS, {
 			n(110035, {	-- Historian Jupa [Horde]
 				["coord"] = { 36.6, 74.6, ORGRIMMAR },
@@ -1202,10 +1465,9 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_FIFTEEN, bubbleDownSelf({ ["timeline"] = { "added 8.2.5.31958" } },{
+	n(WOW_ANNIVERSARY_FIFTEEN, bubbleDownSelf({ ["timeline"] = { ADDED_8_2_5 } },{
 		m(1537, {	-- Alterac Valley
 			["icon"] = 236711,	-- Alterac Valley
-			["maps"] = { HILLSBRAD_FOOTHILLS },
 			["groups"] = {
 				ach(13928, {	-- Alterac Valley of Olde (A)
 					["races"] = ALLIANCE_ONLY,
@@ -1880,6 +2142,14 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 							}),
 						},
 					}),
+					-- #if AFTER 11.0.5
+					n(158386, {	-- Time-Displaced Jorek Ironside <Frostwolf Supply Officer>
+						["crs"] = { 229711 },	-- Time-Displaced Jorek Ironside <Frostwolf Supply Officer>
+					}),
+					n(158385, {	-- Time-Displaced Thanthaldis Snowgleam <Stormpike Supply Officer>
+						["crs"] = { 229710 },	-- Time-Displaced Thanthaldis Snowgleam <Stormpike Supply Officer>
+					}),
+					-- #endif
 				}),
 			},
 		}),
@@ -1890,9 +2160,15 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 				["isYearly"] = true,
 			}),
 			q(57300, {	-- Soldier of Time
+				-- #if BEFORE 11.0.5
 				["qg"] = 157113,	-- Chromie
 				["coord"] = { 53.5, 54.7, CAVERNS_OF_TIME },
+				-- #else
+				["qg"] = 223882,	-- Izaik Kadarov
+				["coord"] = { 62.3, 51.8, TANARIS },
+				-- #endif
 				["isWeekly"] = true,
+				["timeline"] = { ADDED_8_2_5, REMOVED_8_2_5, ADDED_11_0_2 },
 				["_drop"] = { "g" },	-- drop MoH to remove this quest from the popout
 			}),
 		}),
@@ -1937,7 +2213,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_SIXTEEN, bubbleDownSelf({ ["timeline"] = { "added 9.0.1.36216" } },{
+	n(WOW_ANNIVERSARY_SIXTEEN, bubbleDownSelf({ ["timeline"] = { ADDED_9_0_1 } },{
 		n(VENDORS, {
 			n(158061, {	-- Historian Ma'di
 				["coord"] = { 50.7, 41.1, CAVERNS_OF_TIME },
@@ -1949,13 +2225,21 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_SEVENTEEN, bubbleDownSelf({ ["timeline"] = { "added 9.1.5.41031" } },{
+	n(WOW_ANNIVERSARY_SEVENTEEN, bubbleDownSelf({ ["timeline"] = { ADDED_9_1_5 } },{
 		n(QUESTS, {
+			-- #if BEFORE 11.0.5
 			q(60215, {	-- Doomwalkin' Has Come Knockin'
 				["qg"] = 157113,	-- Chromie
 				["coord"] = { 53.5, 54.7, CAVERNS_OF_TIME },
 				["isWeekly"] = true,
 			}),
+			-- #else
+			q(60215, {	-- Timely Gate Crashers
+				["qg"] = 223882,	-- Izaik Kadarov
+				["coord"] = { 62.3, 51.8, TANARIS },
+				["isWeekly"] = true,
+			}),
+			-- #endif
 		}),
 		n(VENDORS, {
 			n(158061, {	-- Historian Ma'di
@@ -1972,12 +2256,33 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 				["isRaid"] = true,
 				["questID"] = 60214,
 				["isDaily"] = true,
-				["coord"] = { 64.4, 50.7, TANARIS },
+				["coords"] = {
+					-- #IF BEFORE 11.0.5
+					{ 64.4, 50.7, TANARIS },
+					-- #ELSE
+					{ 62.1, 58.4, TANARIS },	-- center of large pat circle
+					-- #ENDIF
+				},
 				["maps"] = {
 					74,	--	Caverns of Time Entrance
 					CAVERNS_OF_TIME,
 				},
 				["groups"] = {
+					i(208572, {	-- Azure Worldchiller (MOUNT!)
+						["timeline"] = { ADDED_10_2_0 }
+					}),
+					i(186469, {	-- Illidari Doomhawk (MOUNT!)
+						["timeline"] = { REMOVED_10_2_0, ADDED_11_0_5 }
+					}),
+					i(43959, {	-- Reins of the Grand Black War Mammoth (A) (MOUNT!)
+						["races"] = ALLIANCE_ONLY,
+						["timeline"] = { ADDED_11_0_5 },
+					}),
+					i(44083, {	-- Reins of the Grand Black War Mammoth (H) (MOUNT!)
+						["races"] = HORDE_ONLY,
+						["timeline"] = { ADDED_11_0_5 },
+					}),
+					i(186501);	-- Doomwalker Trophy Stand (TOY!)
 					i(186506),	-- Akama's Edge
 					i(186460),	-- Anger-Spark Gloves
 					i(186459),	-- Archaic Charm of Presence
@@ -1992,21 +2297,1103 @@ root(ROOTS.Holidays, applyevent(EVENTS.WOW_ANNIVERSARY, n(WOW_ANNIVERSARY_ROOT, 
 					i(186468),	-- Talon of the Tempest
 					i(186463),	-- Terrorweave Tunic
 					i(186484),	-- Voidforged Greaves
-					i(186469),	-- Illidari Doomhawk (MOUNT!)
-					i(186501);	-- Doomwalker Trophy Stand (TOY!)
 				},
 			}),
 		}),
 	})),
-	n(WOW_ANNIVERSARY_EIGHTEEN, bubbleDownSelf({ ["timeline"] = { "added 10.0.0.46455" } },{
+	n(WOW_ANNIVERSARY_NINETEEN, bubbleDownSelf({ ["timeline"] = { ADDED_10_2_0 } },{
+		n(VENDORS, {
+			n(158061, {	-- Historian Ma'di
+				["coord"] = { 50.7, 41.1, CAVERNS_OF_TIME },
+				["groups"] = {
+					i(186469, {	-- Illidari Doomhawk (MOUNT!)
+						["cost"] = {{ "c", TIMEWARPED_BADGE, 5000 }},
+					}),
+				},
+			}),
+		}),
 	})),
-	n(WOW_ANNIVERSARY_NINETEEN, bubbleDownSelf({ ["timeline"] = { "added 10.1.7" } },{
-		ach(18702),	-- WoW's 19th Anniversary
-		ach(19028),	-- Lil' Frostwing
-		i(208210),	-- Celebration Package
-		i(208211),	-- Anniversary Gift
-		i(208543),	-- Lil' Frostwing (PET!)
-		i(208572),	-- Azure Worldchiller (MOUNT!)
+	n(WOW_ANNIVERSARY_TWENTY, bubbleDownSelf({ ["timeline"] = { ADDED_11_0_5 } },{
+		inst(1301, {	-- Blackrock Depths
+			["isRaid"] = true,
+			--["coord"] = { },
+			["maps"] = {
+				2362,	-- Shadowforge City
+				2363,	-- Detention Block
+			},
+			["g"] = {
+				n(ACHIEVEMENTS, {
+					ach(41220),	-- WoW's 20th Anniversary
+					ach(40999, {		-- You're in Your Blackrock Depths
+						crit(70642, {	-- Lord Roccor
+							["_encounter"] = { ROCCOR, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+						crit(70571, {	-- High Interrogator Gerstahn
+							["_npc"] = { GERSTAHN },
+						}),
+						crit(70643, {	-- Bael'Gar
+							["_encounter"] = { BAELGAR, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+						crit(70572, {	-- Houndmaster Grebmar
+							["_npc"] = { GREBMAR },
+						}),
+						crit(70644, {	-- Lord Incendius
+							["_encounter"] = { INCENDIUS, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+						crit(70575, {	-- Fineous Darkvire
+							["_npc"] = { DARKVIRE },
+						}),
+						crit(70576, {	-- Phalanx
+							["_npc"] = { PHALANX },
+						}),
+						crit(70645, {	-- Golem Lord Argelmach
+							["_encounter"] = { ARGELMACH, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+						crit(70578, {	-- The Seven
+							["_encounter"] = { THE_SEVEN, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+						crit(70646, {	-- General Angerforge
+							["_encounter"] = { ANGERFORGE, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+						crit(70647, {	-- Ambassador Flamelash
+							["_encounter"] = { FLAMELASH, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+						crit(70581, {	-- Pyromancer Loregrain
+							["_npc"] = { LOREGRAIN },
+						}),
+						crit(70648, {	-- Emperor Dagran Thaurissan
+							["_encounter"] = { DAGRAN, DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC },
+						}),
+					}),
+				}),
+				n(QUESTS, {
+					q(83274, {	-- An Original Path Through Time
+						["provider"] = { "n", 223884 },	-- Bobadormu
+						["coord"] = { 62.7, 50.3, TANARIS },
+						["isWeekly"] = true,
+						["lvl"] = 80,
+						["g"] = {
+							i(229359), 	-- Chromie's Goodie Bag
+						},
+					}),
+					q(85947, {	-- An Original Path Through Time
+						["provider"] = { "n", 223884 },	-- Bobadormu
+						["coord"] = { 62.7, 50.3, TANARIS },
+						["isWeekly"] = true,
+						["g"] = {
+							i(232877),	-- Timely Goodie Bag
+						},
+					}),
+					q(82817, {	-- Disturbance Detected: Blackrock Depths
+						["provider"] = { "n", 229494 },	-- Moira Thaurissan <Queen of the Dark Iron>
+						["coord"] = { 63.0, 49.7, TANARIS },
+						["isWeekly"] = true,
+						["g"] = {
+							i(232471, {	-- Cache of Dark Iron Treasures
+								["sym"] = SYM_ALL_BRD_DROPS,
+							}),
+						},
+					}),
+					q(84735, {	-- Truth of the Dark Irons
+						["provider"] = { "n", 229494 },	-- Moira Thaurissan <Queen of the Dark Iron>
+						["coord"] = { 63.0, 49.7, TANARIS },
+					}),
+				}),
+				n(VENDORS, {
+					-- TODO: maybe once I have figured out better 'Sources' tech to list things with a Source and then assign alternate Sources
+					-- this can be cleaned up again while maintaining proper 'cost' links
+					RelicCofferKeyPurchase(231418),	-- Angerforge's Battle Axe
+					RelicCofferKeyPurchase(231480),	-- Anvilrage Dragoon's Trousers
+					RelicCofferKeyPurchase(231477),	-- Anvilrage Medic's Boots
+					RelicCofferKeyPurchase(231479),	-- Anvilrage Rogue's Belt of Knives
+					RelicCofferKeyPurchase(231488),	-- Anvilrage, Warden's Breastplate
+					RelicCofferKeyPurchase(231463),	-- Arbiter's Blade
+					RelicCofferKeyPurchase(231472),	-- Argelmach's Breaking Bar
+					RelicCofferKeyPurchase(231492),	-- Barman Shanker
+					RelicCofferKeyPurchase(231450),	-- Belt of the Eminent Mason
+					RelicCofferKeyPurchase(231447),	-- Bloodclot Band
+					RelicCofferKeyPurchase(231399),	-- Bloodfist
+					RelicCofferKeyPurchase(231493),	-- Bottle-Popper Ring
+					RelicCofferKeyPurchase(231457),	-- Bottled Magma
+					RelicCofferKeyPurchase(231486),	-- Burning Spirit Tender's Mitts
+					RelicCofferKeyPurchase(231424),	-- Burst of Knowledge
+					RelicCofferKeyPurchase(231415),	-- Cape of the Fire Salamander
+					RelicCofferKeyPurchase(231425),	-- Chief Architect's Monocle
+					RelicCofferKeyPurchase(231404),	-- Cinderhide Armsplints
+					RelicCofferKeyPurchase(231412),	-- Circle of Flame
+					RelicCofferKeyPurchase(231489),	-- Dark Warder's Pauldrons
+					RelicCofferKeyPurchase(231431),	-- Deathdealer Breastplate
+					RelicCofferKeyPurchase(231476),	-- Dope'rel's Calling Rune
+					RelicCofferKeyPurchase(231474),	-- Dope'rel's Finger Gloves
+					RelicCofferKeyPurchase(231482),	-- Dragoon's Volley Gun
+					RelicCofferKeyPurchase(231395),	-- Earthslag Shoulders
+					RelicCofferKeyPurchase(231440),	-- Ebonsteel Spaulders
+					RelicCofferKeyPurchase(231407),	-- Emberplate Armguards
+					RelicCofferKeyPurchase(231455),	-- Embershard Pendant
+					RelicCofferKeyPurchase(231437),	-- Emperor's Seal
+					RelicCofferKeyPurchase(231392),	-- Enthralled Sphere
+					RelicCofferKeyPurchase(231448),	-- Entrenching Boots
+					RelicCofferKeyPurchase(231451),	-- Ferrous Cord
+					RelicCofferKeyPurchase(231484),	-- Fireguard's Lava-Dipped Cleaver
+					RelicCofferKeyPurchase(231400),	-- Fists of Phalanx
+					RelicCofferKeyPurchase(231413),	-- Flame Wrath
+					RelicCofferKeyPurchase(231464),	-- Flame-Tempered Skinner
+					RelicCofferKeyPurchase(231468),	-- Flamekeeper's Fire Blanket
+					RelicCofferKeyPurchase(231478),	-- Flamekeeper's Handwraps
+					RelicCofferKeyPurchase(231483),	-- Flamelash's Fiery Spike
+					RelicCofferKeyPurchase(231467),	-- Flamelord's Emberstaff
+					RelicCofferKeyPurchase(231401),	-- Flamestrider Robes
+					RelicCofferKeyPurchase(231485),	-- Flamewalker Scale Spaulders
+					RelicCofferKeyPurchase(231406),	-- Flameweave Cuffs
+					RelicCofferKeyPurchase(231409),	-- Force of Magma
+					RelicCofferKeyPurchase(231414),	-- Force of Will
+					RelicCofferKeyPurchase(231444),	-- Foreman's Head Protector
+					RelicCofferKeyPurchase(231430),	-- Ghostshroud
+					RelicCofferKeyPurchase(231494),	-- Golem Carapace Opener
+					RelicCofferKeyPurchase(231443),	-- Golem Fitted Pauldrons
+					RelicCofferKeyPurchase(231471),	-- Golem Gearbox
+					RelicCofferKeyPurchase(231446),	-- Greaves of Withering Despair
+					RelicCofferKeyPurchase(231491),	-- Grebmar's Catch Pole
+					RelicCofferKeyPurchase(231465),	-- Grizzle's Skinne
+					RelicCofferKeyPurchase(231435),	-- Guiding Stave of Wisdom
+					RelicCofferKeyPurchase(231417),	-- Hand of Justice
+					RelicCofferKeyPurchase(231439),	-- Hands of the Exalted Herald
+					RelicCofferKeyPurchase(231434),	-- Haunting Specter Leggings
+					RelicCofferKeyPurchase(231456),	-- Heart of Roccor
+					RelicCofferKeyPurchase(231487),	-- Helm of the Molten Avatar
+					RelicCofferKeyPurchase(231393),	-- Houndmaster's Bow
+					RelicCofferKeyPurchase(231436),	-- Imperial Jewel
+					RelicCofferKeyPurchase(231427),	-- Impervious Giant
+					RelicCofferKeyPurchase(231458),	-- Insolent Dark Iron's Vest
+					RelicCofferKeyPurchase(231391),	-- Kentic Amice
+					RelicCofferKeyPurchase(231403),	-- Kindling Stave
+					RelicCofferKeyPurchase(231408),	-- Lavacrest Leggings
+					RelicCofferKeyPurchase(231388),	-- Lead Surveyor's Belt
+					RelicCofferKeyPurchase(231449),	-- Leggings of Frenzied Magic
+					RelicCofferKeyPurchase(231432),	-- Legplates of the Eternal Guardian
+					RelicCofferKeyPurchase(231419),	-- Lord General's Sword
+					RelicCofferKeyPurchase(231389),	-- Luminary Robe
+					RelicCofferKeyPurchase(231461),	-- Magma Giant's Crown
+					RelicCofferKeyPurchase(231454),	-- Magma-Shot Boomstick
+					RelicCofferKeyPurchase(231445),	-- Mantle of Lost Hope
+					RelicCofferKeyPurchase(231416),	-- Molten Fists
+					RelicCofferKeyPurchase(231462),	-- Molten Furnace
+					RelicCofferKeyPurchase(231398),	-- Molten Ironfoe
+					RelicCofferKeyPurchase(231396),	-- Naglering
+					RelicCofferKeyPurchase(231423),	-- Omnicast Boots
+					RelicCofferKeyPurchase(231405),	-- Pyremail Wristguards
+					RelicCofferKeyPurchase(231429),	-- Robes of the Royal Crown
+					RelicCofferKeyPurchase(231421),	-- Royal Decorated Armor
+					RelicCofferKeyPurchase(231397),	-- Rubicund Armguards
+					RelicCofferKeyPurchase(231410),	-- Rubidium Hammer
+					RelicCofferKeyPurchase(231475),	-- Sabaton's of Anger'rel
+					RelicCofferKeyPurchase(231481),	-- Sapper's Waistplate
+					RelicCofferKeyPurchase(231411),	-- Sash of the Burning Heart
+					RelicCofferKeyPurchase(231442),	-- Sash of the Grand Hunt
+					RelicCofferKeyPurchase(231402),	-- Searingscale Leggings
+					RelicCofferKeyPurchase(231420),	-- Second Wind
+					RelicCofferKeyPurchase(231426),	-- Senior Designer's Pantaloons
+					RelicCofferKeyPurchase(231453),	-- Shard Splinter
+					RelicCofferKeyPurchase(231470),	-- Spare Golem Frame
+					RelicCofferKeyPurchase(231469),	-- Spare Golem Pauldrons
+					RelicCofferKeyPurchase(231390),	-- Spritecaster Cape
+					RelicCofferKeyPurchase(231394),	-- Stoneshell Guard
+					RelicCofferKeyPurchase(231438),	-- Swiftwalker Boots
+					RelicCofferKeyPurchase(231433),	-- Thaurissan's Royal Scepter
+					RelicCofferKeyPurchase(231473),	-- The Fifth's Linked Treads
+					RelicCofferKeyPurchase(231428),	-- The Hammer of Grace
+					RelicCofferKeyPurchase(231422),	-- Warstrife Leggings
+					RelicCofferKeyPurchase(231441),	-- Wristguards of Renown
+					n(223881, {	-- Braggi Brazenbrass <Raidfinder Relic Coffer Key Exchanger>
+						["coord"] = { 63.0, 49.8, TANARIS },
+						["sym"] = SYM_ALL_BRD_DROPS,
+					}),
+					n(233209, {	-- Kraegan Emberforge <Normal Relic Coffer Key Exchanger>
+						["coord"] = { 63.0, 49.8, TANARIS},
+						["sym"] = SYM_ALL_BRD_DROPS,
+					}),
+					n(224322, {	-- Hilda Hellforge <Heroic Relic Coffer Key Exchanger>
+						["coord"] = { 63.0, 49.8, TANARIS},
+						["sym"] = SYM_ALL_BRD_DROPS,
+					}),
+				}),
+				Difficulty(DIFFICULTY.RAID.MULTI.ALL_WITHOUT_MYTHIC).AddGroups({
+					ZoneDrops({}),
+					Boss(ROCCOR),
+					n(GERSTAHN, {
+						i(231488),	-- Anvilrage, Warden's Breastplate
+						i(231489),	-- Dark Warder's Pauldrons
+						i(231392),	-- Enthralled Sphere
+						i(231446),	-- Greaves of Withering Despair
+						i(231391),	-- Kentic Amice
+					}),
+					Boss(BAELGAR),
+					n(GREBMAR, {
+						i(231491),	-- Grebmar's Catch Pole
+						i(231465),	-- Grizzle's Skinne
+						i(231393),	-- Houndmaster's Bow
+						i(231390),	-- Spritecaster Cape
+					}),
+					Boss(INCENDIUS),
+					n(DARKVIRE, {
+						i(231450),	-- Belt of the Eminent Mason
+						i(231425),	-- Chief Architect's Monocle
+						i(231444),	-- Foreman's Head Protector
+						i(231494),	-- Golem Carapace Opener
+						i(231388),	-- Lead Surveyor's Belt
+						i(231426),	-- Senior Designer's Pantaloons
+					}),
+					n(PHALANX, {
+						i(231492),	-- Barman Shanker
+						i(231399),	-- Bloodfist
+						i(231493),	-- Bottle-Popper Ring
+						i(231451),	-- Ferrous Cord
+						i(231400),	-- Fists of Phalanx
+						i(231443),	-- Golem Fitted Pauldrons
+						i(231441),	-- Wristguards of Renown
+					}),
+					Boss(ARGELMACH),
+					Boss(THE_SEVEN),
+					Boss(ANGERFORGE),
+					Boss(FLAMELASH),
+					n(LOREGRAIN, {
+						i(231448),	-- Entrenching Boots
+						i(231401),	-- Flamestrider Robes
+						i(231403),	-- Kindling Stave
+						i(231402),	-- Searingscale Leggings
+					}),
+					Boss(DAGRAN, {
+						i(224278),	-- Timewarped Ironforge Blueprints (QI!)
+					}),
+				}),
+				Difficulty(DIFFICULTY.RAID.LFR).AddGroups({
+					CommonBossDrops({
+						i(231510),	-- Timewarped Relic Coffer Key
+					}),
+				}),
+				Difficulty(DIFFICULTY.RAID.NORMAL).AddGroups({
+					CommonBossDrops({
+						i(232365),	-- Timewarped Relic Coffer Key
+					}),
+				}),
+				Difficulty(DIFFICULTY.RAID.HEROIC).AddGroups({
+					CommonBossDrops({
+						i(232366),	-- Timewarped Relic Coffer Key
+					}),
+				}),
+			},
+		}),
+		n(ACHIEVEMENTS, {
+			ach(40976, {	-- A Cool Twenty Years
+				-- Meta Achievement
+				["sym"] = {{"meta_achievement",
+					40996,	-- A Gatecrasher
+					40994,	-- An Original
+					40990,	-- Balloonist
+					40977,	-- Codex Editor: Ahn'Qiraj
+					40987,	-- Fashion Critic
+					40985,	-- I Have That One!
+					40992,	-- Peanut Gallery
+					40989,	-- Pet Mischief
+				}},
+				["g"] = {
+					i(228760),	-- Coldflame Tempest (MOUNT!)
+				},
+			}),
+			ach(41015),		-- A Dark Iron Past
+			ach(40996),		-- A Gatecrasher (automated)
+			ach(40998),		-- A Timewalking Step Back to a Classic Dungeon Time (automated)
+			ach(41000),		-- A Timewalking Journey Back to a Classic Dungeon Time (automated)
+			ach(40994),		-- An Original (automated)
+			ach(40993, {	-- Avid Listener
+				crit(70553),	-- Listen to 'The Heroes of the Scarab Wall' story
+				crit(70555),	-- Listen to 'The Mercy of Baine Bloodhoof' story
+				crit(70554),	-- Listen to 'The Tragedy of Thassarian' story
+			}),
+			ach(40990),		-- Balloonist
+			ach(40984),		-- Big Fan
+			ach(41033),		-- Classy Dresser
+			ach(40987),		-- Fashion Critic
+			ach(40991, {	-- Frequent Flyer
+				crit(70549, {["crs"]={225017}}),	-- Bronze Balloon
+				crit(70550, {["crs"]={228529}}),	-- Dark Blue Balloon
+				crit(70548, {["crs"]={225252}}),	-- Gold Balloon
+				crit(70551, {["crs"]={228530}}),	-- Light Blue Balloon
+			}),
+			achWithRep(957, FACTION_ZANDALAR_TRIBE),	-- Hero of the Zandalar Tribe
+			ach(40985),		-- I Have That One!
+			ach(40986),		-- Mount Master
+			ach(40992),		-- Peanut Gallery
+			ach(40989, {	-- Pet Mischief
+				["provider"] = { "i", 224157 },	-- Pet Mirror
+			}),
+			ach(40988, {	-- Photo Op!
+				-- TODO: not sure if we can automate this, haven't checked
+				-- otheriwse list criteria with portal [crs]
+				-- Twilight Highlands 226156
+				-- Uldum 226155
+				-- Mount Hyjal 226154
+				-- Nagrand 226159
+				-- Gorgrond 226158
+				-- Shadowmoon Valley 226157
+				-- The Storm Peaks 226162
+				-- Icecrown 226161
+				-- Grizzly Hills 226160
+				-- Valley of the Four Winds 224532
+				-- Kun-Lai Summit 224531
+				-- Jade Forest 224062
+			}),
+			ach(40997),		-- The Gatecrashers (automated)
+			ach(40995),		-- The Originals (automated)
+			ach(41038),		-- Token Collector
+			ach(41013),		-- Upgraded Apparel
+			ach(40661, {		-- Zoomies!
+				["provider"] = { "i", 224157 },	-- Pet Mirror
+				["crs"] = { 227559 },	-- Zoomy Treat
+				["coords"] = {
+					{ 62.0, 50.1, TANARIS },
+					{ 61.9, 50.1, TANARIS },
+					{ 61.8, 49.9, TANARIS },
+					{ 61.7, 50.0, TANARIS },
+					{ 62.2, 49.6, TANARIS },
+					{ 62.3, 49.3, TANARIS },
+					-- there's quite a many more it seems, not worth for more coords, only need 3 to get achieve
+				},
+			}),
+		}),
+		n(FACTIONS, {
+			faction(FACTION_ZANDALAR_TRIBE, {	-- Zandalar Tribe
+				["icon"] = 135727,
+			}),
+		}),
+		n(GROUP_FINDER, {
+			i(229355, {	-- Chromie's Premium Goodie Bag
+				i(226046),	-- Timely Tourist's Band
+				i(226064),	-- Timely Tourist's Beacon Staff
+				i(226082),	-- Timely Tourist's Belt
+				i(226091),	-- Timely Tourist's Bindings
+				i(226056),	-- Timely Tourist's Blade
+				i(226167),	-- Timely Tourist's Bolthrower
+				i(226085),	-- Timely Tourist's Boots
+				i(226083),	-- Timely Tourist's Bracers
+				i(226068),	-- Timely Tourist's Breastplate
+				i(226076),	-- Timely Tourist's Chainmail
+				i(226169),	-- Timely Tourist's Chisel
+				i(226171),	-- Timely Tourist's Cleaver
+				i(226051),	-- Timely Tourist's Cloak
+				i(226079),	-- Timely Tourist's Coif
+				i(226098),	-- Timely Tourist's Cord
+				i(226095),	-- Timely Tourist's Cowl
+				i(226099),	-- Timely Tourist's Cuffs
+				i(226063),	-- Timely Tourist's Drill-Tipped Stave
+				i(226089),	-- Timely Tourist's Epaulets
+				i(226070),	-- Timely Tourist's Gauntlets
+				i(226074),	-- Timely Tourist's Girdle
+				i(226086),	-- Timely Tourist's Gloves
+				i(226080),	-- Timely Tourist's Greaves
+				i(226078),	-- Timely Tourist's Grips
+				i(226055),	-- Timely Tourist's Hammer
+				i(226094),	-- Timely Tourist's Handwraps
+				i(226170),	-- Timely Tourist's Hatchet
+				i(226087),	-- Timely Tourist's Headgear
+				i(226071),	-- Timely Tourist's Helm
+				i(226072),	-- Timely Tourist's Legguards
+				i(226065),	-- Timely Tourist's Lantern
+				i(226096),	-- Timely Tourist's Leggings
+				i(226088),	-- Timely Tourist's Pants
+				i(226073),	-- Timely Tourist's Pauldrons
+				i(226049),	-- Timely Tourist's Pendant
+				i(226062),	-- Timely Tourist's Polearm
+				i(226054),	-- Timely Tourist's Pummeler
+				i(226048),	-- Timely Tourist's Ring
+				i(226053),	-- Timely Tourist's Ritual Knife
+				i(226092),	-- Timely Tourist's Robes
+				i(226069),	-- Timely Tourist's Sabatons
+				i(226093),	-- Timely Tourist's Sandals
+				i(226090),	-- Timely Tourist's Sash
+				i(226052),	-- Timely Tourist's Shank
+				i(226058),	-- Timely Tourist's Sharpshooter
+				i(226050),	-- Timely Tourist's Shawl
+				i(226066),	-- Timely Tourist's Shield
+				i(226081),	-- Timely Tourist's Shoulderguards
+				i(226097),	-- Timely Tourist's Shoulderpads
+				i(226047),	-- Timely Tourist's Signet
+				i(226061),	-- Timely Tourist's Spade
+				i(226168),	-- Timely Tourist's Spellblade
+				i(226077),	-- Timely Tourist's Striders
+				i(226057),	-- Timely Tourist's Sword
+				i(226059),	-- Timely Tourist's Torch
+				i(226075),	-- Timely Tourist's Vambraces
+				i(226084),	-- Timely Tourist's Vest
+				i(226060),	-- Timely Tourist's Waraxe
+			}),
+			i(226102, {	-- Chromie's Tour Goodie Bag
+				["sym"] = {
+					{ "select", "itemID", 229355},	-- Chromie's Premium Goodie Bag
+					{ "pop" },
+				},
+			}),
+			i(229359, {	-- Chromie's Goodie Bag
+				["sym"] = {
+					{ "select", "itemID", 229355},	-- Chromie's Premium Goodie Bag
+					{ "pop" },
+				},
+			}),
+			i(232877, {	-- Timely Goodie Bag
+				["sym"] = {
+					{ "select", "itemID", 229355},	-- Chromie's Premium Goodie Bag
+					{ "pop" },
+				},
+			}),
+		}),
+		n(QUESTS, {
+			q(82672),	-- Another Timely Invitation
+			q(84254, {	-- Meet and Greet
+				["sourceQuests"] = { 82672 },	-- Another Timely Invitation
+				["provider"] = { "n", 223877 },	-- Yllana <Event Coordinator>
+				["coord"] = { 62.9, 50.7, TANARIS },
+			}),
+			q(84489, {	-- Shopping Squee!
+				["sourceQuests"] = { 84254 },	-- Meet and Greet
+				["provider"] = { "n", 223877 },	-- Yllana <Event Coordinator>
+				["coord"] = { 62.9, 50.7, TANARIS },
+			}),
+			q(84616, {	-- Celebrate Good Fun!
+				["provider"] = { "n", 223877 },	-- Yllana <Event Coordinator>
+				["coord"] = { 62.9, 50.7, TANARIS },
+				["isDaily"] = true
+			}),
+			q(82783, {	-- Chromie's Codex
+				["provider"] = { "n", 226368 },	-- Chromie
+				["coord"] = { 62.6, 50.0, TANARIS },
+				["maps"] = { 2354 },	-- Silithus
+				["isWeekly"] = true,
+				["g"] = {
+					ach(40977),	-- Codex Editor: Ahn'Qiraj
+					i(233014, {	-- Bronze Celebration Cache of Treasures
+						["sym"] = SYM_ALL_BRD_DROPS,
+					}),
+				},
+			}),
+			q(84756),	-- Chapter 2 (faction?)
+			q(85043),	-- Chapter 2 (faction?)
+			q(85195),	-- Chapter 3
+			q(85503),	-- Chapter 4
+			q(84924),	-- The Case of a Feathered Friend
+			q(84435),	-- The Case of an Old Soul
+			q(84933),	-- The Case of Great Aspirations
+			q(85477),	-- The Case of Missing Mementos
+			q(84469),	-- The Case of Pet Games
+			q(84912),	-- The Case of Staged Disaster
+			q(84595),	-- The Loud and Smelly Case
+			------ Stay awhile and listen ------
+			hqt(84743, {	-- Stay awhile and listen: Moira Thaurissan <Queen of the Dark Iron>
+				["name"] = "Stay awhile and listen: Moira Thaurissan",
+				["description"] = "Dialogue becomes available after completing 'Disturbance Detected: Blackrock Depths' (82817).",
+				["sourceQuests"] = { 82817 },	-- Disturbance Detected: Blackrock Depths (Completed)
+				["provider"] = { "n", 229494 },	-- Moira Thaurissan <Queen of the Dark Iron>
+				["coord"] = { 63.0, 49.7, TANARIS },
+			}),
+		}),
+		n(REWARDS, {
+			currency(BRONZE_TOKEN),
+		}),
+		n(TREASURES, {
+			o(455795, {	-- Pet Box
+				["coord"] = { 62, 50.1, TANARIS },
+				["groups"] = {
+					i(224157),	-- Pet Mirror
+				},
+			}),
+		}),
+		n(VENDORS, {
+			n(223884, {	--  Bobadormu
+				["coord"] = { 62.7, 50.3, TANARIS },
+				["g"] = {
+					n(ARMOR, bubbleDownFiltered({
+						["cost"] = {{"c", TIMEWARPED_BADGE, 25}},
+					},FILTERFUNC_itemID,{
+						filter(BACK_F, {
+							i(225187),	-- Blackmetal Cape
+						}),
+						filter(CLOTH, {
+							i(225182),	-- Aristocratic Cuffs
+							i(224858),	-- Coldstone Slippers
+							i(224854),	-- Holy Shroud
+						}),
+						filter(FINGER_F, {
+							i(225186),	-- Freezing Band
+						}),
+						filter(LEATHER, {
+							i(224853),	-- Adventurer's Pith Helmet
+							i(224857),	-- Feet of the Lynx
+							i(225181),	-- Unearthed Bands
+						}),
+						filter(MAIL, {
+							i(224859),	-- Caverndeep Trudgers
+							i(224855),	-- Helm of Narv
+							i(225183),	-- Slimescale Bracers
+						}),
+						filter(PLATE, {
+							i(224860),	-- Boots of Avoidance
+							i(224856),	-- Mugthol's Helm
+							i(225184),	-- Runed Golem Shackles
+						}),
+					})),
+					filter(BATTLE_PETS, {
+						i(224410, {	-- Craggles (PET!)
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2200}}
+						}),
+						i(224406, {	-- Misty (PET!)
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2200}}
+						}),
+					}),
+					filter(COSMETIC, {
+						i(227718, {	-- Bearded Branch of Lore
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2500}}
+						}),
+						i(227704, {	-- Claymore of the Knight's Pledge
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2500}}
+						}),
+						i(227706, {	-- Doomreaper's Scythe
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2500}}
+						}),
+						i(227707, {	-- Doomwail Reaper
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2500}}
+						}),
+						i(227712, {	-- Emberswirl Bulwark
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2000}}
+						}),
+						i(227703, {	-- Farstrider's Huntsblade
+							["cost"] = {{"c", TIMEWARPED_BADGE, 1500}}
+						}),
+						i(227714, {	-- Gilded Drakecrest Shield
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2000}}
+						}),
+						i(227709, {	-- Kirin Tor Adept's Stave
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2500}}
+						}),
+						i(227705, {	-- Runed-Ice Dirk
+							["cost"] = {{"c", TIMEWARPED_BADGE, 1500}}
+						}),
+						i(227717, {	-- Sermons of the Naaru
+							["cost"] = {{"c", TIMEWARPED_BADGE, 1500}}
+						}),
+						i(227711, {	-- Tusked Branch of War
+							["cost"] = {{"c", TIMEWARPED_BADGE, 2500}}
+						}),
+					}),
+					filter(MISC, sharedData({
+						["cost"] = {{"c", TIMEWARPED_BADGE, 50}},
+					}, {
+						i(224567),	-- Commendation of the Argent Dawn
+						i(224558),	-- Commendation of the Brood of Nozdormu
+						i(224561),	-- Commendation of the Hydraxian Waterlords
+						i(224571),	-- Commendation of the Thorium Brotherhood
+						i(224566),	-- Commendation of the Timbermaw Hold
+						i(224565),	-- Commendation of the Wintersaber Trainers
+						i(224570),	-- Commendation of the Zandalar Tribe
+					})),
+					filter(MISC, {	-- Might be unecessary..
+						i(122338, {	-- Ancient Heirloom Armor Casing
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 750 }},
+							["sym"] = {{ "fill" }},
+						}),
+						i(122339, {	-- Ancient Heirloom Scabbard
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 900 }},
+							["sym"] = {{ "fill" }},
+						}),
+						i(204336, {	-- Awakened Heirloom Armor Casing
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1000 }},
+							["timeline"] = { ADDED_10_0_7 },
+							["sym"] = {{ "fill" }},
+						}),
+						i(204337, {	-- Awakened Heirloom Scabbard
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1200 }},
+							["timeline"] = { ADDED_10_0_7 },
+							["sym"] = {{ "fill" }},
+						}),
+						i(167731, {	-- Battle-Hardened Heirloom Armor Casing
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1000 }},
+							["timeline"] = { ADDED_8_1_5 },
+							["sym"] = {{ "fill" }},
+						}),
+						i(167732, {	-- Battle-Hardened Heirloom Scabbard
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1200 }},
+							["timeline"] = { ADDED_8_1_5 },
+							["sym"] = {{ "fill" }},
+						}),
+						i(187997, {	-- Eternal Heirloom Armor Casing
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1000 }},
+							["timeline"] = { ADDED_9_1_5 },
+							["sym"] = {{ "fill" }},
+						}),
+						i(187998, {	-- Eternal Heirloom Scabbard
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1200 }},
+							["timeline"] = { ADDED_9_1_5 },
+							["sym"] = {{ "fill" }},
+						}),
+						i(122340, {	-- Timeworn Heirloom Armor Casing
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1000 }},
+							["sym"] = {{ "fill" }},
+						}),
+						i(122341, {	-- Timeworn Heirloom Scabbard
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1200 }},
+							["sym"] = {{ "fill" }},
+						}),
+						i(151614, {	-- Weathered Heirloom Armor Casing
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1000 }},
+							["timeline"] = { ADDED_7_2_5 },
+							["sym"] = {{ "fill" }},
+						}),
+						i(151615, {	-- Weathered Heirloom Scabbard
+							["cost"] = {{ "c", TIMEWARPED_BADGE, 1200 }},
+							["timeline"] = { ADDED_7_2_5 },
+							["sym"] = {{ "fill" }},
+						}),
+					}),
+					filter(MISC, {
+						i(224190, {	-- Kreeg's Hardy Draught
+							["cost"] = {{"c", TIMEWARPED_BADGE, 25}}
+						}),
+						i(225378, {	-- Mohawk Grenade
+							["cost"] = {{"c", TIMEWARPED_BADGE, 200}}
+						}),
+					}),
+					filter(MOUNTS, {
+						i(224398, {	-- Frayfeather Hippogryph (MOUNT!)
+							["cost"] = {{"c", TIMEWARPED_BADGE, 5000}}
+						}),
+					}),
+					filter(TOYS, {
+						i(224192, {	-- Practice Ravager (TOY!)
+							["cost"] = {{"c", TIMEWARPED_BADGE, 200}}
+						}),
+					}),
+					n(WEAPONS, {
+						i(225200, {	-- Alcor's Sunrazor
+							["cost"] = {{"c", TIMEWARPED_BADGE, 50}}
+						}),
+						i(225195, {	-- Axe of the Deep Woods
+							["cost"] = {{"c", TIMEWARPED_BADGE, 50}}
+						}),
+						i(225192, {	-- Bow of Searing Arrows
+							["cost"] = {{"c", TIMEWARPED_BADGE, 100}}
+						}),
+						i(225197, {	-- Crimson Shocker
+							["cost"] = {{"c", TIMEWARPED_BADGE, 50}}
+						}),
+						i(225193, {	-- Elemental Mage Staff
+							["cost"] = {{"c", TIMEWARPED_BADGE, 100}}
+						}),
+						i(225199, {	-- Flurry Axe
+							["cost"] = {{"c", TIMEWARPED_BADGE, 50}}
+						}),
+						i(225196, {	-- Grimlok's Charge
+							["cost"] = {{"c", TIMEWARPED_BADGE, 100}}
+						}),
+						i(225191, {	-- Gut Ripper
+							["cost"] = {{"c", TIMEWARPED_BADGE, 50}}
+						}),
+						i(225188, {	-- Lefty's Brass Knuckle
+							["cost"] = {{"c", TIMEWARPED_BADGE, 50}}
+						}),
+						i(225189, {	-- Lightforged Blade
+							["cost"] = {{"c", TIMEWARPED_BADGE, 100}}
+						}),
+						i(225190, {	-- Pendulum of Doom
+							["cost"] = {{"c", TIMEWARPED_BADGE, 100}}
+						}),
+						i(225201, {	-- Precisely Calibrated Rifle
+							["cost"] = {{"c", TIMEWARPED_BADGE, 100}}
+						}),
+						i(225194, {	-- Redbeard Crest
+							["cost"] = {{"c", TIMEWARPED_BADGE, 35}}
+						}),
+						i(225198, {	-- Warden Staff
+							["cost"] = {{"c", TIMEWARPED_BADGE, 100}}
+						}),
+					}),
+				},
+			}),
+			n(158061, {	-- Historian Ma'di
+				["coord"] = { 62.6, 50.4, TANARIS },
+				["g"] = {
+					i(229828, {	-- 20th Anniversary Balloon Chest (TOY!)
+						["cost"] = {{"c", BRONZE_TOKEN, 10}}
+					}),
+					i(208572, {	-- Azure Worldchiller (MOUNT!)
+						["cost"] = {{"c", TIMEWARPED_BADGE, 5000}}
+					}),
+					i(232598, {	-- Bag of Timewarped Badges
+						["cost"] = {{"c", BRONZE_TOKEN, 1}}
+					}),
+					i(228785, {	-- Coldflame Bulwark
+						["cost"] = {{"c", BRONZE_TOKEN, 10}}
+					}),
+					i(228788, {	-- Coldflame Edged Crest
+						["cost"] = {{"c", BRONZE_TOKEN, 15}}
+					}),
+					i(228789, {	-- Coldflame Ring (TOY!)
+						["cost"] = {{"c", BRONZE_TOKEN, 10}}
+					}),
+					i(228786, {	-- Coldflame Winged Crown
+						["cost"] = {{"c", BRONZE_TOKEN, 10}}
+					}),
+					i(228784, {	-- Coldflame's Edge
+						["cost"] = {{"c", BRONZE_TOKEN, 10}}
+					}),
+					i(228781, {	-- Lil'Doomy (PET!)
+						["cost"] = {{"c", BRONZE_TOKEN, 10}}
+					}),
+				},
+			}),
+			n(231352, {	-- Notary Grably <Titles of Olde>
+				["coord"] = { 63.3, 50.7, TANARIS },
+				["g"] = {
+					i(230264, {	-- Bronze Celebration Titles: Broken Isles Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(587),	-- Broken Isles Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(230261, {	-- Bronze Celebration Titles: Cataclysm Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(584),	-- Cataclsym Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(230258, {	-- Bronze Celebration Titles: Classic Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(581),	-- Classic Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(230263, {	-- Bronze Celebration Titles: Draenor Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(586),	-- Draenor Enthusias <Name> (TITLE!)
+						},
+					}),
+					i(230268, {	-- Bronze Celebration Titles: Dragon Isles Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(591),	-- Dragon Isles Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(229826, {	-- Bronze Celebration Titles: Grizzly Hills Hiker
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(577),	-- Grizzly Hills Hiker <Name> (TITLE!)
+						},
+					}),
+					i(231833, {	-- Bronze Celebration Titles: Karazhan Graduate
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(596),	-- Karazhan Graduate <Name> (TITLE!)
+						},
+					}),
+					i(230266, {	-- Bronze Celebration Titles: Kul Tiras Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(589),	-- Kul Tiras Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(231832, {	-- Bronze Celebration Titles: Molten Core Prospector
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(595),	-- Molten Core Prospector <Name> (TITLE!)
+						},
+					}),
+					i(230260, {	-- Bronze Celebration Titles: Northrend Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(583),	-- Northrend Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(230259, {	-- Bronze Celebration Titles: Outland Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(582),	-- Outland Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(230262, {	-- Bronze Celebration Titles: Pandaria Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(585),	-- Pandaria Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(229827, {	-- Bronze Celebration Titles: Plaguelands Survivor
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(578),	-- Plaguelands Survivor <Name> (TITLE!)
+						},
+					}),
+					i(230267, {	-- Bronze Celebration Titles: Shadowlands Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(590),	-- Shadowlands Enthusiast <Name> (TITLE!)
+						},
+					}),
+					i(230265, {	-- Bronze Celebration Titles: Zuldazar Enthusiast
+						["cost"] = {{"c", TIMEWARPED_BADGE, 100}},
+						["g"] = {
+							title(588),	-- Zuldazar Enthusiast <Name> (TITLE!)
+						},
+					}),
+				},
+			}),
+			n(229707, {	-- Storekeeper Reginald <Out of Time-ly Trinkets>
+				["coord"] = { 62.9, 51.1, TANARIS },
+				["g"] = sharedData({
+					["cost"] = {{"c", BRONZE_TOKEN, 10}},
+				}, {
+					i(44819),	-- Baby Blizzard Bear (PET!)
+					i(115484),	-- Core Hound (MOUNT!)
+					i(118574),	-- Hatespark the Tiny (PET!)
+					i(172016),	-- Lil' Nefarian (PET!)
+					i(115301),	-- Molten Corgi (PET!)
+					i(49362),	-- Onyxian Whelpling (PET!)
+				}),
+			}),
+			n(223902, {	-- Traeya <Armor Vendor>
+				["coord"] = { 63.1, 50.9, TANARIS },
+				["g"] = sharedData({
+					["cost"] = {{"c", BRONZE_TOKEN, 60}},
+				}, {
+					iensemble(228205, {	-- Ensemble: Pale Rider's Eternal Armor
+						["classes"] = { DEATHKNIGHT },
+					}),
+					iensemble(228206, {	-- Ensemble: Netherwalker's Eternal Armor
+						["classes"] = { DEMONHUNTER },
+					}),
+					iensemble(228199, {	-- Ensemble: Eternal Stormrage Armor
+						["classes"] = { DRUID },
+					}),
+					iensemble(228207, {	-- Ensemble: Earth-Warder's Eternal Armor
+						["classes"] = { EVOKER },
+					}),
+					iensemble(228200, {	-- Ensemble: Dragonstalker's Eternal Armor
+						["classes"] = { HUNTER },
+					}),
+					iensemble(228201, {	-- Ensemble: Eternal Netherwind Regalia
+						["classes"] = { MAGE },
+					}),
+					iensemble(228208, {	-- Ensemble: Eternal Battlegear of the August Acolyte
+						["classes"] = { MONK },
+					}),
+					iensemble(228198, {	-- Ensemble: Eternal Judgment Armor
+						["classes"] = { PALADIN },
+					}),
+					iensemble(228204, {	-- Ensemble: Eternal Vestments of Transcendence
+						["classes"] = { PRIEST },
+					}),
+					iensemble(228202, {	-- Ensemble: Eternal Bloodfang Armor
+						["classes"] = { ROGUE },
+					}),
+					iensemble(228203, {	-- Ensemble: Eternal Ten Storms
+						["classes"] = { SHAMAN },
+					}),
+					iensemble(228209, {	-- Ensemble: Eternal Nemesis Raiment
+						["classes"] = { WARLOCK },
+					}),
+					iensemble(228197, {	-- Ensemble: Eternal Battlegear of Wrath
+						["classes"] = { WARRIOR },
+					}),
+				}),
+			}),
+		}),
+		n(WORLD_BOSSES, {
+			n(226646, {	-- Sha of Anger
+				["isRaid"] = true,
+				["questID"] = 84282,
+				["isDaily"] = true,
+				["coord"] = { 33.7, 55.6 , TANARIS },
+				["maps"] = {
+					74,	--	Caverns of Time Entrance
+					CAVERNS_OF_TIME,
+				},
+				["g"] = {
+					filter(MOUNTS, {
+						i(87771),	-- Reins of the Heavenly Onyx Cloud Serpent (MOUNT!)
+					}),
+					filter(CLOAKS, {
+						i(227641),	-- Malevolent Gladiator's Cape of Cruelty
+						i(227642),	-- Malevolent Gladiator's Cloak of Alacrity
+						i(227640),	-- Malevolent Gladiator's Drape of Prowess
+					}),
+					filter(CLOTH, {
+						i(227591),	-- Gloves of the Burning Scroll
+						i(227590),	-- Leggings of the Burning Scroll
+						i(227586),	-- Guardian Serpent Gloves
+						i(227587),	-- Guardian Serpent Leggings
+						i(227588),	-- Sha-Skin Gloves
+						i(227589),	-- Sha-Skin Leggings
+						i(227635),	-- Malevolent Gladiator's Cord of Accuracy
+						i(227634),	-- Malevolent Gladiator's Cord of Cruelty
+						i(227636),	-- Malevolent Gladiator's Cord of Meditation
+						i(227637),	-- Malevolent Gladiator's Cuffs of Accuracy
+						i(227639),	-- Malevolent Gladiator's Cuffs of Meditation
+						i(227638),	-- Malevolent Gladiator's Cuffs of Prowess
+						i(227629),	-- Malevolent Gladiator's Felweave Handguards
+						i(227632),	-- Malevolent Gladiator's Felweave Trousers
+						i(227630),	-- Malevolent Gladiator's Mooncloth Gloves
+						i(227633),	-- Malevolent Gladiator's Mooncloth Leggings
+						i(227628),	-- Malevolent Gladiator's Silk Handguards
+						i(227631),	-- Malevolent Gladiator's Silk Trousers
+						i(227626),	-- Malevolent Gladiator's Treads of Alacrity
+						i(227625),	-- Malevolent Gladiator's Treads of Cruelty
+						i(227627),	-- Malevolent Gladiator's Treads of Meditation
+					}),
+					filter(LEATHER, {
+						i(227565),	-- Eternal Blossom Grips
+						i(227564),	-- Eternal Blossom Legguards
+						i(227598),	-- Red Crane Grips
+						i(227599),	-- Red Crane Leggings
+						i(227561),	-- Gloves of the Thousandfold Blades
+						i(227560),	-- Legguards of the Thousandfold Blades
+						i(227613),	-- Malevolent Gladiator's Armwraps of Accuracy
+						i(227612),	-- Malevolent Gladiator's Armwraps of Alacrity
+						i(227611),	-- Malevolent Gladiator's Belt of Cruelty
+						i(227614),	-- Malevolent Gladiator's Bindings of Prowess
+						i(227601),	-- Malevolent Gladiator's Boots of Alacrity
+						i(227600),	-- Malevolent Gladiator's Boots of Cruelty
+						i(227602),	-- Malevolent Gladiator's Footguards of Alacrity
+						i(227604),	-- Malevolent Gladiator's Ironskin Gloves
+						i(227607),	-- Malevolent Gladiator's Ironskin Legguards
+						i(227603),	-- Malevolent Gladiator's Leather Gloves
+						i(227606),	-- Malevolent Gladiator's Leather Legguards
+						i(227609),	-- Malevolent Gladiator's Waistband of Cruelty
+						i(227610),	-- Malevolent Gladiator's Waistband of Accuracy
+						i(227605),	-- Malevolent Gladiator's Wyrmhide Gloves
+						i(227608),	-- Malevolent Gladiator's Wyrmhide Legguards
+					}),
+					filter(MAIL, {
+						i(227556),	-- Firebird's Gloves
+						i(227557),	-- Firebird's Kilt
+						i(227559),	-- Yaungol Slayer's Gloves
+						i(227558),	-- Yaungol Slayer's Legguards
+						i(227624),	-- Malevolent Gladiator's Armbands of Prowess
+						i(227617),	-- Malevolent Gladiator's Chain Gauntlets
+						i(227619),	-- Malevolent Gladiator's Chain Leggings
+						i(227616),	-- Malevolent Gladiator's Footguards of Alacrity
+						i(227622),	-- Malevolent Gladiator's Links of Cruelty
+						i(227618),	-- Malevolent Gladiator's Ringmail Gauntlets
+						i(227620),	-- Malevolent Gladiator's Ringmail Leggings
+						i(227615),	-- Malevolent Gladiator's Sabatons of Cruelty
+						i(227621),	-- Malevolent Gladiator's Waistguard of Meditation
+						i(227623),	-- Malevolent Gladiator's Wristguards of Alacrity
+					}),
+					filter(PLATE, {
+						i(227575),	-- Gauntlets of the Lost Catacomb
+						i(227574),	-- Greaves of the Lost Catacomb
+						i(227573),	-- Gauntlets of Resounding Rings
+						i(227572),	-- Legplates of Resounding Rings
+						i(227577),	-- White Tiger Gauntlets
+						i(227576),	-- White Tiger Legplates
+						i(227657),	-- Malevolent Gladiator's Armplates of Alacrity
+						i(227656),	-- Malevolent Gladiator's Armplates of Proficiency
+						i(227655),	-- Malevolent Gladiator's Bracers of Prowess
+						i(227654),	-- Malevolent Gladiator's Clasp of Cruelty
+						i(227647),	-- Malevolent Gladiator's Dreadplate Gauntlets
+						i(227650),	-- Malevolent Gladiator's Dreadplate Legguards
+						i(227652),	-- Malevolent Gladiator's Girdle of Accuracy
+						i(227653),	-- Malevolent Gladiator's Girdle of Prowess
+						i(227644),	-- Malevolent Gladiator's Greaves of Alacrity
+						i(227646),	-- Malevolent Gladiator's Ornamented Gloves
+						i(227649),	-- Malevolent Gladiator's Ornamented Legplates
+						i(227651),	-- Malevolent Gladiator's Plate Legguards
+						i(227648),	-- Malevolent Gladiator's Plate Gauntlets
+						i(227645),	-- Malevolent Gladiator's Warboots of Alacrity
+						i(227643),	-- Malevolent Gladiator's Warboots of Cruelty
+					}),
+				},
+			}),
+			n(227257, {	-- Archavon the Stone Watcher
+				["isRaid"] = true,
+				["questID"] = 84256,
+				["isDaily"] = true,
+				["coord"] = { 46.0, 28.9, TANARIS },
+				["maps"] = {
+					74,	--	Caverns of Time Entrance
+					CAVERNS_OF_TIME,
+				},
+				["g"] = {
+					filter(MOUNTS, {
+						a(i(43959)),	-- Reins of the Grand Black War Mammoth (A) (MOUNT!)
+						h(i(44083)),	-- Reins of the Grand Black War Mammoth (H) (MOUNT!)
+					}),
+					filter(CLOTH, {
+						i(227244),	-- Heroes' Gloves of Faith
+						i(227254),	-- Heroes' Leggings of Faith
+						i(227264),	-- Heroes' Robe of Faith
+						i(227242),	-- Heroes' Frostfire Gloves
+						i(227252),	-- Heroes' Frostfire Leggings
+						i(227262),	-- Heroes' Frostfire Robe
+						i(227243),	-- Heroes' Plagueheart Gloves
+						i(227253),	-- Heroes' Plagueheart Leggings
+						i(227263),	-- Heroes' Plagueheart Robe
+						i(227231),	-- Hateful Gladiator's Felweave Handguards
+						i(227221),	-- Hateful Gladiator's Felweave Raiment
+						i(227241),	-- Hateful Gladiator's Felweave Trousers
+						i(227229),	-- Hateful Gladiator's Mooncloth Gloves
+						i(227239),	-- Hateful Gladiator's Mooncloth Leggings
+						i(227218),	-- Hateful Gladiator's Mooncloth Robe
+						i(227230),	-- Hateful Gladiator's Silk Handguards
+						i(227220),	-- Hateful Gladiator's Silk Raiment
+						i(227240),	-- Hateful Gladiator's Silk Trousers
+					}),
+					filter(LEATHER, {
+						i(227266),	-- Heroes' Bonescythe Breastplate
+						i(227246),	-- Heroes' Bonescythe Gauntlets
+						i(227256),	-- Heroes' Bonescythe Legplates
+						i(227245),	-- Heroes' Dreamwalker Handgrips
+						i(227255),	-- Heroes' Dreamwalker Legguards
+						i(227265),	-- Heroes' Dreamwalker Raiments
+						i(227227),	-- Hateful Gladiator's Kodohide Gloves
+						i(227237),	-- Hateful Gladiator's Kodohide Legguards
+						i(227215),	-- Hateful Gladiator's Kodohide Robes
+						i(227228),	-- Hateful Gladiator's Leather Gloves
+						i(227238),	-- Hateful Gladiator's Leather Legguards
+						i(227214),	-- Hateful Gladiator's Leather Tunic
+					}),
+					filter(MAIL, {
+						i(227247),	-- Heroes' Cryptstalker Handguards
+						i(227257),	-- Heroes' Cryptstalker Legguards
+						i(227267),	-- Heroes' Cryptstalker Tunic
+						i(227248),	-- Heroes' Earthshatter Handguards
+						i(227258),	-- Heroes' Earthshatter Legguards
+						i(227268),	-- Heroes' Earthshatter Tunic
+						i(227213),	-- Hateful Gladiator's Chain Armor
+						i(227226),	-- Hateful Gladiator's Chain Gauntlets
+						i(227236),	-- Hateful Gladiator's Chain Leggings
+						i(227212),	-- Hateful Gladiator's Ringmail Armor
+						i(227225),	-- Hateful Gladiator's Ringmail Gauntlets
+						i(227235),	-- Hateful Gladiator's Ringmail Leggings
+					}),
+					filter(PLATE, {
+						i(227269),	-- Heroes' Dreadnaught Battleplate
+						i(227249),	-- Heroes' Dreadnaught Gauntlets
+						i(227259),	-- Heroes' Dreadnaught Legplates
+						i(227251),	-- Heroes' Redemption Gloves
+						i(227261),	-- Heroes' Redemption Greaves
+						i(227271),	-- Heroes' Redemption Tunic
+						i(227270),	-- Heroes' Scourgeborne Battleplate
+						i(227250),	-- Heroes' Scourgeborne Gauntlets
+						i(227260),	-- Heroes' Scourgeborne Legplates
+						i(227209),	-- Hateful Gladiator's Dreadplate Chestpiece
+						i(227223),	-- Hateful Gladiator's Dreadplate Gauntlets
+						i(227233),	-- Hateful Gladiator's Dreadplate Legguards
+						i(227211),	-- Hateful Gladiator's Ornamented Chestguard
+						i(227224),	-- Hateful Gladiator's Ornamented Gloves
+						i(227234),	-- Hateful Gladiator's Ornamented Legplates
+						i(227210),	-- Hateful Gladiator's Plate Chestpiece
+						i(227222),	-- Hateful Gladiator's Plate Gauntlets
+						i(227232),	-- Hateful Gladiator's Plate Legguards
+					}),
+				},
+			}),
+		}),
 	})),
 })));
 --[[
@@ -2055,4 +3442,47 @@ Cro Threadstrong continually threatened what specific type of vendor in shattrat
 What was the name of the once benevolent spiritual leader in Stormwind that sided with Deathwing? Benedictus
 what is the highest rank that can be bestowed on a night elf watcher? Warden
 --]]
+
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.TWW, bubbleDown({ ["timeline"] = { ADDED_11_0_5 } }, {
+	n(WOW_ANNIVERSARY_TWENTY, {
+		q(84312),	-- Bonus chance (speculated) for Grand Black War Mammoth from Doomwalker/Archavon on first kill per day
+		q(85723),	-- first WB kill of day/event or maybe Doomwalker
+		q(85168),	-- fourth WB kill of day/event or mayba Kazzak
+		q(84878),	-- triggered with turnin of 'Chromie's Codex' [82783] (Bronze Cel Cache lockout?)
+		q(84665),	-- triggered with turnin of 'Timely Gate Crashers' [60215] (Bronze Cel Cache lockout?)
+		q(86202, name(HEADERS.Item, 233014)),	-- opening first Bronze Celebration Cache of week
+		q(84615, name(HEADERS.Spell, 455050)),	-- Blessings of the Bronze Dragonflight, triggered with turnin of 'Celebrate Good Fun' [84616]
+		-- Blackrock Depths
+		q(86278),	-- High Interrogator Gerstahn (LFR)
+		q(86289),	-- High Interrogator Gerstahn (N)
+		q(86290),	-- High Interrogator Gerstahn (H)
+		q(86279),	-- Houndmaster Grebmar (LFR)
+		q(86288),	-- Houndmaster Grebmar (N)
+		q(86291),	-- Houndmaster Grebmar (H)
+		q(86280),	-- Fineous Darkvire (LFR)
+		q(86287),	-- Fineous Darkvire (N)
+		q(86292),	-- Fineous Darkvire (H)
+		q(86281),	-- Phalanx (LFR)
+		q(86286),	-- Phalanx (N)
+		q(86293),	-- Phalanx (H)
+		q(86282),	-- Pyromancer Loregrain (LFR)
+		q(86285),	-- Pyromancer Loregrain (N)
+	}),
+	-- Warband weekly Bronze Celebration Tokens
+	n(WOW_ANNIVERSARY_TWENTY, sharedData(name(HEADERS.Currency, 3100), {
+		hqt(84629),	-- 'Meet and Greet' [84254]
+		hqt(84630),	-- 'Shopping Spree!' [84489]
+		hqt(84604),	-- 'Chromie's Codex' [82783]
+		hqt(84606),	-- 'Timely Gate Crashers' [60215]
+		hqt(84596),	-- Spreading The Lights
+		hqt(84609),	-- Forge the Pact (All Pacts)
+		hqt(84610),	-- Theater Troupe
+		hqt(86466),	-- Awakening The Machine
+		hqt(84599),	-- Sparks of War
+		hqt(84614),	-- World Boss (All)
+		hqt(84598),	-- Rollin' Down in the Deeps
+		hqt(85833),	-- Precussive Archaeology
+		hqt(84608),	-- 'An Original Path Through Time' [85947]
+	})),
+})));
 -- #endif

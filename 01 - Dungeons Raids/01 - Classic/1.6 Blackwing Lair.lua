@@ -1,9 +1,10 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, applyclassicphase(PHASE_THREE, {
 	inst(742, {	-- Blackwing Lair
 		["lore"] = "In the dark recesses of the mountain's peak, Nefarian, the eldest son of Deathwing, conducts some of his most awful experimentation, controlling mighty beings like puppets and combining the eggs of different dragonflights with horrific results. Should he prove successful, even darker pursuits rest on the horizon.\n\nAnd, yet, the Lord of Blackrock is not a mere scientist - he is a great dragon cornered in his lair. Can he truly be defeated by mortal hands?",
+		["provider"] = { "o", 179879 },	-- Orb of Command
 		-- #if BEFORE WRATH
 		["zone-text-areaID"] = 2677,	-- Blackwing Lair
 		-- #endif
@@ -17,6 +18,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 		["isRaid"] = true,
 		["lvl"] = lvlsquish(50, 50, 25),
 		["groups"] = {
+			n(ACHIEVEMENTS, {
+				ach(11742, {["timeline"] = {ADDED_7_2_0}}),	-- Dress in Lairs (Blackwing Lair)
+			}),
 			n(QUESTS, {
 				q(7781, {	-- The Lord of Blackrock [A]
 					["provider"] = { "i", 19003 },	-- Head of Nefarian
@@ -131,6 +135,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 						12461,	-- Death Talon Overseer
 					},
 				}),
+				i(19183),	-- Hourglass Sand
 				i(19439, {	-- Interlaced Shadow Jerkin
 					["crs"] = {
 						12460,	-- Death Talon Wyrmguard
@@ -146,7 +151,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 				["creatureID"] = 12435,
 				["groups"] = {
 					i(93036, {	-- Untamed Hatchling (PET!)
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(19334),	-- The Untamed Blade
 					i(19335),	-- Spineshatter
@@ -189,7 +194,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 				["creatureID"] = 12017,
 				["groups"] = {
 					i(93037, {	-- Death Talon Whelpguard (PET!)
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(19351),	-- Maladath, Runed Blade of the Black Flight
 					i(19350),	-- Heartstriker
@@ -302,7 +307,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 				["creatureID"] = 14020,
 				["groups"] = {
 					i(93038, {	-- Chrominius (PET!)
-						["timeline"] = { "added 5.1.0.16309" },
+						["timeline"] = { ADDED_5_1_0 },
 					}),
 					i(19352),	-- Chromatically Tempered Sword
 					i(19347),	-- Claw of Chromaggus
@@ -329,7 +334,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 				},
 			}),
 			e(1536,  {	-- Nefarian
-				["creatureID"] = 11583,	-- Nefarian
+				["crs"] = {
+					11583,	-- Nefarian
+					10162,	-- Lord Victor Nefarius
+				},
 				["groups"] = {
 					ach(685, {	-- Blackwing Lair
 						-- #if BEFORE WRATH
@@ -341,7 +349,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 						-- #endif
 					}),
 					ach(5057, {	-- Blackwing Lair Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					i(19003, {	-- Head of Nefarian (A)
 						["races"] = ALLIANCE_ONLY,
@@ -350,7 +358,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, applyclassicphase(PHASE_THREE, {
 						["races"] = HORDE_ONLY,
 					}),
 					i(170511, {	-- Head of Nefarian (Paladin, for Artifact appearance)
-						["timeline"] = { "added 8.2.0.30918" },
+						["timeline"] = { ADDED_8_2_0 },
 						["classes"] = { PALADIN },
 					}),
 					i(19364),	-- Ashkandi, Greatsword of the Brotherhood

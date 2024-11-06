@@ -1,14 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(258, {	-- The Mechanar
 		["lore"] = "Among the satellites of Tempest Keep, the Mechanar has been chosen by Kael'thas to be a factory to create large amounts of power. Mechano-Lord Capacitus appears to be the one creating it using the naaru-technology found in Tempest Keep, and the power is stored in manacells which piles up into walls and heaps inside the satellite. The large amount of manacells are smuggled by ethereals to the Sunwell where Kael'thas plans to use them to power up the summoning of Kil'jaeden.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3849,	-- The Mechanar
-		["sins"] = {
-			"Tempest Keep: The Mechanar",
-			"Festung der Stürme: Die Mechanar",
-		},
+		-- #endif
 		["coord"] = { 70.61, 69.75, NETHERSTORM },	-- The Mechanar, Netherstorm
 		["maps"] = {
 			TEMPEST_KEEP_MECHANAR,
@@ -29,8 +27,23 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 				q(29659, {	-- Lost Treasure
-					["description"] = "Automatically provided after killing either Gatewatcher.",
-					["timeline"] = { "added 4.3.0.14732" },
+					["qg"] = 18481,	-- A'dal
+					-- #if ANYCLASSIC
+					["description"] = "Blizzard broke the cache of the legion with Cataclysm Classic by removing the keys and not adding the automatic unlock from killing the mini bosses.",
+					["isBounty"] = true,
+					-- #else
+					-- #if AFTER MOP
+					["description"] = "Automatically provided after killing either Gatewatcher. If autocomplete doesn't work, you can turn in at A'dal in Shattrath City.",
+					-- #else
+					["description"] = "Automatically provided after killing either Gatewatcher. This appears to be bugged.",
+					-- #endif
+					-- #endif
+					["timeline"] = {
+						ADDED_4_3_0,
+						-- #if ANYCLASSIC
+						REMOVED_4_3_0,
+						-- #endif
+					},
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Blinding Fury
@@ -39,8 +52,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 				q(29658, {	-- The Calculator
+					["qg"] = 18481,	-- A'dal
 					["sourceQuest"] = 29657,	-- With Great Power, Comes Great Responsibility
-					["timeline"] = { "added 4.3.0.14732" },
+					["description"] = "Automatically provided upon stepping into the final hallway. If autocomplete doesn't work, you can turn in at A'dal in Shattrath City.",
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- Pathaleon the Calculator slain
@@ -49,8 +64,9 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 				q(29657, {	-- With Great Power, Comes Great Responsibility
-					["description"] = "Automatically provided upon starting the instance.",
-					["timeline"] = { "added 4.3.0.14732" },
+					["qg"] = 18481,	-- A'dal
+					["description"] = "Automatically provided upon starting the instance. If autocomplete doesn't work, you can turn in at A'dal in Shattrath City.",
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- Mechano-Lord Capacitus slain
@@ -74,19 +90,23 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["cr"] = 19710,	-- Gatewatcher Iron-Hand
 				}),
 				-- #endif
-				i(21906, {	-- Pattern: Arcanoweave Boots
+				i(21906, {	-- Pattern: Arcanoweave Boots (RECIPE!)
 					["cr"] = 19168,	-- Sunseeker Astromage
 				}),
 				i(22920, {	-- Recipe: Major Fire Protection Potion (RECIPE!)
 					["cr"] = 19168,	-- Sunseeker Astromage
 				}),
 			}),
-			o(184465, {	-- Cache of the Legion
+			o(184465, bubbleDownSelf({ 
+				-- #if ANYCLASSIC
+				["description"] = "Blizzard broke the cache of the legion with Cataclysm Classic by removing the keys and not adding the automatic unlock from killing the mini bosses.",
+				["timeline"] = { REMOVED_4_0_3 },
+				["isBounty"] = true,
+				-- #endif
+			}, {	-- Cache of the Legion
 				["modelScale"] = 1.6,
 				-- #if BEFORE 4.3.0.14942
-				["cost"] = {
-					{ "i", 30438, 1 },	-- Cache of the Legion Key
-				},
+				["cost"] = {{ "i", 30438, 1 }},	-- Cache of the Legion Key
 				-- #endif
 				["groups"] = {
 					i(28252),	-- Bloodfyre Robes of Annihilation
@@ -95,15 +115,15 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					i(28250),	-- Vestia's Pauldrons of Inner
 					-- #if BEFORE MOP
 					i(28248, {	-- Totem of the Void
-						["timeline"] = { "removed 5.0.4" },
+						["timeline"] = { REMOVED_5_0_4 },
 					}),
 					-- #endif
 					i(72663, {	-- Blinding Fury
-						["timeline"] = { "added 4.3.0.14942" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 				},
-			}),
-			d(NORMAL_DUNGEON, {
+			})),
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(563, {	-- Mechano-Lord Capacitus
 					["creatureID"] = 19219,
 					["groups"] = {
@@ -112,7 +132,9 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(28253),	-- Plasma Rat's Hyper-Scythe
 						i(28256),	-- Thoriumweave Cloak
 						i(28254),	-- Warp Engineer's Prismatic Chain
-						i(35582),	-- Schematic: Rocket Boots Xtreme Lite
+						i(35582, {	-- Schematic: Rocket Boots Xtreme Lite (RECIPE!)
+							["timeline"] = { ADDED_2_4_0 },
+						}),
 					},
 				}),
 				e(564, {	-- Nethermancer Sepethrea
@@ -130,7 +152,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(28263),	-- Stellaris
 						-- #if BEFORE MOP
 						i(28258, {	-- Nethershrike
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 						i(22920),	-- Recipe: Major Fire Protection Potion (RECIPE!)
@@ -172,12 +194,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(30533),	-- Vanquisher's Legplates
 						-- #endif
-						i(21907),	-- Pattern: Arcanoweave Robe
+						i(21907),	-- Pattern: Arcanoweave Robe (RECIPE!)
 						i(31086),	-- Bottom Shard of the Arcatraz Key
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -209,7 +231,9 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(28253),	-- Plasma Rat's Hyper-Scythe
 							i(28256),	-- Thoriumweave Cloak
 							i(28254),	-- Warp Engineer's Prismatic Chain
-							i(35582),	-- Schematic: Rocket Boots Xtreme Lite
+							i(35582, {	-- Schematic: Rocket Boots Xtreme Lite (RECIPE!)
+								["timeline"] = { ADDED_2_4_0 },
+							}),
 						},
 					}),
 					e(564, {	-- Nethermancer Sepethrea
@@ -227,7 +251,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(28263),	-- Stellaris
 							-- #if BEFORE MOP
 							i(28258, {	-- Nethershrike
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 							i(22920),	-- Recipe: Major Fire Protection Potion (RECIPE!)
@@ -237,10 +261,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 19220,
 						["groups"] = {
 							ach(679, {	-- Heroic: The Mechanar
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5079, {	-- Heroic: The Mechanar Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(28288),	-- Abacus of Violent Odds
 							i(28269),	-- Baba's Cloak of Arcanistry
@@ -264,7 +288,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(29362),	-- The Sun Eater
 							i(28204),	-- Tunic of Assassination
 							i(30533),	-- Vanquisher's Legplates
-							i(21907),	-- Pattern: Arcanoweave Robe
+							i(21907),	-- Pattern: Arcanoweave Robe (RECIPE!)
 							applyclassicphase(TBC_PHASE_ONE, i(23572)),	-- Primal Nether
 							i(31086),	-- Bottom Shard of the Arcatraz Key
 							i(33860),	-- Pathaleon's Projector
@@ -277,7 +301,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35528),	-- The Mechanar Reward Quest - Normal completion
 		q(35529),	-- The Mechanar Reward Quest - Heroic completion
 	}),

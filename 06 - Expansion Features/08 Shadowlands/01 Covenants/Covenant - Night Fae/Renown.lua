@@ -5,7 +5,7 @@ local WISPS_OF_MEMORY = i(186472, {	-- Wisps of Memory
 	["description"] = "Rewarded at 52, 67 and 76 Renown.",
 });
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
 	n(NIGHT_FAE, {
 		n(RENOWN, {
 			["description"] = "These are rewards automatically granted by reaching a specific level of Renown.",
@@ -25,19 +25,8 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				title(428, {	-- Winter's Envoy (TITLE!)
 					["description"] = "Requires Renown 40.",
 				}),
-				i(186497, {	-- Ensemble: Garb of Pure Spirit
+				iensemble(186497, {	-- Ensemble: Garb of Pure Spirit
 					["description"] = "Requires Renown 60.",
-					["g"] = {
-						i(184974),	-- Pure Sight Drape
-						i(184968),	-- Pure Sight Handwraps
-						i(184969),	-- Pure Sight Hood
-						i(184970),	-- Pure Sight Leggings
-						i(184971),	-- Pure Sight Mantle
-						i(184972),	-- Pure Sight Sash
-						i(184967),	-- Pure Sight Slippers
-						i(184966),	-- Pure Sight Vestments
-						i(184973),	-- Pure Sight Wraps
-					},
 				}),
 				i(188000, {	-- Grovetender's Pack
 					["description"] = "Rewarded at 15 and 24 Renown.",
@@ -67,29 +56,35 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 
 WISPS_OF_MEMORY.customCollect = nil;
 
-root(ROOTS.HiddenQuestTriggers, {
-	q(64074),	-- hitting Renown 45 - received mount, Ardenweald Wilderling
-	q(64406),	-- hitting Renown 48 [Death Knight] (received Memory of Rampant Transference)
-	q(64385),	-- hitting Renown 48 [Demon Hunter] (received Memory of Blazing Slaughter)
-	q(64397),	-- hitting Renown 48 [Druid] (received Memory of Celestial Spirits)
-	q(64388),	-- hitting Renown 48 [Hunter] (received Memory of the Fragments of the Elder Antlers)
-	q(64403),	-- hitting Renown 48 [Mage] (received Memory of the Fae Heart)
-	q(64380),	-- hitting Renown 48 [Monk] (received Memory of Faeline Harmony)
-	q(64382),	-- hitting Renown 48 [Paladin] (received Memory of Seasons of Plenty)
-	q(64408),	-- hitting Renown 48 [Priest] (received Memory of Bwonsamdi's Pact)
-	q(64401),	-- hitting Renown 48 [Rogue] (received Memory of Toxic Onslaught)
-	q(64416),	-- hitting Renown 48 [Shaman] (received Memory of the Seeds of Rampant Growth)
-	q(64402),	-- hitting Renown 48 [Warlock] (received Memory of the Decaying Soul Satchel)
-	q(64423),	-- hitting Renown 48 [Warrior] (received Memory of Nature's Fury)
-	q(64081),	-- hitting Renown 50
-	q(64449),	-- hitting Renown 52
-	q(64079),	-- hitting Renown 56
-	q(64088),	-- hitting Renown 59
-	q(64374),	-- hitting Renown 60
-	q(64450),	-- hitting Renown 67
-	q(63598),	-- learning Ensemble: Garb of Pure Spirit (Renown reward)
-	q(64451),	-- Renown 76
-	-- 9.1.5 New HQTS
-	q(65111),	-- hitting Renown 15 (Anima instead of Soulkeeper Upgrade)
-	q(65112),	-- hitting Renown 24 (Anima instead of Soulkeeper Upgrade)
-});
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	n(NIGHT_FAE, {
+		n(RENOWN, {
+			q(62746),	-- Reaching Renown 19 / unlocking Deepening Bond 4% stam increase
+			q(62747),	-- Reaching Renown 35 / unlocking Deepening Bond 6% stam increase
+			q(62415),	-- Reaching Renown 39 / unlocking covenant mount
+			q(64074, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 45 - received mount, Ardenweald Wilderling
+			q(64406, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Death Knight] (received Memory of Rampant Transference)
+			q(64385, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Demon Hunter] (received Memory of Blazing Slaughter)
+			q(64397, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Druid] (received Memory of Celestial Spirits)
+			q(64388, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Hunter] (received Memory of the Fragments of the Elder Antlers)
+			q(64403, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Mage] (received Memory of the Fae Heart)
+			q(64380, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Monk] (received Memory of Faeline Harmony)
+			q(64382, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Paladin] (received Memory of Seasons of Plenty)
+			q(64408, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Priest] (received Memory of Bwonsamdi's Pact)
+			q(64401, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Rogue] (received Memory of Toxic Onslaught)
+			q(64416, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Shaman] (received Memory of the Seeds of Rampant Growth)
+			q(64402, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Warlock] (received Memory of the Decaying Soul Satchel)
+			q(64423, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Warrior] (received Memory of Nature's Fury)
+			q(64081, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 50
+			q(64449, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 52
+			q(64079, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 56
+			q(64088, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 59
+			q(64374, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 60
+			q(64450, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 67
+			q(64451, {["timeline"] = {ADDED_9_1_0}}),	-- Renown 76
+			-- 9.1.5 New HQTS
+			q(65111, {["timeline"] = {ADDED_9_1_5}}),	-- hitting Renown 15 (Anima instead of Soulkeeper Upgrade)
+			q(65112, {["timeline"] = {ADDED_9_1_5}}),	-- hitting Renown 24 (Anima instead of Soulkeeper Upgrade)
+		}),
+	}),
+})));

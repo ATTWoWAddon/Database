@@ -1,6 +1,21 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
+ZSKERA_VAULTS = createHeader({
+	readable = "Zskera Vaults",
+	icon = 4638590,
+	text = {
+		en = "Zskera Vaults",
+		es = "Cámaras de Zskera",
+		de = "Gewölbe von Zskera",
+		fr = "Caveaux de Zskera",
+		it = "Cripte di Zskera",
+		pt = "Câmaras de Zskera",
+		ru = "Зкерские хранилища",
+		ko = "지스케라 금고",
+		cn = "兹斯克拉宝库",
+	},
+});
 root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }, {
 	m(THE_FORBIDDEN_REACH, {
 		n(ZSKERA_VAULTS, {
@@ -11,12 +26,14 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 				}),
 				ach(17509),	-- Every Door, Everywhere, All At Once
 			}),
-			filter(MISC, {
+			filter(MISC, bubbleDown({
+				["cost"] = {{"i",203705,1}},	-- Empty Obsidian Vial
+			},{
 				i(203715),	-- Oozing Gold
 				i(203720),	-- Restorative Water
 				i(203704),	-- Stone Dissolver
 				i(203718),	-- Vial of Flames
-			}),
+			})),
 			n(QUESTS, {
 				q(73160, {	-- Helping Hand and Claw
 					["sourceQuests"] = {
@@ -26,6 +43,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					},
 					["provider"] = { "n", 199201 },	-- Scalecommander Viridia
 					["coord"] = { 34.6, 57.7, THE_FORBIDDEN_REACH },
+					["g"] = {
+						i(202713),	-- Scattered Supplies (QI!)
+					},
 				}),
 				q(73159, {	-- Exploring Our Past
 					["sourceQuests"] = { 73160 },	-- Helping Hand and Claw
@@ -35,13 +55,22 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 				q(74294, {	-- The Keys You Need
 					["sourceQuests"] = { 73159 },	-- Exploring Our Past
 					["provider"] = { "n", 200041 },	-- Pathfinder Tacha
-					["coord"] = { 25.8, 47.9, THE_FORBIDDEN_REACH },
+					["coord"] = { 29.2, 53.1, THE_FORBIDDEN_REACH },	-- TODO: old 25.8, 47.9
 					["g"] = {
+						-- Still available from the One-Time Quests, but since 10.2 its also buyable from a vendor
+						-- #if BEFORE 10.2.0
 						i(202196),	-- Zskera Vault Key
+						-- #endif
 					},
 				}),
 				q(72953, {	-- Zskera Vault: Az
-					["sourceQuests"] = { 74381 },	-- Hidden Legacies
+					["sourceQuests"] = {
+						-- #IF AFTER 11.0.2
+						73159,	-- Exploring Our Past
+						-- #ELSE
+						74381,	-- Hidden Legacies
+						-- #ENDIF
+					},
 					["provider"] = { "n", 200040 },	-- Pathfinder Jeb
 					["coord"] = { 25.8, 47.9, THE_FORBIDDEN_REACH },
 				}),
@@ -65,13 +94,16 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					["provider"] = { "n", 200041 },	-- Pathfinder Tacha
 					["coord"] = { 29.1, 53.0, THE_FORBIDDEN_REACH },
 					["g"] = {
+						-- Still available from the One-Time Quests, but since 10.2 its also buyable from a vendor
+						-- #if BEFORE 10.2.0
 						i(202196),	-- Zskera Vault Key
+						-- #endif
 					},
 				}),
 				q(73089, {	-- What's Behind The Next Door
-					["sourceQuests"] = { 74381 },	-- Hidden Legacies
+					["sourceQuests"] = { 74294 },	-- The Keys You Need
 					["provider"] = { "n", 200041 },	-- Pathfinder Tacha
-					["coord"] = { 25.8, 47.9, THE_FORBIDDEN_REACH },
+					["coord"] = { 29.2, 53.1, THE_FORBIDDEN_REACH },	-- TODO: old 25.8, 47.9, could be changed with TWW release?
 				}),
 				q(72956, {	-- More Doors to Open
 					["sourceQuests"] = { 74381 },	-- Hidden Legacies
@@ -176,7 +208,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					["isWeekly"] = true,
 					["g"] = {
 						i(202294),	-- Recipe Pages
+						-- Still available from Quest, but since 10.2 its also buyable from a vendor
+						-- #if BEFORE 10.2.0
 						i(202196),	-- Zskera Vault Key
+						-- #endif
 					},
 				}),
 				q(74869, {	-- Primordial Answers
@@ -190,10 +225,14 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 						i(204210),	-- Primordial Storm Core
 						i(204212),	-- Primordial Water Core
 						i(203701),	-- Neltharion Gift Token
+						-- Still available from Quest, but since 10.2 its also buyable from a vendor
+						-- #if BEFORE 10.2.0
 						i(202196),	-- Zskera Vault Key
+						-- #endif
 					},
 				}),
 				q(73155, {	-- The Forgotten Ring
+					["sourceQuests"] = { 72953 },	-- Zskera Vault: Az
 					["provider"] = { "o", 385952 },	-- Unusual Ring
 					["coord"] = { 29.7, 57.2, THE_FORBIDDEN_REACH },
 					["g"] = {
@@ -210,7 +249,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					},
 				}),
 				-- Evoker Tablets
-				q(73115, { -- Journal Entry: Silence (A)
+				q(73115, {	-- Journal Entry: Silence (A)
 					["provider"] = { "i", 202337 },	-- Journal Entry: Silence [A]
 					["races"] = ALLIANCE_ONLY,
 				}),
@@ -218,7 +257,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					["provider"] = { "i", 204246 },	-- Journal Entry: Silence [H]
 					["races"] = HORDE_ONLY,
 				}),
-				q(73114, { -- Journal Entry: The Creches (A)
+				q(73114, {	-- Journal Entry: The Creches (A)
 					["provider"] = { "i", 202336 },	-- Journal Entry: The Creches [A]
 					["races"] = ALLIANCE_ONLY,
 				}),
@@ -226,7 +265,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					["provider"] = { "i", 204223 },	-- Journal Entry: The Creches [H]
 					["races"] = HORDE_ONLY,
 				}),
-				q(73108, { -- Journal Entry: The Prisoner (A)
+				q(73108, {	-- Journal Entry: The Prisoner (A)
 					["provider"] = { "i", 202327 },	-- Journal Entry: The Prisoner [A]
 					["races"] = ALLIANCE_ONLY,
 				}),
@@ -282,7 +321,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 				n(TIER_ONE, sharedData({
 					["isWeekly"] = true,
 				},{
-					["icon"] = "Interface\\Icons\\Inv_10_specialreagentfoozles_primalistrune_white",
+					["icon"] = 4643990,
 					["g"] = {
 						o(387507, {	-- Azerite Powder Barrel
 							["g"] = {
@@ -297,6 +336,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							},
 						}),
 						o(398770, {	-- Box of Rocks
+							["coord"] = { 31.0, 56.0, THE_FORBIDDEN_REACH },
 							["questID"] = 75484,
 							["g"] = {
 								i(199216),	-- A Box of Rocks
@@ -320,7 +360,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 						o(386470, {	-- Gold Pile
 							["questID"] = 74434,
 						}),
-						o(386472, { -- Gold Pile
+						o(386472, {	-- Gold Pile
 							["questID"] = 74435,
 						}),
 						o(385032, {	-- Gold Pile
@@ -494,7 +534,11 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							["coord"] = { 30.5, 57.6, THE_FORBIDDEN_REACH },
 							["questID"] = 75146,
 							["g"] = {
-								i(204405),	-- Stuffed Bear
+								i(204405, {	-- Stuffed Bear (TOY!)
+									-- #if BEFORE TWW
+									["description"] = "This will be a Toy in The War Within.",
+									-- #endif
+								}),
 							},
 						}),
 						o(9000000, {	-- Wind Sculpted Stone	--TODO: fake ID
@@ -510,7 +554,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 				n(TIER_TWO, sharedData({
 					["isWeekly"] = true,
 				},{
-					["icon"] = "Interface\\Icons\\Inv_10_specialreagentfoozles_primalistrune_wind",
+					["icon"] = 4643991,
 					["g"] = {
 						o(386687, {	-- Aged Journal
 							["questID"] = 74610,
@@ -521,11 +565,15 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 						o(386690, {	-- Ambiguous Compendium
 							["coord"] = { 29.4, 58.1, THE_FORBIDDEN_REACH },
 							["questID"] = 74613,
+							["g"] = {
+								i(204815),	-- Ambiguous Compendium
+							},
 						}),
 						o(393282, {	-- Balloon Box
 							["questID"] = 75217,
 							["g"] = {
 								i(169673),	-- Blue Paint Filled Bladder
+								i(169675),	-- Orange Paint Filled Bladder
 							},
 						}),
 						o(393283, {	-- Balloon Box
@@ -588,7 +636,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							["coord"] = { 26.5, 49.3, THE_FORBIDDEN_REACH },
 							["questID"] = 73068,
 						}),
-						o(393957, { -- Gold Pile
+						o(393957, {	-- Gold Pile
 							["questID"] = 75254,
 						}),
 						o(393958, {	-- Gold Pile
@@ -644,6 +692,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 						o(386680, {	-- Mysterious Almanac
 							["coord"] = { 29.4, 58.3, THE_FORBIDDEN_REACH },
 							["questID"] = 74589,
+							["g"] = {
+								i(204816),	-- Mysterious Almanac
+							},
 						}),
 						o(386582, {	-- Neltharion Gift Token
 							["coord"] = { 26.4, 49.4, THE_FORBIDDEN_REACH },
@@ -751,6 +802,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 						o(386683, {	-- Seared Book
 							["coord"] = { 29.2, 58.5, THE_FORBIDDEN_REACH },
 							["questID"] = 74609,
+							["g"] = {
+								i(204812),	-- Seared Book
+							},
 						}),
 						o(385401, {	-- Searing Chest
 							["coord"] = { 28.5, 57.5, THE_FORBIDDEN_REACH },
@@ -763,6 +817,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							["coord"] = { 30.7, 55.1, THE_FORBIDDEN_REACH },
 							["questID"] = 75136,
 							["description"] = "Use Restorative Water on an Overgrown Skeleton.",
+							["cost"] = {{"i",203720,1}},	-- Restorative Water
 							["cr"] = 202336,	-- Overgrown Skeleton
 							["g"] = {
 								i(203852),	-- Spore-bound Essence (TOY!)
@@ -801,17 +856,11 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 				n(TIER_THREE, sharedData({
 					["isWeekly"] = true,
 				},{
-					["icon"] = "Interface\\Icons\\Inv_10_specialreagentfoozles_primalistrune_frost",
+					["icon"] = 4643989,
 					["g"] = {
 						o(392030, {	-- Blacksteel Hammer
 							["g"] = {
 								i(204443),	-- Blacksteel Hammer
-							},
-						}),
-						o(390559, {	-- Box of Rocks
-							["questID"] = 75152,
-							["g"] = {
-								i(199216),	-- A Box of Rocks
 							},
 						}),
 						o(392570, {	-- Chain-Bound Primordial Cache
@@ -880,6 +929,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 						}),
 						o(386648, {	-- Mysterious Scroll
 							["questID"] = 74574,
+							["isWeekly"] = IGNORED_VALUE,
 							["g"] = {
 								i(204802),	-- Scroll of Teleport: Ziskara Vaults
 							},
@@ -971,13 +1021,20 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 				n(TIER_FOUR, sharedData({
 					["isWeekly"] = true,
 				},{
-					["icon"] = "Interface\\Icons\\Inv_10_specialreagentfoozles_primalistrune_fire",
+					["icon"] = 4643988,
 					["g"] = {
 						o(387749, {	-- Animate Crystalspine
 							["coord"] = { 24.5, 51.0, THE_FORBIDDEN_REACH },
 							["questID"] = 74864,
 							["g"] = {
 								i(193908),	-- Kobaldt (PET!)
+							},
+						}),
+						o(390559, {	-- Box of Rocks (confirmed)
+							["coord"] = { 28.2, 57.6, THE_FORBIDDEN_REACH },
+							["questID"] = 75152,
+							["g"] = {
+								i(199216),	-- A Box of Rocks
 							},
 						}),
 						o(386454, {	-- Chest of Ice
@@ -1135,7 +1192,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					["coord"] = { 29.5, 55.7, THE_FORBIDDEN_REACH },
 					["isWeekly"] = true,
 					["g"] = {
-						i(202278),	-- Renewed Proto-Drake: Antlers (DM!)
+						i(202278),	-- Renewed Proto-Drake: Antlers (MM!)
 					},
 				}),
 			}),
@@ -1178,100 +1235,102 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 		}),
 	}),
 })));
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }, {
+	m(DRAGON_ISLES, {
+		m(THE_FORBIDDEN_REACH, {
+			n(ZSKERA_VAULTS, {
+				-- Accepted??
+				q(72510),
+				q(72675),
+				q(72677),
+				q(72678),
+				q(72699),
+				q(74444),
+				q(74445),
+				q(74468),
+				q(74471),	-- Triggered after accepting Zskera Vault: Az
+				q(74784),
+				q(72897),
+				q(72896),
+				q(72895),
+				q(72894),
+				q(72893),
+				q(72891),
+				q(72898),
+				q(72899),
+				q(74510),
+				q(74297),
+				q(74298),
+				q(74296),
+				q(74299),
+				q(74301),
+				q(74302),
+				q(74303),
+				q(74304),
+				q(74311),
+				q(74313),
+				q(74315),
+				q(74319),
+				q(74320),
+				q(74323),
+				q(74324),
+				q(75125, {	-- Every Door, Everywhere, All At Once (Hidden Achievement Trigger)
+					["isWeekly"] = true,
+				}),
+				q(74327),
+				q(74496),
+				q(75032),
+				-- Completed
+				q(74432),	-- (spellID 400632)
+				q(74472),
+				q(74474),
+				q(74475),
+				q(74497),
+				q(74498),
+				q(74528),
+				q(74755),
+				q(74756),
+				q(74867),
+				q(74499),
+				q(75160),
 
-root(ROOTS.HiddenQuestTriggers, tier(DF_TIER, bubbleDownSelf({ ["timeline"] = { ADDED_10_0_7 } }, {
-	n(ZSKERA_VAULTS, {
-		-- Accepted??
-		q(72510),
-		q(72675),
-		q(72677),
-		q(72678),
-		q(72699),
-		q(74444),
-		q(74445),
-		q(74468),
-		q(74471),	-- Triggered after accepting Zskera Vault: Az
-		q(74784),
-		q(72897),
-		q(72896),
-		q(72895),
-		q(72894),
-		q(72893),
-		q(72891),
-		q(72898),
-		q(72899),
-		q(74510),
-		q(74297),
-		q(74298),
-		q(74296),
-		q(74299),
-		q(74301),
-		q(74302),
-		q(74303),
-		q(74304),
-		q(74311),
-		q(74313),
-		q(74315),
-		q(74319),
-		q(74320),
-		q(74323),
-		q(74324),
-		q(75125, {	-- Every Door, Everywhere, All At Once (Hidden Achievement Trigger)
-			["isWeekly"] = true,
+				q(74513),	-- When using Stone Dissolver to Open Shattered Crystals (spellID 401095)
+				q(74431),	-- When Completed Quest: 72953 Zskera Vault: Az (spellID 400630)
+				q(74473),	-- Triggered when accepting 'The Scary Vault of Ur'
+				q(74748),	-- Triggered when looting Recipe Rat along with 74509
+				q(75490),	-- Triggered when fishing up Dormant Primordial Fragment from Disgusting Vat
+				q(75159),	-- Triggered when fishing up Neltharion Gift Token from Disgusting Vat
+				q(75488),	-- Triggered when fishing up Emmah from Disgusting Vat
+				q(75158),	-- Triggered when fishing up Prismatic Fragment from Disgusting Vat
+				q(75489),	-- Triggered when fishing up Dormant Primordial Fragment #2 from Disgusting Vat
+				q(75130),	-- Triggered after firing the Irontide Cannon (spellID 402977)
+				q(74486),	-- Triggered after clicking the Perfumed Censer (spellID 400835)
+				q(75046),	-- Triggered after looting Dormant Primordial Fragment from Consumed Gem
+
+
+				-- TODO: See if these need to be associated with treasures
+				q(74611),	-- Research Volume Spawn (201953)
+				q(75014),	-- Touch big slime?
+				-- Chains
+				q(75173),	-- Pulled Chain First Floor (spellID 405401)
+				q(75172),	-- Pulled Chain Second Floor (spellID 405400)
+				q(75170),	-- Pulled Chain Third Floor (spellID 405379 & 405384)
+				q(75171),	-- Pulled Chain Fourth Floor (spellID 405387)
+				q(75174),	-- Pulled Chain Third Floor (spellID 405403)
+				-- Stone Dissolver
+				q(75069),	-- On Primordial Earth Cache 389789 (spellID 404836)
+				q(75070),	-- On Primordial Earth Cache 389902 (spellID 404835)
+
+				q(74970),	-- During 'Verbal Archaeology' (questID 74447)
+				q(74971),	-- During 'Second Time Is The Charm' (questID 74493)
+				q(74997),	-- During 'A Difficult Legacy' (questID 74996)
+				q(74998),	-- During 'A Difficult Legacy' (questID 74996)
+				q(74999),	-- During 'A Difficult Legacy' (questID 74996)
+				q(75000),	-- During 'A Difficult Legacy' (questID 74996)
+				q(75001),	-- During 'A Difficult Legacy' (questID 74996)
+				q(75002),	-- During 'A Difficult Legacy' (questID 74996)
+				q(75003),	-- During 'A Difficult Legacy' (questID 74996)
+			}),
 		}),
-		q(74327),
-		q(74496),
-		q(75032),
-		-- Completed
-		q(74432),	-- (spellID 400632)
-		q(74472),
-		q(74474),
-		q(74475),
-		q(74497),
-		q(74498),
-		q(74528),
-		q(74755),
-		q(74756),
-		q(74867),
-		q(74499),
-		q(75160),
-
-		q(74513),	-- When using Stone Dissolver to Open Shattered Crystals (spellID 401095)
-		q(74431),	-- When Completed Quest: 72953 Zskera Vault: Az (spellID 400630)
-		q(74473),	-- Triggered when accepting 'The Scary Vault of Ur'
-		q(74748),	-- Triggered when looting Recipe Rat along with 74509
-		q(75127),	-- Triggered when earning "Every Door, Everywhere, All At Once" (spellID 404923)
-		q(75490),	-- Triggered when fishing up Dormant Primordial Fragment from Disgusting Vat
-		q(75159),	-- Triggered when fishing up Neltharion Gift Token from Disgusting Vat
-		q(75488),	-- Triggered when fishing up Emmah from Disgusting Vat
-		q(75158),	-- Triggered when fishing up Prismatic Fragment from Disgusting Vat
-		q(75489),	-- Triggered when fishing up Dormant Primordial Fragment #2 from Disgusting Vat
-		q(75130),	-- Triggered after firing the Irontide Cannon (spellID 402977)
-		q(74486),	-- Triggered after clicking the Perfumed Censer (spellID 400835)
-		q(75046),	-- Triggered after looting Dormant Primordial Fragment from Consumed Gem
-
-
-		-- TODO: See if these need to be associated with treasures
-		q(74611),	-- Research Volume Spawn (201953)
-		q(75014),	-- Touch big slime?
-		-- Chains
-		q(75173),	-- Pulled Chain First Floor (spellID 405401)
-		q(75172),	-- Pulled Chain Second Floor (spellID 405400)
-		q(75170),	-- Pulled Chain Third Floor (spellID 405379 & 405384)
-		q(75171),	-- Pulled Chain Fourth Floor (spellID 405387)
-		q(75174),	-- Pulled Chain Third Floor (spellID 405403)
-		-- Stone Dissolver
-		q(75069),	-- On Primordial Earth Cache 389789 (spellID 404836)
-		q(75070),	-- On Primordial Earth Cache 389902 (spellID 404835)
-
-		q(74970),	-- During 'Verbal Archaeology' (questID 74447)
-		q(74971),	-- During 'Second Time Is The Charm' (questID 74493)
-		q(74997),	-- During 'A Difficult Legacy' (questID 74996)
-		q(74998),	-- During 'A Difficult Legacy' (questID 74996)
-		q(74999),	-- During 'A Difficult Legacy' (questID 74996)
-		q(75000),	-- During 'A Difficult Legacy' (questID 74996)
-		q(75001),	-- During 'A Difficult Legacy' (questID 74996)
-		q(75002),	-- During 'A Difficult Legacy' (questID 74996)
-		q(75003),	-- During 'A Difficult Legacy' (questID 74996)
 	}),
 })));

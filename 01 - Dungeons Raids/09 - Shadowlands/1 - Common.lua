@@ -1,21 +1,21 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_2_5, REMOVED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_2_5, REMOVED_10_0_2_LAUNCH } }, {
 	n(COMMON_BOSS_DROPS, {
-		d(HEROIC_RAID, {
+		d(DIFFICULTY.RAID.HEROIC, {
 			i(191910, {	-- Confounding Antique Cypher
 				["description"] = "Drops from Fated Heroic Shadowlands Raid bosses.",
 			}),
-			i(191911, { -- Cosmic Creation Impetus
+			i(191911, {	-- Cosmic Creation Impetus
 				["cost"] = { { "i", 191910, 20 } },	-- 20x Confounding Antique Cypher
 			}),
 		}),
-		d(MYTHIC_RAID, {
+		d(DIFFICULTY.RAID.MYTHIC, {
 			i(191926, {	-- Confounding Ancient Cypher
 				["description"] = "Drops from Fated Mythic Shadowlands Raid bosses.",
 			}),
-			i(191927, { -- Sacred Creation Impetus
+			i(191927, {	-- Sacred Creation Impetus
 				["cost"] = { { "i", 191926, 20 } },	-- 20x Confounding Ancient Cypher
 			}),
 		}),
@@ -124,7 +124,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_2_5, R
 			},
 		}),
 		q(66696, {	-- Tempting Fate: Fate of the Shadowlands
-			["timeline"] = { "created 9.2.7", ADDED_10_0_0, "removed 10.0.2.47213" },
+			["timeline"] = { CREATED_9_2_7, ADDED_10_0_0, REMOVED_10_0_2_LAUNCH },
 			["isWorldQuest"] = true,
 			["maps"] = {
 				-- Castle Nathria

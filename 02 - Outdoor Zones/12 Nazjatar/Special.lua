@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } }, {
+root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { ADDED_8_2_0 } }, {
 	n(SPECIAL, {
 		i(169201, {	-- Fabious (MOUNT!)
 			["description"] = "|c00CC2222!!DO NOT KILL!!|r\n|cFFFFD700Fabious|r spawns every couple hours, walks around for a couple minutes, then disappears. Use the |cFFFFD700S.E.L.F.I.E. Camera MkII|r to take a picture with him for the mount.",
@@ -16,6 +16,14 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 			},
 			["cost"] = {
 				{ "i", 122674, 1 },	-- S.E.L.F.I.E. Camera MkII
+			},
+		}),
+		o(373439, {	--  Flipper Fish School
+			["timeline"] = { ADDED_9_2_5 },
+			["cost"] = {{"i",187662,1}},	-- Strange Goop
+			["coord"] = { 72.8, 24.3, NAZJATAR },
+			["g"] = {
+				i(187922),	-- Flipper Fish
 			},
 		}),
 		pvp(o(327652, {	-- War Supply Chest (A)

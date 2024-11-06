@@ -2,13 +2,13 @@
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
 
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_1_0 }, {
-	inst(77, {	-- Zul'Aman
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_1_0 }, {
+	applyclassicphase(CATA_PHASE_RISE_OF_THE_ZANDALARI, inst(77, {	-- Zul'Aman
 		["mapID"] = ZULAMAN,
-		["isRaid"] = false,	-- prevent merging isRaid from BC version
 		["coord"] = { 81.8, 64.3, GHOSTLANDS },	-- Zul'Aman, Ghostlands
+		["isRaid"] = false,	-- prevent merging isRaid from BC version
 		["groups"] = {
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["groups"] = {
 					n(QUESTS, {
 						q(29188, {	-- A Troll Among Trolls
@@ -32,7 +32,17 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_1_0 },
 							["groups"] = {
 								i(69599),	-- Pauldrons of Ambition
 								i(69598),	-- Robes of Dissention
+								-- #if BEFORE MOP
+								i(69597, {	-- Zulian Throwing Axe
+									["timeline"] = { ADDED_4_1_0, REMOVED_5_0_4 },
+								}),
+								-- #endif
 							},
+						}),
+						q(29261, {	-- Zul'Aman Voodoo
+							["provider"] = { "o", 208549 },	-- Voodoo Pile
+							["requireSkill"] = ARCHAEOLOGY,
+							["isRepeatable"] = true,
 						}),
 					}),
 					n(TREASURES, {
@@ -46,6 +56,18 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_1_0 },
 							["groups"] = {
 								i(23923),	-- Amani Sacrificial Dagger
 								i(29518),	-- Amani Scimitar
+							},
+						}),
+					}),
+					n(VENDORS, {
+						n(52915, {	-- Harald
+							["cost"] = {
+								{ "i", 33865, 1 },	-- Amani Hex Stick
+							},
+							["groups"] = {
+								i(33926, {	-- Sealed Scroll Case
+									["description"] = "Can contain profession recipes."
+								})
 							},
 						}),
 					}),
@@ -97,6 +119,13 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_1_0 },
 							},
 						}),
 						i(69802),	-- Band of the Gurubashi Berserker
+						i(69803, {	-- Gurubashi Punisher
+							["crs"] = {
+								130241,	-- Zandalari Archon
+								130243,	-- Zandalari Hierophant
+								130245,	-- Zandalari Juggernaut
+							},
+						}),
 						i(69798, {	-- Knotted Handwraps
 							["crs"] = {
 								23584,	-- Amani Bear
@@ -128,48 +157,43 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_1_0 },
 						},
 						["groups"] = {
 							i(33993, {	-- Mojo (PET!)
-								["timeline"] = { "added 2.3.0.7382" },
+								["timeline"] = { ADDED_2_3_0 },
 							}),
 							ach(5761, {	-- Hex Mix
-								crit(1, {	-- Rosa saved.
+								crit(16836, {	-- Rosa saved.
 									["provider"] = { "n", 52905 },	-- Rosa
 								}),
-								crit(2, {	-- Eulinda saved.
+								crit(16837, {	-- Eulinda saved.
 									["provider"] = { "n", 52914 },	-- Eulinda
 								}),
-								crit(3, {	-- Lenzo saved.
+								crit(16838, {	-- Lenzo saved.
 									["provider"] = { "n", 52917 },	-- Lenzo
 								}),
-								crit(4, {	-- Melasong saved.
+								crit(16839, {	-- Melasong saved.
 									["provider"] = { "n", 52916 },	-- Melasong
 								}),
-								crit(5, {	-- Harald saved.
+								crit(16840, {	-- Harald saved.
 									["provider"] = { "n", 52915 },	-- Harald
-									["groups"] = {
-										i(33926, {	-- Sealed Scroll Case
-											["description"] = "Can contain profession recipes."
-										})
-									}
 								}),
-								crit(6, {	-- Relissa saved.
+								crit(16841, {	-- Relissa saved.
 									["provider"] = { "n", 52912 },	-- Relissa
 								}),
-								crit(7, {	-- Kaldrick saved.
+								crit(16842, {	-- Kaldrick saved.
 									["provider"] = { "n", 52918 },	-- Kaldrick
 								}),
-								crit(8, {	-- Arinoth saved.
+								crit(16843, {	-- Arinoth saved.
 									["provider"] = { "n", 52919 },	-- Arinoth
 								}),
-								crit(9, {	-- Micah saved.
+								crit(16844, {	-- Micah saved.
 									["provider"] = { "n", 52910 },	-- Micah
 								}),
-								crit(10, {	-- Tyllan saved.
+								crit(16845, {	-- Tyllan saved.
 									["provider"] = { "n", 52909 },	-- Tyllan
 								}),
-								crit(11, {	-- Mawago saved.
+								crit(16846, {	-- Mawago saved.
 									["provider"] = { "n", 52920 },	-- Mawago
 								}),
-								crit(12, {	-- Melissa saved.
+								crit(16847, {	-- Melissa saved.
 									["provider"] = { "n", 52947 },	-- Melissa
 								}),
 							}),
@@ -258,7 +282,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_1_0 },
 					}),
 					e(191, {	-- Daakara
 						["crs"] = { 23863 },	-- Daakara
-						["groups"] = {					
+						["groups"] = {
 							ach(5769),	-- Heroic: Zul'Aman
 							ach(5771),	-- Heroic: Zul'Aman Guild Run
 							ach(5760),	-- Ring Out!
@@ -277,23 +301,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_1_0 },
 				},
 			}),
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35443),	-- Zul'Aman Reward Quest - Heroic completion
-	}),
-});
-root(ROOTS.NeverImplemented, {
-	tier(CATA_TIER, {
-		inst(77, {	-- Zul'Aman
-			["mapID"] = ZULAMAN,
-			["groups"] = {
-				filter(MAIL, {
-					i(33964),	-- Helm of the Stormcaller - Never Added
-				}),
-			},
-		}),
 	}),
 });

@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(VOLDUN, {
 		filter(BATTLE_PETS, {
 			["sym"] = {{"select","speciesID",
@@ -15,7 +15,7 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 					["description"] = "Best found around the coastline of Vol'dun. Can also be found in Tiragarde, best spot is East-ish of Bridgeport.",
 				}),
 				o(311903, bubbleDownSelf({ ["timeline"] = { ADDED_8_1_0 } }, {	-- Loose Parts (A)
-					["icon"] = "Interface\\Icons\\INV_Engineering_ReavesBattery",
+					["icon"] = 1405815,
 					["races"] = ALLIANCE_ONLY,
 					["coord"] = { 41.69, 42.54, VOLDUN },	-- Location chest spawns
 					["g"] = {
@@ -40,7 +40,7 @@ root(ROOTS.Zones, m(ZANDALAR, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
 					},
 				})),
 				o(311902, bubbleDownSelf({ ["timeline"] = { ADDED_8_1_0 } }, {	-- Loose Parts (H)
-					["icon"] = "Interface\\Icons\\INV_Engineering_ReavesBattery",
+					["icon"] = 1405815,
 					["races"] = HORDE_ONLY,
 					["coord"] = { 41.69, 42.54, VOLDUN },	-- Location chest spawns
 					["g"] = {

@@ -2,7 +2,7 @@
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
 
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(861, {	-- Trial of Valor
 		["isRaid"] = true,
 		["coord"] = { 70.4, 69.4, STORMHEIM },
@@ -10,29 +10,55 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 		["lvl"] = 110,
 		["g"] = {
 			n(ACHIEVEMENTS, {
+				ach(11762, {["timeline"] = {ADDED_7_2_0}}),	-- Can I Get A Helya (Trial of Valor)
 				ach(11394, {	-- Trial of Valor
-					crit(1, { -- Odyn
-						["_encounter"] = { 1819, LFR_RAID },
+					crit(34578, {	-- Odyn
+						["_encounter"] = { 1819, DIFFICULTY.RAID.LFR },
 					}),
-					crit(2, { -- Guarm
-						["_encounter"] = { 1830, LFR_RAID },
+					crit(34800, {	-- Guarm
+						["_encounter"] = { 1830, DIFFICULTY.RAID.LFR },
 					}),
-					crit(3, { -- Helya
-						["_encounter"] = { 1829, LFR_RAID },
+					crit(34799, {	-- Helya
+						["_encounter"] = { 1829, DIFFICULTY.RAID.LFR },
 					}),
 				}),
 				ach(11426, {	-- Heroic: Trial of Valor
-					crit(1, { -- Odyn
-						["_encounter"] = { 1819, HEROIC_RAID },
+					crit(34839, {	-- Odyn
+						["_encounter"] = { 1819, DIFFICULTY.RAID.HEROIC },
 					}),
-					crit(2, { -- Guarm
-						["_encounter"] = { 1830, HEROIC_RAID },
+					crit(34841, {	-- Guarm
+						["_encounter"] = { 1830, DIFFICULTY.RAID.HEROIC },
 					}),
-					crit(3, { -- Helya
-						["_encounter"] = { 1829, HEROIC_RAID },
+					crit(34840, {	-- Helya
+						["_encounter"] = { 1829, DIFFICULTY.RAID.HEROIC },
 					}),
 				}),
 				ach(11403),	-- Trial of Valor Guild Run
+			}),
+			n(COMMON_BOSS_DROPS, {
+				["g"] = sharedData({
+					["modID"] = 4,	-- LFR
+					["description"] = "This item has a chance to drop from any boss in LFR, Normal, Heroic, and Mythic difficulties.",
+					["crs"] = {
+						114263,	-- Odyn
+						114344,	-- Guarm
+						114323,	-- Guarm
+						114537,	-- Helya
+					},
+				},{
+					iensemble(143509, {	-- Ensemble: Vestment of the Chosen Dead
+						["classes"] = CLOTH_CLASSES,
+					}),
+					iensemble(143513, {	-- Ensemble: Garb of the Chosen Dead
+						["classes"] = LEATHER_CLASSES,
+					}),
+					iensemble(143517, {	-- Ensemble: Chains of the Chosen Dead
+						["classes"] = MAIL_CLASSES,
+					}),
+					iensemble(143521, {	-- Ensemble: Funerary Plate of the Chosen Dead
+						["classes"] = PLATE_CLASSES,
+					}),
+				}),
 			}),
 			n(QUESTS, {
 				q(44868, {	-- Trial of Valor: Odyn's Judgment
@@ -42,146 +68,28 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				q(45088, {	-- Trial of Valor: The Lost Army
 					["provider"] = { "n", 114263 },	-- Odyn
 					["g"] = {
-						i(143506, {	-- Ensemble: Vestment of the Chosen Dead
-							["classes"] = { PRIEST, MAGE, WARLOCK },
-							["g"] = {
-								i(143346),	-- Circlet of the Chosen Dead
-								i(143356),	-- Mantle of the Chosen Dead
-								i(143369),	-- Drape of the Chosen Dead
-								i(143353),	-- Robe of the Chosen Dead
-								i(143362),	-- Bracers of the Chosen Dead
-								i(143343),	-- Gloves of the Chosen Dead
-								i(143359),	-- Sash of the Chosen Dead
-								i(143350),	-- Pantaloons of the Chosen Dead
-								i(143338),	-- Sandals of the Chosen Dead
-							},
+						iensemble(143506, {	-- Ensemble: Vestment of the Chosen Dead
+							["classes"] = CLOTH_CLASSES,
 						}),
-						i(143510, {	-- Ensemble: Garb of the Chosen Dead
-							["classes"] = { DRUID, ROGUE, MONK, DEMONHUNTER },
-							["g"] = {
-								i(143348),	-- Hood of the Chosen Dead
-								i(143354),	-- Shoulderpads of the Chosen Dead
-								i(143366),	-- Wrap of the Chosen Dead
-								i(143336),	-- Tunic of the Chosen Dead
-								i(143365),	-- Wristguards of the Chosen Dead
-								i(143341),	-- Grips of the Chosen Dead
-								i(143361),	-- Strap of the Chosen Dead
-								i(143352),	-- Leggings of the Chosen Dead
-								i(143340),	-- Boots of the Chosen Dead
-							},
+						iensemble(143510, {	-- Ensemble: Garb of the Chosen Dead
+							["classes"] = LEATHER_CLASSES,
 						}),
-						i(143514, {	-- Ensemble: Chains of the Chosen Dead
-							["classes"] = { HUNTER, SHAMAN },
-							["g"] = {
-								i(143347),	-- Coif of the Chosen Dead
-								i(143357),	-- Pauldrons of the Chosen Dead
-								i(143368),	-- Cloak of the Chosen Dead
-								i(143335),	-- Chain Shirt of the Chosen Dead
-								i(143364),	-- Armbands of the Chosen Dead
-								i(143344),	-- Gauntlets of the Chosen Dead
-								i(143360),	-- Girdle of the Chosen Dead
-								i(143351),	-- Chain Leggings of the Chosen Dead
-								i(143339),	-- Sabatons of the Chosen Dead
-							},
+						iensemble(143514, {	-- Ensemble: Chains of the Chosen Dead
+							["classes"] = MAIL_CLASSES,
 						}),
-						i(143518, {	-- Ensemble: Funerary Plate of the Chosen Dead
-							["classes"] = { PALADIN, WARRIOR, DEATHKNIGHT },
-							["g"] = {
-								i(143345),	-- Visor of the Chosen Dead
-								i(143355),	-- Shoulderplates of the Chosen Dead
-								i(143367),	-- Greatcloak of the Chosen Dead
-								i(143334),	-- Chestplate of the Chosen Dead
-								i(143363),	-- Wristclamps of the Chosen Dead
-								i(143342),	-- Handguards of the Chosen Dead
-								i(143358),	-- Waistplate of the Chosen Dead
-								i(143349),	-- Legplates of the Chosen Dead
-								i(143337),	-- Treads of the Chosen Dead
-							},
+						iensemble(143518, {	-- Ensemble: Funerary Plate of the Chosen Dead
+							["classes"] = PLATE_CLASSES,
 						}),
 					},
 				}),
 			}),
-			d(LFR_RAID, {	-- Queue NPC
+			d(DIFFICULTY.RAID.LFR, {	-- Queue NPC
 				["crs"] = { 111246 },	-- Archmage Timear
 				["coord"] = { 63.7, 55.0, LEGION_DALARAN },
 			}),
-			d(LFR_RAID, {
+			d(DIFFICULTY.RAID.LFR, {
 				n(ZONE_DROPS, {
 					i(142541),	-- Drape of the Forgotten Souls
-				}),
-				n(COMMON_BOSS_DROPS, {
-					["crs"] = {
-						114263,	-- Odyn
-						114344,	-- Guarm
-						114323,	-- Guarm
-						114537,	-- Helya
-					},
-					["g"] = {
-						i(143509, {	-- Ensemble: Vestment of the Chosen Dead
-							["description"] = "This item has a chance to drop from any boss in LFR, Normal, Heroic, and Mythic difficulties.",
-							["classes"] = { PRIEST, MAGE, WARLOCK },
-							["crs"] = { 116242 },	-- Aspiring Champion of the Chosen Dead
-							["g"] = {
-								i(143346),	-- Circlet of the Chosen Dead
-								i(143356),	-- Mantle of the Chosen Dead
-								i(143369),	-- Drape of the Chosen Dead
-								i(143353),	-- Robe of the Chosen Dead
-								i(143362),	-- Bracers of the Chosen Dead
-								i(143343),	-- Gloves of the Chosen Dead
-								i(143359),	-- Sash of the Chosen Dead
-								i(143350),	-- Pantaloons of the Chosen Dead
-								i(143338),	-- Sandals of the Chosen Dead
-							},
-						}),
-						i(143513, {	-- Ensemble: Garb of the Chosen Dead
-							["description"] = "This item has a chance to drop from any boss in LFR, Normal, Heroic, and Mythic difficulties.",
-							["classes"] = { DRUID, ROGUE, MONK, DEMONHUNTER },
-							["crs"] = { 116242 },	-- Aspiring Champion of the Chosen Dead
-							["g"] = {
-								i(143348),	-- Hood of the Chosen Dead
-								i(143354),	-- Shoulderpads of the Chosen Dead
-								i(143366),	-- Wrap of the Chosen Dead
-								i(143336),	-- Tunic of the Chosen Dead
-								i(143365),	-- Wristguards of the Chosen Dead
-								i(143341),	-- Grips of the Chosen Dead
-								i(143361),	-- Strap of the Chosen Dead
-								i(143352),	-- Leggings of the Chosen Dead
-								i(143340),	-- Boots of the Chosen Dead
-							},
-						}),
-						i(143517, {	-- Ensemble: Chains of the Chosen Dead
-							["description"] = "This item has a chance to drop from any boss in LFR, Normal, Heroic, and Mythic difficulties.",
-							["classes"] = { HUNTER, SHAMAN },
-							["crs"] = { 116242 },	-- Aspiring Champion of the Chosen Dead
-							["g"] = {
-								i(143347),	-- Coif of the Chosen Dead
-								i(143357),	-- Pauldrons of the Chosen Dead
-								i(143368),	-- Cloak of the Chosen Dead
-								i(143335),	-- Chain Shirt of the Chosen Dead
-								i(143364),	-- Armbands of the Chosen Dead
-								i(143344),	-- Gauntlets of the Chosen Dead
-								i(143360),	-- Girdle of the Chosen Dead
-								i(143351),	-- Chain Leggings of the Chosen Dead
-								i(143339),	-- Sabatons of the Chosen Dead
-							},
-						}),
-						i(143521, {	-- Ensemble: Funerary Plate of the Chosen Dead
-							["description"] = "This item has a chance to drop from any boss in LFR, Normal, Heroic, and Mythic, difficulties.",
-							["classes"] = { PALADIN, WARRIOR, DEATHKNIGHT },
-							["crs"] = { 116242 },	-- Aspiring Champion of the Chosen Dead
-							["g"] = {
-								i(143345),	-- Visor of the Chosen Dead
-								i(143355),	-- Shoulderplates of the Chosen Dead
-								i(143367),	-- Greatcloak of the Chosen Dead
-								i(143334),	-- Chestplate of the Chosen Dead
-								i(143363),	-- Wristclamps of the Chosen Dead
-								i(143342),	-- Handguards of the Chosen Dead
-								i(143358),	-- Waistplate of the Chosen Dead
-								i(143349),	-- Legplates of the Chosen Dead
-								i(143337),	-- Treads of the Chosen Dead
-							},
-						}),
-					},
 				}),
 				header(HEADERS.Achievement, 11394, {	-- Trial of Valor
 					cr(114263, e(1819, {	-- Odyn
@@ -240,14 +148,32 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 				}),
 			}),
-			d(NORMAL_RAID, {
+			d(DIFFICULTY.RAID.MULTI.NORMAL_PLUS, {
+				cr(114263, e(1819, {	-- Odyn
+					i(142110),	-- Vantus Rune Technique: Odyn [Rank 1] (RECIPE!)
+					i(142104),	-- Vantus Rune Technique: Odyn [Rank 2] (RECIPE!)
+				})),
+				e(1830, {	-- Guarm
+					["crs"] = {
+						114344,	-- Guarm
+						114323,	-- Guarm
+					},
+					["g"] = {
+						i(142111),	-- Vantus Rune Technique: Guarm [Rank 1] (RECIPE!)
+						i(142105),	-- Vantus Rune Technique: Guarm [Rank 2] (RECIPE!)
+					},
+				}),
+				cr(114537, e(1829, {	-- Helya
+					i(142112),	-- Vantus Rune Technique: Helya [Rank 1] (RECIPE!)
+					i(142106),	-- Vantus Rune Technique: Helya [Rank 2] (RECIPE!)
+				})),
+			}),
+			d(DIFFICULTY.RAID.NORMAL, {
 				n(ZONE_DROPS, {
 					i(142541),	-- Drape of the Forgotten Souls
 				}),
 				cr(114263, e(1819, {	-- Odyn
 					ach(11337),	-- You Runed Everything!
-					i(142110),	-- Vantus Rune Technique: Odyn [Rank 1] (RECIPE!)
-					i(142104),	-- Vantus Rune Technique: Odyn [Rank 2] (RECIPE!)
 					i(142540),	-- Mantle of the Victorious Dead
 					i(142431),	-- Gleaming Val'kyr Cuirass
 					i(142410),	-- Robes of Celestial Adornment
@@ -269,9 +195,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						114323,	-- Guarm
 					},
 					["g"] = {
-						ach(11386),	-- Boneafide Tri Tip
-						i(142111),	-- Vantus Rune Technique: Guarm [Rank 1] (RECIPE!)
-						i(142105),	-- Vantus Rune Technique: Guarm [Rank 2] (RECIPE!)
+						ach(11386, {	-- Boneafide Tri Tip
+							["crs"] = { 116404 },	-- Guarm's Chew Toy
+						}),
 						i(142412),	-- Windwhipped Sailcloth
 						i(142432),	-- Helbeast Skin Tunic
 						i(142423),	-- Bite-Resistant Wristclamps
@@ -289,8 +215,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				}),
 				cr(114537, e(1829, {	-- Helya
 					ach(11377),	-- Patient Zero
-					i(142112),	-- Vantus Rune Technique: Helya [Rank 1] (RECIPE!)
-					i(142106),	-- Vantus Rune Technique: Helya [Rank 2] (RECIPE!)
 					i(142428),	-- Sea Fan Pendant
 					i(142521),	-- Drape of the Unworthy
 					i(142433),	-- Corroded Val'kyr Chainmail
@@ -308,79 +232,33 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(142513),	-- Token of the Lightning Keeper
 				}))
 			}),
-			d(HEROIC_RAID, {
+			d(DIFFICULTY.RAID.HEROIC, {
 				n(ZONE_DROPS, {
 					i(142541),	-- Drape of the Forgotten Souls
 				}),
 				n(COMMON_BOSS_DROPS, {
-					i(143507, {	-- Ensemble: Vestment of the Chosen Dead
+					iensemble(143507, {	-- Ensemble: Vestment of the Chosen Dead
 						["description"] = "This item has a chance to drop from any boss in Heroic and Mythic difficulties.",
-						["classes"] = { PRIEST, MAGE, WARLOCK },
+						["classes"] = CLOTH_CLASSES,
 						["crs"] = { 116245 },	-- Heroic Champion of the Chosen Dead
-						["g"] = {
-							i(143346),	-- Circlet of the Chosen Dead
-							i(143356),	-- Mantle of the Chosen Dead
-							i(143369),	-- Drape of the Chosen Dead
-							i(143353),	-- Robe of the Chosen Dead
-							i(143362),	-- Bracers of the Chosen Dead
-							i(143343),	-- Gloves of the Chosen Dead
-							i(143359),	-- Sash of the Chosen Dead
-							i(143350),	-- Pantaloons of the Chosen Dead
-							i(143338),	-- Sandals of the Chosen Dead
-						},
 					}),
-					i(143511, {	-- Ensemble: Garb of the Chosen Dead
+					iensemble(143511, {	-- Ensemble: Garb of the Chosen Dead
 						["description"] = "This item has a chance to drop from any boss in Heroic and Mythic difficulties.",
-						["classes"] = { DRUID, ROGUE, MONK, DEMONHUNTER },
+						["classes"] = LEATHER_CLASSES,
 						["crs"] = { 116245 },	-- Heroic Champion of the Chosen Dead
-						["g"] = {
-							i(143348),	-- Hood of the Chosen Dead
-							i(143354),	-- Shoulderpads of the Chosen Dead
-							i(143366),	-- Wrap of the Chosen Dead
-							i(143336),	-- Tunic of the Chosen Dead
-							i(143365),	-- Wristguards of the Chosen Dead
-							i(143341),	-- Grips of the Chosen Dead
-							i(143361),	-- Strap of the Chosen Dead
-							i(143352),	-- Leggings of the Chosen Dead
-							i(143340),	-- Boots of the Chosen Dead
-						},
 					}),
-					i(143515, {	-- Ensemble: Chains of the Chosen Dead
+					iensemble(143515, {	-- Ensemble: Chains of the Chosen Dead
 						["description"] = "This item has a chance to drop from any boss in Heroic and Mythic difficulties.",
-						["classes"] = { HUNTER, SHAMAN },
+						["classes"] = MAIL_CLASSES,
 						["crs"] = { 116245 },	-- Heroic Champion of the Chosen Dead
-						["g"] = {
-							i(143347),	-- Coif of the Chosen Dead
-							i(143357),	-- Pauldrons of the Chosen Dead
-							i(143368),	-- Cloak of the Chosen Dead
-							i(143335),	-- Chain Shirt of the Chosen Dead
-							i(143364),	-- Armbands of the Chosen Dead
-							i(143344),	-- Gauntlets of the Chosen Dead
-							i(143360),	-- Girdle of the Chosen Dead
-							i(143351),	-- Chain Leggings of the Chosen Dead
-							i(143339),	-- Sabatons of the Chosen Dead
-						},
 					}),
-					i(143519, {	-- Ensemble: Funerary Plate of the Chosen Dead
+					iensemble(143519, {	-- Ensemble: Funerary Plate of the Chosen Dead
 						["description"] = "This item has a chance to drop from any boss in Heroic and Mythic difficulties.",
-						["classes"] = { PALADIN, WARRIOR, DEATHKNIGHT },
+						["classes"] = PLATE_CLASSES,
 						["crs"] = { 116245 },	-- Heroic Champion of the Chosen Dead
-						["g"] = {
-							i(143345),	-- Visor of the Chosen Dead
-							i(143355),	-- Shoulderplates of the Chosen Dead
-							i(143367),	-- Greatcloak of the Chosen Dead
-							i(143334),	-- Chestplate of the Chosen Dead
-							i(143363),	-- Wristclamps of the Chosen Dead
-							i(143342),	-- Handguards of the Chosen Dead
-							i(143358),	-- Waistplate of the Chosen Dead
-							i(143349),	-- Legplates of the Chosen Dead
-							i(143337),	-- Treads of the Chosen Dead
-						},
 					}),
 				}),
 				cr(114263, e(1819, {	-- Odyn
-					i(142110),	-- Vantus Rune Technique: Odyn [Rank 1] (RECIPE!)
-					i(142104),	-- Vantus Rune Technique: Odyn [Rank 2] (RECIPE!)
 					i(142540),	-- Mantle of the Victorious Dead
 					i(142431),	-- Gleaming Val'kyr Cuirass
 					i(142410),	-- Robes of Celestial Adornment
@@ -402,8 +280,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						114323,	-- Guarm
 					},
 					["g"] = {
-						i(142111),	-- Vantus Rune Technique: Guarm [Rank 1] (RECIPE!)
-						i(142105),	-- Vantus Rune Technique: Guarm [Rank 2] (RECIPE!)
 						i(142412),	-- Windwhipped Sailcloth
 						i(142432),	-- Helbeast Skin Tunic
 						i(142423),	-- Bite-Resistant Wristclamps
@@ -423,8 +299,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					ach(11581, {	-- Ahead of the Curve: Helya
 						["u"] = REMOVED_FROM_GAME,
 					}),
-					i(142112),	-- Vantus Rune Technique: Helya [Rank 1] (RECIPE!)
-					i(142106),	-- Vantus Rune Technique: Helya [Rank 2] (RECIPE!)
 					i(142428),	-- Sea Fan Pendant
 					i(142521),	-- Drape of the Unworthy
 					i(142433),	-- Corroded Val'kyr Chainmail
@@ -441,14 +315,12 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(142517),	-- Swell of the Tides
 				}))
 			}),
-			d(MYTHIC_RAID, {
+			d(DIFFICULTY.RAID.MYTHIC, {
 				n(ZONE_DROPS, {
 					i(142541),	-- Drape of the Forgotten Souls
 				}),
 				cr(114263, e(1819, {	-- Odyn
 					ach(11396),	-- Mythic: Odyn
-					i(142110),	-- Vantus Rune Technique: Odyn [Rank 1] (RECIPE!)
-					i(142104),	-- Vantus Rune Technique: Odyn [Rank 2] (RECIPE!)
 					i(142540),	-- Mantle of the Victorious Dead
 					i(142431),	-- Gleaming Val'kyr Cuirass
 					i(142410),	-- Robes of Celestial Adornment
@@ -471,8 +343,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 					["g"] = {
 						ach(11397),	-- Mythic: Guarm
-						i(142111),	-- Vantus Rune Technique: Guarm [Rank 1] (RECIPE!)
-						i(142105),	-- Vantus Rune Technique: Guarm [Rank 2] (RECIPE!)
 						i(142412),	-- Windwhipped Sailcloth
 						i(142432),	-- Helbeast Skin Tunic
 						i(142423),	-- Bite-Resistant Wristclamps
@@ -507,70 +377,24 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 							title(347, {	-- The Chosen
 								["u"] = REMOVED_FROM_GAME,
 							}),
-							i(143508, {	-- Ensemble: Vestment of the Chosen Dead
-								["classes"] = { PRIEST, MAGE, WARLOCK },
+							iensemble(143508, {	-- Ensemble: Vestment of the Chosen Dead
+								["classes"] = CLOTH_CLASSES,
 								["u"] = REMOVED_FROM_GAME,
-								["g"] = {
-									i(143346),	-- Circlet of the Chosen Dead
-									i(143356),	-- Mantle of the Chosen Dead
-									i(143369),	-- Drape of the Chosen Dead
-									i(143353),	-- Robe of the Chosen Dead
-									i(143362),	-- Bracers of the Chosen Dead
-									i(143343),	-- Gloves of the Chosen Dead
-									i(143359),	-- Sash of the Chosen Dead
-									i(143350),	-- Pantaloons of the Chosen Dead
-									i(143338),	-- Sandals of the Chosen Dead
-								},
 							}),
-							i(143512, {	-- Ensemble: Garb of the Chosen Dead
-								["classes"] = { DRUID, ROGUE, MONK, DEMONHUNTER },
+							iensemble(143512, {	-- Ensemble: Garb of the Chosen Dead
+								["classes"] = LEATHER_CLASSES,
 								["u"] = REMOVED_FROM_GAME,
-								["g"] = {
-									i(143348),	-- Hood of the Chosen Dead
-									i(143354),	-- Shoulderpads of the Chosen Dead
-									i(143366),	-- Wrap of the Chosen Dead
-									i(143336),	-- Tunic of the Chosen Dead
-									i(143365),	-- Wristguards of the Chosen Dead
-									i(143341),	-- Grips of the Chosen Dead
-									i(143361),	-- Strap of the Chosen Dead
-									i(143352),	-- Leggings of the Chosen Dead
-									i(143340),	-- Boots of the Chosen Dead
-								},
 							}),
-							i(143516, {	-- Ensemble: Chains of the Chosen Dead
-								["classes"] = { HUNTER, SHAMAN },
+							iensemble(143516, {	-- Ensemble: Chains of the Chosen Dead
+								["classes"] = MAIL_CLASSES,
 								["u"] = REMOVED_FROM_GAME,
-								["g"] = {
-									i(143347),	-- Coif of the Chosen Dead
-									i(143357),	-- Pauldrons of the Chosen Dead
-									i(143368),	-- Cloak of the Chosen Dead
-									i(143335),	-- Chain Shirt of the Chosen Dead
-									i(143364),	-- Armbands of the Chosen Dead
-									i(143344),	-- Gauntlets of the Chosen Dead
-									i(143360),	-- Girdle of the Chosen Dead
-									i(143351),	-- Chain Leggings of the Chosen Dead
-									i(143339),	-- Sabatons of the Chosen Dead
-								},
 							}),
-							i(143520, {	-- Ensemble: Funerary Plate of the Chosen Dead
-								["classes"] = { PALADIN, WARRIOR, DEATHKNIGHT },
+							iensemble(143520, {	-- Ensemble: Funerary Plate of the Chosen Dead
+								["classes"] = PLATE_CLASSES,
 								["u"] = REMOVED_FROM_GAME,
-								["g"] = {
-									i(143345),	-- Visor of the Chosen Dead
-									i(143355),	-- Shoulderplates of the Chosen Dead
-									i(143367),	-- Greatcloak of the Chosen Dead
-									i(143334),	-- Chestplate of the Chosen Dead
-									i(143363),	-- Wristclamps of the Chosen Dead
-									i(143342),	-- Handguards of the Chosen Dead
-									i(143358),	-- Waistplate of the Chosen Dead
-									i(143349),	-- Legplates of the Chosen Dead
-									i(143337),	-- Treads of the Chosen Dead
-								},
 							}),
 						},
 					}),
-					i(142112),	-- Vantus Rune Technique: Helya [Rank 1] (RECIPE!)
-					i(142106),	-- Vantus Rune Technique: Helya [Rank 2] (RECIPE!)
 					i(142428),	-- Sea Fan Pendant
 					i(142521),	-- Drape of the Unworthy
 					i(142433),	-- Corroded Val'kyr Chainmail
@@ -592,30 +416,13 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 	}),
 }));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
-		q(45429),	-- Odyn
+	expansion(EXPANSION.LEGION, {
 		q(46661),	-- Odyn LFR
 		q(46662),	-- Odyn Normal
 		q(46663),	-- Odyn Heroic
 		q(46664),	-- Odyn Mythic
+		q(45429),	-- Odyn
 		q(45430),	-- Guarm
-		q(45208),	-- Guarm Mythic
 		q(45431),	-- Helya
-		--q(xxxxx),	-- Tracking Quest - Ensemble: Vestment of the Chosen Dead (Normal) -- TODO -Darkal
-		q(45223),	-- Tracking Quest - Ensemble: Vestment of the Chosen Dead (Heroic)
-		q(45224),	-- Tracking Quest - Ensemble: Vestment of the Chosen Dead (Mythic)
-		q(45225),	-- Tracking Quest - Ensemble: Vestment of the Chosen Dead (LFR)
-		q(45226),	-- Tracking Quest - Ensemble: Garb of the Chosen Dead (Normal)
-		q(45227),	-- Tracking Quest - Ensemble: Garb of the Chosen Dead (Heroic)
-		q(45228),	-- Tracking Quest - Ensemble: Garb of the Chosen Dead (Mythic)
-		q(45229),	-- Tracking Quest - Ensemble: Garb of the Chosen Dead (LFR)
-		q(45230),	-- Tracking Quest - Ensemble: Chains of the Chosen Dead (Normal)
-		q(45231),	-- Tracking Quest - Ensemble: Chains of the Chosen Dead (Heroic)
-		q(45232),	-- Tracking Quest - Ensemble: Chains of the Chosen Dead (Mythic)
-		q(45233),	-- Tracking Quest - Ensemble: Chains of the Chosen Dead (LFR)
-		q(45234),	-- Tracking Quest - Ensemble: Funerary Plate of the Chosen Dead (Normal)
-		q(45235),	-- Tracking Quest - Ensemble: Funerary Plate of the Chosen Dead (Heroic)
-		q(45236),	-- Tracking Quest - Ensemble: Funerary Plate of the Chosen Dead (Mythic)
-		q(45237),	-- Tracking Quest - Ensemble: Funerary Plate of the Chosen Dead (LFR)
 	}),
 });

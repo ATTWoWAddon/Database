@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 } }, {
+root(ROOTS.Instances, expansion(EXPANSION.MOP, bubbleDown({ ["timeline"] = { ADDED_5_0_4 } }, {
 	inst(330, {	-- Heart of Fear
 		["isRaid"] = true,
 		["coord"] = { 39.0, 34.9, DREAD_WASTES },	-- Heart of Fear
@@ -9,30 +9,29 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 			474,	-- Oratorium of the Voice
 			475,	-- Heart of Fear
 		},
-		["sins"] = { "Herz der Angst" },
 		["sharedLockout"] = 1,
 		["g"] = {
 			n(ACHIEVEMENTS, {
 				ach(6718, {	-- The Dread Approach
-					crit(1, {	-- Imperial Vizier Zor'lok
-						["_encounter"] = { 745, 7 },
+					crit(19628, {	-- Imperial Vizier Zor'lok
+						["_encounter"] = { 745, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(2, {	-- Blade Lord Ta'yak
-						["_encounter"] = { 744, 7 },
+					crit(19629, {	-- Blade Lord Ta'yak
+						["_encounter"] = { 744, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(3, {	-- Garalon
-						["_encounter"] = { 713, 7 },
+					crit(19632, {	-- Garalon
+						["_encounter"] = { 713, DIFFICULTY.RAID.FINDER },
 					}),
 				}),
 				ach(6845, {	-- Nightmare of Shek'zeer
-					crit(1, {	-- Wind Lord Mel'jarak
-						["_encounter"] = { 741, 7 },
+					crit(19631, {	-- Wind Lord Mel'jarak
+						["_encounter"] = { 741, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(2, {	-- Amber-Shaper Un'sok
-						["_encounter"] = { 737, 7 },
+					crit(19633, {	-- Amber-Shaper Un'sok
+						["_encounter"] = { 737, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(3, {	-- Grand Empress Shek'zeer
-						["_encounter"] = { 743, 7 },
+					crit(19634, {	-- Grand Empress Shek'zeer
+						["_encounter"] = { 743, DIFFICULTY.RAID.FINDER },
 					}),
 				}),
 				ach(6669),	-- Heart of Fear Guild Run
@@ -45,32 +44,11 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					["timeline"] = { ADDED_5_0_4, REMOVED_6_0_2 },
 				}),
 			}),
-			n(DROPS, {
-				i(167053, {	-- Amberglow Stinger (PET!)
-					["timeline"] = { ADDED_8_1_5 },
-				}),
-				i(167058, {	-- Kor'thik Swarmling (PET!)
-					["crs"] = { 62980 },	-- Imperial Vizier Zor'lok
-					["timeline"] = { ADDED_8_1_5 },
-				}),
-				i(167055, {	-- Living Amber (PET!)
-					["crs"] = { 62511 },	-- Amber-Shaper Un'sok
-					["timeline"] = { ADDED_8_1_5 },
-				}),
-				i(167056, {	-- Ravenous Prideling (PET!)
-					["crs"] = { 62837 },	-- Grand Empress Shek'zeer
-					["timeline"] = { ADDED_8_1_5 },
-				}),
-				i(167054, {	-- Spawn of Garalon (PET!)
-					["crs"] = { 62164 },	-- Garalon
-					["timeline"] = { ADDED_8_1_5 },
-				}),
-			}),
-			d(7, {	-- LFR Queue NPC
+			d(DIFFICULTY.RAID.FINDER, {	-- Queue NPC
 				["crs"] = { 80633 },	-- Lorewalker Han <Raid Finder Storyteller>
 				["coord"] = { 83.0, 30.6, VALE_OF_ETERNAL_BLOSSOMS },
 			}),
-			d(7, {	-- LFR
+			d(DIFFICULTY.RAID.FINDER, {
 				["description"] = "Loot from this LFR is NOT tradeable to others in group.",
 				["ignoreBonus"] = true,
 				["g"] = {
@@ -78,7 +56,7 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 						["description"] = "Since the introduction of Legacy Loot this bag is only obtainable if you queue up as a Level 91-100 for the intended raid.  If you are 101+ then you will need to seek out each item based on their original sources.  This change occured in Patch 8.0.1",
 						["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },
 						["sym"] = {
-							{ "select", "headerID", 95618 },
+							{ "select", "itemID", 95618 },
 							{ "pop" },
 						},
 					}),
@@ -100,6 +78,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(86813),	-- Vizier's Ruby Signet
 								i(89954),	-- Warbelt of Sealed Pods
 								i(87823),	-- Zor'lok's Fizzing Chestguard
+								i(167058, {	-- Kor'thik Swarmling (PET!)
+									["timeline"] = { ADDED_8_1_5 },
+								}),
 							},
 						}),
 						e(744, {	-- Blade Lord Ta'yak
@@ -119,10 +100,16 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(86828),	-- Twisting Wind Bracers
 								i(86822),	-- Waistplate of Overwhelming Assault
 								i(86823),	-- Windblade Talons
+								i(167053, {	-- Amberglow Stinger (PET!)
+									["timeline"] = { ADDED_8_1_5 },
+								}),
 							},
 						}),
 						e(713, {	-- Garalon
-							["crs"] = { 62164 },	-- Garalon
+							["crs"] = {
+								62164,	-- Garalon	-- Maybe Outside Version
+								63191 ,	-- Garalon	-- In Raid Version
+							},
 							["g"] = {
 								i(86834),	-- Bonebreaker Gauntlets
 								i(86832),	-- Garalon's Hollow Skull
@@ -138,6 +125,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(86840),	-- Stormwake Mistcloak
 								i(89960),	-- Vestments of Steaming Ichor
 								i(86839),	-- Xaril's Hood of Intoxicating Vapors
+								i(167054, {	-- Spawn of Garalon (PET!)
+									["timeline"] = { ADDED_8_1_5 },
+								}),
 							},
 						}),
 					}),
@@ -174,6 +164,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(86860),	-- Shoulderpads of Misshapen Life
 								i(86859),	-- Treads of Deadly Secretions
 								i(86862),	-- Un'sok's Amber Scalpel
+								i(167055, {	-- Living Amber (PET!)
+									["timeline"] = { ADDED_8_1_5 },
+								}),
 							},
 						}),
 						e(743, {	-- Grand Empress Shek'zeer
@@ -191,14 +184,98 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(86867),	-- Leggings of Shadow Infestation
 								i(89963),	-- Legplates of Regal Reinforcement
 								i(89961),	-- Shadow Heart Spaulders
+								i(167056, {	-- Ravenous Prideling (PET!)
+									["timeline"] = { ADDED_8_1_5 },
+								}),
 							},
 						}),
 					}),
 				},
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.LEGACY_RAID.MULTI.NORMAL_HEROIC, {
+				n(ZONE_DROPS, {
+					i(86238),	-- Pattern: Chestguard of Nemeses (RECIPE!)
+					i(86272),	-- Pattern: Fists of Lightning (RECIPE!)
+					i(86279),	-- Pattern: Liferuned Leather Gloves (RECIPE!)
+					i(86280),	-- Pattern: Murderer's Gloves (RECIPE!)
+					i(86281),	-- Pattern: Nightfire Robe (RECIPE!)
+					i(86283),	-- Pattern: Raiment of Blood and Bone (RECIPE!)
+					i(86284),	-- Pattern: Raven Lord's Gloves (RECIPE!)
+					i(86297),	-- Pattern: Stormbreaker Chestguard (RECIPE!)
+					i(86379),	-- Pattern: Robe of Eternal Rule (RECIPE!)
+					i(86380),	-- Pattern: Imperial Silk Gloves (RECIPE!)
+					i(86381),	-- Pattern: Legacy of the Emperor (RECIPE!)
+					i(86382),	-- Pattern: Touch of the Light (RECIPE!)
+					i(87408),	-- Plans: Unyielding Bloodplate (RECIPE!)
+					i(87409),	-- Plans: Gauntlets of Battle Command (RECIPE!)
+					i(87410),	-- Plans: Ornate Battleplate of the Master (RECIPE!)
+					i(87411),	-- Plans: Bloodforged Warfists (RECIPE!)
+					i(87412),	-- Plans: Chestplate of Limitless Faith (RECIPE!)
+					i(87413),	-- Plans: Gauntlets of Unbound Devotion (RECIPE!)
+				}),
+				e(745, {	-- Imperial Vizier Zor'lok
+					["crs"] = { 62980 },	-- Imperial Vizier Zor'lok
+					["g"] = {
+						ach(6937),	-- Overzealous
+						i(167058, {	-- Kor'thik Swarmling (PET!)
+							["timeline"] = { ADDED_8_1_5 },
+						}),
+					},
+				}),
+				e(744, {	-- Blade Lord Ta'yak
+					["crs"] = { 62543 },	-- Blade Lord Ta'yak
+					["g"] = {
+						ach(6936),	-- Candle in the Wind
+						i(167053, {	-- Amberglow Stinger (PET!)
+							["timeline"] = { ADDED_8_1_5 },
+						}),
+					},
+				}),
+				e(713, {	-- Garalon
+					["crs"] = { 62164 },	-- Garalon
+					["g"] = {
+						ach(6553),	-- Like an Arrow to the Face
+						i(167054, {	-- Spawn of Garalon (PET!)
+							["timeline"] = { ADDED_8_1_5 },
+						}),
+					},
+				}),
+				e(741, {	-- Wind Lord Mel'jarak
+					["crs"] = { 62397 },	-- Wind Lord Mel'jarak
+					["g"] = {
+						ach(6683),	-- Less Than Three
+					},
+				}),
+				e(737, {	-- Amber-Shaper Un'sok
+					["crs"] = { 62511 },	-- Amber-Shaper Un'sok
+					["g"] = {
+						ach(6518),	-- I Heard You Like Amber...
+						i(167055, {	-- Living Amber (PET!)
+							["timeline"] = { ADDED_8_1_5 },
+						}),
+					},
+				}),
+				e(743, {	-- Grand Empress Shek'zeer
+					["crs"] = { 62837 },	-- Grand Empress Shek'zeer
+					["g"] = {
+						ach(6922, {	-- Timing is Everything
+							crit(21105, {	-- Defeat 2 Kor'thik Reavers within 10 seconds of each other
+								["cr"] = 63591,	-- Kor'thik Reaver
+							}),
+							crit(21107, {	-- Defeat Grand Empress Shek'zeer
+							}),
+						}),
+						ach(8246, {	-- Ahead of the Curve: Grand Empress Shek'zeer
+							["timeline"] = { ADDED_5_0_4, REMOVED_5_2_0 },
+						}),
+						i(167056, {	-- Ravenous Prideling (PET!)
+							["timeline"] = { ADDED_8_1_5 },
+						}),
+					},
+				}),
+			}),
+			d(DIFFICULTY.LEGACY_RAID.MULTI.NORMAL, {
 				["ignoreBonus"] = true,
-				["difficulties"] = { 3, 4 },
 				["g"] = {
 					n(ZONE_DROPS, {
 						i(86192),	-- Darting Damselfly Cuffs
@@ -211,25 +288,7 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 						i(86046),	-- Jade Warlord Figurine
 						i(86189),	-- Jagged Hornet Bracers
 						i(86184),	-- Luminescent Firefly Wristguards
-						i(86238),	-- Pattern: Chestguard of Nemeses (RECIPE!)
-						i(86272),	-- Pattern: Fists of Lightning (RECIPE!)
-						i(86279),	-- Pattern: Liferuned Leather Gloves (RECIPE!)
-						i(86280),	-- Pattern: Murderer's Gloves (RECIPE!)
-						i(86281),	-- Pattern: Nightfire Robe (RECIPE!)
-						i(86283),	-- Pattern: Raiment of Blood and Bone (RECIPE!)
-						i(86284),	-- Pattern: Raven Lord's Gloves (RECIPE!)
-						i(86297),	-- Pattern: Stormbreaker Chestguard (RECIPE!)
-						i(86379),	-- Pattern: Robe of Eternal Rule (RECIPE!)
-						i(86380),	-- Pattern: Imperial Silk Gloves (RECIPE!)
-						i(86381),	-- Pattern: Legacy of the Emperor (RECIPE!)
-						i(86382),	-- Pattern: Touch of the Light (RECIPE!)
 						i(86187),	-- Pearlescent Butterfly Wristbands
-						i(87408),	-- Plans: Unyielding Bloodplate (RECIPE!)
-						i(87409),	-- Plans: Gauntlets of Battle Command (RECIPE!)
-						i(87410),	-- Plans: Ornate Battleplate of the Master (RECIPE!)
-						i(87411),	-- Plans: Bloodforged Warfists (RECIPE!)
-						i(87412),	-- Plans: Chestplate of Limitless Faith (RECIPE!)
-						i(87413),	-- Plans: Gauntlets of Unbound Devotion (RECIPE!)
 						i(86191),	-- Plated Locust Bracers
 						i(86190),	-- Serrated Wasp Bracers
 						i(86183),	-- Shining Cicada Bracers
@@ -238,7 +297,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(745, {	-- Imperial Vizier Zor'lok
 						["crs"] = { 62980 },	-- Imperial Vizier Zor'lok
 						["g"] = {
-							ach(6937),	-- Overzealous
 							i(86203),	-- Articulated Leggings
 							i(86157),	-- Attenuating Bracers
 							i(86153),	-- Boots of the Still Breath
@@ -258,7 +316,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(744, {	-- Blade Lord Ta'yak
 						["crs"] = { 62543 },	-- Blade Lord Ta'yak
 						["g"] = {
-							ach(6936),	-- Candle in the Wind
 							i(86167),	-- Boots of the Blowing Wind
 							i(86163),	-- Bracers of Unseen Strikes
 							i(86168),	-- Bracers of Tempestuous Fury
@@ -278,7 +335,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(713, {	-- Garalon
 						["crs"] = { 62164 },	-- Garalon
 						["g"] = {
-							ach(6553),	-- Like an Arrow to the Face
 							i(86176),	-- Bonebreaker Gauntlets
 							i(89832),	-- Garalon's Graven Carapace
 							i(86174),	-- Garlon's Hollow Skull
@@ -298,7 +354,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(741, {	-- Wind Lord Mel'jarak
 						["crs"] = { 62397 },	-- Wind Lord Mel'jarak
 						["g"] = {
-							ach(6683),	-- Less Than Three
 							i(89240, {	-- Gauntlets of the Shadowy Conqueror
 								["description"] = "Paladin completionists will want to turn this into the vendor since one piece can be awarded in any spec.",
 							}),
@@ -316,7 +371,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(737, {	-- Amber-Shaper Un'sok
 						["crs"] = { 62511 },	-- Amber-Shaper Un'sok
 						["g"] = {
-							ach(6518),	-- I Heard You Like Amber...
 							i(89243, {	-- Leggings of the Shadowy Conqueror
 								["description"] = "Paladin completionists will want to turn this into the vendor since one piece can be awarded in any spec.",
 							}),
@@ -334,16 +388,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(743, {	-- Grand Empress Shek'zeer
 						["crs"] = { 62837 },	-- Grand Empress Shek'zeer
 						["g"] = {
-							ach(6922, {	-- Timing is Everything
-								crit(1, {	-- Defeat 2 Kor'thik Reavers within 10 seconds of each other
-									["cr"] = 63591,	-- Kor'thik Reaver
-								}),
-								crit(2, {	-- Defeat Grand Empress Shek'zeer
-								}),
-							}),
-							ach(8246, {	-- Ahead of the Curve: Grand Empress Shek'zeer
-								["timeline"] = { ADDED_5_0_4, REMOVED_5_2_0 },
-							}),
 							i(89237, {	-- Chest of the Shadowy Conqueror
 								["description"] = "Paladin completionists will want to turn this into the vendor since one piece can be awarded in any spec.",
 							}),
@@ -360,9 +404,8 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					}),
 				},
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.LEGACY_RAID.MULTI.HEROIC, {
 				["ignoreBonus"] = true,
-				["difficulties"] = { 5, 6 },
 				["g"] = {
 					n(ZONE_DROPS, {
 						i(86192),	-- Darting Damselfly Cuffs
@@ -375,25 +418,7 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 						i(86046),	-- Jade Warlord Figurine
 						i(86189),	-- Jagged Hornet Bracers
 						i(86184),	-- Luminescent Firefly Wristguards
-						i(86238),	-- Pattern: Chestguard of Nemeses (RECIPE!)
-						i(86272),	-- Pattern: Fists of Lightning (RECIPE!)
-						i(86279),	-- Pattern: Liferuned Leather Gloves (RECIPE!)
-						i(86280),	-- Pattern: Murderer's Gloves (RECIPE!)
-						i(86281),	-- Pattern: Nightfire Robe (RECIPE!)
-						i(86283),	-- Pattern: Raiment of Blood and Bone (RECIPE!)
-						i(86284),	-- Pattern: Raven Lord's Gloves (RECIPE!)
-						i(86297),	-- Pattern: Stormbreaker Chestguard (RECIPE!)
-						i(86379),	-- Pattern: Robe of Eternal Rule (RECIPE!)
-						i(86380),	-- Pattern: Imperial Silk Gloves (RECIPE!)
-						i(86381),	-- Pattern: Legacy of the Emperor (RECIPE!)
-						i(86382),	-- Pattern: Touch of the Light (RECIPE!)
 						i(86187),	-- Pearlescent Butterfly Wristbands
-						i(87408),	-- Plans: Unyielding Bloodplate (RECIPE!)
-						i(87409),	-- Plans: Gauntlets of Battle Command (RECIPE!)
-						i(87410),	-- Plans: Ornate Battleplate of the Master (RECIPE!)
-						i(87411),	-- Plans: Bloodforged Warfists (RECIPE!)
-						i(87412),	-- Plans: Chestplate of Limitless Faith (RECIPE!)
-						i(87413),	-- Plans: Gauntlets of Unbound Devotion (RECIPE!)
 						i(86191),	-- Plated Locust Bracers
 						i(86190),	-- Serrated Wasp Bracers
 						i(86183),	-- Shining Cicada Bracers

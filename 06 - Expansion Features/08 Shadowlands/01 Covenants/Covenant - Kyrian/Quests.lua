@@ -47,7 +47,7 @@ local LFR_WEAPON_GROUP = {
 	i(183888, {["modID"] = 4, }),	-- Apogee Anima Bead
 	i(183889, {["modID"] = 4, }),	-- Thaumaturgic Anima Bead
 };
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH }, ["customCollect"] = "SL_COV_KYR" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH }, ["customCollect"] = "SL_COV_KYR" }, {
 	n(KYRIAN, {
 		n(QUESTS, {
 			q(63211, {	-- Report to Adrestes
@@ -140,6 +140,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 61776 },	-- Trouble on the Western Front
 				["provider"] = { "n", 167810 },	-- Emeni
 				["coord"] = { 28.5, 37.5, MALDRAXXUS },
+				["g"] = {
+					i(180899),	-- Riding Hook (QI!)
+				},
 			}),
 			q(57114, {	-- Aerial Reconnaissance
 				["sourceQuests"] = { 57113 },	-- Lysonia's Trail
@@ -159,6 +162,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58847 },	-- Kyrestia's Grace
 				["provider"] = { "n", 160037 },	-- Polemarch Adrestes
 				["coord"] = { 55.6, 42.0, ARCHONS_RISE },
+				["lockCriteria"] = { 1, "questID", 65147 },	-- No Ordinary Steward
 				["g"] = {
 					follower(1258),	-- Mikanikos
 				},
@@ -207,11 +211,17 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 				["provider"] = { "n", 168744 },	-- Artemede
 				["coord"] = { 35.1, 26.8, MALDRAXXUS },
+				["g"] = {
+					i(180845),	-- Stitchflesh Design (QI!)
+				},
 			}),
 			q(58788, {	-- Censers of Guidance
 				["sourceQuests"] = { 58787 },	-- Trial of Ascension
 				["provider"] = { "n", 162542 },	-- Kleia
 				["coord"] = { 33.2, 26.1, BASTION },
+				["g"] = {
+					i(174821),	-- Incense of Guidance (QI!)
+				},
 			}),
 			q(61777, {	-- Charging The Blade
 				["sourceQuests"] = { 61776 },	-- Trouble on the Western Front
@@ -242,6 +252,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 61877 },	-- Return to the Hold
 				["provider"] = { "n", 173313 },	-- Xandria
 				["coord"] = { 38.9, 59.8, ARCHONS_RISE },
+				["g"] = {
+					i(182341),	-- Fleshshaper's Heart (QI!)
+				},
 			}),
 			q(57897, {	-- Dangerous to Go Alone
 				["sourceQuests"] = { 62794 },	-- Enhancing the Hold
@@ -258,6 +271,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 61769 },	-- Fight and Flight
 				["provider"] = { "o", 357246 },	-- Tattered Scroll
 				["coord"] = { 33.5, 24.1, MALDRAXXUS },
+				["g"] = {
+					i(181285),	-- Abhorrent Design (QI!)
+				},
 			}),
 			q(61773, {	-- Descended
 				["sourceQuests"] = {
@@ -315,6 +331,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 				["coord"] = { 50.5, 68.9, ARDENWEALD },
 				["g"] = {
+					i(174938),	-- Devourer Essence (QI!)
 					i(179941),	-- Selfless Forgelite's Boots
 					i(178155),	-- Selfless Watcher's Warboots
 					i(174291),	-- Selfless Collector's Warboots
@@ -352,11 +369,15 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58791 },	-- A Day in the Life
 				["provider"] = { "n", 162953 },	-- Sarah Howell
 				["coord"] = { 21.6, 42.0, REDRIDGE_MOUNTAINS },
+				["g"] = {
+					i(174935),	-- Rabbit Meat (QI!)
+				},
 			}),
 			q(58797, {	-- Forged by Trial
 				["sourceQuests"] = { 58796 },	-- The Forsworn Onslaught
 				["provider"] = { "n", 163650 },	-- Kleia
 				["coord"] = { 51.6, 47.7, ARCHONS_RISE },
+				["lockCriteria"] = { 1, "questID", 65168 },	-- My Wings Are Yours
 				["g"] = {
 					follower(1260),	-- Kleia
 				},
@@ -377,6 +398,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					58832,	-- Trinkle Trinkle Little Twerp
 				},
 				["provider"] = { "n", 162679 },	-- Willowblossom
+				["g"] = {
+					i(174845),	-- Wreath of Night's Veil Flowers (QI!)
+				},
 			}),
 			q(58938, {	-- Gorm Ruin Everything
 				["sourceQuests"] = { 58905 },	-- Picking Up Pelagos
@@ -390,6 +414,13 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58557 },	-- Assistance from Sinfall
 				["provider"] = { "n", 165011 },	-- Pelagos
 				["coord"] = { 50.6, 52.1, REVENDRETH },
+				["g"] = {
+					i(174336),	-- Crimson Cravat (QI!)
+					i(176052),	-- Iron Skull Belt Buckle (QI!)
+					i(176055),	-- Lace-Up Bracers (QI!)
+					i(176053),	-- Pleated Cape (QI!)
+					i(176054),	-- Thigh High Boots (QI!)
+				},
 			}),
 			q(61779, {	-- Grave Intent
 				["sourceQuests"] = { 61776 },	-- Trouble on the Western Front
@@ -401,6 +432,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["provider"] = { "n", 160037 },	-- Polemarch Adrestes
 				["coord"] = { 55.6, 42.0, ARCHONS_RISE },
 				["_drop"] = { "g" },	-- fix Grubby showing up as a reward when it is not a reward for this quest
+				["g"] = {
+					i(180778),	-- Vessel of Ardenweald (QI!)
+				},
 			}),
 			q(57124, {	-- Her Will, Inflicted
 				["sourceQuests"] = {
@@ -420,6 +454,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58857 },	-- Seeds Away!
 				["provider"] = { "n", 163328 },	-- Pelagos
 				["coord"] = { 45.2, 65.4, ARDENWEALD },
+				["g"] = {
+					i(175153),	-- Vessel of Ardenweald (QI!)
+				},
 			}),
 			q(62792, {	-- Into the Reservoir
 				["sourceQuests"] = { 62791 },	-- Our Most Precious Resource
@@ -430,6 +467,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58175 },	-- The Eternal Forge
 				["provider"] = { "n", 160648 },	-- Sika
 				["coord"] = { 50.1, 20.6, BASTION },
+				["g"] = {
+					i(173910),	-- Gracepetal Incense Burner (QI!)
+					i(173882),	-- Soulsteel Clamps (QI!)
+					i(173909),	-- Sparkling Driftglobe Core (QI!)
+				},
 			}),
 			q(62793, {	-- It's All Coming Together
 				["sourceQuests"] = { 62796 },	-- Return to Adrestes
@@ -490,6 +532,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58565 },	-- Land of Light
 				["provider"] = { "n", 161540 },	-- Kleia
 				["coord"] = { 31.9, 47.7, REVENDRETH },
+				["g"] = {
+					i(174497),	-- Brushberry (QI!)
+				},
 			}),
 			q(58950, {	-- Lumber for Lakeshire
 				["sourceQuests"] = {
@@ -498,6 +543,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 				["provider"] = { "n", 162953 },	-- Sarah Howell
 				["coord"] = { 21.6, 42.0, REDRIDGE_MOUNTAINS },
+				["g"] = {
+					i(174997),	-- Bundle of Lumber (QI!)
+				},
 			}),
 			q(57207, {	-- Lysonia's Plan
 				["sourceQuests"] = {
@@ -540,6 +588,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["provider"] = { "n", 183278 },	-- Kleia
 				["coord"] = { 58.7, 36.2, SANCTUM_OF_BINDING },
 				["timeline"] = { ADDED_9_1_5 },
+				["lockCriteria"] = { 1, "questID", 58797 },	-- Forged by Trial
 				["g"] = {
 					follower(1260),	-- Kleia
 				},
@@ -553,6 +602,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["provider"] = { "n", 183192 },	-- Mikanikos
 				["coord"] = { 59.5, 37.4, SANCTUM_OF_BINDING },
 				["timeline"] = { ADDED_9_1_5 },
+				["lockCriteria"] = { 1, "questID", 59919 },	-- An Earned Bond
 				["g"] = {
 					follower(1258),	-- Mikanikos
 				},
@@ -581,6 +631,12 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58557 },	-- Assistance from Sinfall
 				["provider"] = { "n", 161544 },	-- The Curator
 				["coord"] = { 60.3, 60.8, REVENDRETH },
+				["g"] = {
+					i(176083),	-- A Personal Affront (QI!)
+					i(176082),	-- Inane Drabblings (QI!)
+					i(176084),	-- List of Demands (QI!)
+					i(174333),	-- Rumors of Favor (QI!)
+				},
 			}),
 			q(58570, {	-- Parting Words
 				["sourceQuests"] = { 58569 },	-- The Folly of Envy
@@ -596,6 +652,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["provider"] = { "n", 160280 },	-- Mikanikos
 				["coord"] = { 50.1, 20.5, BASTION },
 				["g"] = {
+					i(174061),	-- Phaestus, Genesis of Aeons (QI!)
 					i(177057),	-- Selfless Bearer's Wrists
 					i(174296),	-- Selfless Collector's Wristguards
 					i(179947),	-- Selfless Forgelite's Wristwraps
@@ -631,6 +688,10 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58175 },	-- The Eternal Forge
 				["provider"] = { "n", 160280 },	-- Mikanikos
 				["coord"] = { 50.1, 20.5, BASTION },
+				["g"] = {
+					i(173880),	-- Purified Metal (QI!)
+					i(173879),	-- Tainted Centurion Component (QI!)
+				},
 			}),
 			q(61982, {	-- Replenish the Reservoir
 				["sourceQuests"] = { 57904 },	-- Our Eternal Charge
@@ -684,6 +745,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 57114 },	-- Aerial Reconnaissance
 				["provider"] = { "n", 156327 },	-- Voitha
 				["coord"] = { 66.0, 47.0, BASTION },
+				["g"] = {
+					i(170550),	-- Sacred Scroll (QI!)
+				},
 			}),
 			q(58857, {	-- Seeds Away!
 				["sourceQuests"] = { 58939 },	-- The Blue Seed
@@ -698,11 +762,19 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 				["provider"] = { "n", 161540 },	-- Kleia
 				["coord"] = { 56.3, 41.4, REVENDRETH },
+				["g"] = {
+					i(174359),	-- Shard of the Countess (QI!)
+					i(174374),	-- Shard of the Countess (QI!)
+					i(174375),	-- Shard of the Countess (QI!)
+				},
 			}),
 			q(58564, {	-- Sins of the Past
 				["sourceQuests"] = { 58563 },	-- Through Glass
 				["provider"] = { "n", 161544 },	-- The Curator
 				["coord"] = { 77.8, 39.6, REVENDRETH },
+				["g"] = {
+					i(174454),	-- The Countess's Sinstone (QI!)
+				},
 			}),
 			q(58567, {	-- Skulking in the Darkness
 				["sourceQuests"] = { 58565 },	-- Land of Light
@@ -757,6 +829,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 61782 },	-- Pursuit of Justice
 				["provider"] = { "n", 173193 },	-- Xandria
 				["coord"] = { 31.0, 29.1, MALDRAXXUS },
+				["g"] = {
+					i(182334),	-- Fleshshaper's Heart (QI!)
+				},
 			}),
 			q(58939, {	-- The Blue Seed
 				["sourceQuests"] = {
@@ -765,6 +840,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 				["provider"] = { "n", 165110 },	-- Pelagos
 				-- no coords, is your 'pet'
+				["g"] = {
+					i(176446),	-- Ripened Anima Seed (QI!)
+				},
 			}),
 			q(61770, {	-- The Butchers of Bastion
 				["sourceQuests"] = { 61769 },	-- Fight and Flight
@@ -790,6 +868,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 				["provider"] = { "n", 161553 },	-- Mindscorched Alwin
 				["coord"] = { 39.9, 59.0, REVENDRETH },
+				["g"] = {
+					i(174498),	-- Seal of Contrition (QI!)
+				},
 			}),
 			q(58796, {	-- The Forsworn Onslaught
 				["sourceQuests"] = { 58795 },	-- Ascended
@@ -821,6 +902,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["provider"] = { "n", 162149 },	-- Mikanikos
 				["coord"] = { 45.7, 56.5, ARCHONS_RISE },
 				["g"] = {
+					i(174498),	-- Seal of Contrition (QI!)
 					i(177050),	-- Selfless Bearer's Head
 					i(174289),	-- Selfless Collector's GreatHelm
 					i(179943),	-- Selfless Forgelite's Helm
@@ -847,6 +929,8 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["provider"] = { "n", 161544 },	-- The Curator
 				["coord"] = { 55.2, 34.7, REVENDRETH },
 				["g"] = {
+					i(174382),	-- Death Lotus Powder (QI!)
+					i(174454),	-- The Countess's Sinstone (QI!)
 					i(181286),	-- Halo of the Selfless
 				},
 			}),
@@ -877,6 +961,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					161878, -- Sicklethorn Slicer
 					163363,	-- Sicklethorn Zapper
 				},
+				["g"] = {
+					i(175982),	-- Sicklethorn To-Do List (QI!)
+				},
 			}),
 			q(61776, {	-- Trouble on the Western Front
 				["sourceQuests"] = {
@@ -891,11 +978,17 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				["sourceQuests"] = { 58951 },	-- Lakeshire's Last Stand
 				["provider"] = { "n", 162558 },	-- Alithea
 				["coord"] = { 32.5, 39.7, REDRIDGE_MOUNTAINS },
+				["g"] = {
+					i(175011),	-- Vesper of Veilflight (QI!)
+				},
 			}),
 			q(58856, {	-- Who Are You Fooling?
 				["sourceQuests"] = { 58775 },	-- Meet the Queen
 				["provider"] = { "n", 162392 },	-- Willowblossom
 				["coord"] = { 44.0, 51.8, ARDENWEALD },
+				["g"] = {
+					i(174843),	-- Sicklethorn Trickster Powder (QI!)
+				},
 			}),
 		}),
 	}),
@@ -907,8 +1000,16 @@ for _,g in ipairs({CONDUIT_GROUP,LFR_WEAPON_GROUP}) do
 	end
 end
 
-root(ROOTS.HiddenQuestTriggers, {
-	q(59727),	-- Triggered when adding purple petals to Moonberry's soap during quest 58816 'Getting Backstage'
-	q(59728),	-- Triggered when adding red petals to Moonberry's soap during quest 58816 'Getting Backstage'
-	q(59729),	-- Triggered when adding green petals to Moonberry's soap during quest 58816 'Getting Backstage'
-});
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	n(KYRIAN, {
+		n(QUESTS, {
+			q(59727),	-- Triggered when adding purple petals to Moonberry's soap during quest 58816 'Getting Backstage'
+			q(59728),	-- Triggered when adding red petals to Moonberry's soap during quest 58816 'Getting Backstage'
+			q(59729),	-- Triggered when adding green petals to Moonberry's soap during quest 58816 'Getting Backstage'
+			q(63216),	-- triggers when turning in #57897, "Dangerous to Go Alone"
+			q(62755),	-- triggers when turning in #57904, "Our Eternal Charge"
+			q(61589),	-- triggered when turning in #57903, "Power in the Sky," possibly connected to channeling anima to Purity's Pinnacle
+			q(63451),	-- triggers when turning in "Return Lost Souls" (spellID 345276 & 345277 & 345278 & 348836)
+		}),
+	}),
+})));

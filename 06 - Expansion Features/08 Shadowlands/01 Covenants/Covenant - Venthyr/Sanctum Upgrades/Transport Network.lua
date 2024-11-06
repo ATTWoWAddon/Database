@@ -3,7 +3,7 @@
 -------------------------------------------------------------------
 local BROKEN_MIRROR_INFO = {
 	readable = "Broken Mirror",
-	icon = "3854020",
+	icon = 3854020,
 	text = {
 		en = "Broken Mirror",
 		es = "Espejo roto",
@@ -16,30 +16,38 @@ local BROKEN_MIRROR_INFO = {
 		cn = "残破的镜子",
 	},
 };
-BROKEN_MIRROR_A1 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_A2 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_A3 = createHeader( BROKEN_MIRROR_INFO );
+local function breakAnotherMirror(suffix)
+	local data = {};
+	for key,value in pairs(BROKEN_MIRROR_INFO) do
+		data[key] = value;
+	end
+	data.readable = data.readable .. suffix;
+	return createHeader(data);
+end
+BROKEN_MIRROR_A1 = breakAnotherMirror( "A1" );
+BROKEN_MIRROR_A2 = breakAnotherMirror( "A2" );
+BROKEN_MIRROR_A3 = breakAnotherMirror( "A3" );
 
-BROKEN_MIRROR_B1 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_B2 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_B3 = createHeader( BROKEN_MIRROR_INFO );
+BROKEN_MIRROR_B1 = breakAnotherMirror( "B1" );
+BROKEN_MIRROR_B2 = breakAnotherMirror( "B2" );
+BROKEN_MIRROR_B3 = breakAnotherMirror( "B3" );
 
-BROKEN_MIRROR_C1 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_C2 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_C3 = createHeader( BROKEN_MIRROR_INFO );
+BROKEN_MIRROR_C1 = breakAnotherMirror( "C1" );
+BROKEN_MIRROR_C2 = breakAnotherMirror( "C2" );
+BROKEN_MIRROR_C3 = breakAnotherMirror( "C3" );
 
-BROKEN_MIRROR_D1 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_D2 = createHeader( BROKEN_MIRROR_INFO );
-BROKEN_MIRROR_D3 = createHeader( BROKEN_MIRROR_INFO );
+BROKEN_MIRROR_D1 = breakAnotherMirror( "D1" );
+BROKEN_MIRROR_D2 = breakAnotherMirror( "D2" );
+BROKEN_MIRROR_D3 = breakAnotherMirror( "D3" );
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_VEN" }, {
 	n(VENTHYR, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_revendreth01",
+			["icon"] = 3641397,
 			["g"] = {
 				n(TRANSPORT_NETWORK, {
-					["icon"] = "Interface\\Icons\\Sanctum_features_transportationnetwork_revendreth",
-					["g"] = sharedData({ ["icon"] = "Interface\\Icons\\Sanctum_features_transportationnetwork_revendreth" }, {
+					["icon"] = 3854020,
+					["g"] = sharedData({ ["icon"] = 3854020 }, {
 						n(TIER_ONE, {
 							n(QUESTS, {
 								q(60051,{	-- A Master of Their Craft
@@ -80,7 +88,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 							}),
 						}),
 						n(TIER_THREE, {
-							["description"] = "Each week, a set of 3 Broken Mirrors is active in Revendreth.  They are not on a predictable cycle, so the same set may be up two weeks in a row.  Toggle on Debug Mode, 'Show All Trackable Things,' or 'Track Repeatable Quests' to see the list of mirror sets available to restore.\n\nIf your mirror transports you to Sanctuary of the Mad, go back to the repaired mirror and re-enter it to be teleported to the correct room.",
+							["description"] = "Each day, a set of 3 Broken Mirrors is active in Revendreth.  They are not on a predictable cycle, so the same set may be up two days in a row.  Toggle on Debug Mode, 'Show All Trackable Things,' or 'Track Repeatable Quests' to see the list of mirror sets available to restore.\n\nIf your mirror transports you to Sanctuary of the Mad, go back to the repaired mirror and re-enter it to be teleported to the correct room.",
 							["g"] = {
 								n(-967, {	-- Mirror Restoration
 									n(166133, {	-- Simone
@@ -282,6 +290,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 										},
 										["provider"] = { "n", 167160 },	-- Laurent
 										["coord"] = { 47.3, 57.5, SINFALL_REACHES },
+										["g"] = {
+											i(182112),	-- Handcrafted Mirror Repair Kit (QI!)
+										},
 									}),
 								}),
 								n(REWARDS, {
@@ -302,7 +313,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 										}),
 										filter(CLOTH, {
 											i(181129, {	-- Soulbreaker's Burnished Drape
-												["classes"] = { MAGE, PRIEST, WARLOCK },
+												["classes"] = CLOTH_CLASSES,
 												["description"] = "This cloak is only awarded to cloth characters.", -- Every class sees this cloak in the Appearance tab & can mog it, so we add a note.
 											}),
 											i(181123),	-- Soulbreaker's Burnished Handwraps
@@ -320,7 +331,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 											i(181059),	-- Burnished Death Shroud Boots
 											i(181062),	-- Burnished Death Shroud Breeches
 											i(181066, {	-- Burnished Death Shroud Cloak
-												["classes"] = { DRUID, MONK, ROGUE, DEMONHUNTER },
+												["classes"] = LEATHER_CLASSES,
 												["description"] = "This cloak is only awarded to leather characters.", -- Every class sees this cloak in the Appearance tab & can mog it, so we add a note.
 											}),
 											i(181060),	-- Burnished Death Shroud Gloves
@@ -332,7 +343,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 											i(181091),	-- Fearstalker's Burnished Belt
 											i(181092),	-- Fearstalker's Burnished Bracers
 											i(181093, {	-- Fearstalker's Burnished Cloak
-												["classes"] = { HUNTER, SHAMAN },
+												["classes"] = MAIL_CLASSES,
 												["description"] = "This cloak is only awarded to mail characters.", -- Every class sees this cloak in the Appearance tab & can mog it, so we add a note.
 											}),
 											i(181087),	-- Fearstalker's Burnished Gauntlets
@@ -345,7 +356,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 										filter(PLATE, {
 											i(181023),	-- Dread Sentinel's Burnished Chestplate
 											i(181030, {	-- Dread Sentinel's Burnished Cloak
-												["classes"] = { DEATHKNIGHT, WARRIOR, PALADIN },
+												["classes"] = PLATE_CLASSES,
 												["description"] = "This cloak is only awarded to Plate characters.", -- Every class sees this cloak in the Appearance tab & can mog it, so we add a note.
 											}),
 											i(181028),	-- Dread Sentinel's Burnished Girdle

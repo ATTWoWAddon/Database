@@ -1,10 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2 } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2 } }, {
 	inst(1197, {	-- Uldaman: Legacy of Tyr
 		["coord"] = {41.2, 10.3, BADLANDS },
 		["maps"] = {
@@ -16,12 +13,49 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2 }
 				q(71093, {	-- Legacy of Tyr: Secrets of the Past
 					["description"] = "Given on zoning into the instance on a character that did not do the pre-patch version of this quest.",
 					["_drop"] = { "r" },	-- bad API data
+					["timeline"] = { ADDED_10_0_2_LAUNCH },
+					["altQuests"] = {
+						66458,	-- Legacy of Tyr: Secrets of the Past [A]
+						66586,	-- Legacy of Tyr: Secrets of the Past [H]
+					},
 				}),
 			}),
 			n(ZONE_DROPS, {
 				i(194256),	-- Pattern: Hood of Surging Time (RECIPE!)
 			}),
-			d(NormalPlus, {
+			n(TREASURES, {
+				o(384653, {	-- Ancient Volume
+					["description"] = "After second boss room, to the right of the broken bench.",
+					["groups"] = {
+						i(201920),	-- Obeservational Report: Earthen
+					},
+				}),
+				o(384313, {	-- Ancient Volume
+					["description"] = "Third boss room to the right of the exit door on the shelf.",
+					["groups"] = {
+						i(201727),	-- To My Staunchest Allies
+					},
+				}),
+				o(384311, {	-- Ancient Volume
+					["description"] = "Before entering the Fourth boss room on top of some chests.",
+					["groups"] = {
+						i(201722),	-- Edicts of the Prime Designate, Volume 742
+					},
+				}),
+				o(384654, {	-- Ancient Volume
+					["description"] = "To the right on shelf in the circle room before final boss.",
+					["groups"] = {
+						i(201833),	-- Wreckage Analysis Report
+					},
+				}),
+				o(384312, {	-- Ancient Volume
+					["description"] = "In the room before final boss, left side under the middle bench.",
+					["groups"] = {
+						i(201726),	-- Progress Report: Uldorus
+					},
+				}),
+			}),
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2475, {	-- The Lost Dwarves
 					["crs"] = {
 						184581,	-- Baelog
@@ -53,7 +87,12 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2 }
 					["g"] = {
 						i(193806),	-- Ancient Crosswrapped Sandals
 						i(193804),	-- Eternal Sentry's Ring
-						i(193805),	-- Inexorable Resonator
+						i(193805, {	-- Inexorable Resonator
+							["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_2_6 },
+						}),
+						i(212756, {	-- Inexorable Resonator
+							["timeline"] = { ADDED_10_2_6 },
+						}),
 						i(193808),	-- Sentinel's Battle Lance
 						i(193807),	-- Shoulders of Animated Stone
 					},
@@ -82,7 +121,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2 }
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2479, {	-- Chrono-Lord Deios
 					["crs"] = { 184125 },	-- Chrono-Lord Deios
 					["g"] = {
@@ -90,7 +129,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2 }
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(2487, {	-- Bromach
 					["crs"] = { 184018 },	-- Bromach
 					["g"] = {

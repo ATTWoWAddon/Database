@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_2_0 } }, {
 	m(MECHAGON, {
 		n(QUESTS, {
 			q(56493, {	-- A Direct Approach
@@ -23,21 +23,34 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 			q(55688, {	-- A Growing Mystery
 				["description"] = "This quest is only available if you pick up the clue from the |cFFFfffffDirt Pile|r while on |cFFefc400Clues Abound|r.",
 				["isDaily"] = true,
+				["g"] = {
+					i(168243),	-- Runestone Fragments (QI!)
+				},
 			}),
 			q(56373, {	-- A Gulper Ate The Rolly
 				["provider"] = { "n", 151462 },	-- Danielle Anglers
 				["coord"] = { 37.0, 47.1, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169391),	-- Bubble-eyed Rolly (QI!)
+				},
 			}),
 			q(55672, {	-- A Historical Mess
 				["description"] = "This quest is only available if you pick up the clue from the |cFFffffffWaterlogged Scroll Case|r while on |cFFefc400Clues Abound|r.",
 				["provider"] = { "n", 152633 },	-- Sir Finley Mrrgglton
 				["isDaily"] = true,
+				["g"] = {
+					i(168224),	-- Tortollan Relics (QI!)
+				},
 			}),
 			q(55697, {	-- A Little Leg Work
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.4, 38.7, MECHAGON },
 				["sourceQuest"] = 55373,	-- Knock 'Em Out The Box
+				["g"] = {
+					i(168281),	-- Mechaspider Leg (QI!)
+					i(168299),	-- Toe Spring (QI!)
+				},
 			}),
 			q(56557, {	-- A Little Side Action
 				["provider"] = { "n", 155355 },	-- Usha Eyegouge
@@ -55,27 +68,43 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 153373 },	-- Penny Clobberbottom
 				["coord"] = { 70.9, 37.6, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(168430),	-- Clobberbottom's Boomer (QI!)
+				},
 			}),
 			q(56142, {	-- Adapt, Improve, Overcome!
 				["provider"] = { "n", 154214 },	-- Christy Punchcog
 				["coord"] = { 71.8, 35.8, MECHAGON },
 				["isDaily"] = true,
 				["description"] = "Only available in the alternate timeline. Speak to |cFFFFD700Chromie|r when she is in town.",
+				["g"] = {
+					i(169213),	-- Leg Strut XS (QI!)
+					i(169214),	-- Pristine Hound Bolts (QI!)
+					i(169212),	-- Sentry Heel Nut (QI!)
+				},
 			}),
 			q(55463, {	-- Aid from Nordrassil
 				["provider"] = { "n", 151936 },	-- Mylune
 				["coord"] = { 72.1, 37.2, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(168582),	-- Living Sap (QI!)
+				},
 			}),
 			q(55813, {	-- Aim High
 				["provider"] = { "n", 154568 },	-- Pedram Mechanotrax
 				["coord"] = { 62.1, 76.8, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169279),	-- Pedram's Marker Pistol (QI!)
+				},
 			}),
 			q(55210, {	-- Batteries Not Included
 				["provider"] = { "n", 150630 },	-- Flip Quickcharge
 				["coord"] = { 70.8, 39.1, MECHAGON },
-				["sourceQuest"] = 55707,	-- First One's Free
+				["g"] = {
+					i(167233),	-- Damaged Energy Cell (QI!)
+				},
 			}),
 			q(56355, {	-- Battle Tested
 				["provider"] = { "n", 151006 },	-- Rocket-Chief Fuselage
@@ -84,7 +113,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["sourceQuest"] = 54090,	-- Toys For Destruction
 			}),
 			q(56365, {	-- Be Kind, Rewind
-				--["provider"] = { "n",  }
+				["provider"] = { "n", 153982 },	-- Izira Gearsworn <Battle Captain>
 				["coords"] = {
 					--{ 69.7, 33.0, MECHAGON },	-- Future
 					{ 73.6, 35.6, MECHAGON },	-- Current
@@ -122,6 +151,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 150631 },	-- Pristy Quickcharge
 				["coord"] = { 70.8, 38.4, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169807),	-- Salvaged Mechagnome Appendage (QI!)
+				},
 			}),
 			q(54965, {	-- Chopped Bots -- TODO: verify sourceQuest. Not always available. Possibly on some kind of a rotation? -- also popped 55480
 				["provider"] = { "n", 150086 },	-- Bolten Springspark
@@ -140,6 +172,10 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["coord"] = { 70.4, 31.0, MECHAGON },
 				["isDaily"] = true,
 				["g"] = {
+					i(168234),	-- Ancient Runestone (QI!)
+					i(168236),	-- Hearthstone Card (QI!)
+					i(168223),	-- Old Parchment (QI!)
+					i(168235),	-- Rusty Knife (QI!)
 					i(168256, {	-- Night Elf Ring
 						["description"] = "You need to be on either |cFFFFD700A Growing Mytery|r, |cFFFFD700Time for Heroics|r, |cFFFFD700Deck 'Em|r or |cFFFFD700A Historical Mess|r to get this item.",
 						["crs"] = { 152653 },	-- Toxic Lurker
@@ -172,11 +208,17 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 153538 },	-- Adalin Halfheight
 				["isDaily"] = true,
 				["coord"] = { 75.2, 69.8, MECHAGON },
+				["g"] = {
+					i(168754),	-- Adalin's Cards (QI!)
+				},
 			}),
 			q(55994, {	-- Do Not Drink — don't know if there are any SQs or if this is just up some days
 				["isDaily"] = true,
 				["coord"] = { 58.9, 31.7, MECHAGON },
 				["provider"] = { "n", 153750 },	-- Koupal Oilshins
+				["g"] = {
+					i(168608),	-- Stolen Oil (QI!)
+				},
 			}),
 			q(56410, {	-- Discs of Norgannon
 				["description"] = "The |cFF0070ddCorrupted Data Disc|r is the quest item for Discs of Norgannon, but on the day the quest is up you can loot the other four items.  They each have a daily cooldown, so you can use them to summon 4 Data Anomalies, abandon the quests, and use the items again the next day.\n\nIf the disc can summon more than one Data Anomaly, they share a daily lockout and you can only loot one of the two each day.\n",
@@ -188,6 +230,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 						["isDaily"] = true,
 						["provider"] = { "i", 169595 },	-- Scorched Data Disc
 						["g"] = {
+							i(169474),	-- Corrupted Data Disc (QI!)
 							n(153486, {	-- Data Anomaly <Baron Geddon>
 								["questID"] = 57389,
 								["isDaily"] = true,
@@ -294,6 +337,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["coord"] = { 59.0, 31.6, MECHAGON },
 				["sourceQuest"] = 55729,	-- The Resistance Needs You!
 				["_drop"] = { "isDaily" },
+				["g"] = {
+					i(168608),	-- Stolen Oil (QI!)
+				},
 			}),
 			q(55734, {	-- Drill Rig Construction
 				["provider"] = { "n", 153670 },	-- Rustbolt Resistance Fighter (Prince Erazmin)
@@ -332,17 +378,24 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["sym"] = {
 					{"select","questID",55743},{"pop"},	-- Sub-groups from Quest 55743 (More Recycling)
 				},
+				["g"] = {
+					i(168946),	-- Bundle of Recyclable Parts (QI!)
+				},
 			}),
 			q(56168, {	-- Factory Refurbished
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.5, 38.7, MECHAGON },
 				["sourceQuest"] = 54922,	-- The Nuts and Bolts of it
+				["g"] = {
+					i(169153),	-- Recycled Crawler Manifold (QI!)
+				},
 			}),
 			q(55707, {	-- First One's Free
 				["provider"] = { "n", 152747 },	-- Christy Punchcog
 				["coord"] = { 69.7, 32.3, MECHAGON },
 				["sourceQuest"] = 55708,	-- Upgraded
 				["g"] = {
+					i(168252),	-- Punchcard Satchel (QI!)
 					i(168752),	-- Omnipurpose Efficient Logic Board
 					i(167556),	-- Subroutine: Overclock
 				},
@@ -351,11 +404,19 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 151462 },	-- Danielle Anglers
 				["coord"] = { 37.0, 47.1, MECHAGON },
 				["requireSkill"] = FISHING,
+				["g"] = {
+					i(167671),	-- Anodized Sentry Fish (QI!)
+					i(167670),	-- Jarmouthed Goby (QI!)
+					i(167669),	-- Suction Tube (QI!)
+				},
 			}),
 			q(54083, {	-- Grease The Wheels
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.5, 38.7, MECHAGON },
 				["sourceQuest"] = 56168,	-- Factory Refurbished
+				["g"] = {
+					i(167076),	-- Grease Trap (QI!)
+				},
 			}),
 			q(56380, {	-- Grounded -- also popped 56330
 				["provider"] = { "n", 154906 },	-- Brian Pitchspark
@@ -366,11 +427,20 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 154485 },	-- Short John Mithril
 				["coord"] = { 21.5, 81.9, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169221),	-- Chief's Key (QI!)
+					i(169222),	-- Murloc Treasure (QI!)
+				},
 			}),
 			q(55103, {	-- Ideas Can Come from Anywhere
 				["provider"] = { "n", 152295 }, -- Pascal
 				["coord"] = { 71.2, 32.3, MECHAGON },
-				["minReputation"] = { 2391, REVERED },
+				["minReputation"] = { FACTION_RUSTBOLT_RESISTANCE, REVERED },
+				["g"] = {
+					i(170542),	-- Idea Starter (QI!)
+					i(170541),	-- Idea Starter (QI!)
+					i(169240),	-- Idea Starter (QI!)
+				},
 			}),
 			q(55101, {	-- Junkyard Tinkering and You -- also triggered 56902 for alliance -- slumber note: maybe not on live?  didn't get it on my priest.
 				["provider"] = { "n", 152295 },	-- Pascal
@@ -381,13 +451,16 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.4, 38.7, MECHAGON },
 				["sourceQuest"] = 54929,	-- Ready to Rumble
+				["g"] = {
+					i(167745),	-- Spiderspring Gear (QI!)
+				},
 			}),
 			q(55753, {	-- Knock His Bot Off
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.5, 38.7, MECHAGON },
 				["sourceQuest"] = 55696,	-- Test Drive
 				["g"] = {
-					i(168305),	-- Powercore Schematics
+					i(168305),	-- Powercore Schematics (QI!)
 				},
 			}),
 			q(56305, {	-- Let's Fish!
@@ -412,6 +485,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["cost"] = { { "i", 168946, 1 } },	-- Bundle of Recyclable Parts
 				["isDaily"] = true,
 				["g"] = {
+					i(168946),	-- Bundle of Recyclable Parts (QI!)
 					i(168264, {	-- Recycling Requisition
 						["repeatable"] = true,
 						["questID"] = 55148,
@@ -464,6 +538,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 					i(169381, {	-- OOX-35/MG (PET!)
 						["description"] = "When the quest |cFFFFD700My Chickens are Not for Eating!|r is active, there are Dismantled OOX-35s in the zone that can be repaired for 25 spare parts, rewarding the pet.",
 					}),
+					i(169695),	-- Mechanical Giblets (QI!)
 				},
 			}),
 			q(55731, {	-- My Father's Armies
@@ -474,9 +549,10 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 			q(56756, {	-- My Punkin, the Action Figure
 				["provider"] = { "n", 149815 },	-- Grizzek Fizzwrench
 				["coord"] = { 72.0, 34.2, MECHAGON },
-				["minReputation"] = { 2391, EXALTED },
+				["minReputation"] = { FACTION_RUSTBOLT_RESISTANCE, EXALTED },
 				["description"] = "Once you are exalted with Rustbolt Resistance, this quest is awarded after completing the Toys Like Us daily.",
 				["g"] = {
+					i(169882),	-- Sapphronetta Flivvers Action Figure (QI!)
 					i(169876),	-- Azeroth Mini: Sapphronetta
 				},
 			}),
@@ -502,12 +578,12 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["coord"] = { 73.7, 34.3, MECHAGON },
 				["isDaily"] = true,
 				["g"] = {
+					i(168184),	-- Rare Metal (QI!)
+					i(168183),	-- Rare Metal Collector (QI!)
 					i(168204, {	-- Small Metal Box
 						["description"] = "Small Metal Boxes can be collected when using the Rare Metal Collector.",
 						["g"] = {
-							i(170148, {	-- Paint Bottle: Electric Blue
-								["questID"] = 56909,
-							}),
+							i(170148),	-- Paint Bottle: Electric Blue (QS!)
 						},
 					}),
 				},
@@ -535,7 +611,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 			q(56174, {	-- Other Interests
 				["provider"] = { "n", 152575 },	-- Steelsage Gao
 				["coord"] = { 73.6, 34.3, MECHAGON },
+				["maps"] = { NAZJATAR },
 				["isDaily"] = true,
+				["cost"] = {{"i",167903,5}},	-- Disintegrating Sand Sculpture
 			}),
 			q(56746, {	-- Our Direct Line
 				["description"] = "Quest is offered once you have completed |cFFFFD700Other Interests|r dailies three times.",
@@ -554,6 +632,11 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 154335 },	-- Dread Captain DeMeza
 				["coord"] = { 71.7, 38.8, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169164),	-- Father's Bones (QI!)
+					i(169166),	-- Father's Clothes (QI!)
+					i(169165),	-- Father's Sword (QI!)
+				},
 			}),
 			q(55528, {	-- Playtime's Over
 				["provider"] = { "n", 151006 },	-- Rocket-Chief Fuselage
@@ -578,17 +661,27 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["coord"] = { 73.96, 36.93, MECHAGON },
 				["races"] = ALLIANCE_ONLY,
 				["isDaily"] = true,
+				["g"] = {
+					i(171248),	-- Prototype Implant (QI!)
+				},
 			}),
 			q(57326, {	-- Prototypes for Profit
 				["provider"] = { "n", 150567 },	-- Gazlowe
 				["coord"] = { 74.0, 36.8, MECHAGON },
 				["races"] = HORDE_ONLY,
 				["isDaily"] = true,
+				["g"] = {
+					i(171248),	-- Prototype Implant (QI!)
+				},
 			}),
 			q(54929, {	-- Ready to Rumble
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.4, 38.7, MECHAGON },
 				["sourceQuest"] = 54086,	-- Right Bot for the Job
+				["g"] = {
+					i(167175),	-- Sixteen-Servo-Actuator (QI!)
+					i(167176),	-- Strongbox Key (QI!)
+				},
 			}),
 			q(56326, {	-- Ravenous Rescue
 				["provider"] = { "n", 154568 },	-- Pedram Mechanotrax
@@ -599,13 +692,18 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 150630 },	-- Flip Quickcharge
 				["coord"] = { 70.8, 39.1, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169824),	-- Discarded Technology (QI!)
+					i(169839),	-- Spark-7143 (QI!)
+				},
 			}),
 			q(55211, {	-- Recharging Rustbolt
 				["provider"] = { "n", 150631 },	-- Pristy Quickcharge
 				["coord"] = { 70.7, 38.4, MECHAGON },
 				["sourceQuest"] = 56319,	-- The Quickcharge Contract
-				["minReputation"] = { 2391, HONORED },
+				["minReputation"] = { FACTION_RUSTBOLT_RESISTANCE, HONORED },
 				["g"] = {
+					i(168122),	-- NRG-100 (QI!)
 					i(166970),	-- Energy Cell
 				},
 			}),
@@ -637,6 +735,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 150631 },	-- Pristy Quickcharge
 				["coord"] = { 70.7, 38.4, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(168122),	-- NRG-100 (QI!)
+				},
 			}),
 			q(55885, {	-- Rico's Rescue
 				["provider"] = { "n", 153324 },	-- Rico Bugsnapper
@@ -825,8 +926,14 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.4, 38.7, MECHAGON },
 				["sourceQuest"] = 55736,	-- Welcome to the Resistance
+				["g"] = {
+					i(168115),	-- Mechanobot Ignition (QI!)
+					i(168113),	-- Multi-Leg Chaindrive (QI!)
+					i(168114),	-- Shellsteel Casing (QI!)
+				},
 			}),
 			q(56740, {	-- S.P.A.R.E. Crates
+				["description"] = "Quest is available if you have 250 Spare Parts in your bag",
 				["provider"] = { "n", 152295 },	-- Pascal
 				["coord"] = { 71.2, 32.3, MECHAGON },
 				["sourceQuest"] = 55101,	-- Junkyard Tinkering and You
@@ -847,16 +954,25 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 					{ 47.6, 36.8, MECHAGON },	-- Alliance
 					{ 42.6, 41.4, MECHAGON },	-- Horde
 				},
+				["g"] = {
+					i(169681),	-- BOOM-TASTIC 3000 (QI!)
+				},
 			}),
 			q(55696, {	-- Test Drive
 				["provider"] = { "n", 150573 },	-- Recycler Kerchunk
 				["coord"] = { 71.5, 38.7, MECHAGON },
 				["sourceQuest"] = 56175,	-- Emission Free
+				["g"] = {
+					i(168270),	-- Rusty Mechaspider (QI!)
+				},
 			}),
 			q(56306, {	-- The Family Jewels
 				["provider"] = { "n", 154511 },	-- Sneaky Pete
 				["coord"] = { 24.2, 75.3, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169241),	-- Family Jewelry (QI!)
+				},
 			}),
 			q(56053, {	-- The Final Act
 				["provider"] = { "n", 153982 },	-- Izira Gearsworn
@@ -868,6 +984,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 152321 },	-- Cork Stuttguard
 				["coord"] = { 63.2, 43.0, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(168246),	-- Golden Cogpaste (QI!)
+				},
 			}),
 			q(54922, {	-- The Nuts and Bolts of It
 				["provider"] = { "n", 150573 },	-- 2r Kerchunk
@@ -878,11 +997,14 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "n", 153993 },	-- Chromie
 				["coord"] = { 70.2, 30.9, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(168813),	-- Robotic-Memory Recorder (QI!)
+				},
 			}),
 			q(56319, {	-- The Quickcharge Contract
 				["provider"] = { "n", 150631 },	-- Pristy Quickcharge
 				["coord"] = { 70.7, 38.4, MECHAGON },
-				["minReputation"] = { 2391, HONORED },
+				["minReputation"] = { FACTION_RUSTBOLT_RESISTANCE, HONORED },
 			}),
 			q(55729, {	-- The Resistance Needs You!
 				["provider"] = { "n", 152851 },	-- Prince Erazmin
@@ -895,9 +1017,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 			q(56181, {	-- This One's On Me
 				["provider"] = { "n", 152295 },	-- Pascal
 				["coord"] = { 71.2, 32.5, MECHAGON },
-				["minReputation"] = { 2391, HONORED },
+				["minReputation"] = { FACTION_RUSTBOLT_RESISTANCE, HONORED },
 				["g"] = {
-					r(300122, {["u"]=15}),	-- Scrapmaster's Blowtorch
+					r(300122, {["u"]=TRAINING}),	-- Scrapmaster's Blowtorch
 				},
 			}),
 			q(55339, {	-- Tidying Up
@@ -921,6 +1043,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["coord"] = { 70.2, 32.9, MECHAGON },
 				["isDaily"] = true,
 				["g"] = {
+					i(169816),	-- Quasi-Faceted Scanner (QI!)
 					i(169838, {	-- Azeroth Mini: Starter Pack
 						i(169796),	-- Azeroth Mini Collection: Mechagon (TOY!)
 						i(169841),	-- Azeroth Mini: Erazmin
@@ -935,6 +1058,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["coord"] = { 69.7, 32.3, MECHAGON },
 				["sourceQuest"] = 55736,	-- Welcome to the Resistance
 				["g"] = {
+					i(168250),	-- Microcogs (QI!)
 					i(167555),	-- Pocket-Sized Computation Device
 				},
 			}),
@@ -955,16 +1079,18 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["sourceQuest"] = 56320,	-- Your First Charge is Free
 				["repeatable"] = true,
 			}),
-			o(329641, {	-- Wanted: Junkbrat and Roadtrogg
-				q(56434, {
-					["coord"] = { 67.3, 35.2, MECHAGON },
-					["isDaily"] = true,
-				}),
+			q(56434, {	-- WANTED: Junkbrat and Roadtrogg
+				["provider"] = {"o",329641},	-- Wanted: Junkbrat and Roadtrogg
+				["coord"] = { 67.3, 35.2, MECHAGON },
+				["isDaily"] = true,
 			}),
 			q(56508, {	-- Waste Not (picked up while doing "A Direct Approach," but not sure if you have to be on that quest or what the SQs are)
-			--	["objectID"] = ,	-- not linked to quest
+				["provider"] = {"o",329715},	-- Useful Bits and Pieces
 				["coord"] = { 43.0, 41.1, MECHAGON },
 				["isDaily"] = true,
+				["g"] = {
+					i(169686),	-- Useful Bits and Pieces (QI!)
+				},
 			}),
 			q(55995, {	-- We Can Fix It
 				["provider"] = { "n", 150956 },	-- Broken Drill Rig
@@ -992,14 +1118,17 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["coord"] = { 61.2, 37.4, MECHAGON },
 				["repeatable"] = true,	-- repeatable when the tower is up to craft filled energy cells
 			}),
-			q(55979, { -- Iteration is Key
+			q(55979, {	-- Iteration is Key
 				["requireSkill"] = ENGINEERING,
 				["provider"] = { "n", 152747 },	-- Christy Punchcog
 				["coord"] = { 69.7, 32.3, MECHAGON },
 				["cost"] = { { "i", 164740, 1 }, },	-- Ub3r-Spanner
-				["minReputation"] = { 2391, HONORED },
+				["minReputation"] = { FACTION_RUSTBOLT_RESISTANCE, HONORED },
 				["DisablePartySync"] = true,
 				["description"] = "You do not lose your Ub3r-Spanner while completing this quest, you simply need to have it in your inventory.",
+				["g"] = {
+					i(168532),	-- Overcharged Mecha-core (QI!)
+				},
 			}),
 		}),
 		-- Blueprints
@@ -1107,6 +1236,18 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.2.0" } }, 
 				["provider"] = { "i", 169172 },	-- Blueprint: Perfectly Timed Differential
 			}),
 		}),
+		-- Paint Bottles
+		n(QUESTS, {
+			q(56908, {	-- Paint Bottle: Goblin Green
+				["provider"] = { "i", 170147 },	-- Paint Bottle: Goblin Green
+			}),
+			q(56907, {	-- Paint Bottle: Nukular Red
+				["provider"] = { "i", 170146 },	-- Paint Bottle: Nukular Red
+			}),
+			q(56909, {	-- Paint Bottle: Electric Blue
+				["provider"] = { "i", 170148 },	-- Paint Bottle: Electric Blue
+			}),
+		}),
 		-- Paint Vials
 		n(QUESTS, {
 			q(55456, {	-- Paint Vial: Copper Trim
@@ -1181,27 +1322,27 @@ root(ROOTS.HiddenQuestTriggers, m(KUL_TIRAS, {
 			q(56514),	-- Grahophone, play all of my music.
 
 			-- Achievement 'Armed for Action' (achievementID 13790)
-			q(55260),	-- Volatile Blaster
-			q(55261),	-- Lightning Zap 5000
-			q(55903),	-- Boltspitter
-			q(55414),	-- Ricket's Special Delivery
-			q(55902),	-- Supercollider
+			hqt(55260, name(HEADERS.AchCriteria, 13790.01)),	-- Volatile Blaster
+			hqt(55261, name(HEADERS.AchCriteria, 13790.02)),	-- Lightning Zap 5000
+			hqt(55903, name(HEADERS.AchCriteria, 13790.03)),	-- Boltspitter
+			hqt(55414, name(HEADERS.AchCriteria, 13790.04)),	-- Ricket's Special Delivery
+			hqt(55902, name(HEADERS.AchCriteria, 13790.05)),	-- Supercollider
 
 			-- Achievement 'Most Minis Wins' (achievementID 13708)
-			q(56624),	-- Collected Izira Gearsworn
-			q(56625),	-- Collected Bondo Grosbloc
-			q(56626),	-- Collected Wrenchbot
-			q(56627),	-- Collected Roadtrogg
-			q(56628),	-- Collected Overspark
-			q(56629),	-- Collected Gazlowe
-			q(56630),	-- Collected HK-8
-			q(56631),	-- Collected King Mechagon
-			q(56632),	-- Collected Prince Erazmin
-			q(56633),	-- Collected Cork Stuttguard
-			q(56634),	-- Collected Naeno Megacrash
-			q(56635),	-- Collected Cogstar
-			q(56652),	-- Collected Blastatron
-			q(56729),	-- Collected Sapphronetta
+			hqt(56624, name(HEADERS.AchCriteria, 13708.01)),	-- Collected Izira Gearsworn
+			hqt(56625, name(HEADERS.AchCriteria, 13708.02)),	-- Collected Bondo Grosbloc
+			hqt(56626, name(HEADERS.AchCriteria, 13708.03)),	-- Collected Wrenchbot
+			hqt(56627, name(HEADERS.AchCriteria, 13708.04)),	-- Collected Roadtrogg
+			hqt(56628, name(HEADERS.AchCriteria, 13708.05)),	-- Collected Overspark
+			hqt(56629, name(HEADERS.AchCriteria, 13708.06)),	-- Collected Gazlowe
+			hqt(56630, name(HEADERS.AchCriteria, 13708.07)),	-- Collected HK-8
+			hqt(56631, name(HEADERS.AchCriteria, 13708.08)),	-- Collected King Mechagon
+			hqt(56632, name(HEADERS.AchCriteria, 13708.09)),	-- Collected Prince Erazmin
+			hqt(56633, name(HEADERS.AchCriteria, 13708.10)),	-- Collected Cork Stuttguard
+			hqt(56634, name(HEADERS.AchCriteria, 13708.11)),	-- Collected Naeno Megacrash
+			hqt(56635, name(HEADERS.AchCriteria, 13708.12)),	-- Collected Cogstar
+			hqt(56652, name(HEADERS.AchCriteria, 13708.13)),	-- Collected Blastatron
+			hqt(56729, name(HEADERS.AchCriteria, 13708.14)),	-- Collected Sapphronetta
 
 			-- First rare kill
 			q(55913),	-- Arachnoid Harvester
@@ -1243,9 +1384,9 @@ root(ROOTS.HiddenQuestTriggers, m(KUL_TIRAS, {
 			q(55921),	-- Uncle T'Rogg
 
 			-- Completed with quest
-			q(56745),	-- Triggered when completed 'Other Interests' (questID 56174) 
+			q(56745),	-- Triggered when completed 'Other Interests' (questID 56174)
 			q(56054),	-- Triggered when completed 'Recharging Rustbolt' (questID 55211)
-			q(56208),	-- Triggered when completed 'Ideas Can Come from Anywhere' (questID 55103) 
+			q(56208),	-- Triggered when completed 'Ideas Can Come from Anywhere' (questID 55103)
 			q(56662),	-- Triggered when completed 'Real Ultimate Power' (questID 56621)
 			q(56333),	-- Triggered when completed 'Your First Charge is Free!' (questID 56320)
 			q(56329),	-- Triggered when completed 'Do Not Drink' (questID 56328)
@@ -1265,7 +1406,7 @@ root(ROOTS.HiddenQuestTriggers, m(KUL_TIRAS, {
 			q(56089),	-- triggered on first rare kill — possibly blueprint looting?
 			q(56506),	-- triggered on third rare kill — was Mr. Fixthis for me, but someone else had it trigger on Arachnoid Harvester.  looted Performant Refined Logic Board and a Chain Ignitercoil
 			q(55848),	-- Reclamation Rig hardmode — putting here because with both quests attached with altQuests it doesn't roll over like dailies should
-			
+
 			q(56713),	-- seems to trigger on every Rusty Prince kill, along with 56182
 			q(56564),	-- First Fight Club Treasure Chest of the day
 			q(57081),	-- First Mechanized Chest of the week(Minipack: Mechagon)-- Still need to narrow down exact trigger

@@ -1,21 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	inst(556, {	-- The Everbloom
 		["coord"] = { 59.55, 45.45, GORGROND },
 		["maps"] = { 620, 621 },
 		["lvl"] = 100,
 		["g"] = {
-			n(ACHIEVEMENTS, {
-				ach(9838, {	-- What A Strange, Interdimensional Trip It's Been
-					["collectible"] = false,
-					["g"] = {
-						crit(4),	-- Yalnu
-					},
-				}),
-			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1214, {	-- Witherbark
 					["crs"] = { 81522 },	-- Witherbark
 					["sym"] = {
@@ -101,7 +93,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(1214, {	-- Witherbark
 					["crs"] = { 81522 },	-- Witherbark
 					["sym"] = {
@@ -150,7 +142,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, WRIST},
 					},
 					["g"] = {
-						ach(9493),	-- They Burn, Burn, Burn
+						ach(9493, {	-- They Burn, Burn, Burn
+							["timeline"] = { ADDED_6_0_3_LAUNCH, REMOVED_10_2_0 },
+						}),
 						i(119174),	-- Sol's Magestaff
 						i(110014),	-- Spores of Alacrity
 					},
@@ -165,14 +159,16 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					["g"] = {
 						ach(9053),	-- Heroic: The Everbloom
 						ach(9374),	-- Heroic: The Everbloom Guild Run
-						ach(9223),	-- Weed Whacker
+						ach(9223, {	-- Weed Whacker
+							["crs"] = { 84329 },	-- Kirin Tor Battle-Mage
+						}),
 						i(119181),	-- Hoof of Yalnu
 						i(110004),	-- Coagulated Genesaur Blood
 						un(REMOVED_FROM_GAME, i(114138)),	-- Core of Life
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(1214, {	-- Witherbark
 					["crs"] = { 81522 },	-- Witherbark
 					["sym"] = {
@@ -244,7 +240,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(34551),	-- Shaper Dungeon [PH] Challenge Mode - Bronze Addition (Nth)
 		q(34530),	-- Shaper Dungeon [PH] Challenge Mode - Consolation (Nth)
 		q(34553),	-- Shaper Dungeon [PH] Challenge Mode - Gold Addition (Nth)

@@ -2,17 +2,18 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
 	n(NIGHT_FAE, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_ardenweald01",
+			["icon"] = 3641394,
 			["g"] = {
 				n(COMMAND_TABLE, {
 					n(TIER_ONE, {
-						["icon"] = "Interface\\Icons\\Sanctum_features_missiontable",
+						["icon"] = 3675495,
 						["g"] = {
 							n(FOLLOWERS, bubbleDownSelf({
-								["u"] = 15,	-- Temporary troops
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,	-- Temporary troops
 							}, {
 								follower(1244),	-- Ardenweald Grovetender
 								follower(1293),	-- Ardenweald Grovetender
@@ -117,6 +118,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 								}),
 							}),
 							n(REWARDS, {
+								currency(1828),	-- Soul Ash
 								i(177698, {	-- Untamed Spirit Ardenweald (Uncommon)
 									["timeline"] = { ADDED_9_0_2_LAUNCH, REMOVED_9_1_5 },
 								}),

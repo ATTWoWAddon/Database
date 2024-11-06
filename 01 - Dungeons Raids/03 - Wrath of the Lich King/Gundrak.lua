@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(274, {	-- Gundrak
 		["mapID"] = GUNDRAK,
 		["coord"] = { 28.6, 86.9, ZULDRAK },
@@ -10,62 +10,62 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(484, {	-- Gundrak
-					crit(5448, { -- Slad'ran
-						["_encounter"] = { 592, NORMAL_DUNGEON },
+					crit(5448, {	-- Slad'ran
+						["_encounter"] = { 592, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5449, { -- Moorabi
-						["_encounter"] = { 594, NORMAL_DUNGEON },
+					crit(5449, {	-- Moorabi
+						["_encounter"] = { 594, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5450, { -- Drakkari Colossus
-						["_encounter"] = { 593, NORMAL_DUNGEON },
+					crit(5450, {	-- Drakkari Colossus
+						["_encounter"] = { 593, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					-- NOTE: This boss has a different criteriaUID in classic for some dumb reason. BLIZZARD.
-					crit(5627, { -- Gal'darah
-						["_encounter"] = { 596, NORMAL_DUNGEON },
+					crit(5627, {	-- Gal'darah
+						["_encounter"] = { 596, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #else
-					crit(5451, { -- Gal'darah
-						["_encounter"] = { 596, NORMAL_DUNGEON },
+					crit(5451, {	-- Gal'darah
+						["_encounter"] = { 596, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #endif
 				}),
 				-- #if ANYCLASSIC
 				applyclassicphase(WRATH_PHASE_TWO, ach(17295, {	-- Defense Protocol Alpha: Gundrak
-					crit(57743, { -- Slad'ran
-						["_encounter"] = { 592, HEROIC_DUNGEON },
+					crit(57743, {	-- Slad'ran
+						["_encounter"] = { 592, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39229),	-- Embrace of the Spider
 							i(39234),	-- Plague-Impervious Boots
 							i(39230),	-- Spaulders of the Monstrosity
 						},
 					}),
-					crit(57746, { -- Drakkari Colossus
-						["_encounter"] = { 593, HEROIC_DUNGEON },
+					crit(57746, {	-- Drakkari Colossus
+						["_encounter"] = { 593, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39233),	-- Aegis of Damnation
 							i(39225),	-- Cloak of Armed Strife
 							i(39224),	-- Leggings of Discord
 						},
 					}),
-					crit(57744, { -- Moorabi
-						["_encounter"] = { 594, HEROIC_DUNGEON },
+					crit(57744, {	-- Moorabi
+						["_encounter"] = { 594, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39232),	-- Pendant of Lost Vocations
 							i(39228),	-- Web Cocoon Grips
 							i(39221),	-- Wraith Spear
 						},
 					}),
-					crit(57745, { -- Eck the Ferocious
-						["_encounter"] = { 595, HEROIC_DUNGEON },
+					crit(57745, {	-- Eck the Ferocious
+						["_encounter"] = { 595, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39217),	-- Avenging Combat Leggings
 							i(39231),	-- Timeworn Silken Band
 							i(39226),	-- Maexxna's Femur
 						},
 					}),
-					crit(57747, { -- Gal'darah
-						["_encounter"] = { 596, HEROIC_DUNGEON },
+					crit(57747, {	-- Gal'darah
+						["_encounter"] = { 596, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(40491),	-- Hailstorm
 							i(39283),	-- Putrescent Bands
@@ -83,36 +83,36 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					}),
 				})),
 				applyclassicphase(WRATH_PHASE_THREE, ach(18596, {	-- Defense Protocol Beta: Gundrak
-					crit(60592, { -- Slad'ran
-						["_encounter"] = { 592, HEROIC_DUNGEON },
+					crit(60592, {	-- Slad'ran
+						["_encounter"] = { 592, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45687),	-- Helm of Veiled Energies
 							i(45976),	-- Static Charge Handwraps
 						},
 					}),
-					crit(60595, { -- Drakkari Colossus
-						["_encounter"] = { 593, HEROIC_DUNGEON },
+					crit(60595, {	-- Drakkari Colossus
+						["_encounter"] = { 593, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45301),	-- Bracers of the Smothering Inferno
 						},
 					}),
-					crit(60593, { -- Moorabi
-						["_encounter"] = { 594, HEROIC_DUNGEON },
+					crit(60593, {	-- Moorabi
+						["_encounter"] = { 594, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45305),	-- Breastplate of the Afterlife
 							i(45306),	-- Binding of the Dragon Matriarch
 							i(45299),	-- Dragonsteel Faceplate
 						},
 					}),
-					crit(60594, { -- Eck the Ferocious
-						["_encounter"] = { 595, HEROIC_DUNGEON },
+					crit(60594, {	-- Eck the Ferocious
+						["_encounter"] = { 595, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45308),	-- Eye of the Broodmother
 							i(45307),	-- Ironscale Leggings
 						},
 					}),
-					crit(60596, { -- Gal'darah
-						["_encounter"] = { 596, HEROIC_DUNGEON },
+					crit(60596, {	-- Gal'darah
+						["_encounter"] = { 596, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							currency(SIDEREAL_ESSENCE),
 							i(45298),	-- Razorscale Talon
@@ -121,22 +121,54 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(19433, {	-- Defense Protocol Gamma: Gundrak
+					crit(63339, {	-- Slad'ran
+						["_encounter"] = { 592, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63342, {	-- Drakkari Colossus
+						["_encounter"] = { 593, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63340, {	-- Moorabi
+						["_encounter"] = { 594, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63341, {	-- Eck the Ferocious
+						["_encounter"] = { 595, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63343, {	-- Gal'darah
+						["_encounter"] = { 596, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+				})),
 				-- #endif
 				ach(495,  {	-- Heroic: Gundrak
-					crit(6839, { -- Slad'ran
-						["_encounter"] = { 592, 2 },
+					crit(6839, {	-- Slad'ran
+						["_encounter"] = { 592, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6840, { -- Moorabi
-						["_encounter"] = { 594, 2 },
+					crit(6840, {	-- Moorabi
+						["_encounter"] = { 594, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6841, { -- Drakkari Colossus
-						["_encounter"] = { 593, 2 },
+					crit(6841, {	-- Drakkari Colossus
+						["_encounter"] = { 593, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5614, { -- Gal'darah
-						["_encounter"] = { 596, 2 },
+					crit(5614, {	-- Gal'darah
+						["_encounter"] = { 596, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5053, { -- Eck the Ferocious
-						["_encounter"] = { 595, 2 },
+					crit(5053, {	-- Eck the Ferocious
+						["_encounter"] = { 595, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -145,7 +177,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["qg"] = 30676,	-- Chronicler Bah'Kini
 					["sourceQuest"] = 13099,	-- Just Checkin'
 					["coord"] = { 70, 21, ZULDRAK },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/6 Drakkari History Tablet
@@ -159,7 +191,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29840, {	-- For Posterity
 					["qg"] = 55737,	-- Chronicler Bah'Kini
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/6 Drakkari History Tablet
@@ -173,7 +205,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29844, {	-- For Posterity
 					["qg"] = 55738,	-- Tol'mar
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/6 Drakkari History Tablet
@@ -189,7 +221,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["qg"] = 30671,	-- Tol'mar
 					["sourceQuest"] = 13097,	-- Unfinished Business
 					["coord"] = { 70.0, 22.8, ZULDRAK },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Gal'darah slain
@@ -203,7 +235,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29834, {	-- Gal'darah Must Pay
 					["qg"] = 55738,	-- Tol'mar
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Gal'darah slain
@@ -217,7 +249,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29835, {	-- Gal'darah Must Pay
 					["qg"] = 55737,	-- Chronicler Bah'Kini
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Gal'darah slain
@@ -233,7 +265,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["qg"] = 30676,	-- Chronicler Bah'Kini
 					["sourceQuest"] = 13099,	-- Just Checkin'
 					["coord"] = { 70, 21, ZULDRAK },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Drakkari Colossus Fragment
@@ -249,7 +281,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29838, {	-- One of a Kind
 					["qg"] = 55737,	-- Chronicler Bah'Kini
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Drakkari Colossus Fragment
@@ -265,7 +297,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29839, {	-- One of a Kind
 					["qg"] = 55738,	-- Tol'mar
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(74, 74, 20),
 					["groups"] = {
 						objective(1, {	-- 0/1 Drakkari Colossus Fragment
@@ -280,7 +312,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(35593),	-- Steel Bear Trap Bracers
 					i(35594),	-- Snowmelt Silken Cinch
@@ -295,7 +327,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #endif
 						i(35584),	-- Embroidered Gown of Zul'drak
 						i(157578, {	-- Belt of Vile Concoctions
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						-- #if AFTER 7.3.5
 						i(37628),	-- Slad'ran Coiled Cord (7.3.5 - Used to be only Heroic Mode)
@@ -332,7 +364,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(37633),	-- Ground Tremor Helm (7.3.5 - Used to be only Heroic Mode)
 						i(157584, {	-- Drape of Moorabi
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(37630),	-- Shroud of Moorabi (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -364,7 +396,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ZONE_DROPS, {
@@ -375,7 +407,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if BEFORE CATA
 					n(COMMON_BOSS_DROPS, {
 						currency(101, {	-- Emblem of Heroism
-							["timeline"] = { "added 3.0.2.8905", "removed 4.0.1" },
+							["timeline"] = { ADDED_3_0_2, REMOVED_4_0_1 },
 						}),
 					}),
 					-- #endif
@@ -391,7 +423,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #if AFTER 7.3.5
 							i(35584),	-- Embroidered Gown of Zul'drak (7.3.5 - Used to be only Normal Mode)
 							i(157578, {	-- Belt of Vile Concoctions
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							-- #endif
 							i(37628),	-- Slad'ran Coiled Cord
@@ -427,7 +459,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #endif
 							i(37633),	-- Ground Tremor Helm
 							i(157584, {	-- Drape of Moorabi
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37630),	-- Shroud of Moorabi
 							-- #if AFTER 7.3.5
@@ -451,12 +483,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					e(596, {	-- Gal'darah
 						["creatureID"] = 29306,	-- Gal'darah
 						["groups"] = {
-							{	-- Champion of the Frozen Wastes
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 5614,		-- Gal'darah slain
-							},
 							ach(5101, {	-- Heroic: Gundrak Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(2152),	-- Share The Love
 							ach(1864),	-- What the Eck?
@@ -488,7 +516,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35475),	-- Gundrak Reward Quest - Normal completion
 		q(35476),	-- Gundrak Reward Quest - Heroic completion
 		q(35477),	-- Gundrak Bonus Objective - kill Eck the Ferocious (Heroic only)

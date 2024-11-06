@@ -244,7 +244,7 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 				["lvl"] = 110,
 			}),
 			q(48460, {	-- The Wranglers
-				["sourceQuests"] = { 48199 },	-- The Burning Heart
+				["sourceQuests"] = { 46732 },	-- The Prophet's Gambit
 				["isBreadcrumb"] = true,
 				["provider"] = { "n", 119388 },	-- Chieftain Hatuun
 				["coord"] = { 56.4, 67.5, KROKUUN },
@@ -309,30 +309,34 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 			q(48442, {	-- Nath'raxas Hold: Preparations
 				["provider"] = { "n", 119388 },	-- Chieftain Hatuun
 				["sourceQuests"] = { 48441 },	-- Remnants of Darkfall Ridge
+				["coord"] = { 56.6, 67.6, KROKUUN },
 			}),
 			q(48910, {	-- Supplying Krokuun
 				["provider"] = { "n", 119388 },	-- Chieftain Hatuun
+				["coord"] = { 56.6, 67.6, KROKUUN },
 				["isWeekly"] = true,
 				["sourceQuests"] = { 48442 },	-- Nath'raxas Hold: Preparations
 				["groups"] = {
 					i(152095, {	-- Krokul Ridgestalker
-						["groups"] = {
-							follower(1055, {	-- Krokul Ridgestalker
-								["u"] = 15,	-- Temporary troop
-							}),
-							follower(1056, {	-- Krokul Ridgestalker
-								["u"] = 15,	-- Temporary troop
-							}),
-						},
+						follower(1055, {	-- Krokul Ridgestalker (Temporary Troop)
+							["collectible"] = false,
+							["u"] = UNLEARNABLE,
+						}),
+						follower(1056, {	-- Krokul Ridgestalker (Temporary Troop)
+							["collectible"] = false,
+							["u"] = UNLEARNABLE,
+						}),
 					}),
 				},
 			}),
 			q(48443, {	-- Nath'raxas Hold: Rescue Mission
 				["provider"] = { "n", 119388 },	-- Chieftain Hatuun
 				["sourceQuests"] = { 48910 },	-- Supplying Krokuun
+				["coord"] = { 56.6, 67.6, KROKUUN },
 			}),
 			q(48634, {	-- Further Supplying Krokuun
 				["provider"] = { "n", 119388 },	-- Chieftain Hatuun
+				["coord"] = { 56.6, 67.6, KROKUUN },
 				["repeatable"] = true,
 				["sourceQuests"] = {
 					48443,	-- Nath'raxas Hold: Rescue Mission
@@ -340,47 +344,23 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 				},
 				["groups"] = {
 					i(152095, {	-- Krokul Ridgestalker
-						["groups"] = {
-							follower(1055, {	-- Krokul Ridgestalker
-								["u"] = 15,	-- Temporary troop
-							}),
-							follower(1056, {	-- Krokul Ridgestalker
-								["u"] = 15,	-- Temporary troop
-							}),
-						},
+						follower(1055, {	-- Krokul Ridgestalker (Temporary Troop)
+							["collectible"] = false,
+							["u"] = UNLEARNABLE,
+						}),
+						follower(1056, {	-- Krokul Ridgestalker (Temporary Troop)
+							["collectible"] = false,
+							["u"] = UNLEARNABLE,
+						}),
 					}),
 				},
-			}),
-			q(48016, {	-- Ascending Alchemy
-				["provider"] = { "n", 125346 },	-- Alchemist Funen
-				["coord"] = { 56.2, 66.8, KROKUUN },
-				["groups"] = {
-					i(151706),	-- Recipe: Astral Alchemist Stone (Rank 1)
-				},
-				["requireSkill"] = ALCHEMY,
-			}),
-			q(48002, {	-- Limited Supplies
-				["provider"] = { "n", 125346 },	-- Alchemist Funen
-				["coord"] = { 56.2, 66.8, KROKUUN },
-				["groups"] = {
-					i(151657),	-- Recipe: Lightblood Elixir (Rank 1)
-				},
-				["requireSkill"] = ALCHEMY,
-			}),
-			q(48013, {	-- Tracking the Trackers
-				["provider"] = { "n", 125346 },	-- Alchemist Funen
-				["coord"] = { 56.2, 66.8, KROKUUN },
-				["groups"] = {
-					i(151703),	-- Recipe: Tears of the Naaru (Rank 1)
-				},
-				["requireSkill"] = ALCHEMY,
 			}),
 		}),
 	}),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(48281),	-- Tracking Quest - getting into the Lightforged Warframe during "Dawn of Justice" (questID 47992)
 	}),
 });

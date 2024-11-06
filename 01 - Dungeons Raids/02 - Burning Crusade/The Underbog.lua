@@ -1,15 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(262, {	-- The Underbog
 		["lore"] = "Underbog is the 2nd 5-man instance within the Coilfang Reservoir found on the east side of the naga invested complex. The Underbog is home to the last vestiges of natural life left within Coilfang Reservoir that has not been completely stamped out by the Naga incursion. The only Naga presence in this section defends the structure they built to house their hydra god, Ghaz'an. The rest of the Underbog is a natural habitat, home to the most powerful species of animal life in Zangarmarsh.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3716,	-- The Underbog
-		["sins"] = {
-			"Coilfang: Underbog",
-			"Coilfang: The Underbog",
-			"Echsenkessel: Tiefensumpf",
-		},
+		-- #endif
 		["coord"] = { 54.24, 34.45, ZANGARMARSH },	-- The Underbog, Zangarmarsh
 		["mapID"] = COILFANG_RESERVOIR_UNDERBOG,
 		["lvl"] = lvlsquish(60, 60, 10),
@@ -17,7 +14,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 			n(QUESTS, {
 				q(29568, {	-- A Necessary Evil
 					["qg"] = 54678,	-- Naturalist Bite
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(61, 61, 10),
 					["groups"] = {
 						objective(1, {	-- Hungarfen slain
@@ -28,7 +25,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(9715, {	-- Bring Me A Shrubbery!
 					["qg"] = 17856,	-- Gzhun'tt
 					["coord"] = { 19.4, 50.0, ZANGARMARSH },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["cost"] = {
 						{ "i", 24246, 5 },	-- Sanguine Hibiscus
 					},
@@ -36,7 +33,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29691, {	-- Bring Me A Shrubbery!
 					["qg"] = 54674,	-- T'shu
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["cost"] = {
 						{ "i", 24246, 5 },	-- Sanguine Hibiscus
 					},
@@ -46,8 +43,8 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17856,	-- Gzhun'tt
 					["sourceQuest"] = 9715,	-- Bring Me A Shrubbery!
 					["coord"] = { 19.4, 50.0, ZANGARMARSH },
-					["maxReputation"] = { 970, EXALTED },	-- Sporeggar, Exalted.
-					["timeline"] = { "removed 4.3.0.14732" },
+					["maxReputation"] = { FACTION_SPOREGGAR, EXALTED },	-- Sporeggar, Exalted.
+					["timeline"] = { REMOVED_4_3_0 },
 					["repeatable"] = true,
 					["cost"] = {
 						{ "i", 24246, 5 },	-- Sanguine Hibiscus
@@ -57,8 +54,8 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29692, {	-- Bring Me Another Shrubbery!
 					["qg"] = 54674,	-- T'shu
 					["sourceQuest"] = 29691,	-- Bring Me A Shrubbery!
-					["maxReputation"] = { 970, EXALTED },	-- Sporeggar, Exalted.
-					["timeline"] = { "added 4.3.0.14732" },
+					["maxReputation"] = { FACTION_SPOREGGAR, EXALTED },	-- Sporeggar, Exalted.
+					["timeline"] = { ADDED_4_3_0 },
 					["repeatable"] = true,
 					["cost"] = {
 						{ "i", 24246, 5 },	-- Sanguine Hibiscus
@@ -68,18 +65,21 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29571, {	-- Defending the Wilds
 					["qg"] = 18074,	-- Elementalist Morgh <The Earthen Ring>
 					["coord"] = { 60.6, 22.4, NAGRAND },
-					["timeline"] = { "added 4.3.0.14732" },
-					["isBreadcrumb"] = true,
+					["timeline"] = { ADDED_4_3_0 },
+					-- ["isBreadcrumb"] = true,	-- 2024-06-22 Discord: not locked by 'Rescuing the Expedition' (29570)
 					["lvl"] = lvlsquish(63, 63, 10),
 				}),
 				q(9717, {	-- Oh, It's On!
 					["qg"] = 17857,	-- T'shu
 					["coord"] = { 19.4, 49.8, ZANGARMARSH },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(63, 63, 10),
 					["groups"] = {
 						objective(1, {	-- 0/1 Underspore Frond
-							["provider"] = { "i", 24247 },	-- Underspore Frond
+							["providers"] = {
+								{ "i",  24247 },	-- Underspore Frond
+								{ "o", 182054 },	-- The Underspore
+							},
 							["coord"] = { 71.5, 86.9, COILFANG_RESERVOIR_UNDERBOG },
 						}),
 						i(28111),	-- Everlasting Underspore Frond
@@ -87,7 +87,8 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29570, {	-- Rescuing the Expedition
 					["qg"] = 54675,	-- Watcher Jhang
-					["timeline"] = { "added 4.3.0.14732" },
+					["sourceQuest"] = 29571,	-- Defending the Wilds
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(61, 61, 10),
 					["groups"] = {
 						objective(1, {	-- Earthbinder Rayge Discovered
@@ -100,10 +101,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29567, {	-- Stalk the Stalker
 					["qg"] = 54674,	-- T'shu
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["groups"] = {
 						objective(1, {	-- 0/1 Brain of the Black Stalker
 							["provider"] = { "i", 24248 },	-- Brain of the Black Stalker
+							["cr"] = 17882,	-- The Black Stalker
 						}),
 						i(28109),	-- Essence-Infused Mushroom
 						i(28108),	-- Power-Infused Mushroom
@@ -112,11 +114,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(9719, {	-- Stalk the Stalker
 					["qg"] = 17866,	-- Khn'nix
 					["coord"] = { 19.6, 49.8, ZANGARMARSH },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(63, 63, 10),
 					["groups"] = {
 						objective(1, {	-- 0/1 Brain of the Black Stalker
 							["provider"] = { "i", 24248 },	-- Brain of the Black Stalker
+							["cr"] = 17882,	-- The Black Stalker
 						}),
 						i(28109),	-- Essence-Infused Mushroom
 						i(28108),	-- Power-Infused Mushroom
@@ -124,15 +127,22 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 			}),
 			n(ZONE_DROPS, {
-				i(24246),	-- Sanguine Hibiscus
+				i(24246, {	-- Sanguine Hibiscus
+					["provider"] = { "o", 183385 },	-- Sanguine Hibiscus
+					-- #if BEFORE 4.3.0
+					["description"] = "Drops commmonly from all Underbog mobs, and can be turned in to the NPCs named Gzhun'tt for Sporeggar reputation. Each turn in requires 5 Sanguine Hibiscus. Gzhun'tt can be found in Sporeggar.",
+					-- #else
+					["description"] = "Drops commmonly from all Underbog mobs, and can be turned in to the NPCs named T'shu for Sporeggar reputation. Each turn in requires 5 Sanguine Hibiscus. T'shu can be found just inside the Underbog dungeon.",
+					-- #endif
+				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(576, {	-- Hungarfen
 					["creatureID"] = 17770,
 					["groups"] = {
 						-- #if BEFORE MOP
 						i(27631, {	-- Needle Shrike
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 						-- #if AFTER 7.3.5
@@ -151,7 +161,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #endif
 						-- #if BEFORE MOP
 						i(24413, {	-- Totem of the Thunderhead
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 					},
@@ -241,11 +251,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(27896),	-- Alembic of Infernal Power
 						i(27770),	-- Argussian Compass
 						-- #endif
-						i(24248),	-- Brain of the Black Stalker
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -287,7 +296,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(27748),	-- Cassock of the Loyal
 							-- #if BEFORE MOP
 							i(27744, {	-- Idol of Ursoc
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 						},
@@ -340,10 +349,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 17882,
 						["groups"] = {
 							ach(670, {	-- Heroic: Underbog
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5070, {	-- Heroic: Underbog Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(27769),	-- Endbringer
 							-- #if AFTER 7.3.5
@@ -373,7 +382,6 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(27896),	-- Alembic of Infernal Power
 							i(27770),	-- Argussian Compass
 							applyclassicphase(TBC_PHASE_ONE, i(23572)),	-- Primal Nether
-							i(24248),	-- Brain of the Black Stalker
 							i(33826),	-- Black Stalker Egg
 						},
 					}),
@@ -384,7 +392,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35559),	-- The Underbog Reward Quest - Normal completion
 		q(35560),	-- The Underbog Reward Quest - Heroic completion
 	}),

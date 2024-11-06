@@ -1,9 +1,8 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON};
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
-	inst(67, {	-- The Stonecore
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
+	applyclassicphase(CATA_PHASE_ONE, inst(67, {	-- The Stonecore
 		["mapID"] = 324,
 		["coord"] = { 47.50, 52.05, DEEPHOLM },
 		["groups"] = {
@@ -30,6 +29,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(66894),	-- Leggings of the Lost Child
 						i(66896),	-- Stonecore Belt
 					},
+				}),
+				q(28799, {	-- Might of the Earthen
+					["provider"] = { "o", 207407 },	-- Broken Pillar
+					["requireSkill"] = ARCHAEOLOGY,
+					["isRepeatable"] = true,
 				}),
 			}),
 			n(ZONE_DROPS, {
@@ -73,7 +77,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
+			d(DIFFICULTY.DUNGEON.NORMAL, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
 				e(110, {	-- Corborus
 					["crs"] = { 43438 },	-- Corborus
 					["groups"] = {
@@ -94,6 +98,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55797),	-- Hematite Plate Gloves
 						i(55801),	-- Quicksilver Blade
 						i(55799),	-- Rose Quartz Band
+						-- #if BEFORE MOP
+						i(55800, {	-- Stalagmite Dragon
+							["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 				e(112, {	-- Ozruk
@@ -121,11 +130,16 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55820), -- Prophet Scepter
 						i(55817), -- Slippers of the Twilight Prophet
 						i(55819), -- Tear of Blood
+						-- #if BEFORE MOP
+						i(55821, {	-- Book of Dark Prophecies
+							["timeline"] = { REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 			})),
 			-- #if BEFORE 7.3.5
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(110, {	-- Corborus
 					["crs"] = { 43438 },	-- Corborus
 					["groups"] = {
@@ -144,6 +158,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56336),	-- Hematite Plate Gloves
 						i(56335),	-- Quicksilver Blade
 						i(56333),	-- Rose Quartz Band
+						-- #if BEFORE MOP
+						i(56337, {	-- Stalagmite Dragon
+							["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 				e(112, {	-- Ozruk
@@ -171,11 +190,16 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56349),	-- Prophet Scepter
 						i(56348),	-- Slippers of the Twilight Prophet
 						i(56351),	-- Tear of Blood
+						-- #if BEFORE MOP
+						i(56350, {	-- Book of Dark Prophecies
+							["timeline"] = { REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 			}),
 			-- #else
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_HEROIC, {
 				e(110, {	-- Corborus
 					["crs"] = { 43438 },	-- Corborus
 					["groups"] = {
@@ -240,7 +264,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(113, {	-- High Priestess Azil
 					["crs"] = { 42333 },	-- High Priestess Azil
 					["groups"] = {
@@ -252,11 +276,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 			}),
 			-- #endif
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35911),	-- Stonecore Reward Quest - Normal completion
 		q(35913),	-- Stonecore (Heroic) Reward Quest - Heroic completion
 	}),

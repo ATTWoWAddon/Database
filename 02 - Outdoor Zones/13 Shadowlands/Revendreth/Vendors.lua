@@ -115,59 +115,73 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			}),
 			n(156822, {	-- Mistress Mihaela <Court of Harvesters Quartermaster>
 				["coord"] = { 61.4, 63.8, REVENDRETH },
-				["minReputation"] = { 2413, 5 },	-- Court of Harvesters, Friendly
-				["g"] = {
-					i(183518, {	-- Court Sinrunner (MOUNT!)
-						["cost"] = 300000000, -- 30,000g
-					}),
-					i(179282, {	-- Court of Harvesters Tabard
-						["cost"] = 2500000, -- 250g
-					}),
-					i(180593, {	-- Court Messenger (PET!)
-						["cost"] = { { "i", 163036, 250 } },
-					}),
-					i(182668, {	-- Recipe: Feast of Gluttonous Hedonism
-						["cost"] = 17650000, -- 1,765g
-					}),
-					i(183099, {	-- Design: Revitalizing Jewel Doublet
-						["cost"] = 13500000, -- 1,350g
-					}),
-					i(183102, {	-- Technique: Contract: Court of Harvesters (RECIPE!)
-						["cost"] = 17650000, -- 1,765g
-					}),
-					i(183245, {	-- Memory of Norgannon
-						["cost"] = 11000000, -- 1,100g
-					}),
-					i(183839, {	-- Pattern: Heavy Desolate Hide
-						["cost"] = 17650000, -- 1,765g
-					}),
-					i(183900, {	-- Sinvyr Tea Set (TOY!)
-						["cost"] = 13500000, -- 1,350g
-					}),
-					i(177665),	-- Spectral Hankerchief
-					i(184720),	-- Reflective Waistguard
-					i(184721),	-- Flourished Cummerbund
-					i(184722),	-- Ostentatious Buckle
-					i(184723),	-- Bedazzled Belt
-					i(184724),	-- Courtier's Pauldron
-					i(184725),	-- Courtier's Shoulderplate
-					i(184726),	-- Courtier's Mantle
-					i(184727),	-- Courtier's Shoulderguard
-					i(184755),	-- Reinforced High Collar
-					i(182207),	-- Illusion: Sinsedge
-					i(190644, {	-- Vessel of Profound Possibilities
-						["timeline"] = { "added 9.2.0" },
-						["sym"] = {
-							{"select","tierID",SL_TIER},{"pop"},	-- SL Tier
-							{"where","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
-						},
-					}),
-					n(VENTHYR, sharedData({["customCollect"] = { "SL_COV_VEN" }},{
+				["minReputation"] = { FACTION_COURT_OF_HARVESTERS, FRIENDLY },	-- Court of Harvesters, Friendly
+				["g"] = bubbleDownClassicRep(FACTION_COURT_OF_HARVESTERS, {
+					{		-- Neutral
+						i(190644, {	-- Vessel of Profound Possibilities
+							["cost"] = {{"c",2009,10000}},	-- 10,000 Cosmic Flux
+							["timeline"] = { ADDED_9_2_0 },
+							["sym"] = {
+								{"select","expansionID",EXPANSION.SL},	-- Select Shadowlands
+								{"find","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
+							},
+						}),
+					}, {	-- Friendly
+						i(177665),	-- Spectral Hankerchief
+					}, {	-- Honored
+						i(184723),	-- Bedazzled Belt
+						i(183099, {	-- Design: Revitalizing Jewel Doublet (RECIPE!)
+							["cost"] = 13500000, -- 1,350g
+						}),
+						i(184721),	-- Flourished Cummerbund
+						i(217598, {	-- Glyph of Flagellation
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { ROGUE },
+						}),
+						i(217589, {	-- Glyph of Mindgames
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { PRIEST },
+						}),
+						i(184722),	-- Ostentatious Buckle
+						i(184720),	-- Reflective Waistguard
+						i(183900, {	-- Sinvyr Tea Set (TOY!)
+							["cost"] = 13500000, -- 1,350g
+						}),
+					}, {	-- Revered
+						i(180593, {	-- Court Messenger Scroll (PET!)
+							["cost"] = { { "i", POLISHED_PET_CHARM, 250 } },
+						}),
+						i(184726),	-- Courtier's Mantle
+						i(184724),	-- Courtier's Pauldron
+						i(184727),	-- Courtier's Shoulderguard
+						i(184725),	-- Courtier's Shoulderplate
 						i(183708, {	-- Glittering Gold Sinstone Chain
+							["customCollect"] = "SL_COV_VEN",
 							["cost"] = { { "c", ANIMA, 3500 } },
 						}),
-					})),
-				},
+						i(183245, {	-- Memory of Norgannon
+							["cost"] = 11000000, -- 1,100g
+						}),
+						i(183839, {	-- Pattern: Heavy Desolate Hide
+							["cost"] = 17650000, -- 1,765g
+						}),
+						i(182668, {	-- Recipe: Feast of Gluttonous Hedonism (RECIPE!)
+							["cost"] = 17650000, -- 1,765g
+						}),
+						i(183102, {	-- Technique: Contract: Court of Harvesters (RECIPE!)
+							["cost"] = 17650000, -- 1,765g
+						}),
+					}, {	-- Exalted
+						i(179282, {	-- Court of Harvesters Tabard
+							["cost"] = 2500000, -- 250g
+						}),
+						i(183518, {	-- Court Sinrunner (MOUNT!)
+							["cost"] = 300000000, -- 30,000g
+						}),
+						i(182207),	-- Illusion: Sinsedge (ILLUSION!)
+						i(184755),	-- Reinforced High Collar
+					},
+				}),
 			}),
 			n(173570, {	-- Snickersnee <Stable Dredger>
 				["coord"] = { 40.8, 46.6, REVENDRETH },	-- Mims <Innkeeper>
@@ -228,6 +242,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						["description"] = "Take this to Ta'lan the Antiquary in Oribos (downstairs in The Broker's Den) |cffffffff(51.4, 42.9)|r.",
 					}),
 					i(181799),	-- Extra Large Hat
+					i(182298),	-- Kaja'Extreme
 					i(182702),	-- Phial of Black Muck Dye
 					i(182163),	-- Strength of Blood
 					i(187886, {	-- Technique: Mark of the Gloomstalker Dredbat (RECIPE!)

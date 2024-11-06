@@ -4,10 +4,9 @@
 root(ROOTS.Zones, {
 	m(DRAENOR, {
 		m(WARSPEAR, {
-			["icon"] = "Interface\\FriendsFrame\\PlusManz-Horde",
+			["icon"] = 374221,
 			["isRaid"] = true,
 			["races"] = HORDE_ONLY,
-			["lvl"] = 100,
 			["g"] = {
 				n(FLIGHT_PATHS, {
 					fp(1408, {	-- Warspear, Ashran
@@ -20,6 +19,38 @@ root(ROOTS.Zones, {
 						["description"] = "In order to obtain this follower you need to talk to him and let him finish his dialogue.",
 						["creatureID"] = 91483,	-- Fen Tao
 						["coord"] = { 46.9, 45.2, WARSPEAR },
+					}),
+				}),
+				n(PROFESSIONS, {
+					prof(ALCHEMY, {
+						n(87542, {	-- Joshua Alvarez <Alchemy Recipes>
+							["coord"] = { 61.0, 27.4, WARSPEAR },
+							["g"] = appendGroups(COMMON_DRAENOR_ALCHEMY_RECIPES, {DRAENOR_ALCHEMY}),
+						}),
+					}),
+					prof(BLACKSMITHING, {
+						n(87550, {	-- Nonn Threeratchet <Blacksmithing Plans>
+							["coord"] = { 75.0, 37.9, WARSPEAR },
+							["g"] = appendGroups(COMMON_DRAENOR_BLACKSMITHING_RECIPES, {DRAENOR_BLACKSMITHING}),
+						}),
+					}),
+					prof(ENCHANTING, {
+						n(86045, {	-- Ged'kah <Enchanting Recipes>
+							["coord"] = { 78.0, 53.7, WARSPEAR },
+							["g"] = appendGroups(COMMON_DRAENOR_ENCHANTING_RECIPES, {DRAENOR_ENCHANTING}),
+						}),
+					}),
+					prof(ENGINEERING, {
+						n(87552, {	-- Nik Steelrings <Engineering Plans>
+							["coord"] = { 70.5, 38.9, WARSPEAR },
+							["g"] = appendGroups(COMMON_DRAENOR_ENGINEERING_RECIPES, {DRAENOR_ENGINEERING}),
+						}),
+					}),
+					prof(LEATHERWORKING, {
+						n(87549, {	-- Garm Gladestride <Leatherworking Patterns>
+							["coord"] = { 50.4, 27.4, WARSPEAR },
+							["g"] = appendGroups(COMMON_DRAENOR_LEATHERWORKING_RECIPES, {DRAENOR_LEATHERWORKING}),
+						}),
 					}),
 				}),
 				n(QUESTS, {
@@ -279,39 +310,45 @@ root(ROOTS.Zones, {
 					["g"] = {
 						n(86036, {	-- Beska Redtusk <Frostwolf Orcs Quartermaster>
 							["coord"] = { 53.9, 62.6, WARSPEAR },
-							["g"] = {
-								i(118662, {	-- Bladespire Relic
-									["cost"] = 25000000,	-- 2,500g
-								}),
-								i(119161, {	-- Contract: Karg Bloodfury
-									["cost"] = 50000000,	-- 5,000g
-									["g"] = {
-										follower(459),	-- Karg Bloodfury
-									},
-								}),
-								i(118664, {	-- Frostwolf Elixir
-									["cost"] = { { "c", 823, 1 }, },	-- 1x Apexis Crystal
-								}),
-								i(119141, {	-- Frostwolf Pup (PET!)
-									["cost"] = {
-										{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
-										{ "g", 10000000 },	-- 1,000g
-									},
-								}),
-								i(119133),	-- Frostwolf Tabard
-								i(118677, {	-- Howl of the Frostwolf
-									["cost"] = 5000000,	-- 500g
-								}),
-								i(115468, {	-- Permanent Frost Essence (TOY!)
-									["cost"] = 10000000,	-- 1,000g
-								}),
-								i(116785, {	-- Swift Frostwolf (MOUNT!)
-									["cost"] = {
-										{ "c", 823, 5000 },	-- 5,000x Apexis Crystal
-										{ "g", 50000000 },	-- 5,000g
-									},
-								}),
-							},
+							["g"] = bubbleDownClassicRep(FACTION_FROSTWOLF_ORCS, {
+								{		-- Neutral
+								}, {	-- Friendly
+									i(118664, {	-- Frostwolf Elixir
+										["cost"] = { { "c", 823, 1 }, },	-- 1x Apexis Crystal
+									}),
+								}, {	-- Honored
+									i(118677, {	-- Howl of the Frostwolf
+										["cost"] = 5000000,	-- 500g
+									}),
+									i(115468, {	-- Permanent Frost Essence (TOY!)
+										["cost"] = 10000000,	-- 1,000g
+									}),
+								}, {	-- Revered
+									i(118662, {	-- Bladespire Relic
+										["cost"] = 25000000,	-- 2,500g
+									}),
+									i(119161, {	-- Contract: Karg Bloodfury
+										["cost"] = 50000000,	-- 5,000g
+										["g"] = {
+											follower(459),	-- Karg Bloodfury
+										},
+									}),
+									i(119141, {	-- Frostwolf Pup (PET!)
+										["cost"] = {
+											{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
+											{ "g", 10000000 },	-- 1,000g
+										},
+									}),
+								}, {	-- Exalted
+									i(119133),	-- Frostwolf Tabard
+									i(116785, {	-- Swift Frostwolf (MOUNT!)
+										["cost"] = {
+											{ "c", 823, 5000 },	-- 5,000x Apexis Crystal
+											{ "g", 50000000 },	-- 5,000g
+										},
+									}),
+								},
+							}),
 						}),
 						n(88569, {	-- Blood Guard Axelash <Primal Gladiator>
 							["coord"] = { 48.5, 57.6, WARSPEAR },
@@ -320,7 +357,7 @@ root(ROOTS.Zones, {
 									i(138632, {	-- Arsenal: Primal Gladiator's Weapons
 										["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_weapons_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR },
+											{"sub", "pvp_weapons_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR },
 										},
 									}),
 									i(111067, {	-- Primal Gladiator's Cleaver
@@ -409,7 +446,7 @@ root(ROOTS.Zones, {
 									i(138558, {	-- Ensemble: Primal Gladiator's Dreadplate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
 											{"select", "itemID", 111180 },	-- Primal Gladiator's Armplates of Cruelty (H)
 											{"select", "itemID", 111174 },	-- Primal Gladiator's Girdle of Cruelty (H)
 											{"select", "itemID", 111179 },	-- Primal Gladiator's Warboots of Victory (H)
@@ -435,7 +472,7 @@ root(ROOTS.Zones, {
 									i(138566, {	-- Ensemble: Primal Gladiator's Dragonhide Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
 											{"select", "itemID", 111149 },	-- Primal Gladiator's Bindings of Victory (H)
 											{"select", "itemID", 111143 },	-- Primal Gladiator's Belt of Victory (H)
 											{"select", "itemID", 111145 },	-- Primal Gladiator's Boots of Prowess (H)
@@ -461,7 +498,7 @@ root(ROOTS.Zones, {
 									i(138564, {	-- Ensemble: Primal Gladiator's Chain Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
 											{"select", "itemID", 111162 },	-- Primal Gladiator's Armbands of Cruelty (H)
 											{"select", "itemID", 111163 },	-- Primal Gladiator's Armbands of Victory (H)
 											{"select", "itemID", 111155 },	-- Primal Gladiator's Waistguard of Cruelty (H)
@@ -489,7 +526,7 @@ root(ROOTS.Zones, {
 									i(138572, {	-- Ensemble: Primal Gladiator's Silk Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
 											{"select", "itemID", 111099 },	-- Primal Gladiator's Cuffs of Prowess (H)
 											{"select", "itemID", 111093 },	-- Primal Gladiator's Cord of Cruelty (H)
 											{"select", "itemID", 111097 },	-- Primal Gladiator's Treads of Prowess (H)
@@ -515,7 +552,7 @@ root(ROOTS.Zones, {
 									i(138568, {	-- Ensemble: Primal Gladiator's Ironskin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
 											{"select", "itemID", 111147 },	-- Primal Gladiator's Bindings of Cruelty (H)
 											{"select", "itemID", 111141 },	-- Primal Gladiator's Belt of Prowess (H)
 											{"select", "itemID", 111146 },	-- Primal Gladiator's Boots of Victory (H)
@@ -541,7 +578,7 @@ root(ROOTS.Zones, {
 									i(138560, {	-- Ensemble: Primal Gladiator's Scaled Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
 											{"select", "itemID", 111182 },	-- Primal Gladiator's Armplates of Victory (H)
 											{"select", "itemID", 111176 },	-- Primal Gladiator's Girdle of Victory (H)
 											{"select", "itemID", 111178 },	-- Primal Gladiator's Warboots of Prowess (H)
@@ -567,7 +604,7 @@ root(ROOTS.Zones, {
 									i(138574, {	-- Ensemble: Primal Gladiator's Satin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
 											{"select", "itemID", 111101 },	-- Primal Gladiator's Cuffs of Victory (H)
 											{"select", "itemID", 111095 },	-- Primal Gladiator's Cord of Victory (H)
 											{"select", "itemID", 111096 },	-- Primal Gladiator's Treads of Cruelty (H)
@@ -593,7 +630,7 @@ root(ROOTS.Zones, {
 									i(138570, {	-- Ensemble: Primal Gladiator's Leather Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
 											{"select", "itemID", 111148 },	-- Primal Gladiator's Bindings of Prowess (H)
 											{"select", "itemID", 111142 },	-- Primal Gladiator's Belt of Cruelty (H)
 											{"select", "itemID", 111144 },	-- Primal Gladiator's Boots of Cruelty (H)
@@ -619,7 +656,7 @@ root(ROOTS.Zones, {
 									i(138562, {	-- Ensemble: Primal Gladiator's Ringmail Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
 											{"select", "itemID", 111161 },	-- Primal Gladiator's Armbands of Prowess (H)
 											{"select", "itemID", 111156 },	-- Primal Gladiator's Waistguard of Prowess (H)
 											{"select", "itemID", 111158 },	-- Primal Gladiator's Footguards of Cruelty (H)
@@ -646,7 +683,7 @@ root(ROOTS.Zones, {
 									i(138576, {	-- Ensemble: Primal Gladiator's Felweave Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
 											{"select", "itemID", 111100 },	-- Primal Gladiator's Cuffs of Cruelty (H)
 											{"select", "itemID", 111094 },	-- Primal Gladiator's Cord of Prowess (H)
 											{"select", "itemID", 111098 },	-- Primal Gladiator's Treads of Victory (H)
@@ -672,7 +709,7 @@ root(ROOTS.Zones, {
 									i(138556, {	-- Ensemble: Primal Gladiator's Plate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
 											{"select", "itemID", 111181 },	-- Primal Gladiator's Armplates of Prowess (H)
 											{"select", "itemID", 111175 },	-- Primal Gladiator's Girdle of Prowess (H)
 											{"select", "itemID", 111177 },	-- Primal Gladiator's Warboots of Cruelty (H)
@@ -1190,7 +1227,7 @@ root(ROOTS.Zones, {
 									i(138634, {	-- Arsenal: Wild Gladiator's Weapons (H)
 										["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_weapons_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR },
+											{"sub", "pvp_weapons_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR },
 										},
 									}),
 									i(125228, {	-- Wild Gladiator's Barrier (H)
@@ -1288,7 +1325,7 @@ root(ROOTS.Zones, {
 									i(138516, {	-- Ensemble: Wild Gladiator's Dreadplate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
 											{"select", "itemID", 125288 },	-- Wild Gladiator's Armplates of Cruelty (H)
 											{"select", "itemID", 125282 },	-- Wild Gladiator's Girdle of Cruelty (H)
 											{"select", "itemID", 125285 },	-- Wild Gladiator's Warboots of Cruelty (H)
@@ -1314,7 +1351,7 @@ root(ROOTS.Zones, {
 									i(138524, {	-- Ensemble: Wild Gladiator's Dragonhide Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
 											{"select", "itemID", 125237 },	-- Wild Gladiator's Bindings of Victory (H)
 											{"select", "itemID", 125231 },	-- Wild Gladiator's Belt of Victory (H)
 											{"select", "itemID", 125233 },	-- Wild Gladiator's Boots of Prowess (H)
@@ -1340,7 +1377,7 @@ root(ROOTS.Zones, {
 									i(138522, {	-- Ensemble: Wild Gladiator's Chain Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
 											{"select", "itemID", 125260 },	-- Wild Gladiator's Armbands of Cruelty (H)
 											{"select", "itemID", 125261 },	-- Wild Gladiator's Armbands of Victory (H)
 											{"select", "itemID", 125259 },	-- Wild Gladiator's Armbands of Prowess (H)
@@ -1369,7 +1406,7 @@ root(ROOTS.Zones, {
 									i(138530, {	-- Ensemble: Wild Gladiator's Silk Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
 											{"select", "itemID", 125177 },	-- Wild Gladiator's Cuffs of Prowess (H)
 											{"select", "itemID", 125171 },	-- Wild Gladiator's Cord of Cruelty (H)
 											{"select", "itemID", 125175 },	-- Wild Gladiator's Treads of Prowess (H)
@@ -1395,7 +1432,7 @@ root(ROOTS.Zones, {
 									i(138526, {	-- Ensemble: Wild Gladiator's Ironskin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
 											{"select", "itemID", 125235 },	-- Wild Gladiator's Bindings of Cruelty (H)
 											{"select", "itemID", 125229 },	-- Wild Gladiator's Belt of Prowess (H)
 											{"select", "itemID", 125234 },	-- Wild Gladiator's Boots of Victory (H)
@@ -1421,7 +1458,7 @@ root(ROOTS.Zones, {
 									i(138518, {	-- Ensemble: Wild Gladiator's Scaled Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
 											{"select", "itemID", 125290 },	-- Wild Gladiator's Armplates of Victory (H)
 											{"select", "itemID", 125284 },	-- Wild Gladiator's Girdle of Victory (H)
 											{"select", "itemID", 125286 },	-- Wild Gladiator's Warboots of Prowess (H)
@@ -1447,7 +1484,7 @@ root(ROOTS.Zones, {
 									i(138532, {	-- Ensemble: Wild Gladiator's Satin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
 											{"select", "itemID", 125179 },	-- Wild Gladiator's Cuffs of Victory (H)
 											{"select", "itemID", 125173 },	-- Wild Gladiator's Cord of Victory (H)
 											{"select", "itemID", 125174 },	-- Wild Gladiator's Treads of Cruelty (H)
@@ -1473,7 +1510,7 @@ root(ROOTS.Zones, {
 									i(138528, {	-- Ensemble: Wild Gladiator's Leather Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
 											{"select", "itemID", 125236 },	-- Wild Gladiator's Bindings of Prowess (H)
 											{"select", "itemID", 125230 },	-- Wild Gladiator's Belt of Cruelty (H)
 											{"select", "itemID", 125232 },	-- Wild Gladiator's Boots of Cruelty (H)
@@ -1499,7 +1536,7 @@ root(ROOTS.Zones, {
 									i(138520, {	-- Ensemble: Wild Gladiator's Ringmail Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
 											{"select", "itemID", 139016 },	-- Wild Gladiator's Armbands of Alacrity (H)
 											{"select", "itemID", 125254 },	-- Wild Gladiator's Waistguard of Prowess (H)
 											{"select", "itemID", 125256 },	-- Wild Gladiator's Footguards of Cruelty (H)
@@ -1526,7 +1563,7 @@ root(ROOTS.Zones, {
 									i(138534, {	-- Ensemble: Wild Gladiator's Felweave Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
 											{"select", "itemID", 125178 },	-- Wild Gladiator's Cuffs of Cruelty (H)
 											{"select", "itemID", 125172 },	-- Wild Gladiator's Cord of Prowess (H)
 											{"select", "itemID", 125176 },	-- Wild Gladiator's Treads of Victory (H)
@@ -1552,7 +1589,7 @@ root(ROOTS.Zones, {
 									i(138514, {	-- Ensemble: Wild Gladiator's Plate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
 											{"select", "itemID", 125289 },	-- Wild Gladiator's Armplates of Prowess (H)
 											{"select", "itemID", 125283 },	-- Wild Gladiator's Girdle of Prowess (H)
 											{"select", "itemID", 125285 },	-- Wild Gladiator's Warboots of Cruelty (H)
@@ -2219,17 +2256,22 @@ root(ROOTS.Zones, {
 						}),
 						n(128759, {	-- Dazzerian <Warspear Quartermaster>
 							["coord"] = { 49.2, 55.0, WARSPEAR },
-							["minReputation"] = { 1681, 5 },	-- Vol'jin's Spear, Friendly
-							["g"] = {
-								i(116775, {	-- Breezestrider Stallion (MOUNT!)
-									["cost"] = {
-										{ "g", 50000000 },		-- 5,000g
-										{ "i", 137642, 100 },	-- 100x Mark of Honor
-									},
-								}),
-								i(115500),	-- Disposable Pocket Flying Machine
-								i(115518),	-- Vol'jin's Spear Tabard
-							},
+							["g"] = bubbleDownClassicRep(FACTION_VOLJINS_SPEAR, {
+								{		-- Neutral
+								}, {	-- Friendly
+									i(115500),	-- Disposable Pocket Flying Machine
+								}, {	-- Honored
+								}, {	-- Revered
+								}, {	-- Exalted
+									i(116775, {	-- Breezestrider Stallion (MOUNT!)
+										["cost"] = {
+											{ "g", 50000000 },		-- 5,000g
+											{ "i", 137642, 100 },	-- 100x Mark of Honor
+										},
+									}),
+									i(115518),	-- Vol'jin's Spear Tabard
+								},
+							}),
 						}),
 						n(93908, {	-- Fobbly Kickfix <Wild Combatant>
 							["coord"] = { 49.1, 56.4, WARSPEAR },
@@ -2238,7 +2280,7 @@ root(ROOTS.Zones, {
 									i(138629, {	-- Arsenal: Wild Combatant's Weapons (H)
 										["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_weapons_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT },
+											{"sub", "pvp_weapons_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT },
 										},
 									}),
 									i(125428, {	-- Wild Combatant's Barrier (H)
@@ -2336,7 +2378,7 @@ root(ROOTS.Zones, {
 									i(138602, {	-- Ensemble: Wild Combatant's Dreadplate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, DEATHKNIGHT },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, DEATHKNIGHT },
 											{"select", "itemID", 125470 },	-- Wild Combatant's Armplates of Cruelty (H)
 											{"select", "itemID", 125466 },	-- Wild Combatant's Girdle of Cruelty (H)
 											{"select", "itemID", 125468 },	-- Wild Combatant's Warboots of Cruelty (H)
@@ -2362,7 +2404,7 @@ root(ROOTS.Zones, {
 									i(138606, {	-- Ensemble: Wild Combatant's Dragonhide Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, DRUID },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, DRUID },
 											{"select", "itemID", 125433 },	-- Wild Combatant's Bindings of Cruelty (H)
 											{"select", "itemID", 125430 },	-- Wild Combatant's Belt of Cruelty (H)
 											{"select", "itemID", 125431 },	-- Wild Combatant's Boots of Cruelty (H)
@@ -2388,7 +2430,7 @@ root(ROOTS.Zones, {
 									i(138548, {	-- Ensemble: Wild Combatant's Chain Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, HUNTER },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, HUNTER },
 											{"select", "itemID", 125450 },	-- Wild Combatant's Armbands of Cruelty (H)
 											{"select", "itemID", 125445 },	-- Wild Combatant's Waistguard of Cruelty (H)
 											{"select", "itemID", 125448 },	-- Wild Combatant's Footguards of Cruelty (H)
@@ -2414,7 +2456,7 @@ root(ROOTS.Zones, {
 									i(138550, {	-- Ensemble: Wild Combatant's Silk Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, MAGE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, MAGE },
 											{"select", "itemID", 125384 },	-- Wild Combatant's Cuffs of Cruelty (H)
 											{"select", "itemID", 125379 },	-- Wild Combatant's Cord of Cruelty (H)
 											{"select", "itemID", 125381 },	-- Wild Combatant's Treads of Cruelty (H)
@@ -2440,7 +2482,7 @@ root(ROOTS.Zones, {
 									i(138608, {	-- Ensemble: Wild Combatant's Ironskin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, MONK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, MONK },
 											{"select", "itemID", 125433 },	-- Wild Combatant's Bindings of Cruelty (H)
 											{"select", "itemID", 125430 },	-- Wild Combatant's Belt of Cruelty (H)
 											{"select", "itemID", 125431 },	-- Wild Combatant's Boots of Cruelty (H)
@@ -2466,7 +2508,7 @@ root(ROOTS.Zones, {
 									i(138604, {	-- Ensemble: Wild Combatant's Scaled Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, PALADIN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, PALADIN },
 											{"select", "itemID", 125450 },	-- Wild Combatant's Armplates of Cruelty (H)
 											{"select", "itemID", 125466 },	-- Wild Combatant's Girdle of Cruelty (H)
 											{"select", "itemID", 125468 },	-- Wild Combatant's Warboots of Cruelty (H)
@@ -2492,7 +2534,7 @@ root(ROOTS.Zones, {
 									i(138552, {	-- Ensemble: Wild Combatant's Satin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, PRIEST },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, PRIEST },
 											{"select", "itemID", 125384 },	-- Wild Combatant's Cuffs of Cruelty (H)
 											{"select", "itemID", 125379 },	-- Wild Combatant's Cord of Cruelty (H)
 											{"select", "itemID", 125381 },	-- Wild Combatant's Treads of Cruelty (H)
@@ -2518,7 +2560,7 @@ root(ROOTS.Zones, {
 									i(138610, {	-- Ensemble: Wild Combatant's Leather Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, ROGUE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, ROGUE },
 											{"select", "itemID", 125433 },	-- Wild Combatant's Bindings of Cruelty (H)
 											{"select", "itemID", 125430 },	-- Wild Combatant's Belt of Cruelty (H)
 											{"select", "itemID", 125431 },	-- Wild Combatant's Boots of Cruelty (H)
@@ -2544,7 +2586,7 @@ root(ROOTS.Zones, {
 									i(138546, {	-- Ensemble: Wild Combatant's Ringmail Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, SHAMAN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, SHAMAN },
 											{"select", "itemID", 125450 },	-- Wild Combatant's Armbands of Cruelty (H)
 											{"select", "itemID", 125445 },	-- Wild Combatant's Waistguard of Cruelty (H)
 											{"select", "itemID", 125447 },	-- Wild Combatant's Footguards of Cruelty (H)
@@ -2570,7 +2612,7 @@ root(ROOTS.Zones, {
 									i(138554, {	-- Ensemble: Wild Combatant's Felweave Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, WARLOCK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, WARLOCK },
 											{"select", "itemID", 119838 },	-- Wild Combatant's Cuffs of Cruelty (H)
 											{"select", "itemID", 119833 },	-- Wild Combatant's Cord of Cruelty (H)
 											{"select", "itemID", 119835 },	-- Wild Combatant's Treads of Cruelty (H)
@@ -2596,7 +2638,7 @@ root(ROOTS.Zones, {
 									i(138600, {	-- Ensemble: Wild Combatant's Plate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, WARRIOR },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WILD, FACTION_HEADER_HORDE, PVP_COMBATANT, WARRIOR },
 											{"select", "itemID", 125470 },	-- Wild Combatant's Armplates of Cruelty (H)
 											{"select", "itemID", 125466 },	-- Wild Combatant's Girdle of Cruelty (H)
 											{"select", "itemID", 125468 },	-- Wild Combatant's Warboots of Cruelty (H)
@@ -2727,147 +2769,9 @@ root(ROOTS.Zones, {
 								}),
 							},
 						}),
-						n(87549, {	-- Garm Gladestride <Leatherworking Patterns>
-							["coord"] = { 50.4, 27.4, WARSPEAR },
-							["g"] = appendGroups(COMMON_DRAENOR_LEATHERWORKING_RECIPES, {DRAENOR_LEATHERWORKING}),
-						}),
-						n(86045, {	-- Ged'kah <Enchanting Recipes>
-							["coord"] = { 78.0, 53.7, WARSPEAR },
-							["g"] = appendGroups(COMMON_DRAENOR_ENCHANTING_RECIPES, {DRAENOR_ENCHANTING}),
-						}),
-						n(87542, {	-- Joshua Alvarez <Alchemy Recipes>
-							["coord"] = { 61.0, 27.4, WARSPEAR },
-							["g"] = {
-								i(109558, {		-- A Treatise on the Alchemy of Draenor
-									["filterID"] = MISC,
-									["description"] = "This is a reward for completing the introductory Alchemy questline that can drop from any Draenor mob. Also sold at the Alchemy Lab for 100 gold.",
-									["g"] = {
-										recipe(156587),	-- Alchemical Catalyst
-										recipe(156585),	-- Crescent Oil
-										recipe(175865),	-- Draenic Invisibility Potion
-										recipe(175867),	-- Draenic Living Action Potion
-										recipe(156582),	-- Draenic Mana Potion
-										recipe(175853),	-- Draenic Swiftness Potion
-										recipe(175866),	-- Draenic Water Breathing Elixir
-										recipe(175869),	-- Draenic Water Walking Elixir
-										recipe(175868),	-- Pure Rage Potion
-										recipe(175880),	-- Secrets of Draenor Alchemy
-									},
-								}),
-								i(112042),	-- Recipe: Draenic Channeled Mana Potion (RECIPE!)
-								i(112043, { ["timeline"] = { "created 6.0.1.18297" }}),	-- Recipe: Draenic Mana Potion (RECIPE!)
-								i(112041),	-- Recipe: Draenic Armor Potion (RECIPE!)
-								i(112038),	-- Recipe: Draenic Agility Potion (RECIPE!)
-								i(112039),	-- Recipe: Draenic Intellect Potion (RECIPE!)
-								i(112040),	-- Recipe: Draenic Strength Potion (RECIPE!)
-								i(120132, { ["timeline"] = { "created 6.0.2.18816" }}),	-- Recipe: Secrets of Draenor Alchemy (RECIPE!)
-								i(118700, {	-- Secret of Draenor Alchemy
-									["filterID"] = MISC,
-									["g"] = {
-										i(112023),	-- Recipe: Draenic Philosopher's Stone (RECIPE!)
-										i(112045),	-- Recipe: Draenic Rejuvenation Potion (RECIPE!)
-										i(112024),	-- Recipe: Draenic Agility Flask (RECIPE!)
-										i(112026),	-- Recipe: Draenic Intellect Flask (RECIPE!)
-										i(112030),	-- Recipe: Draenic Stamina Flask (RECIPE!)
-										i(112027),	-- Recipe: Draenic Strength Flask (RECIPE!)
-										i(112031),	-- Recipe: Greater Draenic Agility Flask (RECIPE!)
-										i(112033),	-- Recipe: Greater Draenic Intellect Flask (RECIPE!)
-										i(112037),	-- Recipe: Greater Draenic Stamina Flask (RECIPE!)
-										i(112034),	-- Recipe: Greater Draenic Strength Flask (RECIPE!)
-										i(112047),	-- Recipe: Transmorphic Tincture (RECIPE!)
-										i(160662),	-- Recipe: Blackwater Anti-Venom (RECIPE!)
-										i(160663),	-- Recipe: Healing Tonic (RECIPE!)
-										i(160661),	-- Recipe: Fire Ammonite Oil (RECIPE!)
-										i(114028, {	-- Small Pouch of Coins
-											["description"] = "Contains between 1 and 5 gold. Don't waste your secrets.\n\nSide note: Counts towards Looted Gold Achievements. (Got My Mind on My Money, etc)",
-										}),
-									},
-								}),
-							},
-						}),
 						n(87548, {	-- Kaevan Highwit <Jewelcrafting Designs>
 							["coord"] = { 60.4, 40.7, WARSPEAR },
-							["g"] = {
-								i(115359, {	-- Draenor Jewelcrafting
-									["filterID"] = MISC,
-									["g"] = {
-										i(120131, {	-- Recipe: Secrets of Draenor Jewelcrafting **Teaches glowing blackrock band, glowing iron band, glowing iron choker, shifting iron band, shifting iron choker, shifting blackrock band, whispering blackrock band, whispering iron band, whispering iron choker, taladite crystal, secrets of draenor jewelcrafting.
-											i(116087),	-- Design: Glowing Blackrock Band
-											i(116081),	-- Design: Glowing Iron Band
-											i(116084),	-- Design: Glowing Iron Choker
-											i(116088),	-- Design: Shifting Blackrock Band
-											i(116082),	-- Design: Shifting Iron Band
-											i(116085),	-- Design: Shifting Iron Choker
-											i(116089),	-- Design: Whispering Blackrock Band
-											i(116083),	-- Design: Whispering Iron Band
-											i(116086),	-- Design: Whispering Iron Choker
-											recipe(170700),	-- Taladite Crystal
-										}),
-									},
-								}),
-								i(116096, {	-- Design: Critical Strike Taladite
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116093, {	-- Design: Glowing Taladite Pendant
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116090, {	-- Design: Glowing Taladite Ring
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116102, {	-- Design: Greater Critical Strike Taladite
-									["cost"] = { { "i", 118723, 5 }, },	-- 5x Secret of Draenor Jewelcrafting
-								}),
-								i(116103, {	-- Design: Greater Haste Taladite
-									["cost"] = { { "i", 118723, 5 }, },	-- 5x Secret of Draenor Jewelcrafting
-								}),
-								i(116104, {	-- Design: Greater Mastery Taladite
-									["cost"] = { { "i", 118723, 5 }, },	-- 5x Secret of Draenor Jewelcrafting
-								}),
-								i(116107, {	-- Design: Greater Stamina Taladite
-									["cost"] = { { "i", 118723, 5 }, },	-- 5x Secret of Draenor Jewelcrafting
-								}),
-								i(116106, {	-- Design: Greater Versatility Taladite
-									["cost"] = { { "i", 118723, 5 }, },	-- 5x Secret of Draenor Jewelcrafting
-								}),
-								i(116097, {	-- Design: Haste Taladite
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116098, {	-- Design: Mastery Taladite
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116109, {	-- Design: Prismatic Focusing Lens
-									["cost"] = { { "i", 118723, 3 }, },	-- 3x Secret of Draenor Jewelcrafting
-								}),
-								i(116108, {	-- Design: Reflecting Prism
-									["cost"] = { { "i", 118723, 3 }, },	-- 3x Secret of Draenor Jewelcrafting
-								}),
-								i(116094, {	-- Design: Shifting Taladite Pendant
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116091, {	-- Design: Shifting Taladite Ring
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116101, {	-- Design: Stamina Taladite
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116079, {	-- Design: Taladite Amplifier
-									["collectible"] = false,
-									["description"] = "The item is still in game but you can't learn the recipe from it anymore (recipe removed in 9.0.1)",
-									["cost"] = { { "i", 118723, 5 }, },	-- 5x Secret of Draenor Jewelcrafting
-								}),
-								i(116078, {	-- Design: Taladite Recrystalizer
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116100, {	-- Design: Versatility Taladite
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116095, {	-- Design: Whispering Taladite Pendant
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-								i(116092, {	-- Design: Whispering Taladite Ring
-									["cost"] = { { "i", 118723, 1 }, },	-- 1x Secret of Draenor Jewelcrafting
-								}),
-							},
+							["sym"] = {{"select","npcID",77356},{"pop"}},	-- Costan Highwall <Jewelcrafter>
 						}),
 						n(93917, {	-- Malukah Lightsong <Warmongering Gladiator>
 							["races"] = HORDE_ONLY,	-- to hide it in Mark of Honor list
@@ -2877,7 +2781,7 @@ root(ROOTS.Zones, {
 									i(138636, {	-- Arsenal: Warmongering Gladiator's Weapons (H)
 										["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_weapons_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR },
+											{"sub", "pvp_weapons_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR },
 										},
 									}),
 									i(126342, {	-- Warmongering Gladiator's Barrier (H)
@@ -2972,7 +2876,7 @@ root(ROOTS.Zones, {
 									i(138494, {	-- Ensemble: Warmongering Gladiator's Dreadplate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
 											{"select", "itemID", 126402 },	-- Warmongering Gladiator's Armplates of Cruelty (H)
 											{"select", "itemID", 126396 },	-- Warmongering Gladiator's Girdle of Cruelty (H)
 											{"select", "itemID", 126401 },	-- Warmongering Gladiator's Warboots of Victory (H)
@@ -2998,7 +2902,7 @@ root(ROOTS.Zones, {
 									i(138502, {	-- Ensemble: Warmongering Gladiator's Dragonhide Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
 											{"select", "itemID", 126351 },	-- Warmongering Gladiator's Bindings of Victory (H)
 											{"select", "itemID", 126345 },	-- Warmongering Gladiator's Belt of Victory (H)
 											{"select", "itemID", 126347 },	-- Warmongering Gladiator's Boots of Prowess (H)
@@ -3024,7 +2928,7 @@ root(ROOTS.Zones, {
 									i(138500, {	-- Ensemble: Warmongering Gladiator's Chain Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
 											{"select", "itemID", 126374 },	-- Warmongering Gladiator's Armbands of Cruelty (H)
 											{"select", "itemID", 126367 },	-- Warmongering Gladiator's Waistguard of Cruelty (H)
 											{"select", "itemID", 126371 },	-- Warmongering Gladiator's Footguards of Prowess (H)
@@ -3050,7 +2954,7 @@ root(ROOTS.Zones, {
 									i(138508, {	-- Ensemble: Warmongering Gladiator's Silk Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
 											{"select", "itemID", 126291 },	-- Warmongering Gladiator's Cuffs of Prowess (H)
 											{"select", "itemID", 126285 },	-- Warmongering Gladiator's Cord of Cruelty (H)
 											{"select", "itemID", 126289 },	-- Warmongering Gladiator's Treads of Prowess (H)
@@ -3076,7 +2980,7 @@ root(ROOTS.Zones, {
 									i(138504, {	-- Ensemble: Warmongering Gladiator's Ironskin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
 											{"select", "itemID", 126349 },	-- Warmongering Gladiator's Bindings of Cruelty (H)
 											{"select", "itemID", 126397 },	-- Warmongering Gladiator's Girdle of Prowess (H)
 											{"select", "itemID", 126348 },	-- Warmongering Gladiator's Boots of Victory (H)
@@ -3102,7 +3006,7 @@ root(ROOTS.Zones, {
 									i(138496, {	-- Ensemble: Warmongering Gladiator's Scaled Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
 											{"select", "itemID", 126404 },	-- Warmongering Gladiator's Armplates of Victory (H)
 											{"select", "itemID", 126398 },	-- Warmongering Gladiator's Girdle of Victory (H)
 											{"select", "itemID", 126400 },	-- Warmongering Gladiator's Warboots of Prowess (H)
@@ -3128,7 +3032,7 @@ root(ROOTS.Zones, {
 									i(138510, {	-- Ensemble: Warmongering Gladiator's Satin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
 											{"select", "itemID", 126293 },	-- Warmongering Gladiator's Cuffs of Victory (H)
 											{"select", "itemID", 126287 },	-- Warmongering Gladiator's Cord of Victory (H)
 											{"select", "itemID", 126288 },	-- Warmongering Gladiator's Treads of Cruelty (H)
@@ -3154,7 +3058,7 @@ root(ROOTS.Zones, {
 									i(138506, {	-- Ensemble: Warmongering Gladiator's Leather Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
 											{"select", "itemID", 126350 },	-- Warmongering Gladiator's Bindings of Prowess (H)
 											{"select", "itemID", 126344 },	-- Warmongering Gladiator's Belt of Cruelty (H)
 											{"select", "itemID", 126346 },	-- Warmongering Gladiator's Boots of Cruelty (H)
@@ -3180,7 +3084,7 @@ root(ROOTS.Zones, {
 									i(138498, {	-- Ensemble: Warmongering Gladiator's Ringmail Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
 											{"select", "itemID", 139030 },	-- Warmongering Gladiator's Armbands of Alacrity (H)
 											{"select", "itemID", 126368 },	-- Warmongering Gladiator's Waistguard of Prowess (H)
 											{"select", "itemID", 126370 },	-- Warmongering Gladiator's Footguards of Cruelty (H)
@@ -3207,7 +3111,7 @@ root(ROOTS.Zones, {
 									i(138512, {	-- Ensemble: Warmongering Gladiator's Felweave Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
 											{"select", "itemID", 126292 },	-- Warmongering Gladiator's Cuffs of Cruelty (H)
 											{"select", "itemID", 126286 },	-- Warmongering Gladiator's Cord of Prowess (H)
 											{"select", "itemID", 126290 },	-- Warmongering Gladiator's Treads of Victory (H)
@@ -3233,7 +3137,7 @@ root(ROOTS.Zones, {
 									i(138492, {	-- Ensemble: Warmongering Gladiator's Plate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
 											{"select", "itemID", 126403 },	-- Warmongering Gladiator's Armplates of Prowess (H)
 											{"select", "itemID", 126397 },	-- Warmongering Gladiator's Girdle of Prowess (H)
 											{"select", "itemID", 126399 },	-- Warmongering Gladiator's Warboots of Cruelty (H)
@@ -3540,8 +3444,9 @@ root(ROOTS.Zones, {
 										{ "g", 50000000 },	-- 5,000g
 									},
 								}),
-								un(ELITE_PVP_REQUIREMENT, i(120287, {	-- Enchanter's Illusion - Primal Victory
+								elitepvp(i(120287, {	-- Enchanter's Illusion - Primal Victory (ILLUSION!)
 									["cost"] = { { "i", 137642, 10 } },	-- 10x Mark of Honor
+									["timeline"] = { ADDED_6_0_2 },
 								})),
 							},
 						}),
@@ -3600,148 +3505,17 @@ root(ROOTS.Zones, {
 									["collectible"] = false,
 									["description"] = "The item is still in game but you can't learn the recipe from it anymore (recipe removed in 9.0.1)",
 									["cost"] = { { "i", 119297, 5 }, },	-- 5x Secret of Draenor Inscription
-									["timeline"] = { "added 6.0.1.18738", REMOVED_10_0_5 },
+									["timeline"] = { ADDED_6_0_2, REMOVED_10_0_5 },
 								}),
-								i(118608, { ["timeline"] = { "created 6.0.1.18738" }}),	-- Technique: Greater Weapon Crystal
-								i(120266, { ["timeline"] = { "created 6.0.2.18850" }}),	-- Technique: Greater Ensorcelled Tarot
-								i(122548, { ["timeline"] = { "created 6.1.0.19480" }}),	-- Technique: Powerful Ensorcelled Tarot
-								i(122553, { ["timeline"] = { "created 6.1.0.19480" }}),	-- Technique: Powerful Weapon Crystal
+								i(118608, { ["timeline"] = { CREATED_6_0_2 }}),	-- Technique: Greater Weapon Crystal
+								i(120266, { ["timeline"] = { CREATED_6_0_2 }}),	-- Technique: Greater Ensorcelled Tarot
+								i(122548, { ["timeline"] = { CREATED_6_1_0 }}),	-- Technique: Powerful Ensorcelled Tarot
+								i(122553, { ["timeline"] = { CREATED_6_1_0 }}),	-- Technique: Powerful Weapon Crystal
 							},
 						}),
 						n(88493, {	-- Mimi Wizzlebub <Steamwheedle Quartermaster>
 							["coord"] = { 54.2, 60.7, WARSPEAR },
-							["g"] = {
-								i(119149, {	-- Forest Sproutling (PET!)
-									["cost"] = {
-										{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
-										{ "g", 10000000 },	-- 1,000g
-									},
-								}),
-								i(119165, {	-- Contract: Professor Felblast
-									["cost"] = 50000000,	-- 5,000g
-									["g"] = {
-										follower(460),	-- Professor Felblast
-									},
-								}),
-								i(116672, {	-- Domesticated Razorback (MOUNT!)
-									["cost"] = {
-										{ "c", 823, 5000 },	-- 5,000x Apexis Crystal
-										{ "g", 50000000 },	-- 5,000g
-									},
-								}),
-								i(110426),	-- Goblin Hot Potato
-								i(119148, {	-- Albino River Calf (PET!)
-									["cost"] = {
-										{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
-										{ "g", 10000000 },	-- 1,000g
-									},
-								}),
-								i(118683, {	-- Portable Goon Squad
-									["cost"] = 5000000,	-- 500g
-								}),
-								i(119137),	-- Steamwheedle "Preservation" Society Tabard
-								i(118667),	-- Steamwheedle Elixir
-							},
-						}),
-						n(87552, {	-- Nik Steelrings <Engineering Plans>
-							["coord"] = { 70.5, 38.9, WARSPEAR },
-							["g"] = {
-								i(111921, {	-- Draenor Engineering
-									["filterID"] = MISC,
-								}),
-								i(118490, {	-- Schematic: Blingtron 5000
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118497, {	-- Schematic: Cybergenetic Mechshades
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118493, {	-- Schematic: Didi's Delicate Assembly
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118480, {	-- Schematic: Findle's Loot-a-Rang
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118495, {	-- Schematic: Hemet's Heartseeker
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(202228, {	-- Schematic: Impressive Linkgrease Locksprocket
-									["cost"] = { { "i", 119299, 5 }, },	-- 5x Secret of Draenor Engineering
-									["timeline"] = { ADDED_10_0_5 },
-								}),
-								i(202230, {	-- Schematic: Impressive True Iron Trigger
-									["cost"] = { { "i", 119299, 5 }, },	-- 5x Secret of Draenor Engineering
-									["timeline"] = { ADDED_10_0_5 },
-								}),
-								i(118485, {	-- Schematic: Lifelike Mechanical Frostboar
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118491, {	-- Schematic: Linkgrease Locksprocket
-									["collectible"] = false,
-									["description"] = "The item is still in game but you can't learn the recipe from it anymore (recipe removed in 9.0.1)",
-									["cost"] = { { "i", 119299, 5 }, },	-- 5x Secret of Draenor Engineering
-									["timeline"] = { REMOVED_10_0_5 },
-								}),
-								i(118484, {	-- Schematic: Mechanical Axebeak
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(119177, {	-- Schematic: Mechanical Scorpid
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118478, {	-- Schematic: Megawatt Filament
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118498, {	-- Schematic: Night-Vision Mechshades
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118477, {	-- Schematic: Oglethorpe's Missle Splitter
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118487, {	-- Schematic: Personal Hologram
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118499, {	-- Schematic: Plasma Mechshades
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118500, {	-- Schematic: Razorguard Mechshades
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(202229, {	-- Schematic: Remarkable Linkgrease Locksprocket
-									["cost"] = { { "i", 119299, 5 }, },	-- 5x Secret of Draenor Engineering
-									["timeline"] = { ADDED_10_0_5 },
-								}),
-								i(202231, {	-- Schematic: Remarkable True Iron Trigger
-									["cost"] = { { "i", 119299, 5 }, },	-- 5x Secret of Draenor Engineering
-									["timeline"] = { ADDED_10_0_5 },
-								}),
-								i(118476, {	-- Schematic: Shrediron's Shredder
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118489, {	-- Schematic: Swapblaster
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(120268, {	-- Schematic: True Iron Trigger
-									["collectible"] = false,
-									["description"] = "The item is still in game but you can't learn the recipe from it anymore (recipe removed in 9.0.1)",
-									["cost"] = { { "i", 119299, 5 }, },	-- 5x Secret of Draenor Engineering
-									["timeline"] = { REMOVED_10_0_5 },
-								}),
-								i(118481, {	-- Schematic: World Shrinker
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(118488, {	-- Schematic: Wormhole Centrifuge
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								i(128327, {	-- Small Pouch of Coins
-									["cost"] = { { "i", 119299, 1 }, },	-- 1x Secret of Draenor Engineering
-								}),
-								un(REMOVED_FROM_GAME, i(120267)),	-- Schematic: Blackrock Rifling	-- Deprecated and removed in 6.2.0
-								un(REMOVED_FROM_GAME, i(122546)),	-- Schematic: Oglethorpe's Octagonal Lenses	-- Deprecated and removed in 6.2.0
-								un(REMOVED_FROM_GAME, i(122554)),	-- Schematic: Precision Scope Tuning Kit	-- Deprecated and removed in 6.2.0
-							},
-						}),
-						n(87550, {	-- Nonn Threeratchet <Blacksmithing Plans>
-							["coord"] = { 75.0, 37.9, WARSPEAR },
-							["g"] = appendGroups(COMMON_DRAENOR_BLACKSMITHING_RECIPES, {DRAENOR_BLACKSMITHING}),
+							["sym"] = {{"sub","common_vendor",87394}},	-- Kwilax Fuseshiv <Reputation Vendor>
 						}),
 						n(87543, {	-- Petir Starocean <Tailoring Patterns>
 							["coord"] = { 59.0, 42.8, WARSPEAR },
@@ -3809,29 +3583,35 @@ root(ROOTS.Zones, {
 						}),
 						n(86037, {	-- Ravenspeaker Skeega <Arakkoa Outcasts Quartermaster>
 							["coord"] = { 53.4, 59.8, WARSPEAR },
-							["g"] = {
-								i(118666, {	-- Arakkoa Elixir
-									["cost"] = { { "c", 823, 1 }, },	-- 1x Apexis Crystal
-								}),
-								i(119136),	-- Arakkoa Outcasts Tabard
-								i(118682, {	-- Saberon Protector
-									["cost"] = 5000000,	-- 500g
-								}),
-								i(116772, {	-- Shadowmane Charger (MOUNT!)
-									["cost"] = {
-										{ "c", 823, 5000 },	-- 5,000x Apexis Crystal
-										{ "g", 50000000 },	-- 5,000g
-									},
-								}),
-								i(119143, {	-- Son of Sethe (PET!)
-									["cost"] = {
-										{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
-										{ "g", 10000000 },	-- 1,000g
-									},
-								}),
-							},
+							["g"] = bubbleDownClassicRep(FACTION_ARAKKOA_OUTCASTS, {
+								{		-- Neutral
+								}, {	-- Friendly
+									i(118666, {	-- Arakkoa Elixir
+										["cost"] = { { "c", 823, 1 }, },	-- 1x Apexis Crystal
+									}),
+								}, {	-- Honored
+									i(118682, {	-- Saberon Protector
+										["cost"] = 5000000,	-- 500g
+									}),
+								}, {	-- Revered
+									i(119143, {	-- Son of Sethe (PET!)
+										["cost"] = {
+											{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
+											{ "g", 10000000 },	-- 1,000g
+										},
+									}),
+								}, {	-- Exalted
+									i(119136),	-- Arakkoa Outcasts Tabard
+									i(116772, {	-- Shadowmane Charger (MOUNT!)
+										["cost"] = {
+											{ "c", 823, 5000 },	-- 5,000x Apexis Crystal
+											{ "g", 50000000 },	-- 5,000g
+										},
+									}),
+								},
+							}),
 						}),
-						n(88253, {	-- Srikka <Archaeology>
+						n(88253, {	-- Srikka <Archaeology Fragments>
 							["coord"] = { 74.4, 31.6, WARSPEAR },
 							["g"] = {
 								i(122606, {	-- Explorer's Notebook
@@ -3872,7 +3652,7 @@ root(ROOTS.Zones, {
 									i(138626, {	-- Arsenal: Primal Combatant's Weapons (H)
 										["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_weapons_faction_ensemble", WOD_TIER, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_COMBATANT },
+											{"sub", "pvp_weapons_faction_ensemble", EXPANSION.WOD, SEASON_PRIMAL, FACTION_HEADER_HORDE, PVP_COMBATANT },
 										},
 									}),
 									i(119866, {	-- Primal Combatant's Barrier (H)
@@ -4360,7 +4140,7 @@ root(ROOTS.Zones, {
 									i(138627, {	-- Arsenal: Warmongering Combatant's Weapons (H)
 										["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_weapons_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT },
+											{"sub", "pvp_weapons_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT },
 										},
 									}),
 									i(126542, {	-- Warmongering Combatant's Barrier (H)
@@ -4458,7 +4238,7 @@ root(ROOTS.Zones, {
 									i(138590, {	-- Ensemble: Warmongering Combatant's Dreadplate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, DEATHKNIGHT },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, DEATHKNIGHT },
 											{"select", "itemID", 126584 },	-- Warmongering Combatant's Armplates of Cruelty (H)
 											{"select", "itemID", 126580 },	-- Warmongering Combatant's Girdle of Cruelty (H)
 											{"select", "itemID", 126582 },	-- Warmongering Combatant's Warboots of Cruelty (H)
@@ -4484,7 +4264,7 @@ root(ROOTS.Zones, {
 									i(138594, {	-- Ensemble: Warmongering Combatant's Dragonhide Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, DRUID },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, DRUID },
 											{"select", "itemID", 126547 },	-- Warmongering Combatant's Bindings of Cruelty (H)
 											{"select", "itemID", 126544 },	-- Warmongering Combatant's Belt of Cruelty (H)
 											{"select", "itemID", 126545 },	-- Warmongering Combatant's Boots of Cruelty (H)
@@ -4510,7 +4290,7 @@ root(ROOTS.Zones, {
 									i(138538, {	-- Ensemble: Warmongering Combatant's Chain Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, HUNTER },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, HUNTER },
 											{"select", "itemID", 126564 },	-- Warmongering Combatant's Armbands of Cruelty (H)
 											{"select", "itemID", 126559 },	-- Warmongering Combatant's Waistguard of Cruelty (H)
 											{"select", "itemID", 126561 },	-- Warmongering Combatant's Footguards of Cruelty (H)
@@ -4536,7 +4316,7 @@ root(ROOTS.Zones, {
 									i(138540, {	-- Ensemble: Warmongering Combatant's Silk Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, MAGE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, MAGE },
 											{"select", "itemID", 126498 },	-- Warmongering Combatant's Cuffs of Cruelty (H)
 											{"select", "itemID", 126493 },	-- Warmongering Combatant's Cord of Cruelty (H)
 											{"select", "itemID", 126495 },	-- Warmongering Combatant's Treads of Cruelty (H)
@@ -4562,7 +4342,7 @@ root(ROOTS.Zones, {
 									i(138596, {	-- Ensemble: Warmongering Combatant's Ironskin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, MONK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, MONK },
 											{"select", "itemID", 126547 },	-- Warmongering Combatant's Bindings of Cruelty (H)
 											{"select", "itemID", 126544 },	-- Warmongering Combatant's Belt of Cruelty (H)
 											{"select", "itemID", 126545 },	-- Warmongering Combatant's Boots of Cruelty (H)
@@ -4588,7 +4368,7 @@ root(ROOTS.Zones, {
 									i(138592, {	-- Ensemble: Warmongering Combatant's Scaled Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, PALADIN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, PALADIN },
 											{"select", "itemID", 126584 },	-- Warmongering Combatant's Armplates of Cruelty (H)
 											{"select", "itemID", 126580 },	-- Warmongering Combatant's Girdle of Cruelty (H)
 											{"select", "itemID", 126582 },	-- Warmongering Combatant's Warboots of Cruelty (H)
@@ -4614,7 +4394,7 @@ root(ROOTS.Zones, {
 									i(138542, {	-- Ensemble: Warmongering Combatant's Satin Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, PRIEST },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, PRIEST },
 											{"select", "itemID", 126498 },	-- Warmongering Combatant's Cuffs of Cruelty (H)
 											{"select", "itemID", 126493 },	-- Warmongering Combatant's Cord of Cruelty (H)
 											{"select", "itemID", 126495 },	-- Warmongering Combatant's Treads of Cruelty (H)
@@ -4640,7 +4420,7 @@ root(ROOTS.Zones, {
 									i(138598, {	-- Ensemble: Warmongering Combatant's Leather Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, ROGUE },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, ROGUE },
 											{"select", "itemID", 126547 },	-- Warmongering Combatant's Bindings of Cruelty (H)
 											{"select", "itemID", 126544 },	-- Warmongering Combatant's Belt of Cruelty (H)
 											{"select", "itemID", 126545 },	-- Warmongering Combatant's Boots of Cruelty (H)
@@ -4666,7 +4446,7 @@ root(ROOTS.Zones, {
 									i(138536, {	-- Ensemble: Warmongering Combatant's Ringmail Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, SHAMAN },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, SHAMAN },
 											{"select", "itemID", 126564 },	-- Warmongering Combatant's Armbands of Cruelty (H)
 											{"select", "itemID", 126559 },	-- Warmongering Combatant's Waistguard of Cruelty (H)
 											{"select", "itemID", 126561 },	-- Warmongering Combatant's Footguards of Cruelty (H)
@@ -4692,7 +4472,7 @@ root(ROOTS.Zones, {
 									i(138544, {	-- Ensemble: Warmongering Combatant's Felweave Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, WARLOCK },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, WARLOCK },
 											{"select", "itemID",
 												126564,	-- Warmongering Combatant's Armbands of Cruelty (H)
 												126559,	-- Warmongering Combatant's Waistguard of Cruelty (H)
@@ -4720,7 +4500,7 @@ root(ROOTS.Zones, {
 									i(138588, {	-- Ensemble: Warmongering Combatant's Plate Armor (H)
 										["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 										["sym"] = {
-											{"sub", "pvp_set_faction_ensemble", WOD_TIER, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, WARRIOR },
+											{"sub", "pvp_set_faction_ensemble", EXPANSION.WOD, SEASON_WARMONGERING, FACTION_HEADER_HORDE, PVP_COMBATANT, WARRIOR },
 											{"select", "itemID",
 												126584,	-- Warmongering Combatant's Armplates of Cruelty (H)
 												126580,	-- Warmongering Combatant's Girdle of Cruelty (H)

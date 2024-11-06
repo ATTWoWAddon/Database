@@ -2,21 +2,19 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "added 7.0.3" } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.LEGION, bubbleDown({ ["timeline"] = { ADDED_7_0_3 } }, {
 	n(CLASS_HALL, {
 		cl(PRIEST, bubbleDownSelf({ ["classes"] = { PRIEST } }, {
 			["maps"] = { NETHERLIGHT_TEMPLE },
 			["g"] = {
 				n(ARTIFACTS, {
-					i(141332, {	-- The Annals of Light and Shadow
+					header(HEADERS.Item, 141332, {	-- The Annals of Light and Shadow
 						["description"] = "Obtain 12 of these books to complete the set and receive the Discipline Priest Hidden Artifact Appearance.\n\nStart with Volume VI and Archivist Inkforge in your Order Hall.",
-						["g"] = {
-							q(44342, {	-- Volume VI
-								["name"] = "|cFFFFFFFFVolume VI|r | Archivist Inkforge in the class order hall.",
-								["description"] = "You must get this volume first in order to collect the others.  Talk to Archivist Inkforge. Always choose the middle answer (passive curious, not judging) and he will give you the first volume.",
-								["provider"] = { "n", 111119 },	-- Archivist Inkforge
-								["coord"] = { 62.5, 36.3, NETHERLIGHT_TEMPLE },
-							}),
+						["g"] = sharedData({
+							["groups"] = {
+								i(141332),	-- The Annals of Light and Shadow
+							},
+						},{
 							q(44339, {	-- Volume I
 								["name"] = "|cFFFFFFFFVolume I|r | The Violet Citadel in new Dalaran.",
 								["description"] = "Khadgar is located in the Violet Citadel in new Dalaran. On the left side, there is an NPC named Archivist Elysiana. Volume 1 is on the right-hand bookshelf behind her.\n\nWorld Spawn - might be on cooldown!",
@@ -32,7 +30,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							q(44341, {	-- Volume III
 								["name"] = "|cFFFFFFFFVolume III|r | New Hearthglen in Northrend.",
 								["description"] = "Book is on top of a bookshelf on the left side of the cloister, on the ground floor.\n\nWorld Spawn - might be on cooldown (60-minute respawn).",
-								["icon"] = "Interface\\Icons\\INV_Misc_Token_ScarletCrusade",
+								["icon"] = 134503,
 								["coords"] = {
 									{ 72.2, 73.4, DRAGONBLIGHT },	-- Entrance to cloister
 									{ 73.2, 72.9, DRAGONBLIGHT },	-- Actual book
@@ -52,6 +50,12 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 									{ 69.0, 72.9, WESTERN_PLAGUELANDS },	-- Scholomance entrance
 									{ 58.8, 84.0, SCHOLOMANCE },	--	Actual volume inside the dungeon
 								},
+							}),
+							q(44342, {	-- Volume VI
+								["name"] = "|cFFFFFFFFVolume VI|r | Archivist Inkforge in the class order hall.",
+								["description"] = "You must get this volume first in order to collect the others.  Talk to Archivist Inkforge. Always choose the middle answer (passive curious, not judging) and he will give you the first volume.",
+								["provider"] = { "n", 111119 },	-- Archivist Inkforge
+								["coord"] = { 62.5, 36.3, NETHERLIGHT_TEMPLE },
 							}),
 							q(44345, {	-- Volume VII
 								["name"] = "|cFFFFFFFFVolume VII|r | The Flameweaver's library in Scarlet Halls.",
@@ -99,17 +103,19 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 								["coord"] = { 65.6, 56.8, AZSUNA },
 							}),
 							i(139567, {	-- Writings of the End
-								["description"] = "Once you have obtained all 12 volumes, return to Archivist Inkforge in the class order hall and give them to him and he will give you this item. Turn on \"Show Incomplete Quests\" to track your progress.",
+								["description"] = "Once you have obtained all 12 volumes, return to Archivist Inkforge in the class order hall and give them to him and he will give you this item.",
 								["coord"] = { 62.5, 36.3, NETHERLIGHT_TEMPLE },
-								["g"] = {
+								["cost"] = {{"i",141332,12}},	-- The Annals of Light and Shadow
+								["groups"] = {
 									artifact(738),	-- Discipline Priest Hidden Artifact Skin
 								},
 							}),
-						},
+						}),
 					}),
 				}),
 				n(FOLLOWERS, bubbleDownSelf({
-					["u"] = 15,	-- Temporary troops
+					["collectible"] = false,
+					["u"] = UNLEARNABLE,	-- Temporary troops
 				}, {
 					follower(927),	-- Band of Zealots
 					follower(928),	-- Band of Zealots
@@ -140,6 +146,11 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							{ "n", 102333 },	-- Hooded Priestess (Alliance)
 						},
 						["maps"] = { LEGION_DALARAN },
+						["g"] = {
+							i(173373, {	-- Faol's Hearthstone (QI!)
+								["timeline"] = { ADDED_9_0_1 },
+							}),
+						},
 					}),
 					-- Artifact
 					q(40706, {	-- A Legend You Can Hold
@@ -165,6 +176,9 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 							{ "n", 110564 },	-- Alonsus Faol
 						},
 						["coord"] = { 51.5, 47.6, 702 },
+						["g"] = {
+							i(173523),	-- Tirisfal Camp Scroll (QI!)
+						},
 					}),
 					-- Holy
 					q(41957, {	-- The Vindicator's Plea
@@ -176,6 +190,9 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["sourceQuests"] = { 41957 },	-- The Vindicator's Plea
 						["provider"] = { "n", 105602 },	-- Vindicator Boros
 						["coord"] = { 37.7, 36.7, LEGION_DALARAN },
+						["g"] = {
+							i(173379),	-- Purify Stone (QI!)
+						},
 					}),
 					q(41967, {	-- Out of the Darkness
 						["sourceQuests"] = { 41966 },	-- House Call
@@ -212,6 +229,9 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(41628, {	-- Eyes of the Dragon
 						["sourceQuests"] = { 41626 },	-- A Forgotten Enemy
 						["provider"] = { "n", 105917 },	-- Image of Kalec
+						["g"] = {
+							i(173430),	-- Nexus Teleport Scroll (QI!)
+						},
 					}),
 					q(41629, {	-- Harnessing the Holy Fire
 						["sourceQuests"] = { 41627 },	-- Eyes of the Dragon
@@ -714,7 +734,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 	}),
 })));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(42072),	-- Boros Tracker - triggers during "Out of the Darkness" (questID 41967)
 		q(44059),	-- Legion Attacks
 		q(43507),	-- Looted Priest Altar
@@ -728,6 +748,7 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(44610),	-- Tracking Quest: Holy Ground 3 - completed the "Holy Ground: Uther's Tomb" mission
 		q(44611),	-- Tracking Quest: Holy Ground 4 - completed the "Holy Ground: Auchindoun" mission
 		q(44612),	-- Tracking Quest: Holy Ground 5 - completed the "Holy Ground: The Sunwell" mission
+		q(44649),	-- Tracking Quest: 7.0 Class Hall - Priest - One-Time Quest Mission - Chapter 3 (JAP) - completed the "Infiltrating Our Enemies" mission
 		q(44650),	-- Tracking Quest: 7.0 Class Hall - Priest - Pacing Mission 1 (JAP) - completed the "Relieving the Front Lines" mission
 	}),
 });

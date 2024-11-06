@@ -48,7 +48,7 @@ local LFR_WEAPON_GROUP = {
 	i(183889, {["modID"] = 4, }),	-- Thaumaturgic Anima Bead
 };
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NFA" }, {
 	n(NIGHT_FAE, {
 		n(QUESTS, {
 			q(63214, {	-- Report to Moonberry
@@ -77,6 +77,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = {
 					59071,	-- Mending a Broken Hart
 					60272,	-- The Weak Link (not 100% on this, but it's as far in the chain at which I am able to accept this)
+					62899,	-- The Endless Forest
 				},
 				["sourceQuestNumRequired"] = 1,
 				["provider"] = { "n", 161509 },	-- Lady Moonberry
@@ -153,7 +154,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				-- ["sourceQuests"] = { 58160 },	-- For Queen and Grove!
 				-- TODO Verify if requirements different for first Covenant vs. Switching Covenant?
 				["sourceQuests"] = { 62899 },	-- The Endless Forest  [after switching Covenant]
-				["provider"] = { "n", 158553 },	-- Flutterby
+				["provider"] = { "n", 167196 },	-- Sesselie
 				["isWeekly"] = true,
 				["coord"] = { 33.9, 43.5, THE_ROOTS },
 			}),
@@ -443,6 +444,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["description"] = "Requires Renown 8.",
 				["provider"] = { "n", 166265 },	-- Mask of Bwonsamdi
 				["maps"] = { 1917 },	-- De Other Side (scenario)
+				["g"] = {
+					i(177904),	-- Deathstone (QI!)
+				},
 			}),
 			q(59811, {	-- Taking Inventory
 				["sourceQuests"] = { 59809 },	-- On De Other Side
@@ -452,6 +456,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 			q(59812, {	-- Following the Trail
 				["sourceQuests"] = { 59811 },	-- Taking Inventory
 				["provider"] = { "n", 166265 },	-- Mask of Bwonsamdi
+				["g"] = {
+					i(180167),	-- Death God Mask (QI!)
+				},
 			}),
 			q(59813, {	-- Minions of Mueh'zala
 				["sourceQuests"] = { 59812 },	-- Following the Trail
@@ -540,21 +547,36 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 59725 },	-- Archivist on the Edge
 				["provider"] = { "n", 165867 },	-- Archivist Dreyden
 				["coord"] = { 63.6, 22.6, ARDENWEALD },
+				["g"] = {
+					i(175137),	-- Piece of Shredded Scroll (QI!)
+					i(175138),	-- Sealed Scroll of Soul Rot (QI!)
+					i(177280),	-- Tattered Binding (QI!)
+				},
 			}),
 			q(59068, {	-- A Secret Never Spoken
 				["sourceQuests"] = { 59063 },	-- Curses!
 				["provider"] = { "n", 161509 },	-- Lady Moonberry
 				["coord"] = { 44.0, 37.1, THE_TRUNK },
+				["g"] = {
+					i(175154),	-- A Secret Never Spoken (QI!)
+					i(175152),	-- A Slime-Covered Book of Secrets (QI!)
+				},
 			}),
 			q(59070, {	-- A Sacrifice of Anima
 				["sourceQuests"] = { 59063 },	-- Curses!
 				["provider"] = { "n", 161509 },	-- Lady Moonberry
 				["coord"] = { 44.0, 37.1, THE_TRUNK },
+				["g"] = {
+					i(175139),	-- Mischief-touched Anima (QI!)
+				},
 			}),
 			q(59069, {	-- A Token of Lost Love
 				["sourceQuests"] = { 59063 },	-- Curses!
 				["provider"] = { "n", 160262 },	-- Ysera
 				["coord"] = { 44.7, 39.0, THE_TRUNK },
+				["g"] = {
+					i(175149),    -- A Small Carving of Ysera (QI!)
+				},
 			}),
 			q(59071, {	-- Mending a Broken Hart
 				["sourceQuests"] = {
@@ -576,6 +598,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 					62560,	-- Growing in Power (can be pre-completed due to covenant skip)
 					59071,	-- Mending a Broken Hart
 				},
+				["sourceQuestNumRequired"] = 1,
 				["provider"] = { "n", 158544 },	-- Lord Herne
 				["coord"] = { 40.9, 72.4, THE_TRUNK },
 			}),
@@ -583,17 +606,24 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 60898 },	-- The Fate of Ara'lon
 				["provider"] = { "n", 170705 },	-- Ara'lon
 				["coord"] = { 43.2, 40.1, ARDENWEALD },
+				["g"] = {
+					i(180462),	-- Mask of Possession (QI!)
+				},
 			}),
 			q(60928, {	-- Blackthorn Captives
 				["sourceQuests"] = { 60910 },	-- Masks of Deception
 				["provider"] = { "n", 170705 },	-- Ara'lon
 				["coord"] = { 43.2, 40.1, ARDENWEALD },
+				["g"] = {
+					i(180523),	-- Disguise Mask (QI!)
+				},
 			}),
 			q(60934, {	-- Report to Lord Herne
 				["sourceQuests"] = { 60928 },	-- Blackthorn Captives
 				["provider"] = { "n", 170705 },	-- Ara'lon
 				["coord"] = { 41.1, 31.6, ARDENWEALD },
 				["g"] = {
+					i(180606),	-- Ara'lon's Report (QI!)
 					i(175603),	-- Faewoven Cuffs
 					i(179772),	-- Oakheart Bracers
 					i(179894),	-- Queensguard Vambraces
@@ -609,6 +639,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61061 },	-- Ulfar's Guidance
 				["provider"] = { "n", 141159 },	-- Ulfar
 				["coord"] = { 45.2, 45.8, DRUSTVAR },
+				["g"] = {
+					i(180625),	-- Imbued Drust Fetish (QI!)
+				},
 			}),
 			q(61102, {	-- Kivarr the Thornspeaker
 				["sourceQuests"] = { 61076 },	-- Into the Flame
@@ -629,6 +662,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61701 },	-- Searching the Grove
 				["provider"] = { "n", 171413 },	-- Kivarr
 				["coord"] = { 46.6, 73.1, ARDENWEALD },
+				["g"] = {
+					i(182639),	-- Gilded Skull Key (QI!)
+					i(182641),	-- Lustrous Silver Key (QI!)
+					i(180777),	-- Thros-Forged Key (QI!)
+				},
 			}),
 			q(61702, {	-- A Swift Intervention
 				["sourceQuests"] = { 58773 },	-- The Thornspeaker Captive
@@ -650,21 +688,30 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 61143 },	-- Return to the Den
 				["provider"] = { "n", 171413 },	-- Kivarr
 				["coord"] = { 43.7, 69.0, ARDENWEALD },
+				["g"] = {
+					i(182958),	-- Nox Root (QI!)
+				},
 			}),
 			q(61709, {	-- Witch's Satchel
 				["sourceQuests"] = { 61703 },	-- Nox Root
 				["provider"] = { "n", 171413 },	-- Kivarr
 				["coord"] = { 46.2, 56.5, ARDENWEALD },
+				["g"] = {
+					i(182963),	-- Witch's Satchel (QI!)
+				},
 			}),
 			q(61710, {	-- The Broken Spear
 				["sourceQuests"] = { 61703 },	-- Nox Root
 				["provider"] = { "o", 357726 },	-- Broken Spear
 				["coord"] = { 33.8, 54.4, ARDENWEALD },
+				["g"] = {
+					i(182966),	-- Broken Spear (QI!)
+				},
 			}),
 			q(61711, {	-- Ritual of Purification
 				["sourceQuests"] = {
-					61710,	 -- The Broken Spear
-					61709,	 -- Witch's Satchel
+					61710,	-- The Broken Spear
+					61709,	-- Witch's Satchel
 				},
 				["provider"] = { "n", 171413 },	-- Kivarr
 				["coord"] = { 46.2, 56.5, ARDENWEALD },
@@ -675,6 +722,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["coord"] = { 46.2, 56.7, ARDENWEALD },
 				["g"] = {
 					i(175597),	-- Faewoven Amice
+					i(180832),	-- Lord Herne's Report (QI!)
 					i(179770),	-- Oakheart Mantle
 					i(179892),	-- Queensguard Pauldrons
 					i(181914),	-- Runewarden's Spaulders
@@ -712,11 +760,18 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 58447 },	-- Monster Hunting
 				["provider"] = { "n", 165841 },	-- Huln Highmountain
 				["coord"] = { 35.3, 51.2, ARDENWEALD },
+				["g"] = {
+					i(174467),	-- Bulging Digestive Sac (QI!)
+					i(174645),	-- Gormherd Branch (QI!)
+				},
 			}),
 			q(58450, {	-- Anima Instincts
 				["sourceQuests"] = { 58447 },	-- Monster Hunting
 				["provider"] = { "n", 165841 },	-- Huln Highmountain
 				["coord"] = { 35.3, 51.2, ARDENWEALD },
+				["g"] = {
+					i(175753),	-- Life-Hardened Anima (QI!)
+				},
 			}),
 			q(59721, {	-- Becoming the Hunt
 				["sourceQuests"] = {
@@ -758,6 +813,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 59732 },	-- Something Extra for the Winter Queen
 				["provider"] = { "n", 122688 },	-- Bwonsamdi
 				["coord"] = { 39.6, 24.7, NAZMIR },
+				["g"] = {
+					i(180787),	-- Zel'han's Broken Armor (QI!)
+				},
 			}),
 			q(59741, {	-- Dark Mojo for a Dark Loa
 				["sourceQuests"] = { 59732 },	-- Something Extra for the Winter Queen
@@ -778,6 +836,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["provider"] = { "n", 122688 },	-- Bwonsamdi
 				["coord"] = { 39.6, 24.7, NAZMIR },
 				["g"] = {
+					i(177817),	-- Voodoo Powder (QI!)
 					i(179623),	-- Faewoven Drape
 					i(179773),	-- Oakheart Cape
 					i(179620),	-- Queensguard Cloak
@@ -788,27 +847,40 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 				["sourceQuests"] = { 59749 },	-- One Little Whisper
 				["provider"] = { "n", 122688 },	-- Bwonsamdi
 				["coord"] = { 39.6, 24.7, NAZMIR },
+				["g"] = {
+					i(177817),	-- Voodoo Powder (QI!)
+				},
 			}),
 			q(59822, {	-- Tracking a Wild God
 				["sourceQuests"] = { 59805 },	-- Maw Manifested
 				["provider"] = { "n", 171655 },	-- Spirit of Vol'jin
 				["coord"] = { 44.8, 40.9, THE_MAW },
+				["g"] = {
+					i(177817),	-- Voodoo Powder (QI!)
+				},
 			}),
 			q(59824, {	-- Loa Rescue
 				["sourceQuests"] = { 59822 },	-- Tracking a Wild God
 				["provider"] = { "n", 171806 },	-- Spirit of Vol'jin
 				["coord"] = { 41.0, 64.2, THE_MAW },
+				["g"] = {
+					i(177817),	-- Voodoo Powder (QI!)
+				},
 			}),
 			q(59856, {	-- Rezan, Loa of Kings
 				["sourceQuests"] = { 59824 },	-- Loa Rescue
 				["provider"] = { "n", 166461 },	-- Spirit of Vol'jin
 				["coord"] = { 45.8, 85.0, THE_MAW },
+				["g"] = {
+					i(177817),	-- Voodoo Powder (QI!)
+				},
 			}),
 			q(59866, {	-- Parting Ways
 				["sourceQuests"] = { 59856 },	-- Rezan, Loa of Kings
 				["provider"] = { "n", 166461 },	-- Spirit of Vol'jin
 				["coord"] = { 45.8, 85.0, THE_MAW },
 				["g"] = {
+					i(177817),	-- Voodoo Powder (QI!)
 					i(175588),	-- Faewoven Cowl
 					i(179768),	-- Oakheart Crest
 					i(179887),	-- Queensguard Greathelm
@@ -888,45 +960,34 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 	}),
 })));
 
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	n(NIGHT_FAE, {
+		n(QUESTS, {
+			q(63452),	-- triggers when turning in "Return Lost Souls" (spellID 348837 & 348840 & 348843 & 348846)
+			q(62745),	-- Triggered after finishing Chapter 1 of Night Fae covenant questline
+			q(57559),	-- Triggered after turning in "For Queen and Grove!" (questID 58160) / "A Call to Service" (questID 62695)
+			q(62706),	-- Triggered after turning in "For Queen and Grove!" (questID 58160) / "A Call to Service" (questID 62695)
+			q(61590),	-- Triggered after first time channeling anima to Glitterfall Basin
+			q(62959),	-- Triggered after completing first "Into The Unknown" (questID 62296) (spellID 345586)
+			q(62957),	-- Triggered after completing second "Into The Unknown" (questID 60153) (spellID 345585)
+			-- q(62959),	-- Triggered after completing third Into The Unknown (questID 62382) (spellID 345586)
+			q(62956),	-- Triggered after completing fourth Into The Unknown (questID 62453) (spellID 345584)
+			q(62446),	-- Triggered after restoring Falir the Shifting for "A Rare and Unusual Spirit" (questID 62447)
+			q(62585),	-- Triggered after restoring Ohm of Meditation for "A Rare and Unusual Spirit" (questID 62603)
+			q(62586),	-- Triggered after restoring Lia the Curious
+			q(62958),	-- triggered during Marasmius dailies (spellID 345588)
+			q(62960),	-- Triggered after "Go Beyond!" (questID 62459) (spellID 345591)
+			q(62961),	-- Completed after doing "Go Beyond!" (questID ??) (spellID 345592)
+			q(62962),	-- triggered when turning in "Into the Unknown" (questID 62296) (spellID 345590)
+			q(62963),	-- triggered when turning in "Go Beyond!" (questID ??) (spellID 345593)
+			------ Stay awhile and listen ------
+			hqt(64350),	-- Tyrande/Astarii after The Power of Night campaign quest (spellID 356222)
+		}),
+	}),
+})));
+
 for _,g in ipairs({CONDUIT_GROUP,LFR_WEAPON_GROUP}) do
 	for	_,t in ipairs(g) do
 		t.customCollect = nil;
 	end
 end
-
-root(ROOTS.NeverImplemented, {
-	tier(SL_TIER, {
-		n(WEAPONS, {
-			i(176017),	-- Ardenweald Quest 2H Mace
-			i(176018),	-- Ardenweald Quest 2H Mace
-			i(176019),	-- Ardenweald Quest 2H Mace
-			i(176020),	-- Ardenweald Quest 2H Mace
-			i(176021),	-- Ardenweald Quest 2H Mace
-			i(176047),	-- Ardenweald Quest Warglaives
-			i(176048),	-- Ardenweald Quest Warglaives
-			i(176049),	-- Ardenweald Quest Warglaives
-			i(176050),	-- Ardenweald Quest Warglaives
-			i(176051),	-- Ardenweald Quest Warglaives
-			i(176037),	-- Ardenweald Quest Shield
-			i(176038),	-- Ardenweald Quest Shield
-			i(176039),	-- Ardenweald Quest Shield
-			i(176040),	-- Ardenweald Quest Shield
-			i(176041),	-- Ardenweald Quest Shield
-			i(176027),	-- Ardenweald Quest Polearm
-			i(176028),	-- Ardenweald Quest Polearm
-			i(176029),	-- Ardenweald Quest Polearm
-			i(176030),	-- Ardenweald Quest Polearm
-			i(176031),	-- Ardenweald Quest Polearm
-			i(176022),	-- Ardenweald Quest Bow
-			i(176023),	-- Ardenweald Quest Bow
-			i(176024),	-- Ardenweald Quest Bow
-			i(176025),	-- Ardenweald Quest Bow
-			i(176026),	-- Ardenweald Quest Bow
-			i(176032),	-- Ardenweald Quest Sword
-			i(176033),	-- Ardenweald Quest Sword
-			i(176034),	-- Ardenweald Quest Sword
-			i(176035),	-- Ardenweald Quest Sword
-			i(176036),	-- Ardenweald Quest Sword
-		}),
-	}),
-});

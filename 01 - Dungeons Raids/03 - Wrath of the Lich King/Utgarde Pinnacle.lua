@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(286, {	-- Utgarde Pinnacle
 		["mapID"] = UTGARDE_PINNACLE,
 		["coord"] = { 57, 47, HOWLING_FJORD },
@@ -9,55 +9,55 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["lvl"] = lvlsquish(75, 75, 20),
 		["groups"] = {
 			n(ACHIEVEMENTS, {
-				ach(488, { -- Utgarde Pinnacle
-					crit(5463, { -- Skadi the Ruthless
-						["_encounter"] = { 643, NORMAL_DUNGEON },
+				ach(488, {	-- Utgarde Pinnacle
+					crit(5463, {	-- Skadi the Ruthless
+						["_encounter"] = { 643, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5465, { -- Svala Sorrowgrave
-						["_encounter"] = { 641, NORMAL_DUNGEON },
+					crit(5465, {	-- Svala Sorrowgrave
+						["_encounter"] = { 641, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5466, { -- Gortok Palehoof
-						["_encounter"] = { 642, NORMAL_DUNGEON },
+					crit(5466, {	-- Gortok Palehoof
+						["_encounter"] = { 642, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					-- NOTE: This boss has a different criteriaUID in classic for some dumb reason. BLIZZARD.
-					crit(5631, { -- King Ymiron
-						["_encounter"] = { 644, NORMAL_DUNGEON },
+					crit(5631, {	-- King Ymiron
+						["_encounter"] = { 644, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #else
-					crit(5464, { -- King Ymiron
-						["_encounter"] = { 644, NORMAL_DUNGEON },
+					crit(5464, {	-- King Ymiron
+						["_encounter"] = { 644, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #endif
 				}),
 				-- #if ANYCLASSIC
 				applyclassicphase(WRATH_PHASE_TWO, ach(17301, {	-- Defense Protocol Alpha: Utgarde Pinnacle
-					crit(57767, { -- Svala Sorrowgrave
-						["_encounter"] = { 641, HEROIC_DUNGEON },
+					crit(57767, {	-- Svala Sorrowgrave
+						["_encounter"] = { 641, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39296),	-- Accursed Bow of the Elite
 							i(39308),	-- Girdle of Lenience
 							i(39299),	-- Rapid Attack Gloves
 						},
 					}),
-					crit(57769, { -- Gortok Palehoof
-						["_encounter"] = { 642, HEROIC_DUNGEON },
+					crit(57769, {	-- Gortok Palehoof
+						["_encounter"] = { 642, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39284),	-- Miasma Mantle
 							i(39298),	-- Waistguard of the Tutor
 							i(39295),	-- Cowl of Sheet Lightning
 						},
 					}),
-					crit(57768, { -- Skadi the Ruthless
-						["_encounter"] = { 643, HEROIC_DUNGEON },
+					crit(57768, {	-- Skadi the Ruthless
+						["_encounter"] = { 643, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39294),	-- Arc-Scorched Helmet
 							i(39297),	-- Cloak of Darkening
 							i(39472),	-- Chain of Latent Energies
 						},
 					}),
-					crit(57766, { -- King Ymiron
-						["_encounter"] = { 644, HEROIC_DUNGEON },
+					crit(57766, {	-- King Ymiron
+						["_encounter"] = { 644, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39421),	-- Gem of Imprisoned Vassals
 							i(39423),	-- Hammer of the Astral Plane
@@ -75,27 +75,27 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					}),
 				})),
 				applyclassicphase(WRATH_PHASE_THREE, ach(18600, {	-- Defense Protocol Beta: Utgarde Pinnacle
-					crit(60610, { -- Svala Sorrowgrave
-						["_encounter"] = { 641, HEROIC_DUNGEON },
+					crit(60610, {	-- Svala Sorrowgrave
+						["_encounter"] = { 641, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45423),	-- Runetouch Wristwraps
 						},
 					}),
-					crit(60612, { -- Gortok Palehoof
-						["_encounter"] = { 642, HEROIC_DUNGEON },
+					crit(60612, {	-- Gortok Palehoof
+						["_encounter"] = { 642, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45332),	-- Stormtip
 						},
 					}),
-					crit(60611, { -- Skadi the Ruthless
-						["_encounter"] = { 643, HEROIC_DUNGEON },
+					crit(60611, {	-- Skadi the Ruthless
+						["_encounter"] = { 643, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45864),	-- Cover of the Keepers
 							i(45712),	-- Chestplate of Titanic Fury
 						},
 					}),
-					crit(60609, { -- King Ymiron
-						["_encounter"] = { 644, HEROIC_DUNGEON },
+					crit(60609, {	-- King Ymiron
+						["_encounter"] = { 644, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							currency(SIDEREAL_ESSENCE),
 							i(45711),	-- Ironaya's Discarded Mantle
@@ -103,19 +103,45 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(19437, {	-- Defense Protocol Gamma: Utgarde Pinnacle
+					crit(63367, {	-- Svala Sorrowgrave
+						["_encounter"] = { 641, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63371, {	-- Gortok Palehoof
+						["_encounter"] = { 642, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63369, {	-- Skadi the Ruthless
+						["_encounter"] = { 643, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63366, {	-- King Ymiron
+						["_encounter"] = { 644, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+				})),
 				-- #endif
-				ach(499, { -- Heroic: Utgarde Pinnacle
-					crit(6864, { -- Svala Sorrowgrave
-						["_encounter"] = { 641, HEROIC_DUNGEON },
+				ach(499, {	-- Heroic: Utgarde Pinnacle
+					crit(6864, {	-- Svala Sorrowgrave
+						["_encounter"] = { 641, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6865, { -- Gortok Palehoof
-						["_encounter"] = { 642, HEROIC_DUNGEON },
+					crit(6865, {	-- Gortok Palehoof
+						["_encounter"] = { 642, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6863, { -- Skadi the Ruthless
-						["_encounter"] = { 643, HEROIC_DUNGEON },
+					crit(6863, {	-- Skadi the Ruthless
+						["_encounter"] = { 643, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5618, { -- King Ymiron
-						["_encounter"] = { 644, HEROIC_DUNGEON },
+					crit(5618, {	-- King Ymiron
+						["_encounter"] = { 644, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -125,16 +151,29 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["lvl"] = lvlsquish(78, 78, 20),
 					["groups"] = {
 						objective(1, {	-- 0/5 Untarnished Silver Bar
-							["provider"] = { "i", 43238 },	-- Untarnished Silver Bar
+							["providers"] = {
+								{ "i",  43238 },	-- Untarnished Silver Bar
+								{ "o", 192941 },	-- Untarnished Silver Bar
+							},
 						}),
 						objective(2, {	-- 0/3 Shiny Bauble
-							["provider"] = { "i", 43239 },	-- Shiny Bauble
+							["providers"] = {
+								{ "i",  43239 },	-- Shiny Bauble
+								{ "o", 192942 },	-- Shiny Bauble
+								{ "o", 192943 },	-- Shiny Bauble
+							},
 						}),
 						objective(3, {	-- 0/2 Golden Goblet
-							["provider"] = { "i", 43240 },	-- Golden Goblet
+							["providers"] = {
+								{ "i",  43240 },	-- Golden Goblet
+								{ "o", 192944 },	-- Golden Goblet
+							},
 						}),
 						objective(4, {	-- 0/1 Jade Statue
-							["provider"] = { "i", 43241 },	-- Jade Statue
+							["providers"] = {
+								{ "i",  43241 },	-- Jade Statue
+								{ "o", 192945 },	-- Jade Statue
+							},
 						}),
 						i(44404),	-- Bauble-Woven Gown
 						i(44405),	-- Exotic Leather Tunic
@@ -158,7 +197,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29864, {	-- Working at the Source, No actual awards.
 					["qg"] = 56072,	-- Image of Argent Confessor Paletress
-					["timeline"] = { "added 4.3.0" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(78, 78, 20),
 				}),
 			}),
@@ -175,7 +214,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["cr"] = 26692,	-- Ymirjar Harpooner
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				-- #if BEFORE 7.3.5
 				n(ZONE_DROPS, {
 					i(37068),	-- Berserker's Sabatons
@@ -236,7 +275,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #endif
 						i(37056),	-- Harpooner's Striders
 						i(157560, {	-- Skadi's Scaled Boots
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 					},
 				}),
@@ -271,14 +310,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					-- #if BEFORE 7.3.5
 					n(ZONE_DROPS, {
 						i(37590),	-- Bands of Fading Light
 						i(37410, {	-- Tracker's Balanced Knives
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						i(37587),	-- Ymirjar Physician's Robe
 					}),
@@ -286,7 +325,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if BEFORE CATA
 					n(COMMON_BOSS_DROPS, {
 						currency(101, {	-- Emblem of Heroism
-							["timeline"] = { "added 3.0.2.8905", "removed 4.0.1" },
+							["timeline"] = { ADDED_3_0_2, REMOVED_4_0_1 },
 						}),
 					}),
 					-- #endif
@@ -344,7 +383,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(37056),	-- Harpooner's Striders (7.3.5 - Used to be only Normal Mode)
 							-- #endif
 							i(157560, {	-- Skadi's Scaled Boots
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 						},
 					}),
@@ -352,13 +391,9 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						["creatureID"] = 26861,	-- King Ymiron
 						["groups"] = {
 							ach(5105, {	-- Heroic: Utgarde Pinnacle Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(2157),	-- King's Bane
-							{	-- Champion of the Frozen Wastes
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 5618,		-- King Ymiron slain [index 11 in retail]
-							},
 							i(41797),	-- Design: Austere Earthsiege Diamond (7.3.5 - Used to be only Normal Mode)
 							-- #if AFTER 7.3.5
 							i(37060),	-- Jeweled Coronation Sword (7.3.5 - Used to be only Normal Mode)
@@ -399,7 +434,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35452),	-- Utgarde Pinnacle - Bonus Objective Reward
 		q(35454),	-- Utgarde Pinnacle - Bonus Objective Reward
 		q(35449),	-- Utgarde Pinnacle Reward Quest - Normal completion

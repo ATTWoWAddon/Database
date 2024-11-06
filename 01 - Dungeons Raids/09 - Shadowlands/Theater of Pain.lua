@@ -1,9 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	inst(1187, {	-- Theater of Pain
 		["coord"] = { 53.1, 53.0, MALDRAXXUS },
 		["maps"] = {
@@ -21,7 +19,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					["_drop"] = { "g" },	-- Anima Trash
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2397, {	-- An Affront of Challengers
 					["crs"] = {
 						164451,	-- Dessia the Decapitator
@@ -125,7 +123,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2417, {	-- Mordretha, the Endless Empress
 					["crs"] = { 165946 },	-- Mordretha, the Endless Empress
 					["g"] = {
@@ -133,7 +131,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(2397, {	-- An Affront of Challengers
 					["crs"] = {
 						164451,	-- Dessia the Decapitator
@@ -142,9 +140,9 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 					["g"] = {
 						ach(14297, {	-- Three Choose One
-							crit(1),	-- Paceran the Virulent
-							crit(2),	-- Sathel the Accursed
-							crit(3),	-- Dessia the Decapitator
+							crit(48444),	-- Paceran the Virulent
+							crit(48445),	-- Sathel the Accursed
+							crit(48446),	-- Dessia the Decapitator
 						}),
 					},
 				}),

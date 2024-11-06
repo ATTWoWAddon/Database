@@ -3,17 +3,17 @@
 -----------------------------------------------------
 MARAUDON_PORTAL = createHeader({
 	readable = "Maraudon Portal",
-	icon = "Interface\\Icons\\spell_arcane_portalironforge",
+	icon = 135743,
 	text = {
-		en = [[~GetSpellInfo(21127)]],
+		en = WOWAPI_GetSpellName(21127),
 	},
 });
 FOULSPORE_CAVERN = createHeader({
 	readable = "Foulspore Cavern",
-	icon = "Interface\\Icons\\INV_Misc_Gem_Opal_01",
+	icon = 134116,
 	text = {
 		-- #if AFTER 7.3.0
-		en = [[~DUNGEON_FLOOR_DESOLACE22.." ("..GetSpellInfo(251097)..")"]],
+		en = [[~DUNGEON_FLOOR_DESOLACE22.." ("..]] .. WOWAPI_GetSpellName(251097) .. [[..")"]],
 		-- #else
 		en = [[~DUNGEON_FLOOR_DESOLACE22.." (Orange Path)"]],
 		-- #endif
@@ -21,21 +21,22 @@ FOULSPORE_CAVERN = createHeader({
 });
 WICKED_GROTTO = createHeader({
 	readable = "The Wicked Grotto",
-	icon = "Interface\\Icons\\INV_Misc_Gem_Amethyst_02",
+	icon = 134075,
 	text = {
 		-- #if AFTER 7.3.0
-		en = [[~DUNGEON_FLOOR_DESOLACE21.." ("..GetSpellInfo(251095)..")"]],
+		en = [[~DUNGEON_FLOOR_DESOLACE21.." ("..]] .. WOWAPI_GetSpellName(251095) .. [[..")"]],
 		-- #else
 		en = [[~DUNGEON_FLOOR_DESOLACE21.." (Purple Path)"]],
 		-- #endif
 	},
 });
-root(ROOTS.Instances, tier(CLASSIC_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, {
 	inst(232, {	-- Maraudon
 		-- #if BEFORE MOP
 		["lore"] = "Protected by the fierce Maraudine centaur, Maraudon is one of the most sacred sites within Desolace. The great temple/cavern is the burial place of Zaetar, one of two immortal sons born to the demigod, Cenarius. Legend holds that Zaetar and the earth elemental princess, Theradras, sired the misbegotten centaur race. It is said that upon their emergence, the barbaric centaur turned on their father and killed him. Some believe that Theradras, in her grief, trapped Zaetar's spirit within the winding cavern - used its energies for some malign purpose. The subterranean tunnels are populated by the vicious, long-dead ghosts of the Centaur Khans, as well as Theradras' own raging, elemental minions.",
 		-- #endif
 		["zone-text-areaID"] = 2100,	-- Maraudon
+		["coord"] = { 35.7, 55.5, DESOLACE },
 		["mapID"] = MARAUDON,
 		["maps"] = { MARAUDON_LEVEL2, 67, 68 },
 		["lvl"] = lvlsquish(41, 30, 10),
@@ -43,7 +44,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 			n(QUESTS, {
 				q(27697, {	-- Corruption in Maraudon
 					["qg"] = 12238,	-- Zaetar's Spirit
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(32, 32, 10),
 					["groups"] = {
 						objective(1, {	-- 0/1 Lord Vyletongue slain
@@ -51,52 +52,36 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						}),
 					},
 				}),
-				q(7065, {	-- Corruption of Earth and Seed [Alliance]
-					["qg"] = 13698,	-- Keeper Marandis
-					["coord"] = { 63.8, 10.6, DESOLACE },
-					["timeline"] = { "removed 4.0.3" },
-					["races"] = ALLIANCE_ONLY,
+				{	-- Corruption of Earth and Seed
+					["allianceQuestData"] = q(7065, {	-- Corruption of Earth and Seed (A)
+						["qg"] = 13698,	-- Keeper Marandis
+						["coord"] = { 63.8, 10.6, DESOLACE },
+					}),
+					["hordeQuestData"] = q(7064, {	-- Corruption of Earth and Seed (H)
+						["qg"] = 13699,	-- Selendra
+						["coord"] = { 26.9, 77.7, DESOLACE },
+					}),
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 45,
 					["groups"] = {
 						objective(1, {	-- 0/1 Princess Theradras slain
 							["provider"] = { "n", 12201 },	-- Princess Theradras
 						}),
 						i(17705, {	-- Thrash Blade
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17743, {	-- Resurgence Rod
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17753, {	-- Verdant Keeper's Aim
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
-				}),
-				q(7064, {	-- Corruption of Earth and Seed [Horde]
-					["qg"] = 13699,	-- Selendra
-					["coord"] = { 26.9, 77.7, DESOLACE },
-					["timeline"] = { "removed 4.0.3" },
-					["races"] = HORDE_ONLY,
-					["lvl"] = 45,
-					["groups"] = {
-						objective(1, {	-- 0/1 Princess Theradras slain
-							["provider"] = { "n", 12201 },	-- Princess Theradras
-						}),
-						i(17705, {	-- Thrash Blade
-							["timeline"] = { "removed 4.0.3" },
-						}),
-						i(17743, {	-- Resurgence Rod
-							["timeline"] = { "removed 4.0.3" },
-						}),
-						i(17753, {	-- Verdant Keeper's Aim
-							["timeline"] = { "removed 4.0.3" },
-						}),
-					},
-				}),
+				},
 				q(7044, {	-- Legends of Maraudon
 					["qg"] = 13697,	-- Cavindra
 					["coord"] = { 32.1, 64.0, DESOLACE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 41,
 					["groups"] = {
 						objective(1, {	-- 0/1 Celebrian Diamond
@@ -109,7 +94,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27692, {	-- Princess Theradras
 					["qg"] = 12238,	-- Zaetar's Spirit
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(32, 32, 10),
 					["groups"] = {
 						objective(1, {	-- 0/1 Princess Theradras slain
@@ -119,11 +104,11 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						i(65992),	-- Pauldrons of the Promise
 						i(65919),	-- Zaetar's Gloves
 						i(131681, {	-- Leggings of Flourishing Vigor
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(65969),	-- Leggings of the Verdant Oasis
 						i(131682, {	-- Boots of Endless Vitality
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 						i(65945),	-- Sandals of Glorious Life
 					},
@@ -136,12 +121,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #if BEFORE 4.0.3
 					["description"] = "This quest becomes available after you defeat Princess Theradras",
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
+					["maps"] = { MOONGLADE },
 					["lvl"] = 39,
 				}),
 				q(27698, {	-- Servants of Theradras
 					["qg"] = 12238,	-- Zaetar's Spirit
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(32, 32, 10),
 					["groups"] = {
 						objective(1, {	-- 0/1 Noxxion slain
@@ -152,49 +138,40 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						}),
 					},
 				}),
-				q(7070, {	-- Shadowshard Fragments [Alliance]
-					["qg"] = 4967,	-- Archmage Tervosh
-					["coord"] = { 66.4, 49.3, DUSTWALLOW_MARSH },
-					["timeline"] = { "removed 4.0.3" },
-					["races"] = ALLIANCE_ONLY,
+				{	-- Shadowshard Fragments
+					["allianceQuestData"] = q(7070, {	-- Shadowshard Fragments (A)
+						["qg"] = 4967,	-- Archmage Tervosh
+						["coord"] = { 66.4, 49.3, DUSTWALLOW_MARSH },
+					}),
+					["hordeQuestData"] = q(7068, {	-- Shadowshard Fragments (H)
+						["qg"] = 7311,	-- Uthel'nay <Mage Trainer>
+						["coord"] = { 39.2, 86.3, ORGRIMMAR },
+					}),
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 39,
 					["groups"] = {
 						objective(1, {	-- 0/10 Shadowshard Fragment
 							["provider"] = { "i", 17756 },	-- Shadowshard Fragment
+							["crs"] = {
+								11777,	-- Shadowshard Rumbler
+								11778,	-- Shadowshard Smasher
+							},
 						}),
 						i(17773, {	-- Prodigious Shadowshard Pendant
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17772, {	-- Zealous Shadowshard Pendant
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
-				}),
-				q(7068, {	-- Shadowshard Fragments [Horde]
-					["qg"] = 7311,	-- Uthel'nay <Mage Trainer>
-					["coord"] = { 39.2, 86.3, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
-					["races"] = HORDE_ONLY,
-					["lvl"] = 39,
-					["groups"] = {
-						objective(1, {	-- 0/10 Shadowshard Fragment
-							["provider"] = { "i", 17756 },	-- Shadowshard Fragment
-						}),
-						i(17773, {	-- Prodigious Shadowshard Pendant
-							["timeline"] = { "removed 4.0.3" },
-						}),
-						i(17772, {	-- Zealous Shadowshard Pendant
-							["timeline"] = { "removed 4.0.3" },
-						}),
-					},
-				}),
+				},
 				q(7067, {	-- The Pariah's Instructions
 					["providers"] = {
 						{ "n", 13717 },	-- Centaur Pariah
 						{ "i", 17781 },	-- The Pariah's Instructions
 					},
 					["coord"] = { 50.5, 86.7, DESOLACE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 39,
 					["groups"] = {
 						-- #if BEFORE 4.0.3
@@ -253,50 +230,55 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						}),
 						-- #endif
 						i(17774, {	-- Mark of the Chosen
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(7046, {	-- The Scepter of Celebras
 					["qg"] = 13716,	-- Celebras the Redeemed
 					["sourceQuest"] = 7044,	-- Legends of Maraudon
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 41,
 					["groups"] = {
 						i(17191, {	-- Scepter of Celebras
 							["description"] = "This item is used to open the portal to the Inner Falls just after Celebras the Cursed in Maraudon.",
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(7028, {	-- Twisted Evils
 					["qg"] = 13656,	-- Willow <Twilight's Hammer>
 					["coord"] = { 62.2, 39.63, DESOLACE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 41,
 					["groups"] = {
 						objective(1, {	-- 0/15 Theradric Crystal Carving
 							["provider"] = { "i", 17684 },	-- Theradric Crystal Carving
 						}),
 						i(17776, {	-- Sprightring Helm
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17779, {	-- Hulkstone Pauldrons
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17775, {	-- Acumen Robes
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17777, {	-- Relentless Chain
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
-				q(7041, {	-- Vyletongue Corruption [Alliance]
-					["qg"] = 11715,	-- Talendria
-					["coord"] = { 68.4, 8.8, DESOLACE },
-					["timeline"] = { "removed 4.0.3" },
-					["races"] = ALLIANCE_ONLY,
+				{	-- Vyletongue Corruption
+					["allianceQuestData"] = q(7041, {	-- Vyletongue Corruption (A)
+						["qg"] = 11715,	-- Talendria
+						["coord"] = { 68.4, 8.8, DESOLACE },
+					}),
+					["hordeQuestData"] = q(7029, {	-- Vyletongue Corruption (H)
+						["qg"] = 11823,	-- Vark Battlescar
+						["coord"] = { 23.2, 70.3, DESOLACE },
+					}),
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 41,
 					["groups"] = {
 						-- #if BEFORE 4.0.3
@@ -312,54 +294,18 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						}),
 						-- #endif
 						i(17770, {	-- Branchclaw Gauntlets
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17778, {	-- Sagebrush Girdle
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17768, {	-- Woodseed Hoop
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
-				}),
-				q(7029, {	-- Vyletongue Corruption [Horde]
-					["qg"] = 11823,	-- Vark Battlescar
-					["coord"] = { 23.2, 70.3, DESOLACE },
-					["timeline"] = { "removed 4.0.3" },
-					["races"] = HORDE_ONLY,
-					["lvl"] = 41,
-					["groups"] = {
-						-- #if BEFORE 4.0.3
-						objective(1, {	-- 0/8 Vylestem Vines healed
-							["provider"] = { "n", 13696 },	-- Noxxious Scion
-							["cost"] = { { "i", 17696, 1 } },	-- Filled Cerulean Vial
-							["description"] = "Use the Filled Cerulean Vial on the vines and then kill the Scions that are spawned.",
-						}),
-						i(17696, {	-- Filled Cerulean Vial
-							["description"] = "Stand in the Orange Pool of water just outside the Orange Path of Maraudon and use this item to create the filled vial.",
-							["coord"] = { 38, 58, DESOLACE },
-							["cost"] = { { "i", 17693, 1 } },	-- Coated Cerulean Vial
-						}),
-						-- #endif
-						i(17770, {	-- Branchclaw Gauntlets
-							["timeline"] = { "removed 4.0.3" },
-						}),
-						i(17778, {	-- Sagebrush Girdle
-							["timeline"] = { "removed 4.0.3" },
-						}),
-						i(17768, {	-- Woodseed Hoop
-							["timeline"] = { "removed 4.0.3" },
-						}),
-					},
-				}),
+				},
 			}),
 			n(ZONE_DROPS, {
-				i(17756, {	-- Shadowshard Fragment
-					["crs"] = {
-						11777,	-- Shadowshard Rumbler
-						11778,	-- Shadowshard Smasher
-					},
-				}),
 				i(17684),	-- Theradric Crystal Carving
 			}),
 			n(FOULSPORE_CAVERN, {
@@ -371,31 +317,41 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(17702),	-- Celebrian Rod
 							i(17745),	-- Noxious Shooter
 							i(151450, {	-- Chainmail of the Noxious Hollow
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 							i(17746),	-- Noxxion's Shackles
 							i(151449, {	-- Fungal-Spore Cinch
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 							i(17744),	-- Heart of Noxxion
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(221281)),	-- Ace of Plagues
+							-- #endif
 						},
 					}),
 					e(424, {	-- Razorlash
 						["creatureID"] = 12258,
 						["groups"] = {
 							i(132562, {	-- Leaf-Scale Pauldrons
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(17749),	-- Phytoskin Spaulders
 							i(151451, {	-- Strip-Thorn Gauntlets
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 							i(17750),	-- Chloromesh Girdle
 							i(17751),	-- Brusslehide Leggings
 							i(132563, {	-- Chloro-Stained Britches
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223543)),	-- Vinerot Sandals
+							i(17748, {	-- Vinerot Sandals
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							-- #else
 							i(17748),	-- Vinerot Sandals
+							-- #endif
 						},
 					}),
 				},
@@ -411,7 +367,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(17717),	-- Megashot Rifle
 							i(17718),	-- Gizlock's Hypertech Buckler
 							i(151446, {	-- Tinkerer's Pinkie Cylinder
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 						},
 					}),
@@ -422,10 +378,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(17703),	-- Celebrian Diamond
 							i(17752),	-- Satyr's Lash
 							i(151448, {	-- Lord Vyletongue's Satyrplate
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 							i(151447, {	-- Zaetar-kin Wristwraps
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 							i(17755),	-- Satyrmane Sash
 							i(17754),	-- Infernal Trickster Leggings
@@ -454,18 +410,40 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["groups"] = {
 							i(17738),	-- Claw of Celebras
 							i(132561, {	-- Corrupted Keeper's Band
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223525)),	-- Soothsayer's Headdress
+							i(17740, {	-- Soothsayer's Headdress
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							-- #else
 							i(17740),	-- Soothsayer's Headdress
+							-- #endif
 							i(17739),	-- Grovekeeper's Drape
 						},
 					}),
 					e(429, {	-- Landslide
 						["creatureID"] = 12203,
 						["groups"] = {
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223524)),	-- Fist of Stone
+							applyclassicphase(SOD_PHASE_THREE, i(223523)),	-- Cloud Stone
+							applyclassicphase(SOD_PHASE_THREE, i(223522)),	-- Helm of the Mountain
+							i(17943, {	-- Fist of Stone
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17737, {	-- Cloud Stone
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17734, {	-- Helm of the Mountain
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							-- #else
 							i(17943),	-- Fist of Stone
 							i(17737),	-- Cloud Stone
 							i(17734),	-- Helm of the Mountain
+							-- #endif
 							i(17736),	-- Rockgrip Gauntlets
 							-- #if AFTER MOP
 							-- I'm actually unsure of when this item moved to Landslide.
@@ -477,11 +455,26 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					e(425, {	-- Tinkerer Gizlock
 						["creatureID"] = 13601,
 						["groups"] = {
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223520)),	-- Inventor's Focal Sword
+							applyclassicphase(SOD_PHASE_THREE, i(223542)),	-- Megashot Rifle
+							applyclassicphase(SOD_PHASE_THREE, i(223545)),	-- Gizlock's Hypertech Buckler
+							i(17719, {	-- Inventor's Focal Sword
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17717, {	-- Megashot Rifle
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17718, {	-- Gizlock's Hypertech Buckler
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							-- #else
 							i(17719),	-- Inventor's Focal Sword
 							i(17717),	-- Megashot Rifle
 							i(17718),	-- Gizlock's Hypertech Buckler
+							-- #endif
 							i(151446, {	-- Tinkerer's Pinkie Cylinder
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 						},
 					}),
@@ -491,13 +484,20 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["modelScale"] = 1.5,
 						["groups"] = {
 							i(17730),	-- Gatorbite Axe
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223521)),	-- Rotgrip Mantle
+							i(17732, {	-- Rotgrip Mantle
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							-- #else
 							i(17732),	-- Rotgrip Mantle
+							-- #endif
 							i(151452, {	-- Crocolisk Wrestler's Waistguard
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
 							i(17728),	-- Albino Crocscale Boots
 							i(132564, {	-- Albino Crocscale Waders
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -514,18 +514,54 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 								-- #endif
 							}),
 							ach(5049, {	-- Maraudon Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223964)),	-- Blade of Eternal Darkness
+							applyclassicphase(SOD_PHASE_THREE, i(223518)),	-- Charstone Dirk
+							applyclassicphase(SOD_PHASE_THREE, i(221780)),	-- Princess Theradras' Scepter
+							applyclassicphase(SOD_PHASE_THREE, i(223519)),	-- Eye of Theradras
+							applyclassicphase(SOD_PHASE_THREE, i(223541)),	-- Gemshard Heart
+							i(17780, {	-- Blade of Eternal Darkness
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17710, {	-- Charstone Dirk
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17766, {	-- Princess Theradras' Scepter
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17715, {	-- Eye of Theradras
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							i(17707, {	-- Gemshard Heart
+								["timeline"] = { "removed 1.15.2" },
+							}),
+							-- #else
 							i(17780),	-- Blade of Eternal Darkness
 							i(17710),	-- Charstone Dirk
 							i(17766),	-- Princess Theradras' Scepter
 							i(17715),	-- Eye of Theradras
 							i(17707),	-- Gemshard Heart
+							-- #endif
 							i(17714),	-- Bracers of the Stone Princess
 							i(17711),	-- Elemental Rockridge Leggings
 							i(17713),	-- Blackstone Ring
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(221271)),	-- Ace of Wilds
+							-- #endif
 						},
 					}),
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, n(223264, {	-- Delirious Ancient
+						["description"] = "Spawns after killing Princess and the surrounding trash.",
+						["cost"] = {{ "i", 221418, 1 }},	-- Agamaggan's Roar
+						["groups"] = {
+							i(221271),	-- Ace of Wilds
+							i(221262),	-- Wild Offering
+						},
+					})),
+					-- #endif
 				},
 			}),
 		},
@@ -533,7 +569,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 }));
 -- #if AFTER 6.0.1
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35885),	-- Maraudon (Wicked Grotto) Reward Quest - Normal completion
 		q(35886),	-- Maraudon (Foulspore Cavern) Reward Quest - Normal completion
 		q(35887),	-- Maraudon (Earth Song Falls) Reward Quest - Normal completion

@@ -1,14 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(252, {	-- Sethekk Halls
 		["lore"] = "Sethekk Halls is populated by renegade arakkoa and led by the insane Talon King Ikiss. The Sethekk are renegades who broke away from Skettis at the insistence of Ikiss and Darkweaver Syth, and believe themselves to be the true servants of the mysterious master of all arakkoa. When Auchindoun exploded due to the summoning of Murmur in the Shadow Labyrinth, Ikiss and Syth led their followers to Auchindoun, believing this to be a sign of their master's return. There they remain, still searching for the master in the temple's ruins.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3791,	-- Sethekk Halls
-		["sins"] = {
-			"Auchindoun: Sethekk Halls",
-			"Auchindoun: Sethekkhallen",
-		},
+		-- #endif
 		["coord"] = { 44.93, 65.61, TEROKKAR_FOREST },	-- Sethekk Halls, Terokkar Forest
 		["maps"] = {
 			AUCHINDOUN_SETHEKK_HALLS,	-- Veil Sethekk
@@ -21,7 +19,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 18933,	-- Isfar
 					["sourceQuest"] = 10180,	-- Can't Stay Away
 					["coord"] = { 44.1, 65.0, TEROKKAR_FOREST },
-					["timeline"] = { "removed 4.3.0.14942" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(65, 65, 15),
 					["groups"] = {
 						objective(1, {	-- Darkweaver Syth slain
@@ -39,7 +37,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29605, {	-- Brother Against Brother
 					["qg"] = 54840,	-- Isfar
 					["sourceQuest"] = 10180,	-- Can't Stay Away
-					["timeline"] = { "added 4.3.0.14942" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(65, 65, 15),
 					["groups"] = {
 						objective(1, {	-- Free Lakka
@@ -61,7 +59,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 22832,	-- Morthis Whisperwing <Druid of the Talon>
 					["sourceQuest"] = 11001,	-- Vanquish the Raven God
 					["coord"] = { 80.2, 65.2, ZANGARMARSH },
-					["timeline"] = { "removed 4.0.1" },
+					["timeline"] = { REMOVED_4_0_1 },
 					["classes"] = { DRUID },
 					["repeatable"] = true,
 					["lvl"] = lvlsquish(70, 70, 30),
@@ -72,11 +70,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29607, {	-- Eyes of Desire
 					["qg"] = 54847,	-- Dealer Vijaad
 					["description"] = "Dealer Vijaad appears upon defeating Darkweaver Syth.",
-					["timeline"] = { "added 4.3.0.14942" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(65, 65, 15),
 					["groups"] = {
 						objective(1, {	-- 0/3 Cobalt Eye
 							["provider"] = { "i", 72480 },	-- Cobalt Eye
+							["cr"] = 19428,	-- Cobalt Serpent
 						}),
 					},
 				}),
@@ -84,7 +83,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 18933,	-- Isfar
 					["sourceQuest"] = 10180,	-- Can't Stay Away
 					["coord"] = { 44.1, 65.0, TEROKKAR_FOREST },
-					["timeline"] = { "removed 4.3.0.14942" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["cost"] = {
 						{ "i", 32888, 1 },	-- The Relics of Terokk
 					},
@@ -92,7 +91,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						objective(1, {	-- 0/1 The Saga of Terokk
 							["provider"] = { "i", 27634 },	-- The Saga of Terokk
 							["description"] = "Found on the floor in the center of the room before Talon King Ikiss.",
-							["timeline"] = { "removed 4.3.0.14942" },
+							["timeline"] = { REMOVED_4_3_0 },
 						}),
 						objective(2, {	-- 0/1 Terokk's Mask
 							["provider"] = { "i", 27633 },	-- Terokk's Mask
@@ -109,7 +108,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29606, {	-- Terokk's Legacy
 					["qg"] = 54840,	-- Isfar
-					["timeline"] = { "added 4.3.0.14942" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(65, 65, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Terokk's Mask
@@ -127,7 +126,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 22832,	-- Morthis Whisperwing <Druid of the Talon>
 					["sourceQuest"] = 10994,	-- Chasing the Moonstone
 					["coord"] = { 80.2, 65.2, ZANGARMARSH },
-					["timeline"] = { "removed 4.0.1" },
+					["timeline"] = { REMOVED_4_0_1 },
 					["classes"] = { DRUID },
 					["lvl"] = lvlsquish(70, 70, 30),
 					["groups"] = {
@@ -137,10 +136,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						}),
 						ach(2359, {	-- Swift Flight Form
 							["sourceQuest"] = 11001,	-- Vanquish the Raven God
-							-- #if BEFORE WRATH
-							["description"] = "Completed the druid quest to obtain Swift Flight Form.",
-							-- #endif
-							["timeline"] = { "removed 4.0.1" },
+							["timeline"] = { REMOVED_4_0_1 },
 							["classes"] = { DRUID },
 							["filterID"] = MOUNTS,
 						}),
@@ -148,7 +144,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						recipe(40120),	-- Swift Flight Form
 						-- #endif
 						i(32387, {	-- Idol of the Raven Goddess
-							["timeline"] = { "removed 4.0.1" },
+							["timeline"] = { REMOVED_4_0_1 },
 						}),
 						i(32462, {	-- Morthis' Materials
 							i(32454),	-- Arthorn's Research
@@ -158,21 +154,21 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				})),
 			}),
 			n(COMMON_BOSS_DROPS, {
-				-- #if AFTER 8.0.1.27326
-				currency(1704, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each.",
-				}),
-				-- #else
 				i(28558, {	-- Spirit Shard
-					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each.",
+					["timeline"] = { REMOVED_8_0_1 },
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses in the Mana-Tombs and Auchenai Crypts drop one shard each; bosses in the Sethekk Halls and Shadow Labyrinth drop two each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
 				}),
-				-- #endif
+				currency(1704, {	-- Spirit Shard
+					["timeline"] = { ADDED_8_0_1 },
+					-- #if BEFORE 9.1.5
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. For shards to drop the player's faction must control the five Spirit Towers in the Bone Wastes. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #else
+					-- From 9.1.5 (specific patch uncomfirmed) this currency can be obtained regardless of whom controls the Spirit Towers in the Bone Wastes. This could have been true already from 8.0.1, but no reports seems to confirm it.
+					["description"] = "Spirit Shards are currency tokens dropped by bosses in the Auchindoun instances. Bosses drop one shard each. These can be used to buy gear from Spirit Sage at Allerian Stronghold (Alliance) / Stonebreaker Hold (Horde).",
+					-- #endif
+				}),
 			}),
 			n(ZONE_DROPS, {
-				i(72480, {	-- Cobalt Eye
-					["timeline"] = { "added 4.3.0.14942" },
-					["cr"] = 19428,	-- Cobalt Serpent
-				}),
 				i(29669, {	-- Pattern: Shadow Armor Kit (RECIPE!)
 					["timeline"] = { REMOVED_5_0_4 },
 					["cr"] = 18320,	-- Time-Lost Shadowmage
@@ -181,7 +177,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["cr"] = 18322,	-- Sethekk Ravenguard
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(541, {	-- Darkweaver Syth
 					["creatureID"] = 18472,
 					["groups"] = {
@@ -192,10 +188,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(27915),	-- Sky-Hunter Swift Boots
 						-- #if BEFORE MOP
 						i(27916, {	-- Sethekk Feather-Darts
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						i(27917, {	-- Libram of the Eternal Rest
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 						i(27633),	-- Terokk's Mask
@@ -233,12 +229,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(27632),	-- Terokk's Quill
 						i(27991, {	-- Shadow Labyrinth Key
 							["description"] = "You can loot this from the Talon King's Coffer after Patch 2.3.0, before that (and perhaps in TBC Classic), you would loot it from his corpse.",
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					}
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -272,14 +268,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(27915),	-- Sky-Hunter Swift Boots
 							-- #if BEFORE MOP
 							i(27916, {	-- Sethekk Feather-Darts
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							i(27917, {	-- Libram of the Eternal Rest
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 							i(25461, {	-- Book of Forgotten Names
-								["timeline"] = { "removed 7.1.0.1233" },
+								["timeline"] = { REMOVED_7_1_0 },
 							}),
 							i(27633),	-- Terokk's Mask
 						},
@@ -296,9 +292,6 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["groups"] = {
 							ach(883, {	-- Reins of the Raven Lord
 								["provider"] = { "i", 32768 },	-- Reins of the Raven Lord
-								-- #if BEFORE WRATH
-								["description"] = "Obtain the Reins of the Raven Lord from Anzu in Sethekk Halls.",
-								-- #endif
 								["filterID"] = MOUNTS,
 							}),
 							i(32768),	-- Raven Lord (MOUNT!)
@@ -316,10 +309,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 18473,
 						["groups"] = {
 							ach(674, {	-- Heroic: Sethekk Halls
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5074, {	-- Heroic: Sethekk Halls Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(27986),	-- Crow Wing Reaper
 							i(29355),	-- Terokk's Shadowstaff
@@ -341,7 +334,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(33834),	-- The Headfeathers of Ikiss
 							i(27991, {	-- Shadow Labyrinth Key
 								["description"] = "You can loot this from the Talon King's Coffer after Patch 2.3.0, before that (and perhaps in TBC Classic), you would loot it from his corpse.",
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 						},
 					}),
@@ -352,7 +345,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35541),	-- Sethekk Halls Bonus Objective
 		q(35539),	-- Sethekk Halls Reward Quest - Normal completion
 		q(35540),	-- Sethekk Halls Reward Quest - Heroic completion

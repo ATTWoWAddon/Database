@@ -2,17 +2,17 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } }, {
+root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { ADDED_8_2_0 } }, {
 	n(VENDORS, {
 		n(153510, {	-- Artisan Itanu <Vaultkeeper of the Ankoan>
 			["coord"] = { 37.8, 55.7, NAZJATAR },
 			["races"] = ALLIANCE_ONLY,
 			["g"] = {
-				i(169589, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Azsharan Pearling Kit
-				i(169592, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Azsharan Pearling Enhancement
-				i(169787, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Azsharan Azerite Pearling Enhancement
-				i(170277, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Greater Pearling Reinforcement
-				i(170276, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Greater Azerite Pearling Reinforcement
+				i(169589, { ["timeline"] = { CREATED_8_2_0 }}),	-- Azsharan Pearling Kit
+				i(169592, { ["timeline"] = { CREATED_8_2_0 }}),	-- Azsharan Pearling Enhancement
+				i(169787, { ["timeline"] = { CREATED_8_2_0 }}),	-- Azsharan Azerite Pearling Enhancement
+				i(170277, { ["timeline"] = { CREATED_8_2_0 }}),	-- Greater Pearling Reinforcement
+				i(170276, { ["timeline"] = { CREATED_8_2_0 }}),	-- Greater Azerite Pearling Reinforcement
 				i(169478, {	-- Benthic Bracers
 					["cost"] = { { "c", 1721, 5 }, },	-- 5x Prismatic Manapearl
 					["sym"] = { { "fill" } },	-- simply fill this item
@@ -66,11 +66,6 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 				}),
 				i(169352, {	-- Pearlescent Glimmershell (PET!)
 					["cost"] = { { "c", 1721, 150 }, },	-- 150x Prismatic Manapearl
-					["g"] = {
-						crit(6, {	-- Pearlescent Glimmershell
-							["achievementID"] = 13692,	-- Give Me the Biggest Bag You've Got
-						}),
-					},
 				}),
 				i(170204, {	-- Symbol of Gral (TOY!)
 					["cost"] = { { "c", 1721, 75 }, },	-- 75x Prismatic Manapearl
@@ -80,100 +75,97 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 		n(154002, {	-- Atolia Seapearl <Quartermaster>
 			["coord"] = { 51.0, 65.5, NAZJATAR },
 			["races"] = HORDE_ONLY,
-			["g"] = {
-				i(168837, {	-- Depth Forged Aegis (Rank 1)
-					["minReputation"] = { 2373, FRIENDLY },
-					["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
-				}),
-				i(168838, {	-- Enduring Bulwark of the Depths (Rank 2)
-					["minReputation"] = { 2373, HONORED },
-					["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
-				}),
-				i(168839, {	-- Regenerating Barrier of the Depths (Rank 3)
-					["minReputation"] = { 2373, REVERED },
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168928, {	-- Tablet of the Balancing Tides (Rank 1)
-					["minReputation"] = { 2373, FRIENDLY },
-					["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
-				}),
-				i(168929, {	-- Codex of the Never-Ending Tides (Rank 2)
-					["minReputation"] = { 2373, HONORED },
-					["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
-				}),
-				i(168930, {	-- Tome of the Quickening Tides (Rank 3)
-					["minReputation"] = { 2373, REVERED },
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168863, {	-- Unbound Azerite Slivershards (Rank 1)
-					["minReputation"] = { 2373, FRIENDLY },
-					["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
-				}),
-				i(168864, {	-- Sharpened Azerite Slivershards (Rank 2)
-					["minReputation"] = { 2373, HONORED },
-					["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
-				}),
-				i(168865, {	-- Polazired Azerite Slivershards (Rank 3)
-					["minReputation"] = { 2373, REVERED },
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168848, {	-- Pearl of Perspicuous Intentions (Rank 3)
-					["description"] = "Requires completing the achievement |cffffff00Nautical Battlefield Training|r.\n",
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168849, {	-- Pearl of Luminous Designs (Rank 4)
-					["description"] = "Requires completing the achievement |cffffff00Aqua Team Murder Force|r.\n",
-					["cost"] = { { "c", 1721, 75 }, },	-- 75x Prismatic Manapearl
-					["u"] = REMOVED_FROM_GAME,
-				}),
-				i(171151, {	-- Conch of Wa'mundi
-					["cost"] = 65000000,	-- 6,500g
-				}),
-				i(169365, {	-- Damplight Slug (PET!)
-					["cost"] = 5000000,	-- 500g
-				}),
-				i(169604, {	-- Formula: Accord of Critical Strike [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169605, {	-- Formula: Accord of Haste [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169606, {	-- Formula: Accord of Mastery [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169607, {	-- Formula: Accord of Versatility [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169549, {	-- Technique: Contract: Unshackled (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169603, {	-- Recipe: Greater Mystical Cauldron [Rank 3] (RECIPE!)
-					["cost"] = 19000000,	-- 1,900g
-				}),
-				i(169600, {	-- Recipe: Potion of Empowered Proximity [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169602, {	-- Recipe: Potion of Focused Resolve [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(170076, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Recipe: Unagi Skewer
-				i(169274, {	-- Tabard of the Unshackled
-					["cost"] = 6250000,	-- 625g
-				}),
-				i(168479, {	-- Troop Requisition
-					["cost"] = { { "c", 1560, 500 }, },	-- 500x War Resources
-					["questID"] = 55968,
-					["g"] = {
-						follower(1183, {	-- Alliance:Ankoan Tidehunters \\ Horde:Unshackled Mercenaries
-							["u"] = 15,	-- Temporary troop
-						}),
-					},
-				}),
-				i(174523, {	-- Waveswept Abyssal Conch
-					["races"] = HORDE_ONLY,
-					["cost"] = { { "c", 1721, 20 }, },	-- 20x Prismatic Manapearl
-				}),
-			},
+			["g"] = bubbleDownClassicRep(FACTION_THE_UNSHACKLED, {
+				{		-- Neutral
+					i(168848, {	-- Pearl of Perspicuous Intentions (Rank 3)
+						["description"] = "Requires completing the achievement |cffffff00Nautical Battlefield Training|r.\n",
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(168849, {	-- Pearl of Luminous Designs (Rank 4)
+						["description"] = "Requires completing the achievement |cffffff00Aqua Team Murder Force|r.\n",
+						["cost"] = { { "c", 1721, 75 }, },	-- 75x Prismatic Manapearl
+						["u"] = REMOVED_FROM_GAME,
+					}),
+				}, {	-- Friendly
+					i(169365, {	-- Damplight Slug (PET!)
+						["cost"] = 5000000,	-- 500g
+					}),
+					i(168837, {	-- Depth Forged Aegis (Rank 1)
+						["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
+					}),
+					i(168928, {	-- Tablet of the Balancing Tides (Rank 1)
+						["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
+					}),
+					i(168863, {	-- Unbound Azerite Slivershards (Rank 1)
+						["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
+					}),
+				}, {	-- Honored
+					i(168929, {	-- Codex of the Never-Ending Tides (Rank 2)
+						["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
+					}),
+					i(171151, {	-- Conch of Wa'mundi
+						["cost"] = 65000000,	-- 6,500g
+					}),
+					i(168838, {	-- Enduring Bulwark of the Depths (Rank 2)
+						["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
+					}),
+					i(168864, {	-- Sharpened Azerite Slivershards (Rank 2)
+						["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
+					}),
+				}, {	-- Revered
+					i(169604, {	-- Formula: Accord of Critical Strike [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169605, {	-- Formula: Accord of Haste [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169606, {	-- Formula: Accord of Mastery [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169607, {	-- Formula: Accord of Versatility [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(168865, {	-- Polazired Azerite Slivershards (Rank 3)
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(169600, {	-- Recipe: Potion of Empowered Proximity [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169602, {	-- Recipe: Potion of Focused Resolve [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(168839, {	-- Regenerating Barrier of the Depths (Rank 3)
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(169549, {	-- Technique: Contract: Unshackled (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(168930, {	-- Tome of the Quickening Tides (Rank 3)
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(168479, {	-- Troop Requisition
+						["cost"] = { { "c", 1560, 500 }, },	-- 500x War Resources
+						["questID"] = 55968,
+						["g"] = {
+							follower(1183, {	-- Alliance:Ankoan Tidehunters \\ Horde:Unshackled Mercenaries (Temporary Troop)
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,
+							}),
+						},
+					}),
+					i(174523, {	-- Waveswept Abyssal Conch
+						["races"] = HORDE_ONLY,
+						["cost"] = { { "c", 1721, 20 }, },	-- 20x Prismatic Manapearl
+					}),
+				}, {	-- Exalted
+					i(169603, {	-- Recipe: Greater Mystical Cauldron [Rank 3] (RECIPE!)
+						["cost"] = 19000000,	-- 1,900g
+					}),
+					i(169274, {	-- Tabard of the Unshackled
+						["cost"] = 6250000,	-- 625g
+					}),
+				},
+			}),
 		}),
 		pvp(n(154653, {	-- Tomas Riogain <Nazjatar PvP Quartermaster>
 			["coord"] = { 38.1, 55.4, NAZJATAR },
@@ -252,11 +244,11 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 			["coord"] = { 49.2, 62.0, NAZJATAR },
 			["races"] = HORDE_ONLY,
 			["g"] = {
-				i(169589, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Azsharan Pearling Kit
-				i(169592, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Azsharan Pearling Enhancement
-				i(169787, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Azsharan Azerite Pearling Enhancement
-				i(170277, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Greater Pearling Reinforcement
-				i(170276, { ["timeline"] = { "created 8.2.0.30918" }}),	-- Greater Azerite Pearling Reinforcement
+				i(169589, { ["timeline"] = { CREATED_8_2_0 }}),	-- Azsharan Pearling Kit
+				i(169592, { ["timeline"] = { CREATED_8_2_0 }}),	-- Azsharan Pearling Enhancement
+				i(169787, { ["timeline"] = { CREATED_8_2_0 }}),	-- Azsharan Azerite Pearling Enhancement
+				i(170277, { ["timeline"] = { CREATED_8_2_0 }}),	-- Greater Pearling Reinforcement
+				i(170276, { ["timeline"] = { CREATED_8_2_0 }}),	-- Greater Azerite Pearling Reinforcement
 				i(169478, {	-- Benthic Bracers
 					["cost"] = { { "c", 1721, 5 }, },	-- 5x Prismatic Manapearl
 					["sym"] = { { "fill" } },	-- simply fill this item
@@ -307,17 +299,36 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 				}),
 				i(169352, {	-- Pearlescent Glimmershell (PET!)
 					["cost"] = { { "c", 1721, 150 }, },	-- 150x Prismatic Manapearl
-					["g"] = {
-						crit(6, {	-- Pearlescent Glimmershell
-							["achievementID"] = 13692,	-- Give Me the Biggest Bag You've Got
-						}),
-					},
 				}),
 				i(170204, {	-- Symbol of Gral (TOY!)
 					["cost"] = { { "c", 1721, 75 }, },	-- 75x Prismatic Manapearl
 				}),
 				i(167170, {	-- Unshackled Waveray (MOUNT!)
 					["cost"] = { { "c", 1721, 250 }, },	-- 250x Prismatic Manapearl
+				}),
+			},
+		}),
+		n(151953, {	-- Hurlgrl
+		-- TODO: Can't use faction-data in non-quest objects...
+		-- ["allianceQuestData"] = {
+		-- 	["sourceQuest"] = 55983,	-- A Safer Place (A)
+		-- 	["coords"] = {
+		-- 		{ 38.6, 54.6, NAZJATAR },
+		-- 	},
+		-- },
+		-- ["hordeQuestData"] = {
+		-- 	["sourceQuest"] = 55530,	-- A Safer Place (H)
+		-- 	["coords"] = {
+		-- 		{ 47.8, 63.0, NAZJATAR },
+		-- 	},
+		-- },
+			["coords"] = {
+				{ 38.6, 54.6, NAZJATAR },
+				{ 47.8, 63.0, NAZJATAR },
+			},
+			["groups"] = {
+				i(167915, {	-- Sweet Sea Vegetable
+					["cost"] = 10000,	-- 1g
 				}),
 			},
 		}),
@@ -330,7 +341,52 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 			--	i(163975),	-- Sir Snips -- Listed under PvP w/ CRS
 			},
 		}),
+		n(151950, {	-- Mrrglrlr
+			-- TODO: Can't use faction-data in non-quest objects...
+			-- ["allianceQuestData"] = {
+			-- 	["sourceQuest"] = 55983,	-- A Safer Place (A)
+			-- 	["coords"] = {
+			-- 		{ 39.0, 53.8, NAZJATAR },
+			-- 	},
+			-- },
+			-- ["hordeQuestData"] = {
+			-- 	["sourceQuest"] = 55530,	-- A Safer Place (H)
+			-- 	["coords"] = {
+			-- 		{ 48.6, 62.4, NAZJATAR },
+			-- 	},
+			-- },
+			["sourceQuests"] = {
+				55983,	-- A Safer Place (A)
+				55530,	-- A Safer Place (H)
+			},
+			["coords"] = {
+				{ 39.0, 53.8, NAZJATAR },	-- Alliance
+				{ 48.6, 62.4, NAZJATAR },	-- Horde
+			},
+			["groups"] = {
+				i(167903, {	-- Disintegrating Sand Sculpture
+					["cost"] = {{"i",167915,4}},	-- Sweet Sea Vegetable
+				}),
+			},
+		}),
 		n(152084, {	-- Mrrl
+			-- TODO: Can't use faction-data in non-quest objects...
+			-- ["allianceQuestData"] = {
+			-- 	["sourceQuest"] = 55983,	-- A Safer Place (A)
+			-- 	["coords"] = {
+			-- 		{ 39.1, 54.4, NAZJATAR },	-- Alliance
+			-- 	},
+			-- },
+			-- ["hordeQuestData"] = {
+			-- 	["sourceQuest"] = 55530,	-- A Safer Place (H)
+			-- 	["coords"] = {
+			-- 		{ 47.0, 61.5, NAZJATAR },	-- Horde
+			-- 	},
+			-- },
+			["sourceQuests"] = {
+				55983,	-- A Safer Place (A)
+				55530,	-- A Safer Place (H)
+			},
 			["coords"] = {
 				{ 39.1, 54.4, NAZJATAR },	-- Alliance
 				{ 47.0, 61.5, NAZJATAR },	-- Horde
@@ -370,10 +426,10 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 					["description"] = "Contains a piece of Benthic gear.",
 				}),
 				i(168091, {	-- Severly Rusted Lockbox
+					["sym"] = { { "select", "itemID",
+						169475,	-- Barnacled Lockbox
+					}},
 					["description"] = "Contains a Barnacled Lockbox.",	-- Description added so you dont need debug mode to see contained items.
-					["g"] = {
-						i(169475),	-- Barnacled Lockbox
-					},
 				}),
 				i(170152, {	-- Shadow-Cloaked Shell
 					["description"] = "Grants 150 reputation with your Nazjatar faction.",
@@ -409,99 +465,97 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 		n(154140, {	-- Speaker Utia <Waveblade Ankoan Emissary>
 			["coord"] = { 38.0, 55.7, NAZJATAR },
 			["races"] = ALLIANCE_ONLY,
-			["g"] = {
-				i(168837, {	-- Depth Forged Aegis (Rank 1)
-					["minReputation"] = { 2400, FRIENDLY },
-					["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
-				}),
-				i(168838, {	-- Enduring Bulwark of the Depths (Rank 2)
-					["minReputation"] = { 2400, HONORED },
-					["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
-				}),
-				i(168839, {	-- Regenerating Barrier of the Depths (Rank 3)
-					["minReputation"] = { 2400, REVERED },
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168928, {	-- Tablet of the Balancing Tides (Rank 1)
-					["minReputation"] = { 2400, FRIENDLY },
-					["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
-				}),
-				i(168929, {	-- Codex of the Never-Ending Tides (Rank 2)
-					["minReputation"] = { 2400, HONORED },
-					["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
-				}),
-				i(168930, {	-- Tome of the Quickening Tides (Rank 3)
-					["minReputation"] = { 2400, REVERED },
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168863, {	-- Unbound Azerite Slivershards (Rank 1)
-					["minReputation"] = { 2400, FRIENDLY },
-					["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
-				}),
-				i(168864, {	-- Sharpened Azerite Slivershards (Rank 2)
-					["minReputation"] = { 2400, HONORED },
-					["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
-				}),
-				i(168865, {	-- Polazired Azerite Slivershards (Rank 3)
-					["minReputation"] = { 2400, REVERED },
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168848, {	-- Pearl of Perspicuous Intentions (Rank 3)
-					["description"] = "Requires completing the achievement |cffffff00Nautical Battlefield Training|r.\n",
-					["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
-				}),
-				i(168849, {	-- Pearl of Luminous Designs (Rank 4)
-					["description"] = "Requires completing the achievement |cffffff00Aqua Team Murder Force|r.\n",
-					["cost"] = { { "c", 1721, 75 }, },	-- 75x Prismatic Manapearl
-					["u"] = REMOVED_FROM_GAME,
-				}),
-				i(163073, {	-- Conch of Wa'mundi
-					["cost"] = 65000000,	-- 6,500g
-				}),
-				i(169530, {	-- Formula: Accord of Critical Strike [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169531, {	-- Formula: Accord of Haste [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169532, {	-- Formula: Accord of Mastery [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169533, {	-- Formula: Accord of Versatility [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169364, {	-- Prismatic Softshell (PET!)
-					["cost"] = 5000000,	-- 500g
-				}),
-				i(169548, {	-- Technique: Contract: Ankoan (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169504, {	-- Recipe: Greater Mystical Cauldron [Rank 3] (RECIPE!)
-					["cost"] = 19000000,	-- 1,900g
-				}),
-				i(169492, {	-- Recipe: Potion of Empowered Proximity [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(169494, {	-- Recipe: Potion of Focused Resolve [Rank 3] (RECIPE!)
-					["cost"] = 14000000,	-- 1,400g
-				}),
-				i(168610, {	-- Tabard of the Waveblade Ankoan
-					["cost"] = 6250000,	-- 625g
-				}),
-				i(168480, {	-- Troop Requisition
-					["cost"] = { { "c", 1560, 500 }, },	-- 500x War Resources
-					["questID"] = 55969,
-					["g"] = {
-						follower(1183, {	-- Alliance:Ankoan Tidehunters \\ Horde:Unshackled Mercenaries
-							["u"] = 15,	-- Temporary troop
-						}),
-					},
-				}),
-				i(174522, {	-- Waveswept Abyssal Conch
-					["races"] = ALLIANCE_ONLY,
-					["cost"] = { { "c", 1721, 20 }, },	-- 20x Prismatic Manapearl
-				}),
-			},
+			["g"] = bubbleDownClassicRep(FACTION_WAVEBLADE_ANKOAN, {
+				{		-- Neutral
+					i(168848, {	-- Pearl of Perspicuous Intentions (Rank 3)
+						["description"] = "Requires completing the achievement |cffffff00Nautical Battlefield Training|r.\n",
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(168849, {	-- Pearl of Luminous Designs (Rank 4)
+						["description"] = "Requires completing the achievement |cffffff00Aqua Team Murder Force|r.\n",
+						["cost"] = { { "c", 1721, 75 }, },	-- 75x Prismatic Manapearl
+						["u"] = REMOVED_FROM_GAME,
+					}),
+				}, {	-- Friendly
+					i(168837, {	-- Depth Forged Aegis (Rank 1)
+						["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
+					}),
+					i(169364, {	-- Prismatic Softshell (PET!)
+						["cost"] = 5000000,	-- 500g
+					}),
+					i(168928, {	-- Tablet of the Balancing Tides (Rank 1)
+						["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
+					}),
+					i(168863, {	-- Unbound Azerite Slivershards (Rank 1)
+						["cost"] = { { "c", 1721, 10 }, },	-- 10x Prismatic Manapearl
+					}),
+				}, {	-- Honored
+					i(168929, {	-- Codex of the Never-Ending Tides (Rank 2)
+						["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
+					}),
+					i(163073, {	-- Conch of Wa'mundi
+						["cost"] = 65000000,	-- 6,500g
+					}),
+					i(168838, {	-- Enduring Bulwark of the Depths (Rank 2)
+						["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
+					}),
+					i(168864, {	-- Sharpened Azerite Slivershards (Rank 2)
+						["cost"] = { { "c", 1721, 30 }, },	-- 30x Prismatic Manapearl
+					}),
+				}, {	-- Revered
+					i(169530, {	-- Formula: Accord of Critical Strike [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169531, {	-- Formula: Accord of Haste [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169532, {	-- Formula: Accord of Mastery [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169533, {	-- Formula: Accord of Versatility [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(168865, {	-- Polazired Azerite Slivershards (Rank 3)
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(169492, {	-- Recipe: Potion of Empowered Proximity [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(169494, {	-- Recipe: Potion of Focused Resolve [Rank 3] (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(168839, {	-- Regenerating Barrier of the Depths (Rank 3)
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(169548, {	-- Technique: Contract: Ankoan (RECIPE!)
+						["cost"] = 14000000,	-- 1,400g
+					}),
+					i(168930, {	-- Tome of the Quickening Tides (Rank 3)
+						["cost"] = { { "c", 1721, 50 }, },	-- 50x Prismatic Manapearl
+					}),
+					i(168480, {	-- Troop Requisition
+						["cost"] = { { "c", 1560, 500 }, },	-- 500x War Resources
+						["questID"] = 55969,
+						["g"] = {
+							follower(1183, {	-- Alliance:Ankoan Tidehunters \\ Horde:Unshackled Mercenaries (Temporary Troop)
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,
+							}),
+						},
+					}),
+					i(174522, {	-- Waveswept Abyssal Conch
+						["races"] = ALLIANCE_ONLY,
+						["cost"] = { { "c", 1721, 20 }, },	-- 20x Prismatic Manapearl
+					}),
+				}, {	-- Exalted
+					i(169504, {	-- Recipe: Greater Mystical Cauldron [Rank 3] (RECIPE!)
+						["cost"] = 19000000,	-- 1,900g
+					}),
+					i(168610, {	-- Tabard of the Waveblade Ankoan
+						["cost"] = 6250000,	-- 625g
+					}),
+				},
+			}),
 		}),
 		n(153024, {	-- Suva <Shell Seller>
 			["coord"] = { 50.2, 63.9, NAZJATAR },

@@ -1,82 +1,98 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local AllDifficulties = {LFR_RAID,NORMAL_RAID,HEROIC_RAID,MYTHIC_RAID};
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(946, {	-- Antorus, the Burning Throne
 		["isRaid"] = true,
 		["coord"] = { 54.9, 62.3, ANTORAN_WASTES },
 		["maps"] = {
-			909,
-			910,
-			911,
-			912,
-			913,
-			914,
-			915,
-			916,
-			917,
-			918,
-			919,
-			920,
+			909,	-- Antorus, the Burning Throne
+			910,	-- Gaze of the Legion
+			911,	-- Halls of the Boundless Reach
+			912,	-- Elunaria
+			913,	-- Elarian Sanctuary
+			914,	-- The Exhaust
+			915,	-- The Burning Throne
+			916,	-- Chamber of Anguish
+			917,	-- The World Soul
+			918,	-- Seat of the Pantheon
+			919,	-- Upper Deck
+			920,	-- Lower Deck
 		},
 		["lvl"] = { 45 },
 		["g"] = {
 			n(ACHIEVEMENTS, {
-				ach(11988, {    -- Light's Breach
-                    crit(1, {    -- Garothi Worldbreaker
-                        ["_encounter"] = { 1992, LFR_RAID },
+				ach(12020),	-- Argussy Up (Antorus, the Burning Throne)
+				ach(11988, {	-- Light's Breach
+                    crit(37232, {    -- Garothi Worldbreaker
+                        ["_encounter"] = { 1992, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(2, {    -- Felhounds of Sargeras
-                        ["_encounter"] = { 1987, LFR_RAID },
+                    crit(37233, {    -- Felhounds of Sargeras
+                        ["_encounter"] = { 1987, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(3, {    -- Antoran High Command
-                        ["_encounter"] = { 1997, LFR_RAID },
-                    }),
-                }),
-				ach(11989, {    -- Hope's End
-                    crit(1, {    -- Eonar the Life-Bender
-                        ["_encounter"] = { 2025, LFR_RAID },
-                    }),
-                    crit(2, {    -- Portal Keeper Hasabel
-                        ["_encounter"] = { 1985, LFR_RAID },
-                    }),
-                    crit(3, {    -- Imonar the Soulhunter
-                        ["_encounter"] = { 2009, LFR_RAID },
+                    crit(37234, {    -- Antoran High Command
+                        ["_encounter"] = { 1997, DIFFICULTY.RAID.LFR },
                     }),
                 }),
-				ach(11990, {    -- Forbidden Descent
-                    crit(1, {    -- Kin'garoth
-                        ["_encounter"] = { 2004, LFR_RAID },
+				ach(11989, {	-- Hope's End
+                    crit(37236, {    -- Eonar the Life-Bender
+                        ["_encounter"] = { 2025, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(2, {    -- Varimathras
-                        ["_encounter"] = { 1983, LFR_RAID },
+                    crit(37235, {    -- Portal Keeper Hasabel
+                        ["_encounter"] = { 1985, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(3, {    -- The Coven of Shivarra
-                        ["_encounter"] = { 1986, LFR_RAID },
-                    }),
-                }),
-				ach(11991, {    -- Seat of the Pantheon
-                    crit(1, {    -- Aggramar
-                        ["_encounter"] = { 1984, LFR_RAID },
-                    }),
-                    crit(2, {    -- Argus the Unmaker
-                        ["_encounter"] = { 2031, LFR_RAID },
+                    crit(37237, {    -- Imonar the Soulhunter
+                        ["_encounter"] = { 2009, DIFFICULTY.RAID.LFR },
                     }),
                 }),
-				-- TODO: meta-achieve symlink
+				ach(11990, {	-- Forbidden Descent
+                    crit(37238, {    -- Kin'garoth
+                        ["_encounter"] = { 2004, DIFFICULTY.RAID.LFR },
+                    }),
+                    crit(37239, {    -- Varimathras
+                        ["_encounter"] = { 1983, DIFFICULTY.RAID.LFR },
+                    }),
+                    crit(37240, {    -- The Coven of Shivarra
+                        ["_encounter"] = { 1986, DIFFICULTY.RAID.LFR },
+                    }),
+                }),
+				ach(11991, {	-- Seat of the Pantheon
+                    crit(37241, {    -- Aggramar
+                        ["_encounter"] = { 1984, DIFFICULTY.RAID.LFR },
+                    }),
+                    crit(37242, {    -- Argus the Unmaker
+                        ["_encounter"] = { 2031, DIFFICULTY.RAID.LFR },
+                    }),
+                }),
 				ach(11987, {	-- Glory of the Argus Raider (NORMAL+ ONLY)
-					i(152815),	-- Antoran Glooomhound (MOUNT!)
+					-- Meta Achievement
+					["sym"] = {{"meta_achievement",
+						11949,	-- Hard to Kill
+						11948,	-- Together We Stand
+						11930,	-- Worm-monger
+						11928,	-- Portal Combat
+						11915,	-- Don't Sweat the Technique
+						12065,	-- Hounds Good To Me
+						12129,	-- This is the War Room!
+						12067,	-- Spheres of Influence
+						12030,	-- The World Revolves Around Me
+						12046,	-- Remember the Titans
+						12257,	-- Stardust Crusaders
+					}},
+					["groups"] = {
+						i(152815),		-- Antoran Gloomhound (MOUNT!)
+					},
 				}),
 				ach(12112),	-- Antorus, the Burning Throne Guild Run
 			}),
 			n(QUESTS, {
 				q(48954, {	-- Blood of a Titan
 					["provider"] = { "i", 152900 },	-- Blood of the Unmaker
-					["timeline"] = { "added 7.3", "removed 8.0" },
+					["timeline"] = { ADDED_7_3_0, REMOVED_8_0_1 },
 					["g"] = {
-						un(REMOVED_FROM_GAME, i(152901)),	-- Violet Spellwing (MOUNT!)
+						i(152901, {	-- Violet Spellwing (MOUNT!)
+							["timeline"] = { ADDED_7_3_0, REMOVED_8_0_1 },
+						}),
 					},
 				}),
 				q(49077, {	-- Moments of Reflection
@@ -119,71 +135,11 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(151656),	-- Vantus Rune Technique: Antorus, the Burning Throne [Rank 3] (RECIPE!)
 				},
 			}),
-			d(AllDifficulties, {
-				e(1987, {	-- Felhounds of Sargeras
-					["crs"] = {
-						122477,	-- F'harg
-						122135,	-- Shatug
-					},
-					["g"] = {
-						i(208051, {	-- Grimoire of the Antoran Felhunter (CI!)
-							["timeline"] = { ADDED_10_1_5 },
-						}),
-					},
-				}),
-			}),
-			d(LFR_RAID, {	-- Queue NPC
+			d(DIFFICULTY.RAID.LFR, {	-- Queue NPC
 				["crs"] = { 111246 },	-- Archmage Timear
 				["coord"] = { 63.7, 55.0, LEGION_DALARAN },
 			}),
-			d(LFR_RAID, {
-				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
-					["g"] = {
-						i(153502, {	-- Cache of Antoran Treasures [Looking For Raid]
-							["sym"] = {
-								{"select", "instanceID", 946},	-- Select Antorus, the Burning Throne
-								{"pop"},	-- Discard the Instance Header and acquire the children.
-								{"where", "difficultyID", 17 },	-- Select the Looking For Raid difficulty.
-								{"pop"},	-- Discard the Difficulty Header and acquire the children.
-								{"pop"},	-- Discard the Achievement Headers and acquire the children.
-								{"is","encounterID"},	-- Select only Encounter Headers
-								{"pop"},	-- Discard the Encounter Headers and acquire the children.
-								{"isnt", "c"},	-- Exclude Tier Set Pieces
-								{"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 },
-								{"exclude", "itemID", 152094, 153115 },	-- Exclude Taeshalach and Scythe of the Unmaker
-							},
-						}),
-						q(48288, {	-- Antoran High Command [Raid Finder]
-							["repeatable"] = true,
-							["provider"] = { "i", 152313 },	-- Azeroth Invasion Plans [Raid Finder]
-							["g"] = {
-								i(153502),	-- Cache of Antoran Treasures [Raid Finder]
-							},
-						}),
-						q(48292, {	-- The Soulhunter [Raid Finder]
-							["repeatable"] = true,
-							["provider"] = { "i", 152317 },	-- Discharged Shock Lance [Raid Finder]
-							["g"] = {
-								i(153502),	-- Cache of Antoran Treasures [Raid Finder]
-							},
-						}),
-						q(48294, {	-- The Unmaker [Raid Finder]
-							["repeatable"] = true,
-							["provider"] = { "i", 152325 },	-- Sanguine Argunite [Raid Finder]
-							["g"] = {
-								i(153502),	-- Cache of Antoran Treasures [Raid Finder]
-							},
-						}),
-						q(48293, {	-- The Burning Coven [Raid Finder]
-							["repeatable"] = true,
-							["provider"] = { "i", 152321 },	-- Sargerei Manifesto [Raid Finder]
-							["g"] = {
-								i(153502),	-- Cache of Antoran Treasures [Raid Finder]
-							},
-						}),
-					},
-				}),
+			d(DIFFICULTY.RAID.LFR, {
 				n(ZONE_DROPS, {
 					i(152084),	-- Gloves of Abhorrent Strategies
 					i(152085),	-- Cuffs of the Viridian Flameweavers
@@ -246,6 +202,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 							i(152056),	-- Corrupting Dewclaw
 							i(152291),	-- Fraternal Fervor
 							i(152027),	-- Gravitational Condensate
+							i(208051, {	-- Grimoire of the Antoran Felhunter (CI!)
+								["timeline"] = { ADDED_10_1_5 },
+							}),
 						},
 					}),
 					e(1997, {	-- Antoran High Command
@@ -322,6 +281,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					e(1985, {	-- Portal Keeper Hasabel
 						["crs"] = { 122104 },	-- Portal Keeper Hasabel
 						["g"] = {
+							i(213014, {	-- Grimoire of the Xorothian Darkglare (CI!)
+								["timeline"] = { ADDED_10_2_5 },
+							}),
 							i(151748),	-- Pattern: Lightweave Breeches (Rank 3)
 							i(152001),	-- Nexus Conductor's Headgear
 							i(151965),	-- Vulcanarcore Pendant
@@ -513,73 +475,78 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 				}),
 			}),
-			d(NORMAL_RAID, {
-				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
+			d(DIFFICULTY.RAID.MULTI.NORMAL_PLUS, {
+				e(1992, {	-- Garothi Worldbreaker
+					["crs"] = { 122450 },	-- Garothi Worldbreaker
 					["g"] = {
-						q(49032, {	-- Antorus, the Burning Throne: Dark Passage (Normal)
-							["description"] = "Finishing this quest will grant you immediate access to Imonar the Soulhunter on Normal difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Heroic or Mythic version first.|r\n",
-							["altQuests"] = {
-								49075,	-- Antorus, the Burning Throne: Dark Passage (Heroic)
-								49076,	-- Antorus, the Burning Throne: Dark Passage (Mythic)
-							},
-							["provider"] = { "n", 125512 },	-- High Exarch Turalyon
-						}),
-						q(49133, {	-- Antorus, the Burning Throne: The Heart of Argus (Normal)
-							["sourceQuests"] = { 49032 },	-- Antorus, the Burning Throne: Dark Passage (Normal)
-							["description"] = "Finishing this quest will grant you immediate access to Aggramar on Normal difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Heroic or Mythic version first.|r\n",
-							["altQuests"] = {
-								49134,	-- Antorus, the Burning Throne: The Heart of Argus (Heroic)
-								49135,	-- Antorus, the Burning Throne: The Heart of Argus (Mythic)
-							},
-							["provider"] = { "n", 125682 },	-- Prophet Velen
-						}),
-						i(153504, {	-- Cache of Antoran Treasures (Normal)
-							["sym"] = {
-								{"select", "instanceID", 946},	-- Select Antorus, the Burning Throne
-								{"pop"},	-- Discard the Instance Header and acquire the children.
-								{"where", "difficultyID", 14 },	-- Select the Normal difficulty.
-								{"pop"},	-- Discard the Difficulty Header and acquire the children.
-								{"is","encounterID"},	-- Select only Encounter Headers
-								{"pop"},	-- Discard the Encounter Headers and acquire the children.
-								{"isnt", "c"},	-- Exclude Tier Set Pieces
-								{"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 },
-								{"exclude", "itemID",
-									152094, 153115,	-- Exclude Taeshalach, Scythe of the Unmaker
-									154172, 154173, 154174, 154175, 154176, 154177,		-- All Argus Trinkets
-									155831,	-- Pantheon's Blessing
-								},
-							},
-						}),
-						i(152314, {	-- Azeroth Invasion Plans (Normal)
-							["questID"] = 48295,	-- Antoran High Command (Normal)
-							["repeatable"] = true,
-							["g"] = {
-								i(153504),	-- Cache of Antoran Treasures (Normal)
-							},
-						}),
-						i(152318, {	-- Discharged Shock Lance (Normal)
-							["questID"] = 48296,	-- The Soulhunter (Normal)
-							["repeatable"] = true,
-							["g"] = {
-								i(153504),	-- Cache of Antoran Treasures (Normal)
-							},
-						}),
-						i(152326, {	-- Sanguine Argunite (Normal)
-							["questID"] = 48298,	-- The Unmaker (Normal)
-							["repeatable"] = true,
-							["g"] = {
-								i(153504),	-- Cache of Antoran Treasures (Normal)
-							},
-						}),
-						i(152322, {	-- Sargerei Manifesto (Normal)
-							["questID"] = 48297,	-- The Burning Coven (Normal)
-							["repeatable"] = true,
-							["g"] = {
-								i(153504),	-- Cache of Antoran Treasures (Normal)
-							},
+						i(151713),	-- Plans: Empyrial Breastplate (Rank 3)
+					},
+				}),
+				e(1987, {	-- Felhounds of Sargeras
+					["crs"] = {
+						122477,	-- F'harg
+						122135,	-- Shatug
+					},
+					["g"] = {
+						i(152816),	-- Antoran Charhound (MOUNT!)
+						i(151726),	-- Design: Empyrial Cosmic Crown (Rank 3)
+						i(151729),	-- Design: Empyrial Deep Crown (Rank 3)
+						i(151732),	-- Design: Empyrial Elemental Crown (Rank 3)
+						i(151735),	-- Design: Empyrial Titan Crown (Rank 3)
+						i(208051, {	-- Grimoire of the Antoran Felhunter (CI!)
+							["timeline"] = { ADDED_10_1_5 },
 						}),
 					},
+				}),
+				e(1997, {	-- Antoran High Command
+					["crs"] = {
+						122367,	-- Admiral Svirax
+						122369,	-- Chief Engineer Ishkar
+						122333,	-- General Erodus
+					},
+					["g"] = {
+						i(151742),	-- Pattern: Fiendish Shoulderguards [Rank 3] (RECIPE!)
+						i(151745),	-- Pattern: Fiendish Spaulders [Rank 3] (RECIPE!)
+					},
+				}),
+				e(1985, {	-- Portal Keeper Hasabel
+					["crs"] = { 122104 },	-- Portal Keeper Hasabel
+					["g"] = {
+						i(213014, {	-- Grimoire of the Xorothian Darkglare (CI!)
+							["timeline"] = { ADDED_10_2_5 },
+						}),
+						i(151748),	-- Pattern: Lightweave Breeches (Rank 3)
+					},
+				}),
+				e(1984, {	-- Aggramar
+					["crs"] = { 121975 },	-- Aggramar
+					["g"] = {
+						i(152094),	-- Taeshalach
+					},
+				}),
+				cr(124828, e(2031, {	-- Argus the Unmaker
+					i(153115),	-- Scythe of the Unmaker [BLUE]
+				})),
+			}),
+			d(DIFFICULTY.RAID.NORMAL, {
+				n(QUESTS, {
+					q(49032, {	-- Antorus, the Burning Throne: Dark Passage (Normal)
+						["description"] = "Finishing this quest will grant you immediate access to Imonar the Soulhunter on Normal difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Heroic or Mythic version first.|r\n",
+						["altQuests"] = {
+							49075,	-- Antorus, the Burning Throne: Dark Passage (Heroic)
+							49076,	-- Antorus, the Burning Throne: Dark Passage (Mythic)
+						},
+						["provider"] = { "n", 125512 },	-- High Exarch Turalyon
+					}),
+					q(49133, {	-- Antorus, the Burning Throne: The Heart of Argus (Normal)
+						["sourceQuests"] = { 49032 },	-- Antorus, the Burning Throne: Dark Passage (Normal)
+						["description"] = "Finishing this quest will grant you immediate access to Aggramar on Normal difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Heroic or Mythic version first.|r\n",
+						["altQuests"] = {
+							49134,	-- Antorus, the Burning Throne: The Heart of Argus (Heroic)
+							49135,	-- Antorus, the Burning Throne: The Heart of Argus (Mythic)
+						},
+						["provider"] = { "n", 125682 },	-- Prophet Velen
+					}),
 				}),
 				n(ZONE_DROPS, {
 					i(152084),	-- Gloves of Abhorrent Strategies
@@ -598,8 +565,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				e(1992, {	-- Garothi Worldbreaker
 					["crs"] = { 122450 },	-- Garothi Worldbreaker
 					["g"] = {
-						ach(11930),	-- Worm-monger
-						i(151713),	-- Plans: Empyrial Breastplate (Rank 3)
+						ach(11930, {	-- Worm-monger
+							["crs"] = { 124436 },	-- Blightscale Worm
+						}),
 						i(151943),	-- Crown of Relentless Annihilation
 						i(151988),	-- Shoulderpads of the Demonic Blitz
 						i(151937),	-- Cloak of  the Burning Vanguard
@@ -624,11 +592,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 					["g"] = {
 						ach(12065),	-- Hounds Good To Me
-						i(152816),	-- Antoran Charhound (MOUNT!)
-						i(151726),	-- Design: Empyrial Cosmic Crown (Rank 3)
-						i(151729),	-- Design: Empyrial Deep Crown (Rank 3)
-						i(151732),	-- Design: Empyrial Elemental Crown (Rank 3)
-						i(151735),	-- Design: Empyrial Titan Crown (Rank 3)
 						i(152000),	-- Shadowfused Chain Coif
 						i(151973),	-- Collar of Null-Flame
 						i(152004),	-- Pauldrons of the Soulburner
@@ -655,8 +618,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 					["g"] = {
 						ach(12129),	-- This is the War Room!
-						i(151742),	-- Pattern: Fiendish Shoulderguards [Rank 3] (RECIPE!)
-						i(151745),	-- Pattern: Fiendish Spaulders [Rank 3] (RECIPE!)
 						i(151985),	-- General Erodus' Tricorne
 						i(152019),	-- Pauldrons of the Eternal Offensive
 						i(152125),	-- Bearmantle Cloak
@@ -722,7 +683,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					["crs"] = { 122104 },	-- Portal Keeper Hasabel
 					["g"] = {
 						ach(11928),	-- Portal Combat
-						i(151748),	-- Pattern: Lightweave Breeches (Rank 3)
 						i(152001),	-- Nexus Conductor's Headgear
 						i(151965),	-- Vulcanarcore Pendant
 						i(152008),	-- Reality-Splitting Wristguards
@@ -859,8 +819,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				e(1984, {	-- Aggramar
 					["crs"] = { 121975 },	-- Aggramar
 					["g"] = {
-						ach(11915),	-- Don't Sweat the Technique
-						i(152094),	-- Taeshalach
+						ach(11915, {	-- Don't Sweat the Technique
+							["crs"] = { 123531 },	-- Manifestation of Taeshalach
+						}),
 						i(152127),	-- Bearmantle Headdress
 						i(152163),	-- Cavalier Hat of the Dashing Scoundrel
 						i(152145),	-- Douli of Chi'Ji
@@ -891,7 +852,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				}),
 				cr(124828, e(2031, {	-- Argus the Unmaker
 					ach(12257),	-- Stardust Crusaders
-					i(153115),	-- Scythe of the Unmaker [BLUE]
 					i(152423),	-- Helm of the Awakened Soul
 					i(152283),	-- Chain of the Unmaker
 					i(152005),	-- Pauldrons of Colossal Burden
@@ -921,67 +881,19 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(155852),	-- Volatile Soul Fragment
 				})),
 			}),
-			d(HEROIC_RAID, {
+			d(DIFFICULTY.RAID.HEROIC, {
 				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
-					["g"] = {
-						q(49075, {	-- Antorus, the Burning Throne: Dark Passage (Heroic)
-							["description"] = "Finishing this quest will grant you immediate access to Imonar the Soulhunter on Heroic difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Mythic version first.|r\n",
-							["altQuests"] = { 49076 },	-- Antorus, the Burning Throne: Dark Passage (Mythic)
-							["provider"] = { "n", 125512 },	-- High Exarch Turalyon
-						}),
-						q(49134, {	-- Antorus, the Burning Throne: The Heart of Argus (Heroic)
-							["sourceQuests"] = { 49075 },	-- Antorus, the Burning Throne: Dark Passage (Heroic)
-							["description"] = "Finishing this quest will grant you immediate access to Aggramar on Heroic difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Mythic version first.|r\n",
-							["altQuests"] = { 49135 },	-- Antorus, the Burning Throne: The Heart of Argus (Mythic)
-							["provider"] = { "n", 125682 },	-- Prophet Velen
-						}),
-						i(153501, {	-- Cache of Antoran Treasures (Heroic)
-							["sym"] = {
-								{"select", "instanceID", 946},	-- Select Antorus, the Burning Throne
-								{"pop"},	-- Discard the Instance Header and acquire the children.
-								{"where", "difficultyID", 15 },	-- Select the Heroic difficulty.
-								{"pop"},	-- Discard the Difficulty Header and acquire the children.
-								{"is","encounterID"},	-- Select only Encounter Headers
-								{"pop"},	-- Discard the Encounter Headers and acquire the children.
-								{"isnt", "c"},	-- Exclude Tier Set Pieces
-								{"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 },
-								{"exclude", "itemID",
-									152094, 153115,	-- Exclude Taeshalach, Scythe of the Unmaker
-									154172, 154173, 154174, 154175, 154176, 154177,		-- All Argus Trinkets
-									155831,	-- Pantheon's Blessing
-								},
-							},
-						}),
-						i(152315, {	-- Azeroth Invasion Plans (Heroic)
-							["questID"] = 48299,	-- Antoran High Command (Heroic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153501),	-- Cache of Antoran Treasures (Heroic)
-							},
-						}),
-						i(152319, {	-- Discharged Shock Lance (Heroic)
-							["questID"] = 48300,	-- The Soulhunter (Heroic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153501),	-- Cache of Antoran Treasures (Heroic)
-							},
-						}),
-						i(152327, {	-- Sanguine Argunite (Heroic)
-							["questID"] = 48302,	-- The Unmaker (Heroic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153501),	-- Cache of Antoran Treasures (Heroic)
-							},
-						}),
-						i(152323, {	-- Sargerei Manifesto (Heroic)
-							["questID"] = 48301,	-- The Burning Coven (Heroic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153501),	-- Cache of Antoran Treasures (Heroic)
-							},
-						}),
-					},
+					q(49075, {	-- Antorus, the Burning Throne: Dark Passage (Heroic)
+						["description"] = "Finishing this quest will grant you immediate access to Imonar the Soulhunter on Heroic difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Mythic version first.|r\n",
+						["altQuests"] = { 49076 },	-- Antorus, the Burning Throne: Dark Passage (Mythic)
+						["provider"] = { "n", 125512 },	-- High Exarch Turalyon
+					}),
+					q(49134, {	-- Antorus, the Burning Throne: The Heart of Argus (Heroic)
+						["sourceQuests"] = { 49075 },	-- Antorus, the Burning Throne: Dark Passage (Heroic)
+						["description"] = "Finishing this quest will grant you immediate access to Aggramar on Heroic difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Mythic version first.|r\n",
+						["altQuests"] = { 49135 },	-- Antorus, the Burning Throne: The Heart of Argus (Mythic)
+						["provider"] = { "n", 125682 },	-- Prophet Velen
+					}),
 				}),
 				n(ZONE_DROPS, {
 					i(152084),	-- Gloves of Abhorrent Strategies
@@ -1000,7 +912,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				e(1992, {	-- Garothi Worldbreaker
 					["crs"] = { 122450 },	-- Garothi Worldbreaker
 					["g"] = {
-						i(151713),	-- Plans: Empyrial Breastplate (Rank 3)
 						i(151943),	-- Crown of Relentless Annihilation
 						i(151988),	-- Shoulderpads of the Demonic Blitz
 						i(151937),	-- Cloak of  the Burning Vanguard
@@ -1024,11 +935,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						122135,	-- Shatug
 					},
 					["g"] = {
-						i(152816),	-- Antoran Charhound (MOUNT!)
-						i(151726),	-- Design: Empyrial Cosmic Crown (Rank 3)
-						i(151729),	-- Design: Empyrial Deep Crown (Rank 3)
-						i(151732),	-- Design: Empyrial Elemental Crown (Rank 3)
-						i(151735),	-- Design: Empyrial Titan Crown (Rank 3)
 						i(152000),	-- Shadowfused Chain Coif
 						i(151973),	-- Collar of Null-Flame
 						i(152004),	-- Pauldrons of the Soulburner
@@ -1055,8 +961,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						122333,	-- General Erodus
 					},
 					["g"] = {
-						i(151742),	-- Pattern: Fiendish Shoulderguards [Rank 3] (RECIPE!)
-						i(151745),	-- Pattern: Fiendish Spaulders [Rank 3] (RECIPE!)
 						i(151985),	-- General Erodus' Tricorne
 						i(152019),	-- Pauldrons of the Eternal Offensive
 						i(152125),	-- Bearmantle Cloak
@@ -1120,7 +1024,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				e(1985, {	-- Portal Keeper Hasabel
 					["crs"] = { 122104 },	-- Portal Keeper Hasabel
 					["g"] = {
-						i(151748),	-- Pattern: Lightweave Breeches (Rank 3)
 						i(152001),	-- Nexus Conductor's Headgear
 						i(151965),	-- Vulcanarcore Pendant
 						i(152008),	-- Reality-Splitting Wristguards
@@ -1253,7 +1156,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				e(1984, {	-- Aggramar
 					["crs"] = { 121975 },	-- Aggramar
 					["g"] = {
-						i(152094),	-- Taeshalach
 						i(152127),	-- Bearmantle Headdress
 						i(152163),	-- Cavalier Hat of the Dashing Scoundrel
 						i(152145),	-- Douli of Chi'Ji
@@ -1283,9 +1185,12 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 				}),
 				cr(124828, e(2031, {	-- Argus the Unmaker
-					un(REMOVED_FROM_GAME, i(152900)),	-- Blood of the Unmaker
-					un(REMOVED_FROM_GAME, ach(12110)),	-- Ahead of the Curve: Argus the Unmaker
-					i(153115),	-- Scythe of the Unmaker [BLUE]
+					ach(12110, {	-- Ahead of the Curve: Argus the Unmaker
+						["timeline"] = { ADDED_7_3_0, REMOVED_8_0_1 },
+					}),
+					i(152900, {	-- Blood of the Unmaker
+						["timeline"] = { ADDED_7_3_0, REMOVED_8_0_1 },
+					}),
 					i(152423),	-- Helm of the Awakened Soul
 					i(152283),	-- Chain of the Unmaker
 					i(152005),	-- Pauldrons of Colossal Burden
@@ -1315,65 +1220,17 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(155852),	-- Volatile Soul Fragment
 				})),
 			}),
-			d(MYTHIC_RAID, {
+			d(DIFFICULTY.RAID.MYTHIC, {
 				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
-					["g"] = {
-						q(49076, {	-- Antorus, the Burning Throne: Dark Passage (Mythic)
-							["description"] = "Finishing this quest will grant you immediate access to Imonar the Soulhunter on Mythic difficulty each week.\n",
-							["provider"] = { "n", 125512 },	-- High Exarch Turalyon
-						}),
-						q(49135, {	-- Antorus, the Burning Throne: The Heart of Argus (Mythic)
-							["sourceQuests"] = { 49076 },	-- Antorus, the Burning Throne: Dark Passage (Mythic)
-							["description"] = "Finishing this quest will grant you immediate access to Aggramar on Mythic difficulty each week.\n",
-							["provider"] = { "n", 125682 },	-- Prophet Velen
-						}),
-						i(153503, {	-- Cache of Antoran Treasures (Mythic)
-							["sym"] = {
-								{"select", "instanceID", 946},	-- Select Antorus, the Burning Throne
-								{"pop"},	-- Discard the Instance Header and acquire the children.
-								{"where", "difficultyID", 16 },	-- Select the Mythic difficulty.
-								{"pop"},	-- Discard the Difficulty Header and acquire the children.
-								{"is","encounterID"},	-- Select only Encounter Headers
-								{"pop"},	-- Discard the Encounter Headers and acquire the children.
-								{"isnt", "c"},	-- Exclude Tier Set Pieces
-								{"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 },
-								{"exclude", "itemID",
-									152094, 153115, 155880,	-- Exclude Taeshalach, Scythe of the Unmaker (Both)
-									154172, 154173, 154174, 154175, 154176, 154177,		-- All Argus Trinkets
-									155831,	-- Pantheon's Blessing
-								},
-							},
-						}),
-						i(152316, {	-- Azeroth Invasion Plans (Mythic)
-							["questID"] = 48303,	-- Antoran High Command (Mythic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153503),	-- Cache of Antoran Treasures (Mythic)
-							},
-						}),
-						i(152320, {	-- Discharged Shock Lance (Mythic)
-							["questID"] = 48304,	-- The Soulhunter (Mythic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153503),	-- Cache of Antoran Treasures (Mythic)
-							},
-						}),
-						i(152328, {	-- Sanguine Argunite (Mythic)
-							["questID"] = 48306,	-- The Unmaker (Mythic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153503),	-- Cache of Antoran Treasures (Mythic)
-							},
-						}),
-						i(152324, {	-- Sargerei Manifesto (Mythic)
-							["questID"] = 48305,	-- The Burning Coven (Mythic)
-							["repeatable"] = true,
-							["g"] = {
-								i(153503),	-- Cache of Antoran Treasures (Mythic)
-							},
-						}),
-					},
+					q(49076, {	-- Antorus, the Burning Throne: Dark Passage (Mythic)
+						["description"] = "Finishing this quest will grant you immediate access to Imonar the Soulhunter on Mythic difficulty each week.\n",
+						["provider"] = { "n", 125512 },	-- High Exarch Turalyon
+					}),
+					q(49135, {	-- Antorus, the Burning Throne: The Heart of Argus (Mythic)
+						["sourceQuests"] = { 49076 },	-- Antorus, the Burning Throne: Dark Passage (Mythic)
+						["description"] = "Finishing this quest will grant you immediate access to Aggramar on Mythic difficulty each week.\n",
+						["provider"] = { "n", 125682 },	-- Prophet Velen
+					}),
 				}),
 				n(ZONE_DROPS, {
 					i(152084),	-- Gloves of Abhorrent Strategies
@@ -1417,11 +1274,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 					["g"] = {
 						ach(11993),	-- Mythic: Hounds of Sargeras
-						i(152816),	-- Antoran Charhound (MOUNT!)
-						i(151726),	-- Design: Empyrial Cosmic Crown (Rank 3)
-						i(151729),	-- Design: Empyrial Deep Crown (Rank 3)
-						i(151732),	-- Design: Empyrial Elemental Crown (Rank 3)
-						i(151735),	-- Design: Empyrial Titan Crown (Rank 3)
 						i(152000),	-- Shadowfused Chain Coif
 						i(151973),	-- Collar of Null-Flame
 						i(152004),	-- Pauldrons of the Soulburner
@@ -1448,8 +1300,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 					["g"] = {
 						ach(11994),	-- Mythic: Antoran High Command
-						i(151742),	-- Pattern: Fiendish Shoulderguards [Rank 3] (RECIPE!)
-						i(151745),	-- Pattern: Fiendish Spaulders [Rank 3] (RECIPE!)
 						i(151985),	-- General Erodus' Tricorne
 						i(152019),	-- Pauldrons of the Eternal Offensive
 						i(152125),	-- Bearmantle Cloak
@@ -1515,7 +1365,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					["crs"] = { 122104 },	-- Portal Keeper Hasabel
 					["g"] = {
 						ach(11995),	-- Mythic: Portal Keeper Hasabel
-						i(151748),	-- Pattern: Lightweave Breeches (Rank 3)
 						i(152001),	-- Nexus Conductor's Headgear
 						i(151965),	-- Vulcanarcore Pendant
 						i(152008),	-- Reality-Splitting Wristguards
@@ -1683,15 +1532,18 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 				}),
 				cr(124828, e(2031, {	-- Argus the Unmaker
-					un(REMOVED_FROM_GAME, ach(12111)),	-- Cutting Edge: Argus the Unmaker
-					un(REMOVED_FROM_GAME, ach(12258)),	-- Realm First! Argus the Unmaker
+					ach(12111, {	-- Cutting Edge: Argus the Unmaker
+						["timeline"] = { ADDED_7_3_0, REMOVED_8_0_1 },
+					}),
+					ach(12258, {	-- Realm First! Argus the Unmaker
+						["timeline"] = { ADDED_7_3_0, REMOVED_8_0_1 },
+					}),
 					ach(12002, {	-- Mythic: Argus the Unmaker
 						title(364),		-- Titanslayer
 					}),
 					ach(12113),	-- Mythic: Argus the Unmaker Guild Run
 					i(152789),	-- Shackled Ur'zul (MOUNT!)
 					i(155880),	-- Scythe of the Unmaker [RED]
-					i(153115),	-- Scythe of the Unmaker [BLUE]
 					i(152423),	-- Helm of the Awakened Soul
 					i(152283),	-- Chain of the Unmaker
 					i(152005),	-- Pauldrons of Colossal Burden
@@ -1725,7 +1577,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 	}),
 }));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(45460),	-- Garothi Worldbreaker
 		q(48420),	-- Garothi Worldbreaker (triggered at the same time as above)
 		q(45461),	-- Felhounds of Sargeras
@@ -1763,15 +1615,5 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(49362),	-- full raid cleared
 		q(48570),	-- Tracking Quest - triggers when the door opens to Kin'garoth
 		q(77246, {["timeline"]={ADDED_10_1_5}}),	-- after <Channel the power of your weapon into the gateway.> for Grimoire of the Xorothian Felhunter (itemID 208050)
-	}),
-});
-root(ROOTS.NeverImplemented, {
-	tier(LEGION_TIER, {
-		inst(946, {	-- Antorus, the Burning Throne
-			-- Added in 9.1 Why? Noone knows
-			i(180537),	-- Eredar Warcouncil Sabatons
-			i(180538),	-- Nathrezim Battle Girdle
-			i(180539),	-- Vambraces of Life's Assurance
-		}),
 	}),
 });

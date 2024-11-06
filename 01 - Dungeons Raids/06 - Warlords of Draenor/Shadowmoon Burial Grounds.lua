@@ -1,21 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	inst(537, {	-- Shadowmoon Burial Grounds
 		["lvl"] = 100,
 		["maps"] = { 574, 575, 576 },
 		["coord"] = { 31.91, 42.55, DRAENOR_SHADOWMOON_VALLEY },
 		["groups"] = {
-			n(ACHIEVEMENTS, {
-				ach(9838, {	-- What A Strange, Interdimensional Trip It's Been
-					["collectible"] = false,
-					["g"] = {
-						crit(7),	-- Ner'zhul
-					},
-				}),
-			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1139, {	-- Sadana Bloodfury
 					["crs"] = { 75509 },
 					["sym"] = {
@@ -68,7 +60,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 					["g"] = {
 						ach(9041),	-- Shadowmoon Burial Grounds
-						i(138806),	-- Illusion: Mark of Shadowmoon
+						i(138806, {	-- Illusion: Mark of Shadowmoon (ILLUSION!)
+							["timeline"] = { ADDED_7_0_3 },
+						}),
 						i(110039),	-- Portal-Ripper's Staff
 						i(110038),	-- Ner'zhul's Ritual Blade
 						n(WARFORGED, bubbleDown({["bonusID"] = 4746 }, {
@@ -78,7 +72,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(1139, {	-- Sadana Bloodfury
 					["crs"] = { 75509 },
 					["sym"] = {
@@ -108,7 +102,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, HANDS},
 					},
 					["g"] = {
-						ach(9025),	-- Icky Ichors
+						ach(9025, {	-- Icky Ichors
+							["crs"] = { 77006 },	-- Corpse Skitterling
+						}),
 						i(110037),	-- Bonetooth Longbow
 						i(110012),	-- Bonemaw's Big Toe
 					},
@@ -123,14 +119,18 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					["g"] = {
 						ach(9054),	-- Heroic: Shadowmoon Burial Grounds
 						ach(9375),	-- Heroic: Shadowmoon Burial Grounds Guild Run
-						ach(9026),	-- Souls of the Lost
-						i(138806),	-- Illusion: Mark of Shadowmoon
+						ach(9026, {	-- Souls of the Lost
+							["crs"] = { 76518 },	-- Ritual of Bones
+						}),
+						i(138806, {	-- Illusion: Mark of Shadowmoon (ILLUSION!)
+							["timeline"] = { ADDED_7_0_3 },
+						}),
 						i(110039),	-- Portal-Ripper's Staff
 						i(110038),	-- Ner'zhul's Ritual Blade
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(1139, {	-- Sadana Bloodfury
 					["crs"] = { 75509 },
 					["sym"] = {
@@ -172,7 +172,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 					["g"] = {
 						ach(10084),	-- Mythic: Shadowmoon Burial Grounds
-						i(138806),	-- Illusion: Mark of Shadowmoon
+						i(138806, {	-- Illusion: Mark of Shadowmoon (ILLUSION!)
+							["timeline"] = { ADDED_7_0_3 },
+						}),
 						i(110039),	-- Portal-Ripper's Staff
 						i(110038),	-- Ner'zhul's Ritual Blade
 					},
@@ -183,7 +185,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(34545),	-- Shadowmoon Burial Grounds Challenge Mode - Bronze Addition (Nth)
 		q(34528),	-- Shadowmoon Burial Grounds Challenge Mode - Consolation (Nth)
 		q(34547),	-- Shadowmoon Burial Grounds Challenge Mode - Gold Addition (Nth)

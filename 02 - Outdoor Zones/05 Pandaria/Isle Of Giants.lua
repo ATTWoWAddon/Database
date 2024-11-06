@@ -6,7 +6,7 @@ root(ROOTS.Zones, {
 	m(PANDARIA, {
 		m(ISLE_OF_GIANTS, {
 			["lore"] = "The Isle of Giants is an island that has been lost in time, home to primal devilsaurs, direhorns, and skyscreamers raised by the Zandalar tribe on the isle since the loss of Zandalar.",
-			["icon"] = "Interface\\Icons\\ability_hunter_pet_devilsaur",
+			["icon"] = 236192,
 			["g"] = {
 				n(FLIGHT_PATHS, {
 					fp(1221, {	-- Beeble's Wreck, Isle Of Giants
@@ -76,7 +76,7 @@ root(ROOTS.Zones, {
 				n(ZONE_DROPS, {
 					i(94573, {	-- Direhorn Runt (PET!)
 						["crs"] = { 69983 },	-- Primal Direhorn
-						["timeline"] = { "added 5.3.0.16758" },
+						["timeline"] = { ADDED_5_3_0 },
 					}),
 					i(94288, {	-- Giant Dinosaur Bone
 						["description"] = "These bones can be gathered and turned into Ku'ma on the Isle of Giants.",

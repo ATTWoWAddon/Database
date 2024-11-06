@@ -4,16 +4,16 @@
 root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 	m(BLOODMYST_ISLE, {
 		["lore"] = "Bloodmyst Isle is a low-level zone covering the struggles of the Draenei to rebuild their civilization. It gets its distinctive red look from the corrupting red crystals found on the Exodar, the Draenei's spaceship that crashed.",
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\achievement_zone_bloodmystisle_01",
-		-- #endif
-		["timeline"] = { "added 2.0.1.6180" },
+		["icon"] = 236721,
+		["timeline"] = { ADDED_2_0_1 },
 		["lvl"] = 10,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(4926, {	-- Bloodmyst Isle Quests
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
+					-- #if ANYCLASSIC
+					-- #if AFTER MOP
 					["groups"] = {
 						crit(1, {	-- The Triumvirate's First, Boros
 							["sourceQuest"] = 9700,	-- I Shoot Magic Into the Darkness
@@ -45,12 +45,24 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["sourceQuest"] = 9759,	-- Ending Their World
 						}),
 					},
-				}),
-				explorationAch(861, {	-- Explore Bloodmyst Isle
-					-- #if BEFORE WRATH
-					["description"] = "Explore Bloodmyst Isle, revealing the covered areas of the world map.",
+					-- #else
+					["sourceQuests"] = {
+						9700,	-- I Shoot Magic Into the Darkness
+						9711,	-- Matis the Cruel
+						9740,	-- The Sun Gate
+						9579,	-- Galaen's Fate
+						9741,	-- Critters of the Void
+						10065,	-- Cutting a Path
+						10067,	-- Fouled Water Spirits
+						10066,	-- Oh, the Tangled Webs They Weave
+						9683,	-- Ending the Bloodcurse
+						9689,	-- Razormaw
+						9759,	-- Ending Their World
+					},
+					-- #endif
 					-- #endif
 				}),
+				explorationAch(861),	-- Explore Bloodmyst Isle
 			}),
 			battlepets({
 				["sym"] = {{"select","speciesID",
@@ -63,38 +75,37 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					pet(465),	-- Ravager Hatchling (PET!)
 				},
 			}),
-			-- #if ANYCLASSIC
-			n(EXPLORATION, {
-				exploration(3597, "256:512:44:62"),		-- Amberweb Pass
-				exploration(3593, "256:256:297:136"),	-- Axxarien
-				exploration(3594, "512:242:177:426"),	-- Blacksilt Shore
-				exploration(3585, "256:256:367:209"),	-- Bladewood
-				exploration(3584, "256:256:437:258"),	-- Blood Watch
-				exploration(3612, "239:256:763:256"),	-- Bloodcurse Isle
-				exploration(3600, "256:256:546:410"),	-- Bristlelimb Enclave
-				exploration(3602, "485:141:517:527"),	-- Kessel's Crossing
-				exploration(3908, "256:256:414:406"),	-- Middenvale
-				exploration(3910, "256:185:309:483"),	-- Mystwood
-				exploration(3592, "256:256:250:404"),	-- Nazzivian
-				exploration(3601, "256:256:481:117"),	-- Ragefeather Ridge
-				exploration(3591, "256:256:556:216"),	-- Ruins of Loreth'Aran
-				exploration(3599, "256:256:657:78"),	-- Talon Stand
-				exploration(3603, "128:128:180:216"),	-- Tel'athion's Camp
-				exploration(3604, "256:256:729:54"),	-- The Bloodcursed Reef
-				exploration(3906, "256:256:302:27"),	-- The Bloodwash
-				exploration(3589, "256:256:555:87"),	-- The Crimson Reach
-				exploration(3588, "256:256:293:285"),	-- The Cryo-Core
-				exploration(3595, "256:256:221:136"),	-- The Foul Pool
-				exploration(3596, "256:256:205:39"),	-- The Hidden Reef
-				exploration(3909, "256:198:503:470"),	-- The Lost Fold
-				exploration(3586, "512:430:43:238"),	-- The Vector Coil
-				exploration(3587, "256:256:451:29"),	-- The Warp Piston
-				exploration(3907, "256:256:637:0"),		-- Veridian Point
-				exploration(3608, "256:256:232:242"),	-- Vindicator's Rest
-				exploration(3590, "256:256:598:338"),	-- Wrathscale Lair
-				exploration(3598, "256:256:613:82"),	-- Wyrmscar Island
+			explorationHeader({
+				exploration(3597),	-- Amberweb Pass
+				exploration(3593),	-- Axxarien
+				exploration(3583),	-- Beryl Coast
+				exploration(3594),	-- Blacksilt Shore
+				exploration(3585),	-- Bladewood
+				exploration(3584),	-- Blood Watch
+				exploration(3612),	-- Bloodcurse Isle
+				exploration(3600),	-- Bristlelimb Enclave
+				exploration(3602),	-- Kessel's Crossing
+				exploration(3908),	-- Middenvale
+				exploration(3910),	-- Mystwood
+				exploration(3592),	-- Nazzivian
+				exploration(3601),	-- Ragefeather Ridge
+				exploration(3591),	-- Ruins of Loreth'Aran
+				exploration(3599),	-- Talon Stand
+				exploration(3603),	-- Tel'athion's Camp
+				exploration(3604),	-- The Bloodcursed Reef
+				exploration(3906),	-- The Bloodwash
+				exploration(3589),	-- The Crimson Reach
+				exploration(3588),	-- The Cryo-Core
+				exploration(3595),	-- The Foul Pool
+				exploration(3596),	-- The Hidden Reef
+				exploration(3909),	-- The Lost Fold
+				exploration(3586),	-- The Vector Coil
+				exploration(3587),	-- The Warp Piston
+				exploration(3907),	-- Veridian Point
+				exploration(3608),	-- Vindicator's Rest
+				exploration(3590),	-- Wrathscale Lair
+				exploration(3598),	-- Wyrmscar Island
 			}),
-			-- #endif
 			n(FLIGHT_PATHS, {
 				fp(93, {	-- Blood Watch, Bloodmyst Isle [Alliance]
 					["cr"] = 17554,	-- Laando <Hippogryph Master>
@@ -110,7 +121,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(9, 9, 1),
 					["groups"] = {
 						objective(1, {	-- 0/10 Sand Pear
-							["provider"] = { "i", 23927 },	-- Sand Pear
+							["providers"] = {
+								{ "i",  23927 },	-- Sand Pear
+								{ "o", 181854 },	-- Sand Pear
+							},
 						}),
 						i(26018),	-- Elekk Handler's Leathers
 						i(26031),	-- Elekk Rider's Plate
@@ -215,7 +229,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				q(9500, {	-- Call of Water (1/6) (Azuremyst Isle)
 					["qg"] = 17212,	-- Tuluun <Shaman Trainer>
 					["coord"] = { 48.0, 50.6, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["isBreadcrumb"] = true,
@@ -224,7 +238,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				q(10490, {	-- Call of Water (1/6) (Stormwind City)
 					["qg"] = 20407,	-- Farseer Umbrua <Shaman Trainer>
 					["coord"] = { 61.8, 83.8, STORMWIND_CITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["isBreadcrumb"] = true,
@@ -233,7 +247,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				q(9502, {	-- Call of Water (1/6) (The Exodar)
 					["qg"] = 17219,	-- Sulaa <Shaman Trainer>
 					["coord"] = { 32.6, 24.2, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["isBreadcrumb"] = true,
@@ -247,7 +261,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 						9502,	-- Call of Water (1/6) (The Exodar)
 					},
 					["coord"] = { 30.0, 32.4, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = 20,
@@ -259,7 +273,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17275,	-- Aqueous
 					["sourceQuest"] = 9501,	-- Call of Water (2/6)
 					["coord"] = { 32.4, 16.2, BLOODMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = 20,
@@ -274,7 +288,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17275,	-- Aqueous
 					["sourceQuest"] = 9503,	-- Call of Water (3/6)
 					["coord"] = { 32.4, 16.2, BLOODMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ASHENVALE },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
@@ -291,7 +305,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17275,	-- Aqueous
 					["sourceQuest"] = 9504,	-- Call of Water (4/6)
 					["coord"] = { 32.4, 16.2, BLOODMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = 20,
@@ -311,7 +325,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					},
 					["sourceQuest"] = 9508,	-- Call of Water (5/6)
 					["coord"] = { 32.4, 16.2, BLOODMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = { DRAENEI },
 					["lvl"] = 20,
@@ -338,7 +352,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 						i(120951),	-- Protective Field Grips
 						-- #endif
 						i(26034, {	-- Protective Field Gloves
-							["timeline"] = { "removed 6.1.0" },
+							["timeline"] = { REMOVED_6_1_0 },
 						}),
 						i(26022),	-- Researcher's Gloves
 						i(26008),	-- Scholar's Gloves
@@ -498,6 +512,19 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 						}),
 					},
 				}),
+				q(9625, {	-- Elekks Are Serious Business
+					["qg"] = 17584,	-- Torallius the Pack Handler
+					["sourceQuest"] = 9623,	-- Coming of Age
+					-- #if AFTER CATA
+					["altQuests"] = { 28559 },	-- Hero's Call: Bloodmyst Isle!
+					["coord"] = { 81.5, 51.5, THE_EXODAR },
+					-- #else
+					["coord"] = { 35.3, 43.1, AZUREMYST_ISLE },
+					-- #endif
+					["races"] = ALLIANCE_ONLY,
+					["isBreadcrumb"] = true,	-- TODO: Double check this is actually a breadcrumb. If you finish Alien Predators, does this diappear? [Not required for Alien Predators, Discord 2023-07-29]
+					["lvl"] = lvlsquish(10, 10, 1),
+				}),
 				q(9683, {	-- Ending the Bloodcurse
 					["qg"] = 17712,	-- Captain Edward Hanes
 					["sourceQuest"] = 9682,	-- The Hopeless Ones...
@@ -506,7 +533,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(15, 15, 1),
 					["groups"] = {
 						objective(1, {	-- Atoph the Bloodcursed slain
-							["provider"] = { "n", 17715 },	-- Atoph the Bloodcursed
+							["providers"] = {
+								{ "n",  17715 },	-- Atoph the Bloodcursed
+								{ "o", 181964 },	-- Statue of Queen Azshara
+							},
 							["coord"] = { 86, 54.8, BLOODMYST_ISLE },
 						}),
 						i(24334),	-- Wheel of the Lost Hope
@@ -598,6 +628,16 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(15, 15, 1),
 				}),
+				heroscall(q(28559, {	-- Hero's Call: Bloodmyst Isle
+					["timeline"] = { ADDED_4_0_3 },
+					["maps"] = { THE_EXODAR },	-- Only found in The Exodar in Cataclysm.
+					["isBreadcrumb"] = true,
+					-- #if BEFORE 7.3.5
+					-- Cataclysm: Minimum is level 9. (Confirmed by Hurieve, Crieve's Level 9 Hunter.)
+					-- Cataclysm: Maximum is level 18 (TODO: Test max level between 16 and 25)
+					["lvl"] = { 9, 18 },
+					-- #endif
+				})),
 				q(9700, {	-- I Shoot Magic Into the Darkness
 					["qg"] = 17684,	-- Vindicator Boros
 					["sourceQuest"] = 9699,	-- Truth or Fiction
@@ -670,7 +710,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(13, 13, 1),
 					["groups"] = {
 						objective(1, {	-- 0/1 Nazzivus Monument Glyph
-							["provider"] = { "i", 23859 },	-- Nazzivus Monument Glyph
+							["providers"] = {
+								{ "i",  23859 },	-- Nazzivus Monument Glyph
+								{ "o", 182532 },	-- Nazzivus Monument Glyphs
+							},
 							["coord"] = { 36.5, 71.2, BLOODMYST_ISLE },
 						}),
 					},
@@ -682,7 +725,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(10, 10, 1),
 					["groups"] = {
 						objective(1, {	-- 0/1 Impact Site Crystal Sample
-							["provider"] = { "i", 23878 },	-- Impact Site Crystal Sample
+							["providers"] = {
+								{ "i",  23878 },	-- Impact Site Crystal Sample
+								{ "o", 181779 },	-- Impact Site Crystal
+							},
 							["coord"] = { 58, 83, BLOODMYST_ISLE },
 							["cost"] = { { "i", 23875, 1 } },	-- Crystal Mining Pick
 						}),
@@ -716,22 +762,34 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(10, 10, 1),
 					["groups"] = {
 						objective(1, {	-- 0/1 Aquatic Stinkhorn
-							["provider"] = { "i", 24041 },	-- Aquatic Stinkhorn
+							["providers"] = {
+								{ "i",  24041 },	-- Aquatic Stinkhorn
+								{ "o", 181892 },	-- Aquatic Stinkhorn
+							},
 							["cr"] = 17673,	-- Stinkhorn Striker
 						}),
 						objective(2, {	-- 0/1 Blood Mushroom
-							["provider"] = { "i", 24040 },	-- Blood Mushroom
+							["providers"] = {
+								{ "i",  24040 },	-- Blood Mushroom
+								{ "o", 181891 },	-- Blood Mushroom
+							},
 							["coord"] = { 62.8, 59.2, BLOODMYST_ISLE },
 						}),
 						objective(3, {	-- 0/1 Ruinous Polyspore
-							["provider"] = { "i", 24042 },	-- Ruinous Polyspore
+							["providers"] = {
+								{ "i",  24042 },	-- Ruinous Polyspore
+								{ "o", 181893 },	-- Ruinous Polyspore
+							},
 							["coords"] = {
 								{ 61.8, 48.7, BLOODMYST_ISLE },
 								{ 67.8, 66.9, BLOODMYST_ISLE },
 							},
 						}),
 						objective(4, {	-- 0/1 Fel Cone Fungus
-							["provider"] = { "i", 24043 },	-- Fel Cone Fungus
+							["providers"] = {
+								{ "i",  24043 },	-- Fel Cone Fungus
+								{ "o", 181894 },	-- Fel Cone Fungus
+							},
 							["coord"] = { 43.5, 81.7, BLOODMYST_ISLE },
 						}),
 						i(26028),	-- Maatparm's Fungus Lined Bands
@@ -884,7 +942,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(15, 15, 1),
 					["groups"] = {
 						objective(1, {	-- 0/8 Dragon Bone
-							["provider"] = { "i", 24185 },	-- Dragon Bone
+							["providers"] = {
+								{ "i",  24185 },	-- Dragon Bone
+								{ "o", 181981 },	-- Dragon Bone
+							},
 						}),
 					},
 				}),
@@ -1096,7 +1157,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(10, 10, 1),
 					["groups"] = {
 						objective(1, {	-- 0/1 Altered Crystal Sample
-							["provider"] = { "i", 23879 },	-- Altered Crystal Sample
+							["providers"] = {
+								{ "i",  23879 },	-- Altered Crystal Sample
+								{ "o", 181780 },	-- Altered Bloodmyst Crystal
+							},
 							["cost"] = { { "i", 23876, 1 } },	-- Crystal Mining Pick
 							["coord"] = { 45, 47, BLOODMYST_ISLE },
 						}),
@@ -1125,15 +1189,15 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(18, 18, 1),
 					["groups"] = {
 						i(24344),	-- Tabard of the Hand
-						i(24349),   -- Signet Ring of the Hand
-						i(24350),   -- Signet Ring of the Hand
+						i(24349),	-- Signet Ring of the Hand
+						i(24350),	-- Signet Ring of the Hand
 					},
 				}),
 				q(9633, {	-- The Way to Auberdine
 					["qg"] = 17614,	-- Huntress Kella Nightbow
 					["sourceQuest"] = 9632,	-- Newfound Allies
 					["coord"] = { 54.6, 53.9, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { DARKSHORE },
 					["cost"] = { { "i", 23937, 1 } },	-- Letter of Introduction
 					["races"] = ALLIANCE_ONLY,
@@ -1256,7 +1320,10 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(15, 15, 1),
 					["groups"] = {
 						objective(1, {	-- 0/2 Ysera's Tear
-							["provider"] = { "i", 24049 },	-- Ysera's Tear
+							["providers"] = {
+								{ "i",  24049 },	-- Ysera's Tear
+								{ "o", 181897 },	-- Ysera's Tear
+							},
 							["coord"] = { 70.0, 26.3, BLOODMYST_ISLE },
 						}),
 						-- #if AFTER LEGION
@@ -1304,7 +1371,12 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["races"] = ALLIANCE_ONLY,
 				}),
 				i(23900, {	-- Tzerak's Armor Plate
+					["description"] = "Tzerak spawns at 38.5, 82.3, on the demon seal, then walks through Nazzivian to get to the monument at 36.6, 72.5.",
 					["cr"] = 17528,	-- Tzerak
+					["coords"] = {
+						{ 38.5, 82.3, BLOODMYST_ISLE },
+						{ 36.6, 72.5, BLOODMYST_ISLE },
+					},
 					["races"] = ALLIANCE_ONLY,
 				}),
 			}),
@@ -1312,6 +1384,8 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 	}),
 })));
 
-root(ROOTS.HiddenQuestTriggers, m(KALIMDOR, m(BLOODMYST_ISLE, {
-	q(9750),	-- UNUSED Urgent Delivery
-})));
+root(ROOTS.HiddenQuestTriggers, m(KALIMDOR, {
+	m(BLOODMYST_ISLE, {
+		q(9750),	-- UNUSED Urgent Delivery
+	}),
+}))

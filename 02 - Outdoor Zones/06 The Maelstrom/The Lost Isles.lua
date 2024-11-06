@@ -6,7 +6,7 @@ root(ROOTS.Zones, {
 	m(THE_MAELSTROM, {
 		m(THE_LOST_ISLES, {
 			["lore"] = "The Lost Isles are a chain of islands to the south of Azshara that the Bilgewater Cartel goblins reached after their shipwreck. Things get interesting when the orc ship Draka's Fury also crashes. This is a phased area that only leveling goblins can reach.",
-			["icon"] = "Interface\\Icons\\achievement_femalegoblinhead",
+			["icon"] = 463874,	-- Achievement_goblinhead
 			["races"] = { GOBLIN },
 			["maps"] = {
 				175,	-- Kaja'mite Cavern
@@ -37,14 +37,6 @@ root(ROOTS.Zones, {
 						["groups"] = {
 							i(52953),	-- Banner Cloak
 							i(52907),	-- Snake Plate Belt
-						},
-					}),
-					q(24936, {	-- Body And Soul
-						["u"] = REMOVED_FROM_GAME,
-						["groups"] = {
-							un(REMOVED_FROM_GAME, i(52911)),	-- Yngwie's Vest
-							un(REMOVED_FROM_GAME, i(52957)),	-- Oomlot Staff
-							un(REMOVED_FROM_GAME, i(52935)),	-- Pygmy Cloak
 						},
 					}),
 					q(25099, {	-- Borrow Bastia
@@ -130,7 +122,7 @@ root(ROOTS.Zones, {
 							i(52932),	-- Parachute Wrist Straps
 							i(52903),	-- Pilot's Gloves
 							i(131841, {	-- Rotor Chain
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -228,7 +220,7 @@ root(ROOTS.Zones, {
 						["groups"] = {
 							i(55885),	-- Dampwick's "Best" Robes
 							i(131838, {	-- Miner's Overcoat
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(52944),	-- Miner's Vest
 						},
@@ -241,7 +233,7 @@ root(ROOTS.Zones, {
 							i(52928),	-- Banana Holder
 							i(52898),	-- Banana Peel Slippers
 							i(131837, {	-- Monkey Handler Fists
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(52943),	-- Monkey Handler Gloves
 						},
@@ -311,7 +303,7 @@ root(ROOTS.Zones, {
 					q(24929, {	-- Send a Message
 						["coord"] = { 56.5, 71.9, THE_LOST_ISLES },
 						["qg"] = 38647,	-- Izzy
-						["sourceQuest"] = 24925,	-- Free the Captives
+						["sourceQuest"] = 24924,	-- Oomlot Village
 						["groups"] = {
 							i(52956),	-- Oomlot Staff
 							i(52934),	-- Pygmy Cloak
@@ -320,6 +312,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(25243, {	-- She Loves Me, She Loves Me NOT! [Male Version]
+						["description"] = "This quest is a character gender-specific quest only available for male/\nbody type 1 characters. Female/body type 2 characters will in this place get\nthe quest 'What Kind of Name is Candy, Anyway?'.\n\nThe quest rewards are also rewarded from the female/body type 2 version of\nthis quest named 'The Fastest Way to His Heart', which is given in place of\nthe male/body type 1 quest 'What Kind of Name is Chip, Anyway?'.",
 						["coord"] = { 43.6, 25.3, THE_LOST_ISLES },
 						["qg"] = 38387,	-- Sassy Hardwrench
 						["sourceQuest"] = 25213,	-- The Slave Pits
@@ -368,12 +361,13 @@ root(ROOTS.Zones, {
 							i(52931),	-- Orcish Scout Boots
 							i(52948),	-- Sailor's Leggings
 							i(131840, {	-- Sailor's Legguards
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(52902),	-- Salvaged Bracers
 						},
 					}),
 					q(25202, {	-- The Fastest Way to His Heart [Female Version]
+						["description"] = "This quest is a character gender-specific quest only available for female/\nbody type 2 characters. Male/body type 1 characters will in this place get\nthe quest 'What Kind of Name is Chip, Anyway?'.\n\nThe quest rewards are also rewarded from the male/body type 1 version of\nthis quest named 'She Loves Me, She Loves Me NOT!', which is given in place of\nthe female/body type 2 quest 'What Kind of Name is Candy, Anyway?'.",
 						["coord"] = { 54.0, 17.0, THE_LOST_ISLES },
 						["qg"] = 38647,	-- Izzy
 						["sourceQuests"] = {
@@ -539,11 +533,16 @@ root(ROOTS.Zones, {
 							i(52899),	-- Weed Fiber Pants
 							i(52945),	-- Weed Stompers
 							i(131839, {	-- Weed-Flattening Greatboots
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
 					q(25244, {	-- What Kind of Name is Candy, Anyway? [Female Version]
+						-- #if BEFORE 10.2.5
+						["description"] = "This quest is a character gender-specific quest only available for female/\nbody type 2 characters. Male/body type 1 characters will in this place\nget the quest 'She Loves Me, She Loves Me NOT!'.\n\nThe quest rewards have shared apperances with the rewards from the male/\nbody type 1 version of this quest named 'What Kind of Name is Chip, Anyway?',\nbut the latter are different items and can might only be obtained by doing these\ntwo gender-specific quests seperately on different characters if logging out from\nthe game does not work.",
+						-- #else
+						["description"] = "This quest is a character gender-specific quest only available for female/\nbody type 2 characters. Male/body type 1 characters will in this place\nget the quest 'She Loves Me, She Loves Me NOT!'.\n\nThe quest rewards have shared apperances with the rewards from the male/\nbody type 1 version of this quest named 'What Kind of Name is Chip, Anyway?',\nwhich too will be collected after logging out from the game.",
+						-- #endif
 						["coord"] = { 43.6, 25.3, THE_LOST_ISLES },
 						["qg"] = 38387,	-- Sassy Hardwrench
 						["sourceQuest"] = 25213,	-- The Slave Pits
@@ -555,6 +554,11 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(25203, {	-- What Kind of Name is Chip, Anyway? [Male Version]
+						-- #if BEFORE 10.2.5
+						["description"] = "This quest is a character gender-specific quest only available for male/\nbody type 1 characters.\nFemale/body type 2 characters will in this place\nget the quest 'The Fastest Way to His Heart'.\n\nThe quest rewards have shared apperances with the rewards from the female/\nbody type 2 version of this quest named 'What Kind of Name is Candy, Anyway?',\nbut the latter are different items and can might only be obtained by doing these\ntwo gender-specific quests seperately on different characters if logging out from\nthe game does not work.",
+						-- #else
+						["description"] = "This quest is a character gender-specific quest only available for male/\nbody type 1 characters. Female/body type 2 characters will in this place\nget the quest 'The Fastest Way to His Heart'.\n\nThe quest rewards have shared apperances with the rewards from the female/\nbody type 2 version of this quest named 'What Kind of Name is Candy, Anyway?',\nwhich too will be collected after logging out from the game.",
+						-- #endif
 						["coord"] = { 54.1, 17.2, THE_LOST_ISLES },
 						["qg"] = 38441,	-- Ace
 						["sourceQuests"] = {
@@ -654,10 +658,15 @@ root(ROOTS.Zones, {
 	}),
 });
 
+-- #if AFTER 4.0.3
+-- These quests never made it in.
 root(ROOTS.NeverImplemented, {
-	tier(CATA_TIER, {
-		n(WEAPONS, {
-			i(52969),	-- Heartache Dagger	-- 52965 got added
+	expansion(EXPANSION.CATA, {
+		q(24936, {	-- Body And Soul
+			i(52911),	-- Yngwie's Vest
+			i(52957),	-- Oomlot Staff
+			i(52935),	-- Pygmy Cloak
 		}),
 	}),
 });
+-- #endif

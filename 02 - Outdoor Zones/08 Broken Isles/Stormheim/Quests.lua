@@ -62,7 +62,7 @@ root(ROOTS.Zones, {
 					["coord"] = { 60.0, 50.7, STORMHEIM },
 					["provider"] = { "n", 92539 },	-- Havi
 					["g"] = {
-						i(133813),	-- Recipe: Pickled Stormray (Rank 1)
+						i(133813),	-- Recipe: Pickled Stormray [Rank 1] (RECIPE!)
 					},
 				}),
 				q(40120, {	-- A Murky Fate
@@ -298,7 +298,7 @@ root(ROOTS.Zones, {
 					["sourceQuests"] = { 39855 },	-- Paid in Lifeblood
 					["races"] = ALLIANCE_ONLY,
 					["coord"] = { 72.3, 61.0, STORMHEIM },
-					["icon"] = "Interface\\Icons\\inv_misc_map_01",
+					["icon"] = 134269,
 					["g"] = {
 						i(129252),	-- Lorna's Bracelet
 						i(129255),	-- Worgen Kings Wraps
@@ -801,7 +801,7 @@ root(ROOTS.Zones, {
 						39791,	-- Lay Them to Rest
 					},
 					["coord"] = { 69.8, 45.6, STORMHEIM },
-					["icon"] = "Interface\\Icons\\INV_Archaeology_Ogres_Pictogram_Tablet",
+					["icon"] = 1017867,
 				}),
 				q(39788, {	-- The Runewood's Revenge
 					["sourceQuests"] = { 39796 },	-- To Haustvald
@@ -1069,36 +1069,13 @@ root(ROOTS.Zones, {
 	}),
 });
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(39607),	-- God-King Scene (Vault) - triggers when turning in "Ahead of the Game" (questID 39590)
-		q(43713),	-- Tracking - Statue Climbed - triggers at the top of Nashal the Watcher
 		q(38420),	-- Triggered when turning in "Cry Thunder!" (questID 38624)
 		q(43350),	-- Triggered when turning in "Halls of Valor: Securing the Aegis" (questID 40072)
 		q(42573),	-- Shaman Shrine - Stormheim Earth 01
 		q(42574),	-- Shaman Shrine - Stormheim Earth 02
 		q(40398),	-- Shaman Shrine - Stormheim Water 01 - DGK
 		q(42580),	-- Shaman Shrine - Stormheim Wind 01
-	}),
-});
-root(ROOTS.NeverImplemented, {
-	tier(LEGION_TIER, {
-		n(ARMOR, {
-			filter(CLOTH, {
-				i(121507),	-- Runespeaker's Crown
-				i(121511),	-- Runespeaker's Leggings
-			}),
-			filter(LEATHER, {
-				i(121509),	-- Runesworn Crown
-				i(121513),	-- Runesworn Breeches
-			}),
-			filter(MAIL, {
-				i(121508),	-- Stormborn Crown
-				i(121512),	-- Stormborn Leggings
-			}),
-			filter(PLATE, {
-				i(121506),	-- Dreadsworn Crown
-				i(121510),	-- Dreadsworn Legguards
-			}),
-		}),
 	}),
 });

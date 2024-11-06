@@ -2,13 +2,14 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "added 7.0.3" } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.LEGION, bubbleDown({ ["timeline"] = { ADDED_7_0_3 } }, {
 	n(CLASS_HALL, {
 		cl(DEMONHUNTER, bubbleDownSelf({ ["classes"] = { DEMONHUNTER } }, {
 			["maps"] = { MARDUM_THE_SHATTERED_ABYSS_UPPER_COMMAND_CENTER, MARDUM_THE_SHATTERED_ABYSS_LOWER_COMMAND_CENTER },
 			["g"] = {
 				n(FOLLOWERS, bubbleDownSelf({
-					["u"] = 15,	-- Temporary troops
+					["collectible"] = false,
+					["u"] = UNLEARNABLE,	-- Temporary troops
 				}, {
 					follower(665),	-- Ashtongue Warriors
 					follower(878),	-- Ashtongue Warriors
@@ -255,7 +256,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["coord"] = { 58.6, 58.9, MARDUM_THE_SHATTERED_ABYSS_UPPER_COMMAND_CENTER },
 					}),
 					q(41064, {	-- Cursed Forge of the Nathrezim
-						["timeline"] = { "added 7.0", "removed 8.0" },
+						["timeline"] = { ADDED_7_0_3, REMOVED_8_0_1 },
 						["sourceQuests"] = {
 							41070,	-- Spoils of Victory (Altruis)
 							41062,	-- Spoils of Victory (Kayn)
@@ -441,7 +442,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["sourceQuests"] = { 44694 },	-- One Battle at a Time
 						["provider"] = { "n", 98648 },	-- Allari the Souleater
 						["coord"] = { 55.6, 50.1, 721 },
-						["timeline"] = { "added 7.0", "removed 8.0" },
+						["timeline"] = { ADDED_7_0_3, REMOVED_8_0_1 },
 						["lvl"] = 110,
 					}),
 					q(42787, {	-- Deal With It Personally
@@ -548,7 +549,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 					q(42754, {	-- Jump-Capable
 						["sourceQuests"] = {
 							42733,	-- A Very Special Kind of Fuel
-							42732,	-- Deadlier Warglaives
+							-- 42732,	-- Deadlier Warglaives
 						},
 						["provider"] = { "n", 98646 },	-- Jace Darkweaver
 						["coord"] = { 59.0, 74.0, 721 },
@@ -576,7 +577,10 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["lvl"] = 103,
 					}),
 					q(46333, {	-- Livin' on the Ledge
-						["sourceQuests"] = { 46251 },	-- Shard Times
+						["sourceQuests"] = {
+							46734,	-- Assault on Broken Shore
+							47137,	-- Champions of Legionfall
+						},
 						["provider"] = { "n", 118316 },	-- Illidari Enforcer
 						["coord"] = { 44.0, 62.7, BROKEN_SHORE },
 					}),
@@ -975,7 +979,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 						["sym"] = {{"select","itemID",143727}},	-- Champion's Salute (TOY!)
 						["g"] = {
 							i(147537, {	-- A Tiny Set of Warglaives (TOY!)
-								["cost"] = { { "c", 1220, 1000 }, },	-- 1,000x Order Resources
+								["cost"] = { { "c", 1220, 10000 }, },	-- 10,000x Order Resources
 							}),
 							i(139721, {	-- Belt of the Shattered Abyss
 								["cost"] = 5000000,	-- 500g
@@ -1020,7 +1024,7 @@ root(ROOTS.ExpansionFeatures, tier(LEGION_TIER, bubbleDown({ ["timeline"] = { "a
 	}),
 })));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(43467),	-- Boarding the Fel Hammer - triggers when entering Mardum for the first time
 		q(41129),	-- Demon Hunter Altruis - wrong answer chosen at the violet citadel during "By Any Means"
 		q(41045),	-- Matron Moves - triggers after walking into the Fel Hammer

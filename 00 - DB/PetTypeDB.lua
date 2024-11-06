@@ -2983,6 +2983,18 @@ root("ItemSpeciesDB", {
 	},
 	
 	-- Pets added to Classic exclusively
+	[209877] = {
+		["petTypeID"] = 7,
+	},
+	[209945] = {
+		["petTypeID"] = 2,
+	},
+	[211082] = {
+		["petTypeID"] = 8,
+	},
+	[220620] = {
+		["petTypeID"] = 4,
+	},
 	[198665] = {
 		["petTypeID"] = 9,
 	},

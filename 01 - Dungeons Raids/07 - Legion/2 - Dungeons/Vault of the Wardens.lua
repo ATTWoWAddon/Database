@@ -1,8 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(707, {	-- Vault of the Wardens
 		["coord"] = { 48.0, 82.1, AZSUNA },
 		["maps"] = { 710, 711, 712 },
@@ -11,7 +10,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				q(44486, {	-- Fel-Ravaged Tome
 					["provider"] = { "o", 258979 },	-- Fel-Ravaged Tome
 					["g"] = {
-						crit(2, {	-- Fel-Ravaged Tome
+						crit(33146, {	-- Fel-Ravaged Tome
 							["achievementID"] = 11240,	-- Harbinger
 						}),
 					},
@@ -31,7 +30,15 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					["lvl"] = 110,
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
+				cr(95886, e(1468, {	-- Ash'golm
+					i(139468),	-- Bindings of the Windlord (rogue appearance)
+				})),
+				cr(95888, e(1470, {	-- Cordana Felsong
+					ach(10801),	-- Vault of the Wardens
+				})),
+			}),
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				cr(95885, e(1467, {	-- Tirathon Saltheril
 					i(134369),	-- Felbat Leather Boots
 					i(137509),	-- Glaivemaster's Studded Grips
@@ -56,7 +63,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137543),	-- Soulsap Shackles
 				})),
 				cr(95886, e(1468, {	-- Ash'golm
-					i(139468),	-- Bindings of the Windlord (rogue appearance)
 					i(137510),	-- Charskin Mantle
 					i(137526),	-- Crown of Ash
 					i(137539),	-- Faulty Countermeasure
@@ -81,7 +87,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137547),	-- Pulsing Prism
 				})),
 				cr(95888, e(1470, {	-- Cordana Felsong
-					ach(10801),	-- Vault of the Wardens
 					i(137522),	-- Bracers of Twisted Revelation
 					i(137514),	-- Chestguard of Insidious Desire
 					i(137531),	-- Cloak of Enthralling Darkness
@@ -101,7 +106,15 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137549),	-- Shade of the Vault
 				})),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
+				cr(95888, e(1470, {	-- Cordana Felsong
+					ach(10802),	-- Heroic: Vault of the Wardens
+					i(137852),	-- Design: Vindictive Pandemonite Choker [Rank 3] (RECIPE!)
+					i(127931),	-- Recipe: Flask of the Seventh Demon [Rank 2] (RECIPE!)
+					i(137930),	-- Pattern: Gravenscale Treads [Rank 3] (RECIPE!)
+				})),
+			}),
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = 110,
 				["g"] = {
 					cr(95885, e(1467, {	-- Tirathon Saltheril
@@ -128,7 +141,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(137543),	-- Soulsap Shackles
 					})),
 					cr(95886, e(1468, {	-- Ash'golm
-						i(139468),	-- Bindings of the Windlord (rogue appearance)
 						i(137510),	-- Charskin Mantle
 						i(137526),	-- Crown of Ash
 						i(137539),	-- Faulty Countermeasure
@@ -153,10 +165,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(137547),	-- Pulsing Prism
 					})),
 					cr(95888, e(1470, {	-- Cordana Felsong
-						ach(10802),	-- Heroic: Vault of the Wardens
-						i(137852),	-- Design: Vindictive Pandemonite Choker [Rank 3] (RECIPE!)
-						i(127931),	-- Recipe: Flask of the Seventh Demon [Rank 2] (RECIPE!)
-						i(137930),	-- Pattern: Gravenscale Treads [Rank 3] (RECIPE!)
 						i(137522),	-- Bracers of Twisted Revelation
 						i(137514),	-- Chestguard of Insidious Desire
 						i(137531),	-- Cloak of Enthralling Darkness
@@ -177,12 +185,13 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 				},
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				["lvl"] = 110,
 				["g"] = {
 					n(ACHIEVEMENTS, {
 						ach(10707, {	-- A Specter, Illuminated
 							["description"] = "After killing |cFFFFD700Cordana Felsong|r, take Elune's Light to the hallway connecting |cFFFFD700Glazer|r and |cFFFFD700Ash'golm|r and follow the spirit until it reaches the end of the hall. Kill the spectre that spawns, then repeat the process 2 more times.",
+							["crs"] = { 108996 },	-- Specter of Vengeance
 						}),
 					}),
 					cr(95885, e(1467, {	-- Tirathon Saltheril
@@ -210,7 +219,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 					cr(95886, e(1468, {	-- Ash'golm
 						ach(10679),	-- I Ain't Even Cold
-						i(139468),	-- Bindings of the Windlord (rogue appearance)
 						i(137510),	-- Charskin Mantle
 						i(137526),	-- Crown of Ash
 						i(137539),	-- Faulty Countermeasure
@@ -238,10 +246,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						ach(10803),	-- Mythic: Vault of the Wardens
 						ach(10861),	-- Mythic: Vault of the Wardens Guild Run
 						ach(10680),	-- Who's Afraid of the Dark?
-						i(137852),	-- Design: Vindictive Pandemonite Choker [Rank 3] (RECIPE!)
 						i(128607),	-- Formula: Enchant Cloak - Binding of Strength [Rank 3] (RECIPE!)
-						i(127931),	-- Recipe: Flask of the Seventh Demon [Rank 2] (RECIPE!)
-						i(137930),	-- Pattern: Gravenscale Treads [Rank 3] (RECIPE!)
 						i(137522),	-- Bracers of Twisted Revelation
 						i(137514),	-- Chestguard of Insidious Desire
 						i(137531),	-- Cloak of Enthralling Darkness

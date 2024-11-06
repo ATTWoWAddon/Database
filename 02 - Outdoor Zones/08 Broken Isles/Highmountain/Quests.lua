@@ -44,6 +44,7 @@ root(ROOTS.Zones, {
 						39387,	-- The Skies of Highmountain
 						39456,	-- Unexpected Allies
 					},
+					["sourceQuestNumRequired"] = 1,
 				}),
 				q(39429, {	-- Assaulting the Haglands
 					["sourceQuests"] = { 38910 },	-- Rocs vs Eagles
@@ -52,6 +53,7 @@ root(ROOTS.Zones, {
 				}),
 				q(45841, {	-- A Triumphant Report
 					["sourceQuests"] = { 45796 },	-- Destroying the Nest
+					["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
 					["classes"] = {
 						HUNTER,		-- Beast Mastery
 						MONK,		-- Windwalker
@@ -95,7 +97,6 @@ root(ROOTS.Zones, {
 				q(39392, {	-- Bear Huntin'
 					["sourceQuests"] = {
 						40170,	-- Amateur Hour
-						39859,	-- Note-Eating Goats
 					},
 					["coord"] = { 40.0, 52.2, HIGHMOUNTAIN },
 					["provider"] = { "n", 94409 },	-- Hemet Nesingwary
@@ -249,6 +250,7 @@ root(ROOTS.Zones, {
 				}),
 				q(45796, {	-- Destroying the Nest
 					["sourceQuests"] = { 45587 },	-- The Feltotem Menace
+					["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
 					["classes"] = {
 						HUNTER,		-- Beast Mastery
 						MONK,		-- Windwalker
@@ -396,7 +398,7 @@ root(ROOTS.Zones, {
 					["coord"] = { 39.9, 52.2, HIGHMOUNTAIN },
 					["provider"] = { "n", 95438 },	-- Ellias
 					["g"] = {
-						i(133810),	-- Recipe: Salt and Pepper Shank [Rank 1]
+						i(133810),	-- Recipe: Salt and Pepper Shank [Rank 1] (RECIPE!)
 					},
 				}),
 				q(40219, {	-- In Defiance of Deathwing
@@ -434,7 +436,6 @@ root(ROOTS.Zones, {
 				q(39123, {	-- Lion Stalkin'
 					["sourceQuests"] = {
 						40170,	-- Amateur Hour
-						39859,	-- Note-Eating Goats
 					},
 					["coord"] = { 40.0, 52.2, HIGHMOUNTAIN },
 					["provider"] = { "n", 94409 },	-- Hemet Nesingwary
@@ -450,7 +451,6 @@ root(ROOTS.Zones, {
 				q(39124, {	-- Moose Shootin'
 					["sourceQuests"] = {
 						40170,	-- Amateur Hour
-						39859,	-- Note-Eating Goats
 					},
 					["coord"] = { 40.0, 52.2, HIGHMOUNTAIN },
 					["provider"] = { "n", 94409 },	-- Hemet Nesingwary
@@ -491,7 +491,7 @@ root(ROOTS.Zones, {
 					["coord"] = { 42.7, 10.8, HIGHMOUNTAIN },
 					["provider"] = { "n", 98067 },	-- King Mrgl-Mrgl
 					["g"] = {
-						i(133818),	-- Recipe: Barracuda Mrglgagh [Rank 1]
+						i(133818),	-- Recipe: Barracuda Mrglgagh [Rank 1] (RECIPE!)
 					},
 				}),
 				q(40045, {	-- Nature vs. Nurture
@@ -542,7 +542,7 @@ root(ROOTS.Zones, {
 						i(132114),	-- Slime-Stacked Shoulderplates
 						i(132115),	-- Slime-Stacked Mantle
 						i(132117),	-- Slime-Stacked Shoulderpads
-						crit(2, {	-- Oh, the Clawdacity!
+						crit(34846, {	-- Oh, the Clawdacity!
 							["achievementID"] = 11427,	-- No Shellfish Endeavor
 						}),
 					},
@@ -725,6 +725,7 @@ root(ROOTS.Zones, {
 						47020,	-- Discipline: Rumblings Near Feltotem
 						47019,	-- Windwalker: Rumblings Near Feltotem
 					},
+					["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
 					["classes"] = {
 						HUNTER,		-- Beast Mastery
 						MONK,		-- Windwalker
@@ -741,6 +742,7 @@ root(ROOTS.Zones, {
 				}),
 				q(45587, {	-- The Feltotem Menace
 					["sourceQuests"] = { 45575 },	-- Village of the Corruptors
+					["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
 					["classes"] = {
 						HUNTER,		-- Beast Mastery
 						MONK,		-- Windwalker
@@ -808,6 +810,7 @@ root(ROOTS.Zones, {
 				}),
 				q(45726, {	-- The Tainted Marsh
 					["sourceQuests"] = { 45564 },	-- The Burning Birds
+					["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
 					["classes"] = {
 						HUNTER,		-- Beast Mastery
 						MONK,		-- Windwalker
@@ -930,6 +933,7 @@ root(ROOTS.Zones, {
 				}),
 				q(45575, {	-- Village of the Corruptors
 					["sourceQuests"] = { 45726 },	-- The Tainted Marsh
+					["_drop"] = { "classes", "c" }, -- Hide classes Blizz API insists can get the quest
 					["classes"] = {
 						HUNTER,		-- Beast Mastery
 						MONK,		-- Windwalker
@@ -994,7 +998,7 @@ root(ROOTS.Zones, {
 	}),
 });
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(40609),	-- 7.0 Highmountain - Vignette - Windripper Peak - Taurson - Tracking Quest Credit - See Treasure (JLW/RKS). Triggered after killing The Beastly Boxer
 		q(40610),	-- 7.0 Highmountain - Vignette - Worm Treasure - Tracking Quest Credit - See Treasure (JLW/RKS). Triggered after killing Treasure Worm
 		q(40612),	-- 7.0 Highmountain - Vignette - Amateur Hunters - Tracking Quest Credit - See Treasure (JAP) - NYI. Triggered after killing Irewing during Scout It Out

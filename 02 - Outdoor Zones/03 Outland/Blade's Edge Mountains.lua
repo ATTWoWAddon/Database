@@ -1,63 +1,48 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
-local OnTooltipForOgrila = [[function(t)
+ExportDB.OnTooltipDB.ForOgrila = [[~function(t, tooltipInfo)
 	local reputation = t.reputation;
 	if reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
-		GameTooltip:AddLine("Daily Quests:");
+		tinsert(tooltipInfo, { left = "Daily Quests:" });
 		if not t.banished then
 			local f = _.SearchForField("questID", 11051);
 			if f and #f > 0 then t.banished = f[1]; end
 		end
-		local banishedRep = isHuman and 385 or 350;
-		GameTooltip:AddDoubleLine(t.banished.text or RETRIEVING_DATA, _.L[t.banished.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. banishedRep .. " Rep");
+		local AddQuestTooltipWithReputation = _.Modules.FactionData.AddQuestTooltipWithReputation;
+		local banishedRep = AddQuestTooltipWithReputation(tooltipInfo, " %s", t.banished, 350);
 
 		if not t.bombed then
 			local f = _.SearchForField("questID", 11023);
 			if f and #f > 0 then t.bombed = f[1]; end
 		end
-		local bombedRep = isHuman and 550 or 500;
-		GameTooltip:AddDoubleLine((t.bombed.text or RETRIEVING_DATA), _.L[t.bombed.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. bombedRep .. " Rep");
+		local bombedRep = AddQuestTooltipWithReputation(tooltipInfo, " %s", t.bombed, 500);
 
 		if not t.relic then
 			local f = _.SearchForField("questID", 11080);
 			if f and #f > 0 then t.relic = f[1]; end
 		end
-		local relicRep = isHuman and 385 or 350;
-		GameTooltip:AddDoubleLine((t.relic.text or RETRIEVING_DATA), _.L[t.relic.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. relicRep .. " Rep");
+		local relicRep = AddQuestTooltipWithReputation(tooltipInfo, " %s", t.relic, 350);
 
 		if not t.wrangled then
 			local f = _.SearchForField("questID", 11066);
 			if f and #f > 0 then t.wrangled = f[1]; end
 		end
-		local wrangledRep = isHuman and 385 or 350;
-		GameTooltip:AddDoubleLine((t.wrangled.text or RETRIEVING_DATA), _.L[t.wrangled.saved and "COLLECTED_ICON" or "NOT_COLLECTED_ICON"] .. " " .. wrangledRep .. " Rep");
+		local wrangledRep = AddQuestTooltipWithReputation(tooltipInfo, " %s", t.wrangled, 350);
 
 		local repPerDay = banishedRep + bombedRep + relicRep + wrangledRep;
-		local x, n = math.ceil((42000 - t.reputation) / repPerDay), math.ceil(42000 / repPerDay);
-		GameTooltip:AddDoubleLine("Complete Dailies Everyday", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+		_.Modules.FactionData.AddReputationTooltipInfo(tooltipInfo, reputation, "Complete Dailies Everyday", repPerDay, 42000);
 	end
 end]];
 root(ROOTS.Zones, {
 	m(OUTLAND, applyclassicphase(TBC_PHASE_ONE, {
-		m(BLADES_EDGE_MOUNTAINS, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {
+		m(BLADES_EDGE_MOUNTAINS, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {
 			["lore"] = "Blade's Edge is a level 20-30 questing zone in Outland, filled with splintered mountain peaks, plunging lush valleys, and dusty canyons. Players learn about the presence of the Burning Legion through a mysterious Fel Mask, as well as how Blade's Edge was the original home of the Ogres. Ogri'la is a faction of friendly ogres that players with flying mounts can gain reputation with.",
-			-- #if AFTER WRATH
-			["icon"] = "Interface\\Icons\\achievement_zone_bladesedgemtns_01",
-			-- #endif
+			["icon"] = 236719,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
-					applyclassicphase(TBC_PHASE_TWO_OGRILA, achWithRep(896, 1038, {	-- A Quest a Day Keeps the Ogres at Bay
-						-- #if BEFORE WRATH
-						["description"] = "Raise your reputation with Ogri'la to Exalted.",
-						-- #endif
-					})),
-					explorationAch(865, {	-- Explore Blade's Edge Mountains
-						-- #if BEFORE WRATH
-						["description"] = "Explore Blade's Edge Mountains, revealing the covered areas of the world map.",
-						-- #endif
-					}),
+					applyclassicphase(TBC_PHASE_TWO_OGRILA, achWithRep(896, FACTION_ORGILA)),	-- A Quest a Day Keeps the Ogres at Bay
+					explorationAch(865),	-- Explore Blade's Edge Mountains
 					ach(1193, {	-- On the Blade's Edge
 						-- #if ANYCLASSIC
 						-- #if AFTER CATA
@@ -87,49 +72,46 @@ root(ROOTS.Zones, {
 							10748,	-- Maxnar Must Die!
 						},
 						-- #else
-						-- #if BEFORE WRATH
-						["description"] = "Complete 86 quests in Blade's Edge Mountains.",
-						-- #endif
 						["OnClick"] = [[_.CommonAchievementHandlers.LOREMASTER_OnClick]],
 						["OnTooltip"] = [[_.CommonAchievementHandlers.LOREMASTER_OnTooltip]],
 						["OnUpdate"] = [[_.CommonAchievementHandlers.LOREMASTER_OnUpdate]],
 						["rank"] = 86,
 						-- #endif
 						-- #else
-						crit(1, {	-- Sylvanaar (A)
-							["races"] = ALLIANCE_ONLY,
-							["sourceQuests"] = {
-								10518,	-- Planting the Banner
-								10504,	-- The Bladespire Ogres
-							},
-						}),
-						crit(1, {	-- Thunderlord Stronghold (H)
-							["races"] = HORDE_ONLY,
-							["sourceQuest"] = 10505,	-- The Bloodmaul Ogres (need to verify horde quests, might be more needed)
-						}),
-						crit(2, {	-- Toshley's Station (A)
-							["races"] = ALLIANCE_ONLY,
-							["sourceQuests"] = {
-								10594,	-- Gauging the Resonant Frequency
-								10671,	-- More than a Pound of Flesh
-								10675,	-- Show Them Gnome Mercy!
-							},
-						}),
-						crit(2, {	-- Reunion (H)
-							["races"] = HORDE_ONLY,
-							["sourceQuest"] = 10742,	-- Showdown
-						}),
-						crit(3, {	-- The Gronn Threat (A)
-							["races"] = ALLIANCE_ONLY,
-							["sourceQuest"] = 10806,	-- Showdown
-						}),
-						crit(3, {	-- The Mok'Nathal (H)
-							["races"] = HORDE_ONLY,
-							["sourceQuest"] = 10867,	-- There Can Be Only One Response
-						}),
-						crit(4, {	-- Ruuan Weald (A+H)
-							["sourceQuest"] = 10748,	-- Maxnar Must Die!
-						}),
+						-- crit(1, {	-- Sylvanaar (A)
+						-- 	["races"] = ALLIANCE_ONLY,
+						-- 	["sourceQuests"] = {
+						-- 		10518,	-- Planting the Banner
+						-- 		10504,	-- The Bladespire Ogres
+						-- 	},
+						-- }),
+						-- crit(1, {	-- Thunderlord Stronghold (H)
+						-- 	["races"] = HORDE_ONLY,
+						-- 	["sourceQuest"] = 10505,	-- The Bloodmaul Ogres (need to verify horde quests, might be more needed)
+						-- }),
+						-- crit(2, {	-- Toshley's Station (A)
+						-- 	["races"] = ALLIANCE_ONLY,
+						-- 	["sourceQuests"] = {
+						-- 		10594,	-- Gauging the Resonant Frequency
+						-- 		10671,	-- More than a Pound of Flesh
+						-- 		10675,	-- Show Them Gnome Mercy!
+						-- 	},
+						-- }),
+						-- crit(2, {	-- Reunion (H)
+						-- 	["races"] = HORDE_ONLY,
+						-- 	["sourceQuest"] = 10742,	-- Showdown
+						-- }),
+						-- crit(3, {	-- The Gronn Threat (A)
+						-- 	["races"] = ALLIANCE_ONLY,
+						-- 	["sourceQuest"] = 10806,	-- Showdown
+						-- }),
+						-- crit(3, {	-- The Mok'Nathal (H)
+						-- 	["races"] = HORDE_ONLY,
+						-- 	["sourceQuest"] = 10867,	-- There Can Be Only One Response
+						-- }),
+						-- crit(4, {	-- Ruuan Weald (A+H)
+						-- 	["sourceQuest"] = 10748,	-- Maxnar Must Die!
+						-- }),
 						-- #endif
 					}),
 				}),
@@ -148,47 +130,60 @@ root(ROOTS.Zones, {
 						}),
 						pet(528, {	-- Scalded Basilisk Hatchling (PET!)
 							["coord"] = { 72.8, 20.6, BLADES_EDGE_MOUNTAINS },
-							["description"] = "Found in a fairly large area around the coord, above the road.",
+							["description"] = "Found in a fairly large area around Skald, the volcanic area in northeast before the road slopes downwards towards Netherstorm.",
 						}),
 						pet(637, {	-- Skittering Cavern Crawler (PET!)
-							["description"] = "Found only in the two caves that connect Blade's Edge to Zangarmarsh.",
+							["description"] = "Found in the two caves that connect Blade's Edge to Zangarmarsh, and as secondary pet in the zone.",
 						}),
 					},
 				}),
-				-- #if ANYCLASSIC
-				n(EXPLORATION, {
-					exploration(3864, "256:256:422:0"),			-- Bash'ir Landing
-					exploration(3867, "256:256:623:147"),		-- Bladed Gulch
-					exploration(3773, "256:507:314:161"),		-- Bladespire Hold
-					exploration(3777, "256:256:412:95"),		-- Bloodmaul Camp
-					exploration(3776, "256:297:342:371"),		-- Bloodmaul Outpost
-					exploration(3863, "256:256:733:109"),		-- Broken Wilds
-					exploration(3775, "256:256:439:210"),		-- Circle of Blood
-					exploration(3865, "256:256:585:0"),			-- Crystal Spine
-					exploration(3831, "256:419:512:249"),		-- Death's Door
-					exploration(3787, "416:256:586:147"),		-- Forge Camp: Anger
-					exploration(3784, "512:252:144:416"),		-- Forge Camp: Terror
-					exploration(3785, "256:256:254:176"),		-- Forge Camp: Wrath
-					exploration(3781, "256:256:286:28"),		-- Grishnath
-					exploration(3774, "256:256:527:81"),		-- Gruul's Lair
-					exploration(3768, "256:254:446:414"),		-- Jagged Ridge
-					exploration(3844, "256:256:658:297"),		-- Mok'Nathal Village
-					exploration(3830, "512:256:214:55"),		-- Raven's Wood
-					exploration(3833, "256:410:554:258"),		-- Razor Ridge
-					exploration(3828, "256:512:479:98"),		-- Ruuan Weald
-					exploration(3866, "256:256:673:71"),		-- Skald
-					exploration(3772, "256:318:289:350"),		-- Sylvanaar
-					exploration(3769, "256:396:405:272"),		-- Thunderlord Stronghold
-					exploration(3918, "256:336:533:332"),		-- Toshley's Station
-					exploration(3782, "256:240:271:428"),		-- Veil Lashh
-					exploration(3829, "256:128:563:151"),		-- Veil Ruuan
-					exploration(3827, "256:256:629:406"),		-- Vekhaar Stand
-					exploration(3832, "256:462:166:206"),		-- Vortex Pinnacle [Renamed to Vortex Summit after Cata.]
+				explorationHeader({
+					exploration(3864),	-- Bash'ir Landing
+					exploration(3780),	-- Blackwing Coven
+					-- #if AFTER CATA
+					exploration(3867),	-- Bladed Gulch (Wrath Classic: Can't be collected)
+					-- #endif
+					exploration(3773),	-- Bladespire Hold
+					exploration(3777),	-- Bloodmaul Camp
+					exploration(3776),	-- Bloodmaul Outpost
+					-- #if AFTER CATA
+					exploration(3863),	-- Broken Wilds (Wrath Classic: Can't be collected)
+					-- #endif
+					exploration(3775),	-- Circle of Blood
+					exploration(3865),	-- Crystal Spine
+					exploration(3831),	-- Death's Door
+					exploration(3778),	-- Draenethyst Mine
+					exploration(3951),	-- Evergrove
+					exploration(3787),	-- Forge Camp: Anger
+					exploration(3784),	-- Forge Camp: Terror
+					exploration(3785),	-- Forge Camp: Wrath
+					exploration(3781),	-- Grishnath
+					exploration(3774),	-- Gruul's Lair
+					-- #if AFTER CATA
+					exploration(3768),	-- Jagged Ridge (Wrath Classic: Can't be collected)
+					-- #endif
+					exploration(3844),	-- Mok'Nathal Village
+					exploration(3786),	-- Ogri'la
+					exploration(3830),	-- Raven's Wood
+					exploration(3833),	-- Razor Ridge
+					exploration(3828),	-- Ruuan Weald
+					exploration(3919),	-- Singing Ridge
+					-- #if AFTER CATA
+					exploration(3866),	-- Skald (Wrath Classic: Can't be collected)
+					-- #endif
+					exploration(3964),	-- Skyguard Outpost
+					exploration(3772),	-- Sylvanaar
+					exploration(3771),	-- The Living Grove
+					exploration(3769),	-- Thunderlord Stronghold
+					exploration(3918),	-- Toshley's Station
+					exploration(3782),	-- Veil Lashh
+					exploration(3829),	-- Veil Ruuan
+					exploration(3827),	-- Vekhaar Stand
+					exploration(3832),	-- Vortex Pinnacle / Vortex Summit [CATA+]
 				}),
-				-- #endif
 				n(FACTIONS, {
-					applyclassicphase(TBC_PHASE_TWO_OGRILA, faction(1038, {	-- Ogri'la
-						["OnTooltip"] = OnTooltipForOgrila,
+					applyclassicphase(TBC_PHASE_TWO_OGRILA, faction(FACTION_ORGILA, {	-- Ogri'la
+						["OnTooltip"] = [[_.OnTooltipDB.ForOgrila]],
 					})),
 				}),
 				n(FLIGHT_PATHS, {
@@ -253,11 +248,11 @@ root(ROOTS.Zones, {
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, q(11060, {	-- A Crystalforged Darkrune
 						["qg"] = 23300,	-- Gahk
 						["coord"] = { 28.4, 58, BLADES_EDGE_MOUNTAINS },
-						["minReputation"] = { 1038, HONORED },	-- Ogri'la, Honored.
+						["minReputation"] = { FACTION_ORGILA, HONORED },	-- Ogri'la, Honored.
 						["isDaily"] = true,
 						["timeline"] = {
-							"added 3.3.0.10772",
-							"removed 4.1.0.7272",
+							ADDED_3_3_0,
+							REMOVED_4_1_0,
 						},
 						["cost"] = {
 							{ "i", 32643, 1 },	-- Darkrune
@@ -266,8 +261,8 @@ root(ROOTS.Zones, {
 						["groups"] = {
 							i(32602, {	-- Crystalforged Darkrune
 								["timeline"] = {
-									"added 3.3.0.10772",
-									"removed 4.1.0.7272",
+									ADDED_3_3_0,
+									REMOVED_4_1_0,
 								},
 							}),
 						},
@@ -313,6 +308,12 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 10457,	-- Protecting Our Own
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Bloodmaul Dire Wolf weakened
+								["provider"] = { "i", 30251 },	-- Rina's Diminution Powder
+								["cr"] = 20058,	-- Bloodmaul Dire Wolf
+							}),
+						},
 					}),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, q(11061, {	-- A Father's Duty
 						["qg"] = 23316,	-- Torkus
@@ -328,12 +329,23 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 11061,	-- A Father's Duty
 						["coord"] = { 28.5, 58.1, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Fel Whip
+								["provider"] = { "i", 32733 },	-- Fel Whip
+								["crs"] = {
+									22281,	-- Galvanoth
+									23353,	-- Braxxus
+									23354,	-- Mo'arg Incinerator
+									23355,	-- Zarcsin
+								},
+							}),
+						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, q(11091, {	-- A Special Thank You
 						["qg"] = 23233,	-- Chu'a'lor
 						["sourceQuest"] = 11059,	-- Guardian of the Monument
 						["coord"] = { 28.8, 57.4, BLADES_EDGE_MOUNTAINS },
-						["minReputation"] = { 1038, FRIENDLY },	-- Ogri'la, Friendly.
+						["minReputation"] = { FACTION_ORGILA, FRIENDLY },	-- Ogri'la, Friendly.
 						["lvl"] = lvlsquish(70, 70, 20),
 					})),
 					q(10682, {	-- A Time for Negotiation...
@@ -362,7 +374,7 @@ root(ROOTS.Zones, {
 						["qg"] = 23253,	-- Kronk
 						["sourceQuest"] = 11026,	-- Banish the Demons
 						["coord"] = { 28.8, 57.8, BLADES_EDGE_MOUNTAINS },
-						["minReputation"] = { 1038, HONORED },	-- Ogri'la, Honored.
+						["minReputation"] = { FACTION_ORGILA, HONORED },	-- Ogri'la, Honored.
 						["cost"] = {
 							{ "i", 32696, 1 },	-- Banishing Crystal
 						},
@@ -376,7 +388,7 @@ root(ROOTS.Zones, {
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, q(11026, {	-- Banish the Demons
 						["qg"] = 23253,	-- Kronk
 						["coord"] = { 28.8, 57.8, BLADES_EDGE_MOUNTAINS },
-						["minReputation"] = { 1038, HONORED },	-- Ogri'la, Honored.
+						["minReputation"] = { FACTION_ORGILA, HONORED },	-- Ogri'la, Honored.
 						["cost"] = {
 							{ "i", 32696, 1 },	-- Banishing Crystal
 						},
@@ -424,8 +436,14 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["lvl"] = lvlsquish(70, 70, 20),
 						["groups"] = {
+							objective(1, {	-- 0/15 Fel Cannonball Stacks destroyed
+								["providers"] = {
+									{ "i", 32456 },	-- Skyguard Bombs
+									{ "o", 185861 },	-- Fel Cannonball Stack
+								},
+							}),
 							ach(1276, {	-- Blade's Edge Bomberman
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 						},
 					})),
@@ -435,6 +453,14 @@ root(ROOTS.Zones, {
 						["coord"] = { 27.6, 52.9, BLADES_EDGE_MOUNTAINS },
 						["classes"] = { DRUID },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/15 Fel Cannonball Stacks destroyed
+								["providers"] = {
+									{ "i", 32456 },	-- Skyguard Bombs
+									{ "o", 185861 },	-- Fel Cannonball Stack
+								},
+							}),
+						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, q(11010, {	-- Bombing Run (all others)
 						["qg"] = 23120,	-- Sky Sergeant Vanderlip
@@ -442,18 +468,25 @@ root(ROOTS.Zones, {
 						["coord"] = { 27.6, 52.9, BLADES_EDGE_MOUNTAINS },
 						["classes"] = exclude(DRUID, ALL_CLASSES),
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/15 Fel Cannonball Stacks destroyed
+								["providers"] = {
+									{ "i", 32456 },	-- Skyguard Bombs
+									{ "o", 185861 },	-- Fel Cannonball Stack
+								},
+							}),
+						},
 					})),
-					q(11043, {	-- Building a Better Gryphon
-						["qg"] = 21107,	-- Rip Pedalslam
-						["coord"] = { 61.2, 70.4, BLADES_EDGE_MOUNTAINS },
-						["races"] = ALLIANCE_ONLY,
-						["isBreadcrumb"] = true,
-						["lvl"] = lvlsquish(67, 67, 20),
-					}),
 					q(10567, {	-- Creating the Pendant
 						["qg"] = 21782,	-- Timeon
 						["coord"] = { 62.2, 39.1, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(66, 66, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Harbinger's Pendant
+								["provider"] = { "i", 30706 },	-- Harbinger's Pendant
+								["cr"] = 21767,	-- Harbinger of the Raven
+							}),
+						},
 					}),
 					q(10784, {	-- Crush the Bloodmaul Camp
 						["qg"] = 21147,	-- Tor'chunk Twoclaws
@@ -462,6 +495,12 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/10 Bloodmaul Mauler slain
+								["provider"] = { "n", 19993 },	-- Bloodmaul Mauler
+							}),
+							objective(2, {	-- 0/5 Bloodmaul Warlock slain
+								["provider"] = { "n", 19994 },	-- Bloodmaul Warlock
+							}),
 							i(31539),	-- Chaintwine Cinch
 							i(31537),	-- Darktread Boots
 							i(31540),	-- Fairweather's Wristguards
@@ -474,6 +513,12 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/10 Bloodmaul Mauler slain
+								["provider"] = { "n", 19993 },	-- Bloodmaul Mauler
+							}),
+							objective(2, {	-- 0/5 Bloodmaul Warlock slain
+								["provider"] = { "n", 19994 },	-- Bloodmaul Warlock
+							}),
 							i(31539),	-- Chaintwine Cinch
 							i(31537),	-- Darktread Boots
 							i(31540),	-- Fairweather's Wristguards
@@ -485,11 +530,27 @@ root(ROOTS.Zones, {
 						["coord"] = { 60.2, 68.9, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/10 Crystal Flayer slain
+								["provider"] = { "n", 21189 },	-- Crystal Flayer
+							}),
+						},
 					}),
 					q(10753, {	-- Culling the Wild
 						["qg"] = 22133,	-- Faradrella
 						["coord"] = { 62.6, 38.3, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/4 Felsworn Scalewing slain
+								["provider"] = { "n", 21123 },	-- Felsworn Scalewing
+							}),
+							objective(2, {	-- 0/4 Felsworn Daggermaw slain
+								["provider"] = { "n", 21124 },	-- Felsworn Daggermaw
+							}),
+							objective(3, {	-- 0/2 Fel Corrupter slain
+								["provider"] = { "n", 21300 },	-- Fel Corrupter
+							}),
+						},
 					}),
 					q(10632, {	-- Cutting Your Teeth
 						["qg"] = 21118,	-- Razak Ironsides
@@ -501,9 +562,13 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/5 Extra Sharp Daggermaw Tooth
+								["provider"] = { "i", 30798 },	-- Extra Sharp Daggermaw Tooth
+								["cr"] = 20751,	-- Daggermaw Lashtail
+							}),
 							i(31447),	-- Vibro Dagger
 							i(157549, {	-- Vibro Knuckles
-								["timeline"] = { "added 7.3.5.25727" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(31446),	-- Vibro Shanker
 							i(31448),	-- Vibro Sword
@@ -525,6 +590,14 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 10819,	-- Felsworn Gas Mask
 						["coord"] = { 73.23, 40.1, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/4 Doomforge Attendant slain
+								["provider"] = { "n", 19961 },	-- Doomforge Attendant
+							}),
+							objective(2, {	-- 0/4 Doomforge Engineer slain
+								["provider"] = { "n", 19960 },	-- Doomforge Engineer
+							}),
+						},
 					}),
 					q(10719, {	-- Did You Get The Note?
 						["provider"] = { "i", 31120 },	-- Meeting Note
@@ -538,6 +611,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 52.4, 57.9, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/4 Dust of the Fey Drake
+								["provider"] = { "i", 30174 },	-- Dust of the Fey Drake
+								["cr"] = 20713,	-- Fey Drake
+							}),
+						},
 					}),
 					q(10997, {	-- Even Gronn Have Standards
 						["qg"] = 22941,	-- Mog'dorg the Wizened
@@ -550,6 +629,14 @@ root(ROOTS.Zones, {
 						["coord"] = { 55.5, 44.8, BLADES_EDGE_MOUNTAINS },
 						["maps"] = { TEROKKAR_FOREST },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Slaag's Standard
+								["providers"] = {
+									{ "i", 32382 },	-- Slaag's Standard
+									{ "o", 185574 },	-- Slaag's Standard
+								},
+							}),
+						},
 					}),
 					q(10830, {	-- Exorcising the Trees
 						["qg"] = 22215,	-- Treebole
@@ -567,7 +654,7 @@ root(ROOTS.Zones, {
 						["qg"] = 22924,	-- Arthorn Windsong
 						["sourceQuest"] = 10980,	-- The Book of the Raven
 						["coord"] = { 61.5, 38.3, BLADES_EDGE_MOUNTAINS },
-						["timeline"] = { "removed 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 						["maps"] = { NAGRAND },
 						["classes"] = { DRUID },
 						["lvl"] = 70,
@@ -586,6 +673,10 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Stronglimb Deeproot's Trunk
+								["provider"] = { "i", 30177 },	-- Stronglimb Deeproot's Trunk
+								["cr"] = 21023,	-- Stronglimb Deeproot
+							}),
 							i(31486),	-- Bear-Strength Harness
 							i(31488),	-- Boots of the Ancient-Killer
 							i(31485),	-- Dark Deed Leggings
@@ -616,6 +707,15 @@ root(ROOTS.Zones, {
 						["coord"] = { 61.2, 38.5, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Southern Volcanic Soil
+								["provider"] = { "o", 185124 },	-- Fertile Volcanic Soil
+							}),
+							objective(2, {	-- 0/1 Central Volcanic Soil
+								["provider"] = { "o", 185147 },	-- Fertile Volcanic Soil
+							}),
+							objective(3, {	-- 0/1 Northern Volcanic Soil
+								["provider"] = { "o", 185148 },	-- Fertile Volcanic Soil
+							}),
 							i(31415),	-- Iron Oak Shield
 							i(31416),	-- Scorch Wood Bow
 							i(31414),	-- Wild Wood Staff
@@ -654,6 +754,14 @@ root(ROOTS.Zones, {
 						["coord"] = { 53.2, 41.0, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Grulloc's Sack
+								["providers"] = {
+									{ "i", 31349 },	-- Grulloc's Sack
+									{ "o", 185152 },	-- Grulloc's Sack
+								},
+							}),
+						},
 					}),
 					q(10802, {	-- Gorgrom the Dragon-Eater (A)
 						["qg"] = 22149,	-- Commander Haephus Stonewall
@@ -685,6 +793,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 44.0, 51.8, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Gorr'Dim slain
+								["provider"] = { "n", 20732 },	-- Gorr'Dim
+							}),
+						},
 					}),
 					q(10998, {	-- Grim(oire) Business
 						["qg"] = 22941,	-- Mog'dorg the Wizened
@@ -695,6 +808,14 @@ root(ROOTS.Zones, {
 						},
 						["coord"] = { 55.5, 44.8, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Vim'gol's Vile Grimoire
+								["providers"] = {
+									{ "i", 32358 },	-- Vim'gol's Vile Grimoire
+									{ "o", 185562 },	-- Vim'gol's Vile Grimoire
+								},
+							}),
+						},
 					}),
 					q(10543, {	-- Grimnok and Korgaah, I Am For You!
 						["qg"] = 21349,	-- T'chali the Witch Doctor
@@ -702,6 +823,14 @@ root(ROOTS.Zones, {
 						["coord"] = { 45.0, 72.2, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Grimnok Battleborn slain
+								["provider"] = { "n", 20095 },	-- Grimnok Battleborn
+							}),
+							objective(2, {	-- 0/1 Korgaah slain
+								["provider"] = { "n", 20723 },	-- Korgaah
+							}),
+						},
 					}),
 					q(10995, {	-- Grulloc Has Two Skulls
 						["qg"] = 22941,	-- Mog'dorg the Wizened
@@ -713,18 +842,48 @@ root(ROOTS.Zones, {
 						["description"] = "This quest has three possible breadcrumb quests. Completing one will give you credit for the other, but if you're interested in completing as many breadcrumbs as possible then you should start this quest chain by picking up 'Speak with the Ogre' in the middle of Shattrath City.",
 						["coord"] = { 55.5, 44.8, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Grulloc's Dragon Skull
+								["providers"] = {
+									{ "i", 32379 },	-- Grulloc's Dragon Skull
+									{ "o", 185567 },	-- Grulloc's Dragon Skull
+								},
+							}),
+						},
 					}),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, q(11059, {	-- Guardian of the Monument
 						["qg"] = 23233,	-- Chu'a'lor
 						["sourceQuest"] = 11025,	-- The Crystals
 						["coord"] = { 28.8, 57.4, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Apexis Guardian's Head
+								["provider"] = { "i", 32697 },	-- Apexis Guardian's Head
+								["cr"] = 22275,	-- Apexis Guardian
+							}),
+						},
 					})),
 					q(10904, {	-- Harvesting the Fel Ammunition
 						["qg"] = 22423,	-- Evergrove Druid
 						["sourceQuest"] = 10910,	-- Death's Door
 						["lvl"] = lvlsquish(65, 65, 20),
 					}),
+					heroscall(q(39199, {	-- Hero's Call: Blade's Edge Mountains!
+						["timeline"] = { ADDED_6_2_0 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 65,
+						["groups"] = {
+							objective(1, {	-- 0/5 Fel Cannonball
+								["provider"] = { "i", 31757 },	-- Fel Cannonball
+								["crs"] = {
+									19978,	-- Deathforge Over-Smith
+									19979,	-- Deathforge Technician
+									21516,	-- Death's Watch
+									21519,	-- Death's Might
+								},
+							}),
+						},
+					})),
 					q(10865, {	-- Inform Leoroxx!
 						["qg"] = 22312,	-- Spiritcaller Dohgar
 						["sourceQuest"] = 10859,	-- Gather the Orbs
@@ -776,6 +935,12 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/5 Draenethyst Mine Crystal
+								["providers"] = {
+									{ "i", 30315 },	-- Draenethyst Mine Crystal
+									{ "o", 184689 },	-- Draenethyst Mine Crystal
+								},
+							}),
 							i(31431),	-- All-Weather Armguards
 							i(31432),	-- Explorer's Boots
 							i(31430),	-- Miner's Gloves
@@ -787,6 +952,14 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 10998,	-- Grim(oire) Business
 						["coord"] = { 55.5, 44.8, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Skulloc's Soul
+								["providers"] = {
+									{ "i", 32383 },	-- Skulloc's Soul
+									{ "o", 185577 },	-- Skulloc's Soul
+								},
+							}),
+						},
 					}),
 					q(10801, {	-- It's a Trap! (A)
 						["qg"] = 22103,	-- Baron Sablemane
@@ -807,23 +980,43 @@ root(ROOTS.Zones, {
 						["coord"] = { 32.2, 91.1, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/6 Cavern Crawler slain
+								["provider"] = { "n", 22044 },	-- Cavern Crawler
+							}),
+						},
 					}),
 					q(10928, {	-- Killing the Crawlers (H)
 						["qg"] = 22489,	-- Grunt Grahk
 						["coord"] = { 53.0, 96.2, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/6 Cavern Crawler slain
+								["provider"] = { "n", 22044 },	-- Cavern Crawler
+							}),
+						},
 					}),
 					q(10770, {	-- Little Embers
 						["qg"] = 22053,	-- Mosswood the Ancient
 						["coord"] = { 61.2, 38.5, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/8 Scorch Imp slain
+								["provider"] = { "n", 21021 },	-- Scorch Imp
+							}),
+						},
 					}),
 					q(10893, {	-- Longtail is the Lynchpin
 						["qg"] = 22386,	-- Watcher Moonshade
 						["sourceQuest"] = 10894,	-- Wyrmskull Watcher
 						["coord"] = { 50.2, 36.0, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Draaca Longtail slain
+								["provider"] = { "n", 22396 },	-- Draaca Longtail
+							}),
+						},
 					}),
 					q(10996, {	-- Maggoc's Treasure Chest
 						["qg"] = 22941,	-- Mog'dorg the Wizened
@@ -835,12 +1028,26 @@ root(ROOTS.Zones, {
 						["description"] = "This quest has three possible breadcrumb quests. Completing one will give you credit for the other, but if you're interested in completing as many breadcrumbs as possible then you should start this quest chain by picking up 'Speak with the Ogre' in the middle of Shattrath City.",
 						["coord"] = { 55.5, 44.8, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Maggoc's Treasure Chest
+								["providers"] = {
+									{ "i", 32380 },	-- Maggoc's Treasure Chest
+									{ "o", 185569 },	-- Maggoc's Treasure Chest
+								},
+							}),
+						},
 					}),
 					q(10555, {	-- Malaise
 						["qg"] = 21469,	-- Daranelle
 						["coord"] = { 37.0, 65.6, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/18 Plucked Lashh'an Feather
+								["provider"] = { "i", 30529 },	-- Plucked Lashh'an Feather
+								["cr"] = 20113,	-- Lashh'an Matriarch
+							}),
+						},
 					}),
 					q(10456, {	-- Marauding Wolves
 						["qg"] = 21066,	-- Rina Moonspring
@@ -848,6 +1055,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 36.2, 67.2, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/4 Thunderlord Dire Wolf Tail
+								["provider"] = { "i", 30184 },	-- Thunderlord Dire Wolf Tail
+								["cr"] = 20748,	-- Thunderlord Dire Wolf
+							}),
+						},
 					}),
 					q(10805, {	-- Massacre at Gruul's Lair
 						["qg"] = 22103,	-- Baron Sablemane
@@ -855,6 +1068,20 @@ root(ROOTS.Zones, {
 						["coord"] = { 53.2, 41.0, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/10 Bladespire Enforcer slain
+								["provider"] = { "n", 19997 },	-- Bladespire Enforcer
+							}),
+							objective(2, {	-- 0/5 Bladespire Battlemage slain
+								["provider"] = { "n", 19996 },	-- Bladespire Battlemage
+							}),
+							objective(3, {	-- 0/5 Bladespire Ravager slain
+								["provider"] = { "n", 20729 },	-- Bladespire Ravager
+							}),
+							objective(4, {	-- 0/1 Fingrom slain
+								["provider"] = { "n", 20757 },	-- Fingrom
+							}),
+						},
 					}),
 					q(10748, {	-- Maxnar Must Die!
 						["qg"] = 22007,	-- Tree Warden Chawn
@@ -862,6 +1089,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 62.0, 39.5, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Maxnar the Ashmaw slain
+								["provider"] = { "n", 21389 },	-- Maxnar the Ashmaw
+							}),
 							i(31520),	-- Blackwing Helm
 							i(31511),	-- Chest of the Wyrmcult
 							i(31508),	-- Coven Britches
@@ -913,6 +1143,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 60.4, 68.8, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Ether-Energized Flesh
+								["provider"] = { "i", 30840 },	-- Ether-Energized Flesh
+								["cr"] = 20668,	-- Fiendling Flesh Beast
+							}),
+						},
 					}),
 					q(10812, {	-- Mystery Mask
 						["qg"] = 22020,	-- O'Mally Zapnabber
@@ -961,7 +1197,7 @@ root(ROOTS.Zones, {
 					}),
 					q(10798, {	-- Pay the Baron a Visit
 						["qg"] = 22149,	-- Commander Haephus Stonewall
-						["sourceQuest"] = 10795,	-- Favor of the Gronn
+						["sourceQuest"] = 10797,	-- Favor of the Gronn
 						["coord"] = { 62.0, 38.0, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
@@ -983,6 +1219,14 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Bladespire Clan Banner
+								["provider"] = { "i", 30416 },	-- Bladespire Clan Banner
+								["cr"] = 21296,	-- Bladespire Champion
+							}),
+							objective(2, {	-- 0/1 Helm of Gurn Grubnosh
+								["provider"] = { "i", 30417 },	-- Helm of Gurn Grubnosh
+								["cr"] = 20116,	-- Gurn Grubnosh
+							}),
 							i(31435),	-- Gurn's Horned Helmet
 							i(31434),	-- Ogre Assassin's Britches
 							i(31436),	-- Sylvanaar Champion's Shoulders
@@ -994,6 +1238,12 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 10682,	-- A Time for Negotiation...
 						["coord"] = { 61.9, 39.5, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Wyrmcult Net
+								["provider"] = { "i", 31119 },	-- Wyrmcult Net
+								["cr"] = 21809,	-- Wyrmcult Poacher
+							}),
+						},
 					}),
 					q(10724, {	-- Prisoner of the Bladespire
 						["qg"] = 21984,	-- Rexxar
@@ -1009,6 +1259,9 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/5 Living Grove Defenders summoned
+								["provider"] = { "o", 184631 },	-- Grove Seedling
+							}),
 							i(31419),	-- Living Grove Shoulderpads
 							i(31420),	-- Protector's Boots
 							i(31421),	-- Sentinel Armbands
@@ -1022,6 +1275,10 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/5 Thunderlord Dire Wolf strengthened
+								["provider"] = { "i", 30175 },	-- Gor'drek's Ointment
+								["cr"] = 20748,	-- Thunderlord Dire Wolf
+							}),
 							i(31482),	-- Dire Wolf Handler Gloves
 							i(31483),	-- Gor'drek's Pauldrons
 							i(31481),	-- Thunderlord Armbands
@@ -1045,7 +1302,7 @@ root(ROOTS.Zones, {
 						["qg"] = 22924,	-- Arthorn Windsong
 						["sourceQuest"] = 10992,	-- The Hawk's Essence
 						["coord"] = { 61.5, 38.3, BLADES_EDGE_MOUNTAINS },
-						["timeline"] = { "removed 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 						["maps"] = { ZANGARMARSH },
 						["classes"] = { DRUID },
 						["cost"] = {
@@ -1067,6 +1324,10 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(2, {	-- 0/5 Scalewing Lightning Gland
+								["provider"] = { "i", 30849 },	-- Scalewing Lightning Gland
+								["cr"] = 20749,	-- Scalewing Serpent
+							}),
 							i(31453),	-- Charged Footwear
 							i(31452),	-- Energized Wristwraps
 							i(31455),	-- Muscle Toning Belt
@@ -1078,6 +1339,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 60.4, 68.8, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/10 Ridgespine Stalker slain
+								["provider"] = { "n", 20714 },	-- Ridgespine Stalker
+							}),
+						},
 					}),
 					q(10615, {	-- Ruuan Weald
 						["qg"] = 21496,	-- Dertrok
@@ -1103,9 +1369,15 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Collection of Souls
+								["providers"] = {
+									{ "i", 30890 },	-- Collection of Souls
+									{ "o", 185033 },	-- Collection of Souls
+								},
+							}),
 							i(31456),	-- Gnomish Casting Boots
 							i(30690, {	-- Power Converter (Toy !)
-								-- #if ANYCLASSIC
+								-- #if BEFORE WRATH
 								["description"] = "It's an unlimited Firework Launcher that eventually becomes a Toy and is also a Star Wars reference. Keep it forever.",
 								-- #endif
 								["races"] = ALLIANCE_ONLY,
@@ -1122,6 +1394,9 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Goc slain
+								["provider"] = { "n", 20555 },	-- Goc
+							}),
 							i(31548),	-- Blackened Chestplate
 							i(31544),	-- Clefthoof Hide Leggings
 							i(31549),	-- Leonine Breastplate
@@ -1137,6 +1412,9 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Goc slain
+								["provider"] = { "n", 20555 },	-- Goc
+							}),
 							i(31548),	-- Blackened Chestplate
 							i(31544),	-- Clefthoof Hide Leggings
 							i(31549),	-- Leonine Breastplate
@@ -1150,6 +1428,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 75.9, 61.4, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(64, 64, 20),
+						["groups"] = {
+							objective(1, {	-- 0/8 Silkwing Cocoon
+								["provider"] = { "i", 30791 },	-- Silkwing Cocoon
+								["cr"] = 20747,	-- Silkwing Larva
+							}),
+						},
 					}),
 					q(10843, {	-- Since Time Forgotten...
 						["qg"] = 22004,	-- Leoroxx
@@ -1157,6 +1441,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 75.3, 60.9, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Gnosh Brognat slain
+								["provider"] = { "n", 20768 },	-- Gnosh Brognat
+							}),
+						},
 					}),
 					q(10803, {	-- Slaughter at Boulder'mok (A)
 						["qg"] = 22150,	-- Lieutenant Fairweather
@@ -1164,6 +1453,14 @@ root(ROOTS.Zones, {
 						["coord"] = { 62.0, 37.9, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Boulder'mok Brute slain
+								["provider"] = { "n", 21046 },	-- Boulder'mok Brute
+							}),
+							objective(2, {	-- 0/3 Boulder'mok Shaman slain
+								["provider"] = { "n", 21047 },	-- Boulder'mok Shaman
+							}),
+						},
 					}),
 					q(10786, {	-- Slaughter at Boulder'mok (H)
 						["qg"] = 21147,	-- Tor'chunk Twoclaws
@@ -1171,6 +1468,14 @@ root(ROOTS.Zones, {
 						["coord"] = { 51.9, 58.4, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Boulder'mok Brute slain
+								["provider"] = { "n", 21046 },	-- Boulder'mok Brute
+							}),
+							objective(2, {	-- 0/3 Boulder'mok Shaman slain
+								["provider"] = { "n", 21047 },	-- Boulder'mok Shaman
+							}),
+						},
 					}),
 					q(10845, {	-- Slay the Brood Mother
 						["qg"] = 22004,	-- Leoroxx
@@ -1179,6 +1484,9 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Dreadwing slain
+								["provider"] = { "n", 21032 },	-- Dreadwing
+							}),
 							i(31685),	-- Brood Mother Leggings
 							i(31683),	-- Dreadwing Skin Belt
 							i(31684),	-- Netherhide Gloves
@@ -1200,6 +1508,10 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/8 Lesser Nether Drake Spirit
+								["provider"] = { "i", 31656 },	-- Lesser Nether Drake Spirit
+								["cr"] = 21004,	-- Lesser Nether Drake
+							}),
 							i(31712),	-- Mok'Nathal Champion's Shoulderguards
 							i(31711),	-- Nether-Empowered Footgear
 							i(31714),	-- Nether Drake Wristguards
@@ -1242,13 +1554,6 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(62, 62, 20),
 					}),
-					q(11047, {	-- The Apprentice's Request
-						["qg"] = 23280,	-- Agadai
-						["coord"] = { 52.0, 54.4, NAGRAND },
-						["isBreadcrumb"] = true,
-						["races"] = HORDE_ONLY,
-						["lvl"] = lvlsquish(65, 65, 20),
-					}),
 					q(10504, {	-- The Bladespire Ogres
 						["qg"] = 21158,	-- Commander Skyshadow
 						["sourceQuest"] = 10502,	-- The Bloodmaul Ogres
@@ -1256,6 +1561,20 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/30 Bladespire Ogres killed
+								["providers"] = {
+									{ "n", 19995},	-- Bladespire Brute
+									{ "n", 19998},	-- Bladespire Shaman
+									{ "n", 20334},	-- Bladespire Cook
+									{ "n", 20723},	-- Korgaah
+									{ "n", 20726},	-- Mugdorg
+									{ "n", 20730},	-- Glumdor
+									{ "n", 20731},	-- Droggam
+									{ "n", 20732},	-- Gorr'Dim
+									{ "n", 21296},	-- Bladespire Champion
+									{ "n", 21975},	-- Bladespire Sober Defender
+								},
+							}),
 							i(31426),	-- Agile Mountain Bracers
 							i(31428),	-- Commander Skyshadow's Gloves
 							i(31425),	-- Ogre Vanquisher's Belt
@@ -1267,12 +1586,49 @@ root(ROOTS.Zones, {
 						["coord"] = { 51.8,58.4, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/30 Bladespire Ogres killed
+								["providers"] = {
+									{ "n", 19995},	-- Bladespire Brute
+									{ "n", 19998},	-- Bladespire Shaman
+									{ "n", 20334},	-- Bladespire Cook
+									{ "n", 20723},	-- Korgaah
+									{ "n", 20726},	-- Mugdorg
+									{ "n", 20730},	-- Glumdor
+									{ "n", 20731},	-- Droggam
+									{ "n", 20732},	-- Gorr'Dim
+									{ "n", 21296},	-- Bladespire Champion
+									{ "n", 21975},	-- Bladespire Sober Defender
+								},
+							}),
+							objective(2, {	-- 0/10 Bladespire Raptor slain
+								["provider"] = { "n", 20728 },	-- Bladespire Raptor
+							}),
+						},
 					}),
 					q(10502, {	-- The Bloodmaul Ogres (A)
 						["qg"] = 21158,	-- Commander Skyshadow
 						["coord"] = { 36.5, 66.4, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/30 Bloodmaul Ogres killed
+								["providers"] = {
+									{ "n", 19991},	-- Bloodmaul Brute
+									{ "n", 19948},	-- Bloodmaul Skirmisher
+									{ "n", 19952},	-- Bloodmaul Geomancer
+									{ "n", 19956},	-- Bloodmaul Lookout
+									{ "n", 19957},	-- Bloodmaul Brewmaster
+									{ "n", 19992},	-- Bloodmaul Shaman
+									{ "n", 20095},	-- Grimnok Battleborn
+									{ "n", 20116},	-- Gurn Grubnosh
+									{ "n", 21238},	-- Bloodmaul Drudger
+									{ "n", 21254},	-- Dullgrom Dredger
+									{ "n", 21294},	-- Bloodmaul Goon
+									{ "n", 21319},	-- Gor Grimgut
+								},
+							}),
+						},
 					}),
 					q(10505, {	-- The Bloodmaul Ogres (H)
 						["qg"] = 21147,	-- Tor'chunk Twoclaws
@@ -1281,6 +1637,22 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/30 Bloodmaul Ogres killed
+								["providers"] = {
+									{ "n", 19991},	-- Bloodmaul Brute
+									{ "n", 19948},	-- Bloodmaul Skirmisher
+									{ "n", 19952},	-- Bloodmaul Geomancer
+									{ "n", 19956},	-- Bloodmaul Lookout
+									{ "n", 19957},	-- Bloodmaul Brewmaster
+									{ "n", 19992},	-- Bloodmaul Shaman
+									{ "n", 20095},	-- Grimnok Battleborn
+									{ "n", 20116},	-- Gurn Grubnosh
+									{ "n", 21238},	-- Bloodmaul Drudger
+									{ "n", 21254},	-- Dullgrom Dredger
+									{ "n", 21294},	-- Bloodmaul Goon
+									{ "n", 21319},	-- Gor Grimgut
+								},
+							}),
 							i(31480),	-- Ogre Beater's Belt
 							i(31477),	-- Red Hands of the Thunderlord
 							i(31479),	-- Rugged Mountain Bracers
@@ -1291,7 +1663,7 @@ root(ROOTS.Zones, {
 						["qg"] = 22924,	-- Arthorn Windsong
 						["sourceQuest"] = 10979,	-- To the Evergrove
 						["coord"] = { 61.5, 38.3, BLADES_EDGE_MOUNTAINS },
-						["timeline"] = { "removed 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 						["classes"] = { DRUID },
 						["cost"] = {
 							{ "i", 32244, 1 },	-- Seer's Stone (Provided)
@@ -1309,6 +1681,9 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Rema slain
+								["provider"] = { "n", 21956 },	-- Rema
+							}),
 							i(31424),	-- Arcane Wand of Sylvanaar
 							i(31422),	-- Heavy Elven Dirk
 							i(31423),	-- Wolf Hewer's Axe
@@ -1325,6 +1700,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 36.2, 67.2, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/12 Grovestalker Lynx slain
+								["provider"] = { "n", 21022 },	-- Grovestalker Lynx
+							}),
+						},
 					}),
 					q(10486, {	-- The Encroaching Wilderness (H)
 						["qg"] = 21117,	-- Gor'drek
@@ -1337,12 +1717,17 @@ root(ROOTS.Zones, {
 						["coord"] = { 52.4, 57.9, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/12 Bladewing Bloodletter slain
+								["provider"] = { "n", 21033 },	-- Bladewing Bloodletter
+							}),
+						},
 					}),
 					applyclassicphase(TBC_PHASE_TWO_SWIFTFLIGHTFORM, q(10991, {	-- The Falcon's Essence
 						["qg"] = 22924,	-- Arthorn Windsong
 						["sourceQuest"] = 10990,	-- The Eagle's Essence
 						["coord"] = { 61.5, 38.3, BLADES_EDGE_MOUNTAINS },
-						["timeline"] = { "removed 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 						["maps"] = { TEROKKAR_FOREST },
 						["classes"] = { DRUID },
 						["cost"] = {
@@ -1350,12 +1735,18 @@ root(ROOTS.Zones, {
 							{ "i", 32357, 1 },	-- Essence of the Falcon
 						},
 						["lvl"] = 70,
+						["groups"] = {
+							objective(1, {	-- 0/1 Essence of the Falcon
+								["provider"] = { "i", 32357 },	-- Essence of the Falcon
+								["cr"] = 22994,	-- Guardian of the Falcon
+							}),
+						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_SWIFTFLIGHTFORM, q(10992, {	-- The Hawk's Essence
 						["qg"] = 22924,	-- Arthorn Windsong
 						["sourceQuest"] = 10991,	-- The Falcon's Essence
 						["coord"] = { 61.5, 38.3, BLADES_EDGE_MOUNTAINS },
-						["timeline"] = { "removed 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 						["maps"] = { TEROKKAR_FOREST },
 						["classes"] = { DRUID },
 						["cost"] = {
@@ -1364,8 +1755,11 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 70,
 						["groups"] = {
+							objective(1, {	-- 0/12 Bladewing Bloodletter slain
+								["provider"] = { "n", 21033 },	-- Bladewing Bloodletter
+							}),
 							i(32481, {	-- Charm of Swift Flight
-								["timeline"] = { "removed 4.0.1" },
+								["timeline"] = { REMOVED_4_0_1 },
 							}),
 						},
 					})),
@@ -1374,6 +1768,9 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 10911,	-- Fire At Will!
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Baelmon the Hound-Master slain
+								["provider"] = { "n", 19747 },	-- Baelmon the Hound-Master
+							}),
 							i(31693),	-- Natasha's Arcane Filament
 							i(31696),	-- Natasha's Battle Chain
 							i(31695),	-- Natasha's Choker
@@ -1440,6 +1837,15 @@ root(ROOTS.Zones, {
 						["coord"] = { 75.8, 61.5, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(64, 64, 20),
+						["groups"] = {
+							objective(1, {	-- 0/12 Iridescent Wing
+								["provider"] = { "i", 30792 },	-- Iridescent Wing
+								["crs"] = {
+									21373,	-- Silkwing
+									21839,	-- Mature Silkwing
+								},
+							}),
+						},
 					}),
 					q(10718, {	-- The Spirits Have Voices
 						["qg"] = 21950,	-- Garm Wolfbrother
@@ -1461,6 +1867,10 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 The Thunderspike
+								["provider"] = { "i", 30435 },	-- The Thunderspike
+								["cr"] = 21319,	-- Gor Grimgut
+							}),
 							i(31476),	-- Slow Death Dirk
 							i(31475),	-- Thunderlord Scalpel
 							i(31474),	-- Wand of the Ancestors
@@ -1472,6 +1882,15 @@ root(ROOTS.Zones, {
 						["coord"] = { 74.9, 60.5, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Bladespire Totem
+								["provider"] = { "i", 31651 },	-- Bladespire Totem
+								["crs"] = {
+									20765,	-- Bladespire Crusher
+									20766,	-- Bladespire Mystic
+								},
+							}),
+						},
 					}),
 					q(10516, {	-- The Trappings of a Vindicator
 						["qg"] = 21277,	-- Vindicator Vuuleen
@@ -1479,12 +1898,32 @@ root(ROOTS.Zones, {
 						["coord"] = { 44.0, 51.8, BLADES_EDGE_MOUNTAINS },
 						["races"] = ALLIANCE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Vindicator Vuuleen's Blade
+								["provider"] = { "i", 30413 },	-- Vindicator Vuuleen's Blade
+								["cr"] = 20731,	-- Droggam
+							}),
+							objective(2, {	-- 0/1 Vindicator Vuuleen's Shield
+								["provider"] = { "i", 30415 },	-- Vindicator Vuuleen's Shield
+								["cr"] = 20726,	-- Mugdorg
+							}),
+						},
 					}),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, q(11057, {	-- The Trouble Below
 						["qg"] = 23233,	-- Chu'a'lor
 						["coord"] = { 28.8, 57.4, BLADES_EDGE_MOUNTAINS },
 						["isBreadcrumb"] = true,
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Vindicator Vuuleen's Blade
+								["provider"] = { "i", 30413 },	-- Vindicator Vuuleen's Blade
+								["cr"] = 20731,	-- Droggam
+							}),
+							objective(2, {	-- 0/1 Vindicator Vuuleen's Shield
+								["provider"] = { "i", 30415 },	-- Vindicator Vuuleen's Shield
+								["cr"] = 20726,	-- Mugdorg
+							}),
+						},
 					})),
 					q(10825, {	-- The Truth Unorbed
 						["provider"] = { "i", 31489 },	-- Orb of the Grishna
@@ -1502,6 +1941,12 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Collection of Souls
+								["providers"] = {
+									{ "i", 30890 },	-- Collection of Souls
+									{ "o", 185033 },	-- Collection of Souls
+								},
+							}),
 							i(31690),	-- Belt of the Soul Saver
 							i(31689),	-- Mok'Nathal Hero's Pantaloons
 							i(31687),	-- Mok'Nathal Mantle
@@ -1513,6 +1958,21 @@ root(ROOTS.Zones, {
 						["coord"] = { 45.0, 72.2, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 T'chali's Hookah
+								["providers"] = {
+									{ "i", 30468 },	-- T'chali's Hookah
+									{ "o", 184744 },	-- T'chali's Hookah
+								},
+							}),
+							objective(2, {	-- 0/10 Bloodmaul Brutebane Brew
+								["providers"] = {
+									{ "i", 29443 },	-- Bloodmaul Brutebane Brew
+									{ "o", 184504 },	-- Bloodmaul Brew Keg
+								},
+								["cr"] = 19957,	-- Bloodmaul Brewmaster
+							}),
+						},
 					}),
 					q(10524, {	-- Thunderlord Clan Artifacts
 						["provider"] = { "i", 30431 },	-- Thunderlord Clan Artifact
@@ -1522,6 +1982,26 @@ root(ROOTS.Zones, {
 							19998,	-- Bladespire Shaman
 						},
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(2, {	-- 0/1 Thunderlord Clan Arrow
+								["providers"] = {
+									{ "i", 30433 },	-- Thunderlord Clan Arrow
+									{ "o", 184727 },	-- Thunderlord Clan Arrow
+								},
+							}),
+							objective(3, {	-- 0/1 Thunderlord Clan Drum
+								["providers"] = {
+									{ "i", 30432 },	-- Thunderlord Clan Drum
+									{ "o", 184726 },	-- Thunderlord Clan Drum
+								},
+							}),
+							objective(4, {	-- 0/1 Thunderlord Clan Tablet
+								["providers"] = {
+									{ "i", 30434 },	-- Thunderlord Clan Tablet
+									{ "o", 184728 },	-- Thunderlord Clan Tablet
+								},
+							}),
+						},
 					}),
 					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, q(11078, {	-- To Rule The Skies
 						["qg"] = 23334,	-- Sky Commander Keller
@@ -1532,6 +2012,24 @@ root(ROOTS.Zones, {
 						["coord"] = { 27.4, 52.7, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
 						["groups"] = {
+							objective(2, {	-- 0/1 Thunderlord Clan Arrow
+								["providers"] = {
+									{ "i", 30433 },	-- Thunderlord Clan Arrow
+									{ "o", 184727 },	-- Thunderlord Clan Arrow
+								},
+							}),
+							objective(3, {	-- 0/1 Thunderlord Clan Drum
+								["providers"] = {
+									{ "i", 30432 },	-- Thunderlord Clan Drum
+									{ "o", 184726 },	-- Thunderlord Clan Drum
+								},
+							}),
+							objective(4, {	-- 0/1 Thunderlord Clan Tablet
+								["providers"] = {
+									{ "i", 30434 },	-- Thunderlord Clan Tablet
+									{ "o", 184728 },	-- Thunderlord Clan Tablet
+								},
+							}),
 							objective(1, {	-- 0/1 Dragon Teeth
 								["provider"] = { "i", 32732 },	-- Dragon Teeth
 							}),
@@ -1563,6 +2061,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 75.3, 60.9, BLADES_EDGE_MOUNTAINS },
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
+						["groups"] = {
+							objective(1, {	-- 0/1 Vekh slain
+								["provider"] = { "n", 22305 },	-- Vekh
+							}),
+						},
 					}),
 					q(10525, {	-- Vision Guide
 						["qg"] = 21311,	-- Rokgah Bloodgrip
@@ -1571,6 +2074,11 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["lvl"] = lvlsquish(65, 65, 20),
 					}),
+					warchiefscommand(q(39198, {	-- Warchief's Command: Blade's Edge Mountains!
+						["timeline"] = { ADDED_6_2_0 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+					})),
 					q(10609, {	-- What Came First, the Drake or the Egg?
 						["qg"] = 21110,	-- Fizit "Doc" Clocktock
 						["coord"] = { 61.0, 68.1, BLADES_EDGE_MOUNTAINS },
@@ -1628,12 +2136,24 @@ root(ROOTS.Zones, {
 						["coord"] = { 28.0, 51.5, BLADES_EDGE_MOUNTAINS },
 						["isDaily"] = true,
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Aether Rays wrangled
+								["provider"] = { "i", 32698 },	-- Wrangling Rope
+								["cr"] = 22181,	-- Aether Ray
+							}),
+						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_SKYGUARD, q(11065, {	-- Wrangle Some Aether Rays!
 						["qg"] = 23335,	-- Skyguard Khatie
 						["sourceQuest"] = 11010,	-- Bombing Run
 						["coord"] = { 28.0, 51.5, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(70, 70, 20),
+						["groups"] = {
+							objective(1, {	-- 0/5 Aether Rays wrangled
+								["provider"] = { "i", 32698 },	-- Wrangling Rope
+								["cr"] = 22181,	-- Aether Ray
+							}),
+						},
 					})),
 					q(10894, {	-- Wyrmskull Watcher
 						["qg"] = 22007,	-- Tree Warden Chawn
@@ -1647,6 +2167,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 73.23, 40.1, BLADES_EDGE_MOUNTAINS },
 						["lvl"] = lvlsquish(65, 65, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Doomcryer slain
+								["provider"] = { "n", 19963 },	-- Doomcryer
+							}),
 							i(31793),	-- Ruuan Weald Wristguards
 							i(31792),	-- Evergrove Ranger's Cloak
 							i(31790),	-- Expedition Pendant
@@ -1657,21 +2180,24 @@ root(ROOTS.Zones, {
 						["qg"] = 23300,	-- Gahk
 						["sourceQuest"] = 11060,	-- A Crystalforged Darkrune
 						["coord"] = { 28.4, 58, BLADES_EDGE_MOUNTAINS },
-						["minReputation"] = { 1038, HONORED },	-- Ogri'la, Honored.
+						["minReputation"] = { FACTION_ORGILA, HONORED },	-- Ogri'la, Honored.
 						["isDaily"] = true,
 						["timeline"] = {
-							"added 3.3.0.10772",
-							"removed 4.1.0.7272",
+							ADDED_3_3_0,
+							REMOVED_4_1_0,
 						},
 						["cost"] = {
 							{ "i", 32643, 1 },	-- Darkrune
 						},
 						["lvl"] = lvlsquish(70, 70, 20),
 						["groups"] = {
+							objective(1, {	-- 0/1 Doomcryer slain
+								["provider"] = { "n", 19963 },	-- Doomcryer
+							}),
 							i(32602, {	-- Crystalforged Darkrune
 								["timeline"] = {
-									"added 3.3.0.10772",
-									"removed 4.1.0.7272",
+									ADDED_3_3_0,
+									REMOVED_4_1_0,
 								},
 							}),
 						},
@@ -1790,20 +2316,20 @@ root(ROOTS.Zones, {
 						},
 						["isDaily"] = true,
 						["timeline"] = {
-							"added 2.2.0.7272",
-							"removed 4.1.0.7272",
+							ADDED_2_2_0,
+							REMOVED_4_1_0,
 						},
 						["groups"] = {
 							i(32941, {	-- Corruptor's Signet
 								["timeline"] = {
-									"added 2.2.0.7272",
-									"removed 4.1.0.7272",
+									ADDED_2_2_0,
+									REMOVED_4_1_0,
 								},
 							}),
 							i(32942, {	-- Ring of the Overseer
 								["timeline"] = {
-									"added 2.2.0.7272",
-									"removed 4.1.0.7272",
+									ADDED_2_2_0,
+									REMOVED_4_1_0,
 								},
 							}),
 						},
@@ -1845,26 +2371,26 @@ root(ROOTS.Zones, {
 				n(REWARDS, {
 					i(32643, {	-- Darkrune
 						["timeline"] = {
-							"added 2.2.0.7091",
-							"removed 4.1.0.7272",
+							ADDED_2_2_0,
+							REMOVED_4_1_0,
 						},
 						["cost"] = {
-							 { "i", 33784, 5 },	-- Darkrune Fragment
+							{ "i", 33784, 5 },	-- Darkrune Fragment
 						},
 					}),
 					i(32777, {	-- Kronk's Grab Bag
 						i(32569),	-- Apexis Shard
 						i(33784, {	-- Darkrune Fragment
 							["timeline"] = {
-								"added 2.2.0.7091",
-								"removed 4.1.0.7272",
+								ADDED_2_2_0,
+								REMOVED_4_1_0,
 							},
 						}),
 					}),
 					i(32601, {	-- Unstable Flask of the Sorcerer
 						["coord"] = { 54, 11, BLADES_EDGE_MOUNTAINS },
 						["cost"] = {
-							 { "i", 32569, 10 },	-- Apexis Shard
+							{ "i", 32569, 10 },	-- Apexis Shard
 						},
 					}),
 				}),
@@ -1980,59 +2506,69 @@ root(ROOTS.Zones, {
 					}),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, n(23428, {	-- Jho'nass <Ogri'la Quartermaster>
 						["coord"] = { 28.0, 58.6, BLADES_EDGE_MOUNTAINS },
-						["groups"] = {
-							i(32653, {	-- Apexis Cloak
-								["cost"] = {
-									{ "i", 32572, 1 },	-- 1x Apexis Crystal
-									{ "i", 32569, 50 },	-- 50x Apexis Shard
-								},
-							}),
-							i(32650, {	-- Cerulean Crystal Rod
-								["cost"] = {
-									{ "i", 32572, 1 },	-- 1x Apexis Crystal
-									{ "i", 32569, 50 },	-- 50x Apexis Shard
-								},
-							}),
-							i(32651, {	-- Crystal Orb of Enlightenment
-								["cost"] = {
-									{ "i", 32572, 4 },		-- 4x Apexis Crystal
-									{ "i", 32569, 100 },	-- 100x Apexis Shard
-								},
-							}),
-							i(32654, {	-- Crystalforged Trinket
-								["cost"] = {
-									{ "i", 32572, 1 },	-- 1x Apexis Crystal
-									{ "i", 32569, 50 },	-- 50x Apexis Shard
-								},
-							}),
-							i(32645, {	-- Crystalline Crossbow
-								["cost"] = {
-									{ "i", 32572, 4 },		-- 4x Apexis Crystal
-									{ "i", 32569, 100 },	-- 100x Apexis Shard
-								},
-							}),
-							i(32652, {	-- Ogri'la Aegis
-								["cost"] = {
-									{ "i", 32572, 1 },	-- 1x Apexis Crystal
-									{ "i", 32569, 50 },	-- 50x Apexis Shard
-								},
-							}),
-							i(32828, {	-- Ogri'la Tabard
-								["cost"] = { { "i", 32569, 10 }, },	-- 10x Apexis Shard
-							}),
-							i(32647, {	-- Shard-Bound Bracers
-								["cost"] = {
-									{ "i", 32572, 4 },		-- 4x Apexis Crystal
-									{ "i", 32569, 100 },	-- 100x Apexis Shard
-								},
-							}),
-							i(32648, {	-- Vortex Walking Boots
-								["cost"] = {
-									{ "i", 32572, 4 },		-- 4x Apexis Crystal
-									{ "i", 32569, 100 },	-- 100x Apexis Shard
-								},
-							}),
-						},
+						["groups"] = bubbleDownClassicRep(FACTION_ORGILA, {
+							{		-- Neutral
+								i(33934),	-- Crystal Healing Potion
+								i(33935),	-- Crystal Mana Potion
+							}, {	-- Friendly
+							}, {	-- Honored
+								i(32783),	-- Blue Ogre Brew
+								i(32784),	-- Red Ogre Brew
+							}, {	-- Revered
+								i(32653, {	-- Apexis Cloak
+									["cost"] = {
+										{ "i", 32572, 1 },	-- 1x Apexis Crystal
+										{ "i", 32569, 50 },	-- 50x Apexis Shard
+									},
+								}),
+								i(32650, {	-- Cerulean Crystal Rod
+									["cost"] = {
+										{ "i", 32572, 1 },	-- 1x Apexis Crystal
+										{ "i", 32569, 50 },	-- 50x Apexis Shard
+									},
+								}),
+								i(32654, {	-- Crystalforged Trinket
+									["cost"] = {
+										{ "i", 32572, 1 },	-- 1x Apexis Crystal
+										{ "i", 32569, 50 },	-- 50x Apexis Shard
+									},
+								}),
+								i(32652, {	-- Ogri'la Aegis
+									["cost"] = {
+										{ "i", 32572, 1 },	-- 1x Apexis Crystal
+										{ "i", 32569, 50 },	-- 50x Apexis Shard
+									},
+								}),
+							}, {	-- Exalted
+								i(32651, {	-- Crystal Orb of Enlightenment
+									["cost"] = {
+										{ "i", 32572, 4 },		-- 4x Apexis Crystal
+										{ "i", 32569, 100 },	-- 100x Apexis Shard
+									},
+								}),
+								i(32645, {	-- Crystalline Crossbow
+									["cost"] = {
+										{ "i", 32572, 4 },		-- 4x Apexis Crystal
+										{ "i", 32569, 100 },	-- 100x Apexis Shard
+									},
+								}),
+								i(32828, {	-- Ogri'la Tabard
+									["cost"] = { { "i", 32569, 10 }, },	-- 10x Apexis Shard
+								}),
+								i(32647, {	-- Shard-Bound Bracers
+									["cost"] = {
+										{ "i", 32572, 4 },		-- 4x Apexis Crystal
+										{ "i", 32569, 100 },	-- 100x Apexis Shard
+									},
+								}),
+								i(32648, {	-- Vortex Walking Boots
+									["cost"] = {
+										{ "i", 32572, 4 },		-- 4x Apexis Crystal
+										{ "i", 32569, 100 },	-- 100x Apexis Shard
+									},
+								}),
+							},
+						}),
 					})),
 					n(19473, {	-- Raiza
 						["coord"] = { 53.0, 59.0, BLADES_EDGE_MOUNTAINS },
@@ -2052,11 +2588,11 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(21494, {	-- Smiles O'Byron <Engineer>
-						["requireSkill"] = 20219,	-- Gnomish Engineering
+						["requireSkill"] = GNOMISH_ENGINEERING,
 						["description"] = "Gnomish Engineers can speak to Smiles to learn the recipe.",
 						["coord"] = { 60.2, 65.2, BLADES_EDGE_MOUNTAINS },
 						["groups"] = {
-							recipe(36955),	-- Ultrasafe Transporter - Toshley's Station
+							r(36955),	-- Ultrasafe Transporter - Toshley's Station
 						},
 					}),
 					n(22099, {	-- Wyrmcult Provisioner
@@ -2175,6 +2711,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32672, {	-- Depleted Badge
+						["ignoreSource"] = true,
 						["crs"] = {
 							19973,	-- Abyssal Flamebringer
 							22175,	-- Apexis Flayer
@@ -2195,6 +2732,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32677, {	-- Depleted Cloak
+						["ignoreSource"] = true,
 						["crs"] = {
 							19973,	-- Abyssal Flamebringer
 							22181,	-- Aether Ray
@@ -2215,6 +2753,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32676, {	-- Depleted Cloth Bracers
+						["ignoreSource"] = true,
 						["crs"] = {
 							22181,	-- Aether Ray
 							22175,	-- Apexis Flayer
@@ -2236,6 +2775,7 @@ root(ROOTS.Zones, {
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32576)),	-- Depleted Crystal Focus
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32673, {	-- Depleted Dagger
+						["ignoreSource"] = true,
 						["crs"] = {
 							19973,	-- Abyssal Flamebringer
 							22181,	-- Aether Ray
@@ -2255,6 +2795,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32671, {	-- Depleted Mace
+						["ignoreSource"] = true,
 						["crs"] = {
 							19973,	-- Abyssal Flamebringer
 							22175,	-- Apexis Flayer
@@ -2278,6 +2819,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32675, {	-- Depleted Mail Gauntlets
+						["ignoreSource"] = true,
 						["crs"] = {
 							19973,	-- Abyssal Flamebringer
 							22181,	-- Aether Ray
@@ -2297,6 +2839,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32678, {	-- Depleted Ring
+						["ignoreSource"] = true,
 						["crs"] = {
 							22175,	-- Apexis Flayer
 							22275,	-- Apexis Guardian
@@ -2316,6 +2859,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32679, {	-- Depleted Staff
+						["ignoreSource"] = true,
 						["crs"] = {
 							22181,	-- Aether Ray
 							22175,	-- Apexis Flayer
@@ -2337,6 +2881,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32674, {	-- Depleted Sword
+						["ignoreSource"] = true,
 						["crs"] = {
 							22175,	-- Apexis Flayer
 							22275,	-- Apexis Guardian
@@ -2359,6 +2904,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					applyclassicphase(TBC_PHASE_TWO_OGRILA, i(32670, {	-- Depleted Two-Handed Axe
+						["ignoreSource"] = true,
 						["crs"] = {
 							19973,	-- Abyssal Flamebringer
 							22181,	-- Aether Ray
@@ -2520,7 +3066,7 @@ root(ROOTS.Zones, {
 						},
 					})),
 					n(20889, {	-- Ethereum Prisoner (Group Energy Ball)
-						["description"] = "You can use either of the keys listed below to open an Ethereum Stasis Chamber.",
+						["description"] = "You can use either of the listed keys to open an Ethereum Stasis Chamber.",
 						["coords"] = {
 							{ 51.2, 11.6, BLADES_EDGE_MOUNTAINS },	-- Ethereum Prisoner (Group Energy Ball)
 							{ 49.6, 15.8, BLADES_EDGE_MOUNTAINS },	-- Ethereum Prisoner (Group Energy Ball)
@@ -2603,7 +3149,7 @@ root(ROOTS.Zones, {
 						},
 						["cr"] = 19973,	-- Abyssal Flamebringer
 					}),
-					i(23800, {	-- Schematic: Felsteel Boomstick
+					i(23800, {	-- Schematic: Felsteel Boomstick (RECIPE!)
 						["coords"] = {
 							{ 73.4, 40.6, BLADES_EDGE_MOUNTAINS },
 							{ 73.8, 40.6, BLADES_EDGE_MOUNTAINS },
@@ -2613,7 +3159,7 @@ root(ROOTS.Zones, {
 						},
 						["cr"] = 19960,	-- Doomforge Engineer
 					}),
-					i(34114, {	-- Schematic: Field Repair Bot 110G
+					i(34114, {	-- Schematic: Field Repair Bot 110G (RECIPE!)
 						["coords"] = {
 							{ 27.6, 69.0, BLADES_EDGE_MOUNTAINS },
 							{ 29.0, 47.2, BLADES_EDGE_MOUNTAINS },
@@ -2624,6 +3170,7 @@ root(ROOTS.Zones, {
 							23385,	-- Gan'arg Analyzer
 							23386,	-- Gan'arg Analyzer (wh says "Simon Unit" drops it but these are the actual mobs)
 						},
+						["timeline"] = { ADDED_2_3_0 },
 					}),
 				}),
 			},

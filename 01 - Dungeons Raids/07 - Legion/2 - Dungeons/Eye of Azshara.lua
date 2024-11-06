@@ -1,24 +1,18 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(716, {	-- Eye of Azshara
 		["mapID"] = 713,
 		["coord"] = { 61.2, 41.1, AZSUNA },
 		["lvl"] = 98,
 		["g"] = {
 			n(ZONE_DROPS, {
-				i(137726),	-- Schematic: Leystone Buoy
-			}),
-			n(ARTIFACTS, {
-				i(139574, {	-- Coil of the Drowned Queen (shaman appearance)
-					["description"] = "Drops from the first two bosses on any difficulty.",
-					-- ["sourceQuest"] = , TODO
-					["crs"] = {
-						91784,	-- Warlord Parjesh
-						91789,	-- Lady Hatecoil
-					},
+				i(137726),	-- Schematic: Leystone Buoy (RECIPE!)
+				prof(INSCRIPTION, {
+					i(141051, {	-- Technique: Glyph of the Trident (RECIPE!)
+						["description"] = "Drops from nagas in any Broken Isles zone. Recommended to farm the nagas before the first Boss in the Eye of Azshara Dungeon.",
+					}),
 				}),
 			}),
 			n(QUESTS, {
@@ -56,7 +50,23 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					["lvl"] = 110,
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
+				cr(91784, e(1480, {	-- Warlord Parjesh
+					i(139574), -- Coil of the Drowned Queen (shaman appearance)
+				})),
+				cr(91789, e(1490, {	-- Lady Hatecoil
+					i(139574), -- Coil of the Drowned Queen (shaman appearance)
+				})),
+				cr(96028, e(1492, {	-- Wrath of Azshara
+					ach(10780),	-- Eye of Azshara
+					i(137825),	-- Design: Dawnlight Band [Rank 2] (RECIPE!)
+					i(141916),	-- Formula: Enchant Neck - Mark of the Ancient Priestess [Rank 2] (RECIPE!)
+					i(127929),	-- Recipe: Leytorrent Potion [Rank 2] (RECIPE!)
+					i(137877),	-- Pattern: Warhide Pants [Rank 3] (RECIPE!)
+					i(136705),	-- Technique: Aqual Mark (RECIPE!)
+				})),
+			}),
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				cr(91784, e(1480, {	-- Warlord Parjesh
 					i(134240),	-- Brinewashed Leather Cowl
 					i(134223),	-- Coralplate Chestguard
@@ -109,12 +119,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137371),	-- Tumultuous Aftershock
 				})),
 				cr(96028, e(1492, {	-- Wrath of Azshara
-					ach(10780),	-- Eye of Azshara
-					i(137825),	-- Design: Dawnlight Band [Rank 2] (RECIPE!)
-					i(141916),	-- Formula: Enchant Neck - Mark of the Ancient Priestess [Rank 2] (RECIPE!)
-					i(127929),	-- Recipe: Leytorrent Potion [Rank 2] (RECIPE!)
-					i(137877),	-- Pattern: Warhide Pants [Rank 3] (RECIPE!)
-					i(136705),	-- Technique: Aqual Mark (RECIPE!)
 					i(134532),	-- Band of Fused Coral
 					i(134237),	-- Brinewashed Leather Boots
 					i(137378),	-- Bottled Hurricane
@@ -131,7 +135,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137379),	-- Tempestbinder's Crystal
 				})),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = 110,
 				["g"] = {
 					cr(91784, e(1480, {	-- Warlord Parjesh
@@ -187,11 +191,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 					cr(96028, e(1492, {	-- Wrath of Azshara
 						ach(10781),	-- Heroic: Eye of Azshara
-						i(137825),	-- Design: Dawnlight Band [Rank 2] (RECIPE!)
-						i(141916),	-- Formula: Enchant Neck - Mark of the Ancient Priestess [Rank 2] (RECIPE!)
-						i(127929),	-- Recipe: Leytorrent Potion [Rank 2] (RECIPE!)
-						i(137877),	-- Pattern: Warhide Pants [Rank 3] (RECIPE!)
-						i(136705),	-- Technique: Aqual Mark (RECIPE!)
 						i(134532),	-- Band of Fused Coral
 						i(134237),	-- Brinewashed Leather Boots
 						i(137378),	-- Bottled Hurricane
@@ -209,11 +208,13 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					}))
 				},
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				["lvl"] = 110,
 				["g"] = {
 					cr(91784, e(1480, {	-- Warlord Parjesh
-						ach(10456),	-- But Y ou Say He's Just a Friend
+						ach(10456, {	-- But You Say He's Just a Friend
+							["crs"] = { 97264 },	-- Hatecoil Shellbreaker
+						}),
 						i(134240),	-- Brinewashed Leather Cowl
 						i(134223),	-- Coralplate Chestguard
 						i(134484),	-- Crestrider Conduit Bracers
@@ -227,7 +228,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(137363),	-- Bloodied Spearhead
 					})),
 					cr(91789, e(1490, {	-- Lady Hatecoil
-						ach(10457),	-- Stay Salty
+						ach(10457, {	-- Stay Salty
+							["crs"] = { 98293 },	-- Saltsea Globule
+						}),
 						i(134238),	-- Brinewashed Leather Pants
 						i(134230),	-- Coralplate Wristguard
 						i(134433),	-- Cord of the Sea-Caller
@@ -269,11 +272,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						ach(10782),	-- Mythic: Eye of Azshara
 						ach(10856),	-- Mythic: Eye of Azshara Guild Run
 						ach(10458),	-- Ready for Raiding V
-						i(137825),	-- Design: Dawnlight Band [Rank 2] (RECIPE!)
-						i(141916),	-- Formula: Enchant Neck - Mark of the Ancient Priestess [Rank 2] (RECIPE!)
-						i(127929),	-- Recipe: Leytorrent Potion [Rank 2] (RECIPE!)
-						i(137877),	-- Pattern: Warhide Pants [Rank 3] (RECIPE!)
-						i(136705),	-- Technique: Aqual Mark (RECIPE!)
 						i(134532),	-- Band of Fused Coral
 						i(134237),	-- Brinewashed Leather Boots
 						i(137378),	-- Bottled Hurricane

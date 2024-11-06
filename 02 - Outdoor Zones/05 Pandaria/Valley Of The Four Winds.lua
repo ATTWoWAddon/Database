@@ -6,159 +6,27 @@ root(ROOTS.Zones, {
 	m(PANDARIA, {
 		m(VALLEY_OF_THE_FOUR_WINDS, {
 			["lore"] = "Valley of the Four Winds is a tranquil plain of lush farmland, bordered by dense mysterious jungles along the south and impassible mountains to the north. The valley is considered the breadbasket of Pandaria, but the year's harvest is in jeopardy and a terrible malaise has overcome the pandaren that live along the coast. The valley is also the home of the legendary Stormstout Brewery, where Chen Stormstout and his niece Li Li hope to journey to discover the whereabouts of their long-lost ancestors.",
-			["icon"] = "Interface\\Icons\\achievement_zone_valleyoffourwinds",
+			["icon"] = 618317,
 			["maps"] = {
 				377,	-- Cavern of Endless Echoes
 			},
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					ach(7294),	-- A Taste of Things to Come (Halfhill)
-					ach(6969, {	-- Explore Valley of the Four Winds
-						crit(1),	-- Winds' Edge
-						crit(2),	-- Dustback Gorge
-						crit(3),	-- Gilded Fan
-						crit(4),	-- The Imperial Granary
-						crit(5),	-- Halfhill
-						crit(6),	-- Stoneplow
-						crit(7),	-- Kunzen Village
-						crit(8),	-- Mudmug's Place
-						crit(9),	-- Nesingwary Safari
-						crit(10),	-- Paoquan Hollow
-						crit(11),	-- Pools of Purity
-						crit(12),	-- Rumbling Terrace
-						crit(13),	-- Silken Fields
-						crit(14),	-- Singing Marshes
-						crit(15),	-- Stormstout Brewery
-						crit(16),	-- The Heartland
-						crit(17),	-- Thunderfoot Ranch
-						crit(18),	-- Zhu's Descent
-					}),
-					ach(6846, {	-- Fish Tales
-						["collectible"] = false,
-						["g"] = {
-							crit(2, {	-- Waterspeakers
-								["coord"] = { 61.5, 34.8, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-						},
-					}),
-					ach(6850, {	-- Hozen in the Mist
-						["collectible"] = false,
-						["g"] = {
-							crit(3, {	-- Embracing the Passions
-								["coord"] = { 83.2, 21.1, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-						},
-					}),
-					ach(7284, {	-- Is Another Man's Treasure
-						["collectible"] = false,
-						["g"] = {
-							n(64004, {	-- Ghostly Pandaren Fisherman
-								["description"] = "Speak with the Ghostly Pandaren Fisherman to get the toy.",
-								["questID"] = 31284,
-								["coord"] = { 46.8, 24.6, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									i(85973),	-- Ancient Pandaren Fishing Charm (TOY!)
-								},
-							}),
-							n(64191, {	-- Ghostly Pandaren Craftsman
-								["questID"] = 31292,
-								["coord"] = { 45.4, 38.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									i(86079),	-- Ancient Pandaren Woodcutter
-								},
-							}),
-							o(213749, {		-- Staff of the Hidden Master
-								["questID"] = 31407,
-								["coords"] = {
-									{ 15.4, 29.1, VALLEY_OF_THE_FOUR_WINDS },
-									{ 17.5, 35.7, VALLEY_OF_THE_FOUR_WINDS },
-									{ 19.1, 37.9, VALLEY_OF_THE_FOUR_WINDS },
-									{ 15.0, 33.7, VALLEY_OF_THE_FOUR_WINDS },
-									{ 19.0, 42.5, VALLEY_OF_THE_FOUR_WINDS },
-								},
-								["g"] = {
-									i(86218),	-- Staff of the Hidden Master
-								},
-							}),
-							o(213649, {		-- Cache of Pilfered Goods
-								["questID"] = 31406,
-								["coord"] = { 43.61, 37.48, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									i(86110),	-- Stolen Necklace of Precision
-									i(86111),	-- Stolen Necklace of Accuracy
-									i(86112),	-- Stolen Amulet of Wisdom
-									i(86113),	-- Stolen Amulet of Might
-									i(86114),	-- Stolen Necklace of Fortitude
-								},
-							}),
-						},
-					}),
+					explorationAch(6969),	-- Explore Valley of the Four Winds
 					ach(7295, {	-- Listen to the Drunk Fish (Halfhill)
-						crit(1),	-- Juicycrunch Carrot
-						crit(2),	-- Green Cabbage
-						crit(3),	-- Scallions
-						crit(4),	-- Mogu Pumpkin
-						crit(5),	-- Red Blossom Leek
-						crit(6),	-- Pink Turnip
-						crit(7),	-- White Turnip
+						crit(20536),	-- Juicycrunch Carrot
+						crit(21034),	-- Green Cabbage
+						crit(21037),	-- Scallions
+						crit(21035),	-- Mogu Pumpkin
+						crit(21036),	-- Red Blossom Leek
+						crit(21038),	-- Pink Turnip
+						crit(21039),	-- White Turnip
 					}),
 					ach(6301, {	-- Rally the Valley
-						crit(1, {	-- Thunderfoot Fields
-							["sourceQuest"] = 29918,	-- A Lesson in Bravery
-						}),
-						crit(2, {	-- Mudmug's Place
-							["sourceQuest"] = 29952,	-- Broken Dreams
-						}),
-						crit(3, {	-- Chen's Masterpiece
-							["sourceQuest"] = 30073,	-- The Emperor
-						}),
-						crit(4, {	-- The Stormstout Brewery
-							["sourceQuest"] = 30078,	-- Cleaning House
-						}),
-						crit(5, {	-- The Hidden Master
-							["sourceQuest"] = 29990,	-- Training and Discipline
-						}),
-						crit(6, {	-- Nesingwary's Safari
-							["sourceQuest"] = 30186,	-- Parental Mastery
-						}),
-					}),
-					ach(7997, {	-- Riches of Pandaria
-						["collectible"] = false,
-						["g"] = {
-							o(214340, {	-- Boat-Building Instructions
-								["questID"] = 31869,
-								["coord"] = { 92.2, 39.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									i(87524),	-- Boat-Building Instructions
-								},
-							}),
-							o(213650, {	-- Virmen Treasure Cache
-								["questID"] = 31405,
-								["coord"] = { 23.2, 30.8, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-						},
-					}),
-					ach(7502, {	-- Savior of Stoneplow
-						["sourceQuests"] = { 30627 },	-- The Savior of Stoneplow
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(7293),	-- Till the Break of Dawn (Halfhill)
-					ach(6350, {	-- To All the Squirrels I Once Caressed?
-						["collectible"] = false,
-						["g"] = {
-							crit(2,  {	-- Bandicoon
-								["crs"] = { 64782 },	-- Bandicoon
-							}),
-							crit(11, {	-- Malayan Quillrat
-								["crs"] = { 64784 },	-- Malayan Quillrat
-							}),
-							crit(12, {	-- Marsh Fiddler
-								["crs"] = { 64786 },	-- Marsh Fiddler
-							}),
-							crit(16, {	-- Sifang Otter
-								["crs"] = { 64787 },	-- Sifang Otter
-							}),
-						},
-					}),
 				}),
 				battlepets({
 					["sym"] = {{"select","speciesID",
@@ -175,70 +43,102 @@ root(ROOTS.Zones, {
 						pet(713),	-- Softshell Snapling (PET!)
 					},
 				}),
+				explorationHeader({
+					exploration(6028),	-- Dustback Gorge
+					exploration(5984),	-- Gilded Fan
+					exploration(5980),	-- Halfhill
+					exploration(6097),	-- Kunzen Cave
+					exploration(6065),	-- Kunzen Village
+					exploration(5957),	-- Mudmug's Place
+					exploration(6025),	-- Nesingwary's Safari
+					exploration(5967),	-- Paoquan Hollow
+					exploration(5972),	-- Pools of Purity
+					exploration(6387),	-- Rumbling Terrace
+					exploration(5986),	-- Silken Fields
+					exploration(5970),	-- Singing Marshes
+					exploration(6064),	-- Skyrange
+					exploration(5968),	-- Stoneplow
+					exploration(5969),	-- Stoneplow Fields
+					exploration(6001),	-- Stormstout Brewery
+					exploration(5958),	-- Sunsoaked Meadow
+					exploration(5992),	-- The Heartland
+					exploration(5982),	-- The Imperial Granary
+					exploration(6029),	-- The Torjari Pit
+					exploration(6030),	-- The Wild Plains
+					exploration(5939),	-- Thunderfoot Farm
+					exploration(5937),	-- Thunderfoot Fields
+					exploration(5938),	-- Thunderfoot Ranch
+					exploration(6107),	-- Verdant Belt
+					exploration(5985),	-- Winds' Edge
+					exploration(6388),	-- Zhu's Descent
+				}),
 				n(FACTIONS, {
-					faction(1272, {	-- The Tillers
-						["icon"] = "Interface\\Icons\\achievement_faction_tillers",
+					faction(FACTION_THE_TILLERS, {	-- The Tillers
+						["icon"] = 645198,
 						["g"] = {
 							n(ACHIEVEMENTS, {
-								ach(6551, { -- Friend on the Farm
-									["sym"] = {{"select","achievementID",6552},{"pop"}},	-- same criteria as full achieve
+								ach(6551, {	-- Friend on the Farm
+									["sym"] = {{"partial_achievement",6552}},	-- Friends on the Farm
 								}),
 								ach(6552, {		-- Friends on the Farm
-									crit(1, { -- Farmer Fung
-										["_factions"] = { 1283 },
+									crit(19398, {	-- Farmer Fung
+										["_factions"] = { FACTION_FARMER_FUNG },
 									}),
-									crit(2, { -- Jogu the Drunk
-										["_factions"] = { 1273 },
+									crit(19402, {	-- Jogu the Drunk
+										["_factions"] = { FACTION_JOGU_THE_DRUNK },
 									}),
-									crit(3, { -- Chee Chee
-										["_factions"] = { 1277 },
+									crit(19396, {	-- Chee Chee
+										["_factions"] = { FACTION_CHEE_CHEE },
 									}),
-									crit(4, { -- Sho
-										["_factions"] = { 1278 },
+									crit(19404, {	-- Sho
+										["_factions"] = { FACTION_SHO },
 									}),
-									crit(5, { -- Ella
-										["_factions"] = { 1275 },
+									crit(19397, {	-- Ella
+										["_factions"] = { FACTION_ELLA },
 									}),
-									crit(6, { -- Tina Mudclaw
-										["_factions"] = { 1280 },
+									crit(19405, {	-- Tina Mudclaw
+										["_factions"] = { FACTION_TINA_MUDCLAW },
 									}),
-									crit(7, { -- Old Hillpaw
-										["_factions"] = { 1276 },
+									crit(19403, {	-- Old Hillpaw
+										["_factions"] = { FACTION_OLD_HILLPAW },
 									}),
-									crit(8, { -- Haohan Mudclaw
-										["_factions"] = { 1279 },
+									crit(19401, {	-- Haohan Mudclaw
+										["_factions"] = { FACTION_HAOHAN_MUDCLAW },
 									}),
-									crit(9, { -- Fish Fellreed
-										["_factions"] = { 1282 },
+									crit(19399, {	-- Fish Fellreed
+										["_factions"] = { FACTION_FISH_FELLREED },
 									}),
-									crit(10, { -- Gina Mudclaw
-										["_factions"] = { 1281 },
+									crit(19400, {	-- Gina Mudclaw
+										["_factions"] = { FACTION_GINA_MUDCLAW },
 									}),
 								}),
 								ach(7292, {	-- Green Acres
 									["sourceQuests"] = { 30256 },	-- Learn and Grow IV: Harvesting (while on this quest)
 								}),
+								ach(6544, {		-- The Tillers
+									title(195),		-- Farmer <Name>
+								}),
 							}),
-							faction(1277, {	-- Chee Chee
+							faction(FACTION_CHEE_CHEE, {	-- Chee Chee
 								["cr"] = 58709,	-- Chee Chee
 								["coord"] = { 53.0, 52.0, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 58709,	-- Chee Chee
-									["maxReputation"] = { 1277, 6 },
+									["maxReputation"] = { FACTION_CHEE_CHEE, 6 },
 								},{
 									q(31341, {	-- A Wolf In Sheep's Clothing
 										["sourceQuests"] = { 31340 },	-- Oh Sheepie....
 									}),
 									q(31338, {	-- Lost Sheepie
-										["minReputation"] = { 1277, 3 },	-- Buddy
+										["minReputation"] = { FACTION_CHEE_CHEE, 3 },	-- Buddy
 									}),
 									q(31339, {	-- Lost Sheepie... Again
 										["sourceQuests"] = { 31338 },	-- Lost Sheepie
-										["minReputation"] = { 1277, 4 },	-- Friend
+										["minReputation"] = { FACTION_CHEE_CHEE, 4 },	-- Friend
 									}),
 									q(31340, {	-- Oh Sheepie...
 										["sourceQuests"] = { 31339 },	-- Lost Sheepie... Again
-										["minReputation"] = { 1277, 5 },	-- Good Friend
+										["minReputation"] = { FACTION_CHEE_CHEE, 5 },	-- Good Friend
 									}),
 									q(30402, {	-- A Dish for Chee Chee
 										["isDaily"] = true,
@@ -275,21 +175,21 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1275, {	-- Ella
+							faction(FACTION_ELLA, {	-- Ella
 								["cr"] = 58647,	-- Ella
 								["coord"] = { 53.0, 51.6, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 58647,	-- Ella
-									["maxReputation"] = { 1275, 6 },
+									["maxReputation"] = { FACTION_ELLA, 6 },
 								},{
 									q(31534, {	-- The Beginner's Brew
-										["minReputation"] = { 1275, 3 },	-- Buddy
+										["minReputation"] = { FACTION_ELLA, 3 },	-- Buddy
 									}),
 									q(31537, {	-- Ella's Taste Test
-										["minReputation"] = { 1275, 4 },	-- Friend
+										["minReputation"] = { FACTION_ELLA, 4 },	-- Friend
 									}),
 									q(31538, {	-- A Worthy Brew
-										["minReputation"] = { 1275, 5 },	-- Good Friend
+										["minReputation"] = { FACTION_ELLA, 5 },	-- Good Friend
 									}),
 									q(30386, {	-- A Dish for Ella
 										["isDaily"] = true,
@@ -327,15 +227,15 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1283, {	-- Farmer Fung
+							faction(FACTION_FARMER_FUNG, {	-- Farmer Fung
 								["cr"] = 57298,	-- Farmer Fung
 								["coord"] = { 48.3, 33.9, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 57298,	-- Farmer Fung
-									["maxReputation"] = { 1283, 6 },
+									["maxReputation"] = { FACTION_FARMER_FUNG, 6 },
 								},{
 									q(30517, {	-- Farmer Fung's Vote I: Yak Attack
-										["minReputation"] = { 1272, REVERED + 4500 },	-- The Tillers
+										["minReputation"] = { FACTION_THE_TILLERS, REVERED + 4500 },	-- The Tillers
 										["sourceQuests"] = { 31946 },	-- Mung-Mung's Vote III: The Great Carrot Caper
 										["qg"] = 58646,	-- Farmer Yoon
 										["coord"] = { 52.2, 48.8, VALLEY_OF_THE_FOUR_WINDS },
@@ -381,7 +281,7 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1282, {	-- Fish Fellreed
+							faction(FACTION_FISH_FELLREED, {	-- Fish Fellreed
 								["cr"] = 58705,	-- Fish Fellreed
 								["coord"] = { 52.8, 51.8, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
@@ -389,7 +289,7 @@ root(ROOTS.Zones, {
 										58705,	-- Fish Fellreed
 										59517,	-- Fish Fellreed
 									},
-									["maxReputation"] = { 1282, 6 },
+									["maxReputation"] = { FACTION_FISH_FELLREED, 6 },
 								},{
 									q(30427, {	-- A Dish for Fish
 										["isDaily"] = true,
@@ -425,12 +325,12 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1281, {	-- Gina Mudclaw
+							faction(FACTION_GINA_MUDCLAW, {	-- Gina Mudclaw
 								["cr"] = 58706,	-- Gina Mudclaw
 								["coord"] = { 53.2, 51.8, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 58706,	-- Gina Mudclaw
-									["maxReputation"] = { 1281, 6 },
+									["maxReputation"] = { FACTION_GINA_MUDCLAW, 6 },
 								},{
 									q(30257, {	-- Learn and Grow V: Halfhill Market
 										["sourceQuests"] = { 30256 },	-- Learn and Grow IV: Harvesting
@@ -475,17 +375,17 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1279, {	-- Haohan Mudclaw
+							faction(FACTION_HAOHAN_MUDCLAW, {	-- Haohan Mudclaw
 								["cr"] = 57402,	-- Haohan Mudclaw
 								["coord"] = { 53.0, 51.7, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 57402,	-- Haohan Mudclaw
-									["maxReputation"] = { 1279, 6 },
+									["maxReputation"] = { FACTION_HAOHAN_MUDCLAW, 6 },
 								},{
 									q(30521, {	-- Haohan's Vote I: Bungalow Break-In
 										["coord"] = { 52.2, 48.8, VALLEY_OF_THE_FOUR_WINDS },
 										["qg"] = 58646,	-- Farmer Yoon
-										["minReputation"] = { 1272, REVERED + 16800 },	-- The Tillers
+										["minReputation"] = { FACTION_THE_TILLERS, REVERED + 16800 },	-- The Tillers
 									}),
 									q(30414, {	-- A Dish for Haohan
 										["isDaily"] = true,
@@ -523,24 +423,24 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1273, {	-- Jogu the Drunk
+							faction(FACTION_JOGU_THE_DRUNK, {	-- Jogu the Drunk
 								["cr"] = 58710,	-- Jogu the Drunk
 								["coord"] = { 53.6, 52.6, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 58710,	-- Jogu the Drunk
-									["maxReputation"] = { 1273, 6 },
+									["maxReputation"] = { FACTION_JOGU_THE_DRUNK, 6 },
 								},{
 									q(31323, {	-- Buy A Fish A Brewery?
-										["minReputation"] = { 1273, 5 },	-- Good Friend
+										["minReputation"] = { FACTION_JOGU_THE_DRUNK, 5 },	-- Good Friend
 									}),
 									q(31320, {	-- Buy A Fish A Drink?
-										["minReputation"] = { 1273, 2 },	-- Acquaintance
+										["minReputation"] = { FACTION_JOGU_THE_DRUNK, 2 },	-- Acquaintance
 									}),
 									q(31322, {	-- Buy A Fish A Keg?
-										["minReputation"] = { 1273, 4 },	-- Friend
+										["minReputation"] = { FACTION_JOGU_THE_DRUNK, 4 },	-- Friend
 									}),
 									q(31321, {	-- Buy A Fish A Round?
-										["minReputation"] = { 1273, 3 },	-- Buddy
+										["minReputation"] = { FACTION_JOGU_THE_DRUNK, 3 },	-- Buddy
 									}),
 									q(30439, {	-- A Dish for Jogu
 										["isDaily"] = true,
@@ -577,12 +477,12 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1276, {	-- Old Hillpaw
+							faction(FACTION_OLD_HILLPAW, {	-- Old Hillpaw
 								["cr"] = 58707,	-- Old Hillpaw
 								["coord"] = { 53.1, 51.9, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 58707,	-- Old Hillpaw
-									["maxReputation"] = { 1276, 6 },
+									["maxReputation"] = { FACTION_OLD_HILLPAW, 6 },
 								},{
 									q(30396, {	-- A Dish for Old Hillpaw
 										["isDaily"] = true,
@@ -618,24 +518,24 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1278, {	-- Sho
+							faction(FACTION_SHO, {	-- Sho
 								["cr"] = 58708,	-- Sho
 								["coord"] = { 53.1, 52.0, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 58708,	-- Sho
-									["maxReputation"] = { 1278, 6 },
+									["maxReputation"] = { FACTION_SHO, 6 },
 								},{
 									q(31531, {	-- Mission: Aerial Threat
 										["description"] = "Must be at least 4200/8400 into \"Friend\" with Sho to start this quest.",
-										["minReputation"] = { 1278, 4 },	-- Friend
+										["minReputation"] = { FACTION_SHO, 4 },	-- Friend
 									}),
 									q(31529, {	-- Mission: Culling The Vermin
 										["description"] = "Must be at least \"Buddy\" with Sho to start this quest.",
-										["minReputation"] = { 1278, 3 },	-- Buddy
+										["minReputation"] = { FACTION_SHO, 3 },	-- Buddy
 									}),
 									q(31532, {	-- Mission: Predator of the Cliffs
 										["description"] = "Must be at least 4200 into \"Good Friend\" with Sho to start this quest.",
-										["minReputation"] = { 1278, 5 },	-- Good Friend
+										["minReputation"] = { FACTION_SHO, 5 },	-- Good Friend
 									}),
 									q(30408, {	-- A Dish for Sho
 										["isDaily"] = true,
@@ -672,16 +572,16 @@ root(ROOTS.Zones, {
 									}),
 								}),
 							}),
-							faction(1280, {	-- Tina Mudclaw
+							faction(FACTION_TINA_MUDCLAW, {	-- Tina Mudclaw
 								["cr"] = 58761,	-- Tina Mudclaw
 								["coord"] = { 53.0, 51.8, VALLEY_OF_THE_FOUR_WINDS },
 								["g"] = sharedData({
 									["qg"] = 58761,	-- Tina Mudclaw
-									["maxReputation"] = { 1280, 6 },
+									["maxReputation"] = { FACTION_TINA_MUDCLAW, 6 },
 								},{
 									q(31329, {	-- A Beautiful Brooch
 										["provider"] = { "i", 86436 },	-- Beautiful Brooch
-										["minReputation"] = { 1280, 5 },	-- Good Friend
+										["minReputation"] = { FACTION_TINA_MUDCLAW, 5 },	-- Good Friend
 										["crs"] = {
 											59120,	-- Kunzen Rockflinger
 											59126,	-- Jokka-Jokka
@@ -704,7 +604,7 @@ root(ROOTS.Zones, {
 									}),
 									q(31328, {	-- An Exquisite Earring
 										["provider"] = { "i", 86435 },	-- Exquisite Earring
-										["minReputation"] = { 1280, 4 },	-- Friend
+										["minReputation"] = { FACTION_TINA_MUDCLAW, 4 },	-- Friend
 										["crs"] = {
 											59120,	-- Kunzen Rockflinger
 											59126,	-- Jokka-Jokka
@@ -727,7 +627,7 @@ root(ROOTS.Zones, {
 									}),
 									q(31325, {	-- A Very Nice Necklace
 										["provider"] = { "i", 86433 },	-- Nice Necklace
-										["minReputation"] = { 1280, 2 },	-- Acquaintance
+										["minReputation"] = { FACTION_TINA_MUDCLAW, 2 },	-- Acquaintance
 										["crs"] = {
 											59120,	-- Kunzen Rockflinger
 											59126,	-- Jokka-Jokka
@@ -750,7 +650,7 @@ root(ROOTS.Zones, {
 									}),
 									q(31326, {	-- Tina's Tasteful Tiara
 										["provider"] = { "i", 86434 },	-- Tasteful Tiara
-										["minReputation"] = { 1280, 3 },	-- Buddy
+										["minReputation"] = { FACTION_TINA_MUDCLAW, 3 },	-- Buddy
 										["crs"] = {
 											59120,	-- Kunzen Rockflinger
 											59126,	-- Jokka-Jokka
@@ -816,7 +716,7 @@ root(ROOTS.Zones, {
 									["coord"] = { 52.8, 52.0, VALLEY_OF_THE_FOUR_WINDS },
 								}),
 								q(30516, {	-- Growing the Farm I: A Little Problem
-									["minReputation"] = { 1272, HONORED },
+									["minReputation"] = { FACTION_THE_TILLERS, HONORED },
 									["sourceQuests"] = { 30260 },	-- Growing the Farm I: The Weeds
 									["provider"] = { "n", 57385 },	-- Gai Lan
 									["coord"] = { 38.7, 51.7, VALLEY_OF_THE_FOUR_WINDS },
@@ -832,7 +732,7 @@ root(ROOTS.Zones, {
 									["coord"] = { 41.7, 30.1, VALLEY_OF_THE_FOUR_WINDS },
 								}),
 								q(30523, {	-- Growing the Farm II: The Broken Wagon
-									["minReputation"] = { 1272, REVERED },
+									["minReputation"] = { FACTION_THE_TILLERS, REVERED },
 									["sourceQuests"] = { 30516 },	-- Growing the Farm I: A Little Problem
 									["provider"] = { "n", 58646 },	-- Farmer Yoon
 									["coord"] = { 52.2, 48.8, VALLEY_OF_THE_FOUR_WINDS },
@@ -842,7 +742,7 @@ root(ROOTS.Zones, {
 									["description"] = "Must have all Tillers votes collected to start this quest.",
 									["coord"] = { 52.2, 48.8, VALLEY_OF_THE_FOUR_WINDS },
 									["provider"] = { "n", 58646 },	-- Farmer Yoon
-									["minReputation"] = { 1272, EXALTED },	-- The Tillers
+									["minReputation"] = { FACTION_THE_TILLERS, EXALTED },	-- The Tillers
 								}),
 								q(30522, {	-- Haohan's Vote II: The Real Culprits
 									["sourceQuests"] = { 30521 },	-- Haohan's Vote I: Bungalow Break-In
@@ -906,7 +806,7 @@ root(ROOTS.Zones, {
 								q(30519, {	-- Nana's Vote I: Nana's Secret Recipe
 									["coord"] = { 52.3, 48.8, VALLEY_OF_THE_FOUR_WINDS },
 									["provider"] = { "n", 58646 },	-- Farmer Yoon
-									["minReputation"] = { 1272, REVERED + 8400 },	-- The Tillers
+									["minReputation"] = { FACTION_THE_TILLERS, REVERED + 8400 },	-- The Tillers
 								}),
 								q(31948, {	-- Nana's Vote II: The Sacred Springs
 									["sourceQuests"] = { 30519 },	-- Nana's Vote I: Nana's Secret Recipe
@@ -932,7 +832,7 @@ root(ROOTS.Zones, {
 									["crs"] = { 59639 },	-- Enormous Cattail Grouper
 									["provider"] = { "i", 86404 },	-- Old Map
 									["description"] = "Requires a reputation level of Exalted with The Tillers and Best Friend with all Halfhill farmers to drop.",
-									["minReputation"] = { 1272, EXALTED },	-- The Tillers
+									["minReputation"] = { FACTION_THE_TILLERS, EXALTED },	-- The Tillers
 								}),
 							}),
 							-- Daily
@@ -1076,37 +976,63 @@ root(ROOTS.Zones, {
 						["coord"] = { 46.0, 43.6, VALLEY_OF_THE_FOUR_WINDS },
 					}),
 				}),
+				n(PROFESSIONS, {
+					prof(COOKING, {
+						n(58713, {	-- Anthea Ironpaw <Master of the Wok>
+							["coord"] = { 52.8, 51.8, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = WAY_OF_THE_WOK,
+						}),
+						n(58717, {	-- Bobo Ironpaw <Master of the Brew>
+							["coord"] = { 53.0, 52.0, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = WAY_OF_THE_BREW,
+						}),
+						n(58716, {	-- Jian Ironpaw <Master of the Oven>
+							["coord"] = { 53.2, 51.6, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = WAY_OF_THE_OVEN,
+						}),
+						n(58712, {	-- Kol Ironpaw <Master of the Grill>
+							["coord"] = { 53.0, 51.4, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = WAY_OF_THE_GRILL,
+						}),
+						n(58714, {	-- Mei Mei Ironpaw <Master of the Pot>
+							["coord"] = { 52.6, 51.6, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = WAY_OF_THE_POT,
+						}),
+						n(64231, {	-- Sungshin Ironpaw <Guide to the Ways>
+							["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = MOP_COOKING,
+						}),
+						n(58715, {	-- Yan Ironpaw <Master of the Steamer>
+							["coord"] = { 52.6, 51.6, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = WAY_OF_THE_STEAMER,
+						}),
+					}),
+					prof(ENGINEERING, {
+						n(55143, {	-- Sally Fizzlefury <Engineering Trainer>
+							["coord"] = { 16.0, 83.0, VALLEY_OF_THE_FOUR_WINDS },
+							["g"] = MOP_ENGINEERING
+						}),
+					}),
+				}),
 				n(QUESTS, {
 					prof(COOKING, {
 						["requireSkill"] = COOKING,
 						["g"] = {
 							q(31337, {	-- A Token of Appreciation
 								["isDaily"] = true,
-								["provider"] = { "n", 64337 },	-- Nomi
-								["description"] = "Summon Nomi using the |cFFFFD700Cooking School Bell|r.",
-							}),
-							q(31471, {	-- Agile as a Tiger
-								["sourceQuests"] = { 31470 },	-- Way of the Wok
-								["provider"] = { "n", 58713 },	-- Anthea Ironpaw
-								["coord"] = { 52.7, 52.0, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-							q(33022, {	-- Catch and Carry
-								["sourceQuests"] = { 33021 },	-- Secrets Lost, Forever?
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["g"] = {
-									recipe(145038),	-- Noodle Cart Kit
+								["providers"] = {
+									{ "n", 64337 },	-- Nomi
+									{ "i", 86425 },	-- Cooking School Bell
+								},
+								["groups"] = {
+									currency(402),	-- Ironpaw Token
+									i(90735),	-- Goodies from Nomi
 								},
 							}),
 							q(30329, {	-- Cindergut Peppers
 								["isDaily"] = true,
 								["coord"] = { 52.7, 52.0, VALLEY_OF_THE_FOUR_WINDS },
 								["provider"] = { "n", 58713 },	-- Anthea Ironpaw
-							}),
-							q(31477, {	-- Endurance
-								["sourceQuests"] = { 31478 },	-- Way of the Oven
-								["provider"] = { "n", 58716 },	-- Jian Ironpaw
-								["coord"] = { 53.4, 51.6, VALLEY_OF_THE_FOUR_WINDS },
 							}),
 							q(31486, {	-- Everything I Know About Cooking (A)
 							--	this had SQs listed, but it was available to me on an alliance character that had done 0 quests in jade forest, not even the intro, so i think it was an oversight.
@@ -1137,43 +1063,40 @@ root(ROOTS.Zones, {
 								["isDaily"] = true,
 								["coord"] = { 53.0, 51.3, VALLEY_OF_THE_FOUR_WINDS },
 							}),
-							q(31480, {	-- Have a Drink
-								["sourceQuests"] = { 31479 },	-- Way of the Brew
-								["provider"] = { "n", 58717 },	-- Bobo Ironpaw
-								["coord"] = { 53.2, 52.2, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-							q(33024, {	-- Is That A Real Measurement?
-								["sourceQuests"] = { 33022 },	-- Catch and Carry
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["g"] = {
-									recipe(145061),	-- Deluxe Noodle Cart Kit
-								},
-							}),
 							q(31332, {	-- Lesson 1: Sliced Peaches
 								["isDaily"] = true,
-								["provider"] = { "n", 64337 },	-- Nomi
-								["description"] = "Summon Nomi using the |cFFFFD700Cooking School Bell|r.",
+								["providers"] = {
+									{ "n", 64337 },	-- Nomi
+									{ "i", 86425 },	-- Cooking School Bell
+								},
 							}),
 							q(31333, {	-- Lesson 2: Instant Noodles
 								["isDaily"] = true,
-								["provider"] = { "n", 64337 },	-- Nomi
-								["description"] = "Summon Nomi using the |cFFFFD700Cooking School Bell|r.",
+								["providers"] = {
+									{ "n", 64337 },	-- Nomi
+									{ "i", 86425 },	-- Cooking School Bell
+								},
 							}),
 							q(31334, {	-- Lesson 3: Toasted Fish Jerky
 								["isDaily"] = true,
-								["provider"] = { "n", 64337 },	-- Nomi
-								["description"] = "Summon Nomi using the |cFFFFD700Cooking School Bell|r.",
+								["providers"] = {
+									{ "n", 64337 },	-- Nomi
+									{ "i", 86425 },	-- Cooking School Bell
+								},
 							}),
 							q(31335, {	-- Lesson 4: Dried Needle Mushrooms
 								["isDaily"] = true,
-								["provider"] = { "n", 64337 },	-- Nomi
-								["description"] = "Summon Nomi using the |cFFFFD700Cooking School Bell|r.",
+								["providers"] = {
+									{ "n", 64337 },	-- Nomi
+									{ "i", 86425 },	-- Cooking School Bell
+								},
 							}),
 							q(31336, {	-- Lesson 5: Pounded Rice Cake
 								["isDaily"] = true,
-								["provider"] = { "n", 64337 },	-- Nomi
-								["description"] = "Summon Nomi using the |cFFFFD700Cooking School Bell|r.",
+								["providers"] = {
+									{ "n", 64337 },	-- Nomi
+									{ "i", 86425 },	-- Cooking School Bell
+								},
 							}),
 							q(33146, {	-- Noodle Time
 								["isDaily"] = true,
@@ -1185,65 +1108,16 @@ root(ROOTS.Zones, {
 								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
 								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
 							}),
-							q(31536, {	-- Preserving Freshness
-								["sourceQuests"] = {
-									31471,	-- Agile as a Tiger
-									31477,	-- Endurance
-									31480,	-- Have a Drink
-									31467,	-- Strong as a Tiger
-									31474,	-- The Soup of Contemplation
-									31476,	-- The Spirit of Cooking
-								},
-								["provider"] = { "n", 64395 },	-- Nam Ironpaw
-								["coord"] = { 53.5, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-							q(31302, {	-- Ready for Greatness
-								["sourceQuests"] = { 31281 },	-- So You Want to be a Chef...
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-							}),
 							q(31535, {	-- Replenishing the Pantry
 								["sourceQuests"] = { 31536 },	-- Preserving Freshness
 								["repeatable"] = true,
 								["provider"] = { "n", 64395 },	-- Nam Ironpaw
 								["coord"] = { 53.5, 51.2, VALLEY_OF_THE_FOUR_WINDS },
 							}),
-							q(33021, {	-- Secrets Lost, Forever?
-								["sourceQuests"] = { 33107 },	-- Bad Feeling, Worse Result
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-							}),
-							q(31281, {	-- So You Want to Be a Chef...
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-							q(31467, {	-- Strong as a Tiger
-								["sourceQuests"] = { 31311 },	-- Way of the Grill
-								["provider"] = { "n", 58712 },	-- Kol Ironpaw
-								["coord"] = { 53.0, 51.3, VALLEY_OF_THE_FOUR_WINDS },
-							}),
 							q(30331, {	-- The Mile-High Grub
 								["provider"] = { "n", 58714 },	-- Mei Mei Ironpaw
 								["isDaily"] = true,
 								["coord"] = { 52.5, 51.6, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-							q(33027, {	-- The Secret Ingredient Is...
-								["sourceQuests"] = { 33026 },	-- These Aren't Your Fatty Goatsteaks
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["g"] = {
-									recipe(145062),	-- Pandaren Treasure Noodle Cart Kit
-								},
-							}),
-							q(31474, {	-- The Soup of Contemplation
-								["sourceQuests"] = { 31472 },	-- Way of the Pot
-								["provider"] = { "n", 58714 },	-- Mei Mei Ironpaw
-								["coord"] = { 52.5, 51.6, VALLEY_OF_THE_FOUR_WINDS },
-							}),
-							q(31476, {	-- The Spirit of Cooking
-								["sourceQuests"] = { 31475 },	-- Way of the Steamer
-								["provider"] = { "n", 58715 },	-- Yan Ironpaw
-								["coord"] = { 52.5, 51.7, VALLEY_OF_THE_FOUR_WINDS },
 							}),
 							q(30328, {	-- The Thousand-Year Dumpling
 								["isDaily"] = true,
@@ -1256,63 +1130,10 @@ root(ROOTS.Zones, {
 								["isDaily"] = true,
 								["coord"] = { 53.4, 51.6, VALLEY_OF_THE_FOUR_WINDS },
 							}),
-							q(33026, {	-- These Aren't Your Fatty Goatsteaks
-								["sourceQuests"] = { 33024 },	-- Is That a Real Measurement?
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-							}),
 							q(31521, {	-- To Be a Master
 								["description"] = "You must master all 6 Pandaren cooking ways for this quest to become available.",
 								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
 								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-							}),
-							q(31479, {	-- Way of the Brew
-								["sourceQuests"] = { 31302 },	-- Ready for Greatness
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									sp(125589),	-- Way of the Brew
-								},
-							}),
-							q(31311, {	-- Way of the Grill
-								["sourceQuests"] = { 31302 },	-- Ready for Greatness
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									sp(124694),	-- Way of the Grill
-								},
-							}),
-							q(31478, {	-- Way of the Oven
-								["sourceQuests"] = { 31302 },	-- Ready for Greatness
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									sp(125588),	-- Way of the Oven
-								},
-							}),
-							q(31472, {	-- Way of the Pot
-								["sourceQuests"] = { 31302 },	-- Ready for Greatness
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									sp(125586),	-- Way of the Pot
-								},
-							}),
-							q(31475, {	-- Way of the Steamer
-								["sourceQuests"] = { 31302 },	-- Ready for Greatness
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									sp(125587),	-- Way of the Steamer
-								},
-							}),
-							q(31470, {	-- Way of the Wok
-								["sourceQuests"] = { 31302 },	-- Ready for Greatness
-								["provider"] = { "n", 64231 },	-- Sungshin Ironpaw
-								["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-								["g"] = {
-									sp(125584),	-- Way of the Wok
-								},
 							}),
 						},
 					}),
@@ -1347,6 +1168,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 78.2, 32.8, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56312 },	-- Shang Thunderfoot
 						["g"] = {
+							i(75208),	-- Rancher's Lariat (QI!)
 							i(81824),	-- Hawk Feather Band
 							i(81825),	-- Lariat Loop
 							i(81826),	-- Shepherd's Loop
@@ -1361,6 +1183,9 @@ root(ROOTS.Zones, {
 						},
 						["coord"] = { 75.2, 24.1, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56205 },	-- Liang Thunderfoot
+						["groups"] = {
+							i(76100),	-- Wayward Lamb (QI!)
+						},
 					}),
 					q(29877, {	-- A Poor Grasp of the Basics
 						["sourceQuests"] = { 29907 },	-- Chen and Li Li
@@ -1397,6 +1222,17 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29987 },	-- Unyielding Fists: Trial of Wood
 						["coord"] = { 18.3, 31.3, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56714 },	-- Master Bruised Paw
+						["groups"] = {
+							o(209953, {	-- Emperor Tern Egg
+								i(76501),	-- Emperor Tern Egg (QI!)
+							}),
+							o(209954, {	-- Whitefisher Crane Egg
+								i(76503),	-- Whitefisher Crane Egg (QI!)
+							}),
+							o(209955, {	-- Hornbill Strider Egg
+								i(76516),	-- Hornbill Strider Egg (QI!)
+							}),
+						},
 					}),
 					q(29577, {	-- Ashyo's Vision
 						["sourceQuests"] = { 29871 },	-- Clever Ashyo
@@ -1407,6 +1243,11 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29912 },	-- The Fabular Miss Fanny
 						["coord"] = { 75.2, 24.0, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56205 },	-- Liang Thunderfoot
+						["groups"] = {
+							i(75271),	-- Jian (QI!)
+							i(75272),	-- Ling (QI!)
+							i(75273),	-- Smelly (QI!)
+						},
 					}),
 					q(30172, {	-- Barreling Along
 						["sourceQuests"] = { 30051 },	-- The Great Water Hunt
@@ -1434,8 +1275,10 @@ root(ROOTS.Zones, {
 							32018,	-- His Name Was... Stormstout
 							32019,	-- They Call Him... Stormstout
 							38935,	-- His Name Was... Stormstout
+							-- #if AFTER 7.3.5
 							49539,	-- Warchief's Command: Valley of the Four Winds!
 							49557,	-- Hero's Call: Valley of the Four Winds!
+							-- #endif
 						},
 						["coord"] = { 86.0, 22.2, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56133 },	-- Chen Stormstout
@@ -1494,7 +1337,8 @@ root(ROOTS.Zones, {
 						["coord"] = { 68.9, 43.3, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56138 },	-- Li Li
 						["g"] = {
-							i(88376),	-- Orange Painted Turnip
+							i(76370),	-- Orange-Painted Turnip (QI!)
+							i(88376),	-- Orange Painted Turnip (TOY!)
 						},
 					}),
 					q(30049, {	-- Doesn't Hold Water
@@ -1551,6 +1395,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 48.3, 33.4, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 62377 },	-- Gardener Fran
 						["g"] = {
+							i(77281),	-- Fran's Watering Can (QI!)
 							i(81844),	-- Gardener's Sickle
 							i(81845),	-- Gardener's Wand
 							i(81846),	-- Fran's Spear
@@ -1571,6 +1416,13 @@ root(ROOTS.Zones, {
 						},
 						["coord"] = { 52.7, 62.9, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 57211 },	-- Grainlord Kai
+						["groups"] = {
+							o_repeated({
+								i(77033),	-- Sack of Grain (QI!)
+								o(210001),	-- Stolen Malt Sack
+								o(210002),	-- Stolen Barley Sack
+							}),
+						},
 					}),
 					q(29919, {	-- Great Minds Drink Alike
 						["sourceQuests"] = { 29918 },	-- A Lesson in Bravery
@@ -1581,6 +1433,22 @@ root(ROOTS.Zones, {
 						["coord"] = { 64.5, 25.7, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "i", 83767 },	-- Krosh's Back
 						["crs"] = { 56833 },	-- Krosh
+					}),
+					heroscall(q(49557, {	-- Hero's Call: Valley of the Four Winds!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = ALLIANCE_ONLY,
+						["isBreadcrumb"] = true,
+						["lvl"] = 81,
+					})),
+					q(32018, {	-- His Name Was... Stormstout
+						["provider"] = { "n", 56774 },	-- Bolo
+						["coord"] = { 45.7, 43.9, THE_JADE_FOREST },
+						["isBreadcrumb"] = true,
+					}),
+					q(38935, {	-- His Name Was... Stormstout - appears to be an unused version of this quest added in Warlords of Draenor?
+						["description"] = "This breadcrumb can only be picked up from the Adventure Guide (shift+J).",
+						["isBreadcrumb"] = true,
+						["lvl"] = 15,
 					}),
 					q(30053, {	-- Hop Hunting
 						["sourceQuests"] = { 30046 },	-- Chen's Resolution
@@ -1635,7 +1503,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 68.9, 43.2, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56133 },	-- Chen Stormsout
 						["g"] = {
-							i(88375),  -- Turnip Punching Bag (TOY!)
+							i(88375),	-- Turnip Punching Bag (TOY!)
 						},
 					}),
 					q(29949, {	-- Legacy
@@ -1661,11 +1529,6 @@ root(ROOTS.Zones, {
 						["isBreadcrumb"] = true,
 						["coord"] = { 84.0, 21.1, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56110 },	-- Xiao
-					}),
-					q(30526, {	-- Lost and Lonely
-						["description"] = "Requires reputation level of 12,600 Revered with The Tillers to start",
-						["coord"] = { 42.4, 50.2, VALLEY_OF_THE_FOUR_WINDS },
-						["provider"] = { "n", 59533 },	-- Lost Dog
 					}),
 					q(29909, {	-- Low Turnip Turnout
 						["sourceQuests"] = {
@@ -1702,6 +1565,10 @@ root(ROOTS.Zones, {
 						["coord"] = { 68.7, 43.1, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56474 },	-- Mudmug
 						["g"] = {
+							i(76362),	-- Mudmug's Vial (QI!)
+							o(209921, {	-- Muddy Water
+								i(76356),	-- Stoppered Vial of Muddy Water (QI!)
+							}),
 							i(81778),	-- Silkmaster's Satin Treads
 							i(81779),	-- Sunsoaked Footguards
 							i(81780),	-- Huangtze Scale Sabatons
@@ -1722,6 +1589,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 16.0, 82.5, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 58421 },	-- Hemet Nesingwary
 						["g"] = {
+							i(79058),	-- Darkhide's Head (QI!)
 							i(81854),	-- Mushan Chopper
 							i(81855),	-- Darkhide Blade
 							i(81856),	-- Safari Defender
@@ -1757,6 +1625,9 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29940 },	-- Taking a Crop
 						["coord"] = { 81.4, 24.9, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56207 },	-- Ang Thunderfoot
+						["groups"] = {
+							i(76110),	-- Crate of Fresh Produce (QI!)
+						},
 					}),
 					q(29910, {	-- Rampaging Rodents
 						["sourceQuests"] = { 29909 },	-- Low Turnip Turnout
@@ -1850,6 +1721,9 @@ root(ROOTS.Zones, {
 					--	["isBreadcrumb"] = true,	-- the cutscene didn't trigger until i turned this quest in, nor did the availability of the "warn stoneplow"/"hope springs eternal" breadcrumbs in krasarang, which leads me to believe it's *not* a breadcrumb?
 						["provider"] = { "n", 61026 },	-- Emmi
 						["coord"] = { 36.2, 68.4, VALLEY_OF_THE_FOUR_WINDS },
+						["groups"] = {
+							i(81393),	-- Chen's Full Keg (QI!)
+						},
 					}),
 					q(30055, {	-- Stormstout's Hops
 						["sourceQuests"] = {
@@ -1874,6 +1748,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 81.4, 24.9, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56207 },	-- Ang Thunderfoot
 						["g"] = {
+							o(209891, {	-- Stolen Turnip
+								i(76297),	-- Stolen Turnip (QI!)
+							}),
+							o(209892, {	-- Stolen Watermelon
+								i(76298),	-- Stolen Watermelon (QI!)
+							}),
 							i(81796),	-- Silkmaster's Satin Gloves
 							i(81797),	-- Sunsoaked Gloves
 							i(81798),	-- Huangtze Scale Gauntlets
@@ -1894,6 +1774,11 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29984 },	-- Unyielding Fists: Trial of Bamboo
 						["coord"] = { 18.1, 31.1, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56111 },	-- Lin Tenderpaw
+						["groups"] = {
+							o(209952, {	-- Jademoon
+								i(76499),	-- Jademoon Leaf (QI!)
+							}),
+						},
 					}),
 					q(31670, {	-- That Dangling Carrot
 						["isDaily"] = true,
@@ -1928,11 +1813,25 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29911 },	-- Practically Perfect Produce
 						["coord"] = { 83.7, 21.0, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56204 },	-- Pang Thunderfoot
+						["groups"] = {
+							o(209844, {	-- Ang's Giant Pink Turnip
+								i(75259),	-- Ang's Giant Pink Turnip (QI!)
+							}),
+							o(209843, {	-- Ang's Summer Watermelon
+								i(75258),	-- Ang's Summer Watermelon (QI!)
+							}),
+							o(209842, {	-- Pang's Extra-Spicy Tofu
+								i(75256),	-- Pang's Extra-Spicy Tofu (QI!)
+							}),
+						},
 					}),
 					q(30076, {	-- The Fanciest Water
 						["sourceQuests"] = { 30074 },	-- Knocking on the Door
 						["coord"] = { 32.3, 68.3, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56474 },	-- Mudmug
+						["groups"] = {
+							i(77471),	-- Spritewater Essence (QI!)
+						},
 					}),
 					q(30056, {	-- The Farmer's Daughter
 						["sourceQuests"] = { 30046 },	-- Chen's Resolution
@@ -1973,6 +1872,7 @@ root(ROOTS.Zones, {
 					q(31315, {	-- The Heartland Legacy
 						["provider"] = { "o", 213767 },	-- Hidden Treasure
 						["sourceQuests"] = { 31314 },	-- Old Man Thistle's Treasure
+						["coord"] = { 31.5, 53.3, 377 },
 						["g"] = {
 							ach(7296),	-- Ain't Lost No More
 						},
@@ -1996,15 +1896,21 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 58646 },	-- Farmer Yoon
 					}),
 					q(30623, {	-- The Mantidote
-						["sourceQuests"] = { 29990 },	-- Training and Discipline
 						["coord"] = { 18.0, 56.5, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 59855 },	-- Mei Barrelbottom
+						["sourceQuests"] = {
+							29990,	-- Training and Discipline
+							30360,	-- Warn Stoneplow (A)
+							30241,	-- Warn Stoneplow (H)
+						},
 					}),
 					q(29913, {	-- The Meat They'll Eat
 						["sourceQuests"] = { 29912 },	-- The Fabular Miss Fanny
 						["coord"] = { 75.2, 24.0, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56205 },	-- Liang Thunderfoot
 						["g"] = {
+							i(75275),	-- Mushan Shoulder Steak (QI!)
+							i(75276),	-- Turtle Meat Scrap (QI!)
 							i(88018),	-- Thunderfoot Heavy Cap
 							i(88017),	-- Sunsong Armored Cap
 							i(88016),	-- Paoquan Burnished Cap
@@ -2035,6 +1941,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 52.7, 63.0, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 57211 },	-- Grainlord Kai
 						["g"] = {
+							i(77034),	-- Malted Cave Barley (QI!)
 							i(81787),	-- Silkmaster's Satin Cord
 							i(81788),	-- Sunsoaked Belt
 							i(81789),	-- Huangtze Scale Waistguard
@@ -2050,7 +1957,7 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 30626 },	-- Retreat!
 						["coord"] = { 17.9, 55.7, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 59856 },	-- Master Bruised Paw
-						["g"] = {
+						["groups"] = {
 							ach(7502),	-- Savior of Stoneplow
 						},
 					}),
@@ -2064,7 +1971,6 @@ root(ROOTS.Zones, {
 							30376,	-- Hope Springs Eternal (breadcrumb, neutral)
 							30360,	-- Warn Stoneplow (breadcrumb, A)
 							30241,	-- Warn Stoneplow (breadcrumb, H)
-							30174,	-- For Family
 							30273,	-- In the House of the Red Crane
 							30117,	-- Stoneplow Thirsts
 							29990,	-- Training and Discipline
@@ -2089,6 +1995,11 @@ root(ROOTS.Zones, {
 						},
 						["coord"] = { 68.7, 43.2, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56474 },	-- Mudmug
+						["groups"] = {
+							o(211696, {	-- Stolen Sack of Hops
+								i(76337),	-- Stolen Sack of Hops (QI!)
+							}),
+						},
 					}),
 					q(31937, {	-- "Thunder King" Pest Repellers
 						["sourceQuests"] = { 30523 },	-- Growing the Farm II: The Broken Wagon
@@ -2103,6 +2014,9 @@ root(ROOTS.Zones, {
 						},
 						["coord"] = { 16.1, 82.6, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 58422 },	-- Hemet Nesingwary Jr.
+						["groups"] = {
+							i(79059),	-- Intact Tortoise Shell (QI!)
+						},
 					}),
 					q(29990, {	-- Training and Discipline
 						["sourceQuests"] = { 29989 },	-- Unyielding Fists: Trial of Stone
@@ -2139,6 +2053,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 18.3, 31.2, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56714 },	-- Master Bruised Paw
 					}),
+					warchiefscommand(q(49539, {	-- Warchief's Command: Valley of the Four Winds!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+						["lvl"] = 81,
+					})),
 					q(30267, {	-- Watery Woes
 						["coord"] = { 61.0, 32.9, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 58736 },	-- Gladecaster Lang
@@ -2183,6 +2103,10 @@ root(ROOTS.Zones, {
 						["coord"] = { 68.9, 43.3, VALLEY_OF_THE_FOUR_WINDS },
 						["provider"] = { "n", 56138 },	-- Li Li
 						["g"] = {
+							o(209907, {	-- Meadow Marigold
+								i(76334),	-- Meadow Marigold (QI!)
+							}),
+							i(76335),	-- Vial of Animal Blood (QI!)
 							i(88377),	-- Turnip Paint "Gun" (TOY!)
 						},
 					}),
@@ -2218,15 +2142,7 @@ root(ROOTS.Zones, {
 							{ 32.8, 62.8, VALLEY_OF_THE_FOUR_WINDS },
 						},
 						["g"] = {
-							i(86565, {	-- Battle Horn (TOY!)
-								crit(5, {	-- Battle Horn
-									["achievementID"] = 8728,	-- Going to Need a Bigger Bag
-								}),
-							}),
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 51,
-							},
+							i(86565),	-- Battle Horn (TOY!)
 						},
 					}),
 					n(50828, {	-- Bonobos
@@ -2238,20 +2154,12 @@ root(ROOTS.Zones, {
 						},
 						["g"] = {
 							i(86591),	-- Magic Banana (TOY!)
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 2,
-							},
 						},
 					}),
 					n(50351, {	-- Jonn-Dar
 						["coord"] = { 18.6, 77.6, VALLEY_OF_THE_FOUR_WINDS },
 						["g"] = {
 							i(86572),	-- Terracotta Fragment
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 30,
-							},
 						},
 					}),
 					n(50364, {	-- Nal'lak the Ripper
@@ -2261,20 +2169,12 @@ root(ROOTS.Zones, {
 						},
 						["g"] = {
 							i(86576),	-- Dynasty of Steel
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 16,
-							},
 						},
 					}),
 					n(50811, {	-- Nasra Spothide
 						["coord"] = { 88.6, 18.0, VALLEY_OF_THE_FOUR_WINDS },
 						["g"] = {
 							i(86587),	-- Seed of Tranquil Growth
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 37,
-							},
 						},
 					}),
 					n(50783, {	-- Salyin Warscout
@@ -2284,10 +2184,6 @@ root(ROOTS.Zones, {
 						},
 						["g"] = {
 							i(86583),	-- Salyin Battle Banner (TOY!)
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 44,
-							},
 						},
 					}),
 					n(50766, {	-- Sele'na
@@ -2296,34 +2192,23 @@ root(ROOTS.Zones, {
 							{ 60.2, 39.2, VALLEY_OF_THE_FOUR_WINDS },
 						},
 						["g"] = {
-							i(86580, {	-- Wilted Lilypad
-								crit(8, {	-- Overgrown Lilypad
-									["achievementID"] = 8728,	-- Going To Need A Bigger Bag
-									["description"] = "This item used to be the Overgrown Lilypad. This item instead is required for the Bigger Bag achievement in its place.",
-								}),
-							}),
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 9,
-							},
+							i(86580),	-- Wilted Lilypad
 						},
 					}),
 					n(50339, {	-- Sulik'shor
 						["coord"] = { 37.0, 25.6, VALLEY_OF_THE_FOUR_WINDS },
 						["g"] = {
-							i(86569, {	-- Crystal of Insanity
-								crit(4, {	-- Crystal of Insanity
-									["achievementID"] = 8728,	-- Going To Need A Bigger Bag
-								}),
-							}),
-							{	-- Glorious!
-								["achievementID"] = 7439,
-								["criteriaID"] = 23,
-							},
+							i(86569),	-- Crystal of Insanity
 						},
 					}),
 				}),
 				n(TREASURES, {
+					o(210582,	{	-- Dark Soil
+						["coord"] = { 52.8, 48.1, VALLEY_OF_THE_FOUR_WINDS },
+						["groups"] = {
+							i(79269),	-- Marsh Lily (QI!)
+						},
+					}),
 					o(210565,	{	-- Dark Soil
 						["description"] = "Can be found around the Tillers area",
 						["g"] = {
@@ -2331,6 +2216,7 @@ root(ROOTS.Zones, {
 							i(79266),	-- Jade Cat
 							i(79267),	-- Lovely Apple
 							i(79268),	-- Marsh Lily
+							i(79269),	-- Marsh Lily (QI!)
 							i(79264),	-- Ruby Shard
 						},
 					}),
@@ -2343,21 +2229,6 @@ root(ROOTS.Zones, {
 					}),
 				}),
 				n(VENDORS, {
-					n(58713, {	-- Anthea Ironpaw <Master of the Wok>
-						["coord"] = { 52.8, 51.8, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							i(87231, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Banquet of the Wok
-							recipe(125594),	-- Banquet of the Wok
-							i(87233, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Great Banquet of the Wok
-							recipe(125595),	-- Great Banquet of the Wok
-							i(74666, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Sauteed Carrots
-							recipe(104301),	-- Sauteed Carrots
-							i(74668, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Sea Mist Rice Noodles
-							recipe(104303),	-- Sea Mist Rice Noodles
-							i(74667, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Valley Stir Fry
-							recipe(104302),	-- Valley Stir Fry
-						},
-					}),
 					n(70101, {	-- Armsmaster Holinka >S13</Tyrannical Elite
 						["races"] = ALLIANCE_ONLY,
 						["u"] = REMOVED_FROM_GAME,
@@ -2372,7 +2243,7 @@ root(ROOTS.Zones, {
 								i(144246, {	-- Arsenal: Tyrannical Gladiator's Weapons (A)
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
 										{"select", "itemID",
 											99794,	-- Tyrannical Gladiator's Barrier
 											99796,	-- Tyrannical Gladiator's Battle Staff
@@ -2474,7 +2345,7 @@ root(ROOTS.Zones, {
 								i(138683, {	-- Ensemble: Tyrannical Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											91306,	-- Tyrannical Gladiator's Armplates of Alacrity
 											91297,	-- Tyrannical Gladiator's Girdle of Accuracy
@@ -2510,7 +2381,7 @@ root(ROOTS.Zones, {
 								i(138691, {	-- Ensemble: Tyrannical Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											91171,	-- Tyrannical Gladiator's Bindings of Meditation
 											91188,	-- Tyrannical Gladiator's Bindings of Prowess
@@ -2592,7 +2463,7 @@ root(ROOTS.Zones, {
 								i(138689, {	-- Ensemble: Tyrannical Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											91221,	-- Tyrannical Gladiator's Wristguards of Accuracy
 											91220,	-- Tyrannical Gladiator's Wristguards of Alacrity
@@ -2634,7 +2505,7 @@ root(ROOTS.Zones, {
 								i(138697, {	-- Ensemble: Tyrannical Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											91122,	-- Tyrannical Gladiator's Cuffs of Prowess
 											91109,	-- Tyrannical Gladiator's Cord of Cruelty
@@ -2670,7 +2541,7 @@ root(ROOTS.Zones, {
 								i(138693, {	-- Ensemble: Tyrannical Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											91246,	-- Tyrannical Gladiator's Armwraps of Accuracy
 											91242,	-- Tyrannical Gladiator's Waistband of Cruelty
@@ -2726,7 +2597,7 @@ root(ROOTS.Zones, {
 								i(138685, {	-- Ensemble: Tyrannical Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 											91286,	-- Tyrannical Gladiator's Bracers of Meditation
 											91285,	-- Tyrannical Gladiator's Bracers of Prowess
@@ -2788,7 +2659,7 @@ root(ROOTS.Zones, {
 								i(138699, {	-- Ensemble: Tyrannical Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											91123,	-- Tyrannical Gladiator's Cuffs of Meditation
 											91113,	-- Tyrannical Gladiator's Cord of Meditation
@@ -2844,7 +2715,7 @@ root(ROOTS.Zones, {
 								i(138695, {	-- Ensemble: Tyrannical Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											91339,	-- Tyrannical Gladiator's Armwraps of Alacrity
 											91335,	-- Tyrannical Gladiator's Waistband of Accuracy
@@ -2880,7 +2751,7 @@ root(ROOTS.Zones, {
 								i(138687, {	-- Ensemble: Tyrannical Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											91357,	-- Tyrannical Gladiator's Armbands of Meditation
 											91356,	-- Tyrannical Gladiator's Armbands of Prowess
@@ -2962,7 +2833,7 @@ root(ROOTS.Zones, {
 								i(138701, {	-- Ensemble: Tyrannical Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											91121,	-- Tyrannical Gladiator's Cuffs of Accuracy
 											91111,	-- Tyrannical Gladiator's Cord of Accuracy
@@ -2998,7 +2869,7 @@ root(ROOTS.Zones, {
 								i(138681, {	-- Ensemble: Tyrannical Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 											91305,	-- Tyrannical Gladiator's Armplates of Proficiency
 											91299,	-- Tyrannical Gladiator's Girdle of Prowess
@@ -3196,18 +3067,6 @@ root(ROOTS.Zones, {
 							}),
 						},
 					}),
-					n(58717, {	-- Bobo Ironpaw <Master of the Brew>
-						["coord"] = { 53.0, 52.0, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							i(87247, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Banquet of the Brew
-							recipe(125602),	-- Banquet of the Brew
-							recipe(124052),	-- Ginseng Tea
-							i(87249, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Great Banquet of the Brew
-							recipe(125603),	-- Great Banquet of the Brew
-							recipe(124053),	-- Jade Witch Brew
-							recipe(124054),	-- Mad Brewer's Breakfast
-						},
-					}),
 					n(61215, {	-- Claretta <Adventuring Supplies>
 						["coord"] = { 84.8, 21.6, VALLEY_OF_THE_FOUR_WINDS },
 						["sym"] = {{"select","npcID",56705},{"pop"}},	-- Singegruff <Adventuring Supplies>
@@ -3230,35 +3089,7 @@ root(ROOTS.Zones, {
 								i(144252, {	-- Arsenal: Grievous Gladiator's Weapons (A)
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
-										{"select", "itemID",
-											103167,	-- Grievous Gladiator's Barrier
-											103310,	-- Grievous Gladiator's Baton of Light
-											103169,	-- Grievous Gladiator's Battle Staff
-											103312,	-- Grievous Gladiator's Bonecracker
-											103142,	-- Grievous Gladiator's Cleaver
-											103139,	-- Grievous Gladiator's Decapitator
-											103166,	-- Grievous Gladiator's Endgame
-											103209,	-- Grievous Gladiator's Energy Staff
-											103207,	-- Grievous Gladiator's Gavel
-											103141,	-- Grievous Gladiator's Greatsword
-											103311,	-- Grievous Gladiator's Hacker
-											103153,	-- Grievous Gladiator's Longbow
-											103307,	-- Grievous Gladiator's Mageblade
-											103264,	-- Grievous Gladiator's Pike
-											103143,	-- Grievous Gladiator's Pummeler
-											103144,	-- Grievous Gladiator's Quickblade
-											103208,	-- Grievous Gladiator's Redoubt
-											103306,	-- Grievous Gladiator's Render
-											103176,	-- Grievous Gladiator's Reprieve
-											103206,	-- Grievous Gladiator's Rifle
-											103305,	-- Grievous Gladiator's Ripper
-											103304,	-- Grievous Gladiator's Shanker
-											103322,	-- Grievous Gladiator's Shield Wall
-											103313,	-- Grievous Gladiator's Slicer
-											103168,	-- Grievous Gladiator's Spellblade
-											103177,	-- Grievous Gladiator's Staff
-										},
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
 									},
 								}),
 								i(103167, {	-- Grievous Gladiator's Barrier
@@ -3344,7 +3175,7 @@ root(ROOTS.Zones, {
 								i(138661, {	-- Ensemble: Grievous Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											100402,	-- Grievous Gladiator's Armplates of Alacrity
 											100393,	-- Grievous Gladiator's Girdle of Accuracy
@@ -3380,7 +3211,7 @@ root(ROOTS.Zones, {
 								i(138669, {	-- Ensemble: Grievous Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											100267,	-- Grievous Gladiator's Bindings of Meditation
 											100284,	-- Grievous Gladiator's Bindings of Prowess
@@ -3462,7 +3293,7 @@ root(ROOTS.Zones, {
 								i(138667, {	-- Ensemble: Grievous Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											100317,	-- Grievous Gladiator's Wristguards of Accuracy
 											100316,	-- Grievous Gladiator's Wristguards of Alacrity
@@ -3504,7 +3335,7 @@ root(ROOTS.Zones, {
 								i(138675, {	-- Ensemble: Grievous Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											100218,	-- Grievous Gladiator's Cuffs of Prowess
 											100205,	-- Grievous Gladiator's Cord of Cruelty
@@ -3540,7 +3371,7 @@ root(ROOTS.Zones, {
 								i(138671, {	-- Ensemble: Grievous Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											100342,	-- Grievous Gladiator's Armwraps of Accuracy
 											100338,	-- Grievous Gladiator's Waistband of Cruelty
@@ -3596,7 +3427,7 @@ root(ROOTS.Zones, {
 								i(138663, {	-- Ensemble: Grievous Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 											100382,	-- Grievous Gladiator's Bracers of Meditation
 											100381,	-- Grievous Gladiator's Bracers of Prowess
@@ -3658,7 +3489,7 @@ root(ROOTS.Zones, {
 								i(138677, {	-- Ensemble: Grievous Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											100219,	-- Grievous Gladiator's Cuffs of Meditation
 											100209,	-- Grievous Gladiator's Cord of Meditation
@@ -3714,7 +3545,7 @@ root(ROOTS.Zones, {
 								i(138673, {	-- Ensemble: Grievous Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											100342,	-- Grievous Gladiator's Armwraps of Alacrity
 											100425,	-- Grievous Gladiator's Waistband of Accuracy
@@ -3750,7 +3581,7 @@ root(ROOTS.Zones, {
 								i(138665, {	-- Ensemble: Grievous Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											100447,	-- Grievous Gladiator's Armbands of Meditation
 											100446,	-- Grievous Gladiator's Armbands of Prowess
@@ -3832,7 +3663,7 @@ root(ROOTS.Zones, {
 								i(138679, {	-- Ensemble: Grievous Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											100217,	-- Grievous Gladiator's Cuffs of Accuracy
 											100207,	-- Grievous Gladiator's Cord of Accuracy
@@ -3868,7 +3699,7 @@ root(ROOTS.Zones, {
 								i(138659, {	-- Ensemble: Grievous Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, -677, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 											100401,	-- Grievous Gladiator's Armplates of Proficiency
 											100395,	-- Grievous Gladiator's Girdle of Prowess
@@ -4074,48 +3905,55 @@ root(ROOTS.Zones, {
 					}),
 					n(58706, {	-- Gina Mudclaw <Tillers Quartermaster>
 						["coord"] = { 53.2, 51.6, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							i(89812, {	-- "Jinyu Princess" Irrigation System
-								["cost"] = 800000,	-- 80g
-							}),
-							i(89813, {	-- "Thunder King" Pest Repellers
-								["cost"] = 800000,	-- 80g
-							}),
-							i(89814, {	-- "Earth-Slasher" Master Plow
-								["cost"] = 800000,	-- 80g
-							}),
-							i(90175, {	-- Gin'Ji Knife Set (TOY!)
-								["cost"] = 2125000,	-- 212g 50s
-							}),
-							i(93226, {	-- Grand Commendation of the Tillers
-								["cost"] = 425000,	-- 42g 50s
-							}),
-							i(89869, {	-- Pandaren Scarecrow (TOY!)
-								["cost"] = 2125000,	-- 212g 50s
-							}),
-							i(74657, {	-- Recipe: Spicy Salmon (RECIPE!)
-								["cost"] = 8500,	-- 85s
-							}),
-							i(74658, {	-- Recipe: Spicy Vegetable Chips (RECIPE!)
-								["cost"] = 8500,	-- 85s
-							}),
-							i(89391, {	-- Black Riding Goat (MOUNT!)
-								["cost"] = 12750000,	-- 1,275g
-							}),
-							i(89362, {	-- Brown Riding Goat (MOUNT!)
-								["cost"] = 4250000,	-- 425g
-							}),
-							i(89390, {	-- White Riding Goat (MOUNT!)
-								["cost"] = 27625000,	-- 2,762g 50s
-							}),
-							i(90893),	-- Straw Hat - Cloth
-							i(90894),	-- Straw Hat - Leather
-							i(90895),	-- Straw Hat - Mail
-							i(90896),	-- Straw Hat - Plate
-							i(89784, {	-- Tillers Tabard
-								["cost"] = 85000,	-- 8g 50s
-							}),
-						},
+						["g"] = bubbleDownClassicRep(FACTION_THE_TILLERS, {
+							{		-- Neutral
+								i(89814, {	-- "Earth-Slasher" Master Plow
+									["cost"] = 800000,	-- 80g
+								}),
+								i(89812, {	-- "Jinyu Princess" Irrigation System
+									["cost"] = 800000,	-- 80g
+								}),
+								i(89813, {	-- "Thunder King" Pest Repellers
+									["cost"] = 800000,	-- 80g
+								}),
+								i(90893),	-- Straw Hat - Cloth
+								i(90894),	-- Straw Hat - Leather
+								i(90895),	-- Straw Hat - Mail
+								i(90896),	-- Straw Hat - Plate
+							}, {	-- Friendly
+							}, {	-- Honored
+							}, {	-- Revered
+								i(93226, {	-- Grand Commendation of the Tillers
+									["cost"] = 425000,	-- 42g 50s
+								}),
+								i(89869, {	-- Pandaren Scarecrow (TOY!)
+									["cost"] = 2125000,	-- 212g 50s
+								}),
+							}, {	-- Exalted
+								i(90175, {	-- Gin'Ji Knife Set (TOY!)
+									["cost"] = 2125000,	-- 212g 50s
+								}),
+								i(80914),	-- Mourning Glory
+								i(74657, {	-- Recipe: Spicy Salmon (RECIPE!)
+									["cost"] = 8500,	-- 85s
+								}),
+								i(74658, {	-- Recipe: Spicy Vegetable Chips (RECIPE!)
+									["cost"] = 8500,	-- 85s
+								}),
+								i(89391, {	-- Reins of the Black Riding Goat (MOUNT!)
+									["cost"] = 12750000,	-- 1,275g
+								}),
+								i(89362, {	-- Reins of the Brown Riding Goat (MOUNT!)
+									["cost"] = 4250000,	-- 425g
+								}),
+								i(89390, {	-- Reins of the White Riding Goat (MOUNT!)
+									["cost"] = 27625000,	-- 2,762g 50s
+								}),
+								i(89784, {	-- Tillers Tabard
+									["cost"] = 85000,	-- 8g 50s
+								}),
+							},
+						}),
 					}),
 					n(73143, {	-- Hayden Christophen <Honor Quartermaster> Old Grievous Vendor (neck, etc)
 						["races"] = ALLIANCE_ONLY,
@@ -4129,7 +3967,7 @@ root(ROOTS.Zones, {
 								i(138715, {	-- Ensemble: Dreadful Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, DEATHKNIGHT },
 										{"select", "itemID",
 											84438,	-- Dreadful Gladiator's Armplates of Proficiency
 											84434,	-- Dreadful Gladiator's Girdle of Accuracy
@@ -4157,7 +3995,7 @@ root(ROOTS.Zones, {
 								i(138719, {	-- Ensemble: Dreadful Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, DRUID },
 										{"select", "itemID",
 											84384,	-- Dreadful Gladiator's Bindings of Meditation
 											84392,	-- Dreadful Gladiator's Bindings of Prowess
@@ -4218,7 +4056,7 @@ root(ROOTS.Zones, {
 								i(138718, {	-- Ensemble: Dreadful Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, HUNTER },
 										{"select", "itemID",
 											84407,	-- Dreadful Gladiator's Wristguards of Accuracy
 											84406,	-- Dreadful Gladiator's Wristguards of Alacrity
@@ -4249,7 +4087,7 @@ root(ROOTS.Zones, {
 								i(138722, {	-- Ensemble: Dreadful Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, MAGE },
 										{"select", "itemID",
 											84360,	-- Dreadful Gladiator's Cuffs of Prowess
 											84353,	-- Dreadful Gladiator's Cord of Cruelty
@@ -4277,7 +4115,7 @@ root(ROOTS.Zones, {
 								i(138720, {	-- Ensemble: Dreadful Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, MONK },
 										{"select", "itemID",
 											84461,	-- Dreadful Gladiator's Armwraps of Accuracy
 											84456,	-- Dreadful Gladiator's Waistband of Cruelty
@@ -4320,7 +4158,7 @@ root(ROOTS.Zones, {
 								i(138716, {	-- Ensemble: Dreadful Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, PALADIN },
 										{"select", "itemID",
 											84428,	-- Dreadful Gladiator's Bracers of Meditation
 											84427,	-- Dreadful Gladiator's Bracers of Prowess
@@ -4366,7 +4204,7 @@ root(ROOTS.Zones, {
 								i(138723, {	-- Ensemble: Dreadful Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, PRIEST },
 										{"select", "itemID",
 											84361,	-- Dreadful Gladiator's Cuffs of Meditation
 											84355,	-- Dreadful Gladiator's Cord of Meditation
@@ -4409,7 +4247,7 @@ root(ROOTS.Zones, {
 								i(138721, {	-- Ensemble: Dreadful Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, ROGUE },
 										{"select", "itemID",
 											84460,	-- Dreadful Gladiator's Armwraps of Alacrity
 											84457,	-- Dreadful Gladiator's Waistband of Accuracy
@@ -4437,7 +4275,7 @@ root(ROOTS.Zones, {
 								i(138717, {	-- Ensemble: Dreadful Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, SHAMAN },
 										{"select", "itemID",
 											84471,	-- Dreadful Gladiator's Armbands of Meditation
 											84470,	-- Dreadful Gladiator's Armbands of Prowess
@@ -4498,7 +4336,7 @@ root(ROOTS.Zones, {
 								i(138724, {	-- Ensemble: Dreadful Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, WARLOCK },
 										{"select", "itemID",
 											84359,	-- Dreadful Gladiator's Cuffs of Accuracy
 											84354,	-- Dreadful Gladiator's Cord of Accuracy
@@ -4526,7 +4364,7 @@ root(ROOTS.Zones, {
 								i(138714, {	-- Ensemble: Dreadful Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, WARRIOR },
 										{"select", "itemID",
 											84439,	-- Dreadful Gladiator's Armplates of Alacrity
 											84435,	-- Dreadful Gladiator's Girdle of Prowess
@@ -4716,36 +4554,6 @@ root(ROOTS.Zones, {
 							}),
 						},
 					}),
-					n(58716, {	-- Jian Ironpaw <Master of the Oven>
-						["coord"] = { 53.2, 51.6, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							i(87243, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Banquet of the Oven
-							recipe(125600),	-- Banquet of the Oven
-							i(74677, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Chun Tian Spring Rolls
-							recipe(104312),	-- Chun Tian Spring Rolls
-							i(87245, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Great Banquet of the Oven
-							recipe(125601),	-- Great Banquet of the Oven
-							i(74676, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Twin Fish Platter
-							recipe(104311),	-- Twin Fish Platter
-							i(74675, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Wildfowl Roast
-							recipe(104310),	-- Wildfowl Roast
-						},
-					}),
-					n(58712, {	-- Kol Ironpaw <Master of the Grill>
-						["coord"] = { 53.0, 51.4, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							i(87227, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Banquet of the Grill
-							recipe(125141),	-- Banquet of the Grill
-							i(74665, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Black Pepper Ribs and Shrimp
-							recipe(104300),	-- Black Pepper Ribs and Shrimp
-							i(74663, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Charbroiled Tiger Steak
-							recipe(104298),	-- Charbroiled Tiger Steak
-							i(74664, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Eternal Blossom Fish
-							recipe(104299),	-- Eternal Blossom Fish
-							i(87229, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Great Banquet of the Grill
-							recipe(125142),	-- Great Banquet of the Grill
-						},
-					}),
 					n(65167, {	-- Lucan Malory (Removed Season 12 Vendor)
 						["races"] = ALLIANCE_ONLY,
 						["u"] = REMOVED_FROM_GAME,
@@ -4758,7 +4566,8 @@ root(ROOTS.Zones, {
 								i(144243, {	-- Arsenal: Malevolent Gladiator's Weapons
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR },
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR },
+										{"merge"},
 										{"exclude", "itemID",
 											84911,	-- Malevolent Gladiator's Barrier
 											84787,	-- Malevolent Gladiator's Battle Staff
@@ -4782,7 +4591,7 @@ root(ROOTS.Zones, {
 											84962,	-- Malevolent Gladiator's Ripper
 											84967,	-- Malevolent Gladiator's Shanker
 											84910,	-- Malevolent Gladiator's Shield Wall
-											84900,	-- Malevolent Gladiator's Slicer
+											84968,	-- Malevolent Gladiator's Slicer
 											84961,	-- Malevolent Gladiator's Spellblade
 											84789,	-- Malevolent Gladiator's Staff
 											84894,	-- Malevolent Gladiator's Slasher
@@ -4813,7 +4622,7 @@ root(ROOTS.Zones, {
 								un(REMOVED_FROM_GAME, i(84967)),	-- Malevolent Gladiator's Shanker
 								un(REMOVED_FROM_GAME, i(84910)),	-- Malevolent Gladiator's Shield Wall
 								un(REMOVED_FROM_GAME, i(84894)),	-- Malevolent Gladiator's Slasher
-								un(REMOVED_FROM_GAME, i(84900)),	-- Malevolent Gladiator's Slicer
+								un(REMOVED_FROM_GAME, i(84968)),	-- Malevolent Gladiator's Slicer
 								un(REMOVED_FROM_GAME, i(84961)),	-- Malevolent Gladiator's Spellblade
 								un(REMOVED_FROM_GAME, i(84789)),	-- Malevolent Gladiator's Staff
 								-- S13 Tag
@@ -4900,7 +4709,7 @@ root(ROOTS.Zones, {
 								i(138704, {	-- Ensemble: Malevolent Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											84985,	-- Malevolent Gladiator's Armplates of Proficiency
 											84949,	-- Malevolent Gladiator's Girdle of Accuracy
@@ -4943,7 +4752,7 @@ root(ROOTS.Zones, {
 								i(138708, {	-- Ensemble: Malevolent Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											84976,	-- Malevolent Gladiator's Bindings of Meditation
 											84982,	-- Malevolent Gladiator's Bindings of Prowess
@@ -5042,7 +4851,7 @@ root(ROOTS.Zones, {
 								i(138707, {	-- Ensemble: Malevolent Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											84981,	-- Malevolent Gladiator's Wristguards of Accuracy
 											84980,	-- Malevolent Gladiator's Wristguards of Alacrity
@@ -5091,7 +4900,7 @@ root(ROOTS.Zones, {
 								i(138711, {	-- Ensemble: Malevolent Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											84978,	-- Malevolent Gladiator's Cuffs of Prowess
 											84954,	-- Malevolent Gladiator's Cord of Cruelty
@@ -5146,7 +4955,7 @@ root(ROOTS.Zones, {
 								i(138709, {	-- Ensemble: Malevolent Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											84973,	-- Malevolent Gladiator's Armwraps of Accuracy
 											84947,	-- Malevolent Gladiator's Waistband of Cruelty
@@ -5214,7 +5023,7 @@ root(ROOTS.Zones, {
 								i(138705, {	-- Ensemble: Malevolent Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 											84975,	-- Malevolent Gladiator's Bracers of Meditation
 											84974,	-- Malevolent Gladiator's Bracers of Prowess
@@ -5288,7 +5097,7 @@ root(ROOTS.Zones, {
 								i(138712, {	-- Ensemble: Malevolent Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											84979,	-- Malevolent Gladiator's Cuffs of Meditation
 											84956,	-- Malevolent Gladiator's Cord of Meditation
@@ -5363,7 +5172,7 @@ root(ROOTS.Zones, {
 								i(138710, {	-- Ensemble: Malevolent Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											84972,	-- Malevolent Gladiator's Armwraps of Alacrity
 											84948,	-- Malevolent Gladiator's Waistband of Accuracy
@@ -5406,7 +5215,7 @@ root(ROOTS.Zones, {
 								i(138706, {	-- Ensemble: Malevolent Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											84984,	-- Malevolent Gladiator's Armbands of Meditation
 											84983,	-- Malevolent Gladiator's Armbands of Prowess
@@ -5505,7 +5314,7 @@ root(ROOTS.Zones, {
 								i(138713, {	-- Ensemble: Malevolent Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											84977,	-- Malevolent Gladiator's Cuffs of Accuracy
 											84955,	-- Malevolent Gladiator's Cord of Accuracy
@@ -5548,7 +5357,7 @@ root(ROOTS.Zones, {
 								i(138703, {	-- Ensemble: Malevolent Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 											-- 84985,	-- Malevolent Gladiator's Armplates of Alacrity -- 25/10.2021 Sha/DK Only
 											84950,	-- Malevolent Gladiator's Girdle of Prowess
@@ -5753,21 +5562,6 @@ root(ROOTS.Zones, {
 							}),
 						},
 					}),
-					n(58714, {	-- Mei Mei Ironpaw <Master of the Pot>
-						["coord"] = { 52.6, 51.6, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							i(87235, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Banquet of the Pot
-							recipe(125596),	-- Banquet of the Pot
-							i(74670, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Braised Turtle
-							recipe(104305),	-- Braised Turtle
-							i(87237, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Great Banquet of the Pot
-							recipe(125597),	-- Great Banquet of the Pot
-							i(74671, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Mogu Fish Stew
-							recipe(104306),	-- Mogu Fish Stew
-							i(74669, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Swirling Mist Soup
-							recipe(104304),	-- Swirling Mist Soup
-						},
-					}),
 					n(58718, {	-- Merchant Greenfield
 						["coord"] = { 52.8, 52.0, VALLEY_OF_THE_FOUR_WINDS },
 						["g"] = {
@@ -5795,13 +5589,13 @@ root(ROOTS.Zones, {
 								["cost"] = { { "c", 402, 50 }, },	-- 50x Ironpaw Token
 							}),
 							i(92748, {	-- Portable Refrigerator
-								["cost"] = { { "c", 402, MONK }, },	-- 10x Ironpaw Token
+								["cost"] = { { "c", 402, 10 }, },	-- 10x Ironpaw Token
 							}),
 							i(75017, {	-- Recipe: Great Pandaren Banquet (RECIPE!)
-								["cost"] = { { "c", 402, MONK }, },	-- 10x Ironpaw Token
+								["cost"] = { { "c", 402, 10 }, },	-- 10x Ironpaw Token
 							}),
 							i(75013, {	-- Recipe: Pandaren Banquet (RECIPE!)
-								["cost"] = { { "c", 402, MONK }, },	-- 10x Ironpaw Token
+								["cost"] = { { "c", 402, 10 }, },	-- 10x Ironpaw Token
 							}),
 							i(86558, {	-- Rolling Pin
 								["cost"] = { { "c", 402, 50 }, },	-- 50x Ironpaw Token
@@ -5815,7 +5609,7 @@ root(ROOTS.Zones, {
 							i(21099),	-- Recipe: Smoked Sagefish (RECIPE!)
 						},
 					}),
-					faction(1276, {	-- Old Hillpaw
+					faction(FACTION_OLD_HILLPAW, {	-- Old Hillpaw
 						["g"] = {
 							i(90042, {	-- Straw Hat
 								["description"] = "Once you hit Exalted with Old Hillpaw you receive this in the mail.",
@@ -5833,7 +5627,7 @@ root(ROOTS.Zones, {
 							}),
 						},
 					}),
-					faction(1278, {	-- Sho
+					faction(FACTION_SHO, {	-- Sho
 						i(85497, {	-- Chirping Package
 							["description"] = "Once you hit Exalted with Sho you receive this in the mail.",
 							["g"] = {
@@ -5849,7 +5643,7 @@ root(ROOTS.Zones, {
 								i(144248, {	-- Arsenal: Prideful Gladiator's Weapons (A)
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
 									},
 								}),
 								i(102785, {	-- Prideful Gladiator's Barrier
@@ -5935,7 +5729,7 @@ root(ROOTS.Zones, {
 								i(138639, {	-- Ensemble: Prideful Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											102771,	-- Prideful Gladiator's Armplates of Alacrity
 											102640,	-- Prideful Gladiator's Girdle of Accuracy
@@ -5963,7 +5757,7 @@ root(ROOTS.Zones, {
 								i(138647, {	-- Ensemble: Prideful Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											102691,	-- Prideful Gladiator's Bindings of Meditation
 											102723,	-- Prideful Gladiator's Bindings of Prowess
@@ -6024,7 +5818,7 @@ root(ROOTS.Zones, {
 								i(138645, {	-- Ensemble: Prideful Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											102753,	-- Prideful Gladiator's Wristguards of Accuracy
 											102688,	-- Prideful Gladiator's Wristguards of Alacrity
@@ -6055,7 +5849,7 @@ root(ROOTS.Zones, {
 								i(138653, {	-- Ensemble: Prideful Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											102733,	-- Prideful Gladiator's Cuffs of Prowess
 											102684,	-- Prideful Gladiator's Cord of Cruelty
@@ -6083,7 +5877,7 @@ root(ROOTS.Zones, {
 								i(138649, {	-- Ensemble: Prideful Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											102711,	-- Prideful Gladiator's Armwraps of Accuracy
 											102647,	-- Prideful Gladiator's Waistband of Cruelty
@@ -6126,7 +5920,7 @@ root(ROOTS.Zones, {
 								i(138641, {	-- Ensemble: Prideful Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 											102765,	-- Prideful Gladiator's Bracers of Meditation
 											102695,	-- Prideful Gladiator's Bracers of Prowess
@@ -6172,7 +5966,7 @@ root(ROOTS.Zones, {
 								i(138655, {	-- Ensemble: Prideful Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											102666,	-- Prideful Gladiator's Cuffs of Meditation
 											102709,	-- Prideful Gladiator's Cord of Meditation
@@ -6215,7 +6009,7 @@ root(ROOTS.Zones, {
 								i(138651, {	-- Ensemble: Prideful Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											102754,	-- Prideful Gladiator's Armwraps of Alacrity
 											102708,	-- Prideful Gladiator's Waistband of Accuracy
@@ -6243,7 +6037,7 @@ root(ROOTS.Zones, {
 								i(138643, {	-- Ensemble: Prideful Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											102624,	-- Prideful Gladiator's Armbands of Meditation
 											102665,	-- Prideful Gladiator's Armbands of Prowess
@@ -6304,7 +6098,7 @@ root(ROOTS.Zones, {
 								i(138657, {	-- Ensemble: Prideful Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											102687,	-- Prideful Gladiator's Cuffs of Accuracy
 											102662,	-- Prideful Gladiator's Cord of Accuracy
@@ -6332,7 +6126,7 @@ root(ROOTS.Zones, {
 								i(138637, {	-- Ensemble: Prideful Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 											102702,	-- Prideful Gladiator's Armplates of Proficiency
 											102724,	-- Prideful Gladiator's Girdle of Prowess
@@ -6526,53 +6320,12 @@ root(ROOTS.Zones, {
 							}),
 						},
 					}),
-					n(64231, {	-- Sungshin Ironpaw <Guide to the Ways>
-						["coord"] = { 53.6, 51.2, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							-- TODO: https://www.wowhead.com/npc=64231/sungshin-ironpaw#starts
-							recipe(124233),	-- Blanched Needle Mushrooms
-							recipe(124228),	-- Boiled Silkworm Pupa
-							recipe(124227),	-- Dried Needle Mushrooms
-							recipe(124226),	-- Dried Peaches
-							recipe(104297),	-- Fish Cake
-							recipe(104237),	-- Golden Carp Consomme
-							recipe(124231),	-- Green Curry Fish
-							recipe(124232),	-- Peach Pie
-							recipe(125080),	-- Pearl Milk Tea
-							recipe(125067),	-- Perfectly Cooked Instant Noodles
-							recipe(124223),	-- Pounded Rice Cake
-							recipe(124229),	-- Red Bean Bun
-							recipe(125122),	-- Rice Pudding
-							recipe(125078),	-- Roasted Barley Tea
-							recipe(124234),	-- Skewered Peanut Chicken
-							recipe(125117),	-- Sliced Peaches
-							recipe(124230),	-- Tangy Yogurt
-							recipe(124225),	-- Toasted Fish Jerky
-							recipe(125121),	-- Wildfowl Ginseng Soup
-							recipe(124224),	-- Yak Cheese Curds
-						},
-					}),
 					n(59583, {	-- Trader Jambeezi <Adventuring Supplies>
 						["coords"] = {
 							{ 56.2, 47.0, VALLEY_OF_THE_FOUR_WINDS },
 							{ 55.6, 49.8, VALLEY_OF_THE_FOUR_WINDS },
 						},
 						["sym"] = {{"select","npcID",56705},{"pop"}},	-- Singegruff <Adventuring Supplies>
-					}),
-					n(58715, {	-- Yan Ironpaw <Master of the Steamer>
-						["coord"] = { 52.6, 51.6, VALLEY_OF_THE_FOUR_WINDS },
-						["g"] = {
-							i(87239, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Banquet of the Steamer
-							recipe(125598),	-- Banquet of the Steamer
-							i(74673, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Fire Spirit Salmon
-							recipe(104308),	-- Fire Spirit Salmon
-							i(87241, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Great Banquet of the Steamer
-							recipe(125599),	-- Great Banquet of the Steamer
-							i(74672, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Shrimp Dumplings
-							recipe(104307),	-- Shrimp Dumplings
-							i(74674, { ["timeline"] = { "created 5.0.1.15464" }}),	-- Recipe: Steamed Crab Surprise
-							recipe(104309),	-- Steamed Crab Surprise
-						},
 					}),
 				}),
 
@@ -6582,7 +6335,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers,{
-	tier(MOP_TIER, {
+	expansion(EXPANSION.MOP, {
 		q(30566),	-- FLAG - Pest Problems Training — triggered after turning in daily quest "Pest Problems" (questID 30319)
 		q(30629),	-- FLAG - Player Began Finale - triggered after cutscene prompted by turning in "Stoneplow Thirsts" (questID 30117)
 		q(30536),	-- FLAG - Weed War Training — triggered after turning in daily quest "Weed War II" (questID 30321)

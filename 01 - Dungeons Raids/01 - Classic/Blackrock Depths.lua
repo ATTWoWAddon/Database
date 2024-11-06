@@ -3,71 +3,83 @@
 -----------------------------------------------------
 DETENTION_BLOCK = createHeader({
 	readable = "Detention Block",
-	-- #if AFTER WRATH
-	icon = "Interface\\Icons\\Achievement_Zone_Blackrock_01",
-	-- #else
-	icon = [[~_.asset("Achievement_Zone_Blackrock_01")]],
-	-- #endif
+	icon = 236718,
 	text = {
 		en = [[~DUNGEON_FLOOR_BLACKROCKDEPTHS1]],
 	},
 });
 SHADOWFORGE_CITY = createHeader({
 	readable = "Shadowforge City",
-	-- #if AFTER WRATH
-	icon = "Interface\\Icons\\Achievement_Zone_Blackrock_01",
-	-- #else
-	icon = [[~_.asset("Achievement_Zone_Blackrock_01")]],
-	-- #endif
+	icon = 236718,
 	text = {
 		en = [[~DUNGEON_FLOOR_BLACKROCKDEPTHS2]],
 	},
 });
-local OnTooltipForThoriumBrotherhood = [[function(t)
+ExportDB.OnTooltipDB.ThoriumBrotherhood = [[~function(t, tooltipInfo)
 	local reputation = t.reputation;
 	if reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
+		local addRepInfo = _.Modules.FactionData.AddReputationTooltipInfo;
+		addRepInfo(tooltipInfo, reputation, "Turn In Blood & Cores (1x each)",
 -- #if AFTER TBC
-		local repPerTurnIn = isHuman and 550 or 500;
+		500,
 -- #else
-		local repPerTurnIn = isHuman and 220 or 200;
+		200,
 -- #endif
-		local x, n = math.ceil((42000 - reputation) / repPerTurnIn), math.ceil(42000 / repPerTurnIn);
-		GameTooltip:AddDoubleLine("Turn In Blood & Cores (1x each)", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+		42000);
+
+		addRepInfo(tooltipInfo, reputation, "Turn In Core Leather (2x each)",
 -- #if AFTER TBC
-		local repPerTurnIn = isHuman and 385 or 350;
+		350,
 -- #else
-		local repPerTurnIn = isHuman and 165 or 150;
+		150,
 -- #endif
-		local x, n = math.ceil((42000 - reputation) / repPerTurnIn), math.ceil(42000 / repPerTurnIn);
-		GameTooltip:AddDoubleLine("Turn In Core Leather (2x each)", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+		42000);
+
+		addRepInfo(tooltipInfo, reputation, "Turn In Dark Iron Ore (10x each)",
 -- #if AFTER TBC
-		local repPerTurnIn = isHuman and 82.5 or 75;
+		75,
 -- #else
-		local repPerTurnIn = isHuman and 55 or 50;
+		50,
 -- #endif
-		local x, n = math.ceil((42000 - reputation) / repPerTurnIn), math.ceil(42000 / repPerTurnIn);
-		GameTooltip:AddDoubleLine("Turn In Dark Iron Ore (10x each)", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
+		42000);
 	end
 end]];
-root(ROOTS.Instances, tier(CLASSIC_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, {
 	inst(228, {	-- Blackrock Depths
 		-- #if BEFORE MOP
 		["lore"] = "Once the capital city of the Dark Iron dwarves, this volcanic labyrinth now serves as the seat of power for Ragnaros the Firelord. Ragnaros has uncovered the secret to creating life from stone and plans to build an army of unstoppable golems to aid him in conquering the whole of Blackrock Mountain. Obsessed with defeating Nefarian and his draconic minions, Ragnaros will go to any extreme to achieve final victory.",
 		-- #endif
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 1584,	-- Blackrock Depths
+		-- #endif
 		["coord"] = { 39.06, 18.12, BLACKROCK_MOUNTAIN_LEVEL3 },
 		["mapID"] = BLACKROCK_DEPTHS,
 		["maps"] = { 243 },
 		["lvl"] = 42,
 		["groups"] = {
 			n(FACTIONS, {
-				faction(59, {	-- Thorium Brotherhood
+				faction(FACTION_THORIUM_BROTHERHOOD, {	-- Thorium Brotherhood
 					["maps"] = { SEARING_GORGE },
-					["OnTooltip"] = OnTooltipForThoriumBrotherhood,
+					["OnTooltip"] = [[_.OnTooltipDB.ThoriumBrotherhood]],
 				}),
 			}),
 			n(QUESTS, {
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, q(84338, {	-- A Binding Contract
+					["providers"] = {
+						{ "n",  12944 },	-- Lokhtos Darkbargainer <The Thorium Brotherhood>
+						{ "i", 227730 },	-- Thorium Brotherhood Contract
+					},
+					["description"] = "With a Sulfuron Ingot in your bags, speak with Lokhtos and click on the new chat option to obtain a Thorium Brotherhood Contract.",
+					["requireSkill"] = BLACKSMITHING,
+					["cost"] = { { "i", 17203, 1 } },	-- Sulfuron Ingot
+					["timeline"] = { "added 1.15.3" },
+					["lvl"] = 60,
+					["groups"] = {
+						i(227727),	-- Plans: Sulfuron Hammer (RECIPE!)
+					},
+				})),
+				-- #endif
 				q(7604, {	-- A Binding Contract
 					["providers"] = {
 						{ "n", 12944 },	-- Lokhtos Darkbargainer <The Thorium Brotherhood>
@@ -76,9 +88,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["description"] = "With a Sulfuron Ingot in your bags, speak with Lokhtos and click on the new chat option to obtain a Thorium Brotherhood Contract.",
 					["requireSkill"] = BLACKSMITHING,
 					["cost"] = { { "i", 17203, 1 } },	-- Sulfuron Ingot
+					-- #if SEASON_OF_DISCOVERY
+					["timeline"] = { "removed 1.15.3" },
+					-- #endif
 					["lvl"] = lvlsquish(60, 60, 20),
 					["groups"] = {
-						i(18592),	-- Plans: Sulfuron Hammer (RECIPE!)
+						i(18592, {	-- Plans: Sulfuron Hammer (RECIPE!)
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 					},
 				}),
 				q(4264, {	-- A Crumpled Up Note
@@ -87,14 +106,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #if BEFORE 3.0.2
 					["description"] = "After completing the Abandoned Hope quest, kill trash until this item drops for you. If your group has not yet killed the Dark Keeper, they have a fairly high chance to drop this item as well.",
 					-- #endif
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
 				q(4282, {	-- A Shred of Hope
 					["qg"] = 9023,	-- Marshal Windsor
 					["sourceQuest"] = 4264,	-- A Crumpled Up Note
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
@@ -114,7 +133,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["description"] = "If you completed the quest 'Trinkets...' in Searing Gorge, you can complete this quest immediately without having to fight the elite dragon by bringing the Black Dragonflight Molt with you.",
 					-- #endif
 					["coord"] = { 95.09, 31.56, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 10575, 1 } },	-- Black Dragonflight Molt
 					["lvl"] = 52,
 				}),
@@ -122,7 +141,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9459,	-- Cyrus Therepentous
 					["altQuests"] = { 4022 },	-- A Taste of Flame (1/2) (A)
 					["coord"] = { 95.09, 31.56, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 					["groups"] = {
 						objective(1, {	-- 0/1 Black Dragonflight Molt
@@ -139,7 +158,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						4023,	-- A Taste of Flame (1/2) (B)
 					},
 					["coord"] = { 95.09, 31.56, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["groups"] = {
 						objective(1, {	-- 0/1 Encased Fiery Essence
 							["provider"] = { "i", 11230 },	-- Encased Fiery Essence
@@ -147,38 +166,38 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["cr"] = 9016,	-- Bael'Gar
 						}),
 						i(12066, {	-- Shaleskin Cape
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12082, {	-- Wyrmhide Spaulders
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12083, {	-- Valconian Sash
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4242, {	-- Abandoned Hope
 					["qg"] = 9023,	-- Marshal Windsor
 					["sourceQuest"] = 4241,	-- Marshal Windsor
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(12018, {	-- Conservator Helm
-							["timeline"] = { "removed 3.0.2" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 						i(12021, {	-- Shieldplate Sabatons
-							["timeline"] = { "removed 3.0.2" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 						i(12041, {	-- Windshear Leggings
-							["timeline"] = { "removed 3.0.2" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 					},
 				}),
 				q(3981, {	-- Commander Gor'shak
 					["qg"] = 9081,	-- Galamav the Marksman <Kargath Expeditionary Force>
-					["sourceQuest"] = 3907,	-- Disharmony of Fire
+					["sourceQuest"] = 3906,	-- Disharmony of Flame
 					["coord"] = { 5.8, 47.6, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 				}),
@@ -187,22 +206,26 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #if BEFORE 4.0.3
 					["description"] = "You must be a ghost in order to interact with this quest giver. He's in the middle of Blackrock Mountain on the floating island on top of his tomb.",
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { BLACKROCK_MOUNTAIN },
 					["lvl"] = 48,
 				}),
 				q(3802, {	-- Dark Iron Legacy (2/2)
-					["qg"] = 8888,	-- Franclorn Forgewright
+					["providers"] = {
+						{ "n",   8888 },	-- Franclorn Forgewright
+						{ "o", 164689 },	-- Monument of Franclorn Forgewright
+					},
 					["sourceQuest"] = 3801,	-- Dark Iron Legacy (1/2)
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { BLACKROCK_MOUNTAIN },
 					["lvl"] = 48,
 					["groups"] = {
 						objective(1, {	-- 0/1 Ironfel
 							["provider"] = { "i", 10999 },	-- Ironfel
+							["cr"] = 9056,	-- Fineous Darkvire <Chief Architect>
 						}),
 						i(11000, {	-- Shadowforge Key
-							["timeline"] = { "deleted 4.0.3" },
+							["timeline"] = { DELETED_4_0_3 },
 						}),
 					},
 				}),
@@ -210,7 +233,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9084,	-- Thunderheart <Kargath Expeditionary Force>
 					["coord"] = { 3.3, 48.3, BADLANDS },
 					["maps"] = { BLACKROCK_MOUNTAIN },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
@@ -223,7 +246,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9084,	-- Thunderheart <Kargath Expeditionary Force>
 					["sourceQuest"] = 3906,	-- Disharmony of Flame
 					["coord"] = { 3.3, 48.3, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
@@ -234,16 +257,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "i", 11126 },	-- Tablet of Kurniya
 						}),
 						i(12112, {	-- Crypt Demon Bracers
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12114, {	-- Nightfall Gloves
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12115, {	-- Stalwart Clutch
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12113, {	-- Sunborne Cape
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -253,41 +276,71 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["description"] = "You should finish this full quest chain up to Marshal Windsor before joining a Blackrock Depths group.",
 					-- #endif
 					["coord"] = { 85.8, 69.0, BURNING_STEPPES },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
+					["groups"] = {
+						objective(1, {	-- 0/15 Black Broodling slain
+							["provider"] = { "n", 7047 },	-- Black Broodling
+						}),
+						objective(2, {	-- 0/10 Black Dragonspawn slain
+							["provider"] = { "n", 7040 },	-- Black Dragonspawn
+						}),
+						objective(3, {	-- 0/1 Black Drake slain
+							["provider"] = { "n", 7044 },	-- Black Drake
+						}),
+						objective(4, {	-- 0/4 Black Wyrmkin slain
+							["provider"] = { "n", 7041 },	-- Black Wyrmkin
+						}),
+					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_THREE, q(82062, {	-- Ever After
+					["qg"] = 222530,	-- Rugged Traveler
+					["description"] = "Just east of the Ring in Blackrock Depths is a bridge that leads north over lava.\n\nAs you get onto the bridge, look down and to the left; you'll see a friendly Dark Iron Dwarf below you on the base of a pillar. Clear the rest of the mobs ahead of you (Blazing Fireguards and a group of Shadowforge dwarves).\n\nMove to the left side of the bridge near a small brazier. Get onto the railing, hug the rock wall, and jump ahead onto the platform near the wall.\n\nMove to the end of the platform, hugging the wall, and move hard into the rock corner.\n\nTurn with your left shoulder to the wall and run carefully against the wall, until you just fall down into the exposed corner. Drop down onto the rock outcrop below. \n\nTurn left into a small room, where you'll encounter the Rugged Traveler.",
+					["timeline"] = { REMOVED_2_0_1 },
+					["lvl"] = 48,
+					["groups"] = {
+						i(221316, {	-- Premo's Poise-Demanding Uniform
+							["timeline"] = { REMOVED_2_0_1 },
+						}),
+						i(221315, {	-- Rainbow Generator
+							["timeline"] = { REMOVED_2_0_1 },
+						}),
+					},
+				})),
+				-- #endif
 				q(6646, {	-- Favor Amongst the Brotherhood, Blood of the Mountain
 					["qg"] = 12944,	-- Lokhtos Darkbargainer
-					["maxReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
+					["maxReputation"] = { FACTION_THORIUM_BROTHERHOOD, EXALTED },	-- The Thorium Brotherhood, Exalted.
 					["cost"] = { { "i", 11382, 1 } },	-- Blood of the Mountain
 					["repeatable"] = true,
 					["lvl"] = 60,
 				}),
 				q(6645, {	-- Favor Amongst the Brotherhood, Core Leather
 					["qg"] = 12944,	-- Lokhtos Darkbargainer
-					["maxReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
+					["maxReputation"] = { FACTION_THORIUM_BROTHERHOOD, EXALTED },	-- The Thorium Brotherhood, Exalted.
 					["cost"] = { { "i", 17012, 2 } },	-- Core Leather
 					["repeatable"] = true,
 					["lvl"] = 60,
 				}),
 				q(6642, {	-- Favor Amongst the Brotherhood, Dark Iron Ore
 					["qg"] = 12944,	-- Lokhtos Darkbargainer
-					["maxReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
+					["maxReputation"] = { FACTION_THORIUM_BROTHERHOOD, EXALTED },	-- The Thorium Brotherhood, Exalted.
 					["cost"] = { { "i", 11370, 10 } },	-- Dark Iron Ore
 					["repeatable"] = true,
 					["lvl"] = 60,
 				}),
 				q(6643, {	-- Favor Amongst the Brotherhood, Fiery Core
 					["qg"] = 12944,	-- Lokhtos Darkbargainer
-					["maxReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
+					["maxReputation"] = { FACTION_THORIUM_BROTHERHOOD, EXALTED },	-- The Thorium Brotherhood, Exalted.
 					["cost"] = { { "i", 17010, 1 } },	-- Fiery Core
 					["repeatable"] = true,
 					["lvl"] = 60,
 				}),
 				q(6644, {	-- Favor Amongst the Brotherhood, Lava Core
 					["qg"] = 12944,	-- Lokhtos Darkbargainer
-					["maxReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
+					["maxReputation"] = { FACTION_THORIUM_BROTHERHOOD, EXALTED },	-- The Thorium Brotherhood, Exalted.
 					["cost"] = { { "i", 17011, 1 } },	-- Lava Core
 					["repeatable"] = true,
 					["lvl"] = 60,
@@ -297,8 +350,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ "n", 9080 },	-- Lexlort <Kargath Expeditionary Force>
 						{ "i", 11286 },	-- Thorium Shackles
 					},
+					["sourceQuests"] = 4082,	-- KILL ON SIGHT: High Ranking Dark Iron Officials
 					["coord"] = { 5.9, 47.6, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 52,
 				}),
@@ -306,7 +360,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 1267,	-- Ragnar Thunderbrew
 					["sourceQuest"] = 4128,	-- Ragnar Thunderbrew
 					["coord"] = { 46.8, 52.4, DUN_MOROGH },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
@@ -314,10 +368,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "i", 11312 },	-- Lost Thunderbrew Recipe
 						}),
 						i(12000, {	-- Limb Cleaver
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11964, {	-- Swiftstrike Cudgel
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12003),	-- Dark Dwarven Lager
 					},
@@ -326,7 +380,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9561,	-- Jalinda Sprig
 					["sourceQuest"] = 4262,	-- Overmaster Pyron
 					["coord"] = { 85.4, 70.1, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
@@ -334,34 +388,34 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "n", 9017 },	-- Lord Incendius
 						}),
 						i(12112, {	-- Crypt Demon Bracers
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12114, {	-- Nightfall Gloves
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12115, {	-- Stalwart Clutch
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12113, {	-- Sunborne Cape
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4322, {	-- Jail Break!
 					["qg"] = 9023,	-- Marshal Windsor
 					["sourceQuest"] = 4282,	-- A Shred of Hope
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
 						i(12061, {	-- Blade of Reckoning
-							["timeline"] = { "removed 3.0.2" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 						i(12062, {	-- Skilled Fighting Blade
-							["timeline"] = { "removed 3.0.2" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 						i(12065, {	-- Ward of the Elements
-							["timeline"] = { "removed 3.0.2" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 					},
 				}),
@@ -369,21 +423,21 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 2784,	-- King Magni Bronzebeard <Lord of Ironforge>
 					["sourceQuest"] = 3701,	-- The Smoldering Ruins of Thaurissan (2/2)
 					["coord"] = { 39.09, 56.19, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
 				q(4342, {	-- Kharan's Tale
 					["qg"] = 9021,	-- Kharan Mighthammer
 					["sourceQuest"] = 4341,	-- Kharan Mighthammer
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
 				q(4081, {	-- KILL ON SIGHT: Dark Iron Dwarves
 					["provider"] = { "o", 164867 },	-- WANTED
 					["coord"] = { 3.9, 47.4, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
@@ -402,7 +456,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["provider"] = { "o", 164868 },	-- KILL ON SIGHT
 					["sourceQuest"] = 4081,	-- KILL ON SIGHT: Dark Iron Dwarves
 					["coord"] = { 3.9, 47.4, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
@@ -421,7 +475,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9078,	-- Shadowmage Vivian Lagrave <Kargath Expeditionary Force>
 					["sourceQuest"] = 4133,	-- Vivian Lagrave
 					["coord"] = { 2.9, 47.8, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
@@ -429,10 +483,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "i", 11312 },	-- Lost Thunderbrew Recipe
 						}),
 						i(12000, {	-- Limb Cleaver
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11964, {	-- Swiftstrike Cudgel
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -440,7 +494,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9560,	-- Marshal Maxwell
 					["sourceQuest"] = 4224,	-- The True Masters (6/6)
 					["coord"] = { 84.74, 69.02, BURNING_STEPPES },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
 				}),
@@ -455,7 +509,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 56.4, 46.2, THE_EXODAR },	-- Behomat
 						{ 56.4, 46.2, DARNASSUS },	-- Arias'ta Bladesinger
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { WARRIOR },
@@ -473,7 +527,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 63.2, 79.8, THUNDER_BLUFF },	-- Aponi Brightmane
 						{ 57.8, 90.2, UNDERCITY },	-- Champion Cyssa Dawnrose
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { PALADIN },
 					["races"] = { TAUREN },
@@ -490,7 +544,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 92.0, 37.2, SILVERMOON_CITY },	-- Champion Bachi
 						{ 57.8, 90.2, UNDERCITY },	-- Champion Cyssa Dawnrose
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { PALADIN },
 					["races"] = { BLOODELF },
@@ -509,7 +563,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 47.2, 88.4, IRONFORGE },	-- Daera Brightspear
 						{ 43.4, 26.0, DARNASSUS },	-- Jeen'ra Nightrunner
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { HUNTER },
@@ -520,7 +574,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(28259, {	-- Meet with Demisette Cloyce / Meet with Evelyn Thorn [SL+]
 					["qg"] = 5173,	-- Alexander Calder
 					["coord"] = { 50.2, 6.8, IRONFORGE },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { WARLOCK },
@@ -539,7 +593,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 43.6, 78.4, DARNASSUS },	-- Rukua
 						{ 23.6, 5.6, IRONFORGE },	-- Valgar Highforge
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { PALADIN },
@@ -557,7 +611,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 43.8, 78.8, DARNASSUS },	-- Droha
 						{ 55.2, 29.0, IRONFORGE },	-- Farseer Javad
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { SHAMAN },
@@ -577,7 +631,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 53.0, 19.6, SILVERMOON_CITY },	-- Inethven
 						{ 85.2, 14.2, UNDERCITY },	-- Kaelystia Hatebringer
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { MAGE },
 					["races"] = HORDE_ONLY,
@@ -596,7 +650,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 37.6, 80.0, DARNASSUS },	-- Tarelvir
 						{ 26.2, 6.2, IRONFORGE },	-- Nittlebur Sparkfizzle
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { MAGE },
@@ -616,7 +670,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 25.0, 8.2, IRONFORGE },	-- High Priest Rohan
 						{ 38.5, 50.9, THE_EXODAR },	-- Caedmos
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { PRIEST },
@@ -634,7 +688,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 22.2, 19.0, THUNDER_BLUFF },	-- Kador Cloudsong
 						{ 71.8, 56.0, SILVERMOON_CITY },	-- Gez'li
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
@@ -653,7 +707,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 73.2, 45.2, SILVERMOON_CITY },	-- Zanien
 						{ 86.0, 15.6, UNDERCITY },	-- Kaal Soulreaper
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
@@ -672,7 +726,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 43.6, 78.4, DARNASSUS },	-- Rukua
 						{ 23.6, 5.6, IRONFORGE },	-- Valgar Highforge
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { PALADIN },
@@ -690,7 +744,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 40.0, 39.6, DARNASSUS },	-- Erion Shadewhisper
 						{ 51.6, 14.6, IRONFORGE },	-- Hulfdan Blackbeard
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { ROGUE },
@@ -710,7 +764,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 37.6, 80.0, DARNASSUS },	-- Tarelvir
 						{ 26.2, 6.2, IRONFORGE },	-- Nittlebur Sparkfizzle
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { MAGE },
@@ -730,7 +784,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 92.0, 37.2, SILVERMOON_CITY },	-- Champion Bachi
 						{ 57.8, 90.2, UNDERCITY },	-- Champion Cyssa Dawnrose
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { PALADIN },
 					["races"] = { BLOODELF },
@@ -747,7 +801,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 43.8, 78.8, DARNASSUS },	-- Droha
 						{ 55.2, 29.0, IRONFORGE },	-- Farseer Javad
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { SHAMAN },
@@ -767,7 +821,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 84.4, 28.0, SILVERMOON_CITY },	-- Zandine
 						{ 49.6, 29.0, UNDERCITY },	-- Apolos
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { HUNTER },
 					["races"] = HORDE_ONLY,
@@ -786,7 +840,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 25.0, 8.2, IRONFORGE },	-- High Priest Rohan
 						{ 38.5, 50.9, THE_EXODAR },	-- Caedmos
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { PRIEST },
@@ -804,7 +858,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 56.4, 46.2, THE_EXODAR },	-- Behomat
 						{ 56.4, 46.2, DARNASSUS },	-- Arias'ta Bladesinger
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { WARRIOR },
@@ -822,7 +876,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 63.2, 79.8, THUNDER_BLUFF },	-- Aponi Brightmane
 						{ 57.8, 90.2, UNDERCITY },	-- Champion Cyssa Dawnrose
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { PALADIN },
 					["races"] = { TAUREN },
@@ -841,7 +895,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 84.4, 28.0, SILVERMOON_CITY },	-- Zandine
 						{ 49.6, 29.0, UNDERCITY },	-- Apolos
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { HUNTER },
 					["races"] = HORDE_ONLY,
@@ -858,7 +912,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 22.2, 19.0, THUNDER_BLUFF },	-- Kador Cloudsong
 						{ 71.8, 56.0, SILVERMOON_CITY },	-- Gez'li
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
@@ -877,7 +931,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 53.0, 19.6, SILVERMOON_CITY },	-- Inethven
 						{ 85.2, 14.2, UNDERCITY },	-- Kaelystia Hatebringer
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { MAGE },
 					["races"] = HORDE_ONLY,
@@ -894,7 +948,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 40.0, 39.6, DARNASSUS },	-- Erion Shadewhisper
 						{ 51.6, 14.6, IRONFORGE },	-- Hulfdan Blackbeard
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { ROGUE },
@@ -914,7 +968,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 47.2, 88.4, IRONFORGE },	-- Daera Brightspear
 						{ 43.4, 26.0, DARNASSUS },	-- Jeen'ra Nightrunner
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { STORMWIND_CITY },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { HUNTER },
@@ -934,7 +988,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 73.2, 45.2, SILVERMOON_CITY },	-- Zanien
 						{ 86.0, 15.6, UNDERCITY },	-- Kaal Soulreaper
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
@@ -951,7 +1005,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9077,	-- Warlord Goretooth <Kargath Expeditionary Force>
 					["sourceQuest"] = 4121,	-- Precarious Predicament
 					["coord"] = { 5.8, 47.5, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 52,
 					["groups"] = {
@@ -959,14 +1013,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "n", 9033 },	-- General Angerforge
 						}),
 						i(12059, {	-- Conqueror's Medallion
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4262, {	-- Overmaster Pyron
 					["qg"] = 9561,	-- Jalinda Sprig
 					["coord"] = { 85.4, 70.1, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { BLACKROCK_MOUNTAIN },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
@@ -980,7 +1034,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9520,	-- Grark Lorkrub
 					["sourceQuest"] = 4122,	-- Grark Lorkrub
 					["coord"] = { 40.2, 34.2, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 52,
 					["groups"] = {
@@ -995,28 +1049,30 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(4128, {	-- Ragnar Thunderbrew
 					["qg"] = 9540,	-- Enohar Thunderbrew
 					["coord"] = { 63.6, 20.6, BLASTED_LANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
+					["maps"] = { DUN_MOROGH },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 50,
 				}),
 				q(4136, {	-- Ribbly Screwspigot
 					["qg"] = 9544,	-- Yuka Screwspigot
+					["sourceQuest"] = 4324,	-- Yuka Screwspigot
 					["coord"] = { 66.1, 21.9, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 48,
 					["groups"] = {
 						objective(1, {	-- 0/1 Ribbly's Head
 							["provider"] = { "i", 11313 },	-- Ribbly's Head
 						}),
 						i(11963, {	-- Penance Spaulders
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12049, {	-- Splintsteel Armor
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11865, {	-- Rancor Boots
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1041,15 +1097,15 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 64.6, 33.0, STORMWIND_CITY },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(65640, {	-- Mask of the Farseer
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65622, {	-- Headcover of the Farseer
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1063,15 +1119,15 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 39.0, 47.4, ORGRIMMAR },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { SHAMAN },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(65643, {	-- Mask of the Speaker
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65630, {	-- Headcover of the Speaker
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1091,12 +1147,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 39.4, 84.8, STORMWIND_CITY },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { WARLOCK },
 					["groups"] = {
 						i(65621, {	-- Horns of Justified Sins
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1116,12 +1172,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 49.0, 55.2, ORGRIMMAR },
 						-- #ENDIF
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { WARLOCK },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(65627, {	-- Horns of the Left Hand Path
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1129,14 +1185,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9560,	-- Marshal Maxwell
 					["sourceQuest"] = 4322,	-- Jail Break!
 					["coord"] = { 84.7, 69.0, BURNING_STEPPES },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
 				q(4361, {	-- The Bearer of Bad News
 					["qg"] = 9021,	-- Kharan Mighthammer
 					["sourceQuest"] = 4342,	-- Kharan's Tale
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
@@ -1156,12 +1212,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 79.6, 60.8, STORMWIND_CITY },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { ROGUE },
 					["groups"] = {
 						i(65624, {	-- SI:7 Special Issue Facemask
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1181,12 +1237,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 44.6, 61.4, ORGRIMMAR },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(65629, {	-- Facemask of the Shattered Hand
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1200,7 +1256,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["description"] = "Go to Haleh in Winterspring. Use the blue rune on the ground inside the cave to reach her. Don't bother going to Dustwallow Marsh.",
 					-- #endif
 					["coord"] = { 78.2, 18.1, STORMWIND_CITY },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
@@ -1208,7 +1264,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 4949,	-- Thrall <Warchief>
 					["sourceQuest"] = 4001,	-- What Is Going On? (2/2)
 					["coord"] = { 31.61, 37.83, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 				}),
@@ -1216,7 +1272,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 2784,	-- King Magni Bronzebeard <Lord of Ironforge>
 					["sourceQuest"] = 4361,	-- The Bearer of Bad News
 					["coord"] = { 39.09, 56.19, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
@@ -1232,7 +1288,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["description"] = "This quest can be solo'd. Do NOT touch anything and let Bolvar take care of the dragons. They do heavy AOE, you will likely die unless you're in a raid group of 20+.",
 					-- #endif
 					["coord"] = { 64.7, 76.8, STORMWIND_CITY },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
@@ -1252,12 +1308,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 79.0, 71.0, STORMWIND_CITY },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { HUNTER },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(65619, {	-- Helm of the Crown
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1277,19 +1333,19 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 63.8, 32.8, ORGRIMMAR },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { HUNTER },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(65628, {	-- Helm of the Great Hunter
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
 				q(4286, {	-- The Good Stuff
 					["qg"] = 9177,	-- Oralius
-					["coord"] = { 84.6, 68.7, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["coord"] = { 84.6, 68.7, BURNING_STEPPES },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
@@ -1297,14 +1353,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "i", 11468 },	-- Dark Iron Fanny Pack
 						}),
 						i(11883, {	-- -- A Dingy Fanny Pack
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4123, {	-- The Heart of the Mountain
 					["qg"] = 9536,	-- Maxwort Uberglint
 					["coord"] = { 65.2, 23.9, BURNING_STEPPES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 50,
 					["groups"] = {
 						objective(1, {	-- 0/1 The Heart of the Mountain
@@ -1316,7 +1372,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9078,	-- Shadowmage Vivian Lagrave <Kargath Expeditionary Force>
 					["sourceQuest"] = 3906,	-- Disharmony of Flame
 					["coord"] = { 2.9, 47.76, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
@@ -1324,14 +1380,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "i", 11129 },	-- Essence of the Elements
 						}),
 						i(12038, {	-- Lagrave's Seal
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4201, {	-- The Love Potion
 					["qg"] = 9500,	-- Mistress Nagmara
 					["maps"] = { AZSHARA, UNGORO_CRATER },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 50,
 					["groups"] = {
 						objective(1, {	-- 0/4 Gromsblood
@@ -1352,42 +1408,42 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["coord"] = { 31, 49, UNGORO_CRATER },
 						}),
 						i(11962, {	-- Manacle Cuffs
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(11866, {	-- Nagmara's Whipping Belt
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4004, {	-- The Princess Saved?
 					["qg"] = 8929,	-- Princess Moira Bronzebeard <Princess of Ironforge>
 					["sourceQuest"] = 4003,	-- The Royal Rescue
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { ORGRIMMAR },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
 						i(12545, {	-- Eye of Orgrimmar
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12544, {	-- Thrall's Resolve
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(4363, {	-- The Princess's Surprise
 					["qg"] = 8929,	-- Princess Moira Bronzebeard <Princess of Ironforge>
 					["sourceQuest"] = 4362,	-- The Fate of the Kingdom
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { IRONFORGE },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
 						i(12548, {	-- Magni's Will
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12543, {	-- Songstone of Ironforge
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1401,12 +1457,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 28263,	-- Meet with Maginor Dumas / Meet with Frazzle Frostfingers [SL+]
 					["coord"] = { 49.2, 87.6, STORMWIND_CITY },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["classes"] = { MAGE },
 					["groups"] = {
 						i(65620, {	-- Hood of the Royal Wizard
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1419,25 +1475,27 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						-- #endif
 					},
 					["sourceQuest"] = 28300,	-- Meet with Ureda / Meet with Feenix Arcshine [SL+]
-					-- #if AFTER SHADOWLANDS
-					["coord"] = { 74.6, 43.5, ORGRIMMAR },
-					-- #else
-					["coord"] = { 48.4, 62.6, ORGRIMMAR },
-					-- #endif
-					["timeline"] = { "added 4.0.3.13277" },
+					["coords"] = {
+						-- #if AFTER SHADOWLANDS
+						{ 74.6, 43.5, ORGRIMMAR },
+						-- #else
+						{ 48.4, 62.6, ORGRIMMAR },
+						-- #endif
+					},
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { MAGE },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(65626, {	-- Hood of the Arcane Path
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
 				q(4061, {	-- The Rise of the Machines (1/3)
 					["qg"] = 9079,	-- Hierophant Theodora Mulvadania <Kargath Expeditionary Force>
 					["coord"] = { 3.02, 47.81, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
-					["maps"] = { BLASTED_LANDS },
+					["timeline"] = { REMOVED_4_0_3 },
+					["maps"] = { BURNING_STEPPES },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 52,
 					["groups"] = {
@@ -1458,7 +1516,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 4061,	-- The Rise of the Machines (1/3)
 					["coord"] = { 3.02, 47.81, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 52,
 				}),
@@ -1466,7 +1524,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 2921,	-- Lotwil Veriatus
 					["sourceQuest"] = 4062,	-- The Rise of the Machines (2/3)
 					["coord"] = { 25.95, 44.87, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 52,
 					["groups"] = {
@@ -1477,16 +1535,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "i", 11269 },	-- Intact Elemental Core
 						}),
 						i(12110, {	-- Raincaster Drape
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12109, {	-- Azure Moon Amice
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12111, {	-- Lavaplate Gauntlets
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(12108, {	-- Basaltscale Armor
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1494,7 +1552,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 4949,	-- Thrall <Warchief>
 					["sourceQuest"] = 4002,	-- The Eastern Kingdoms
 					["coord"] = { 31.61, 37.83, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
@@ -1506,7 +1564,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(3702, {	-- The Smoldering Ruins of Thaurissan (1/2)
 					["qg"] = 8879,	-- Royal Historian Archesonus
 					["coord"] = { 38.37, 55.31, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
@@ -1514,13 +1572,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 8879,	-- Royal Historian Archesonus
 					["sourceQuest"] = 3702,	-- The Smoldering Ruins of Thaurissan (1/2)
 					["coord"] = { 38.37, 55.31, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { BURNING_STEPPES },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 					["groups"] = {
+						objective(1, {	-- 0/12 Information Recovered
+							["provider"] = { "o", 153556 },	-- Thaurissan Relic
+						}),
 						i(12102, {	-- Ring of the Aristocrat
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -1546,7 +1607,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 4182,	-- Dragonkin Menace
 					["coord"] = { 85.8, 69.0, BURNING_STEPPES },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
 				}),
@@ -1557,7 +1618,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 4183,	-- The True Masters (1/6)
 					["coord"] = { 30.0, 44.5, REDRIDGE_MOUNTAINS },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
 				}),
@@ -1565,9 +1626,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 1748,	-- Highlord Bolvar Fordragon
 					["sourceQuest"] = 4184,	-- The True Masters (2/6)
 					["coord"] = { 78.2, 18.1, STORMWIND_CITY },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
+					["groups"] = {
+						objective(1, {	-- Advice from Lady Prestor
+							["provider"] = { "n", 1749 },	-- Lady Katrana Prestor
+						}),
+					},
 				}),
 				q(4186, {	-- The True Masters (4/6)
 					["providers"] = {
@@ -1576,7 +1642,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 4185,	-- The True Masters (3/6)
 					["coord"] = { 78.2, 18.1, STORMWIND_CITY },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
 				}),
@@ -1584,7 +1650,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 344,	-- Magistrate Solomon
 					["sourceQuest"] = 4186,	-- The True Masters (4/6)
 					["coord"] = { 30.0, 44.5, REDRIDGE_MOUNTAINS },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
 				}),
@@ -1592,7 +1658,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 9560,	-- Marshal Maxwell
 					["sourceQuest"] = 4223,	-- The True Masters (5/6)
 					["coord"] = { 84.74, 69.02, BURNING_STEPPES },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 48,
 					["groups"] = {
@@ -1605,7 +1671,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(4133, {	-- Vivian Lagrave
 					["qg"] = 5204,	-- Apothecary Zinge <Royal Apothecary Society>
 					["coord"] = { 50.1, 68.0, UNDERCITY },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 50,
@@ -1626,57 +1692,60 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 52.6, 45.0, STORMWIND_CITY },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PALADIN },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(65623, {	-- Helm of the Order
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65641, {	-- Faceguard of the Order
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65646, {	-- Headguard of the Order
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
-						-- You get these when completing the quest
-						i(141976, {	-- Headguard of the Order
-							["timeline"] = { "added 7.0.3.22248" },
-						}),
-						i(141977, {	-- Faceguard of the Order
-							["timeline"] = { "added 7.0.3.22248" },
-						}),
-						i(141978, {	-- Helm of the Order
-							["timeline"] = { "added 7.0.3.22248" },
-						}),
+						-- You get these when completing the quest (Only when completing Horde version specifically and relogging, gg Blizz)
+						-- i(141976, {	-- Headguard of the Order
+						-- 	["timeline"] = { ADDED_7_0_3 },
+						-- }),
+						-- i(141977, {	-- Faceguard of the Order
+						-- 	["timeline"] = { ADDED_7_0_3 },
+						-- }),
+						-- i(141978, {	-- Helm of the Order
+						-- 	["timeline"] = { ADDED_7_0_3 },
+						-- }),
 					},
 				}),
 				q(28466, {	-- Weapons of Darkness (Tauren)
 					["qg"] = 44725,	-- Sunwalker Atohmo
 					["sourceQuest"] = 28302,	-- Meet with Sunwalker Atohmo / Meet with Avaros Dawnglaive [SL+]
 					["coord"] = { 45.2, 53.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PALADIN },
 					["races"] = { TAUREN },
 					["groups"] = {
 						i(65631, {	-- Helm of the Sunwalker
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65644, {	-- Faceguard of the Sunwalker
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65647, {	-- Headguard of the Sunwalker
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						-- You get these when completing the quest
 						i(141976, {	-- Headguard of the Order
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
+							["description"] = "May need to re-login to the game to properly trigger this collected from Blizzard.",
 						}),
 						i(141977, {	-- Faceguard of the Order
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
+							["description"] = "May need to re-login to the game to properly trigger this collected from Blizzard.",
 						}),
 						i(141978, {	-- Helm of the Order
-							["timeline"] = { "added 7.0.3.22248" },
+							["timeline"] = { ADDED_7_0_3 },
+							["description"] = "May need to re-login to the game to properly trigger this collected from Blizzard.",
 						}),
 					},
 				}),
@@ -1684,18 +1753,18 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 23128,	-- Master Pyreanor
 					["sourceQuest"] = 28303,	-- Meet with Master Pyreanor / Meet With Avaros Dawnglaive [SL+]
 					["coord"] = { 49.2, 71.2, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PALADIN },
 					["races"] = { BLOODELF },
 					["groups"] = {
 						i(65632, {	-- Helm of the Order
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65645, {	-- Faceguard of the Order
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65648, {	-- Headguard of the Order
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(25549),	-- Blood Knight Tabard
 					},
@@ -1703,25 +1772,29 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(3982, {	-- What Is Going On? (1/2)
 					["qg"] = 9020,	-- Commander Gor'shak <Kargath Expeditionary Force>
 					["sourceQuest"] = 3981,	-- Commander Gor'shak
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
 				}),
 				q(4001, {	-- What Is Going On? (2/2)
 					["qg"] = 9020,	-- Commander Gor'shak <Kargath Expeditionary Force>
 					["sourceQuest"] = 3982,	-- What Is Going On? (1/2)
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 48,
+					["groups"] = {
+						objective(1, {	-- Information Gathered from Kharan
+							["provider"] = { "n", 9021 },	-- Kharan Mighthammer
+						}),
+					},
 				}),
 				q(4324, {	-- Yuka Screwspigot
 					["qg"] = 9706,	-- Yorba Screwspigot
 					["coord"] = { 67.0, 24.0, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["isBreadcrumb"] = true,
 					["lvl"] = 48,
 				}),
-
 				q(28393, {	-- A Dangerous Alliance [A]
 					["qgs"] = {
 						-- #if BEFORE SHADOWLANDS
@@ -1738,16 +1811,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 79.4, 69.0, STORMWIND_CITY },
 						-- #endif
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { WARRIOR },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(50, 50, 20),
 					["groups"] = {
 						i(65618, {	-- Faceguard of the Crown
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65639, {	-- Headguard of the Crown
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1755,16 +1828,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 168596,	-- Gormok Ogrefist
 					["sourceQuest"] = 28290,	-- Meet with Grezz Ragefist (Cata+) / Meet with Gormok Ogrefist (SL+)
 					["coord"] = { 73.6, 45.6, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { WARRIOR },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(50, 50, 20),
 					["groups"] = {
 						i(65625, {	-- Faceguard of the Horde
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65642, {	-- Headguard of the Horde
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
@@ -1782,7 +1855,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { UNDEAD },
 					["isBreadcrumb"] = true,
@@ -1801,7 +1874,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { BLOODELF },
 					["isBreadcrumb"] = true,
@@ -1820,7 +1893,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { TAUREN },
 					["isBreadcrumb"] = true,
@@ -1839,7 +1912,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { TROLL },
 					["isBreadcrumb"] = true,
@@ -1858,7 +1931,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { GOBLIN },
 					["isBreadcrumb"] = true,
@@ -1879,7 +1952,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { GOBLIN },
 					["isBreadcrumb"] = true,
@@ -1898,7 +1971,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { UNDEAD },
 					["isBreadcrumb"] = true,
@@ -1913,7 +1986,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 79.4, 52.0, SILVERMOON_CITY },
 						{ 84.6, 73.2, UNDERCITY },	-- Gregory Charles (Undercity)
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1932,7 +2005,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 57.2, 89.0, THUNDER_BLUFF },	-- Sark Ragetotem
 						{ 47.2, 15.2, UNDERCITY },	-- Christoph Walker
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { WARRIOR },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1951,7 +2024,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 57.2, 89.0, THUNDER_BLUFF },	-- Sark Ragetotem
 						{ 47.2, 15.2, UNDERCITY },	-- Christoph Walker
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { WARRIOR },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -1970,7 +2043,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { TAUREN },
 					["isBreadcrumb"] = true,
@@ -1989,7 +2062,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { TROLL },
 					["isBreadcrumb"] = true,
@@ -2006,7 +2079,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 79.4, 52.0, SILVERMOON_CITY },
 						{ 84.6, 73.2, UNDERCITY },	-- Gregory Charles (Undercity)
 					},
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { ROGUE },
 					["races"] = HORDE_ONLY,
 					["isBreadcrumb"] = true,
@@ -2027,7 +2100,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ 75.4, 28.0, THUNDER_BLUFF },	-- Seer Beryl <Priest Trainer>
 						{ 49.3, 17.1, UNDERCITY },	-- Aelthalyste <Priest Trainer>
 					},
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { BLOODELF },
 					["isBreadcrumb"] = true,
@@ -2039,7 +2112,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 45337,	-- Tyelis
 					["sourceQuest"] = 28307,	-- Meet with Tyelis (Cata+) / Journey to Orgrimmar [Blood Elf] (SL+)
 					["coord"] = { 49.0, 71.0, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { BLOODELF },
 					["lvl"] = lvlsquish(50, 50, 20),
@@ -2051,7 +2124,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 45347,	-- Brother Silverhallow
 					["sourceQuest"] = 28323,	-- Meet with Brother Silverhallow (Cata+) / Journey to Orgrimmar [Goblin] (SL+)
 					["coord"] = { 37.8, 87.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { GOBLIN },
 					["lvl"] = lvlsquish(50, 50, 20),
@@ -2063,7 +2136,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 45339,	-- Dark Cleric Cecille
 					["sourceQuest"] = 28304,	-- Meet with Dark Cleric Cecille (Cata+) / Journey to Orgrimmar [Goblin] (SL+)
 					["coord"] = { 48.2, 72.8, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { UNDEAD },
 					["lvl"] = lvlsquish(50, 50, 20),
@@ -2075,7 +2148,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 44735,	-- Seer Liwatha
 					["sourceQuest"] = 28308,	-- Meet with Seer Liwatha (Cata+) / Journey to Orgrimmar [Tauren] (SL+)
 					["coord"] = { 45.4, 53.4, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { TAUREN },
 					["lvl"] = lvlsquish(50, 50, 20),
@@ -2092,7 +2165,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 45137,	-- Shadow-Walker Zuru
 					["sourceQuest"] = 28309,	-- Meet with Shadow-Walker Zuru (Cata+) / Journey to Orgrimmar [Troll] (SL+)
 					["coord"] = { 35.4, 69.2, ORGRIMMAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = { TROLL },
 					["lvl"] = lvlsquish(50, 50, 20),
@@ -2101,20 +2174,27 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 				}),
 				q(28328, {	-- Twilight Scheming [Alliance]
-					-- #if ANYCLASSIC
-					["qg"] = 376,	-- High Priestess Laurena
-					["coord"] = { 49.6, 44.8, STORMWIND_CITY },
-					-- #else
-					["qg"] = 164949,	-- Patrice Lancaster
-					["coord"] = { 78.9, 69.8, STORMWIND_CITY },
-					-- #endif
+					["providers"] = {
+						-- #if ANYCLASSIC
+						{ "n", 376 },	-- High Priestess Laurena
+						-- #else
+						{"n", 164949 },	-- Patrice Lancaster
+						-- #endif
+					},
+					["coords"] = {
+						-- #if ANYCLASSIC
+						{ 49.6, 44.8, STORMWIND_CITY },
+						-- #else
+						{ 78.9, 69.8, STORMWIND_CITY },
+						-- #endif
+					},
 					["sourceQuest"] = 28285,	-- Meet with High Priestess Laurena / Meet with Patrice Lancaster [SL+]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["classes"] = { PRIEST },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(65616, {	-- Crown of the Hallowed
-							["timeline"] = { "added 4.0.3.13277" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						-- you are supposed to get these when doing the quest, but i completed it on 2 characters and haven't received them :) possible unknown race requirement?
 						-- Crieve note: The following items are still sourceless on WoWHead, so it's quite possible the intent was to make versions for Allied Races, but Blizzard realized that'd be dumb and smacked the intern that was doing the dumb.
@@ -2128,59 +2208,59 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(27569, {	-- Dark Iron Tacticians
 					["qg"] = 45894,	-- Prospector Seymour
 					["sourceQuest"] = 27568,	-- Infilitrating Shadowforge City [Alliance]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 				}),
 				q(27568, {	-- Infiltrating Shadowforge City [Alliance]
 					["qg"] = 45891,	-- Oralius
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 				}),
 				q(27582, {	-- Infiltrating Shadowforge City [Horde]
 					["qg"] = 45839,	-- Galamav the Marksman
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(27565, {	-- Into the Prison [Alliance]
 					["qg"] = 45892,	-- Jalinda Sprig
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 				}),
 				q(27579, {	-- Into the Prison [Horde]
 					["qg"] = 45821,	-- Tha'trak Proudtusk
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(27585, {	-- The 109th Division
 					["qg"] = 45820,	-- Razal'blade
 					["sourceQuest"] = 27582,	-- Infiltrating Shadowforge City [Horde]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(27596, {	-- The Heart of the Mountain
 					["qg"] = 45850,	-- Maxwort Uberglint
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 				}),
 				q(27603, {	-- The Sealed Gate
 					["qg"] = 45849,	-- Tinkee Steamboil
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 				}),
 				q(27567, {	-- Twilight?! No! [Alliance]
 					["qg"] = 45898,	-- Kevin Dawson
 					["sourceQuest"] = 27565,	-- Into the Prison [Alliance]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 				}),
 				q(27581, {	-- Twilight?! No! [Horde]
 					["qg"] = 45818,	-- Lexlort
 					["sourceQuest"] = 27579,	-- Into the Prison [Horde]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(27578, {	-- Morgan's Fruition
 					["qg"] = 45890,   -- Marshal Maxwell
 					["sourceQuest"] = 27573,	-- The Dark Iron Pact [Alliance]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(65956),	-- Maxwell's Cloak
@@ -2191,7 +2271,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(27593, {	-- Rebirth of the K.E.F
 					["qg"] = 45840,	-- Warlord Goretooth
 					["sourceQuest"] = 27591,  -- The Dark Iron Pact [Horde]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(68054),	-- Dark Iron Band
@@ -2202,127 +2282,350 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(27573, {	-- The Dark Iron Pact [Alliance]
 					["qg"] = 45899,	-- Mountaineer Orfus
 					["sourceQuest"] = 27571,	-- The Grim Guzzler [Alliance]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 				}),
 				q(27591, {	-- The Dark Iron Pact [Horde]
 					["qg"] = 45824,	--  Thunderheart
 					["sourceQuest"] = 27589,	-- The Grim Guzzler [Horde]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 				q(27571, {	-- The Grim Guzzler [Alliance]
 					["qg"] = 45888,	-- Mayara Brightwing
 					["sourceQuest"] = 27569,	-- Dark Iron Tacticians
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 				}),
 				q(27589, {	-- The Grim Guzzler [Horde]
 					["qg"] = 45817,	-- Hierophant Theodora Mulvadania
 					["sourceQuest"] = 27585,	-- The 109th Division
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 				}),
 			}),
 			n(VENDORS, {
-				n(12944, {	-- Lokhtos Darkbargainer <The Thorium Brotherhood>
-					applyclassicphase(PHASE_THREE, i(19449, {	-- Formula: Enchant Weapon - Mighty Intellect (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					applyclassicphase(PHASE_THREE, i(19448, {	-- Formula: Enchant Weapon - Mighty Versatility / CLASSIC: Formula: Enchant Weapon - Mighty Spirit (RECIPE!)
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					})),
-					applyclassicphase(PHASE_THREE, i(19444, {	-- Formula: Enchant Weapon - Strength (RECIPE!)
-						["minReputation"] = { 59, FRIENDLY },	-- The Thorium Brotherhood, Friendly.
-					})),
-					i(17025, {	-- Pattern: Black Dragonscale Boots (RECIPE!)
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					}),
-					applyclassicphase(PHASE_THREE, i(19331, {	-- Pattern: Chromatic Gauntlets (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					applyclassicphase(PHASE_THREE, i(19332, {	-- Pattern: Corehound Belt (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					i(17022, {	-- Pattern: Corehound Boots (RECIPE!)
-						["minReputation"] = { 59, FRIENDLY },	-- The Thorium Brotherhood, Friendly.
-					}),
-					i(17018, {	-- Pattern: Flarecore Gloves
-						["minReputation"] = { 59, FRIENDLY },	-- The Thorium Brotherhood, Friendly.
-					}),
-					applyclassicphase(PHASE_THREE, i(19220, {	-- Pattern: Flarecore Leggings
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					i(17017, {	-- Pattern: Flarecore Mantle
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					}),
-					applyclassicphase(PHASE_THREE, i(19219, {	-- Pattern: Flarecore Robe
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					})),
-					applyclassicphase(PHASE_THREE, i(19330, {	-- Pattern: Lava Belt (RECIPE!)
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					})),
-					applyclassicphase(PHASE_THREE, i(19333, {	-- Pattern: Molten Belt (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					i(17023, {	-- Pattern: Molten Helm (RECIPE!)
-						["minReputation"] = { 59, FRIENDLY },	-- The Thorium Brotherhood, Friendly.
-					}),
-					applyclassicphase(PHASE_THREE, i(19208, {	-- Plans: Black Amnesty (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					applyclassicphase(PHASE_THREE, i(19209, {	-- Plans: Blackfury (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					applyclassicphase(PHASE_THREE, i(19211, {	-- Plans: Blackguard (RECIPE!)
-						["minReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
-					})),
-					applyclassicphase(PHASE_FOUR, i(20040, {	-- Plans: Dark Iron Boots (RECIPE!)
-						["minReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
-					})),
-					i(17051, {	-- Plans: Dark Iron Bracers (RECIPE!)
-						["minReputation"] = { 59, FRIENDLY },	-- The Thorium Brotherhood, Friendly.
-					}),
-					i(17060, {	-- Plans: Dark Iron Destroyer (RECIPE!)
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					}),
-					applyclassicphase(PHASE_THREE, i(19207, {	-- Plans: Dark Iron Gauntlets (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					})),
-					applyclassicphase(PHASE_THREE, i(19206, {	-- Plans: Dark Iron Helm (RECIPE!)
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					})),
-					i(17052, {	-- Plans: Dark Iron Leggings (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					}),
-					i(17059, {	-- Plans: Dark Iron Reaver (RECIPE!)
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					}),
-					applyclassicphase(PHASE_THREE, i(19210, {	-- Plans: Ebon Hand (RECIPE!)
-						["minReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
-					})),
-					i(17049, {	-- Plans: Fiery Chain Girdle (RECIPE!)
-						["minReputation"] = { 59, HONORED },	-- The Thorium Brotherhood, Honored.
-					}),
-					i(17053, {	-- Plans: Fiery Chain Shoulders (RECIPE!)
-						["minReputation"] = { 59, REVERED },	-- The Thorium Brotherhood, Revered.
-					}),
-					applyclassicphase(PHASE_THREE, i(19212, {	-- Plans: Nightfall (RECIPE!)
-						["minReputation"] = { 59, EXALTED },	-- The Thorium Brotherhood, Exalted.
-					})),
-					applyclassicphase(PHASE_FIVE, i(20761, {	-- Recipe: Transmute Elemental Fire (RECIPE!)
-						["minReputation"] = { 59, FRIENDLY },	-- The Thorium Brotherhood, Friendly.
-					})),
-				}),
+				n(12944, bubbleDownClassicRep(FACTION_THORIUM_BROTHERHOOD, {	-- Lokhtos Darkbargainer <The Thorium Brotherhood>
+					{	-- Neutral
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(20754, {	-- Lesser Mana Oil
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(20755, {	-- Formula: Wizard Oil
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(22308, {	-- Pattern: Enchanted Runecloth Bag
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+					},
+					{	-- Friendly
+						applyclassicphase(PHASE_THREE_ENCHANTS, i(19444)),	-- Formula: Enchant Weapon - Strength (RECIPE!)
+						i(17022),	-- Pattern: Corehound Boots (RECIPE!)
+						i(17018),	-- Pattern: Flarecore Gloves
+						i(17023),	-- Pattern: Molten Helm (RECIPE!)
+						i(17051),	-- Plans: Dark Iron Bracers (RECIPE!)
+						applyclassicphase(PHASE_FIVE, i(20761)),	-- Recipe: Transmute Elemental Fire (RECIPE!)
+					},
+					{	-- Honored
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(228981, {	-- Formula: Conductive Shield Coating
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(229008, {	-- Formula: Enchant Cloak - Greater Fire Resistance
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(229009, {	-- Formula: Enchant Cloak - Greater Nature Resistance
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						applyclassicphase(PHASE_THREE_ENCHANTS, i(19448)),	-- Formula: Enchant Weapon - Mighty Versatility / CLASSIC: Formula: Enchant Weapon - Mighty Spirit (RECIPE!)
+						i(17025),	-- Pattern: Black Dragonscale Boots (RECIPE!)
+						i(17017),	-- Pattern: Flarecore Mantle
+						applyclassicphase(PHASE_THREE_RECIPES, i(19219)),	-- Pattern: Flarecore Robe
+						applyclassicphase(PHASE_THREE_RECIPES, i(19330)),	-- Pattern: Lava Belt (RECIPE!)
+						i(17060),	-- Plans: Dark Iron Destroyer (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19206)),	-- Plans: Dark Iron Helm (RECIPE!)
+						i(17059),	-- Plans: Dark Iron Reaver (RECIPE!)
+						i(17049),	-- Plans: Fiery Chain Girdle (RECIPE!)
+
+						-- #if SEASON_OF_DISCOVERY
+						-- EPIC ITEM UPGRADES
+						applyclassicphase(SOD_PHASE_FOUR, i(227826, {	-- Dark Iron Flame Reaver
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   17015, 1 },	-- Dark Iron Reaver
+								{ "i", 227801, 25 },	-- Firelands Ember
+								{ "i",   17010, 2 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227842, {	-- Ebon Fist
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19170, 1 },	-- Ebon Hand
+								{ "i", 227801, 25 },	-- Firelands Ember
+								{ "i",   17010, 2 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227823, {	-- Fine Flarecore Gloves
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   16979, 1 },	-- Flarecore Gloves
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227839, {	-- Fine Flarecore Leggings
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19165, 1 },	-- Flarecore Leggings
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227830, {	-- Fine Flarecore Mantle
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   16980, 1 },	-- Flarecore Mantle
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227831, {	-- Fine Flarecore Robe
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19156, 1 },	-- Flarecore Robe
+								{ "i", 227801, 20 },	-- Firelands Ember
+								{ "i",   17011, 1 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227821, {	-- Flamekissed Molten Helm
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   16983, 1 },	-- Molten Helm
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17011, 1 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227833, {	-- Glaive of Obsidian Fury
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19167, 1 },	-- Blackfury
+								{ "i", 227801, 25 },	-- Firelands Ember
+								{ "i",   17011, 2 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227829, {	-- Hardened Black Dragonscale Boots
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   16984, 1 },	-- Black Dragonscale Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17011, 1 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227840, {	-- Implacable Blackguard
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19168, 1 },	-- Blackguard
+								{ "i", 227801, 25 },	-- Firelands Ember
+								{ "i",   17011, 2 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227828, {	-- Lavawalker Belt
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19149, 1 },	-- Lava Belt
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17011, 1 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227827, {	-- Molten Chain Girdle
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   16989, 1 },	-- Fiery Chain Girdle
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227834, {	-- Molten Chain Shoulders
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   16988, 1 },	-- Fiery Chain Shoulders
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227825, {	-- Molten Dark Iron Destroyer
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   17016, 1 },	-- Dark Iron Destroyer
+								{ "i", 227801, 25 },	-- Firelands Ember
+								{ "i",   17010, 2 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227838, {	-- Shining Chromatic Gauntlets
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19157, 1 },	-- Chromatic Gauntlets
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227832, {	-- Tempered Black Amnesty
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19166, 1 },	-- Black Amnesty
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 2 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227841, {	-- Tempered Dark Iron Boots (Str/Stam)
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   20039, 1 },	-- Dark Iron Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(228924, {	-- Tempered Dark Iron Boots (Agi/Stam)
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   20039, 1 },	-- Dark Iron Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(228925, {	-- Tempered Dark Iron Boots (Def/Stam)
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   20039, 1 },	-- Dark Iron Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(228926, {	-- Tempered Dark Iron Boots (Int/Holy)
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   20039, 1 },	-- Dark Iron Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(228927, {	-- Tempered Dark Iron Boots (Str/Holy)
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   20039, 1 },	-- Dark Iron Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(228928, {	-- Tempered Dark Iron Boots (Healing/Stam)
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   20039, 1 },	-- Dark Iron Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(228929, {	-- Tempered Dark Iron Boots (Healing/Int)
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   20039, 1 },	-- Dark Iron Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227820, {	-- Tempered Dark Iron Bracers
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   17014, 1 },	-- Dark Iron Bracers
+								{ "i", 227801, 10 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227835, {	-- Tempered Dark Iron Gauntlets
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19164, 1 },	-- Dark Iron Gauntlets
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17011, 1 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227824, {	-- Tempered Dark Iron Helm
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19148, 1 },	-- Dark Iron Helm
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17011, 1 },	-- Lava Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227836, {	-- Tempered Dark Iron Leggings
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   17013, 1 },	-- Dark Iron Leggings
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227837, {	-- Thick Corehound Belt
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   19162, 1 },	-- Corehound Belt
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17010, 1 },	-- Fiery Core
+							},
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227822, {	-- Thick Corehound Boots
+							["timeline"] = { "added 1.15.3" },
+							["cost"] = {
+								{ "i",   16982, 1 },	-- Corehound Boots
+								{ "i", 227801, 15 },	-- Firelands Ember
+								{ "i",   17011, 1 },	-- Lava Core
+							},
+						})),
+						-- #endif
+					},
+					{	-- Revered
+						applyclassicphase(PHASE_THREE_ENCHANTS, i(19449)),	-- Formula: Enchant Weapon - Mighty Intellect (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19331)),	-- Pattern: Chromatic Gauntlets (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19332)),	-- Pattern: Corehound Belt (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19220)),	-- Pattern: Flarecore Leggings
+						applyclassicphase(PHASE_THREE_RECIPES, i(19333)),	-- Pattern: Molten Belt (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19208)),	-- Plans: Black Amnesty (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19209)),	-- Plans: Blackfury (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19207)),	-- Plans: Dark Iron Gauntlets (RECIPE!)
+						i(17052),	-- Plans: Dark Iron Leggings (RECIPE!)
+						i(17053),	-- Plans: Fiery Chain Shoulders (RECIPE!)
+					},
+					{	-- Exalted
+						applyclassicphase(PHASE_THREE_RECIPES, i(19211)),	-- Plans: Blackguard (RECIPE!)
+						applyclassicphase(PHASE_FOUR_DARKIRON_RECIPES,  i(20040)),	-- Plans: Dark Iron Boots (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19210)),	-- Plans: Ebon Hand (RECIPE!)
+						applyclassicphase(PHASE_THREE_RECIPES, i(19212, {	-- Plans: Nightfall (RECIPE!)
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.0" },
+							-- #endif
+						})),
+					},
+				})),
 				n(9499, {	-- Plugger Spazzring
-					i(15759),	-- Pattern: Black Dragonscale Breastplate (RECIPE!)
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_FOUR, i(227902, {	-- Pattern: Hardened Black Dragonscale Breastplate (RECIPE!)
+						["timeline"] = { "added 1.15.3" },
+					})),
+					-- #endif
+					i(15759, {	-- Pattern: Black Dragonscale Breastplate (RECIPE!)
+						-- #if SEASON_OF_DISCOVERY
+						["timeline"] = { "removed 1.15.3" },
+						-- #endif
+					}),
 					i(13483),	-- Recipe: Transmute Fire to Earth (RECIPE!)
 					i(11325),	-- Dark Iron Ale Mug
 				}),
 				n(45843, {	-- Yuka Screwspigot <Engineering Supplies>
-					["timeline"] = { "added 4.0.1" },
+					["timeline"] = { ADDED_4_0_1 },
 					["groups"] = {
-						i(10602),   -- Schematic: Deadly Scope
+						i(10602),   -- Schematic: Deadly Scope (RECIPE!)
 					},
 				}),
 			}),
@@ -2340,11 +2643,27 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 				}),
 				i(15781, {	-- Pattern: Black Dragonscale Leggings (RECIPE!)
+					-- #if SEASON_OF_DISCOVERY
+					["timeline"] = { "removed 1.15.3" },
+					-- #endif
 					["cr"] = 8903,	-- Anvilrage Captain
 				}),
 				i(15770, {	-- Pattern: Black Dragonscale Shoulders (RECIPE!)
+					-- #if SEASON_OF_DISCOVERY
+					["timeline"] = { "removed 1.15.3" },
+					-- #endif
 					["cr"] = 8898,	-- Anvilrage Marshal
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(227903, {	-- Pattern: Hardened Black Dragonscale Leggings (RECIPE!)
+					["timeline"] = { "added 1.15.3" },
+					["cr"] = 8903,	-- Anvilrage Captain
+				})),
+				applyclassicphase(SOD_PHASE_FOUR, i(227904, {	-- Pattern: Hardened Black Dragonscale Shoulders (RECIPE!)
+					["timeline"] = { "added 1.15.3" },
+					["cr"] = 8898,	-- Anvilrage Marshal
+				})),
+				-- #endif
 				i(11614, {	-- Plans: Dark Iron Mail (RECIPE!)
 					["description"] = "|cFFFFD700Plans: Dark Iron Mail|r can spawn in one of four spots.\n\n|cFFFFFFFFLocation 1:|r Located in the |cFFFFD700West Garrison|r. After going up the ramp from where |cFFFFD700General Angerforge|r is located on your left are some tables.  It will be located in the back corner where the Fireguard Destroyer is and two tables in front of it.  This table is close to the table that has vases on it that is near the keg.\n\n|cFFFFFFFFLocation 2:|r In |cFFFFD700Golem Lord Argelmach's|r room.  When you walk into the room it will be in the back left corner where in between barrels.  There will be two barrels to the left and one barrel to the right of it.\n\n|cFFFFFFFFLocation 3:|r In |cFFFFD700The Manufactory|r, on a bench.\n\n|cFFFFFFFFLocation 4:|r After leaving the room with |cFFFFD700Ambassador Flamelash|r you will cross a bridge that leads into the |cFFFFD700Mold Foundry|r.  Once you enter the room you will continue straight until you see the ramp.  Instead of going down the ramp you will jump off the ledge to the right of the ramp.  After landing on the ground you will see the plans located here.",
 					["provider"] = { "o", 173232 },	-- Blacksmithing Plans
@@ -2359,27 +2678,27 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						10043,	-- Ribbly's Crony
 					},
 				}),
-				i(16049, {  -- Schematic: Dark Iron Bomb
+				i(16049, {	-- Schematic: Dark Iron Bomb (RECIPE!)
 					["cr"] = 8920,   -- Weapon Technician
 				}),
-				i(16048, {	-- Schematic: Dark Iron Rifle
+				i(16048, {	-- Schematic: Dark Iron Rifle (RECIPE!)
 					["cr"] = 8897,	-- Doomforge Craftsman
 				}),
-				i(18235, {	-- Schematic: Field Repair Bot 74A
+				i(18235, {	-- Schematic: Field Repair Bot 74A (RECIPE!)
 					["provider"] = { "o", 179552 },	-- Schematic: Field Repair Bot 74A
 					["description"] = "On the floor next to Golem Lord Argelmach.",
 				}),
-				i(18654, {	-- Schematic: Gnomish Alarm-o-Bot
+				i(18654, {	-- Schematic: Gnomish Alarm-o-Bot (RECIPE!)
 					["cr"] = 8920,	-- Weapon Technician
 				}),
 				i(16053, {	-- Schematic: Master Engineer's Goggles
 					-- #if AFTER 2.0.1
 					["description"] = "This is now learned from the trainer.",
 					-- #endif
-					["timeline"] = { "removed 2.0.1" },
+					["timeline"] = { REMOVED_2_0_1 },
 					["cr"] = 8900,	-- Doomforge Arcanasmith
 				}),
-				i(18661, {	-- Schematic: World Enlarger
+				i(18661, {	-- Schematic: World Enlarger (RECIPE!)
 					["cr"] = 8920,	-- Weapon Technician
 				}),
 				i(12546),	-- Aristocratic Cuffs
@@ -2402,7 +2721,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["creatureID"] = 9018,
 					["groups"] = {
 						i(11140),	-- Prison Cell Key
-						i(11625),	-- Enthralled Sphere
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_THREE, i(223539, {	-- Enthralled Sphere
+							["timeline"] = { "added 1.15.2" },
+						})),
+						-- #endif
+						i(11625, {	-- Enthralled Sphere
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.2" },
+							-- #endif
+						}),
 						i(11626),	-- Blackveil Cape
 						i(11624),	-- Kentic Amice
 						applyclassicphase(PHASE_FIVE, i(22240)),	-- Greaves of Withering Despaire
@@ -2412,10 +2740,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["creatureID"] = 9025,
 					["groups"] = {
 						i(45050, {	-- Formula: Smoking Heart of the Mountain [BOP] (RECIPE!)
-							["timeline"] = { "added 3.1.0.9658" },
+							["timeline"] = { ADDED_3_1_0 },
 						}),
 						i(11813, {	-- Formula: Smoking Heart of the Mountain [BOE] (RECIPE!)
-							["timeline"] = { "removed 3.1.0.9658" },
+							["timeline"] = { REMOVED_3_1_0 },
 						}),
 						i(11631),	-- Stoneshell Guard
 						i(11632),	-- Earthslag Shoulders
@@ -2425,90 +2753,153 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						i(11679),	-- Rubicund Armguards
 						-- #endif
 						applyclassicphase(PHASE_FIVE, i(22397, {	-- Idol of Ferocity
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						})),
 						i(11630, {	-- Rockshard Pellets
-							["timeline"] = { "deleted 4.0.1" },
+							["timeline"] = { DELETED_4_0_1 },
 						}),
 					},
 				}),
 				e(371, {	-- Houndmaster Grebmar
 					["creatureID"] = 9319,
 					["groups"] = {
-						i(11629),	-- Houndmaster's Rifle
-						i(11628),	-- Houndmaster's Bow
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_THREE, i(223540, {	-- Houndmaster's Bow
+							["timeline"] = { "added 1.15.2" },
+						})),
+						-- #endif
+						i(11628, {	-- Houndmaster's Bow
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.2" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_THREE, i(223982, {	-- Houndmaster's Rifle
+							["timeline"] = { "added 1.15.2" },
+						})),
+						-- #endif
+						i(11629, {	-- Houndmaster's Rifle
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.2" },
+							-- #endif
+						}),
 						i(11627),	-- Fleetfoot Greaves
 						i(11623),	-- Spritecaster Cape
 					},
 				}),
-				applyclassicphase(PHASE_FIVE, n(16059,	-- Theldren
-				-- #if AFTER 4.0.3
-				{
-				-- This init function unmarks the removed from game flag for folks with the banner.
-				["OnInit"] = [[function(t)
-					if GetItemCount(21986, true) > 0 then
-						t.u = nil;
-						for i,o in ipairs(t.g) do
-							if o.u and o.u == 11 then
-								o.u = nil;
-							end
-						end
-					else
-						t.u = 11;
-						for i,o in ipairs(t.g) do
-							if not o.u then
-								o.u = 11;
-							end
-						end
-					end
-					return t;
-				end]],
-				-- #else
-				bubbleDown({
-					["timeline"] = { "removed 4.0.3" },
-					-- #if NOT ANYCLASSIC
-					["u"] = 11,
-					-- #endif
-				}, {
-				-- #endif
+				applyclassicphase(PHASE_FIVE_TIER_ZERO_POINT_FIVE_SETS, n(16059, {	-- Theldren
 					["provider"] = { "o", 181074 },	-- Arena Spoils
 					["description"] = "Requires Banner of Provocation (Dungeon Set 2 Questline) to summon this boss. Loot the grey chest on the grey grate after killing the mobs. You must use the banner before the non-elites are killed.",
 					["cost"] = { { "i", 21986, 1 } },	-- Banner of Provocation
-					["groups"] = {
+					["timeline"] = { REMOVED_4_0_3 },
+					-- #if NOT ANYCLASSIC
+					["u"] = CONDITIONALLY_AVAILABLE,
+					-- #endif
+					-- #if AFTER 4.0.3
+					-- This init function unmarks the removed from game flag for folks with the brazier.
+					["OnInit"] = FUNCTION_TEMPLATES.OnInit.BrazierAccess,
+					-- #endif
+					["groups"] = bubbleDown({
+						["timeline"] = { REMOVED_4_0_3 },
+						-- #if NOT ANYCLASSIC
+						["u"] = CONDITIONALLY_AVAILABLE,
+						-- #endif
+					}, {
 						i(22047),	-- Top Piece of Lord Valthalak's Amulet
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(228700, {	-- Ironweave Mantle
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
 						i(22305, {	-- Ironweave Mantle
-							["timeline"] = { "removed 4.0.1" },
+							["timeline"] = {
+								-- #if SEASON_OF_DISCOVERY
+								"removed 1.15.3",
+								-- #else
+								REMOVED_4_0_1,
+								-- #endif
+							},
 						}),
 						i(22317),	-- Lefty's Brass Knuckle
 						i(22318),	-- Malgen's Long Bow
 						i(22330),	-- Shroud of Arcane Mastery
-					},
-				}
-				-- #if BEFORE 4.0.3
-				)
-				-- #endif
-				)),
+					}),
+				})),
 				e(372, {	-- Ring of Law
 					["description"] = "Approaching the center of the ring will start an event, and the High Justice will appear and approach one of the gates and release three waves of non-elite enemies, followed by one of six possible mini-bosses.",
 					["creatureID"] = 10096,	-- High Justice Grimstone
 					["groups"] = {
 						n(9031, {	-- Anub'shiah
-							i(11677),	-- Graverot Cape
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223986, {	-- Graverot Cape
+								["timeline"] = { "added 1.15.2" },
+							})),
+							-- #endif
+							i(11677, {	-- Graverot Cape
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.2" },
+								-- #endif
+							}),
 							i(11678),	-- Carapace of Anub'shiah
-							i(11731),	-- Savage Gladiator Greaves
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(227957, {	-- Savage Gladiator Greaves
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(11731, {	-- Savage Gladiator Greaves
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(11675),	-- Shadefiend Boots
 						}),
 						n(9029, {	-- Eviscerator
-							i(11685),	-- Splinthide Shoulders
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223987, {	-- Splinthide Shoulders
+								["timeline"] = { "added 1.15.2" },
+							})),
+							-- #endif
+							i(11685, {	-- Splinthide Shoulders
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.2" },
+								-- #endif
+							}),
 							-- #if BEFORE 7.3.2
 							i(11679),	-- Rubicund Armguards
 							-- #endif
-							i(11730),	-- Savage Gladiator Grips
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(227961, {	-- Savage Gladiator Grips
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(11730, {	-- Savage Gladiator Grips
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(11686),	-- Girdle of Beastial Fury
 						}),
 						n(9027, {	-- Gorosh the Dervish
-							applyclassicphase(PHASE_FIVE, i(22266)),	-- Flarethorn
-							i(11726),	-- Savage Gladiator Chain
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(227962, {	-- Flarethorn
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							applyclassicphase(PHASE_FIVE, i(22266, {	-- Flarethorn
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							})),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(227952, {	-- Savage Gladiator Chain
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(11726, {	-- Savage Gladiator Chain
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							-- #if AFTER 7.3.2
 							i(11662),	-- Ban'thok Sash
 							-- #endif
@@ -2518,24 +2909,70 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						n(9028, {	-- Grizzle
 							i(11610),	-- Plans: Dark Iron Pulverizer (RECIPE!)
 							i(11702),	-- Grizzle's Skinner
-							i(11722),	-- Dregmetal Spaulders
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223544, {	-- Dregmetal Spaulders
+								["timeline"] = { "added 1.15.2" },
+							})),
+							-- #endif
+							i(11722, {	-- Dregmetal Spaulders
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.2" },
+								-- #endif
+							}),
 							i(11703),	-- Stonewall Girdle
 							applyclassicphase(PHASE_FIVE, i(22270)),	-- Entrenching Boots
 						}),
 						n(9032, {	-- Hedrum the Creeper
 							i(11635),	-- Hookfang Shanker
-							i(11729),	-- Savage Gladiator Helm
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(227955, {	-- Savage Gladiator Helm
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(11729, {	-- Savage Gladiator Helm
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(11633),	-- Spiderfang Carapace
-							i(11634),	-- Silkweb Gloves
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223984, {	-- Silkweb Gloves
+								["timeline"] = { "added 1.15.2" },
+							})),
+							-- #endif
+							i(11634, {	-- Silkweb Gloves
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.2" },
+								-- #endif
+							}),
 						}),
 						n(9030, {	-- Ok'thor the Breaker
 							i(11665),	-- Ogreseer Fists
 							i(11662),	-- Ban'thok Sash
 							i(11728),	-- Savage Gladiator Leggings
-							i(11824),	-- Cyclopean Band
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_THREE, i(223985, {	-- Cyclopean Band
+								["timeline"] = { "added 1.15.2" },
+							})),
+							-- #endif
+							i(11824, {	-- Cyclopean Band
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.2" },
+								-- #endif
+							}),
 						}),
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_THREE, n(223265, {	-- Delirious Ancient
+					["description"] = "Spawns after defeating High Interrogator Gerstahn, Houndmaster Grebmar, Ring of Law in the Dark Iron Highway.",
+					["cost"] = {{ "i", 221418, 1 }},	-- Agamaggan's Roar
+					["groups"] = {
+						i(221271),	-- Ace of Wilds
+						i(221262),	-- Wild Offering
+					},
+				})),
+				-- #endif
 				e(377, {	-- Bael'gar
 					["creatureID"] = 9016,
 					["groups"] = {
@@ -2558,20 +2995,25 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						i(11765),	-- Pyremail Wristguards
 						i(11767),	-- Emberplate Armguards
 						i(11768, {	-- Incendic Bracers
-							["timeline"] = { "removed 4.0.3" },
+							-- #if BEFORE 10.1.7
+							-- #if AFTER 2.0.1
+							["description"] = "This item appears to have been removed with TBC Prepatch. Please @Crieve if you get it to drop.",
+							["isBounty"] = true,
+							-- #endif
+							-- #endif
+							["timeline"] = { REMOVED_2_0_1, ADDED_10_1_7 },	-- 07.09.2023 ATT DISCORD
 						}),
-						applyclassicphase(PHASE_THREE, i(19268)),	-- Ace of Elementals
+						applyclassicphase(PHASE_THREE_DMF_CARDS, i(19268)),	-- Ace of Elementals
 					},
 				}),
 				e(376, {	-- Fineous Darkvire <Chief Architect>
 					["creatureID"] = 9056,
 					["groups"] = {
-						i(10999),	-- Ironfel
 						i(11840),	-- Master Builder's Shirt
 						i(11839),	-- Chief Architect's Monocle
 						applyclassicphase(PHASE_FIVE, i(22223)),	-- Foreman's Head Protector
 						i(151406, {	-- Belt of the Eminent Mason
-							["timeline"] = { "added 7.3.0.24484" },
+							["timeline"] = { ADDED_7_3_0 },
 						}),
 						i(11842),	-- Land Surveyor's Mantle
 						i(11841),	-- Senior Designer's Pantaloons
@@ -2583,10 +3025,35 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["creatureID"] = 9024,
 					["groups"] = {
 						i(11207),	-- Formula: Enchant Weapon - Fiery Weapon (RECIPE!)
-						i(11750),	-- Kindling Stave
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_THREE, i(223538, {	-- Kindling Stave
+							["timeline"] = { "added 1.15.2" },
+						})),
+						-- #endif
+						i(11750, {	-- Kindling Stave
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.2" },
+							-- #endif
+						}),
 						i(11748),	-- Pyric Caduceus
-						i(11747),	-- Flamestrider Robes
-						i(11749),	-- Searingscale Leggings
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_THREE, i(223981, {	-- Flamestrider Robes
+							["timeline"] = { "added 1.15.2" },
+						})),
+						applyclassicphase(SOD_PHASE_THREE, i(223980, {	-- Searingscale Leggings
+							["timeline"] = { "added 1.15.2" },
+						})),
+						-- #endif
+						i(11747, {	-- Flamestrider Robes
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.2" },
+							-- #endif
+						}),
+						i(11749, {	-- Searingscale Leggings
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.2" },
+							-- #endif
+						}),
 						-- #if AFTER 7.3.2
 						applyclassicphase(PHASE_FIVE, i(22270)),	-- Entrenching Boots
 						-- #endif
@@ -2595,12 +3062,21 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				e(375, {	-- Warder Stilgiss
 					["creatureID"] = 9041,
 					["groups"] = {
-						i(11784),	-- Arbiter's Blade
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_THREE, i(223983, {	-- Arbiter's Blade
+							["timeline"] = { "added 1.15.2" },
+						})),
+						-- #endif
+						i(11784, {	-- Arbiter's Blade
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.2" },
+							-- #endif
+						}),
 						i(11782),	-- Boreal Mantle
 						applyclassicphase(PHASE_FIVE, i(22241)),	-- Dark Warder's Pauldrons
 						i(11783),	-- Chillsteel Girdle
 						i(151405, {	-- Cold-Forged Chestplate
-							["timeline"] = { "added 7.3.0.24484" },
+							["timeline"] = { ADDED_7_3_0 },
 						}),
 					},
 				}),
@@ -2673,17 +3149,32 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["creatureID"] = 9033,
 					["groups"] = {
 						i(11464),	-- Marshal Windsor's Lost Information
-						i(11816),	-- Angerforge's Battle Axe
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227948, {	-- Angerforge's Battle Axe
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11816, {	-- Angerforge's Battle Axe
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						-- #if AFTER 7.3.2
 						i(11932),	-- Guiding Stave of Wisdom
 						-- #endif
-						i(11817),	-- Lord General's Sword
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227940, {	-- Lord General's Sword
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11817, {	-- Lord General's Sword
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						-- #if AFTER 7.3.2
 						i(12557, {	-- Ebonsteel Spaulders
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 8.1.0"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_8_1_0 },
 						}),
 						-- #endif
 						i(11820),	-- Royal Decorated Armor
@@ -2700,14 +3191,42 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						i(11268),	-- Head of Argelmach
 						i(11465),	-- Marshal Windsor's Lost Information
 						applyclassicphase(TBC_PHASE_ONE, i(21956)),	-- Design: Dark Iron Scorpid
-						i(11823),	-- Luminary Kilt
-						i(11822),	-- Omnicast Boots
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227964, {	-- Luminary Kilt
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11823, {	-- Luminary Kilt
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227965, {	-- Omnicast Boots
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11822, {	-- Omnicast Boots
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						i(11669),	-- Naglering
-						i(11819),	-- Second Wind
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227967, {	-- Second Wind
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11819, {	-- Second Wind
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 					},
 				}),
 				e(380, {	-- Hurley Blackbreath
 					["creatureID"] = 9537,
+					["provider"] = { "o", 164911 },	-- Thunderbrew Lager Keg
 					["description"] = "Break the 3 Thunderbrew Lager Kegs to start the encounter.",
 					["groups"] = {
 						i(11312),	-- Lost Thunderbrew Recipe
@@ -2717,10 +3236,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						i(18044),	-- Hurley's Tankard
 						i(11735),	-- Ragefury Eyepatch
 						i(151408, {	-- Dark Iron Dredger's Pauldrons
-							["timeline"] = { "added 7.3.0.24484" },
+							["timeline"] = { ADDED_7_3_0 },
 						}),
 						i(151407, {	-- Blackened Pit Trousers
-							["timeline"] = { "added 7.3.0.24484" },
+							["timeline"] = { ADDED_7_3_0 },
 						}),
 						i(18043),	-- Coal Miner Boots
 						applyclassicphase(PHASE_FIVE, i(22275)),	-- Firemoss Boots
@@ -2731,12 +3250,21 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["description"] = "Speak to him to start the encounter.",
 					["groups"] = {
 						i(11313),	-- Ribbly's Head
-						i(11612),	-- Plans: Dark Iron Plate (RECIPE!)
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227901, {	-- Plans: Tempered Dark Iron Plate (RECIPE!)
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11612, {	-- Plans: Dark Iron Plate (RECIPE!)
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						i(2663, {	-- Ribbly's Bandolier
-							["timeline"] = { "removed 4.0.1" },
+							["timeline"] = { REMOVED_4_0_1 },
 						}),
 						i(2662, {	-- Ribbly's Quiver
-							["timeline"] = { "removed 4.0.1" },
+							["timeline"] = { REMOVED_4_0_1 },
 						}),
 						i(11742),	-- Wayfarer's Knapsack
 					},
@@ -2744,17 +3272,22 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				e(383, {	-- Plugger Spazzring
 					["creatureID"] = 9499,
 					["groups"] = {
-						i(18653),	-- Schematic: Goblin Jumper Cables XL
+						i(18653),	-- Schematic: Goblin Jumper Cables XL (RECIPE!)
 						i(12791),	-- Barman Shanker
 						i(12793),	-- Mixologist's Tunic
 						i(151410, {	-- Bottle-Popper Ring
-							["timeline"] = { "added 7.3.0.24484" },
+							["timeline"] = { ADDED_7_3_0 },
 						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_THREE, i(220168, {	-- Triple-Brewed Molten Lager
+							["timeline"] = { "added 1.15.2" },
+						})),
+						-- #endif
 					},
 				}),
 				applyclassicphase(TBC_PHASE_FOUR, n(28067, {	-- Dark Iron Brewer
 					["description"] = "Speak to him until he passes out, a Mug will appear on the ground",
-					["timeline"] = { "added 2.4.3.8601" },
+					["timeline"] = { ADDED_2_4_3 },
 					["groups"] = {
 						i(38320),	-- Dire Brew
 					},
@@ -2765,8 +3298,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["groups"] = {
 						i(11744),	-- Bloodfist
 						i(11743, {	-- Rockfist
-							["description"] = "We're actually not sure which patch this was removed.",
-							["timeline"] = { "removed 2.0.1" },
+							-- #if BEFORE 10.1.7
+							-- #if AFTER 2.0.1
+							["description"] = "This item appears to have been removed with TBC Prepatch. Please @Crieve if you get it to drop.",
+							["isBounty"] = true,
+							-- #endif
+							-- #endif
+							["timeline"] = { REMOVED_2_0_1, ADDED_10_1_7 },
 						}),
 						-- #if BEFORE 7.3.2
 						i(11746),	-- Golem Skull Helm
@@ -2775,18 +3313,55 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						applyclassicphase(PHASE_FIVE, i(22204)),	-- Wristguards of Renown
 						i(11745),	-- Fists of Phalanx
 						i(151409, {	-- Ferrous Cord
-							["timeline"] = { "added 7.3.0.24484" },
+							["timeline"] = { ADDED_7_3_0 },
 						}),
 					},
 				}),
 				e(384, {	-- Ambassador Flamelash
 					["creatureID"] = 9156,
 					["groups"] = {
-						i(11809),	-- Flame Wrath
-						i(11808),	-- Circle of Flame
-						i(11812),	-- Cape of the Fire Salamander
-						i(11814),	-- Molten Fists
-						i(11832),	-- Burst of Knowledge
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227934, {	-- Flame Wrath
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227973, {	-- Circle of Flame
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227970, {	-- Cape of the Fire Salamander
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227971, {	-- Molten Fists
+							["timeline"] = { "added 1.15.3" },
+						})),
+						applyclassicphase(SOD_PHASE_FOUR, i(227972, {	-- Burst of Knowledge
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11809, {	-- Flame Wrath
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						i(11808, {	-- Circle of Flame
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						i(11812, {	-- Cape of the Fire Salamander
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						i(11814, {	-- Molten Fists
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						i(11832, {	-- Burst of Knowledge
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 					},
 				}),
 				n(8923, {	-- Panzor the Invincible
@@ -2804,32 +3379,104 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["modelScale"] = 3,
 					["groups"] = {
 						-- #if BEFORE 7.3.2
-						i(11922),	-- Blood-Etched Blade
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227963, {	-- Blood-Etched Blade
+							["timeline"] = { "added 1.15.3" },
+						})),
 						-- #endif
-						i(11921),	-- Impervious Giant
+						i(11922, {	-- Blood-Etched Blade
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #endif
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227960, {	-- Impervious Giant
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11921, {	-- Impervious Giant
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						i(11923),	-- The Hammer of Grace
-						i(11920),	-- Wraith Scythe
-						i(11925),	-- Ghostshroud
-						i(11926),	-- Deathdealer Breastplate
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227941, {	-- Wraith Scythe
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11920, {	-- Wraith Scythe
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227958, {	-- Ghostshroud
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11925, {	-- Ghostshroud
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227956, {	-- Deathdealer Breastplate
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11926, {	-- Deathdealer Breastplate
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						i(11929),	-- Haunting Specter Leggings
-						i(11927),	-- Legplates of the Eternal Guardian
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227959, {	-- Legplates of the Eternal Guardian
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11927, {	-- Legplates of the Eternal Guardian
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 					},
 				}),
 				e(386, {	-- Magmus
 					["creatureID"] = 9938,
 					["groups"] = {
-						applyclassicphase(PHASE_FIVE, i(22208)),	-- Lavastone Hammer
-						i(11935),	-- Magmus Stone
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227974, {	-- Lavastone Hammer
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						applyclassicphase(PHASE_FIVE, i(22208, {	-- Lavastone Hammer
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						})),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227978, {	-- Magmus Stone
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11935, {	-- Magmus Stone
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						i(11746),	-- Golem Skull Helm
 						i(151411, {	-- Molten-Warden Leggings
-							["timeline"] = { "added 7.3.0.24484" },
+							["timeline"] = { ADDED_7_3_0 },
 						}),
 						i(22275),	-- Firemoss Boots
 						applyclassicphase(PHASE_FIVE, i(22400, {	-- Libram of Truth
-							["timeline"] = { "deleted 5.0.4" },
+							["timeline"] = { DELETED_5_0_4 },
 						})),
 						applyclassicphase(PHASE_FIVE, i(22395, {	-- Totem of Rage
-							["timeline"] = { "deleted 5.0.4" },
+							["timeline"] = { DELETED_5_0_4 },
 						})),
 					},
 				}),
@@ -2842,28 +3489,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["groups"] = {
 						i(12557, {	-- Ebonsteel Spaulders
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 8.1.0"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_8_1_0 },
 						}),
 						i(12554, {	-- Hands of the Exalted Herald
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 7.3.2"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_7_3_2 },
 						}),
 						i(12556, {	-- High Priestess Boots
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 7.3.2"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_7_3_2 },
 						}),
 						i(12553, {	-- Swiftwalker Boots
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 7.3.2"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_7_3_2 },
 						}),
 					},
 				}),
@@ -2880,47 +3515,135 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							-- #endif
 						}),
 						ach(5051, {	-- Blackrock Depths Guild Run
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
-						i(11931),	-- Dreadforge Retaliatior
-						-- #if BEFORE 7.3.2
-						i(11932),	-- Guiding Stave of Wisdom
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227981, {	-- Dreadforge Retaliatior
+							["timeline"] = { "added 1.15.3" },
+						})),
 						-- #endif
-						i(11684),	-- Ironfoe
-						i(11928),	-- Thaurissan's Royal Scepter
-						i(11933),	-- Imperial Jewel
-						i(11930),	-- The Emperor's New Cape
-						i(11924),	-- Robes of the Royal Crown
-						applyclassicphase(PHASE_FIVE, i(22204)),	-- Wristguards of Renown
+						i(11931, {	-- Dreadforge Retaliatior
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if BEFORE 7.3.2
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227982, {	-- Guiding Stave of Wisdom
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11932, {	-- Guiding Stave of Wisdom
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #endif
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227991, {	-- Ironfoe
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11684, {	-- Ironfoe
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227984, {	-- Thaurissan's Royal Scepter
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11928, {	-- Thaurissan's Royal Scepter
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227988, {	-- Imperial Jewel
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11933, {	-- Imperial Jewel
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227985, {	-- The Emperor's New Cape
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11930, {	-- The Emperor's New Cape
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227980, {	-- Robes of the Royal Crown
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11924, {	-- Robes of the Royal Crown
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227986, {	-- Wristguards of Renown
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						applyclassicphase(PHASE_FIVE, i(22204, {	-- Wristguards of Renown
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						})),
 						-- #if AFTER 7.3.2
 						i(12554, {	-- Hands of the Exalted Herald
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 7.3.2"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_7_3_2 },
 						}),
 						-- #endif
+						-- #if BEFORE 1.13.5
 						i(16724, {	-- Lightforge Gauntlets
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
-						applyclassicphase(PHASE_FIVE, i(22207)),	-- Sash of the Grand Hunt
+						-- #endif
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227987, {	-- Sash of the Grand Hunt
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						applyclassicphase(PHASE_FIVE, i(22207, {	-- Sash of the Grand Hunt
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						})),
 						-- #if AFTER 7.3.2
 						i(12556, {	-- High Priestess Boots
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 7.3.2"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_7_3_2 },
 						}),
 						i(12553, {	-- Swiftwalker Boots
-							["timeline"] = {
-								"removed 4.0.3",
-								"added 7.3.2"
-							},
+							["timeline"] = { REMOVED_4_0_3, ADDED_7_3_2 },
 						}),
+						-- #endif
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(227983, {	-- Dark Iron Seal
+							["timeline"] = { "added 1.15.3" },
+						})),
 						-- #endif
 						i(11934),	-- Emperor's Seal
 						-- #if AFTER 1.13.5
-						i(11815),	-- Hand of Justice
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(228722, {	-- Hand of Justice
+							["timeline"] = { "added 1.15.3" },
+						})),
+						-- #endif
+						i(11815, {	-- Hand of Justice
+							-- #if SEASON_OF_DISCOVERY
+							["timeline"] = { "removed 1.15.3" },
+							-- #endif
+						}),
 						-- #endif
 						i(12033),	-- Thaurissan Family Jewels
 					},
@@ -2931,12 +3654,17 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 }));
 -- #if AFTER 6.0.1
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35899),	-- Blackrock Depths (Detention Block) Reward Quest - Normal completion
 		q(35901),	-- Blackrock Depths (Detention Bonus) Reward Quest
 		q(35902),	-- Blackrock Depths (Upper City) Reward Quest - Normal completion
 		q(35903),	-- Blackrock Depths (Detention Bonus) Reward Quest
 		q(35904),	-- Blackrock Depths (Everything) Reward Quest
+	}),
+	expansion(EXPANSION.TWW, {
+		-- Both of these keep getting reported completed on turnin of seemingly any BRD class quest regardless of race or faction
+		q(82739),	-- ???
+		q(82740),	-- Twilight Scheming (New 11.0 ID)
 	}),
 });
 -- #endif

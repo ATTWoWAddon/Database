@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(BORALUS, {
 		n(WORLD_QUESTS, {
 			q(52047, {	-- Against the Storm
@@ -22,21 +22,33 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			q(51333, {	-- Anchors Aweigh!
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(159926),	-- Cannonball (QI!)
+				},
 			}),
 			q(53808, {	-- Crawl To Victory (Faction Assault WQ)
 				["lvl"] = 110,
 				["races"] = HORDE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(164742),	-- Crawler Mine Parts (QI!)
+				},
 			}),
 			q(51579, {	-- Dark Ranger Clea
 				["lvl"] = 120,
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(160480),	-- Marine Dog Tags (QI!)
+				},
 			}),
 			q(51577, {	-- Defending the Academy
 				["lvl"] = 120,
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(160480),	-- Marine Dog Tags (QI!)
+				},
 			}),
 			q(50776, {	-- False Prophets
 				["lvl"] = 120,
@@ -47,16 +59,36 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["lvl"] = 110,
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(165841),	-- Bot Scrambler (QI!)
+				},
 			}),
 			q(53704, {	-- Not Too Sober Citizens Brigade (Faction Assault WQ)
 				["lvl"] = 110,
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					a(ach(13285, {	-- Upright Citizens
+						i(166247),		-- Citizens Brigade Whistle (TOY!)
+						crit(43718, {	-- Russel the Bard recruited
+							["coord"] = { 72.4, 68.9, BORALUS },
+						}),
+						crit(43719, {	-- Flynn Fairwind recruited
+							["coord"] = { 72.0, 61.6, BORALUS },
+						}),
+						crit(43720, {	-- Leeroy Jenkins recruited
+							["coord"] = { 66.8, 64.0, BORALUS },
+						}),
+					})),
+				},
 			}),
 			q(51092, {	-- Picturesque Boralus
 				["lvl"] = 120,
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(157540),	-- Battered S.E.L.F.I.E. Camera (QI!)
+				},
 			}),
 			q(51893, {	-- Sawtooth
 				["lvl"] = 120,
@@ -217,6 +249,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["coord"] = { 73.21, 11.01, BORALUS },
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["groups"] = {
+					i(157540),	-- Battered S.E.L.F.I.E. Camera (QI!)
+				},
 			}),
 			q(50792, {	-- Taking Bribes
 				["lvl"] = 120,
@@ -227,6 +262,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["lvl"] = 120,
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(158677),	-- Scrimshaw Ledger (QI!)
+				},
 			}),
 			q(51621, {	-- Tidal Teachings
 				["lvl"] = 120,
@@ -239,9 +277,12 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["isWorldQuest"] = true,
 			}),
 			q(51758, {	-- Weapons Shipment
-				["lvl"] = 120,
+				["lvl"] = 50,
 				["races"] = ALLIANCE_ONLY,
 				["isWorldQuest"] = true,
+				["g"] = {
+					i(160667),	-- Unstable Azerite Bomb (QI!)
+				},
 			}),
 			q(50992, {	-- Work Order: Calcified Bone
 				["provider"] = { "n", 135808 },	-- Provisioner Fray
@@ -257,7 +298,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["isWorldQuest"] = true,
 				["requireSkill"] = INSCRIPTION,
 				["g"] = {
-					i(162360),	-- Technique: Contract: Proudmoore Admiralty [Rank 3]
+					i(162360),	-- Technique: Contract: Proudmoore Admiralty [Rank 3] (RECIPE!)
 				},
 			}),
 			q(52368, {	-- Work Order: Crow's Nest Scope
@@ -266,7 +307,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["isWorldQuest"] = true,
 				["requireSkill"] = ENGINEERING,
 				["g"] = {
-					i(162343),	-- Schematic: Crow's Nest Scope [Rank 3]
+					i(162343),	-- Schematic: Crow's Nest Scope [Rank 3] (RECIPE!)
 				},
 			}),
 			q(52355, {	-- Work Order: Enchant Weapon - Coastal Surge
@@ -293,7 +334,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["isWorldQuest"] = true,
 				["requireSkill"] = ENGINEERING,
 				["g"] = {
-					i(162321),	-- Schematic: Incendiary Ammunition [Rank 3]
+					i(162321),	-- Schematic: Incendiary Ammunition [Rank 3] (RECIPE!)
 				},
 			}),
 			q(52405, {	-- Work Order: Kubiline
@@ -356,9 +397,15 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["isWorldQuest"] = true,
 				["requireSkill"] = ENGINEERING,
 				["g"] = {
-					i(162339),	-- Schematic: XA-1000 Surface Skimmer [Rank 3]
+					i(162339),	-- Schematic: XA-1000 Surface Skimmer [Rank 3] (RECIPE!)
 				},
 			}),
 		}),
 	}),
 })));
+
+root(ROOTS.HiddenQuestTriggers, {
+	hqt(54400, name(HEADERS.AchCriteria, 13285.01)),	-- Russel the Bard recruited
+	hqt(54401, name(HEADERS.AchCriteria, 13285.02)),	-- Flynn Fairwind recruited
+	hqt(54399, name(HEADERS.AchCriteria, 13285.03)),	-- Leeroy Jenkins recruited
+});

@@ -1,9 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	inst(1183, {	-- Plaguefall
 		["coord"] = { 59.3, 64.8, MALDRAXXUS },
 		["maps"] = {
@@ -17,6 +15,8 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					["provider"] = { "n", 165052 },	-- Vial Master Lurgy
 					["coord"] = { 59.4, 72.9, MALDRAXXUS },
 					["g"] = {
+						i(176057),	-- Margrave Stradama's Plasm (QI!)
+						i(183724),	-- Poxedskin Sample (QI!)
 						i(175533),	-- Corpse-Stitcher's Amice
 						i(175532),	-- Cruel Executioner's Pauldrons
 						i(175531),	-- Deceitful Agent's Shoulderpads
@@ -24,7 +24,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2419, {	-- Globgrog
 					["crs"] = { 164255 },	-- Globgrog
 					["g"] = {
@@ -105,7 +105,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				n(SPECIAL, {
 					mount(346141, {	-- Slime Serpent (MOUNT!)
 						["description"] = "Requires solo kill of all bosses in either Heroic or Mythic Plaguefall.",
@@ -118,7 +118,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
 					ach(14292),	-- Riding with my Slimes
 				}),
@@ -144,5 +144,10 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 				}),
 			}),
 		},
+	}),
+})));
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	inst(1183, {	-- Plaguefall
+		q(62685),	-- Triggers when solo killing last boss of heroic/mythic Plaguefall for collecting the Slime Serpent mount (spellID 303424)
 	}),
 })));

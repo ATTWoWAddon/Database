@@ -217,6 +217,8 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				q(62631),					-- The World Awaits
 			})),
 			-- Auto-accepted in various situations, so no coords/provider
+			-- #IF AFTER SHADOWLANDS
+			-- #IF BEFORE DF
 			n(QUESTS, sharedData({
 				["isWeekly"] = true,
 				["_drop"] = { "g" },	-- Drop Trash
@@ -225,6 +227,8 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["timeline"] = { ADDED_9_0_2, REMOVED_10_0_2_LAUNCH },
 				})),
 			})),
+			-- #ENDIF
+			-- #ENDIF
 		}),
 	}),
 })));

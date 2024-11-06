@@ -1,7 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(CLASSIC_TIER, {
+-- These are for the outdoor section of Uldaman before the instance. (rather than listing them in Badlands...)
+local OUTDOOR_ULDAMAN_CRS = {
+	4846,	-- Shadowforge Digger
+	4845,	-- Shadowforge Ruffian
+	4844,	-- Shadowforge Surveyor
+};
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, {
 	inst(239, {	-- Uldaman
 		-- #if BEFORE MOP
 		["lore"] = "Uldaman is an ancient Titan vault buried deep within the Khaz Mountains, accessible from the Badlands. Partially excavated, it has since fallen into the hands of the Dark Iron dwarves who seek to corrupt its riches for their master, Ragnaros.",
@@ -9,19 +15,17 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 		-- #if BEFORE WRATH
 		["zone-text-areaID"] = 1337,	-- Uldaman
 		-- #endif
-		-- #if AFTER CATA
 		["coords"] = {
+			-- #if AFTER CATA
 			{ 36.63, 29.42, 16 },	-- Uldaman [Front], Uldaman [Badlands]
 			{ 60.68, 37.43, BADLANDS },	-- Uldaman [Side]
-		},
-		-- #else
-		["coords"] = {
+			-- #else
 			{ 36.63, 29.42, 16 },	-- Uldaman [Front], Uldaman [Badlands]
 			{ 64, 44, BADLANDS },	-- Uldaman [Side]
+			-- #endif
 		},
-		-- #endif
 		["mapID"] = ULDAMAN,
-		["maps"] = { 231 },
+		["maps"] = { 16, 231 },
 		["lvl"] = lvlsquish(35, 35, 15),
 		["groups"] = {
 			n(PROFESSIONS, {
@@ -39,23 +43,23 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 2916,	-- Historian Karnik
 					["sourceQuest"] = 2977,	-- Return to Ironforge
 					["coord"] = { 77.2, 11.8, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 45,
 					["groups"] = {
-						applyclassicphase(TBC_PHASE_ONE, i(34418, {	-- Scrying Wand
+						i(34418, {	-- Scrying Wand
 							["timeline"] = {
-								"added 2.3.0",
-								"removed 4.0.3",
+								ADDED_2_3_0,
+								REMOVED_4_0_3,
 							},
-						})),
+						}),
 						-- #if BEFORE MOP
-						applyclassicphase(TBC_PHASE_ONE, i(34419, {	-- Thorium Flight Blade
+						i(34419, {	-- Thorium Flight Blade
 							["timeline"] = {
-								"added 2.3.0",
-								"removed 4.0.3",
+								ADDED_2_3_0,
+								REMOVED_4_0_3,
 							},
-						})),
+						}),
 						-- #endif
 					},
 				}),
@@ -63,30 +67,28 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 3978,	-- Sage Truthseeker
 					["sourceQuest"] = 2967,	-- Return to Thunder Bluff
 					["coord"] = { 34.4, 46.9, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 45,
 					["groups"] = {
-						applyclassicphase(TBC_PHASE_ONE, i(34421, {	-- Cave Crawler's Mail Treads
+						i(34421, {	-- Cave Crawler's Mail Treads
 							["timeline"] = {
-								"added 2.3.0",
-								"removed 4.0.3",
+								ADDED_2_3_0,
+								REMOVED_4_0_3,
 							},
-						})),
-						-- #if BEFORE MOP
-						applyclassicphase(TBC_PHASE_ONE, i(34422, {	-- Tempered Thorium Boots
+						}),
+						i(34422, {	-- Tempered Thorium Boots
 							["timeline"] = {
-								"added 2.3.0",
-								"removed 4.0.3",
+								ADDED_2_3_0,
+								REMOVED_4_0_3,
 							},
-						})),
-						-- #endif
+						}),
 					},
 				}),
 				q(27677, {	-- Archaedas, The Ancient Stone Watcher [Alliance]
 					["qg"] = 46234,	-- Lead Prospector Durdin <Explorer's League>
 					["sourceQuest"] = 27672,	-- The Chamber of Khaz'mul [Alliance]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -98,7 +100,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(27680, {	-- Archaedas, The Ancient Stone Watcher [Horde]
 					["qg"] = 46236,	-- High Examiner Tae'thelan Bloodwatcher <The Reliquary>
 					["sourceQuest"] = 27679,	-- The Chamber of Khaz'mul [Horde]
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -111,7 +113,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 6826,	-- Talvash del Kissel
 					["sourceQuest"] = 2199,	-- Lore for a Price
 					["coord"] = { 36.4, 3.6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 37,
 					["groups"] = {
@@ -120,7 +122,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27676, {	-- Behind Closed Doors
 					["qg"] = 46233,	-- Olga Runesworn
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -131,7 +133,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27681, {	-- Behind Closed Doors
 					["qg"] = 46235,	-- Lidia Sunglow
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -147,7 +149,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 2339,	-- Find the Gems and Power Source
 					["coord"] = { 2.6, 46, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 37,
 				}),
@@ -157,7 +159,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ "i", 7668 },	-- Bloodstained Journal
 					},
 					["sourceQuest"] = 2200,	-- Back to Uldaman
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 37,
 					["groups"] = {
@@ -179,7 +181,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 2338,	-- Translating the Journal
 					["coord"] = { 2.6, 46, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 37,
 					["groups"] = {
@@ -199,7 +201,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27673, {	-- It's What's Inside That Counts
 					["qg"] = 46247,	-- Kand Sandseeker
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -216,14 +218,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["sourceQuest"] = 2198,	-- The Shattered Necklace
 					["cost"] = { { "i", 2842, 5 } },	-- Silver Bar (x5)
 					["coord"] = { 36.4, 3.6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 37,
 				}),
 				q(2283, {	-- Necklace Recovery
 					["qg"] = 6986,	-- Dran Droffers <Droffers and Son Salvage>
 					["coord"] = { 59.4, 36.8, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 37,
 					["groups"] = {
@@ -236,7 +238,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 6986,	-- Dran Droffers <Droffers and Son Salvage>
 					["sourceQuest"] = 2283,	-- Necklace Recovery
 					["coord"] = { 59.4, 36.8, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 37,
 				}),
@@ -244,12 +246,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 6986,	-- Dran Droffers <Droffers and Son Salvage>
 					["sourceQuest"] = 2340,	-- Deliver the Gems
 					["coord"] = { 59.4, 36.8, ORGRIMMAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 37,
 					["groups"] = {
 						i(7888, {	-- Jarkal's Enhancing Necklace
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -257,7 +259,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 5387,	-- High Explorer Magellas
 					["sourceQuest"] = 2439,	-- The Platinum Discs (3/3) [Alliance]
 					["coord"] = { 69.8, 18.4, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 45,
 				}),
@@ -265,7 +267,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 3978,	-- Sage Truthseeker
 					["sourceQuest"] = 2440,	-- The Platinum Discs (3/3) [Horde]
 					["coord"] = { 34.6, 47.2, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 45,
 				}),
@@ -273,7 +275,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 6546,	-- Tabetha
 					["sourceQuest"] = 1955,	-- The Exorcism
 					["coord"] = { 46, 57, DUSTWALLOW_MARSH },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { MAGE },
 					["lvl"] = 35,
 					["groups"] = {
@@ -291,7 +293,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ "i", 1708, 1 },	-- Sweet Nectar
 					},
 					["coord"] = { 36.4, 3.6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["repeatable"] = true,
 					["lvl"] = 37,
@@ -302,7 +304,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(2204, {	-- Restoring the Necklace (1/2)
 					["provider"] = { "i", 7667 },	-- Talvash's Phial of Scrying
 					["sourceQuest"] = 2201,	-- Find the Gems
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 37,
 					["groups"] = {
@@ -315,12 +317,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 6826,	-- Talvash del Kissel
 					["sourceQuest"] = 2204,	-- Restoring the Necklace (1/2)
 					["coord"] = { 36.4, 3.6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 37,
 					["groups"] = {
 						i(7673, {	-- Talvash's Enhancing Necklace
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -331,7 +333,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 2954,	-- The Stone Watcher
 					["coord"] = { 37.7, 81.5, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { IRONFORGE },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 45,
@@ -343,7 +345,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 2954,	-- The Stone Watcher
 					["coord"] = { 37.7, 81.5, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { THUNDER_BLUFF },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 45,
@@ -355,7 +357,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 2963,	-- Portents of Uldum [Alliance]
 					["coord"] = { 77.2, 11.8, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 45,
 				}),
@@ -366,13 +368,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 2965,	-- Portents of Uldum [Horde]
 					["coord"] = { 75.6, 31.2, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 45,
 				}),
 				q(27672, {	-- The Chamber of Khaz'mul [Alliance]
 					["qg"] = 46234,	-- Lead Prospector Durdin <Explorer's League>
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -383,7 +385,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27679, {	-- The Chamber of Khaz'mul [Horde]
 					["qg"] = 46236,	-- High Examiner Tae'thelan Bloodwatcher <The Reliquary>
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -395,22 +397,22 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(2240, {	-- The Hidden Chamber
 					["qg"] = 6906,	-- Baelog
 					["sourceQuest"] = 2398,	-- The Lost Dwarves
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 35,
 					["groups"] = {
 						i(9626, {	-- Dwarven Charge
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(9627, {	-- Explorers' League Lodestar
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(2398, {	-- The Lost Dwarves
 					["qg"] = 1356,	-- Prospector Stormpike
 					["coord"] = { 74.64, 11.74, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 35,
@@ -419,7 +421,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 2918,	-- Advisor Belgrum
 					["sourceQuest"] = 762,	-- An Ambassador of Evil
 					["coord"] = { 77.3, 9.7, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 35,
 					["groups"] = {
@@ -427,7 +429,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["provider"] = { "i", 5824 },	-- Tablet of Will
 						}),
 						i(6723, {	-- Medal of Courage
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -438,7 +440,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(2279, {	-- The Platinum Discs (2/3) [Alliance]
 					["provider"] = { "i", 6064 },	-- Miniature Platinum Discs
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(40, 40, 15),
 				}),
@@ -453,19 +455,30 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(2280, {	-- The Platinum Discs (2/3) [Both]
 					["provider"] = { "i", 6064 },	-- Miniature Platinum Discs
 					["lvl"] = lvlsquish(40, 40, 15),
+					["groups"] = {
+						i(65921, {	-- Durdin's Hammer
+							["timeline"] = { ADDED_4_0_3 },
+						}),
+						i(65947, {	-- Platinum Sword
+							["timeline"] = { ADDED_4_0_3 },
+						}),
+						i(65971, {	-- Band of Uldaman
+							["timeline"] = { ADDED_4_0_3 },
+						}),
+					},
 				}),
 				-- #endif
 				q(2439, {	-- The Platinum Discs (3/3) [Alliance]
 					["qg"] = 5387,	-- High Explorer Magellas <Explorers' League>
 					["sourceQuest"] = 2279,	-- The Platinum Discs (2/3) [Alliance]
 					["coord"] = { 69.9, 18.6, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 8070, 1 } },	-- Reward Voucher
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 40,
 					["groups"] = {
 						i(9587, {	-- Thawpelt Sack
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -473,19 +486,19 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 3978,	-- Sage Truthseeker
 					["sourceQuest"] = 2280,	-- The Platinum Discs (2/3) [Horde]
 					["coord"] = { 34.6, 47.2, THUNDER_BLUFF },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 8070, 1 } },	-- Reward Voucher
 					["races"] = HORDE_ONLY,
 					["lvl"] = 40,
 					["groups"] = {
 						i(9587, {	-- Thawpelt Sack
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(2198, {	-- The Shattered Necklace
 					["provider"] = { "i", 7666 },	-- Shattered Necklace
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 37,
 				}),
@@ -496,7 +509,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						2966,	-- Seeing What Happens [Thunder Bluff]
 					},
 					["coord"] = { 37.7, 81.5, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 45,
 				}),
 				q(2318, {	-- Translating the Journal (1/2)
@@ -505,7 +518,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						{ "i", 7886 },	-- Untranslated Journal
 					},
 					["sourceQuest"] = 2284,	-- Necklace Recovery, Take 2
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 37,
 				}),
@@ -516,13 +529,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 2318,	-- Translating the Journal
 					["coord"] = { 2.6, 46, BADLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 37,
 				}),
 				q(27682, {	-- We Require More Minerals
 					["qg"] = 46241,	-- Aoren Sunglow
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = lvlsquish(35, 35, 15),
 					["groups"] = {
@@ -539,11 +552,15 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				i(7666),	-- Shattered Necklace
 				i(9420),	-- Adventurer's Pith Helmet
 				i(9392),	-- Annealed Blade
-				i(9393),	-- Beacon of Hope
+				i(9393, {	-- Beacon of Hope
+					["crs"] = OUTDOOR_ULDAMAN_CRS,
+				}),
 				i(9465),	-- Digmaster 5000
 				i(9381),	-- Earthen Rod
 				i(9397),	-- Energy Cloak
-				i(9386),	-- Excavator's Brand
+				i(9386, {	-- Excavator's Brand
+					["crs"] = OUTDOOR_ULDAMAN_CRS,
+				}),
 				i(9424),	-- Ginn-Su Sword
 				i(9396),	-- Legguards of the Vault
 				i(9429),	-- Miner's Hat of the Deep
@@ -552,30 +569,53 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				i(9431),	-- Papal Fez
 				i(9425),	-- Pendulum of Doom
 				i(9422),	-- Shadowforge Bushmaster
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_THREE, i(223537)),	-- Skullplate Bracers
+				i(9432, {	-- Skullplate Bracers
+					["timeline"] = { "removed 1.15.2" },
+				}),
+				-- #else
 				i(9432),	-- Skullplate Bracers
+				-- #endif
 				i(9430),	-- Spaulders of a Lost Age
-				i(9406),	-- Spirewind Fetter
+				i(9406, {	-- Spirewind Fetter
+					["crs"] = OUTDOOR_ULDAMAN_CRS,
+				}),
 				i(9427),	-- Stonevault Bonebreaker
-				i(9384),	-- Stonevault Shiv
+				i(9384, {	-- Stonevault Shiv
+					["crs"] = OUTDOOR_ULDAMAN_CRS,
+				}),
 				i(9423),	-- The Jackhammer
-				i(9391),	-- The Shoveler
-				i(9428),	-- Unearthed Bands
+				i(9391, {	-- The Shoveler
+					["crs"] = OUTDOOR_ULDAMAN_CRS,
+				}),
+				i(9428, {	-- Unearthed Bands
+					["crs"] = OUTDOOR_ULDAMAN_CRS,
+				}),
 			}),
 			n(RARES, {
 				n(7057, {	-- Digmaster Shovelphlange
 					-- #if BEFORE 4.0.3
 					["description"] = "This guy spawns outside of the instance in the cave leading to the instance.",
+					-- #elseif AFTER 10.1.7
+					["description"] = "This guy spawns outside of the instance, inside the halls or cave ends surrounding Dig One. All locations can be reached with '/tar Digmaster Shovelphlange' from the cave leading in to the North Common Hall.",
+					["coords"] = {
+						{ 62.0, 51.5, 16 }, -- Spur cave
+						{ 51.8, 68.5, 16 }, -- The Sealed Hall
+						{ 34.0, 84.5, 16 }, -- North Common Hall
+						{ 32.4, 62.4, 16 }, -- South Common Hall
+					},
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 					["groups"] = {
 						i(9378, {	-- Shovelphlange's Mining Axe
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 						i(9375, {	-- Expert Goldminer's Helmet
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 05.09.2023
 						}),
 						i(9382, {	-- Tromping Miner's Boots
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3, ADDED_10_1_7 },	-- ATT Discord 07.09.2023
 						}),
 					},
 				}),
@@ -598,13 +638,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					i(9400),	-- Baelog's Shortbow
 					i(9403),	-- Battered Viking Shield
 					i(151396, {	-- Erik's High-Performance Armbands
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(9394),	-- Horned Viking Helmet
 					i(9401),	-- Nordic Longshank
 					i(9404),	-- Olaf's All Purpose Shield
 					i(132734, {	-- Viking Chain Boots
-						["timeline"] = { "added 7.0.3.22248"},
+						["timeline"] = { ADDED_7_0_3},
 					}),
 					i(9398),	-- Worn Running Boots
 				},
@@ -624,10 +664,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["groups"] = {
 					i(9394),	-- Horned Viking Helmet
 					i(151396, {	-- Erik's High-Performance Armbands
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(132734, {	-- Viking Chain Boots
-						["timeline"] = { "added 7.0.3.22248"},
+						["timeline"] = { ADDED_7_0_3},
 					}),
 					i(9398),	-- Worn Running Boots
 					i(2459),	-- Swiftness Potion
@@ -645,11 +685,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 			o(123329, {	-- Baelog's Chest
 				i(7740, {	-- Gni'kiv Medallion
 					["description"] = "Use this item along with the Shaft of Tsol to create the Staff of Prehistoria required to open the door to Ironaya.\n\nYou should ask whoever loots the Shaft of Tsol from Revelosh to trade it to you.",
-					["timeline"] = { "removed 4.1.0" },
+					["timeline"] = { REMOVED_4_1_0 },
 				}),
 			}),
 			n(6912, {	-- Remains of a Paladin
-				i(7886),	-- Untranslated Journal
+				-- #if AFTER 4.0.3
+				["description"] = "This dead Paladin was central in now removed dungeon quests, and remains abandoned on the ground without any purpose.",
+				-- #endif
+				["groups"] = {
+					i(7886),	-- Untranslated Journal
+				},
 			}),
 			e(467, {	-- Revelosh
 				["creatureID"] = 6910,
@@ -660,48 +705,81 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							{ "i", 7740, 1 },	-- Gni'kiv Medallion
 							{ "i", 7741, 1 },	-- The Shaft of Tsol
 						},
-						["timeline"] = { "removed 4.1.0" },
+						["timeline"] = { REMOVED_4_1_0 },
 					}),
 					i(7741, {	-- The Shaft of Tsol
 						["description"] = "Use this item along with the Gni'kiv Medallion to create the Staff of Prehistoria required to open the door to Ironaya.\n\nYou should trade this to the person that looted the Gni'kiv Medallion.",
-						["timeline"] = { "removed 4.1.0" },
+						["timeline"] = { REMOVED_4_1_0 },
 					}),
 					i(132736, {	-- Revelosh's Pauldrons
-						["timeline"] = { "added 7.0.3.22248"},
+						["timeline"] = { ADDED_7_0_3 },
 					}),
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_TWO, i(217307)),	-- Revelosh's Spaulders
+					applyclassicphase(SOD_PHASE_TWO, i(217305)),	-- Revelosh's Armguards
+					applyclassicphase(SOD_PHASE_TWO, i(217304)),	-- Revelosh's Gloves
+					applyclassicphase(SOD_PHASE_TWO, i(217306)),	-- Revelosh's Boots
+					i(9389, {	-- Revelosh's Spaulders
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					i(9388, {	-- Revelosh's Armguards
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					i(9390, {	-- Revelosh's Gloves
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					i(9387, {	-- Revelosh's Boots
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					-- #else
 					i(9389),	-- Revelosh's Spaulders
 					i(9388),	-- Revelosh's Armguards
 					i(9390),	-- Revelosh's Gloves
 					i(151395, {	-- Revelosh's Girdle
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(9387),	-- Revelosh's Boots
+					-- #endif
 				},
 			}),
 			e(469, {	-- Ironaya
 				["creatureID"] = 7228,
 				["cost"] = { { "i", 7733, 1 } },	-- Staff of Prehistoria
 				["groups"] = {
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_TWO, i(217704)),	-- Ironshod Bludgeon
+					i(9408, {	-- Ironshod Bludgeon
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					-- #else
 					i(9408),	-- Ironshod Bludgeon
+					-- #endif
 					i(151398, {	-- Hood of the Idle Architect
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(151420, {	-- Vault-Watcher's Breastplate
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(9409),	-- Ironaya's Bracers
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_TWO, i(217303)),	-- Stoneweaver Leggings
+					i(9407, {	-- Stoneweaver Leggings
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					-- #else
 					i(9407),	-- Stoneweaver Leggings
+					-- #endif
 				},
 			}),
 			e(748, {	-- Obsidian Sentinel
 				["creatureID"] = 7023,
 				["groups"] = {
 					i(62053, {	-- Obsidian Power Core
-						["timeline"] = { "added 4.0.3.13287" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					i(8053),	-- Obsidian Power Source
 					i(151399, {	-- Splintered Obsidian Shard
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 				},
 			}),
@@ -709,18 +787,18 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["creatureID"] = 7206,
 				["groups"] = {
 					i(62055, {	-- Titan Power Core
-						["timeline"] = { "added 4.0.3.13287" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					i(9411),	-- Rockshard Pauldrons
 					i(132733, {	-- Stone Keeper's Mantle
-						["timeline"] = { "added 7.0.3.22248"},
+						["timeline"] = { ADDED_7_0_3},
 					}),
 					i(9410),	-- Cragfists
 					i(151401, {	-- Titanic Stone Legguards
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(151400, {	-- Sand-Scoured Treads
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 				},
 			}),
@@ -749,13 +827,24 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["creatureID"] = 4854,
 				["groups"] = {
 					i(7670),	-- Shattered Necklace Sapphire
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_TWO, i(223536)),	-- Grimlock's Charge
+					applyclassicphase(SOD_PHASE_TWO, i(223535)),	-- Grimlock's Tribal Vestments
+					i(9416, {	-- Grimlock's Charge
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					i(9415, {	-- Grimlock's Tribal Vestments
+						["timeline"] = { "removed 1.15.1" },
+					}),
+					-- #else
 					i(9416),	-- Grimlock's Charge
 					i(9415),	-- Grimlock's Tribal Vestments
+					-- #endif
 					i(151402, {	-- Grimlock's Jagged Wristguards
-						["timeline"] = { "added 7.3.0.24484"},
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(132735, {	-- Grimlock's Chain Chaps
-						["timeline"] = { "added 7.0.3.22248"},
+						["timeline"] = { ADDED_7_0_3},
 					}),
 					i(9414),	-- Oilskin Leggings
 				},
@@ -773,7 +862,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						-- #endif
 					}),
 					ach(5047, {	-- Uldaman Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					i(7672),	-- Shattered Necklace Power Source
 					i(9418),	-- Stoneslayer
@@ -800,7 +889,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 }));
 -- #if AFTER 6.0.1
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35605),	-- Uldaman Reward Quest - Normal completion
 		q(35610),	-- Uldaman Bonus Reward
 	}),

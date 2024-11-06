@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(753, {	-- Vault of Archavon
 		["mapID"] = VAULT_OF_ARCHAVON,
 		["coord"] = { 50.0, 11.9, WINTERGRASP },
@@ -31,7 +31,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					h(i(44083)),	-- Grand Black War Mammoth (H) (MOUNT!)
 				},
 			}),
-			d(3, {	-- 10-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL, {
 				applyclassicphase(WRATH_PHASE_THREE, ach(4016, {	-- Earth, Wind & Fire (10 player)
 					["crs"] = {
 						35013,	-- Koralon the Flame Watcher
@@ -563,7 +563,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(4, {	-- 25-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL, {
 				applyclassicphase(WRATH_PHASE_THREE, ach(4017, {	-- Earth, Wind & Fire (25 player)
 					["crs"] = {
 						35013,	-- Koralon the Flame Watcher

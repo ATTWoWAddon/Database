@@ -2,8 +2,8 @@
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
 
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 }, {
-	inst(186, {	-- Hour of Twilight
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_3_0 }, {
+	applyclassicphase(CATA_PHASE_HOUR_OF_TWILIGHT, inst(186, {	-- Hour of Twilight
 		["mapID"] = 399,
 		["maps"] = { 400 },
 		["coords"] = {
@@ -42,7 +42,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 				},
 			}),
 			n(ZONE_DROPS, sharedData({ ["modID"] = 2, }, {
-				i(76160, {	-- Drapes of the Dragonshrine				
+				i(76160, {	-- Drapes of the Dragonshrine
 					["crs"] = {
 						55559,	-- Crystalline Elemental
 						54555,	-- Frozen Servitor
@@ -76,7 +76,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 					},
 				}),
 			})),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(322, {	-- Arcurion
 					["crs"] = { 54590 },	-- Arcurion
 					["groups"] = {
@@ -91,7 +91,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 				e(342, {	-- Asira Dawnslayer
 					["crs"] = { 54968 },	-- Asira Dawnslayer
 					["groups"] = {
-						i(157616, { -- Chestguard of Futility
+						i(157616, {	-- Chestguard of Futility
 							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(76151), -- Cloak of Subtle Light
@@ -124,11 +124,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 				}),
 			}),
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35439),	-- Hour of Twilight Quest Reward - Heroic completion
 	}),
 });

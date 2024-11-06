@@ -3,7 +3,7 @@
 -----------------------------------------------------
 THE_FOUR_HORSEMEN = createHeader({
 	readable = "The Four Horsemen",
-	icon = "Interface\\Icons\\Ability_mount_undeadhorse",
+	icon = 132264,
 	text = {
 		en = "The Four Horsemen",
 		es = "Los Cuatro Jinetes",
@@ -16,19 +16,18 @@ THE_FOUR_HORSEMEN = createHeader({
 		cn = "四骑士",
 	},
 });
-root(ROOTS.Instances, tier(CLASSIC_TIER,
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC,
 -- #if BEFORE WRATH
 applyclassicphase(PHASE_SIX,
 -- #endif
 {
-	inst(754, {	-- Naxxramas
+	inst(754, bubbleDownSelf({ ["timeline"] = { REMOVED_3_0_2 } }, {	-- Naxxramas
 		-- #if BEFORE MOP
 		["lore"] = "An ancient Nerubian ziggurat, Naxxramas was torn free from the ground by agents of the Lich King to serve as Kel'Thuzad's base of operations as he spreads the plague throughout Lordaeron.\n\nDue to Kel'Thuzad fighting a war against the Scarlet Crusade, the Argent Dawn, the Forsaken and the humans of the Alliance, as well as constant incursions of adventurers from every race and nation into the Scourge-controlled Plaguelands on a daily basis, his forces have been severely taxed to maintain the security of his necropolis. But now that the gates of Naxxramas are open, Kel'Thuzad's new forces are rapidly sweeping away all opposition to the Scourge.",
 		-- #endif
 		-- #if BEFORE WRATH
 		["zone-text-areaID"] = 3456,	-- Naxxramas
 		["sourceQuest"] = 9121,	-- The Dread Citadel - Naxxramas [Honored]
-		["timeline"] = { "removed 3.0.2" },
 		-- #endif
 		-- #if AFTER CATA
 		["sharedLockout"] = 1,
@@ -39,7 +38,7 @@ applyclassicphase(PHASE_SIX,
 		-- #if BEFORE WRATH
 		["lvl"] = 60,
 		-- #endif
-		["groups"] = bubbleDown({ ["timeline"] = { "removed 3.0.2" } }, {
+		["groups"] = {
 			-- #if AFTER WRATH
 			d(9, applyclassicphase(PHASE_SIX, {	-- 40 Player (Legacy)
 				["sourceQuest"] = 9121,	-- The Dread Citadel - Naxxramas [Honored]
@@ -49,9 +48,17 @@ applyclassicphase(PHASE_SIX,
 				["lvl"] = 60,
 				["groups"] = {
 			-- #endif
+					-- #if ANYCLASSIC
+					n(ACHIEVEMENTS, {
+						applyclassicphase(SOM_PHASE_ONE, i(191481, {	-- Tabard of Mastery
+							["description"] = "This was obtained from killing Kel'Thuzad in Naxxramas40 on 'Season of Mastery' realms, while entire raid having the buff Undying Vanquisher that meant no one died before killing Kel'Thuzad in that raid lockout, (you could obtain Rune of Teleportation: Frostwyrm's Lair to bypass most of the raid making it so you only had to kill Sapphiron and Kel'Thuzad to obtain this aswell)\n\nSince 'Season of Mastery' servers are no longer available, this tabard is now unobtainable in classic, maybe it comes back in 'Season of Discovery?' who knows.",
+							["timeline"] = { "added 1.14.3", "removed 1.15.0" },	-- Might not be available in SOD.
+						})),
+					}),
+					-- #endif
 					n(QUALITY_LEGENDARY, {
 						["title"] = "Atiesh, Greatstaff of the Guardian",
-						["icon"] = "Interface\\Icons\\INV_Staff_Medivh",
+						["icon"] = 135226,
 						-- #if BEFORE WRATH
 						["lore"] = "Atiesh is one of the most coveted legendaries in the game. In addition to being Best-In-Slot for some specs, it also provides a Unique Party-Wide Bufff:\n\nWarlock: 33 Spell Power and Healing\nMage: 2% Crit\nPriest: 62 Healing\nDruid: 11 Mp5",
 						-- #endif
@@ -66,9 +73,6 @@ applyclassicphase(PHASE_SIX,
 									{ "i", 22630 },	-- Atiesh, Greatstaff of the Guardian (Warlock)
 									{ "i", 22632 },	-- Atiesh, Greatstaff of the Guardian (Druid)
 								},
-								-- #if BEFORE WRATH
-								["description"] = "Wielder of Atiesh, Greatstaff of the Guardian.",
-								-- #endif
 								["classes"] = { PRIEST, MAGE, WARLOCK, DRUID },
 							}),
 							q(9251, {	-- Atiesh, the Befouled Greatstaff
@@ -1345,7 +1349,7 @@ applyclassicphase(PHASE_SIX,
 						q(9237, {	-- Glacial Cloak
 							["qg"] = 16376,	-- Craftsman Wilhelm <Brotherhood of the Light>
 							["sourceQuest"] = 9233,	-- Omarion's Handbook
-							["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+							["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 							["coord"] = { 81.0, 59.6, EASTERN_PLAGUELANDS },
 							["OnUpdate"] = [[_.OnUpdateForOmarionsHandbook]],
 							["cost"] = {
@@ -1381,7 +1385,7 @@ applyclassicphase(PHASE_SIX,
 						q(9240, {	-- Glacial Vest
 							["qg"] = 16376,	-- Craftsman Wilhelm <Brotherhood of the Light>
 							["sourceQuest"] = 9233,	-- Omarion's Handbook
-							["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+							["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 							["coord"] = { 81.0, 59.6, EASTERN_PLAGUELANDS },
 							["classes"] = { PRIEST, MAGE, WARLOCK },
 							["OnUpdate"] = [[_.OnUpdateForOmarionsHandbook]],
@@ -1436,7 +1440,7 @@ applyclassicphase(PHASE_SIX,
 						q(9236, {	-- Icebane Breastplate
 							["qg"] = 16376,	-- Craftsman Wilhelm <Brotherhood of the Light>
 							["sourceQuest"] = 9233,	-- Omarion's Handbook
-							["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+							["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 							["coord"] = { 81.0, 59.6, EASTERN_PLAGUELANDS },
 							["classes"] = { WARRIOR, PALADIN },
 							["OnUpdate"] = [[_.OnUpdateForOmarionsHandbook]],
@@ -1491,7 +1495,7 @@ applyclassicphase(PHASE_SIX,
 						q(9246, {	-- Icy Scale Breastplate
 							["qg"] = 16376,	-- Craftsman Wilhelm <Brotherhood of the Light>
 							["sourceQuest"] = 9233,	-- Omarion's Handbook
-							["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+							["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 							["coord"] = { 81.0, 59.6, EASTERN_PLAGUELANDS },
 							["classes"] = { HUNTER, SHAMAN },
 							["OnUpdate"] = [[_.OnUpdateForOmarionsHandbook]],
@@ -1528,7 +1532,7 @@ applyclassicphase(PHASE_SIX,
 						q(9233, {	-- Omarion's Handbook
 							["provider"] = { "i", 22719 },	-- Omarion's Handbook
 							["description"] = "You must not have a profession above 270 skill for you to get this item from Omarion.",
-							["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+							["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 							["OnUpdate"] = [[_.OnUpdateForOmarionsHandbook]],
 							["lvl"] = 60,
 						}),
@@ -1571,7 +1575,7 @@ applyclassicphase(PHASE_SIX,
 						q(9243, {	-- Polar Tunic
 							["qg"] = 16376,	-- Craftsman Wilhelm <Brotherhood of the Light>
 							["sourceQuest"] = 9233,	-- Omarion's Handbook
-							["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+							["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 							["coord"] = { 81.0, 59.6, EASTERN_PLAGUELANDS },
 							["classes"] = { ROGUE, DRUID },
 							["OnUpdate"] = [[_.OnUpdateForOmarionsHandbook]],
@@ -1603,7 +1607,7 @@ applyclassicphase(PHASE_SIX,
 						}),
 						q(9121, {	-- The Dread Citadel - Naxxramas [Honored]
 							["qg"] = 16116,	-- Archmage Angela Dosantos <Brotherhood of the Light>
-							["minReputation"] = { 529, HONORED },	-- Argent Dawn, Honored.
+							["minReputation"] = { FACTION_ARGENT_DAWN, HONORED },	-- Argent Dawn, Honored.
 							["coord"] = { 81.5, 58.3, EASTERN_PLAGUELANDS },
 							["altQuests"] = {
 								9122,	-- The Dread Citadel - Naxxramas [Revered]
@@ -1622,7 +1626,7 @@ applyclassicphase(PHASE_SIX,
 						q(9122, {	-- The Dread Citadel - Naxxramas [Revered]
 							["qg"] = 16116,	-- Archmage Angela Dosantos <Brotherhood of the Light>
 							["coord"] = { 81.5, 58.3, EASTERN_PLAGUELANDS },
-							["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+							["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 							["altQuests"] = {
 								9121,	-- The Dread Citadel - Naxxramas [Honored]
 								9123,	-- The Dread Citadel - Naxxramas [Exalted]
@@ -1637,7 +1641,7 @@ applyclassicphase(PHASE_SIX,
 						}),
 						q(9123, {	-- The Dread Citadel - Naxxramas [Exalted]
 							["qg"] = 16116,	-- Archmage Angela Dosantos <Brotherhood of the Light>
-							["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+							["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 							["coord"] = { 81.5, 58.3, EASTERN_PLAGUELANDS },
 							["altQuests"] = {
 								9121,	-- The Dread Citadel - Naxxramas [Honored]
@@ -1835,7 +1839,7 @@ applyclassicphase(PHASE_SIX,
 						}),
 					}),
 					n(NAXX_ARACHNID_QUARTER, {
-						["icon"] = "Interface\\Icons\\inv_trinket_naxxramas04",
+						["icon"] = 135442,
 						["groups"] = {
 							n(15956, {	-- Anub'Rekhan
 								i(22937),	-- Gem of Nerubis
@@ -1864,7 +1868,7 @@ applyclassicphase(PHASE_SIX,
 						},
 					}),
 					n(NAXX_PLAGUE_QUARTER, {
-						["icon"] = "Interface\\Icons\\Spell_Shadow_PlagueCloud",
+						["icon"] = 136182,
 						["groups"] = {
 							n(15954, {	-- Noth the Plaguebringer
 								i(22816),	-- Hatchet of Sundered Bone
@@ -1895,66 +1899,66 @@ applyclassicphase(PHASE_SIX,
 						},
 					}),
 					n(NAXX_MILITARY_QUARTER, {
-						["icon"] = "Interface\\Icons\\Spell_Shadow_UnholyStrength",
+						["icon"] = 136225,
 						["groups"] = {
 							n(16365, {	-- Master Craftsman Omarion <Brotherhood of the Light>
 								["lore"] = "Omarion is an artisan blacksmithing, leatherworking, and tailoring craftsman. Unfortunately he was gravely injured inside Naxxramas and doesn't have much time left. He is willing to teach other master crafters his knowledge so it doesn't die with him.\n\nOmarion can teach the following plans and patterns to master craftsmen who have the required reputation with the Argent Dawn.",
-								["timeline"] = { "added 1.11.1.7272" },
+								["timeline"] = { ADDED_1_11_1 },
 								["groups"] = {
 									i(22719, {	-- Omarion's Handbook
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 										["description"] = "Non-crafters can take his handbook to Craftsman Wilhelm at Light's Hope Chapel who can make all the items as well, as long as the players provide the materials and pay a hefty fee.",
 									}),
 									{
 										["itemID"] = 22685,	-- Pattern: Glacial Cloak
-										["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+										["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 									},
 									{
 										["itemID"] = 22684,	-- Pattern: Glacial Gloves
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 									},
 									{
 										["itemID"] = 22686,	-- Pattern: Glacial Vest
-										["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+										["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 									},
 									{
 										["itemID"] = 22687,	-- Pattern: Glacial Wrists
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 									},
 									r(28244, {	-- Icebane Bracers (RECIPE!)
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 										["requireSkill"] = BLACKSMITHING,
 									}),
 									r(28242, {	-- Icebane Breastplate (RECIPE!)
-										["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Exalted.
+										["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Exalted.
 										["requireSkill"] = BLACKSMITHING,
 									}),
 									r(28243, {	-- Icebane Gauntlets (RECIPE!)
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 										["requireSkill"] = BLACKSMITHING,
 									}),
 									r(28224, {	-- Icy Scale Bracers (RECIPE!)
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 										["requireSkill"] = LEATHERWORKING,
 									}),
 									r(28222, {	-- Icy Scale Breastplate (RECIPE!)
-										["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Revered.
 										["requireSkill"] = LEATHERWORKING,
 									}),
 									r(28223, {	-- Icy Scale Gauntlets (RECIPE!)
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 										["requireSkill"] = LEATHERWORKING,
 									}),
 									r(28221, {	-- Polar Bracers (RECIPE!)
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 										["requireSkill"] = LEATHERWORKING,
 									}),
 									r(28220, {	-- Polar Gloves (RECIPE!)
-										["minReputation"] = { 529, REVERED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },	-- Argent Dawn, Revered.
 										["requireSkill"] = LEATHERWORKING,
 									}),
 									r(28219, {	-- Polar Tunic (RECIPE!)
-										["minReputation"] = { 529, EXALTED },	-- Argent Dawn, Revered.
+										["minReputation"] = { FACTION_ARGENT_DAWN, EXALTED },	-- Argent Dawn, Revered.
 										["requireSkill"] = LEATHERWORKING,
 									}),
 								},
@@ -1981,6 +1985,7 @@ applyclassicphase(PHASE_SIX,
 									16063,	-- Sir Zeliek
 									16064,	-- Thane Korth'azz
 								},
+								["provider"] = { "o", 181366 },	-- Four Horseman Chest
 								["modelScale"] = 2,
 								["groups"] = {
 									i(22349),	-- Desecrated Breastplate
@@ -1988,7 +1993,7 @@ applyclassicphase(PHASE_SIX,
 									i(22350),	-- Desecrated Tunic
 									i(13262, {	-- Ashbringer
 										["lore"] = "This is here so that you can quickly compare the Corrupted Ashbringer with the original Ashbringer model. It was never available to players.\n\nThis weapon was eventually turned into an Artifact weapon with an updated model for the Legion expansion for Retribution Paladins.",
-										["timeline"] = { "created 1.11.1.7318" },
+										["timeline"] = { CREATED_1_11_1 },
 										["collectible"] = false,
 									}),
 									i(22691),	-- Corrupted Ashbringer
@@ -2002,7 +2007,7 @@ applyclassicphase(PHASE_SIX,
 						},
 					}),
 					n(NAXX_CONSTRUCT_QUARTER, {
-						["icon"] = "Interface\\Icons\\Spell_Shadow_AbominationExplosion",
+						["icon"] = 136118,
 						["groups"] = {
 							n(16028, {	-- Patchwerk
 								["modelScale"] = 2,
@@ -2044,7 +2049,7 @@ applyclassicphase(PHASE_SIX,
 						},
 					}),
 					n(NAXX_UPPER_NECROPOLIS, {
-						["icon"] = "Interface\\Icons\\inv_misc_head_dragon_blue",
+						["icon"] = 134155,
 						["groups"] = {
 							n(15989, {	-- Sapphiron
 								["modelScale"] = 2,
@@ -2059,7 +2064,7 @@ applyclassicphase(PHASE_SIX,
 										-- #if BEFORE TBC
 										["description"] = "These were made available after the TBC Prepatch.",
 										-- #endif
-										["timeline"] = { "created 1.11.1.5462", "added 2.0.1.6180", "removed 3.0.2" },
+										["timeline"] = { CREATED_1_11_1, ADDED_2_0_1, REMOVED_3_0_2 },
 									}),
 									i(23047),	-- Eye of the Dead
 									i(23040),	-- Glyph of Deflection
@@ -2103,8 +2108,8 @@ applyclassicphase(PHASE_SIX,
 				},
 			})),
 			-- #endif
-		}),
-	}),
+		},
+	})),
 }
 -- #if BEFORE WRATH
 )

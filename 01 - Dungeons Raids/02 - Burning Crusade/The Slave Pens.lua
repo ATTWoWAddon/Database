@@ -1,15 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(260, {	-- The Slave Pens
 		["lore"] = "The Slave Pens is the place where the Naga force their Broken workers to toil for resources in the darkness in order to achieve their goal of draining the marsh completely and claiming control of its water.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3717,	-- The Slave Pens
-		["sins"] = {
-			"Coilfang: Slave Pens",
-			"Coilfang: The Slave Pens",
-			"Echsenkessel: Sklavenunterkünfte",
-		},
+		-- #endif
 		["coord"] = { 48.95, 35.84, ZANGARMARSH },	-- The Slave Pens, Zangarmarsh
 		["mapID"] = COILFANG_RESERVOIR_SLAVE_PENS,
 		["lvl"] = lvlsquish(59, 59, 10),
@@ -17,7 +14,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 			n(QUESTS, {
 				q(29564, {	-- A Brother Betrayed
 					["qg"] = 54668,	-- Nahuud
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(57, 57, 10),
 					["groups"] = {
 						objective(1, {	-- Mennu the Betrayer slain
@@ -28,14 +25,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29566, {	-- Checking Up
 					["qg"] = 17841,	-- Ysiel Windsinger
 					["coord"] = { 78.4, 62.0, ZANGARMARSH },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(62, 62, 10),
 				}),
 				q(9876,  {	-- Failed Incursion
 					["qg"] = 17841,	-- Ysiel Windsinger
 					["sourceQuest"] = 9732,	-- Return to the Marsh
 					["coord"] = { 78.4, 62.0, ZANGARMARSH },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(62, 62, 10),
 				}),
@@ -44,7 +41,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["sourceQuest"] = 9876,	-- Failed Incursion
 					["coord"] = { 52.3, 36.0, ZANGARMARSH },
 					["maps"] = { COILFANG_RESERVOIR_UNDERBOG },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(62, 62, 10),
 					-- #if BEFORE 4.3.0.14732
 					["groups"] = {
@@ -73,7 +70,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29563, {	-- Lost in Action
 					["qg"] = 54667,	-- Watcher Jhang
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(57, 57, 10),
 					["groups"] = {
 						objective(1, {	-- Naturalist Bite Discovered
@@ -89,7 +86,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10901, {	-- The Cudgel of Kar'desh
 					["qg"] = 22421,	-- Skar'this the Heretic
 					["sourceQuest"] = 10900,	-- The Mark of Vashj
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["maps"] = {
 						KARAZHAN,
 						GRUULS_LAIR,
@@ -110,7 +107,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 22421,	-- Skar'this the Heretic
 					["sourceQuest"] = 10900,	-- The Mark of Vashj
 					["altQuests"] = { 10901 },	-- The Cudgel of Kar'desh
-					["timeline"] = { "added 3.0.2" },
+					["timeline"] = { ADDED_3_0_2 },
 					["maps"] = {
 						KARAZHAN,
 						GRUULS_LAIR,
@@ -128,7 +125,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				-- #endif
 				q(29565, {	-- The Heart of the Matter
 					["qg"] = 54667,	-- Watcher Jhang
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["groups"]= {
 						objective(1, {	-- 0/1 The Invader's Claw
 							["provider"] = { "i", 72118 },	-- The Invader's Claw
@@ -150,7 +147,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 			n(ZONE_DROPS, {
 				i(24368),	-- Coilfang Armaments
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(570, {	-- Mennu the Betrayer
 					["creatureID"] = 17941,
 					["groups"] = {
@@ -196,7 +193,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #endif
 						i(24376),	-- Runed Fungalcap
 						i(72118, {	-- The Invader's Claw
-							["timeline"] = { "added 4.3.0.14942" },
+							["timeline"] = { ADDED_4_3_0 },
 						}),
 					},
 				}),
@@ -204,7 +201,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["creatureID"] = 17942,
 					["groups"] = {
 						ach(649, {	-- The Slave Pens
-							["timeline"] = { "added 3.0.1" },
+							["timeline"] = { ADDED_3_0_2 },
 						}),
 						-- #if AFTER 7.3.5
 						i(27741),	-- Bleeding Hollow Warhammer
@@ -238,12 +235,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(27683),	-- Quagmirran's Eye
 						-- #endif
 						i(72119, {	-- The Slave Master's Eye
-							["timeline"] = { "added 4.3.0.14942" },
+							["timeline"] = { ADDED_4_3_0 },
 						}),
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -292,7 +289,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							-- #endif
 							-- #if BEFORE MOP
 							i(27544, {	-- Totem of Spontaneous Regrowth
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 							i(29674, {	-- Pattern: Nature Armor Kit (RECIPE!)
@@ -321,7 +318,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(24376),	-- Runed Fungalcap
 							-- #endif
 							i(72118, {	-- The Invader's Claw
-								["timeline"] = { "added 4.3.0.14942" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						},
 					}),
@@ -329,10 +326,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 17942,
 						["groups"] = {
 							ach(669, {	-- Heroic: The Slave Pens
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5069, {	-- Heroic: The Slave Pens Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(27741),	-- Bleeding Hollow Warhammer
 							i(27673),	-- Phosphorescent Blade
@@ -366,7 +363,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							applyclassicphase(TBC_PHASE_ONE, i(23572)),	-- Primal Nether
 							i(33821),	-- The Heart of Quagmirran
 							i(72119, {	-- The Slave Master's Eye
-								["timeline"] = { "added 4.3.0.14942" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						},
 					}),
@@ -377,11 +374,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER TBC
 root(ROOTS.HiddenQuestTriggers, {
-	tier(TBC_TIER, {
+	expansion(EXPANSION.TBC, {
 		q(11115),	-- The Mark of Vashj (FLAG ONLY)
 	}),
 	-- #if AFTER WOD
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35561),	-- The Slave Pens Reward Quest - Normal completion
 		q(35562),	-- The Slave Pens Reward Quest - Heroic completion
 	}),

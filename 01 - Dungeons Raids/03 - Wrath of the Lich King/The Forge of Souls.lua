@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_FOUR, {
 	inst(280, {	-- The Forge of Souls
 		["mapID"] = THE_FORGE_OF_SOULS,
 		["coord"] = { 52.3, 89.3, ICECROWN },
@@ -9,19 +9,19 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(4516, {	-- The Forge of Souls
-					crit(13315, { -- Bronjahm
-						["_encounter"] = { 615, 1 },
+					crit(13315, {	-- Bronjahm
+						["_encounter"] = { 615, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(13316, { -- Devourer of Souls
-						["_encounter"] = { 616, 1 },
+					crit(13316, {	-- Devourer of Souls
+						["_encounter"] = { 616, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 				}),
 				ach(4519, {	-- Heroic: The Forge of Souls
-					crit(13167, { -- Bronjahm
-						["_encounter"] = { 615, 2 },
+					crit(13167, {	-- Bronjahm
+						["_encounter"] = { 615, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(13168, { -- Devourer of Souls
-						["_encounter"] = { 616, 2 },
+					crit(13168, {	-- Devourer of Souls
+						["_encounter"] = { 616, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -83,7 +83,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 					["lvl"] = lvlsquish(78, 78, 25),
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(49852),	-- Coffin Nail
 					i(49854),	-- Mantle of Tattered Feathers
@@ -160,7 +160,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ZONE_DROPS, {
@@ -194,7 +194,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 							i(49784),	-- Minister's Number One Legplates (7.3.5 - Used to be only Normal Mode)
 							-- #endif
 							i(50169, {	-- Papa's Brand New Knife
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							i(50316),	-- Papa's Brand New Bag
 							-- #if AFTER 7.3.5
@@ -206,7 +206,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 						["creatureID"] = 36502,	-- Devourer of Souls
 						["groups"] = {
 							ach(5112, {	-- Heroic: The Forge of Souls Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(4523),	-- Three Faced
 							-- #if AFTER 7.3.5
@@ -257,7 +257,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35436),	-- The Forge of Souls Reward Quest - Normal completion
 		q(35437),	-- The Forge of Souls Reward Quest - Heroic completion
 	}),

@@ -1,11 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
-	inst(249, bubbleDownSelf({ ["timeline"] = { "added 2.4.0" } }, {	-- Magisters' Terrace
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_FIVE, {
+	inst(249, bubbleDownSelf({ ["timeline"] = { ADDED_2_4_0 } }, {	-- Magisters' Terrace
 		["lore"] = "Situated on a ridge in northeastern Quel'Danas, Magisters' Terrace serves as a convenient base for Kael'thas and his underlings as they assist the proceedings in the Sunwell Plateau. Kael'thas stands poised to desecrate the ancient lands of his people with an incomparable evil. Should he succeed, the Legion's darkness will rapidly spread to all corners of Azeroth, extinguishing everything in its path.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 4095,	-- Magisters' Terrace
-		["sins"] = { "Magister's Terrace" },
+		-- #endif
 		["coord"] = { 61.23, 30.94, ISLE_OF_QUELDANAS },	-- Magister's Terrace, Isle of Quel'Danas
 		["maps"] = {
 			MAGISTERS_TERRACE,	-- Grand Magister's Asylum
@@ -16,7 +17,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 			n(QUESTS, {
 				q(29686, {	-- A Radical Notion
 					["qg"] = 55007,	-- Exarch Larethor
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 25),
 					["groups"] = {
 						objective(1, {	-- 0/1 Volatile Essence
@@ -27,7 +28,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 				q(11492, {	-- Hard to Kill
 					["qg"] = 24848,	-- Kalecgos
 					["sourceQuest"] = 11490,	-- The Scryer's Scryer
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
 						objective(1, {	-- 0/1 Head of Kael'thas
@@ -40,7 +41,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 				q(29685, {	-- Hard to Kill
 					["qg"] = 24848,	-- Kalecgos
 					["sourceQuest"] = 11490,	-- The Scryer's Scryer
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 25),
 					["groups"] = {
 						objective(1, {	-- 0/1 Head of Kael'thas
@@ -57,20 +58,23 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 						11482,	-- Duty Calls
 					},
 					["coord"] = { 47.4, 30.7, ISLE_OF_QUELDANAS },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(70, 70, 25),
 				}),
 				q(29682, {	-- Magisters' Terrace
 					["qg"] = 24967,	-- Captain Theris Dawnhearth
-					["sourceQuest"] = 11481,	-- Crisis at the Sunwell
+					["sourceQuests"] = {
+						11481,	-- Crisis at the Sunwell
+						11482,	-- Duty Calls
+					},
 					["coord"] = { 47.4, 30.4, ISLE_OF_QUELDANAS },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 25),
 				}),
 				q(29684, {	-- Severed Communications
 					["qg"] = 55007,	-- Exarch Larethor
-					["sourceQuest"] = 11482,	-- Duty Calls
-					["timeline"] = { "added 4.3.0.14732" },
+					["sourceQuest"] = 29682,	-- Magisters' Terrace
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 25),
 				}),
 				q(11490, {	-- The Scryer's Scryer
@@ -82,10 +86,15 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 					["sourceQuest"] = 11488,	-- Magisters' Terrace
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #endif
+					["groups"] = {
+						objective(1, {	-- Scrying Orb Activated
+							["provider"] = { "o", 189292 },	-- Scrying Orb
+						}),
+					},
 				}),
 				q(29687, {	-- Twisted Associations
 					["qg"] = 55007,	-- Exarch Larethor
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(68, 68, 25),
 					["groups"] = {
 						objective(1, {	-- Selin Fireheart slain
@@ -99,7 +108,6 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 			}),
 			filter(RECIPES, {
 				["cr"] = 24664,	-- Kael'thas Sunstrider
-				["description"] = "Kael'thas drops Bind on Pickup versions of various World Drop Recipes that are only visible to players of that profession.\n\nA lot of discussion has gone on about these, some are saying that they only drop on Heroic Mode, others Normal Mode. Evidence shows that it can drop from any mode, so until someone proves otherwise, they'll be in the Recipes section and linked to Kael'thas.",
 				["groups"] = {
 					-- #if AFTER CATA
 					i(35305),	-- Design: Brilliant Living Ruby / [CATA+] / Design: Runed Living Ruby [TBC]
@@ -115,20 +123,20 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 					i(35302),	-- Pattern: Cobrascale Gloves (RECIPE!)
 					i(35303),	-- Pattern: Gloves of the Living Touch (RECIPE!)
 					i(35301),	-- Pattern: Netherdrake Gloves (RECIPE!)
-					i(35308),	-- Pattern: Unyielding Bracers
-					i(35309),	-- Pattern: Unyielding Girdle
+					i(35308),	-- Pattern: Unyielding Bracers (RECIPE!)
+					i(35309),	-- Pattern: Unyielding Girdle (RECIPE!)
 					i(35300),	-- Pattern: Windstrike Gloves (RECIPE!)
-					i(35296),	-- Plans: Adamantite Weapon Chain
-					i(35294),	-- Recipe: Elixir of Empowerment
+					i(35296),	-- Plans: Adamantite Weapon Chain (RECIPE!)
+					i(35294),	-- Recipe: Elixir of Empowerment (RECIPE!)
 					i(35295),	-- Recipe: Haste Potion (BoP Version) (RECIPE!)
-					i(35310),	-- Schematic: Healing Potion Injector
-					i(35311),	-- Schematic: Mana Potion Injector
+					i(35310),	-- Schematic: Healing Potion Injector (RECIPE!) [BoP]
+					i(35311),	-- Schematic: Mana Potion Injector (RECIPE!) [BoP]
 				},
 			}),
 			n(ZONE_DROPS, {
 				i(35516),	-- Sun Touched Satchel
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(530, {	-- Selin Fireheart
 					["creatureID"] = 24723,
 					["groups"] = {
@@ -169,7 +177,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 						i(34704),	-- Band of Arcane Alacrity
 						i(34706),	-- Band of Determination
 						i(73084, {	-- Volatile Essence
-							["timeline"] = { "added 4.3.0.14732" },
+							["timeline"] = { ADDED_4_3_0 },
 						}),
 					},
 				}),
@@ -190,7 +198,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 						-- #endif
 						-- #if BEFORE MOP
 						i(34783, {	-- Nightstrike
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 					},
@@ -240,7 +248,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 					},
 				})
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You must completed the 'Hard to Kill' quest chain on Normal Mode before Heroic Mode becomes available.",
 				["sourceQuest"] = 11492,	-- Hard to Kill
@@ -261,17 +269,23 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 						["creatureID"] = 24723,
 						["groups"] = {
 							i(34604),	-- Jaded Crystal Dagger
+							-- #if AFTER 7.3.5
 							i(34699),	-- Sun-Forged Cleaver
+							-- #endif
 							i(34601),	-- Shoulderplates of Everlasting Pain
+							-- #if AFTER 7.3.5
 							i(34702),	-- Cloak of Swift Mending
 							i(34697),	-- Bindings of Raging Fire
 							i(34698),	-- Bracers of the Forest Stalker
+							-- #endif
 							i(34602),	-- Eversong Bracers
+							-- #if AFTER 7.3.5
 							i(34700),	-- Gauntlets of Divine Blessings
 							i(34701),	-- Leggings of the Betrayed
+							-- #endif
 							-- #if BEFORE MOP
 							i(34603, {	-- Distracting Blades
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 						},
@@ -281,16 +295,22 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 						["groups"] = {
 							i(34608),	-- Rod of the Blazing Light
 							i(34606),	-- Edge of Oppression
+							-- #if AFTER 7.3.5
 							i(34703),	-- Landro's Dancing Blade
+							-- #endif
 							i(34607),	-- Fel-Tinged Mantle
+							-- #if AFTER 7.3.5
 							i(34708),	-- Cloak of the Coming Night
+							-- #endif
 							i(34605),	-- Breastplate of Fierce Survival
+							-- #if AFTER 7.3.5
 							i(34705),	-- Bracers of Divine Infusion
 							i(34707),	-- Boots of Resuscitation
 							i(34704),	-- Band of Arcane Alacrity
 							i(34706),	-- Band of Determination
+							-- #endif
 							i(73084, {	-- Volatile Essence
-								["timeline"] = { "added 4.3.0.14732" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						},
 					}),
@@ -298,59 +318,65 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 						["creatureID"] = 24560,
 						["groups"] = {
 							i(35756),	-- Formula: Enchant Cloak - Greater Dodge / TBC: Formula: Enchant Cloak - Steelweave (RECIPE!)
+							-- #if AFTER 7.3.5
 							i(34790),	-- Battle-Mace of the High Priestess
 							i(34788),	-- Duskhallow Mantle
 							i(34792),	-- Cloak of the Betrayed
 							i(34789),	-- Bracers of Slaughter
 							i(34791),	-- Gauntlets of the Tranquil Waves
+							-- #endif
 							i(34473),	-- Commendation of Kael'thas
 							i(34472),	-- Shard of Contempt
 							i(34470),	-- Timbal's Focusing Crystal
 							i(34471),	-- Vial of the Sunwell
-							-- #if BEFORE MOP
-							i(34783, {	-- Nightstrike
-								["timeline"] = { "removed 5.0.4" },
-							}),
-							-- #endif
 						},
 					}),
 					e(533, {	-- Kael'thas Sunstrider
 						["creatureID"] = 24664,
 						["groups"] = {
 							ach(682, {	-- Heroic: Magister's Terrace
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5082, {	-- Heroic: Magister's Terrace Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(884, {	-- Swift White Hawkstrider
 								["provider"] = { "i", 35513 },	-- Swift White Hawkstrider
-								-- #if BEFORE WRATH
-								["description"] = "Obtain the Swift White Hawkstrider from Kael'thas in Magister's Terrace.",
-								-- #endif
 								["filterID"] = MOUNTS,
 							}),
 							i(35513),	-- Swift White Hawkstrider (MOUNT!)
 							i(35504),	-- Phoenix Hatchling (PET!)
+							-- #if AFTER 7.3.5
 							i(34794),	-- Axe of Shattered Dreams
 							i(34798),	-- Band of Celerity
+							-- #endif
 							i(34616),	-- Breeching Comet
+							-- #if AFTER 7.3.5
 							i(34810),	-- Cloak of Blade Turning
 							i(34793),	-- Cord of Reconstruction
+							-- #endif
 							i(34611),	-- Cudgel of Consecration
+							-- #if AFTER 7.3.5
 							i(34808),	-- Gloves of Arcane Acuity
+							-- #endif
 							i(34612),	-- Greaves of the Penitent Knight
+							-- #if AFTER 7.3.5
 							i(34799),	-- Hauberk of the War Bringer
 							i(34795),	-- Helm of Sanctification
 							i(34625),	-- Kharmaa's Ring of Fate
+							-- #endif
 							i(34615),	-- Netherforce Chestplate
 							i(34609),	-- Quickening Blade of the Prince
+							-- #if AFTER 7.3.5
 							i(34796),	-- Robes of the Summer Flame
+							-- #endif
 							i(34610),	-- Scarlet Sin'dorei Robes
 							i(34613),	-- Shoulderpads of the Silvermoon Retainer
+							-- #if AFTER 7.3.5
 							i(34797),	-- Sun-Infused Focus Staff
 							i(34809),	-- Sunrage Treads
 							i(34807),	-- Sunstrider Warboots
+							-- #endif
 							i(34614),	-- Tunic of the Ranger Lord
 							i(34157),	-- Head of Kael'thas
 							i(34160),	-- The Signet Ring of Prince Kael'thas
@@ -364,7 +390,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35531),	-- Magisters' Terrace Reward Quest - Normal completion
 		q(35532),	-- Magisters' Terrace Reward Quest - Heroic completion
 	}),

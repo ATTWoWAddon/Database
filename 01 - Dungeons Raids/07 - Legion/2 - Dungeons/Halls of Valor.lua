@@ -1,25 +1,21 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(721, {	-- Halls of Valor
 		["coord"] = { 70.4, 69.4, STORMHEIM },
 		["maps"] = { 703, 704, 705 },
 		["g"] = {
 			n(QUESTS, {
-				o(251991, {	-- The Aegis of Aggramar
+				q(43349, {	-- The Aegis of Aggramar
+					["sourceQuests"] = { 40072 },	-- Halls of Valor: Securing the Aegis
+					["provider"] = {"o",251991},	-- The Aegis of Aggramar
 					["modelScale"] = 3,
 					["g"] = {
-						q(43349, {	-- The Aegis of Aggramar
-							["sourceQuests"] = { 40072 },	-- Halls of Valor: Securing the Aegis
-							["g"] = {
-								i(130016),	-- Valor-Bound Legplates
-								i(129997),	-- Valor-Bound Legwraps
-								i(129989),	-- Valor-Bound Trousers
-								i(130005),	-- Valor-Bound Greaves
-							},
-						}),
+						i(130016),	-- Valor-Bound Legplates
+						i(129997),	-- Valor-Bound Legwraps
+						i(129989),	-- Valor-Bound Trousers
+						i(130005),	-- Valor-Bound Greaves
 					},
 				}),
 			}),
@@ -41,15 +37,44 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					["lvl"] = 110,
 				}),
 			}),
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
+				n(ZONE_DROPS, {
+					i(137717),	-- Schematic: Double-Barreled Cranial Cannon [Rank 3] (RECIPE!)
+				}),
+				cr(94960, e(1485, {	-- Hymdall
+					i(201997,  {	-- Key to the Halls
+						["timeline"] = { ADDED_11_0_2 },
+					}),
+				})),
+				e(1486, {	-- Hyrja
+					["creatureID"] = 95833,	-- Hyrja
+					["g"] = {
+						i(140657),	-- Crest of the Lightborn [Priest Hidden Artifact Appearance]
+					},
+				}),
+				cr(95675, e(1488, {	-- God-King Skovald
+					i(201999, {	-- Skovald's Resolve
+						["timeline"] = { ADDED_11_0_2 },
+					}),
+				})),
+				cr(99868, e(1487, {	-- Fenryr
+					i(201998,  {	-- Fenryr's Bloodstained Fang
+						["timeline"] = { ADDED_11_0_2 },
+					}),
+				})),
+				e(1489, {	-- Odyn
+					["creatureID"] = 95676,	-- Odyn
+					["g"] = {
+						ach(10786),	-- Halls of Valor
+					},
+				}),
+			}),
 			n(MYTHIC_PLUS, sharedDataSelf({ ["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {
 				i(201998),	-- Fenryr's Bloodstained Fang
 				i(201997),	-- Key to the Halls
 				i(201999),	-- Skovald's Resolve
 			})),
-			d(NORMAL_DUNGEON, {
-				n(ZONE_DROPS, {
-					i(137717),	-- Schematic: Double-Barreled Cranial Cannon (Rank 3)
-				}),
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1485, {	-- Hymdall
 					["creatureID"] = 94960,	-- Hymdall
 					["g"] = {
@@ -69,7 +94,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				e(1486, {	-- Hyrja
 					["creatureID"] = 95833,	-- Hyrja
 					["g"] = {
-						i(140657),	-- Crest of the Lightborn [Priest Hidden Artifact Appearance]
 						i(133620),	-- Amice of the Enlightened
 						i(134196),	-- Biornskin Hood
 						i(134219),	-- Bonespeaker Robes
@@ -118,7 +142,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				e(1489, {	-- Odyn
 					["creatureID"] = 95676,	-- Odyn
 					["g"] = {
-						ach(10786),	-- Halls of Valor
 						i(134192),	-- Biornskin Bracer
 						i(136776),	-- Bjorn's Hunting Strap
 						i(134217),	-- Bonespeaker Gloves
@@ -140,12 +163,19 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
+				e(1489, {	-- Odyn
+					["creatureID"] = 95676,	-- Odyn
+					["g"] = {
+						ach(10788),	-- Heroic: Halls of Valor
+						i(137857),	-- Design: Raging Furystone Gorget (Rank 3)
+						i(127933),	-- Recipe: Flask of Ten Thousand Scars [Rank 2] (RECIPE!)
+					},
+				}),
+			}),
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = 110,
 				["g"] = {
-					n(ZONE_DROPS, {
-						i(137717),	-- Schematic: Double-Barreled Cranial Cannon (Rank 3)
-					}),
 					e(1485, {	-- Hymdall
 						["creatureID"] = 94960,	-- Hymdall
 						["g"] = {
@@ -165,7 +195,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					e(1486, {	-- Hyrja
 						["creatureID"] = 95833,	-- Hyrja
 						["g"] = {
-							i(140657),	-- Crest of the Lightborn [Priest Hidden Artifact Appearance]
 							i(133620),	-- Amice of the Enlightened
 							i(134196),	-- Biornskin Hood
 							i(134219),	-- Bonespeaker Robes
@@ -215,8 +244,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						["creatureID"] = 95676,	-- Odyn
 						["g"] = {
 							ach(10788),	-- Heroic: Halls of Valor
-							i(137857),	-- Design: Raging Furystone Gorget (Rank 3)
-							i(127933),	-- Recipe: Flask of Ten Thousand Scars (Rank 2)
 							i(134192),	-- Biornskin Bracer
 							i(136776),	-- Bjorn's Hunting Strap
 							i(134217),	-- Bonespeaker Gloves
@@ -239,15 +266,16 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					}),
 				},
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				["lvl"] = 110,
 				["g"] = {
 					n(ACHIEVEMENTS, {
-						ach(10542),	-- I Got What You Mead
-						ach(10544),	-- Stag Party
-					}),
-					n(ZONE_DROPS, {
-						i(137717),	-- Schematic: Double-Barreled Cranial Cannon (Rank 3)
+						ach(10542, {	-- I Got What You Mead
+							["crs"] = { 102423 },	-- Mug of Mead
+						}),
+						ach(10544, {	-- Stag Party
+							["crs"] = { 99891 },	-- Storm Drake
+						}),
 					}),
 					e(1485, {	-- Hymdall
 						["creatureID"] = 94960,	-- Hymdall
@@ -268,7 +296,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					e(1486, {	-- Hyrja
 						["creatureID"] = 95833,	-- Hyrja
 						["g"] = {
-							i(140657),	-- Crest of the Lightborn [Priest Hidden Artifact Appearance]
 							i(133620),	-- Amice of the Enlightened
 							i(134196),	-- Biornskin Hood
 							i(134219),	-- Bonespeaker Robes
@@ -319,10 +346,10 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						["g"] = {
 							ach(10789),	-- Mythic: Halls of Valor
 							ach(10858),	-- Mythic: Halls of Valor Guild Run
-							ach(10543),	-- Surge Protector
-							i(137857),	-- Design: Raging Furystone Gorget [Rank 3] (RECIPE!)
+							ach(10543, {	-- Surge Protector
+								["crs"] = { 102019 },	-- Stormforged Obliterator
+							}),
 							i(137911),	-- Pattern: Battlebound Grips [Rank 3] (RECIPE!)
-							i(127933),	-- Recipe: Flask of Ten Thousand Scars [Rank 2] (RECIPE!)
 							i(137607),	-- Plans: Leystone Helm [Rank 3] (RECIPE!)
 							i(134192),	-- Biornskin Bracer
 							i(136776),	-- Bjorn's Hunting Strap

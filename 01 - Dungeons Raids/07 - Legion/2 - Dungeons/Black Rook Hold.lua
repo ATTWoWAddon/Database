@@ -1,35 +1,34 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(740, {	-- Black Rook Hold
 		["maps"] = { 751, 752, 753, 754, 755, 756 },
 		["coord"] = { 38.4, 50.8, VALSHARAH },
 		["g"] = {
 			n(ACHIEVEMENTS, {
-				ach(10709, {	-- You Used to Scrawl Me In Your Fel Tome
+				ach(10709, {	-- You Used to Scrawl Me In Your Fel Tome (automated)
 					["description"] = "These spawn on any difficulty, but you'll only get one per run, making this achievement a six-run minimum.",
-					["g"] = {
-						crit(1, {	-- Torn Page read
-							["description"] = "Found in the Chamber of War Room immediately after the Amalgam of Souls fight, on a desk by the southern part of the room.",
-						}),
-						crit(2, {	-- Worn-Edged Page read
-							["description"] = "Found in the Grand Hall, to the left of the broken staircase, by the bookshelves.",
-						}),
-						crit(3, {	-- Dog-Eared Page read
-							["description"] = "Found in the Grand Hall, it's in the hallway connecting to the stairwell that takes you to Illysanna Ravencrest, tucked in the back on a desk.",
-						}),
-						crit(4, {	-- Singed Page read
-							["description"] = "Found in Rookshold, the room filled with Wyrmtongue Tricker, on a table by three bookshelves and two weapon racks.",
-						}),
-						crit(5, {	-- Ink-Splattered Page read
-							["description"] = "Found in Rook's Rise, in the small round room connected to the stairs leading to Lord Ravencrest's Chamber after defeating Smashspite the Hateful.",
-						}),
-						crit(6, {	-- Hastily-Scrawled Page read
-							["description"] = "Found in Lord Ravencrest's Chamber on the desk, at the end of the instance.",
-						}),
-					},
+				}),
+			}),
+			n(TREASURES, {
+				o(252385, {	-- Torn Page
+					["description"] = "Found in the Chamber of War Room immediately after the Amalgam of Souls fight, on a desk by the southern part of the room.",
+				}),
+				o(252386, {	-- Worn-Edged Page
+					["description"] = "Found in the Grand Hall, to the left of the broken staircase, by the bookshelves.",
+				}),
+				o(252387, {	-- Dog-Eared Page
+					["description"] = "Found in the Grand Hall, it's in the hallway connecting to the stairwell that takes you to Illysanna Ravencrest, tucked in the back on a desk.",
+				}),
+				o(252388, {	-- Singed Page
+					["description"] = "Found in Ravenshold, the room filled with Wyrmtongue Trickster, on a table by three bookshelves and two weapon racks.",
+				}),
+				o(252390, {	-- Ink-Splattered Page
+					["description"] = "Found in Rook's Rise, in the small round room connected to the stairs leading to Lord Ravencrest's Chamber after defeating Smashspite the Hateful.",
+				}),
+				o(252391, {	-- Hastily-Scrawled Page
+					["description"] = "Found in Lord Ravencrest's Chamber on the desk, at the end of the instance.",
 				}),
 			}),
 			n(WORLD_QUESTS, {
@@ -54,7 +53,51 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					["lvl"] = 110,
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
+				e(1518, {	-- Amalgam of Souls
+					["creatureID"] = 98542,	-- Amalgam of Souls
+					["g"] = {
+						i(211513, {	-- Howling Echoes
+							["timeline"] = { ADDED_11_0_2 },
+						}),
+					},
+				}),
+				e(1653, {	-- Illysanna Ravencrest
+					["creatureID"] = 98696,	-- Illysanna Ravencrest
+					["g"] = {
+						i(211470, {	-- Ravencrest's Wrath
+							["timeline"] = { ADDED_11_0_2 },
+						}),
+					},
+				}),
+				e(1672, {	-- Lord Kur'talos Ravencrest
+					["crs"] = {
+						98970,	-- Dantalionax
+						98965,	-- Kur'talos Ravencrest
+					},
+					["g"] = {
+						ach(10804),	-- Black Rook Hold
+					},
+				}),
+			}),
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
+				e(1672, {	-- Lord Kur'talos Ravencrest
+					["crs"] = {
+						98970,	-- Dantalionax
+						98965,	-- Kur'talos Ravencrest
+					},
+					["g"] = {
+						ach(10805),	-- Heroic: Black Rook Hold
+						i(137858),	-- Design: Grim Furystone Gorget [Rank 3] (RECIPE!)
+						i(127930),	-- Recipe: Flask of the Whispered Pact [Rank 2] (RECIPE!)
+					},
+				}),
+			}),
+			n(MYTHIC_PLUS, sharedDataSelf({ ["timeline"] = { ADDED_10_2_0, REMOVED_10_2_6_SEASON_FOUR } }, {
+				i(211513),	-- Howling Echoes
+				i(211470),	-- Ravencrest's Wrath
+			})),
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1518, {	-- Amalgam of Souls
 					["creatureID"] = 98542,	-- Amalgam of Souls
 					["g"] = {
@@ -108,7 +151,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						98965,	-- Kur'talos Ravencrest
 					},
 					["g"] = {
-						ach(10804),	-- Black Rook Hold
 						i(136716),	-- Caged Horror
 						i(136770),	-- Drape of the Raven Lord
 						i(134370),	-- Felbat Leather Leggings
@@ -130,7 +172,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = 110,
 				["g"] = {
 					e(1518, {	-- Amalgam of Souls
@@ -186,9 +228,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 							98965,	-- Kur'talos Ravencrest
 						},
 						["g"] = {
-							ach(10805),	-- Heroic: Black Rook Hold
-							i(137858),	-- Design: Grim Furystone Gorget [Rank 3] (RECIPE!)
-							i(127930),	-- Recipe: Flask of the Whispered Pact [Rank 2] (RECIPE!)
 							i(136716),	-- Caged Horror
 							i(136770),	-- Drape of the Raven Lord
 							i(134370),	-- Felbat Leather Leggings
@@ -211,7 +250,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					}),
 				},
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				["lvl"] = 110,
 				["g"] = {
 					e(1518, {	-- Amalgam of Souls
@@ -219,6 +258,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						["g"] = {
 							ach(10710, {	-- Black Rook Moan
 								["description"] = "Prevent a soul from touching the boss for 60 seconds during the intermission phase.",
+								["crs"] = { 99663 },	-- Frustrated Soul
 							}),
 							i(136714),	-- Amalgam's Seventh Spine
 							i(136976),	-- Etheldrin's Breastplate
@@ -273,8 +313,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						["g"] = {
 							ach(10806),	-- Mythic: Black Rook Hold
 							ach(10862),	-- Mythic: Black Rook Hold Guild Run
-							i(137858),	-- Design: Grim Furystone Gorget [Rank 3] (RECIPE!)
-							i(127930),	-- Recipe: Flask of the Whispered Pact [Rank 2] (RECIPE!)
 							i(137931),	-- Pattern: Gravenscale Hauberk [Rank 3] (RECIPE!)
 							i(137694),	-- Schematic: Reaves Module: Repair Mode
 							i(136716),	-- Caged Horror

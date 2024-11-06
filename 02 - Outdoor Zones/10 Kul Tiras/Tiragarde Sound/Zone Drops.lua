@@ -2,9 +2,28 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(TIRAGARDE_SOUND, {
-		n(ZONE_DROPS, bubbleDown({["bonusID"] = 4796, }, {
+		n(ZONE_DROPS, {
+			i(162580),	-- Fading Treasure Map
+			i(162584),	-- Singed Treasure Map
+			i(162571),	-- Soggy Treasure Map
+			i(162581),	-- Yellowed Treasure Map
+			-- not entirely sure on organizing HQTs like this yet. maybe will have a specialized one for "Loot (Item)" for clarity...
+			hqt(52854, name(HEADERS.Item, 162580, {	-- Fading Treasure Map (looted)
+				["provider"] = {"i",162580},	-- Fading Treasure Map
+			})),
+			hqt(52860, name(HEADERS.Item, 162584, {	-- Singed Treasure Map (looted)
+				["provider"] = {"i",162584},	-- Singed Treasure Map
+			})),
+			hqt(52853, name(HEADERS.Item, 162571, {	-- Soggy Treasure Map (looted)
+				["provider"] = {"i",162571},	-- Soggy Treasure Map
+			})),
+			hqt(52859, name(HEADERS.Item, 162581, {	-- Yellowed Treasure Map (looted)
+				["provider"] = {"i",162581},	-- Yellowed Treasure Map
+			})),
+		}),
+		n(ZONE_DROPS, {
 			i(159184),	-- Foxhollow Circlet
 			i(159189),	-- Foxhollow Amice
 			i(159166),	-- Foxhollow Drape
@@ -26,41 +45,6 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			i(159158),	-- Ashvane Company Chestplate
 			i(159162),	-- Ashvane Company Greaves
 			i(159164),	-- Ashvane Company Sabatons
-		})),
-	}),
-})));
-
-root(ROOTS.NeverImplemented, {
-	tier(BFA_TIER, {
-		n(WEAPONS, {
-			i(159538),	-- Coldscale Cudgel
-			i(159498),	-- Coldscale Pistol
-			i(159586),	-- Coralshell Blade
-			i(159559),	-- Coralshell Halberd
-			i(159513),	-- Deepwarden Fangs
-			i(159603),	-- Deepwarden Spark
-			i(159541),	-- Dockyard Mace
-			i(159500),	-- Dockyard Sidearm
-			i(159591),	-- Gnarlwood Cutlass
-			i(159553),	-- Gnarlwood Hammer
-			i(159567),	-- Gnarlwood Staff
-			i(159512),	-- Gol Osigr Handblade
-			i(159801),	-- Gol Osigr Targe
-			i(159817),	-- Gol Osigr Torch
-			i(159499),	-- Ironcrest Longrifle
-			i(159552),	-- Shipwrecker Maul
-			i(159588),	-- Stagheart Falchion
-			i(159542),	-- Stagheart Gavel
-			i(159472),	-- Stagheart Hatchet
-			i(159561),	-- Stagheart Poleaxe
-			i(159562),	-- Tideguard Pike
-			i(159503),	-- Tideguard Slicers
-			i(159565),	-- Tideguard Spire
-			i(159495),	-- Wavecaller Speargun
-			i(159526),	-- Wintersail Dirk
-			i(159554),	-- Wintersail Hammer
-			i(159592),	-- Wintersail Sabre
-			i(159510),	-- Wintersail Strikers
 		}),
 	}),
-});
+})))

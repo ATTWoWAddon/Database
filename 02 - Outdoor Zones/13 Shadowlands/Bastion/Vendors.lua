@@ -6,14 +6,14 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 		n(VENDORS, {
 			n(160470, {	-- Adjutant Nikos <Ascended Quartermaster>
 				["coord"] = { 52.2, 47.0, BASTION },
-				["minReputation"] = { 2407, 5 },	-- The Ascended, Friendly
-				["g"] = bubbleDownRepSkip(FACTION_THE_ASCENDED, {
+				["g"] = bubbleDownClassicRep(FACTION_THE_ASCENDED, {
 					{		-- Neutral
 						i(190644, {	-- Vessel of Profound Possibilities
+							["cost"] = {{"c",2009,10000}},	-- 10,000 Cosmic Flux
 							["timeline"] = { ADDED_9_2_0 },
 							["sym"] = {
-								{"select","tierID",SL_TIER},{"pop"},	-- SL Tier
-								{"where","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
+								{"select","expansionID",EXPANSION.SL},	-- Select Shadowlands
+								{"find","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
 							},
 						}),
 					}, {	-- Friendly
@@ -21,6 +21,30 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					}, {	-- Honored
 						i(183094),	-- Plans: Shadowsteel Helm (RECIPE!)
 						i(184756),	-- Smoothed Loop of Contemplation
+						i(217587, {	-- Glyph of Divine Toll
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { PALADIN },
+						}),
+						i(217597, {	-- Glyph of Echoing Reprimand
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { ROGUE },
+						}),
+						i(217591, {	-- Glyph of Elysian Decree
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { DEMONHUNTER },
+						}),
+						i(217586, {	-- Glyph of Radiant Spark
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { MAGE },
+						}),
+						i(217584, {	-- Glyph of Spear of Bastion
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { WARRIOR },
+						}),
+						i(217595, {	-- Glyph of Weapons of Order
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { MONK },
+						}),
 					}, {	-- Revered
 						i(184410),	-- Aspirant's Stretcher (TOY!)
 						i(184734),	-- Bracers of Regret
@@ -49,6 +73,12 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			n(175574, {	-- Angler Danica
 				i(180136),	-- The Brokers Angle'r
 			}),
+			n(171526, {	-- Kobri <Refreshments>
+				["coord"] = { 52.6, 47.4, BASTION },
+				["g"] = {
+					i(180788),	-- Memorial Wine
+				},
+			}),
 			n(158625, {	-- Trader Ta'bix
 				["coord"] = { 33.4, 36.4, BASTION },
 				["g"] = {
@@ -57,7 +87,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					}),
 					i(183786),	-- Happiness Bird
 				},
-			})
+			}),
 		}),
 	}),
 })));

@@ -1,27 +1,26 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 } }, {
+root(ROOTS.Instances, expansion(EXPANSION.MOP, bubbleDown({ ["timeline"] = { ADDED_5_0_4 } }, {
 	inst(320, {	-- Terrace of Endless Spring
 		["isRaid"] = true,
 		["coord"] = { 48.4, 61.4, THE_VEILED_STAIR },
 		["maps"] = { 456 },	-- Terrace of Endless Spring
-		["sins"] = { "Terrasse des Endlosen Frühlings" },
 		["sharedLockout"] = 1,
 		["g"] = {
 			n(ACHIEVEMENTS, {
 				ach(6689, {	-- Terrace of Endless Spring
-					crit(1, {	-- Protectors of the Endless
-						["_encounter"] = { 683, 7 },
+					crit(19518, {	-- Protectors of the Endless
+						["_encounter"] = { 683, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(2, {	-- Tsulong
-						["_encounter"] = { 742, 7 },
+					crit(19519, {	-- Tsulong
+						["_encounter"] = { 742, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(3, {	-- Lei Shi
-						["_encounter"] = { 729, 7 },
+					crit(19520, {	-- Lei Shi
+						["_encounter"] = { 729, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(4, {	-- Sha of Fear
-						["_encounter"] = { 709, 7 },
+					crit(19521, {	-- Sha of Fear
+						["_encounter"] = { 709, DIFFICULTY.RAID.FINDER },
 					}),
 				}),
 				ach(6670),	-- Terrace of Endless Spring Guild Run
@@ -34,36 +33,18 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					["timeline"] = { ADDED_5_0_4, REMOVED_6_0_2 },
 				}),
 			}),
-			n(DROPS, {
-				i(167051, {	-- Azure Windseeker (PET!)
-					["crs"] = { 62442 },	-- Tsulong
-					["timeline"] = { ADDED_8_1_5 },
-				}),
-				i(167052, {	-- Spirit of the Spring (PET!)
-					["crs"] = { 62983 },	-- Lei Shi
-					["timeline"] = { ADDED_8_1_5 },
-				}),
-				i(138805, {	-- Illusion: Jade Spirit
-					["crs"] = { 60999 },	-- Sha of Fear
-					["timeline"] = { ADDED_7_0_3 },
-				}),
-				i(122199, {	-- Music Roll: Heart of Pandaria
-					["crs"] = { 60999 },	-- Sha of Fear
-					["timeline"] = { ADDED_6_1_0 },
-				}),
-			}),
-			d(7, {	-- LFR Queue NPC
+			d(DIFFICULTY.RAID.FINDER, {	-- Queue NPC
 				["crs"] = { 80633 },	-- Lorewalker Han <Raid Finder Storyteller>
 				["coord"] = { 83.0, 30.6, VALE_OF_ETERNAL_BLOSSOMS },
 			}),
-			d(7, {	-- LFR
+			d(DIFFICULTY.RAID.FINDER, {
 				["ignoreBonus"] = true,
 				["g"] = {
 					i(95617, {	-- Dividends of the Everlasting Spring
 						["description"] = "Since the introduction of Legacy Loot, this bag is only obtainable if you queue up as a Level 91-100 for the intended raid.  If you are 101+ then you will need to seek out each item based on their original sources.  This change occured in Patch 8.0.1.",
 						["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },
 						["sym"] = {
-							{ "select", "headerID", 95618 },
+							{ "select", "itemID", 95618 },
 							{ "pop" },
 						},
 					}),
@@ -118,6 +99,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(86881),	-- Stuff of Nightmares
 								i(86882),	-- Sunwrought Mail Hauberk
 								i(86898),	-- Weaver's Cord of Eternal Autumn
+								i(167051, {	-- Azure Windseeker (PET!)
+									["timeline"] = { ADDED_8_1_5 },
+								}),
 							},
 						}),
 						e(729, {	-- Lei Shi
@@ -145,6 +129,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(86889),	-- Taoren, the Soul Burner
 								i(86890),	-- Terror in the Mists
 								i(86898),	-- Weaver's Cord of Eternal Autumn
+								i(167052, {	-- Spirit of the Spring (PET!)
+									["timeline"] = { ADDED_8_1_5 },
+								}),
 							},
 						}),
 						e(709, {	-- Sha of Fear
@@ -163,45 +150,95 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 								i(89986),	-- Shadowgrip Girdle
 								i(86905),	-- Shin'ka, Execution of Dominion
 								i(89985),	-- Wrap of Instant Petrification
+								i(138805, {	-- Illusion: Jade Spirit (ILLUSION!)
+									["timeline"] = { ADDED_7_0_3 },
+								}),
+								i(122199, {	-- Music Roll: Heart of Pandaria
+									["timeline"] = { ADDED_6_1_0 },
+								}),
 							},
 						}),
 					}),
 				},
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.LEGACY_RAID.MULTI.NORMAL_HEROIC, {
+				n(ZONE_DROPS, {
+					i(86238),	-- Pattern: Chestguard of Nemeses (RECIPE!)
+					i(86272),	-- Pattern: Fists of Lightning (RECIPE!)
+					i(86279),	-- Pattern: Liferuned Leather Gloves (RECIPE!)
+					i(86280),	-- Pattern: Murderer's Gloves (RECIPE!)
+					i(86281),	-- Pattern: Nightfire Robe (RECIPE!)
+					i(86283),	-- Pattern: Raiment of Blood and Bone (RECIPE!)
+					i(86284),	-- Pattern: Raven Lord's Gloves (RECIPE!)
+					i(86297),	-- Pattern: Stormbreaker Chestguard (RECIPE!)
+					i(86379),	-- Pattern: Robe of Eternal Rule (RECIPE!)
+					i(86380),	-- Pattern: Imperial Silk Gloves (RECIPE!)
+					i(86381),	-- Pattern: Legacy of the Emperor (RECIPE!)
+					i(86382),	-- Pattern: Touch of the Light (RECIPE!)
+					i(87408),	-- Plans: Unyielding Bloodplate (RECIPE!)
+					i(87409),	-- Plans: Gauntlets of Battle Command (RECIPE!)
+					i(87410),	-- Plans: Ornate Battleplate of the Master (RECIPE!)
+					i(87411),	-- Plans: Bloodforged Warfists (RECIPE!)
+					i(87412),	-- Plans: Chestplate of Limitless Faith (RECIPE!)
+					i(87413),	-- Plans: Gauntlets of Unbound Devotion (RECIPE!)
+				}),
+				e(683, {	-- Protectors of the Endless
+					["crs"] = {
+						60586,	-- Elder Asani
+						60585,	-- Elder Regail
+						60583,	-- Protector Kaolan
+					},
+					["g"] = {
+						ach(6717, {	-- Power Overwhelming
+							crit(19624, {	-- Protector Kaolan defeated last
+								["cr"] = 60583,	-- Protector Kaolan
+							}),
+							crit(19625, {	-- Elder Regail defeated last
+								["cr"] = 60585,	-- Elder Regail
+							}),
+							crit(19626, {	-- Elder Asani defeated last
+								["cr"] = 60586,	-- Elder Asani
+							}),
+						}),
+					},
+				}),
+				e(742, {	-- Tsulong
+					["crs"] = { 62442 },	-- Tsulong
+					["g"] = {
+						ach(6933),	-- Who's Got Two Green Thumbs?
+						i(167051, {	-- Azure Windseeker (PET!)
+							["timeline"] = { ADDED_8_1_5 },
+						}),
+					},
+				}),
+				e(729, {	-- Lei Shi
+					["crs"] = { 62983 },	-- Lei Shi
+					["g"] = {
+						ach(6824),	-- Face Clutchers
+						i(167052, {	-- Spirit of the Spring (PET!)
+							["timeline"] = { ADDED_8_1_5 },
+						}),
+					},
+				}),
+				e(709, {	-- Sha of Fear
+					["crs"] = { 60999 },	-- Sha of Fear
+					["g"] = {
+						ach(6825),	-- The Mind-Killer
+						ach(8248, {	-- Ahead of the Curve: Sha of Fear
+							["timeline"] = { ADDED_5_0_4, REMOVED_5_2_0 },
+						}),
+						i(138805, {	-- Illusion: Jade Spirit (ILLUSION!)
+							["timeline"] = { ADDED_7_0_3 },
+						}),
+						i(122199, {	-- Music Roll: Heart of Pandaria
+							["timeline"] = { ADDED_6_1_0 },
+						}),
+					},
+				}),
+			}),
+			d(DIFFICULTY.LEGACY_RAID.MULTI.NORMAL, {
 				["ignoreBonus"] = true,
-				["difficulties"] = { 3, 4 },
 				["g"] = {
-					n(COMMON_BOSS_DROPS, {
-						["crs"] = {
-							60583,	-- Protector Kaolan
-							60586,	-- Elder Asani
-							60585,	-- Elder Regail
-							62442,	-- Tsulong
-							62983,	-- Lei Shi
-							60999,	-- Sha of Fear
-						},
-						["g"] = {
-							i(86238),	-- Pattern: Chestguard of Nemeses (RECIPE!)
-							i(86272),	-- Pattern: Fists of Lightning (RECIPE!)
-							i(86279),	-- Pattern: Liferuned Leather Gloves (RECIPE!)
-							i(86280),	-- Pattern: Murderer's Gloves (RECIPE!)
-							i(86281),	-- Pattern: Nightfire Robe (RECIPE!)
-							i(86283),	-- Pattern: Raiment of Blood and Bone (RECIPE!)
-							i(86284),	-- Pattern: Raven Lord's Gloves (RECIPE!)
-							i(86297),	-- Pattern: Stormbreaker Chestguard (RECIPE!)
-							i(86379),	-- Pattern: Robe of Eternal Rule (RECIPE!)
-							i(86380),	-- Pattern: Imperial Silk Gloves (RECIPE!)
-							i(86381),	-- Pattern: Legacy of the Emperor (RECIPE!)
-							i(86382),	-- Pattern: Touch of the Light (RECIPE!)
-							i(87408),	-- Plans: Unyielding Bloodplate (RECIPE!)
-							i(87409),	-- Plans: Gauntlets of Battle Command (RECIPE!)
-							i(87410),	-- Plans: Ornate Battleplate of the Master (RECIPE!)
-							i(87411),	-- Plans: Bloodforged Warfists (RECIPE!)
-							i(87412),	-- Plans: Chestplate of Limitless Faith (RECIPE!)
-							i(87413),	-- Plans: Gauntlets of Unbound Devotion (RECIPE!)
-						},
-					}),
 					e(683, {	-- Protectors of the Endless
 						["crs"] = {
 							60583,	-- Protector Kaolan
@@ -209,17 +246,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 							60585,	-- Elder Regail
 						},
 						["g"] = {
-							ach(6717, {	-- Power Overwhelming
-								crit(1, {	-- Protector Kaolan defeated last
-									["cr"] = 60583,	-- Protector Kaolan
-								}),
-								crit(2, {	-- Elder Regail defeated last
-									["cr"] = 60585,	-- Elder Regail
-								}),
-								crit(3, {	-- Elder Asani defeated last
-									["cr"] = 60586,	-- Elder Asani
-								}),
-							}),
 							n(QUALITY_ELITE, {
 								["description"] = "You must kill Protector Kaolan last!",
 								["g"] = {
@@ -258,7 +284,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(742, {	-- Tsulong
 						["crs"] = { 62442 },	-- Tsulong
 						["g"] = {
-							ach(6933),	-- Who's Got Two Green Thumbs?
 							i(86326),	-- Belt of Embodied Terror
 							i(86342),	-- Binder's Chain of Unending Summer
 							i(86325),	-- Daybreak Drape
@@ -288,7 +313,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(729, {	-- Lei Shi
 						["crs"] = { 62983 },	-- Lei Shi
 						["g"] = {
-							ach(6824),	-- Face Clutchers
 							i(89246, {	-- Shoulders of the Shadowy Conqueror
 								["description"] = "Paladin completionists will want to turn this into the vendor since one piece can be awarded in any spec.",
 							}),
@@ -316,10 +340,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					e(709, {	-- Sha of Fear
 						["crs"] = { 60999 },	-- Sha of Fear
 						["g"] = {
-							ach(6825),	-- The Mind-Killer
-							ach(8248, {	-- Ahead of the Curve: Sha of Fear
-								["timeline"] = { ADDED_5_0_4, REMOVED_5_2_0 },
-							}),
 							i(89235, {	-- Helm of the Shadowy Conqueror
 								["description"] = "Paladin completionists will want to turn this into the vendor since one piece can be awarded in any spec.",
 							}),
@@ -337,40 +357,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4 }
 					}),
 				},
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.LEGACY_RAID.MULTI.HEROIC, {
 				["ignoreBonus"] = true,
-				["difficulties"] = { 5, 6 },
 				["g"] = {
-					n(COMMON_BOSS_DROPS, {
-						["crs"] = {
-							60583,	-- Protector Kaolan
-							60586,	-- Elder Asani
-							60585,	-- Elder Regail
-							62442,	-- Tsulong
-							62983,	-- Lei Shi
-							60999,	-- Sha of Fear
-						},
-						["g"] = {
-							i(86238),	-- Pattern: Chestguard of Nemeses (RECIPE!)
-							i(86272),	-- Pattern: Fists of Lightning (RECIPE!)
-							i(86279),	-- Pattern: Liferuned Leather Gloves (RECIPE!)
-							i(86280),	-- Pattern: Murderer's Gloves (RECIPE!)
-							i(86281),	-- Pattern: Nightfire Robe (RECIPE!)
-							i(86283),	-- Pattern: Raiment of Blood and Bone (RECIPE!)
-							i(86284),	-- Pattern: Raven Lord's Gloves (RECIPE!)
-							i(86297),	-- Pattern: Stormbreaker Chestguard (RECIPE!)
-							i(86379),	-- Pattern: Robe of Eternal Rule (RECIPE!)
-							i(86380),	-- Pattern: Imperial Silk Gloves (RECIPE!)
-							i(86381),	-- Pattern: Legacy of the Emperor (RECIPE!)
-							i(86382),	-- Pattern: Touch of the Light (RECIPE!)
-							i(87408),	-- Plans: Unyielding Bloodplate (RECIPE!)
-							i(87409),	-- Plans: Gauntlets of Battle Command (RECIPE!)
-							i(87410),	-- Plans: Ornate Battleplate of the Master (RECIPE!)
-							i(87411),	-- Plans: Bloodforged Warfists (RECIPE!)
-							i(87412),	-- Plans: Chestplate of Limitless Faith (RECIPE!)
-							i(87413),	-- Plans: Gauntlets of Unbound Devotion (RECIPE!)
-						},
-					}),
 					e(683, {	-- Protectors of the Endless
 						["crs"] = {
 							60583,	-- Protector Kaolan

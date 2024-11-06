@@ -18,6 +18,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 									i(190454),	-- Depleted Primal Chaos
 								},
 							})),
+							i(199108, {		-- Bag of Discount Goods
+								["timeline"] = { ADDED_10_0_5, REMOVED_10_1_0 },	-- Not sure when removed
+								["g"] = {
+									i(33012),	-- Terokkar Lilac
+								},
+							}),
 						}, {	-- Preferred --
 							i(200974, {	-- Dusty Alchemist's Research
 								["questID"] = 71893,
@@ -84,7 +90,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 							i(200603, {	-- Technique: Draconic Missive of Finesse (RECIPE!)
 								["cost"] = {{ "i", ARTISANS_METTLE, 75 }},
 							}),
-							i(200599, {	-- Technique: Draconic Missive of Inspiration (RECIPE!)
+							i(200599, {	-- Technique: Draconic Missive of Ingenuity (RECIPE!)
 								["cost"] = {{ "i", ARTISANS_METTLE, 75 }},
 							}),
 							i(200601, {	-- Technique: Draconic Missive of Multicraft (RECIPE!)

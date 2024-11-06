@@ -1,10 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1196, {	-- Brackenhide Hollow
 		["coord"] = { 11.6, 48.8, THE_AZURE_SPAN },
 		["maps"] = {
@@ -29,7 +26,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2471, {	-- Hackclaw's War-Band
 					["crs"] = {
 						186124,	-- Gashtooth
@@ -76,12 +73,12 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193662),	-- Densified Ooze Tassets
 						i(193660),	-- Idol of Pure Decay
 						i(193664),	-- Rot-Carved Totemic Shank
-						i(197396),	-- Renewed Proto-Drake: Skyterror Pattern (DM!)
-						i(197598),	-- Windborne Velocidrake: Gray Hair (DM!)
+						i(197396),	-- Renewed Proto-Drake: Skyterror Pattern (MM!)
+						i(197598),	-- Windborne Velocidrake: Gray Hair (MM!)
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2474, {	-- Decatriarch Wratheye
 					["crs"] = { 186121 },	-- Decatriarch Wratheye
 					["g"] = {
@@ -89,7 +86,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
 					ach(16110),	-- Subscribed to Hyena Facts
 				}),

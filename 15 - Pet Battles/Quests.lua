@@ -10,11 +10,8 @@ local FABLED_PANDAREN_PET_SUPPLIES =
 i(94207, {	-- Fabled Pandaren Pet Supplies
 	["sym"] = {{ "fill" }},
 });
-local SHINY_PET_CHARM =
-i(116415, {	-- Shiny Pet Charm
-	["sym"] = {{ "fill" }},
-});
-root(ROOTS.PetBattles, petbattle({
+local SHINY_PET_CHARM = i(116415, { ["timeline"] = { REMOVED_10_2_5 } });	-- Shiny Pet Charm
+root(ROOTS.PetBattles, petbattle(bubbleDown({ ["timeline"] = { ADDED_5_0_4 } }, {
 	n(QUESTS, {
 		q(44767, bubbleDownSelf({ ["timeline"] = { ADDED_7_1_0 } }, {	-- A Celestial Invitation
 			["provider"] = { "i", 142210 },	-- Celestial Invitation
@@ -435,6 +432,7 @@ root(ROOTS.PetBattles, petbattle({
 				-- Horde Shared Account-Wide Pet Battle Intro Quests
 				32009,	-- Varzok (Will be marked completed if any Varzok quest is completed)
 			},
+			["description"] = "|CFFFF0000Do not under any circumstances abandon this quest, you cannot reobtain it.|r",
 		}),
 		q(31878, {	-- Audrey Burnhep
 			["isBreadcrumb"] = true,
@@ -486,6 +484,7 @@ root(ROOTS.PetBattles, petbattle({
 				-- Alliance Shared Account-Wide Pet Battle Intro Quests
 				32008,	-- Audrey Burnhep (Will be marked completed if any Audrey Burnhep quest is completed)
 			},
+			["description"] = "|CFFFF0000Do not under any circumstances abandon this quest, you cannot reobtain it.|r",
 		}),
 		q(31882, {	-- Varzok
 			["races"] = HORDE_ONLY,
@@ -837,7 +836,10 @@ root(ROOTS.PetBattles, petbattle({
 	},{
 		q(70647, {	-- Oh Where, Oh Where Can He Be?
 			["description"] = "Account-Wide Quest.",
-			["sourceQuests"] = { 66244 },	-- To Valdrakken
+			["sourceQuests"] = {
+				66244,	-- To Valdrakken
+				DF_ACCOUNT_CAMPAIGN_QUEST,
+			},
 			["provider"] = { "n", 185563 },	-- Jyhanna
 			["coord"] = { 10.4, 58.3, VALDRAKKEN },
 			["g"] = {
@@ -859,7 +861,7 @@ root(ROOTS.PetBattles, petbattle({
 			["_drop"] = { "g" },	-- Drop Polished Pet Charm
 			["sym"] = {{"select","itemID",
 				92683,	-- Flawless Dragonkin Battle-Stone
-				163036,	-- Polished Pet Charm
+				POLISHED_PET_CHARM,
 			}},
 		}),
 		q(70732, {	-- A Practice Bout
@@ -882,7 +884,7 @@ root(ROOTS.PetBattles, petbattle({
 			["coord"] = { 38.9, 83.3, THE_WAKING_SHORES },
 			["_drop"] = { "g" },	-- Drop Polished Pet Charm
 			["sym"] = {{"select","itemID",
-				163036,	-- Polished Pet Charm
+				POLISHED_PET_CHARM,
 			}},
 		}),
 		q(70853, {	-- A Friend for Lubbins
@@ -893,7 +895,7 @@ root(ROOTS.PetBattles, petbattle({
 			["_drop"] = { "g" },	-- Drop Polished Pet Charm
 			["sym"] = {{"select","itemID",
 				116421,	-- Flying Battle-Training Stone
-				163036,	-- Polished Pet Charm
+				POLISHED_PET_CHARM,
 			}},
 		}),
 		q(70854, {	-- So How Did It Go?
@@ -1068,40 +1070,70 @@ root(ROOTS.PetBattles, petbattle({
 			["races"] = HORDE_ONLY,
 			["sourceQuests"] = { 31812 },	-- Zunta, The Pet Tramer
 		}),
-		tier(TBC_TIER, {
+		expansion(EXPANSION.TBC, {
 			q(31922, {	-- Nicki Tinytech
 				["qg"] = 66550,	-- Nicki Tinytech
-				["coord"] = { 64.3, 49.3, HELLFIRE_PENINSULA },
+				["coords"] = {
+					{ 64.3, 49.3, HELLFIRE_PENINSULA },
+					-- #if AFTER 11.0.5
+					{ 62.0, 49.5, TANARIS },
+					-- #endif
+				},
 			}),
 			q(31924, {	-- Narrok
-				["coord"] = { 61.0, 49.4, NAGRAND },
 				["provider"] = { "n", 66552 },	-- Narrok <Master Pet Tamer>
+				["coords"] = {
+					{ 61.0, 49.4, NAGRAND },
+					-- #if AFTER 11.0.5
+					{ 62.0, 49.5, TANARIS },
+					-- #endif
+				},
 			}),
 			q(31926, {	-- Grand Master Antari
 				["sourceQuests"] = { 31920 },	-- Grand Master Antari
-				["coord"] = { 30.6, 41.8, SHADOWMOON_VALLEY },
 				["provider"] = { "n", 66557 },	-- Bloodknight Antari <Grand Master Pet Tamer>
+				["coord"] = { 30.6, 41.8, SHADOWMOON_VALLEY },
 				["g"] = {
 					SACK_OF_PET_SUPPLIES
 				},
 			}),
 			q(31923, {	-- Ras'an
-				["coord"] = { 17.2, 50.5, ZANGARMARSH },
 				["provider"] = { "n", 66551 },	-- Ras'an <Master Pet Tamer>
+				["coords"] = {
+					{ 17.2, 50.5, ZANGARMARSH },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 			}),
 			q(31925, {	-- Morulu The Elder
-				["coord"] = { 59.0, 70.0, SHATTRATH_CITY },
 				["provider"] = { "n", 66553 },	-- Morulu The Elder
+				["coords"] = {
+					{ 59.0, 70.0, SHATTRATH_CITY },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 			}),
 		}),
-		tier(WOTLK_TIER, {
+		expansion(EXPANSION.WRATH, {
 			q(31932, {	-- Nearly Headless Jacob
 				["provider"] = { "n", 66636 },	-- Nearly Headless Jacob
-				["coord"] = { 50.2, 59.0, CRYSTALSONG_FOREST },
+				["coords"] = {
+					{50.2, 59.0, CRYSTALSONG_FOREST },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 			}),
 			q(31933, {	-- Okrut Dragonwaste
-				["coord"] = { 59.0, 77.0, DRAGONBLIGHT },
 				["provider"] = { "n", 66638 },	-- Okrut Dragonwaste
+				["coords"] = {
+					{ 59.0, 77.0, DRAGONBLIGHT },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 			}),
 			q(31931, {	-- Beegle Blastfuse
 				["provider"] = { "n", 66635 },	-- Beegle Blastfuse
@@ -1110,41 +1142,71 @@ root(ROOTS.PetBattles, petbattle({
 			}),
 			q(31935, {	-- Grand Master Payne
 				["sourceQuests"] = { 31928 },	-- Grand Master Payne
-				["coord"] = { 77.4, 19.6, ICECROWN },
 				["provider"] = { "n", 66675 },	-- Major Payne
+				["coords"] = {
+					{ 77.4, 19.6, ICECROWN },
+					-- #if AFTER 11.0.5
+					{ 62.0, 49.5, TANARIS },
+					-- #endif
+				},
 				["g"] = {
 					SACK_OF_PET_SUPPLIES
 				},
 			}),
 			q(31934, {	-- Gutretch
-				["coord"] = { 13.2, 66.7, ZULDRAK },
 				["provider"] = { "n", 66639 },
+				["coords"] = {
+					{ 13.2, 66.7, ZULDRAK },
+					-- #if AFTER 11.0.5
+					{ 62.0, 49.5, TANARIS },
+					-- #endif
+				},
 			}),
 		}),
-		tier(CATA_TIER, {
+		expansion(EXPANSION.CATA, {
 			q(31972, {	-- Brok
 				["provider"] = { "n", 66819 },	-- Brok
-				["coord"] = { 61.4, 32.7, MOUNT_HYJAL },
+				["coords"] = {
+					{ 61.4, 32.7, MOUNT_HYJAL },
+					-- #if AFTER 11.0.5
+					{ 62.1, 49.6, TANARIS },
+					-- #endif
+				},
 			}),
 			q(31974, {	-- Goz Banefury
 				["provider"] = { "n", 66822 },	-- Goz Banefury
-				["coord"] = { 56.5, 56.7, TWILIGHT_HIGHLANDS },
+				["coords"] = {
+					{ 56.5, 56.7, TWILIGHT_HIGHLANDS },
+					-- #if AFTER 11.0.5
+					{ 62.1, 49.6, TANARIS },
+					-- #endif
+				},
 			}),
 			q(31971, {	-- Grand Master Obalis
 				["sourceQuests"] = { 31970 },	-- Grand Master Obalis
 				["provider"] = { "n", 66824 },	-- Obalis
-				["coord"] = { 56.6, 41.8, ULDUM },
+				["coords"] = {
+					{ 56.6, 41.8, ULDUM },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 				["g"] = {
 					SACK_OF_PET_SUPPLIES
 				},
 			}),
 			q(31973, {	-- Bordin Steadyfist
 				["provider"] = { "n", 66815 },	-- Bordin Steadyfist
-				["coord"] = { 49.9, 57.1, DEEPHOLM },
+				["coords"] = {
+					{ 49.9, 57.1, DEEPHOLM },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 				["repeatable"] = true,
 			}),
 		}),
-		tier(MOP_TIER, {
+		expansion(EXPANSION.MOP, {
 			q(31957, {	-- Grand Master Shu
 				["coord"] = { 55.1, 37.6, DREAD_WASTES },
 				["provider"] = { "n", 66739 },	-- Wastewalker Shu
@@ -1170,21 +1232,30 @@ root(ROOTS.PetBattles, petbattle({
 				},
 			}),
 			q(31954, {	-- Grand Master Mo'ruk
-				["coord"] = { 62.6, 45.8, KRASARANG_WILDS },
+				["coords"] = {
+					{ 62.6, 45.8, KRASARANG_WILDS },
+					-- #if AFTER 11.0.5
+					{ 62.0, 49.5, TANARIS },
+					-- #endif
+				},
 				["provider"] = { "n", 66733 },
 				["g"] = {
 					SACK_OF_PET_SUPPLIES
 				},
 			}),
 			q(31956, {	-- Grand Master Yon
-				["coord"] = { 35.8, 73.6, KUN_LAI_SUMMIT },
+				["coords"] = {
+					{ 35.8, 73.6, KUN_LAI_SUMMIT },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 				["provider"] = { "n", 66738 },	-- Courageous Yon
 				["g"] = {
 					SACK_OF_PET_SUPPLIES
 				},
 			}),
-			q(63435,	-- Temple Throwdown
-			bubbleDownSelf({ ["timeline"] = { ADDED_9_1_0 } }, {
+			q(63435, bubbleDownSelf({ ["timeline"] = { ADDED_9_1_0 } }, {	-- Temple Throwdown
 				["provider"] = { "n", 176655 },	-- Anthea <Carefree Pet Tamer>
 				["coord"] = { 70.4, 51.4, KUN_LAI_SUMMIT },
 				["g"] = {
@@ -1212,7 +1283,12 @@ root(ROOTS.PetBattles, petbattle({
 				},
 			}),
 			q(31953, {	-- Grand Master Hyuna
-				["coord"] = { 47.9, 54.1, THE_JADE_FOREST },
+				["coords"] = {
+					{ 47.9, 54.1, THE_JADE_FOREST },
+					-- #if AFTER 11.0.5
+					{ 62.0, 49.5, TANARIS },
+					-- #endif
+				},
 				["provider"] = { "n", 66730 },	-- Hyuna of the Shrines
 				["g"] = {
 					SACK_OF_PET_SUPPLIES
@@ -1314,72 +1390,85 @@ root(ROOTS.PetBattles, petbattle({
 			}),
 			q(31955, {	-- Grand Master Nishi
 				["provider"] = { "n", 66734 },	-- Farmer Nishi
-				["coord"] = { 46.0, 43.6, VALLEY_OF_THE_FOUR_WINDS },
+				["coords"] = {
+					{ 46.0, 43.6, VALLEY_OF_THE_FOUR_WINDS },
+					-- #if AFTER 11.0.5
+					{ 61.9, 49.6, TANARIS },
+					-- #endif
+				},
 				["g"] = {
 					SACK_OF_PET_SUPPLIES
 				},
 			}),
 		}),
-		tier(WOD_TIER, {
+		expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+			-- Maybe rewards header for those 6 npc quests to show polished pet charms
 			q(37203, {	-- Ashlei
 				["coord"] = { 50.0, 31.2, DRAENOR_SHADOWMOON_VALLEY },
 				["provider"] = { "n", 87124 },	-- Ashlei
+				["_drop"] = { "g" },	-- Drops Polished Pet Charm
 				["g"] = {
-					SHINY_PET_CHARM
+					-- #if BEFORE 10.2.5
+					SHINY_PET_CHARM,
+					-- #endif
 				},
 			}),
 			q(37201, {	-- Cymre Brightblade
 				["coord"] = { 51.1, 70.6, GORGROND },
 				["provider"] = { "n", 83837 },	-- Cymre Brightblade
+				["_drop"] = { "g" },	-- Drops Polished Pet Charm
 				["g"] = {
-					SHINY_PET_CHARM
+					-- #if BEFORE 10.2.5
+					SHINY_PET_CHARM,
+					-- #endif
 				},
 			}),
 			q(37205, {	-- Gargra
 				["coord"] = { 68.5, 64.7, FROSTFIRE_RIDGE },
 				["provider"] = { "n", 87122 },	-- Gargra
+				["_drop"] = { "g" },	-- Drops Polished Pet Charm
 				["g"] = {
-					SHINY_PET_CHARM
+					-- #if BEFORE 10.2.5
+					SHINY_PET_CHARM,
+					-- #endif
 				},
 			}),
 			q(37208, {	-- Taralune
 				["coord"] = { 49.0, 80.3, TALADOR },
 				["provider"] = { "n", 87125 },	-- Taralune
+				["_drop"] = { "g" },	-- Drops Polished Pet Charm
 				["g"] = {
-					SHINY_PET_CHARM
+					-- #if BEFORE 10.2.5
+					SHINY_PET_CHARM,
+					-- #endif
 				},
 			}),
 			q(37206, {	-- Tarr the Terrible
 				["provider"] = { "n", 87110 },	-- Tar the Terrible
 				["coord"] = { 56.2, 9.8, DRAENOR_NAGRAND },
+				["_drop"] = { "g" },	-- Drops Polished Pet Charm
 				["g"] = {
-					SHINY_PET_CHARM
+					-- #if BEFORE 10.2.5
+					SHINY_PET_CHARM,
+					-- #endif
 				},
 			}),
 			q(37207, {	-- Vesharr
 				["provider"] = { "n", 87123 },	-- Vesharr
 				["coord"] = { 46.2, 45.3, SPIRES_OF_ARAK },
+				["_drop"] = { "g" },	-- Drops Polished Pet Charm
 				["g"] = {
-					SHINY_PET_CHARM
+					-- #if BEFORE 10.2.5
+					SHINY_PET_CHARM,
+					-- #endif
 				},
 			}),
-		}),
+		})),
 	})),
 	-- Weeklies
 	n(QUESTS, sharedData({
 		["isWeekly"] = true,
 	},{
-		-- Legion
-		q(40310, {	-- Shipwrecked Captive
-			["description"] = "Weekly Account-Wide Pet Battle Quest. You need the toy Sternfathom's Pet Journal to summon this npc.",
-			["providers"] = {
-				{ "n", 98489 },	-- Shipwrecked Captive
-				{ "i", 122681 },	-- Sternfathom's Pet Journal
-			},
-			["coord"] = { 49.3, 45.4, AZSUNA },
-			["_drop"] = { "g" },	-- Drop Shiny Pet Charm
-		}),
-		-- PvP Weekly
 		pvp(q(32863, {	-- What We've Been Training For
 			["description"] = "Account-Wide Weekly Quest.|r",
 			["providers"] = {
@@ -1413,5 +1502,205 @@ root(ROOTS.PetBattles, petbattle({
 				})
 			},
 		})),
+		-- Legion
+		q(40310, {	-- Shipwrecked Captive
+			["description"] = "Weekly Account-Wide Pet Battle Quest. You need the toy Sternfathom's Pet Journal to summon this npc.",
+			["providers"] = {
+				{ "n", 98489 },	-- Shipwrecked Captive
+				{ "i", 122681 },	-- Sternfathom's Pet Journal
+			},
+			["coord"] = { 49.3, 45.4, AZSUNA },
+			["_drop"] = { "g" },	-- Drop Shiny Pet Charm
+			["timeline"] = { ADDED_7_0_3_LAUNCH },
+		}),
 	})),
-}));
+	-- Pet Tamers (This section is work in progress - Danny Donkey)
+	n(63596, {	-- Audrey Burnheap <Battle Pet Tamer>
+		["coord"] = { 69.2, 25.0, STORMWIND_CITY },
+		["races"] = ALLIANCE_ONLY,
+		-- #if BEFORE 9.0.3
+		["description"] = "Provides the Alliance Battle Pet questline, the quests are given in the following order:\n\n1. The inital quests touring southern Eastern Kingdoms\n2. 'Battle Pet Tamers: Eastern Kingdoms' + 'Battle Pet Tamers: Kalimdor'\n3. 'Grand Master Lydia Accoste' + 'Grand Master Trixxy'\n4. 'Battle Pet Tamers: Outland'\n5. 'Grand Master Antari'\n6. 'Battle Pet Tamers: Northrend'\n7. 'Grand Master Payne'\n8. 'Battle Pet Tamers: Cataclysm'\n9. 'Grand Master Obalis'\n10. 'Battle Pet Tamers: Pandaria'\n11. 'Grand Master Aki'\n\nNew quest might not be given until daily reset.",
+		-- #else
+		["description"] = "Provides the Alliance Battle Pet questline, the quests are given in the following order:\n\n1. The inital quests touring southern Eastern Kingdoms\n2. 'Battle Pet Tamers: Eastern Kingdoms' + 'Battle Pet Tamers: Kalimdor'\n3. 'Grand Master Lydia Accoste' + 'Grand Master Trixxy'\n4. 'Battle Pet Tamers: Outland'\n5. 'Grand Master Antari'\n6. 'Battle Pet Tamers: Northrend'\n7. 'Grand Master Payne'\n8. 'Battle Pet Tamers: Cataclysm'\n9. 'Grand Master Obalis'\n10. 'Battle Pet Tamers: Pandaria'\n11. 'Grand Master Aki'\n\nYou might have to tinker with Chromie time on low-level character to obtain these account-wide quests, and new quest might not be given until daily reset.",
+		-- #endif
+	}),
+	n(63626, {	-- Varzok <Battle Pet Tamer>
+		["coord"] = { 52.6, 59.3, ORGRIMMAR },
+		["races"] = HORDE_ONLY,
+		-- #if BEFORE 9.0.3
+		["description"] = "Provides the Horde Battle Pet questline, the quests are given in the following order:\n\n1. The inital quests touring middle Kalimdor\n2. 'Battle Pet Tamers: Eastern Kingdoms' + 'Battle Pet Tamers: Kalimdor'\n3. 'Grand Master Lydia Accoste' + 'Grand Master Trixxy'\n4. 'Battle Pet Tamers: Outland'\n5. 'Grand Master Antari'\n6. 'Battle Pet Tamers: Northrend'\n7. 'Grand Master Payne'\n8. 'Battle Pet Tamers: Cataclysm'\n9. 'Grand Master Obalis'\n10. 'Battle Pet Tamers: Pandaria'\n11. 'Grand Master Aki'\n\nNew quest might not be given until daily reset.",
+		-- #else
+		["description"] = "Provides the Horde Battle Pet questline, the quests are given in the following order:\n\n1. The inital quests touring middle Kalimdor\n2. 'Battle Pet Tamers: Eastern Kingdoms' + 'Battle Pet Tamers: Kalimdor'\n3. 'Grand Master Lydia Accoste' + 'Grand Master Trixxy'\n4. 'Battle Pet Tamers: Outland'\n5. 'Grand Master Antari'\n6. 'Battle Pet Tamers: Northrend'\n7. 'Grand Master Payne'\n8. 'Battle Pet Tamers: Cataclysm'\n9. 'Grand Master Obalis'\n10. 'Battle Pet Tamers: Pandaria'\n11. 'Grand Master Aki'\n\nYou might have to tinker with Chromie time on low-level character to obtain these account-wide quests, and new quest might not be given until daily reset.",
+		-- #endif
+	}),
+	-- Old World tamers:
+	-- Lvl 2
+	n(64330, {	-- Julia Stevens <Aspiring Pet Tamer>
+		["coord"] = { 41.6, 83.6, ELWYNN_FOREST },
+		["races"] = ALLIANCE_ONLY,
+		["description"] = "This pet tamer is Alliance only.\n\nJulia's pets are level 2 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Beast - see above.",
+	}),
+	n(66126, {	-- Zunta <Aspiring Pet Tamer>
+		["coord"] = { 43.9, 28.9, DUROTAR },
+		["races"] = HORDE_ONLY,
+		["description"] = "This pet tamer is Horde only.\n\nZunta's pets are level 2 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Critter - use Beast (powerful) or Humanoid (tanky) pet.",
+	}),
+	-- Lvl 3
+	n(65648, {	-- Old MacDonald <Master Pet Tamer>
+		["coord"] = { 80.6, 18.4, WESTFALL },
+		["races"] = ALLIANCE_ONLY,
+		["description"] = "This pet tamer is Alliance only.\n\nMacDonald's pets are level 3 of the following consecutive pet classes:\n1. Mechanical - use Elemental (powerful and tanky) pet.\n2. Flying - use Magic (powerful) or Dragonkin (tanky) pet.\n3. Critter - use Beast (powerful) or Humanoid (tanky) pet.",
+	}),
+	n(66135, {	-- Dagra the Fierce <Master Pet Tamer>
+		["coord"] = { 58.6, 53.0, NORTHERN_BARRENS },
+		["races"] = HORDE_ONLY,
+		["description"] = "This pet tamer is Horde only.\n\nDagra's pets are level 3 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n3. Beast - see above.",
+	}),
+	-- Lvl 5
+	n(65651, {	-- Lindsay <Master Pet Tamer>
+		["coord"] = { 33.2, 52.5, REDRIDGE_MOUNTAINS },
+		["races"] = ALLIANCE_ONLY,
+		["description"] = "This pet tamer is Alliance only.\n\nLindsay's pets are level 5 of the following consecutive pet classes:\n1. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n2. Critter - see above.\n3. Critter - see above.",
+	}),
+	n(66136, {	-- Analynn <Master Pet Tamer>
+		["coord"] = { 20.2, 29.5, ASHENVALE },
+		["races"] = HORDE_ONLY,
+		["description"] = "This pet tamer is Horde only.\n\nAnalynn's pets are level 5 of the following consecutive pet classes:\n1. Aquatic - use Flying (powerful) or Magic (tanky) pet.\n2. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n3. Flying - use Magic (powerful) or Dragonkin (tanky) pet.",
+	}),
+	-- Lvl 7
+	n(65655, {	-- Eric Davidson <Master Pet Tamer>
+		["coord"] = { 19.8, 44.6, DUSKWOOD },
+		["races"] = ALLIANCE_ONLY,
+		["description"] = "This pet tamer is Alliance only.\n\nEric's pets are level 7 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Beast - see above.\n3. Beast - see above.",
+	}),
+	n(66137, {	-- Zonya the Sadist <Master Pet Tamer>
+		["coord"] = { 59.6, 71.6, STONETALON_MOUNTAINS },
+		["races"] = HORDE_ONLY,
+		["description"] = "This pet tamer is Horde only.\n\nZonya's pets are level 7 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n3. Beast - see above.",
+	}),
+	-- Lvl 9
+	n(63194, {	-- Steven Lisbane <Master Pet Tamer>
+		["coord"] = { 46.0, 40.4, NORTHERN_STRANGLETHORN },
+		["races"] = ALLIANCE_ONLY,
+		["description"] = "This pet tamer is Alliance only.\n\nSteven's pets are level 9 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Beast - see above.\n3. Magic - use Dragonkin (powerful) or Mechanical (tanky) pet.",
+	}),
+	n(66372, {	-- Merda Stronghoof <Master Pet Tamer>
+		["coord"] = { 57.2, 45.8, DESOLACE },
+		["races"] = HORDE_ONLY,
+		["description"] = "This pet tamer is Horde only.\n\nMerda's pets are level 9 of the following consecutive pet classes:\n1. Aquatic - use Flying (powerful) or Magic (tanky) pet.\n2. Elemental - use Aquatic (powerful) or Critter (tanky) pet.\n3. Critter - use Beast (powerful) or Humanoid (tanky) pet.",
+	}),
+	-- Lvl 11
+	n(65656, {	-- Bill Buckler <Master Pet Tamer>
+		["coord"] = { 51.4, 73.2, THE_CAPE_OF_STRANGLETHORN },
+		["races"] = ALLIANCE_ONLY,
+		["description"] = "This pet tamer is Alliance only.\n\nBill's pets are level 11 of the following consecutive pet classes:\n1. Humanonoid - use Undead (powerful) or Beast (tanky) pet.\n2. Flying - use Magic (powerful) or Dragonkin (tanky) pet.\n3. Flying - see above.",
+	}),
+	n(66422, {	-- Cassandra Kaboom <Master Pet Tamer>
+		["coord"] = { 39.5, 79.1, SOUTHERN_BARRENS },
+		["races"] = HORDE_ONLY,
+		["description"] = "This pet tamer is Horde only.\n\nCassandra's pets are level 11 of the following consecutive pet classes:\nMechanical - use Elemental (powerful and tanky) pet.\n2. Mechanical - see above.\n3. Mechanical - see above.",
+	}),
+	-- Lvl 13
+	n(66478, {	-- David Kosse <Master Pet Tamer>
+		["coord"] = { 62.9, 54.5, THE_HINTERLANDS },
+		["description"] = "This pet tamer is Alliance only, though Horde players can battle them once as part of the Horde version of the quest 'Battle Pet Tamers: Eastern Kingdoms'.\n\nDavid's pets are level 13 of the following consecutive pet classes:\n1. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n2. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n3. Magic - use Dragonkin (powerful) or Mechanical (tanky) pet.",
+	}),
+	n(66352, {	-- Traitor Gluk <Master Pet Tamer>
+		["coord"] = { 59.6, 49.6, FERALAS },
+		["description"] = "This pet tamer is Horde only, though Alliance players can battle them once as part of the Alliance version of the quest 'Battle Pet Tamers: Kalimdor'.\n\nGluk's pets are level 13 of the following consecutive pet classes:\n1. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n2. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n3. Critter - use Beast (powerful) or Humanoid (tanky) pet.",
+	}),
+	-- Lvl 14
+	n(66512, {	-- Deiza Plaguehorn <Master Pet Tamer>
+		["coord"] = { 67.0, 52.4, EASTERN_PLAGUELANDS },
+		["description"] = "This pet tamer is Alliance only, though Horde players can battle them once as part of the Horde version of the quest 'Battle Pet Tamers: Eastern Kingdoms'.\n\nDeiza's pets are level 14 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Beast - see above.\n3. Undead - use Critter (powerful) or Aquatic (tanky) pet.",
+	}),
+	n(66436, {	-- Grazzle the Great <Master Pet Tamer>
+		["coord"] = { 53.8, 74.8, DUSTWALLOW_MARSH },
+		["description"] = "This pet tamer is Horde only, though Alliance players can battle them once as part of the Alliance version of the quest 'Battle Pet Tamers: Kalimdor'.\n\nGrazzle's pets are level 14 of the following consecutive pet classes:\n1. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n2. Dragonkin - see above.\n3. Dragonkin - see above.",
+	}),
+	-- Lvl 15
+	n(66515, {	-- Kortas Darkhammer <Master Pet Tamer>
+		["coord"] = { 35.2, 27.7, SEARING_GORGE },
+		["description"] = "This pet tamer is Alliance only, though Horde players can battle them once as part of the Horde version of the quest 'Battle Pet Tamers: Eastern Kingdoms'.\n\nKortas' pets are level 15 of the following consecutive pet classes:\n1. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n2. Dragonkin - see above.\n3. Dragonkin - see above.",
+	}),
+	n(66452, {	-- Kela Grimtotem <Master Pet Tamer>
+		["coord"] = { 31.8, 32.8, THOUSAND_NEEDLES },
+		["description"] = "This pet tamer is Horde only, though Alliance players can battle them once as part of the Alliance version of the quest 'Battle Pet Tamers: Kalimdor'.\n\nKela's pets are level 15 of the following consecutive pet classes:\n1. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n2. Critter - see above.\n3. Beast - use Mechanical (powerful) or Flying (tanky) pet.",
+	}),
+	-- Lvl 16
+	n(66518, {	-- Everessa <Master Pet Tamer>
+		["coord"] = { 76.8, 41.4, SWAMP_OF_SORROWS },
+		["description"] = "This pet tamer is Alliance only, though Horde players can battle them once as part of the Horde version of the quest 'Battle Pet Tamers: Eastern Kingdoms'.\n\nEveressa's pets are level 16 of the following consecutive pet classes:\n1. Flying - use Magic (powerful) or Dragonkin (tanky) pet.\n2. Aquatic - use Flying (powerful) or Magic (tanky) pet.\n3. Beast - use Mechanical (powerful) or Flying (tanky) pet.",
+	}),
+	n(66442, {	-- Zoltan <Master Pet Tamer>
+		["coord"] = { 40.0, 56.6, FELWOOD },
+		["description"] = "This pet tamer is Horde only, though Alliance players can battle them once as part of the Alliance version of the quest 'Battle Pet Tamers: Kalimdor'.\n\nZoltan's pets are level 16 of the following consecutive pet classes:\n1. Mechanical - use Elemental (powerful and tanky) pet.\n2. Magic - use Dragonkin (powerful) or Mechanical (tanky) pet.\n3. Magic - see above.",
+	}),
+	-- Lvl 17
+	n(66520, {	-- Durin Darkhammer <Master Pet Tamer>
+		["coord"] = { 25.5, 47.4, BURNING_STEPPES },
+		["description"] = "This pet tamer is Alliance only, though Horde players can battle them once as part of the Horde version of the quest 'Battle Pet Tamers: Eastern Kingdoms'.\n\nDurin's pets are level 17 of the following consecutive pet classes:\n1. Flying - use Magic (powerful) or Dragonkin (tanky) pet.\n2. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n3. Elemental - use Aquatic (powerful) or Critter (tanky) pet.",
+	}),
+	n(66412, {	-- Elena Flutterfly <Master Pet Tamer>
+		["coord"] = { 46.0, 60.4, MOONGLADE },
+		["description"] = "This pet tamer is Horde only, though Alliance players can battle them once as part of the Alliance version of the quest 'Battle Pet Tamers: Kalimdor'.\n\nElena's pets are level 17 of the following consecutive pet classes:\n1. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n2. Magic - use Dragonkin (powerful) or Mechanical (tanky) pet.\n3. Flying - use Magic (powerful) or Dragonkin (tanky) pet.",
+	}),
+	-- Lvl 19
+	n(66522, {	-- Lydia Accoste <Grand Master Pet Tamer>
+		["coord"] = { 40.2, 76.6, DEADWIND_PASS },
+		["description"] = "Lydia's pets are level 19 of the following consecutive pet classes:\n1. Elemental - use Aquatic (powerful) or Critter (tanky) pet.\n2. Undead - use Critter (powerful) or Aquatic (tanky) pet.\n3. Undead - see above.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	n(66466, {	-- Stone Cold Trixxy <Grand Master Pet Tamer>
+		["coord"] = { 65.6, 64.6, WINTERSPRING },
+		["description"] = "Trixxy's pets are level 19 of the following consecutive pet classes:\n1. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n2. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n3. Flying - use Magic (powerful) or Dragonkin (tanky) pet.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	-- Outland tamers:
+	-- Lvl 20
+	n(66550, {	-- Nicki Tinytech <Master Pet Tamer>
+		["coord"] = { 64.4, 49.2, HELLFIRE_PENINSULA },
+		["description"] = "Nicki's pets are level 20 of the following consecutive pet classes:\n1. Mechanical - use Elemental (powerful and tanky) pet.\n2. Mechanical - see above.\n3. Mechanical - see above.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	-- Lvl 21
+	n(66551, {	-- Ras'an <Master Pet Tamer>
+		["coord"] = { 17.2, 50.6, ZANGARMARSH },
+		["description"] = "Ras'an's pets are level 21 of the following consecutive pet classes:\n1. Flying - use Magic (powerful) or Dragonkin (tanky) pet.\n2. Magic - use Dragonkin (powerful) or Mechanical (tanky) pet.\n3. Humanonoid - use Undead (powerful) or Beast (tanky) pet.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	-- Lvl 22
+	n(66552, {	-- Narrok <Master Pet Tamer>
+		["coord"] = { 61.0, 49.4, NAGRAND },
+		["description"] = "Narrok's pets are level 22 of the following consecutive pet classes:\n1. Aquatic - use Flying (powerful) or Magic (tanky) pet.\n2. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n3. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	-- Lvl 23
+	n(66553, {	-- Morulu The Elder <Master Pet Tamer>
+		["coord"] = { 59.0, 70.0, SHATTRATH_CITY },
+		["description"] = "Morulu's pets are level 23 of the following consecutive pet classes:\n1. Aquatic - use Flying (powerful) or Magic (tanky) pet.\n2. Aquatic - see above.\n3. Aquatic - see above.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	-- Lvl 24
+	n(66557, {	-- Bloodknight Antari <Grand Master Pet Tamer>
+		["coord"] = { 30.6, 41.8, SHADOWMOON_VALLEY },
+		["description"] = "Antari's pets are level 24 of the following consecutive pet classes:\n1. Magic - use Dragonkin (powerful) or Mechanical (tanky) pet.\n2. Elemental - use Aquatic (powerful) or Critter (tanky) pet.\n3. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	-- Northrend tamers:
+	-- Lvl 25
+	n(66635, {	-- Beegle Blastfuse <Master Pet Tamer>
+		["coord"] = { 28.6, 33.8, HOWLING_FJORD },
+		["description"] = "Beegle's pets are level 25 of the following consecutive pet classes:\n1. Flying - use Magic (powerful) or Dragonkin (tanky) pet.\n2. Flying - see above.\n3. Aquatic - use Flying (powerful) or Magic (tanky) pet.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	n(66636, {	-- Nearly Headless Jacob <Master Pet Tamer>
+		["coord"] = { 50.2, 59.0, CRYSTALSONG_FOREST },
+		["description"] = "Jacob's pets are level 25 of the following consecutive pet classes:\n1. Undead - use Critter (powerful) or Aquatic (tanky) pet.\n2. Undead - see above.\n3. Undead - see above.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	n(66638, {	-- Okrut Dragonwaste <Master Pet Tamer>
+		["coord"] = { 59.0, 77.0, DRAGONBLIGHT },
+		["description"] = "Okrut's pets are level 25 of the following consecutive pet classes:\n1. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n2. Undead - use Critter (powerful) or Aquatic (tanky) pet.\n3. Undead - see above.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	n(66639, {	-- Gutretch <Master Pet Tamer>
+		["coord"] = { 13.2, 66.8, ZULDRAK },
+		["description"] = "Gutretch's pets are level 25 of the following consecutive pet classes:\n1. Beast - use Mechanical (powerful) or Flying (tanky) pet.\n2. Beast - see above.\n3. Critter - use Beast (powerful) or Humanoid (tanky) pet.\n\nFor credit towards 'An Awfully Big Adventure', battle with a composition of Elekk Plushie and two strong pets.",
+	}),
+	-- Lvl 25 tamers around the old world added during Legion
+	n(115307, {	-- Algalon the Observer <Celestial Pet Tamer>
+		["coord"] = { 41.5, 24.4, THE_STORM_PEAKS },
+		["description"] = "Algalon's pets are level 25 and exceptionally powerful of the following consecutive pet classes:\n1. Dragonkin - use Humanoid (powerful) or Undead (tanky) pet.\n2. Magic - use Dragonkin (powerful) or Mechanical (tanky) pet.\n3. Magic - see above.",
+	}),
+})));

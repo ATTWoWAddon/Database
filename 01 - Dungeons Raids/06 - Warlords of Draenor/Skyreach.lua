@@ -1,21 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	inst(476, {	-- Skyreach
 		["lvl"] = 96,
 		["maps"] = { 601, 602 },
 		["coord"] = { 35.5, 33.6, SPIRES_OF_ARAK },
 		["groups"] = {
-			n(ACHIEVEMENTS, {
-				ach(9838, {	-- What A Strange, Interdimensional Trip It's Been
-					["collectible"] = false,
-					["g"] = {
-						crit(6),	-- High Sage Viryx
-					},
-				}),
-			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(965, {	-- Ranjit
 					["crs"] = { 75964 },
 					["sym"] = {
@@ -80,7 +72,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(965, {	-- Ranjit
 					["crs"] = { 75964 },
 					["sym"] = {
@@ -110,7 +102,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, HANDS},
 					},
 					["g"] = {
-						ach(9035),	-- I Saw Solis
+						ach(9035, {	-- I Saw Solis
+							["crs"] = { 76227 },	-- Solar Flare
+						}),
 						i(110032),	-- Beakbreaker Scimitar
 						i(110006),	-- Rukhran's Quill
 					},
@@ -125,8 +119,12 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					["g"] = {
 						ach(8844),	-- Heroic: Skyreach
 						ach(9372),	-- Heroic: Skyreach Guild Run
-						ach(9034),	-- Magnify... Enhance
-						ach(9036),	-- Monomania
+						ach(9034, {	-- Magnify... Enhance
+							["crs"] = { 86919 },	-- Empowered Construct
+						}),
+						ach(9036, {	-- Monomania
+							["crs"] = { 76292 },	-- Skyreach Shield Construct
+						}),
 						i(110033),	-- Arcanic of the High Sage
 						i(110034),	-- Viryx's Indomitable Bulwark
 						i(110011),	-- Fires of the Sun
@@ -134,7 +132,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(965, {	-- Ranjit
 					["crs"] = { 75964 },
 					["sym"] = {
@@ -176,11 +174,10 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 					["g"] = {
 						ach(10081),	-- Mythic: Skyreach
-						i(127772, {	-- Gemcutter Module: Haste
+						TempForceMisc(ig(127772, {	-- Gemcutter Module: Haste
 							["requireSkill"] = JEWELCRAFTING,
 							["description"] = "Take this recipe to the \"Apexis Gemcutter\" in Tanaan Jungle to learn.  If you have this recipe already you will need to revisit the vendor to cache the recipe.",
-							["f"] = MISC,
-						}),
+						})),
 						i(110033),	-- Arcanic of the High Sage
 						i(110034),	-- Viryx's Indomitable Bulwark
 						i(110011),	-- Fires of the Sun
@@ -193,7 +190,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35961),	-- Skyreach Reward Quest
 		q(34542),	-- Spires of Arak Challenge Mode - Bronze Addition (Nth)
 		q(34524),	-- Spires of Arak Challenge Mode - Consolation (Nth)

@@ -3,7 +3,7 @@
 ---------------------------------------------------
 ASSAULT_ON_THE_DARK_PORTAL = createHeader({
 	readable = "Assault on the Dark Portal",
-	icon = "Interface\\Icons\\achievement_dungeon_outland_dungeonmaster",
+	icon = 255348,
 	text = {
 		en = "Assault on the Dark Portal",
 		es = "Asalto en el Portal Oscuro",
@@ -81,11 +81,11 @@ root(ROOTS.Zones, {
 					}),
 					q(35933, {	-- Azeroth's Last Stand
 						["provider"] = { "n", 78558 },	-- Archmage Khadgar
-						["coord"] = { 54.7, 48.2, 577 },
 						["sourceQuests"] = {
 							36881,	-- The Dark Portal (A)
 							34398,	-- The Dark Portal (H)
 						},
+						["coord"] = { 54.7, 48.2, 577 },
 					}),
 					q(34422, {	-- Blaze of Glory
 						["provider"] = { "n", 78559 },	-- Archmage Khadgar
@@ -304,7 +304,7 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 34429,	-- Kill Your Hundred
 					}),
 				}),
-				n(ZONE_DROPS, sharedData({["timeline"] = { "added 6.0", "removed 7.0" } },{
+				n(ZONE_DROPS, sharedData({["timeline"] = { ADDED_6_0_2, REMOVED_7_0_3 } },{
 					i(112436, {	-- Mismatched Cloth Gloves
 						["cr"] = 78651,	-- Shattered Hand Bonechopper
 					}),
@@ -365,7 +365,7 @@ root(ROOTS.Zones, {
 	}),
 });
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35297),	-- FLAG: Army Pushed - triggers during "Blaze of Glory" when you approach Khadgar around 67.6,60.5
 		q(35983),	-- FLAG: Hansel Event Complete - triggers during "Onslaught's End" when door to Cho'gal is opened
 		q(34440),	-- FLAG: Khadgar out of Portal - triggers just before turning in "Ga'nar of the Frostwolf" (questID 34442) or "Polishing the Iron Throne" (questID 34925)

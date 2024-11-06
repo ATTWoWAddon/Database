@@ -1,11 +1,14 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_2_5 } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_2_5 } }, {
 	header(HEADERS.Achievement, 15579, {	-- Return to Lordaeron
 		q(65656, {	-- Call to Lordaeron
 			["provider"] = { "n", 173386 },	-- Calia Menethil
-			["coord"] = { 41.2, 69.3, ORIBOS },
+			["coords"] = {
+				{ 41.2, 69.3, ORIBOS },
+				{ 50.6, 75.5, ORGRIMMAR },
+			},
 			["races"] = HORDE_ONLY,
 		}),
 		q(65655, {	-- Eyes of the Wolf
@@ -68,6 +71,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 			["sourceQuests"] = { 65665 },	-- Embodiment
 			["provider"] = { "n", 185829 },	-- Lilian Voss
 			["coord"] = { 68.6, 81.8, MALDRAXXUS },
+			["g"] = {
+				i(191029),	-- Lilian's Hearthstone (QI!)
+			},
 		}),
 		q(65667, {	-- The Remedy of Lordaeron
 			["provider"] = { "n", 185839 },	-- Calia Menethil
@@ -111,6 +117,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				ach(15579, {	-- Return to Lordaeron
 					title(460),	-- <Name> of Lordaeron
 				}),
+				i(191034),	-- Letter to Greymane (QI!)
 			},
 		}),
 	}),

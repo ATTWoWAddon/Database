@@ -372,7 +372,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 				["coord"] = { 47.9, 48.7, AZSUNA },
 				["provider"] = { "n", 88923 },	-- Sternfathom
 				["g"] = {
-					i(133828),	-- Recipe: Fighter Chow (Rank 1)
+					i(133828),	-- Recipe: Fighter Chow [Rank 1] (RECIPE!)
 				},
 			}),
 			q(37486, {	-- Nar'thalas Still Suffers
@@ -644,7 +644,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 				["coord"] = { 47.0, 41.3, AZSUNA },
 				["provider"] = { "n", 89341 },	-- Magister Garuhod
 				["g"] = {
-					i(133814),	-- Recipe: Faronaar Fizz (Rank 1)
+					i(133814),	-- Recipe: Faronaar Fizz [Rank 1] (RECIPE!)
 				},
 			}),
 			q(37861, {	-- The Nightborne Prince
@@ -802,6 +802,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 					["coord"] = { 55.6, 43.2, AZSUNA },
 				}),
 				q(37963, {	-- Those Beyond Redemption
+					["timeline"] = { REMOVED_8_0_1 },	-- Wowhead / Github -- Replaced with WorldQuest?
 					["coord"] = { 57.6, 15.6, AZSUNA },
 				}),
 				q(37779, {	-- Tip the Scales
@@ -812,16 +813,8 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 	}),
 }));
 
-root(ROOTS.NeverImplemented, {
-	tier(LEGION_TIER, {
-		n(RELICS, {
-			i(133018),	-- Azsuna Package 3 - Holy 1 - Unused
-		}),
-	}),
-});
-
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(37526),	-- Farondis Murder Flag - triggers between turning in "The Tidestone: Shattered" (questID 37469) and starting "Save Yourself" (questID 37530)
 		q(40584),	-- FLAG - Witnessed Drake Lift Crystal - triggers shortly after arriving in Azurewing Repose when turning in "Journey to the Repose" (questID 38443)
 		q(43815),	-- Karthax

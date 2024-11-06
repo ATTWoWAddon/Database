@@ -12,6 +12,11 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						1682,	-- Icecrown Citadel (Upper Acherus)
 						1360,	-- Icecrown Citadel (The Frozen Throne)
 					},
+					-- #IF AFTER DF
+					-- was a push-quest during SL right?
+					["coord"] = { 76.3, 42.7, STORMWIND_CITY },
+					["provider"] = { "n", 176554 },	-- Highlord Darion Mograine
+					-- #ENDIF
 				}),
 				q(61874, {	-- A Chilling Summons [H]
 					["races"] = HORDE_ONLY,
@@ -20,6 +25,11 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						1682,	-- Icecrown Citadel (Upper Acherus)
 						1360,	-- Icecrown Citadel (The Frozen Throne)
 					},
+					-- #IF AFTER DF
+					-- was a push-quest during SL right?
+					["coord"] = { 50.3, 76.9, ORGRIMMAR },
+					["provider"] = { "n", 176554 },	-- Highlord Darion Mograine
+					-- #ENDIF
 				}),
 				q(59751, {	-- Through the Shattered Sky
 					["sourceQuests"] = {
@@ -76,11 +86,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59756 },	-- A Moment's Respite
 					["provider"] = { "n", 165918 },	-- Highlord Darion Morgraine
 					["coord"] = { 24.4, 35.9, 1648 },	-- pre-SL scenario
+					["g"] = {
+						i(178495),	-- Shattered Helm of Domination (QI!)
+					},
 				}),
 				q(59758, {	-- Speaking to the Dead
 					["sourceQuests"] = { 59757 },	-- Field Seance
 					["provider"] = { "n", 166723 },	-- Highlord Darion Morgraine
 					["maps"] = { 1648 },	-- pre-SL scenario
+					["g"] = {
+						i(184313),	-- Shattered Helm of Domination (QI!)
+					},
 				}),
 				q(59915, {	-- Soul in Hand
 					["sourceQuests"] = { 59758 },	-- Speaking to the Dead
@@ -96,11 +112,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59759 },	-- The Lion's Cage
 					["provider"] = { "n", 167833 },	-- Anduin Wrynn
 					["coord"] = { 25.0, 13.3, 1648 },	-- pre-SL scenario
+					["g"] = {
+						i(178558),	-- Afflictor's Key (QI!)
+					},
 				}),
 				q(59761, {	-- An Undeserved Fate
 					["sourceQuests"] = { 59759 },	-- The Lion's Cage
 					["provider"] = { "n", 167833 },	-- Anduin Wrynn
 					["coord"] = { 25.0, 13.3, 1648 },	-- pre-SL scenario
+					["g"] = {
+						i(178553),	-- Mawsworn Key (QI!)
+					},
 				}),
 				q(59776, {	-- From the Mouths of Madness
 					["sourceQuests"] = {
@@ -130,6 +152,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						{ "n", 167827 },	-- Thrall, post-pickup
 					},
 					["coord"] = { 29.6, 43.6, 1648 },	-- pre-SL scenario
+					["g"] = {
+						i(180050),	-- Wither Blade (QI!)
+					},
 				}),
 				q(60644, {	-- Draw Out the Darkness
 					["sourceQuests"] = {
@@ -148,6 +173,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59767 },	-- The Path to Salvation
 					["provider"] = { "n", 167833 },	-- Anduin Wrynn
 					["coord"] = { 42.3, 42.1, 1648 },	-- pre-SL scenario
+					["groups"] = {
+						ach(14334),	-- Into the Maw
+					},
 				}),
 			}),
 			header(HEADERS.Achievement, 14761, {	-- Deciphering Death's Intentions
@@ -238,11 +266,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60287 },	-- Rule 1: Have an Escape Plan
 					["provider"] = { "n", 162804 },	-- Ve'nari
 					["coord"] = { 46.9, 41.7, THE_MAW },
+					["g"] = {
+						i(184314),	-- Broker Device (QI!)
+					},
 				}),
 				q(60289, {	-- Rule 3: Trust is Earned
 					["sourceQuests"] = { 61355 },	-- Rule 2: Keep a Low Profile
 					["provider"] = { "n", 162804 },	-- Ve'nari
 					["coord"] = { 46.9, 41.7, THE_MAW },
+					["g"] = {
+						i(184284),	-- Bloodhoof Warmace (QI!)
+					},
 				}),
 				q(62837, {	-- Hopeful News
 					["sourceQuests"] = { 60289 },	-- Rule 3: Trust is Earned
@@ -257,18 +291,30 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 63051 },	-- Trust Issues
 					["provider"] = { "n", 162804 },	-- Ve'nari
 					["coord"] = { 46.9, 41.7, THE_MAW },
+					["g"] = {
+						i(184492),	-- Pulsing Sphere (QI!)
+					},
 				}),
 				q(60284, {	-- Rule 5: Be Audacious
 					["sourceQuests"] = { 60281 },	-- Rule 4: Make a List
 					["description"] = "Requires Tentative reputation with Ve'nari.",
 					["provider"] = { "n", 162804 },	-- Ve'nari
 					["coord"] = { 46.9, 41.7, THE_MAW },
+					["groups"] = {
+						ach(14746),	-- Prepare for Trouble!
+						i(182688),	-- Cypher of Obfuscation (QI!)
+					},
 				}),
 				q(60285, {	-- Rule 6: Concealment is Everything
 					["sourceQuests"] = { 60284 },	-- Rule 5: Be Audacious
 					["description"] = "Requires Ambivalent reputation with Ve'nari.",
 					["provider"] = { "n", 162804 },	-- Ve'nari
 					["coord"] = { 46.9, 41.7, THE_MAW },
+					["groups"] = {
+						ach(14747),	-- Make it Double!
+						i(182956),	-- Broker Hunting Rune (QI!)
+						i(182955),	-- Cypher of Dampening (QI!)
+					},
 				}),
 				q(62461, {	-- Stalking the Warrens
 					["sourceQuests"] = { 60285 },	-- Rule 6: Concealment is Everything
@@ -281,6 +327,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["isBreadcrumb"] = true,
 					["provider"] = { "n", 162804 },	-- Ve'nari
 					["coord"] = { 46.9, 41.7, THE_MAW },
+					["g"] = {
+						i(182955),	-- Cypher of Dampening (QI!)
+					},
 				}),
 				q(63022, {	-- Rule 6 Addendum: Save Me At Any Cost
 					["sourceQuests"] = {
@@ -290,6 +339,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["description"] = "Requires Ambivalent reputation with Ve'nari.",
 					["provider"] = { "n", 175703 },	-- Ve'brax <Asset Analyst>
 					["coord"] = { 56.9, 57.5, THE_MAW },
+					["g"] = {
+						i(182955),	-- Cypher of Dampening (QI!)
+					},
 				}),
 				q(60158, {	-- Rule 7: Betrayal is Inevitable
 					["sourceQuests"] = { 60285 },	-- Rule 6: Concealment is Everything
@@ -303,6 +355,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(63039, {	-- A Monument to Vengeance
 				["provider"] = { "n", 175807 },	-- Knight of the Ebon Blade
 				["coord"] = { 22.1, 48.0, THE_MAW },
+				["g"] = {
+					i(184511),	-- Ebon Runeblade (QI!)
+				},
 			}),
 			q(63166, {	-- A Shadowed Fate
 				["provider"] = { "n", 176029 },	-- Tormented Soul
@@ -311,18 +366,30 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(63050, {	-- Acquisition: Blazing Ingots
 				["provider"] = { "o", 364932 },	-- Blazing Ingot
 				["coord"] = { 39.0, 39.9, THE_MAW },
+				["g"] = {
+					i(184556),	-- Blazing Ingot (QI!)
+				},
 			}),
 			q(63031, {	-- Acquisition: Crystallized Stygia
 				["provider"] = { "o", 364899 },	-- Crystallized Stygia
 				["coord"] = { 21.2, 34.1, THE_MAW },
+				["g"] = {
+					i(184510),	-- Crystallized Stygia (QI!)
+				},
 			}),
 			q(63047, {	-- Acquisition: Runeforged Shackles
 				["provider"] = { "o", 364926 },	-- Runeforged Shackles
 				["coord"] = { 25.6, 24.2, THE_MAW },
+				["g"] = {
+					i(184552),	-- Runeforged Shackles (QI!)
+				},
 			}),
 			q(63072, {	-- Acquisition: Stygic Ore
 				["provider"] = { "o", 364994 },	-- Spectral Pick
 				["coord"] = { 48.2, 81.9, THE_MAW },
+				["g"] = {
+					i(184585),	-- Stygic Ore (QI!)
+				},
 			}),
 			q(60732, {	-- Disrupting the Flow
 				["provider"] = { "n", 176164 },	-- Doomed Soul
@@ -341,11 +408,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["sourceQuests"] = { 60284 },	-- Rule 5: Be Audacious
 				["provider"] = { "n", 175797 },	-- Deceased Broker
 				["coord"] = { 30.7, 58.3, THE_MAW },
+				["g"] = {
+					i(184513),	-- Containment Orb (QI!)
+				},
 			}),
 			q(63040, {	-- Guaranteed Delivery
 				["sourceQuests"] = { 60284 },	-- Rule 5: Be Audacious
 				["provider"] = { "n", 175797 },	-- Deceased Broker
 				["coord"] = { 30.7, 58.3, THE_MAW },
+				["g"] = {
+					i(184513),	-- Containment Orb (QI!)
+				},
 			}),
 			q(61088, {	-- Dust to Dust
 				["sourceQuests"] = { 60289 },	-- Rule 3: Trust is Earned
@@ -360,12 +433,15 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["provider"] = { "o", 365084 },	-- Tormentor's Pike
 				["coord"] = { 60.3, 72.1, THE_MAW },
 				["g"] = {
-					i(183105),	-- Tormentor's Rod
+					i(183105),	-- Tormentor's Rod (QI!)
 				},
 			}),
 			q(63206, {	-- Soulless Husks
 				["provider"] = { "n", 162804 },	-- Ve'nari
 				["coord"] = { 46.9, 41.7, THE_MAW },
+				["g"] = {
+					i(184622),	-- Stygian Hammer (QI!)
+				},
 			}),
 			q(63043, {	-- Sundered Souls
 				["provider"] = { "n", 175813 },	-- Trapped Soul
@@ -384,11 +460,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["sourceQuests"] = { 60285 },	-- Rule 6: Concealment is Everything
 				["provider"] = { "o", 364987 },	-- Broker Journal
 				["coord"] = { 46.4, 62.3, THE_MAW },
+				["g"] = {
+					i(184579),	-- Torn Journal Page (QI!)
+				},
 			}),
 			q(61765, {	-- Words of Warding
 				["sourceQuests"] = { 60284 },	-- Rule 5: Be Audacious
 				["provider"] = { "n", 162804 },	-- Ve'nari
 				["coord"] = { 46.9, 41.7, THE_MAW },
+				["g"] = {
+					i(182303),	-- Assassin's Soulcloak (QI!)
+				},
 			}),
 			n(BONUS_OBJECTIVES, sharedData({
 				["isDaily"] = true,
@@ -400,10 +482,16 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(61075, {	-- A Spark of Light
 				["provider"] = { "n", 162804 },	-- Ve'nari
 				["coord"] = { 46.9, 41.7, THE_MAW },
+				["g"] = {
+					i(180607),	-- Cypher of Blinding (QI!)
+				},
 			}),
 			q(60775, {	-- A Suitable Demise
 				["provider"] = { "n", 162804 },	-- Ve'nari
 				["coord"] = { 46.9, 41.7, THE_MAW },
+				["g"] = {
+					i(180280),	-- Soulforged Core (QI!)
+				},
 			}),
 			q(60762, {	-- Death Motes
 				["provider"] = { "n", 162804 },	-- Ve'nari
@@ -412,6 +500,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(60622, {	-- Eye of the Scryer
 				["provider"] = { "n", 162804 },	-- Ve'nari
 				["coord"] = { 46.9, 41.7, THE_MAW },
+				["g"] = {
+					i(180035),	-- Eye of the Scryer (QI!)
+				},
 			}),
 			q(62214, {	-- Forces of Perdition
 				["sourceQuests"] = { 60284 },	-- Rule 5: Be Audacious
@@ -426,18 +517,14 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["sourceQuests"] = { 63902 },	-- Good News, Everyone!
 				["provider"] = { "i", 187275 },	-- Helsworn Battle Plans
 				["timeline"] = { ADDED_9_1_0 },
-				["crs"] = {
-					177413,	-- Avowed Soulbreaker
-					177418,	-- Chained Bonesculpter
-					177135,	-- Helsworn Beastlord
-					177131,	-- Helsworn Inquisitor
-					177134,	-- Maldraxxi Defector
-					177133,	-- Mawsworn Deathsinger
-				},
 			}),
 			q(60646, {	-- Misery Business
 				["provider"] = { "n", 162804 },	-- Ve'nari
 				["coord"] = { 46.9, 41.7, THE_MAW },
+				["g"] = {
+					i(180129),	-- Anima Equalizer (QI!)
+					i(184614),	-- Essence of Misery (QI!)
+				},
 			}),
 			q(63708, {	-- Phantasmagoria
 				["provider"] = { "i", 185756 },	-- Warped Phantasma
@@ -446,6 +533,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(62234, {	-- Power of the Colossus
 				["provider"] = { "n", 162804 },	-- Ve'nari
 				["coord"] = { 46.9, 41.7, THE_MAW },
+				["g"] = {
+					i(183042),    -- Colossal Power Core (QI!)
+				},
 			}),
 			q(64541, {	-- The Cost of Death
 				["provider"] = { "n", 162804 },	-- Ve'nari
@@ -460,35 +550,31 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 		})),
 	}),
 })));
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	m(SHADOWLANDS, {
+		m(THE_MAW, {
+			n(QUESTS, {
+				q(62907),	-- triggered after collecting all stygia during "Rule 1: Have an Escape Plan" (questID 60287) (spellID 345141)
+				q(64627),	-- popped after turning in 'Setting the Ground Rules' (questID 62882) on a fresh alt (spellID 358753)
+				q(64983),	-- After completing The Maw intro, upon teleport and loading screen into Oribos (level 48 human rogue)
+				q(59911),	-- triggered after picking up Ruiner's End
+				q(60507),	-- triggered shortly after picking up The Lion's Cage (picked up quest, refreshed, walked out of the cave, killed a Malice Shadow, the quest popped)
+				q(62939),	-- triggered after watching the cutscene for Stand as One / landing in Oribos (spellID 345446)
+				q(57678),	-- triggered after watching the cutscene for Stand as One / landing in Oribos (second character to go thru the scenario, didn't see this on my first)
+				q(62908),	-- triggered after collecting 5 souls during "Rule 1: Have an Escape Plan" (questID 60287) (spellID 345600)
+				q(62913),	-- triggered when turning in "Rule 4: Make a List" (questID 60281) (spellID 345184)
+				q(63446),	-- triggered when landing in The Maw on 12/9/20
+				q(63178),	-- triggered when starting/accepting Hunt Gorged Shadehounds (spellID 347101)
+				q(63195),	-- triggered when starting/accepting Hunt Souleaters (spellID 347178)
+				q(63196),	-- triggered when starting/accepting Hunt Death Elementals (spellID 347179)
+				q(63197),	-- triggered when starting/accepting Hunt Winged Souleaters (spellID 347180)
 
-root(ROOTS.HiddenQuestTriggers, {
-	q(64126),	-- triggered when killing Dathlane the Herald, WotJ boss - TODO - move questIDs to individual bosses if they've been separated since they have new drops
-	q(64125),	-- triggered when killing Lumisende, wotj boss
-	q(64124),	-- triggered when killing Naelcrotix, WotJ boss - weirdly this triggered for me but not carb, first WotJ for both of us for the week
-	q(64123),	-- triggered when killing Zograthos, WotJ boss
-	q(62907),	-- triggered after collecting all stygia during "Rule 1: Have an Escape Plan" (questID 60287) (spellID 345141)
-	
-	-- these seem shared... ? some sort of incremental counter?
-	q(64692),	-- triggered when killing Manifestation of Pain / Zul'gath the Flayer
-	q(64693),	-- triggered when killing Manifestation of Pain
-	q(64694),	-- triggered when killing Malleus Grakizz
-	q(64695),	-- triggered when killing Algel the Haunter / Gruukuuek the Elder / Gralebboih (5th of week)
-	q(64696),	-- triggered when killing Promathiz / Sentinel Shakorzeth
-	q(64697),	-- triggered when killing Malleus Grakizz / Sentinel Shakorzeth / Versya the Damned
-	q(64698),	-- triggered when killing Intercessor Razzra / Zul'gath the Flayer (4th Tormentor of week?)
-	q(64120),	-- triggered when killing Versya the Damned
-	-- q(64121),	-- triggered when killing Sentinel Shakorzeth (somehow it + Kazj the Sentinel were both up at once, this was only after killing Shakorzeth, and then Kazj did not trigger an additional questID at all)
-	q(64151),	-- Completed at the same time as 63669 (Somebody Feed Kevin)
-	q(64315),	-- Ve'nari paragon chest
-	q(64627),	-- popped after turning in 'Setting the Ground Rules' (questID 62882) on a fresh alt (spellID 358753)
-	q(64149),	-- Completing any quest with Winslow Swan during necrolord assault (might be achievement "this army" pop),
-	q(64983),	-- After completing The Maw intro, upon teleport and loading screen into Oribos (level 48 human rogue)
-});
-
-root(ROOTS.NeverImplemented, {
-	tier(SL_TIER, {
-		filter(CONSUMABLES, {
-			i(185974),	-- Bahmeht Chain Link (PTR only)
+				-- Eye of the Jailer Levels
+				q(63379),	-- Assassins (2)
+				-- q(),	-- Chains (3)
+				q(63376),	-- Abductors (4)
+				q(63417),	-- Immediate Extinction (5)
+			}),
 		}),
 	}),
-});
+})));

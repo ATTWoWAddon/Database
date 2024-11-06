@@ -18,36 +18,44 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		n(-1102, {	-- Wrathion & Sabellian
 			n(ACHIEVEMENTS, {
 				ach(16497, {	-- I'm Playing All Sides
-					crit(1, {	-- Sabellian
-						["_quests"] = {
+					crit(55860, {	-- Sabellian
+						["sourceQuests"] = {
 							72338,	-- Greater Obsidian Key
+						},
+					}),
+					crit(55861, {	-- Sabellian
+						["sourceQuests"] = {
 							66131,	-- Unlocking Our Past
 						},
 					}),
-					crit(2, {	-- Wrathion
-						["_quests"] = {
+					crit(55862, {	-- Wrathion
+						["sourceQuests"] = {
 							72337,	-- Greater Obsidian Key
+						},
+					}),
+					crit(55863, {	-- Wrathion
+						["sourceQuests"] = {
 							66130,	-- Unlocking our Past
 						},
 					}),
-					crit(3, {	-- Forgemaster Bazentus
-						["_quests"] = { 66126 },	-- Unlocking Our Past
+					crit(57972, {	-- Forgemaster Bazentus
+						["sourceQuests"] = { 66126 },	-- Unlocking Our Past
 					}),
-					crit(4, {	-- Igys the Believer
-						["_quests"] = { 66129 },	-- Unlocking Our Past
+					crit(55864, {	-- Igys the Believer
+						["sourceQuests"] = { 66129 },	-- Unlocking Our Past
 					}),
 				}),
 				ach(16496, {	-- Obsidian Champion
-					crit(1, {
+					crit(57868, {
 						["_quests"] = { 67015 },	-- Forging the Answer
 					}),
-					crit(2, {
+					crit(56053, {
 						["_quests"] = { 67027 },	-- Death's Shadow
 					}),
-					crit(3, {
+					crit(56988, {
 						["_quests"] = { 66901 },	-- Breaking the World
 					}),
-					crit(4, {
+					crit(56054, {
 						["_quests"] = { 66903 },	-- Clearing the Vault
 					}),
 				}),
@@ -57,12 +65,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				faction(FACTION_SABELLIAN, {
 					ach(16532),	-- Friends with Sabellian
 					ach(16760, {	-- The Obsidian Bloodline
-						title(483),	-- %s, Paragon of the Obsidian Brood
+						title(483),	-- <Name>, Paragon of the Obsidian Brood
 					}),
 				}),
 				faction(FACTION_WRATHION, {
 					ach(16494, {	-- Loyalty to the Prince
-						title(484),	-- %s, Agent of the Black Prince
+						title(484),	-- <Name>, Agent of the Black Prince
 					}),
 					ach(16536),	-- True Friends with Wrathion
 				}),
@@ -161,6 +169,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 191194 },	-- Weaponsmith Mida
 					["isWeekly"] = true,
 					["g"] = {
+						i(194971),	-- Crystalized Draconium (QI!)
 						i(194963),	-- Plans: Black Dragon Seared Alloy (RECIPE!)
 					},
 				}),
@@ -189,6 +198,11 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 191014 },	-- Becca Black
 					["coord"] = { 26.5, 62.5, THE_WAKING_SHORES },
 					["isDaily"] = true,
+					["g"] = {
+						i(193625),	-- Neltharus Forge Crystal (QI!)
+						i(193627),	-- Obsidian Crafting Fork (QI!)
+						i(193626),	-- Precision Pennyweight (QI!)
+					},
 				}),
 				q(69926, {	-- Becca Black and the Seven Gnomes
 					["sourceQuest"] = 66419,	-- Allegiance To One
@@ -196,8 +210,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["coord"] = { 26.4, 62.3, THE_WAKING_SHORES },
 					["isWeekly"] = true,
 					["g"] = {
-						i(197946),	-- Dragonforged Poker
-						i(197959),	-- Lavafused Armor
+						i(197946),	-- Dragonforged Poker (QI!)
+						i(197959),	-- Lavafused Armor (QI!)
+						i(197950),	-- Deepminted Coin (QI!)
 					},
 				}),
 				q(65842, {	-- Disarming Behavior
@@ -205,18 +220,31 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 190899 },	-- Talonstalker Kavia
 					["coord"] = { 26.6, 62.5, THE_WAKING_SHORES },
 					["isDaily"] = true,
+					["g"] = {
+						i(191057),	-- Worldbreaker Weapons (QI!)
+					},
 				}),
 				q(67051, {	-- Dragon Eyes
 					["sourceQuest"] = 66419,	-- Allegiance To One
 					["provider"] = { "n", 191193 },	-- Exadria
 					["coord"] = { 27.6, 56.3, THE_WAKING_SHORES },
 					["isWeekly"] = true,
+					["g"] = {
+						i(194546),	-- Baskilan Report (QI!)
+						i(194559),	-- Vazallia Report (QI!)
+						i(194561),	-- Zepharion Report (QI!)
+					},
 				}),
 				q(67099, {	-- Dragon Eyes
 					["sourceQuest"] = 66419,	-- Allegiance To One
 					["provider"] = { "n", 191193 },	-- Exadria
 					["coord"] = { 27.6, 56.3, THE_WAKING_SHORES },
 					["isWeekly"] = true,
+					["g"] = {
+						i(194716),	-- Evorian Report (QI!)
+						i(194707),	-- Myridian Report (QI!)
+						i(194713),	-- Zepharion Report (QI!)
+					},
 				}),
 				q(66103, {	-- Eager to Please
 					["sourceQuest"] = 66419,	-- Allegiance To One
@@ -229,6 +257,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 188179 },	-- Stoker Volrax
 					["coord"] = { 24.8,60.3, THE_WAKING_SHORES },
 					["isWeekly"] = true,
+					["g"] = {
+						i(191659),	-- Cindershard Coal (QI!)
+					},
 				}),
 				q(69983, {	-- Flamecarved Bone
 					["sourceQuest"] = 66419,	-- Allegiance To One
@@ -262,12 +293,20 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 191193 },	-- Exadria
 					["coord"] = { 27.6, 56.3, THE_WAKING_SHORES },
 					["isWeekly"] = true,
+					["g"] = {
+						i(194519),	-- Osoria's Assistance (QI!)
+					},
 				}),
 				q(66445, {	-- Honor Our Fallen
 					["sourceQuest"] = 66419,	-- Allegiance To One
 					["provider"] = { "n", 191193 },	-- Exadria
 					["coord"] = { 27.6, 56.3, THE_WAKING_SHORES },
 					["isWeekly"] = true,
+					["g"] = {
+						i(194544),	-- Earth-Warder's Flame Blade (QI!)
+						i(191902),	-- Fallen Defender's Ring (QI!)
+						i(191908),	-- Horn of Scorxia (QI!)
+					},
 				}),
 				q(66882, {	-- Lost Battlepack
 					["sourceQuest"] = 66419,	-- Allegiance To One
@@ -285,8 +324,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				}),
 				q(65840, {	-- Same as the Old Boss
 					["sourceQuest"] = 66362,	-- First Completion of 'Unlocking our Past' (Igys the Believer)
-					["provider"] = { "n", 191310 },	-- Doventhal the Chosen
+					["provider"] = { "n", 191304 },	-- Aizir the Inflamed
 					["coord"] = { 32.0, 52.4, THE_WAKING_SHORES },
+					["crs"] = { 191310 },	-- Doventhal the Chosen
 					["isWeekly"] = true,
 					["g"] = {
 						i(202173),	-- Magmote
@@ -294,16 +334,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				}),
 				q(66894, {	-- Same as the Old Boss
 					["sourceQuest"] = 66362,	-- First Completion of 'Unlocking our Past' (Igys the Believer)
-					["provider"] = { "n", 191310 },	-- Doventhal the Chosen
+					["provider"] = { "n", 191304 },	-- Aizir the Inflamed
 					["coord"] = { 32.0, 52.4, THE_WAKING_SHORES },
+					["crs"] = { 191310 },	-- Doventhal the Chosen
 					["isWeekly"] = true,
 					["g"] = {
 						i(202173),	-- Magmote
 					},
 				}),
 				q(66895, {	-- Same as the Old Boss
-					["provider"] = { "n", 191310 },	-- Doventhal the Chosen
+					["provider"] = { "n", 191304 },	-- Aizir the Inflamed
 					["coord"] = { 32.0, 52.4, THE_WAKING_SHORES },
+					["crs"] = { 191310 },	-- Doventhal the Chosen
 					["isWeekly"] = true,
 					["g"] = {
 						i(202173),	-- Magmote
@@ -326,18 +368,31 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["provider"] = { "n", 188179 },	-- Stoker Volrax
 					["coord"] = { 24.8,60.3, THE_WAKING_SHORES },
 					["isWeekly"] = true,
+					["g"] = {
+						i(191684),	-- Blacksteel Tongs (QI!)
+						i(191686),	-- Dragonclaw Punch (QI!)
+						i(191683),	-- Obsidian Bickern (QI!)
+						i(194336),	-- Precision Scale Hammer (QI!)
+					},
 				}),
 				q(72456, {	-- Tomes Of Trust
 					["sourceQuest"] = 66419,	-- Allegiance To One
 					-- TODO: Possibly this requires HQT 64277 to unlock rather than the quest above
 					["provider"] = { "n", 188344 },	-- Chydrass
 					["coord"] = { 25, 56.1, THE_WAKING_SHORES },
+					["g"] = {
+						i(201925),	-- Obsidian Genealogy (QI!)
+					},
 				}),
 				q(67142, {	-- Wyrm Food
 					["sourceQuest"] = 66419,	-- Allegiance To One
 					["provider"] = { "n", 196518 },	-- Voraxian
 					["coord"] = { 27.6,56.7, THE_WAKING_SHORES },
 					["isWeekly"] = true,
+					["g"] = {
+						i(194743),	-- Gulchak's Pointer (QI!)
+						i(194744),	-- Lava-Charred Flesh (QI!)
+					},
 				}),
 				n(BONUS_OBJECTIVES, {
 					q(66901, {	-- Breaking the World
@@ -357,7 +412,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 						["repeatable"] = true,
 					}),
 					q(67015, {	-- Forging the Answer
-						--["provider"] = { "n",  },	--
+						["provider"] = { "n", 187272 },	-- Forgemaster Bazentus
 						["coord"] = { 27.4, 60.8, THE_WAKING_SHORES },
 						["repeatable"] = true,
 					}),
@@ -448,6 +503,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["questID"] = 74052,
 					["isDaily"] = true,
 					["g"] = {
+						i(194508),	-- Plans: Alvin the Anvil (RECIPE!)
 						i(194503),	-- Plans: Black Dragon Touched Hammer (RECIPE!)
 					},
 				}),
@@ -466,6 +522,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				}),
 				n(186859, {	-- Worldcarver A'tir
 					["coord"] = { 30.0, 55.6, THE_WAKING_SHORES },
+					["crs"] = { 197395 },	-- Wurmling Bones
 					["cost"] = {{"i",191211,3}},	-- 3x Wurmling Bones
 					["questID"] = 74090,
 					["isDaily"] = true,
@@ -482,6 +539,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				}),
 			}),
 			n(VENDORS, {
+				n(199020, {	-- Atticus Belle (Same items as Lorena Belle, dont need sym)
+					["coord"] = { 26.6, 62.4, THE_WAKING_SHORES },
+				}),
 				n(193310, {	-- Dealer Vexil <Food and Drink>
 					["coord"] = { 34.8, 46.6, THE_WAKING_SHORES },
 					["g"] = {
@@ -503,7 +563,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 								{ "i", 202173, 20 },		-- 20x Magmote
 							},
 							["g"] = {
-								title(469, {	-- %s, the Worldbreaker
+								title(469, {	-- <Name> the Worldbreaker
 									["collectible"] = false,
 								}),
 							},
@@ -512,7 +572,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				}),
 				n(188625, {	-- Lorena Belle
 					["coord"] = { 25.2, 55.8, THE_WAKING_SHORES },
-					["g"] = bubbleDownRep(FACTION_ARTISANS_CONSORTIUM_DRAGON_ISLES_BRANCH, {
+					["g"] = bubbleDownRep(FACTION_WRATHION, {
 						{		-- Acquaintance --
 						}, {	-- Cohort --
 							i(200707, {	-- Armoire of Endless Cloaks (TOY!)
@@ -522,12 +582,15 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 								},
 							}),
 							i(200952, {	-- Ensemble: Obsidian Dracthyr Battlegear Mail Armor
+								["description"] = "To see this select All in filter",
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", AWAKENED_FIRE, 4 },
 									{ "i", AWAKENED_EARTH, 4 },
 								},
 								["g"] = {
+									i(195885),	-- Black Dragon's Scale Cloak
+									i(191802),	-- Obsidian Dracthyr Battlegear Belt
 									i(191803),	-- Obsidian Dracthyr Battlegear Bracers
 									i(191804),	-- Obsidian Dracthyr Battlegear Cover
 									i(191798),	-- Obsidian Dracthyr Battlegear Grips
@@ -535,8 +598,16 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 									i(191799),	-- Obsidian Dracthyr Battlegear Helm
 									i(191800),	-- Obsidian Dracthyr Battlegear Leggings
 									i(191801),	-- Obsidian Dracthyr Battlegear Monnion
-									i(191802),	-- Obsidian Dracthyr Battlegear Belt
-								},
+									i(191818),	-- Sandshaped Dracthyr Battlegear Belt
+									i(191819),	-- Sandshaped Dracthyr Battlegear Bracers
+									i(191820),	-- Sandshaped Dracthyr Battlegear Cover
+									i(191814),	-- Sandshaped Dracthyr Battlegear Grips
+									i(191813),	-- Sandshaped Dracthyr Battlegear Hauberk
+									i(191815),	-- Sandshaped Dracthyr Battlegear Helm
+									i(191816),	-- Sandshaped Dracthyr Battlegear Leggings
+									i(191817),	-- Sandshaped Dracthyr Battlegear Monnion
+									i(200968),	-- Sandshaped Winglord's Drape
+								}, --TODO: iensemble does not return any Sandshaped items
 							}),
 						}, {	-- Ally --
 							i(200930, {	-- Obsidian Proto-Whelp (PET!)
@@ -597,14 +668,14 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 								},
 							}),
 						}, {	-- Friend --
-							i(196964, {	-- Cliffside Wylderdrake: Gold and Black Armor (DM!)
+							i(196964, {	-- Cliffside Wylderdrake: Gold and Black Armor (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", PRIMAL_BEAR_SPINE, 6 },
 									{ "i", DRACONIUM_ORE, 20 },
 								},
 							}),
-							i(197090, {	-- Highland Drake: Gold and Black Armor (DM!)
+							i(197090, {	-- Highland Drake: Gold and Black Armor (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", PRIMAL_BEAR_SPINE, 6 },
@@ -616,7 +687,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 									{ "c", DRAGON_SUPPLIES, 150 },
 								},
 							}),
-							i(197346, {	-- Renewed Proto-Drake: Gold and Black Armor (DM!)
+							i(197346, {	-- Renewed Proto-Drake: Gold and Black Armor (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", PRIMAL_BEAR_SPINE, 6 },
@@ -624,13 +695,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 								},
 							}),
 						}, {	-- True Friend --
-							i(197013, {	-- Cliffside Wylderdrake: Black Scales (DM!)
+							i(197013, {	-- Cliffside Wylderdrake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
 								},
 							}),
-							i(197142, {	-- Highland Drake: Black Scales (DM!)
+							i(197142, {	-- Highland Drake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
@@ -641,13 +712,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 									{ "c", DRAGON_SUPPLIES, 150 },
 								},
 							}),
-							i(197392, {	-- Renewed Proto-Drake: Black Scales (DM!)
+							i(197392, {	-- Renewed Proto-Drake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
 								},
 							}),
-							i(197611, {	-- Windborne Velocidrake: Black Scales (DM!)
+							i(197611, {	-- Windborne Velocidrake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
@@ -671,16 +742,19 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				}),
 				n(188623, {	-- Samia Inkling
 					["coord"] = { 24.7, 56.8, THE_WAKING_SHORES },
-					["g"] = bubbleDownRep(FACTION_ARTISANS_CONSORTIUM_DRAGON_ISLES_BRANCH, {
+					["g"] = bubbleDownRep(FACTION_SABELLIAN, {
 						{		-- Acquaintance --
 						}, {	-- Cohort --
 							i(200952, {	-- Ensemble: Obsidian Dracthyr Battlegear Mail Armor
+								["description"] = "To see this select All in filter",
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", AWAKENED_FIRE, 4 },
 									{ "i", AWAKENED_EARTH, 4 },
 								},
 								["g"] = {
+									i(195885),	-- Black Dragon's Scale Cloak
+									i(191802),	-- Obsidian Dracthyr Battlegear Belt
 									i(191803),	-- Obsidian Dracthyr Battlegear Bracers
 									i(191804),	-- Obsidian Dracthyr Battlegear Cover
 									i(191798),	-- Obsidian Dracthyr Battlegear Grips
@@ -688,8 +762,16 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 									i(191799),	-- Obsidian Dracthyr Battlegear Helm
 									i(191800),	-- Obsidian Dracthyr Battlegear Leggings
 									i(191801),	-- Obsidian Dracthyr Battlegear Monnion
-									i(191802),	-- Obsidian Dracthyr Battlegear Belt
-								},
+									i(191818),	-- Sandshaped Dracthyr Battlegear Belt
+									i(191819),	-- Sandshaped Dracthyr Battlegear Bracers
+									i(191820),	-- Sandshaped Dracthyr Battlegear Cover
+									i(191814),	-- Sandshaped Dracthyr Battlegear Grips
+									i(191813),	-- Sandshaped Dracthyr Battlegear Hauberk
+									i(191815),	-- Sandshaped Dracthyr Battlegear Helm
+									i(191816),	-- Sandshaped Dracthyr Battlegear Leggings
+									i(191817),	-- Sandshaped Dracthyr Battlegear Monnion
+									i(200968),	-- Sandshaped Winglord's Drape
+								}, --TODO: iensemble does not return any Sandshaped items
 							}),
 							i(200640, {	-- Obsidian Egg Clutch (TOY!)
 								["cost"] = {
@@ -699,20 +781,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 								},
 							}),
 						}, {	-- Ally --
-							i(200963, {	-- Ensemble: Sabellian's Battlegear Cloth Armor
+							iensemble(200963, {	-- Ensemble: Sabellian's Battlegear Cloth Armor
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", WILDERCLOTH, 40 },
-								},
-								["g"] = {
-									i(200954),	-- Sabellian's Robes
-									i(200955),	-- Sabellian's Mantle
-									i(200956),	-- Sabellian's Sash
-									i(200957),	-- Sabellian's Leggings
-									i(200958),	-- Sabellian's Boots
-									i(200959),	-- Sabellian's Gloves
-									i(200961),	-- Sabellian's Cloak
-									i(200962),	-- Sabellian's Tunic
 								},
 							}),
 						}, {	-- Fang --
@@ -766,14 +838,14 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 								},
 							}),
 						}, {	-- Friend --
-							i(196964, {	-- Cliffside Wylderdrake: Gold and Black Armor (DM!)
+							i(196964, {	-- Cliffside Wylderdrake: Gold and Black Armor (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", PRIMAL_BEAR_SPINE, 6 },
 									{ "i", DRACONIUM_ORE, 20 },
 								},
 							}),
-							i(197090, {	-- Highland Drake: Gold and Black Armor (DM!)
+							i(197090, {	-- Highland Drake: Gold and Black Armor (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", PRIMAL_BEAR_SPINE, 6 },
@@ -785,7 +857,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 									{ "c", DRAGON_SUPPLIES, 150 },
 								},
 							}),
-							i(197346, {	-- Renewed Proto-Drake: Gold and Black Armor (DM!)
+							i(197346, {	-- Renewed Proto-Drake: Gold and Black Armor (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 750 },
 									{ "i", PRIMAL_BEAR_SPINE, 6 },
@@ -793,13 +865,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 								},
 							}),
 						}, {	-- True Friend --
-							i(197013, {	-- Cliffside Wylderdrake: Black Scales (DM!)
+							i(197013, {	-- Cliffside Wylderdrake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
 								},
 							}),
-							i(197142, {	-- Highland Drake: Black Scales (DM!)
+							i(197142, {	-- Highland Drake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
@@ -810,13 +882,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 									{ "c", DRAGON_SUPPLIES, 150 },
 								},
 							}),
-							i(197392, {	-- Renewed Proto-Drake: Black Scales (DM!)
+							i(197392, {	-- Renewed Proto-Drake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
 								},
 							}),
-							i(197611, {	-- Windborne Velocidrake: Black Scales (DM!)
+							i(197611, {	-- Windborne Velocidrake: Black Scales (MM!)
 								["cost"] = {
 									{ "c", DRAGON_SUPPLIES, 400 },
 									{ "i", AWAKENED_EARTH, 1 },
@@ -826,6 +898,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 						},
 					}),
 				}),
+				n(199036, {	-- Xaldrass (Same items as Samia Inkling, dont need sym)
+					["coord"] = { 27.6, 56.2, THE_WAKING_SHORES },
+				}),
 			}),
 			n(ZONE_DROPS, {
 				i(193611, {	-- Ancient Horn Ring
@@ -833,6 +908,39 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				}),
 				i(199915, {	-- Ancient Obsidian Charm
 					["description"] = "Drops from mobs around the Obsidian Citadel.",
+				}),
+				i(201430, {	-- Burning Mallet
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201043, {	-- Citadel Crusher's Belt
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201042, {	-- Citadel Crusher's Bracers
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201036, {	-- Citadel Crusher's Chestplate
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201041, {	-- Citadel Crusher's Cloak
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201038, {	-- Citadel Crusher's Footwraps
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201040, {	-- Citadel Crusher's Gauntlets
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201039, {	-- Citadel Crusher's Helm
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201037, {	-- Citadel Crusher's Legguards
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201035, {	-- Citadel Crusher's Pauldrons
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201433, {	-- Citadel Warden's Mace
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
 				}),
 				i(200944, {	-- Djaradin's Trophy Mask
 					["description"] = "Drops from mobs around the Obsidian Citadel.",
@@ -856,25 +964,34 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					-- ["cr"] = creature,	-- name
 				}),
 				i(200224, {	-- Mark of Sargha
-					["description"] = "Drops from mobs around the Obsidian Citadel.",
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
 				}),
 				i(202173, {	-- Magmote
 					["description"] = "Drops from mobs around the Obsidian Citadel after obtaining The Worldbreaker title.",
 				}),
-				i(194508, {	-- Plans: Alvin the Anvil (RECIPE!)
-					["description"] = "Drops Around Obsidian Citadel from Powerful Blacksmiths.",
+				i(201434, {	-- Obsidian Barrier
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201432, {	-- Obsidian Dragontooth
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201429, {	-- Obsidian Fist
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
+				}),
+				i(201431, {	-- Obsidian Tyrant's Mace
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
 				}),
 				i(194481, {	-- Plans: Obsidian Seared Crusher (RECIPE!)
-					["description"] = "Drops Around Obsidian Citadel.",
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
 				}),
 				i(194476, {	-- Plans: Obsidian Seared Hexsword (RECIPE!)
-					["description"] = "Drops Around Obsidian Citadel.",
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
 				}),
 				i(194483, {	-- Plans: Obsidian Seared Slicer (RECIPE!)
-					["description"] = "Drops Around Obsidian Citadel.",
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
 				}),
 				i(201991, {	-- Sargh's Signet
-					["description"] = "Drops from mobs around the Obsidian Citadel.",
+					["description"] = "Drops from mobs around the Obsidian Citadel or Djaradin Caches.",
 				}),
 				i(200857),	-- Talisman of Sargha (TOY!)
 				i(191211, {	-- Wurmling Bones
@@ -886,7 +1003,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					},
 				}),
 				i(191255, {	-- Greater Obsidian Key
-					["description"] = "This Item will be deleted immediately if leaving the area!",
+					["description"] = "Leaving the area will delete this Item!",
 					["cost"] = {
 						{"i",191251,30},	-- 30x Key Fragment
 						{"i",193201, 3},	-- 3x Key Framing
@@ -902,19 +1019,17 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		}),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
-	m(THE_WAKING_SHORES, {
-		n(-1102, {	-- Wrathion & Sabellian
-			q(64277),	-- Triggered when choosing anyone in Allegiance To One (66419) -- triggered for both in 2 weeks
-			q(66808),	-- Triggered when choosing Seballian in Allegiance To One (66419) -- triggered for Seballian only
-			q(66802),	-- Triggered when choosing Wrathion in Allegiance To One (66419) -- triggered for Wrathion only
-			q(67168),	-- Triggered with completion of 'Dragon Eyes' (questID67051) (spellID 377997)
-			q(72378),	-- Triggered when refusing to activate the Wrathion and Sabellian skip for alts
-
-			-- Ensembles
-			q(72112),	-- Ensemble: Obsidian Dracthyr Battlegear Mail Armor
-			q(72115),	-- Ensemble: Sabellian's Battlegear Cloth Armor
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+	m(DRAGON_ISLES, {
+		m(THE_WAKING_SHORES, {
+			n(-1102, {	-- Wrathion & Sabellian
+				q(64277),	-- Triggered when choosing anyone in Allegiance To One (66419) -- triggered for both in 2 weeks
+				q(66808),	-- Triggered when choosing Seballian in Allegiance To One (66419) -- triggered for Seballian only
+				q(66802),	-- Triggered when choosing Wrathion in Allegiance To One (66419) -- triggered for Wrathion only
+				q(67168),	-- Triggered with completion of 'Dragon Eyes' (questID67051) (spellID 377997)
+				q(72378, {["timeline"] = {ADDED_10_0_5}}),	-- Triggered when refusing to activate the Wrathion and Sabellian skip for alts
+				q(72112),	-- Ensemble: Obsidian Dracthyr Battlegear Mail Armor
+			}),
 		}),
 	}),
 })));

@@ -32,7 +32,7 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 			["g"] = {
 				n(157300, {	-- Tunk
 					i(179362, {	-- Tunk's Backscratcher
-						["timeline"] = { "created 9.0.1.36216" }
+						["timeline"] = { CREATED_9_0_1 }
 					}),
 					i(178163),	-- Tunk's Shinguard
 					i(178167),	-- Tunk's Lil' Whomper
@@ -41,6 +41,7 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					i(178165),	-- Tunk's Tooth
 					i(178166),	-- Tunk's Toothpick
 					i(178162),	-- Tunk's Whomper
+					i(178176),	-- Tunk's Trunk
 				}),
 				n(156501, {	-- Ravnyr
 					["crs"] = { 156814 },	-- Gor'groth
@@ -82,6 +83,11 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 161666 },	-- Austin Huxworth
 					["coord"] = { 52.4, 55.2, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(175979),	-- Ice Mote (QI!)
+						i(175981),	-- Rusted Chain (QI!)
+						i(175980),	-- Old Spring (QI!)
+					},
 				}),
 				q(59356, {	-- Hunting the Stalker [A]
 					["sourceQuests"] = { 59355 },	-- A Hunter's Trap [A]
@@ -106,6 +112,11 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 167215 },	-- Mithdran Dawntracker
 					["coord"] = { 52.4, 55.2, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(175979),	-- Ice Mote (QI!)
+						i(175981),	-- Rusted Chain (QI!)
+						i(175980),	-- Old Spring (QI!)
+					},
 				}),
 				q(59953, {	-- Hunting the Stalker [H]
 					["sourceQuests"] = { 59952 },	-- A Hunter's Trap [H]
@@ -126,6 +137,9 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156886 },	-- Meredy Huntswell
 					["coord"] = { 52.0, 55.2, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(175975),	-- Meredy's Spell Book (QI!)
+					},
 				}),
 				q(59354, {	-- The Best Way to Use Sheep [A]
 					["sourceQuests"] = { 59352 },	-- A Mage's Knowledge [A]
@@ -138,6 +152,9 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 167216 },	-- Grunt Throg
 					["coord"] = { 52.0, 55.2, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(178229),	-- Herbert's Spell Book (QI!)
+					},
 				}),
 				q(59955, {	-- The Best Way to Use Sheep [H]
 					["sourceQuests"] = { 59954 },	-- A Mage's Knowledge
@@ -248,6 +265,9 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156801 },	-- Private Cole
 					["coord"] = { 52.0, 55.2, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(174916),	-- Withering Hemlock (QI!)
+					},
 				}),
 				q(58933, {	-- The Deadliest of Poisons [A]
 					["sourceQuests"] = { 58917 },	-- A Rogue's End [A]
@@ -260,6 +280,9 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 167216 },	-- Grunt Throg
 					["coord"] = { 52.0, 55.2, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(174916),	-- Withering Hemlock (QI!)
+					},
 				}),
 				q(59968, {	-- The Deadliest of Poisons [H]
 					["sourceQuests"] = { 59967 },	-- A Rogue's End [H]
@@ -273,6 +296,10 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["sourceQuests"] = { 55194 },	-- Stocking Up on Supplies
 					["provider"] = { "n", 163329 },	-- Ghostwolf
 					["coord"] = { 52.3, 55.6, EXILES_REACH },
+					["g"] = {
+						i(174947),	-- Old Grimoire (QI!)
+						i(174968),	-- Veil Blossom (QI!)
+					},
 				}),
 			})),
 			cl(WARLOCK, sharedData({ ["classes"] = { WARLOCK } }, {
@@ -281,12 +308,18 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156801 },	-- Private Cole
 					["coord"] = { 52.0, 55.2, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(174947),	-- Old Grimoire (QI!)
+					},
 				}),
 				q(59970, {	-- A Warlock's Bargain [H]
 					["sourceQuests"] = { 59950 },	-- Stocking Up on Supplies
 					["provider"] = { "n", 167216 },	-- Grunt Throg
 					["coord"] = { 52.0, 55.2, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(174947),	-- Old Grimoire (QI!)
+					},
 				}),
 			})),
 			cl(WARRIOR, sharedData({ ["classes"] = { WARRIOR } }, {
@@ -349,24 +382,36 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156626 },	-- Captain Garrick
 					["coord"] = { 61.8, 82.8, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(170549),	-- First Aid Kit (QI!)
+					},
 				}),
 				q(59929, {	-- Murloc Mania [H]
 					["sourceQuests"] = { 59928 },	-- Brace for Impact [H]
 					["provider"] = { "n", 166782 },	-- Warlord Breka Grimaxe
 					["coord"] = { 61.8, 82.8, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(170549),	-- First Aid Kit (QI!)
+					},
 				}),
 				q(54951, {	-- Emergency First Aid [A]
 					["sourceQuests"] = { 55122 },	-- Murloc Mania [A]
 					["provider"] = { "n", 156626 },	-- Captain Garrick
 					["coord"] = { 61.8, 82.8, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(174780),	-- Emptied First Aid Kit
+					},
 				}),
 				q(59930, {	-- Emergency First Aid [H]
 					["sourceQuests"] = { 59929 },	-- Murloc Mania [H]
 					["provider"] = { "n", 166782 },	-- Warlord Breka Grimaxe
 					["coord"] = { 61.8, 82.8, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(174780),	-- Emptied First Aid Kit
+					},
 				}),
 				q(54952, {	-- Finding the Lost Expedition [A]
 					["sourceQuests"] = { 54951 },	-- Emergency First Aid [A]
@@ -385,12 +430,20 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156651 },	-- Captain Garrick
 					["coord"] = { 58.3, 74.6, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(174074),	-- Cooked Meat (QI!)
+						i(174072),	-- Raw Meat (QI!)
+					},
 				}),
 				q(59932, {	-- Cooking Meat [H]
 					["sourceQuests"] = { 59931 },	-- Finding the Lost Expedition [H]
 					["provider"] = { "n", 166906 },	-- Warlord Breka Grimaxe
 					["coord"] = { 58.3, 74.6, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(174074),	-- Cooked Meat (QI!)
+						i(174072),	-- Raw Meat (QI!)
+					},
 				}),
 				q(59254, {	-- Enhanced Combat Tactics [A]
 					["sourceQuests"] = { 55174 },	-- Cooking Meat [A]
@@ -416,6 +469,9 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["coord"] = { 58.3, 74.4, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
 					["sourceQuestNumRequired"] = 1,
+					["g"] = {
+						i(167206),	-- Fire Essence (QI!)
+					},
 				}),
 				q(59935, {	-- Northbound [H]
 					["sourceQuests"] = {
@@ -427,6 +483,9 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["coord"] = { 58.3, 74.4, EXILES_REACH },
 					["races"] = HORDE_ONLY,
 					["sourceQuestNumRequired"] = 1,
+					["g"] = {
+						i(167206),	-- Fire Essence (QI!)
+					},
 				}),
 				q(55186, {	-- Down with the Quilboar [A]
 					["sourceQuests"] = {
@@ -458,10 +517,14 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["races"] = ALLIANCE_ONLY,
 					["sourceQuestNumRequired"] = 1,
 					["g"] = {
-						i(174789),	-- Dented Plate Mitts
-						i(174788),	-- Linked Mail Gloves
-						i(174786),	-- Stitched Cloth Gloves
-						i(174787),	-- Thick Leather Gauntlets
+						i(174789, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Dented Plate Mitts
+						i(174788, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Linked Mail Gloves
+						i(174786, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Stitched Cloth Gloves
+						i(174787, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Thick Leather Gauntlets
+						i(175181, { ["timeline"] = { ADDED_11_0_0 } }),	-- Expeditionary Cloth Boots
+						i(175183, { ["timeline"] = { ADDED_11_0_0 } }),	-- Expeditionary Leather Boots
+						i(175182, { ["timeline"] = { ADDED_11_0_0 } }),	-- Expeditionary Mail Sabatons
+						i(175180, { ["timeline"] = { ADDED_11_0_0 } }),	-- Expeditionary Plate Warboots
 					},
 				}),
 				q(59939, {	-- Forbidden Quilboar Necromancy [H]
@@ -474,10 +537,14 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["races"] = HORDE_ONLY,
 					["sourceQuestNumRequired"] = 1,
 					["g"] = {
-						i(174789),	-- Dented Plate Mitts
-						i(174788),	-- Linked Mail Gloves
-						i(174786),	-- Stitched Cloth Gloves
-						i(174787),	-- Thick Leather Gauntlets
+						i(174789, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Dented Plate Mitts
+						i(174788, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Linked Mail Gloves
+						i(174786, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Stitched Cloth Gloves
+						i(174787, { ["timeline"] = { REMOVED_11_0_0 } }),	-- Thick Leather Gauntlets
+						i(175213, { ["timeline"] = { ADDED_11_0_0 } }), -- Expeditionary Cloth Boots
+						i(175215, { ["timeline"] = { ADDED_11_0_0 } }), -- Expeditionary Leather Boots
+						i(175214, { ["timeline"] = { ADDED_11_0_0 } }), -- Expeditionary Mail Sabatons
+						i(175212, { ["timeline"] = { ADDED_11_0_0 } }), -- Expeditionary Plate Warboots
 					},
 				}),
 				q(55193, {	-- The Scout-o-Matic 5000
@@ -503,12 +570,18 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 149899 },	-- Lindie Springstock
 					["coord"] = { 56.1, 59.1, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(170557),	-- Re-Sizer v9.0.1 (QI!)
+					},
 				}),
 				q(59941, {	-- Re-sizing the Situation [H]
 					["sourceQuests"] = { 59940 },	-- The Choppy Booster Mk 5
 					["provider"] = { "n", 167019 },	-- Cork Fizzlepop
 					["coord"] = { 56.1, 59.1, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(178051),	-- Re-Sizer v9.0.1 (QI!)
+					},
 				}),
 				q(55879, {	-- Ride of the Scientifically Enhanced Boar
 					["sourceQuests"] = { 56034 },	-- Re-sizing the Situation [A]
@@ -545,12 +618,18 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156807 },	-- Captain Garrick
 					["coord"] = { 52.3, 55.3, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(175239),	-- Standard Issue Knapsack
+					},
 				}),
 				q(59950, {	-- Stocking Up on Supplies [H]
 					["sourceQuests"] = { 59942 },	-- The Re-Deather
 					["provider"] = { "n", 167212 },	-- Warlord Breka Grimaxe
 					["coord"] = { 52.1, 55.3, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(175239),	-- Standard Issue Knapsack
+					},
 				}),
 				q(55196, {	-- The Harpy Problem [A]
 					["sourceQuests"] = { 55194 },	-- Stocking Up on Supplies [A]
@@ -582,6 +661,7 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["coord"] = { 56.9, 46.2, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
 					["g"] = {
+						i(168445),	-- Wand of Delugion (QI!)
 						i(175200),	-- Expeditionary Cloth Cord
 						i(175202),	-- Expeditionary Leather Belt
 						i(175201),	-- Expeditionary Mail Waistguard
@@ -594,6 +674,7 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["coord"] = { 56.9, 46.2, EXILES_REACH },
 					["races"] = HORDE_ONLY,
 					["g"] = {
+						i(168445),	-- Wand of Delugion (QI!)
 						i(175238),	-- Expeditionary Cloth Cord
 						i(175233),	-- Expeditionary Leather Belt
 						i(175232),	-- Expeditionary Mail Waistguard
@@ -605,12 +686,18 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156859 },	-- Henry Garrick
 					["coord"] = { 56.8, 46.1, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(168410),	-- First Aid Kit (QI!)
+					},
 				}),
 				q(59944, {	-- The Rescue of Herbert Gloomburst
 					["sourceQuests"] = { 59943 },	-- The Harpy Problem [H]
 					["provider"] = { "n", 167290 },	-- Shuja Grimaxe
 					["coord"] = { 56.8, 46.1, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(168410),	-- First Aid Kit (QI!)
+					},
 				}),
 				q(55882, {	-- Message to Base [A]
 					["sourceQuests"] = {
@@ -735,12 +822,22 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["provider"] = { "n", 156961 },	-- Captain Garrick
 					["coord"] = { 40.1, 32.3, EXILES_REACH },
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(168599),	-- Ward Stone (QI!)
+						i(168600),	-- Ward Stone (QI!)
+						i(168601),	-- Ward Stone (QI!)
+					},
 				}),
 				q(59981, {	-- Controlling Their Stones [H]
 					["sourceQuests"] = { 59978 },	-- Right Beneath Their Eyes [H]
 					["provider"] = { "n", 167633 },	-- Warlord Breka Grimaxe
 					["coord"] = { 40.2, 32.4, EXILES_REACH },
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(168599),	-- Ward Stone (QI!)
+						i(168600),	-- Ward Stone (QI!)
+						i(168601),	-- Ward Stone (QI!)
+					},
 				}),
 				q(55988, {	-- Like Ogres to the Slaughter [A]
 					["sourceQuests"] = { 55981 },	-- Right Beneath Their Eyes [A]
@@ -942,6 +1039,24 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["races"] = ALLIANCE_ONLY,
 					["customCollect"] = IGNORED_VALUE,	-- Technically only possible by NPE quest completion, but technically no longer NPE when accepting this quest...
 				}),
+				q(58983, {	-- Battle for Azeroth: Tides of War (SL/new player version)
+					["qg"] = 163219,	-- Captain Garrick
+					["sourceQuest"] = 58912,	-- An Urgent Meeting [A]
+					["description"] = "This quest starts the Battle for Azeroth campaign for players from Exile's Reach.",
+					["coord"] = { 85.2, 32.1, STORMWIND_CITY },
+					["races"] = ALLIANCE_ONLY,
+					["timeline"] = { ADDED_9_0_1 },
+					["groups"] = {
+						i(178941),	-- Alliance Dog Tags,
+					}
+				}),
+				q(59641, {	-- The Nation of Kul Tiras
+					["qg"] = 165395,	-- Anduin Wrynn
+					["sourceQuest"] = 58983,	-- Battle for Azeroth: Tides of War (SL/new player version)
+					["coord"] = { 85.8, 31.6, STORMWIND_CITY },
+					["races"] = ALLIANCE_ONLY,
+					["timeline"] = { ADDED_9_0_1 },
+				}),
 
 					-- Orgrimmar --
 				q(60343, {	-- Welcome to Orgrimmar
@@ -1058,6 +1173,16 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					["races"] = HORDE_ONLY,
 					["customCollect"] = IGNORED_VALUE,	-- Technically only possible by NPE quest completion, but technically no longer NPE when accepting this quest...
 				}),
+				q(60361, {	-- Battle for Azeroth: Mission Statement (SL/new player version)
+					["sourceQuest"] = 60360,	-- An Urgent Meeting
+					["description"] = "This quest starts the Battle for Azeroth campaign for players from Exile's Reach.",
+					["qg"] = 168431,	-- Warlord Breka Grimaxe
+					["coord"] = { 48.3, 71.4, ORGRIMMAR },
+					["races"] = HORDE_ONLY,
+					["groups"] = {
+						i(178942),	-- War-Chain of the Horde
+					},
+				}),
 			}),
 			------ Miscellaneous ------
 			q(54933, {	-- Freeing the Light
@@ -1130,6 +1255,9 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					{ 57.6, 40.9, EXILES_REACH },
 				},
 				["questID"] = 59611,
+				["g"] = {
+					i(175240),	-- Tattered Leather Bag
+				},
 			}),
 		})),
 		n(TREASURES, sharedData({
@@ -1161,6 +1289,12 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 			o(329919, {	-- Stolen Supplies
 				["coord"] = { 59.3, 37.6, EXILES_REACH },
 				["questID"] = 56581,
+				["groups"] = {
+					i(174811),	-- Stitched Cloth Tunic
+					i(174812),	-- Stitched Leather Tunic
+					i(174814),	-- Dented Chestpiece
+					i(174813),	-- Linked Mail Hauberk
+				},
 			}),
 			o(327407, {	-- Precious Ogre Stash
 				["coord"] = { 41.8, 42.8, EXILES_REACH },
@@ -1283,32 +1417,40 @@ root(ROOTS.Zones, m(EXILES_REACH, bubbleDownSelf({
 					150237,	-- Quilboar Warrior
 				},
 			}),
+			i(176398, {	-- Torgok's Reagent Pouch
+				["crs"] = {
+					162817,	-- Torgok <Binder of Souls>
+				},
+			}),
 		}),
 	},
 })));
-root(ROOTS.NeverImplemented, {
-	tier(BFA_TIER, {
-		n(ARMOR, {
-			filter(CLOTH, {
-				i(174795),	-- Expeditionary Cloth Mantle
-				i(175181),	-- Expeditionary Cloth Boots
-				i(175213),	-- Expeditionary Cloth Boots
-			}),
-			filter(LEATHER, {
-				i(175183),	-- Expeditionary Leather Boots
-				i(175215),	-- Expeditionary Leather Boots
-				i(174796),	-- Expeditionary Leather Pauldrons
-			}),
-			filter(MAIL, {
-				i(175182),	-- Expeditionary Mail Sabatons
-				i(175214),	-- Expeditionary Mail Sabatons
-				i(174797),	-- Expeditionary Mail Shoulders
-			}),
-			filter(PLATE, {
-				i(174798),	-- Expeditionary Plate Shoulderguard
-				i(175180),	-- Expeditionary Plate Warboots
-				i(175212),	-- Expeditionary Plate Warboots
-			}),
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_1 } }, {
+	m(EXILES_REACH, {
+		n(QUESTS, {
+			q(58418),	-- Triggers shortly after login. Possibly some kind of indicator for the account having done it at least once per faction?
+			q(54927),	-- Triggers after the cinematic. You can't move until this quest triggers
+			q(54937),	-- Triggers after the cinematic. You can't move until this quest triggers
+			q(59699),	-- Defeat Private Cole(A) or Grunt Throg(H) during "Stand Your Ground". Coincides with hitting level 2
+			q(58882),	-- Triggered after looting white-quality chestpiece. loot controller so they don't drop twice
+			q(58883),	-- Triggered after looting white-quality boots. loot controller so they don't drop twice
+			q(54928),	-- Triggered after getting 3 holy power and striking Warlord Grimaxe with the first major combat ability. Didn't trigger at all on an alliance priest
+			q(58336),	-- Triggered at the same time as 54928. Possibly dialog-related?
+			q(55607),	-- Triggered while killing quilboars in Quilboar Briarpatch on an alliance priest. Did not see it trigger as horde
+			q(55611),	-- triggered when completing "Message to Base" in Exile's Reach on alliance priest
+			q(59610),	-- Triggered after killing Torgok. Loot controller for "Torgok's Reagent Pouch"
+			q(59143),	-- Triggered after looting the Runetusk Necklace from ogres in Darkmaul Citadel
+			q(59139),	-- Triggered after looting the Spider-Eye Ring from spiders in Hrun's Barrow / Dented Legplates
+			q(60167),	-- Triggered right after Warlord Grimaxe tells Shuja to heal during the Tunk encounter
+			q(62547),	-- Triggered after speaking to trainer for What's Your Specialty? quest [Horde]
+			q(62548),	-- Triggered after speaking to trainer for What's Your Specialty? quest [Alliance]
+			q(62550),	-- Triggered after choosing a specialization for What's Your Specialty? quest [Alliance]
+			q(62551),	-- Triggered after choosing a specialization for What's Your Specialty? quest [Horde]
+			q(62655),	-- Triggers after you activate your specialization (both NPE and non-NPE characters)
+			q(62802),	-- Triggered after going to Stormwind for An End to Beginnings
+			q(62803),	-- Triggered after going to Orgrimmar for An End to Beginnings
+			q(63012),	-- Triggered after talking to Jaina at docks for The Nation of Kul Tiras
+			q(62912),	-- Triggered when flying from Exile's Reach (as Alliance if it matters)
 		}),
 	}),
-});
+})));

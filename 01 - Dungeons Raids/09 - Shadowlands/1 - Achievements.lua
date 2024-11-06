@@ -1,9 +1,9 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	n(ACHIEVEMENTS, {
-		ach(15684, bubbleDownSelf({ ["timeline"] = { ADDED_9_2_5, "removed 10.0.2.47213" } }, {	-- Fates of the Shadowlands Raids
+		ach(15684, bubbleDownSelf({ ["timeline"] = { ADDED_9_2_5, REMOVED_10_0_2_LAUNCH } }, {	-- Fates of the Shadowlands Raids
 			-- Meta Achievement
 			["sym"] = {{"meta_achievement",
 				15663,	-- Fate of Nathria
@@ -14,7 +14,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 				i(190170),	-- Jigglesworth Sr. (MOUNT!)
 			},
 		})),
-		ach(15685, bubbleDownSelf({ ["timeline"] = { ADDED_9_2_5, "removed 10.0.2.47213" } }, {	-- Heroic: Fates of the Shadowlands Raids
+		ach(15685, bubbleDownSelf({ ["timeline"] = { ADDED_9_2_5, REMOVED_10_0_2_LAUNCH } }, {	-- Heroic: Fates of the Shadowlands Raids
 			["sym"] = {{"meta_achievement",
 				15664,	-- Heroic: Fate of Nathria
 				15668,	-- Heroic: Fate of Domination
@@ -24,7 +24,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 				title(464),	-- <Name>, Hero of Fate (TITLE!)
 			},
 		})),
-		ach(15687, bubbleDownSelf({ ["timeline"] = { ADDED_9_2_5, "removed 10.0.2.47213" } }, {	-- Mythic: Fates of the Shadowlands Raids
+		ach(15687, bubbleDownSelf({ ["timeline"] = { ADDED_9_2_5, REMOVED_10_0_2_LAUNCH } }, {	-- Mythic: Fates of the Shadowlands Raids
 			["sym"] = {{"meta_achievement",
 				15665,	-- Mythic: Fate of Nathria
 				15669,	-- Mythic: Fate of Domination
@@ -94,8 +94,14 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 				14289,	-- Kaal-ed Shot
 			}},
 			["g"] = {
-				i(184183),		-- Voracious Gorger (MOUNT!)
+				i(184183),	-- Voracious Gorger (MOUNT!)
 			},
 		}),
+		-- #IF BEFORE DF
+		ach(11162),	-- Keystone Master
+		ach(11185),	-- Keystone Conqueror
+		ach(11184),	-- Keystone Challenger
+		ach(11183),	-- Keystone Initiate
+		-- #ENDIF
 	}),
 })));

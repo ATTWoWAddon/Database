@@ -3,7 +3,7 @@
 --------------------------------------------
 THE_SCEPTER_OF_THE_SHIFTING_SANDS = createHeader({
 	readable = "The Scepter of the Shifting Sands",
-	icon = "Interface\\Icons\\Inv_hammer_25",
+	icon = 133062,
 	text = {
 		en = "The Scepter of the Shifting Sands",
 		es = "El cetro del Mar de Dunas",
@@ -20,7 +20,7 @@ THE_SCEPTER_OF_THE_SHIFTING_SANDS = createHeader({
 	},
 });
 root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
-	applyclassicphase(PHASE_FIVE, bubbleDown({ ["timeline"] = { "removed 4.0.3" } }, {
+	applyclassicphase(PHASE_FIVE, bubbleDown({ ["timeline"] = { REMOVED_4_0_3 } }, {
 		["maps"] = {
 			CAVERNS_OF_TIME,
 			TANARIS,
@@ -31,7 +31,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 				q(8519, {	-- A Pawn on the Eternal Board
 					["provider"] = { "o", 180633 },	-- Crystalline Tear
 					["sourceQuest"] = 8305,	-- Long Forgotten Memories
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["coord"] = { 28.7, 89.1, SILITHUS },
 					["lvl"] = 60,
 				}),
@@ -42,7 +42,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 					},
 					["sourceQuest"] = 8301,	-- The Path of the Righteous
 					["coord"] = { 49.5, 36.4, SILITHUS },
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["lvl"] = 60,
 				}),
 				q(8575, {	-- Azuregos's Magical Ledger
@@ -63,16 +63,16 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 					["groups"] = {
 						ach(416, {	-- Scarab Lord (Achievement)
 							["sourceQuest"] = 8743,	-- Bang a Gong!
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						title(33, {	-- Scarab Lord Crieve
-							["timeline"] = { "added 2.0.3.28000", "removed 4.0.3" },	-- Added in Burning Crusade Prepatch
+							["timeline"] = { ADDED_2_0_3, REMOVED_4_0_3 },	-- Added in Burning Crusade Prepatch
 						}),
 						i(21176, {	-- Black Qiraji Battle Tank (MOUNT!)
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						mount(239770, {	-- Black Qiraji War Tank (MOUNT!)  (This a high resolution version given to players in the end of Legion)
-							["timeline"] = { "added 7.3.5.10000", "removed 7.3.5.10001" },	-- when it's added, it's already removed because it's only given to players who already have the original removed
+							["timeline"] = { ADDED_7_3_5, REMOVED_7_3_5 },	-- when it's added, it's already removed because it's only given to players who already have the original removed
 						}),
 					},
 				})),
@@ -84,13 +84,13 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 					["lvl"] = 60,
 					["groups"] = {
 						objective(1, {	-- Who Does Number Two Work For?
-							["provider"] = { "n", 15554 },	-- Number Two
-							["coord"] = { 65, 72, WINTERSPRING },
-							["cost"] = {
-								{ "i", 21041, 1 },	-- Bag of Gold
-								{ "i", 21039, 1 },	-- Narain's Turban
-								{ "i", 21040, 1 },	-- Narain's Robe
+							["providers"] = {
+								{ "n", 15554 },	-- Number Two
+								{ "i", 21041 },	-- Bag of Gold
+								{ "i", 21039 },	-- Narain's Turban
+								{ "i", 21040 },	-- Narain's Robe
 							},
+							["coord"] = { 65, 72, WINTERSPRING },
 						}),
 						i(21042, {	-- Narain's Special Kit
 							i(21037),	-- Crude Map
@@ -128,7 +128,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 				q(8305, {	-- Long Forgotten Memories
 					["qg"] = 15192,	-- Anachronos
 					["sourceQuest"] = 8303,	-- Anachronos
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["coord"] = { 65, 50, TANARIS },
 					["lvl"] = 60,
 				}),
@@ -200,7 +200,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 				q(8578, {	-- Scrying Goggles? No Problem!
 					["provider"] = { "o", 180642 },	-- Inconspicuous Crate
 					["sourceQuest"] = 8577,	-- Stewvul, Ex-B.F.F.
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu
 					["coord"] = { 46.2, 86.7, SILVERPINE_FOREST },
 					["maps"] = { MOLTEN_CORE },
 					["lvl"] = 60,
@@ -223,14 +223,14 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 						{ "i", 21139 },	-- Green Scepter Shard
 					},
 					["sourceQuest"] = 8736,	-- The Nightmare Manifests
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["coord"] = { 36.18, 41.79, MOONGLADE },
 					["lvl"] = 60,
 				}),
 				q(8555, {	-- The Charge of the Dragonflights
 					["qg"] = 15192,	-- Anachronos
 					["sourceQuest"] = 8519,	-- A Pawn on the Eternal Board
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["coord"] = { 65, 50, TANARIS },
 					["lvl"] = 60,
 				}),
@@ -254,7 +254,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 					["qg"] = 15180,	-- Baristolth of the Shifting Sands
 					["sourceQuest"] = 8301,	-- The Path of the Righteous
 					["coord"] = { 49.5, 36.4, SILITHUS },
-					["maxReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["maxReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["cost"] = {{ "i", 20384, 200 }},	-- Silithid Carapace Fragment
 					["repeatable"] = true,
 					["lvl"] = 60,
@@ -296,7 +296,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 					["qg"] = 11832,	-- Keeper Remulos
 					["sourceQuest"] = 8735,	-- The Nightmare's Corruption
 					["description"] = "You do NOT want to kill Eranikus or allow Remulos to die.",
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["coord"] = { 36.18, 41.79, MOONGLADE },
 					["lvl"] = 60,
 					["groups"] = {
@@ -307,7 +307,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 				q(8735, {	-- The Nightmare's Corruption
 					["qg"] = 11832,	-- Keeper Remulos
 					["sourceQuest"] = 8734,	-- Tyrande and Remulos
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["coord"] = { 36.18, 41.79, MOONGLADE },
 					["maps"] = { ASHENVALE, DUSKWOOD, FERALAS, THE_HINTERLANDS },
 					["lvl"] = 60,
@@ -412,11 +412,13 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 						{
 							["itemID"] = 21107,	-- Draconic for Dummies [Chapter V]
 							["provider"] = { "o", 180665 },	-- Draconic for Dummies
-							-- #if AFTER WRATH
-							["coord"] = { 75.35, 29.73, STORMWIND_CITY },
-							-- #else
-							["coord"] = { 72, 6, STORMWIND_CITY },
-							-- #endif
+							["coords"] = {
+								-- #if AFTER WRATH
+								{ 75.35, 29.73, STORMWIND_CITY },
+								-- #else
+								{ 72, 6, STORMWIND_CITY },
+								-- #endif
+							},
 						},
 						{
 							["itemID"] = 21108,	-- Draconic for Dummies [Chapter VI]
@@ -485,7 +487,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 					["lvl"] = 60,
 					["groups"] = {
 						ach(5533, {	-- Veteran of the Shifting Sands
-							["timeline"] = { "added 4.0.3.28000", "removed 4.0.3" },	-- Added in Cataclysm Prepatch
+							["timeline"] = { ADDED_4_0_3, REMOVED_4_0_3 },	-- Added in Cataclysm Prepatch
 						}),
 						i(21523),	-- Fang of Korialstrasz
 						i(21522),	-- Shadowsong's Sorrow
@@ -496,7 +498,7 @@ root(ROOTS.WorldEvents, n(THE_SCEPTER_OF_THE_SHIFTING_SANDS,
 				q(8734, {	-- Tyrande and Remulos
 					["qg"] = 15624,	-- Forest Wisp
 					["sourceQuest"] = 8733,	-- Eranikus, Tyrant of the Dream
-					["minReputation"] = { 910, NEUTRAL },	-- Brood of Nozdormu, Neutral
+					["minReputation"] = { FACTION_BROOD_OF_NOZDORMU, NEUTRAL },	-- Brood of Nozdormu, Neutral
 					["coord"] = { 37.5, 47.9, TELDRASSIL },
 					["lvl"] = 60,
 				}),

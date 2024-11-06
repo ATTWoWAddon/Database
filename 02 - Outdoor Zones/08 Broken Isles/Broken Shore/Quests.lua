@@ -7,14 +7,14 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 		n(QUESTS, {
 			q(46268, {	-- A Found Memento
 				["provider"] = { "o", 268478 },	-- Battered Trinket
-				["timeline"] = { "added 7.2.0.23746" },
+				["timeline"] = { ADDED_7_2_0 },
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(47097, {	-- A Walk to Remember
 				["sourceQuests"] = { 47202 },	-- A Personal Message
 				["provider"] = { "n", 121224 },	-- Anduin Wrynn
 				["coord"] = { 41.4, 59.4, BROKEN_SHORE },
-				["timeline"] = { "added 7.2.0.23746" },
+				["timeline"] = { ADDED_7_2_0 },
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(46832, {	-- Aalgen Point
@@ -240,6 +240,8 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 			q(47032, {	-- Legion Threat: Azshara
 				["isBreadcrumb"] = true,
 				["provider"] = { "n", 116302 },	-- Archmage Khadgar
+				["DisablePartySync"] = true,
+				["coord"] = { 44.6, 63.2, BROKEN_SHORE },
 				["classes"] = {
 					DEATHKNIGHT,	-- Frost
 					DEMONHUNTER,	-- Havoc
@@ -247,13 +249,13 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 					ROGUE,			-- Subtlety
 					WARRIOR,		-- Arms
 				},
-				["coord"] = { 44.6, 63.2, BROKEN_SHORE },
 			}),
 			q(47030, {	-- Legion Threat: Dalaran Infiltration
 				["isBreadcrumb"] = true,
 				["sourceQuests"] = { 44821 },	-- In Dire Need
 				["provider"] = { "n", 116302 },	-- Archmage Khadgar
 				["coord"] = { 44.6, 63.2, BROKEN_SHORE },
+				["DisablePartySync"] = true,
 				["classes"] = {
 					DEATHKNIGHT,	-- Blood
 					DEMONHUNTER,	-- Vengeance
@@ -267,18 +269,21 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 				["isBreadcrumb"] = true,
 				["sourceQuests"] = { 44821 },	-- In Dire Need
 				["provider"] = { "n", 116302 },	-- Archmage Khadgar
+				["DisablePartySync"] = true,
+				["coord"] = { 44.6, 63.2, BROKEN_SHORE },
 				["classes"] = {
 					HUNTER,		-- Beast Mastery
 					MONK,		-- Windwalker
 					PRIEST,		-- Discipline
 					WARLOCK,	-- Destruction
 				},
-				["coord"] = { 44.6, 63.2, BROKEN_SHORE },
 			}),
 			q(47033, {	-- Legion Threat: Suramar
 				["isBreadcrumb"] = true,
 				["sourceQuest"] = 44821,	-- In Dire Need
 				["provider"] = { "n", 116302 },	-- Archmage Khadgar
+				["DisablePartySync"] = true,
+				["coord"] = { 44.7, 63.2, BROKEN_SHORE },
 				["classes"] = {
 					MAGE,		-- Arcane
 					PALADIN,	-- Retribution
@@ -286,12 +291,13 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 					SHAMAN,		-- Enhancement
 					WARLOCK,	-- Demonology
 				},
-				["coord"] = { 44.7, 63.2, BROKEN_SHORE },
 			}),
 			q(47035, {	-- Legion Threat: The Missing Mage
 				["isBreadcrumb"] = true,
 				["sourceQuest"] = 44821,	-- In Dire Need
 				["provider"] = { "n", 116302 },	-- Archmage Khadgar
+				["coord"] = { 44.7, 63.2, BROKEN_SHORE },
+				["DisablePartySync"] = true,
 				["classes"] = {
 					DEATHKNIGHT,	-- Unholy
 					DRUID,			-- Feral
@@ -300,12 +306,13 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 					SHAMAN,			-- Elemental
 					WARRIOR,		-- Fury
 				},
-				["coord"] = { 44.7, 63.2, BROKEN_SHORE },
 			}),
 			q(47034, {	-- Legion Threat: The Necromancer
 				["isBreadcrumb"] = true,
 				["sourceQuest"] = 44821,	-- In Dire Need
 				["provider"] = { "n", 116302 },	-- Archmage Khadgar
+				["coord"] = { 44.7, 63.2, BROKEN_SHORE },
+				["DisablePartySync"] = true,
 				["classes"] = {
 					DRUID,		-- Balance
 					HUNTER,		-- Marksmanship
@@ -313,12 +320,13 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 					PRIEST,		-- Shadow
 					WARLOCK,	-- Affliction
 				},
-				["coord"] = { 44.7, 63.2, BROKEN_SHORE },
 			}),
 			q(47027, {	-- Legion Threat: Val'sharah
 				["isBreadcrumb"] = true,
 				["sourceQuest"] = 44821,	-- In Dire Need
 				["provider"] = { "n", 116302 },	-- Archmage Khadgar
+				["coord"] = { 44.6, 63.2, BROKEN_SHORE },
+				["DisablePartySync"] = true,
 				["classes"] = {
 					DRUID,		-- Restoration
 					MONK,		-- Mistweaver
@@ -326,13 +334,12 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 					PRIEST,		-- Holy
 					SHAMAN,		-- Restoration
 				},
-				["coord"] = { 44.6, 63.2, BROKEN_SHORE },
 			}),
 			q(47112, {	-- Lost Souls
 				["sourceQuests"] = { 47097 },	-- A Walk to Remember
 				["provider"] = { "n", 121226 },	-- Anduin Wrynn
 				["coord"] = { 52.5, 48.4, BROKEN_SHORE },
-				["timeline"] = { "added 7.2.0.23746" },
+				["timeline"] = { ADDED_7_2_0 },
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(47139, {	-- Mark of the Sentinax
@@ -412,7 +419,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 				["sourceQuests"] = { 46268 },	-- A Found Memento
 				["provider"] = { "n", 120281 },	-- Captain Shwayder
 				["coord"] = { 41.6, 59.6, BROKEN_SHORE },
-				["timeline"] = { "added 7.2.0.23746" },
+				["timeline"] = { ADDED_7_2_0 },
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(46250, {	-- Take Out the Head...
@@ -444,7 +451,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 				["sourceQuests"] = { 47112 },	-- Lost Souls
 				["provider"] = { "n", 121237 },	-- Anduin Wrynn
 				["coord"] = { 58.2, 26.6, BROKEN_SHORE },
-				["timeline"] = { "added 7.2.0.23746" },
+				["timeline"] = { ADDED_7_2_0 },
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(46772, {	-- The Mage Tower
@@ -473,10 +480,13 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 			}),
 			q(54120, {	-- To Orgrimmar
 				["provider"] = { "n", 145965 },	-- Spirit of Vol'jin
-				["lvl"] = 120,
+				["lvl"] = 50,
 				["coord"] = { 62.3, 30.4, BROKEN_SHORE },
 				["races"] = HORDE_ONLY,
 				["sourceQuests"] = { 53778 },	-- Where He Fell
+				["g"] = {
+					i(165371),	-- The Glaive of Vol'jin (QI!)
+				},
 			}),
 			q(46509, {	-- Tomb Raidering
 				["sourceQuests"] = { 46501 },	-- Grave Robbin'
@@ -510,7 +520,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, {
 	}),
 }));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(47038),	-- 7.2 Broken Shore - Buildings - Activation Buff - Nether Disruptor - Seal Your Fate - Day 1 - Tracking
 		q(47044),	-- 7.2 Broken Shore - Buildings - Activation Buff - Nether Disruptor - Seal Your Fate - Day 2 - Tracking
 		q(47053),	-- 7.2 Broken Shore - Buildings - Activation Buff - Nether Disruptor - Seal Your Fate - Day 3 - Tracking
@@ -526,7 +536,6 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(47590),	-- Tier 3 Mob Daily Bonus (DNT) - Daily kill
 		q(46665),	-- Tracking Quest - triggers with "Spiders, Huh?"
 		q(46751),	-- Tracking Quest - triggers when turning in "A Found Memento" (#46268)
-		q(47255),	-- Tracking Quest - triggers after completing "Mark of the Sentinax" (questID 47139)
 		q(47092),	-- Working on Crafted Legendary
 	}),
 });

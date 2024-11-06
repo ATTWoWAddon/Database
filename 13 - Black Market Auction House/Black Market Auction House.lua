@@ -9,25 +9,35 @@ root(ROOTS.BlackMarket, {
 				{"exclude", "headerID", VENDORS },	-- Not the Vendor Header
 			},
 		},{
+		-- #IF BEFORE BFA
+		n(103791, {	-- Madam Gosu [Rogue Class Hall]
+			["coord"] = { 57.91, 46.28, 626 },
+		}),
+		n(100986, {	-- Madam Goya [Underbelly]
+			["coord"] = { 71.37, 17.93, LEGION_THE_UNDERBELLY },
+		}),
+		-- #ENDIF
 		-- #IF BEFORE SHADOWLANDS
 		n(142062, {	-- Madam Gosu [Boralus - Alliance]
 			["coord"] = { 56.71, 46.32, BORALUS },
 		}),
-		-- #ENDIF
-		n(103791, {	-- Madam Gosu [Rogue Class Hall]
-			["coord"] = { 57.91, 46.28, 626 },
-		}),
-		-- #IF BEFORE SHADOWLANDS
 		n(135709, {	-- Madam Goya [Dazar'alor - Horde]
 			["coord"] = { 63.54, 62.68, ZULDAZAR },
 		}),
 		-- #ENDIF
+		-- #IF BEFORE DF
 		n(160081, {	-- Ta'xera <Matron of the Market>
 			["coord"] = { 52.40, 83.80, REVENDRETH },
 		}),
-		-- #IF BEFORE BFA
-		n(100986, {	-- Madam Goya [Underbelly]
-			["coord"] = { 71.37, 17.93, LEGION_THE_UNDERBELLY },
+		-- #ENDIF
+		-- #IF BEFORE TWW
+		n(189676, {	-- Madam Goya
+			["coord"] = { 20.2, 49.1, VALDRAKKEN },
+		}),
+		-- #ENDIF
+		-- #IF AFTER TWW
+		n(219055, {	-- Madam Goya
+			["coord"] = { 64.8, 52.7, DORNOGAL },
 		}),
 		-- #ENDIF
 		-- n(94829, {	-- Zhang Yeoh [Garrison]
@@ -43,14 +53,14 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 		i(183634),	-- Papa's Mint Condition Bag (9.1)
 	}),
 	filter(ILLUSIONS, {
-		i(138838),	-- Illusion: Deathfrost
-		i(118572),	-- Illusion: Flame of Ragnaros
-		i(128649),	-- Illusion: Winter's Grasp
+		i(138838),	-- Illusion: Deathfrost (ILLUSION!)
+		i(118572),	-- Illusion: Flame of Ragnaros (ILLUSION!)
+		i(128649),	-- Illusion: Winter's Grasp (ILLUSION!)
 	}),
 	filter(MOUNTS, {
 		i(143643),	-- Abyss Worm (MOUNT!)
 		i(168830, {	-- Aerial Unit R-21/X
-			["timeline"] = { "added 10.1.5" },
+			["timeline"] = { ADDED_10_1_5 },
 		}),
 		i(68823),	-- Armored Razzashi Raptor (MOUNT!)
 		i(32458),	-- Ashes of Al'ar (MOUNT!)
@@ -77,32 +87,35 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 		i(94228),	-- Cobalt Primordial Direhorn (MOUNT!)
 		i(63040),	-- Drake of the North Wind (MOUNT!)
 		i(63041),	-- Drake of the South Wind (MOUNT!)
+		i(211084, {	-- Golden Regal Scarab (MOUNT!)
+			["timeline"] = { ADDED_11_0_5 },
+		}),
 		i(166705, {	-- Glacial Tidestorm
-			["timeline"] = { "added 10.1.5" },
+			["timeline"] = { ADDED_10_1_5 },
+		}),
+		i(166518, {	-- GMOD
+			["timeline"] = { ADDED_10_1_5 },
 		}),
 		i(43959),	-- Grand Black War Mammoth (A) (MOUNT!)
 		i(44083),	-- Grand Black War Mammoth (H) (MOUNT!)
 		i(44707),	-- Green Proto-Drake (MOUNT!)
-		i(166518, {	-- GMOD
-			["timeline"] = { "added 10.1.5" },
-		}),
 		i(87771),	-- Heavenly Onyx Cloud Serpent (MOUNT!)
 		i(94231),	-- Jade Primordial Direhorn (MOUNT!)
 		i(168826, {	-- Mechagon Peacekeeper
-			["timeline"] = { "added 10.1.5" },
+			["timeline"] = { ADDED_10_1_5 },
 		}),
 		i(163042),  -- Mighty Caravan Brutosaur (MOUNT!)
 		i(159921, {	-- Mummified Raptor Skull
-			["timeline"] = { "added 10.1.5" },
+			["timeline"] = { ADDED_10_1_5 },
 		}),
 		i(174872, {	-- Ny'alotha Allseer
-			["timeline"] = { "added 10.1.5" },
+			["timeline"] = { ADDED_10_1_5 },
 		}),
 		i(49636),	-- Onyxian Drake (MOUNT!)
 		i(44175),	-- Plagued Proto-Drake (MOUNT!)
 		i(94229),	-- Slate Primordial Direhorn (MOUNT!)
 		i(159842, {	-- Sharkbait
-			["timeline"] = { "added 10.1.5" },
+			["timeline"] = { ADDED_10_1_5 },
 		}),
 		i(32768),	-- Raven Lord (MOUNT!)
 		i(45802),	-- Rusted Proto-Drake (MOUNT!)
@@ -124,13 +137,13 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 		i(19902),	-- Swift Zulian Tiger (MOUNT!)
 		i(54068),	-- Wooly White Rhino (MOUNT!)
 		i(160829, {	-- Underrot Crawg Harness
-			["timeline"] = { "added 10.1.5" },
+			["timeline"] = { ADDED_10_1_5 },
 		}),
 		i(147805),	-- Valarjar Stormwing (MOUNT!)
 		i(152790),	-- Vile Fiend (MOUNT!)
 		i(49286),	-- X-51 Nether-Rocket X-TREME (MOUNT!)
 	}),
-	n(72057, {	-- Ordos
+	header(HEADERS.NPC, 72057, { -- Ordos
 		-- Head
 		i(105804),	-- Aladya's Spiritfire Greathelm
 		i(105810),	-- Buc-Zakai Burning Hood
@@ -241,7 +254,9 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 		i(48126),	-- Razzashi Hatchling (PET!)
 		i(34492),	-- Rocket Chicken (PET!)
 		i(45606),	-- Sen'jin Fetish (PET!)
-		i(69992),	-- Shimmering Wyrmling (PET!)
+		i(69992, {	-- Shimmering Wyrmling (PET!)
+			["description"] = "Can also be bought from the Wrath of the Lich King Argent Tournament Vendor.\n\nBlizzard made 3 different Items which all learn the same pet.",
+		}),
 		i(94152),	-- Son of Animus (PET!)
 		i(38050),	-- Ethereal Soul-Trader (PET!)
 		i(49343),	-- Spectral Tiger Cub (PET!)
@@ -387,9 +402,29 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 		i(38578),	-- The Flag of Ownership (TOY!)
 	}),
 	n(WEAPONS, {
-		i(110591, { ["timeline"] = { "created 6.0.1.18125" }}),	-- Flintlocke's Blasthammer
 		i(39769),	-- Arcanite Ripper
+		iensemble(211300, {	-- Arsenal: Whispering Temple Blades
+			["timeline"] = { ADDED_11_0_5 },
+		}),
 		i(90176),	-- Flintlocke's Blasthammer
+		i(211097, {	-- Gilded Crown Splitter
+			["timeline"] = { ADDED_11_0_5 },
+		}),
+		i(211099, {	-- Gilded Scarab Bulwark
+			["timeline"] = { ADDED_11_0_5 },
+		}),
+		i(211096, {	-- Gold-Plated Witchhunter's Carbine
+			["timeline"] = { ADDED_11_0_5 },
+		}),
+		i(211294, {	-- Marauder King's Body Carver
+			["timeline"] = { ADDED_11_0_5 },
+		}),
+		i(211145, {	-- Royal Witch Doctor's Trophies
+			["timeline"] = { ADDED_11_0_5 },
+		}),
+		i(211159, {	-- Royal Witch Doctor's Guard
+			["timeline"] = { ADDED_11_0_5 },
+		}),
 		i(44924),	-- Sun-Lute of the Phoenix King
 	}),
 	i(50379),	-- Battered Hilt (Alliance)
@@ -399,10 +434,9 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 	}),
 	un(REMOVED_FROM_GAME, i(128312)),	-- Elixir of the Rapid Mind
 	i(45037),	-- Epic Purple Shirt
-	i(110672, {	-- Grimoire of the Four Winds
+	TempForceMisc(i(110672, {	-- Grimoire of the Four Winds
 		["u"] = REMOVED_FROM_GAME,
-		["collectible"] = false,
-	}),
+	})),
 	-- Heart of Fear Heroic Trash Drops. Only where available from the BMAH while HoF was current Content.
 	un(REMOVED_FROM_GAME, i(86993)),	-- Darting Damselfly Cuffs
 	un(REMOVED_FROM_GAME, i(86994)),	-- Gleaming Moth Cuffs
@@ -424,6 +458,9 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 		i(105746),	-- Kor'kron Dark Shaman Kilt
 		i(105742),	-- Kor'kron Dark Shaman Treads
 	}),
+	i(211259, {	-- Regal Gryphon Rider's Headgear
+		["timeline"] = { ADDED_11_0_5 },
+	}),
 	i(142000),	-- Rhinestone Sunglasses
 	i(14617),	-- Sawbones Shirt
 	i(112935),	-- Tusks of Mannoroth
@@ -436,6 +473,9 @@ root(ROOTS.BlackMarket, bubbleDown({ ["u"] = BLACK_MARKET, },{
 			{"not", "itemID", 169430 },			-- Remove itself from the final list
 			{"not", "itemID", 141995 },			-- Remove old version from the final list
 		},
+	}),
+	i(211295, {	-- Wrathful Crusader's Helm
+		["timeline"] = { ADDED_11_0_5 },
 	}),
 	un(REMOVED_FROM_GAME, i(141995)),	-- Unclaimed Black Market Container Pre 8.2.5 (they updated and added new items)
 }));

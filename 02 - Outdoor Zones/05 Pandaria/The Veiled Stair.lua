@@ -5,33 +5,20 @@
 root(ROOTS.Zones, {
 	m(PANDARIA, {
 		m(THE_VEILED_STAIR, {
-			["icon"] = "Interface\\Icons\\inv_legendary_theblackprince",
+			["icon"] = 656543,
 			["groups"] = {
-				n(ACHIEVEMENTS, {
-					ach(7997, {	-- Riches of Pandaria
-						["collectible"] = false,
-						["g"] = {
-							o(214325, {	-- Forgotten Lockbox
-								["questID"] = 31867, -- Forgotten Lockbox
-								["description"] = "Located on a barrel on the second floor of the inn",
-								["coord"] = { 54.66, 71.67, THE_VEILED_STAIR },
-							}),
-							o(213845, {	-- The Hammer of Folly
-								["questID"] = 31428,
-								["coord"] = { 74.92, 76.47, THE_VEILED_STAIR },
-								["g"] = {
-									i(86473),	-- The Hammer of Folly
-								},
-							}),
-						},
-					}),
-				}),
 				battlepets({
 					["sym"] = {{"select","speciesID",
 						706,	-- Bandicoon (PET!)
 						708,	-- Malayan Quillrat (PET!)
 						709,	-- Malayan Quillrat Pup (PET!)
 					}},
+				}),
+				explorationHeader({
+					exploration(6380),	-- Path of a Hundred Steps
+					exploration(6375),	-- Tavern in the Mists
+					exploration(6373),	-- The Secret Aerie
+					exploration(6381),	-- The Spring Road
 				}),
 				n(FLIGHT_PATHS, {
 					fp(1029, {	-- Tavern in the Mists
@@ -98,14 +85,6 @@ root(ROOTS.Zones, {
 					})),
 				}),
 			},
-		}),
-	}),
-});
-
-root(ROOTS.NeverImplemented, {
-	tier(MOP_TIER, {
-		n(WEAPONS, {
-			i(84527),	-- Hidden Pass Meditation Staff
 		}),
 	}),
 });

@@ -5,7 +5,7 @@ local SINSTONE_FRAGMENTS = 1816;
 root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	m(REVENDRETH, {
 		n(FACTIONS, {
-			faction(2439, {	-- The Avowed
+			faction(FACTION_THE_AVOWED, {	-- The Avowed
 				["icon"] = 458226,
 				["description"] = "To unlock this faction, you must complete |cFFFFD700The Final Atonement|r questline in Revendreth.\n\nReputation with The Avowed is gained first by killing Depraved mobs outside the Halls of Atonement.  Once you reach Friendly, use your |cFFFFFFFFSinstone Fragments|r to complete daily quests and summon Inquisitors, High Inquisitors, and Grand Inquisitors.\n\nMembers of the |cFFfe040fVenthyr Covenant|r can purchase a special mount and cosmetic cloak from the Avowed quartermaster that are unavailable to other covenants.",
 				["sourceQuests"] = { 57929 },	-- Hunting an Inquisitor (unlocks ability to collect Sinstone Fragments + gain reputation)
@@ -20,34 +20,34 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 							["cost"] = { { "i", 172957, 50 } },	-- 50x Atonement Crypt Key
 						}),
 						ach(14276, {	-- It's Always Sinny in Revendreth
-							crit(1, { -- Inquisitor Otilia
+							crit(48135, {	-- Inquisitor Otilia
 								["_npcs"] = { 156918 },
 							}),
-							crit(2, { -- Inquisitor Petre
+							crit(48134, {	-- Inquisitor Petre
 								["_npcs"] = { 156919 },
 							}),
-							crit(3, { -- Inquisitor Sorin
+							crit(48133, {	-- Inquisitor Sorin
 								["_npcs"] = { 156916 },
 							}),
-							crit(4, { -- Inquisitor Traian
+							crit(48136, {	-- Inquisitor Traian
 								["_npcs"] = { 159151 },
 							}),
-							crit(5, { -- High Inquisitor Dacian
+							crit(48140, {	-- High Inquisitor Dacian
 								["_npcs"] = { 159155 },
 							}),
-							crit(6, { -- High Inquisitor Gabi
+							crit(48137, {	-- High Inquisitor Gabi
 								["_npcs"] = { 159152 },
 							}),
-							crit(7, { -- High Inquisitor Magda
+							crit(48139, {	-- High Inquisitor Magda
 								["_npcs"] = { 159154 },
 							}),
-							crit(8, { -- High Inquisitor Radu
+							crit(48138, {	-- High Inquisitor Radu
 								["_npcs"] = { 159153 },
 							}),
-							crit(9, { -- Grand Inquisitor Aurica
+							crit(48142, {	-- Grand Inquisitor Aurica
 								["_npcs"] = { 159157 },
 							}),
-							crit(10, { -- Grand Inquisitor Nicu
+							crit(48141, {	-- Grand Inquisitor Nicu
 								["_npcs"] = { 159156 },
 							}),
 						}),
@@ -127,6 +127,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 								["g"] = {
 									i(173721),	-- Love and Terror
 									i(184214),	-- Chained Manacles
+									i(180451),	-- Grand Inquisitor's Sinstone Fragment
 									i(180493),	-- Inquisitor's Robes
 									i(184213),	-- Ritualist's Soles
 									i(184217),	-- Sinstone Stompers
@@ -164,10 +165,11 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 								},
 								["g"] = {
 									i(173721),	-- Love and Terror
+									i(180451),	-- Grand Inquisitor's Sinstone Fragment
 									i(184211),	-- High Inquisitor's Banded Cincture
 									i(184212),	-- Intimidator Trainer's Cuffs
 									i(184214),	-- Chained Manacles
-									i(184215),	-- Depraved Houndmasster's Grips
+									i(184215),	-- Depraved Houndmaster's Grips
 									i(184216),	-- Stoneborn Bodyguard's Shoulderplate
 								},
 							}),
@@ -231,40 +233,48 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					n(VENDORS, {
 						n(173705, {	-- Archivist Janeera <Avowed Quartermaster>
 							["coord"] = { 73.0, 52.0, REVENDRETH },
-							["g"] = {
-								i(184221, {	-- Archivist's Quill
-									["cost"] = { { "c", SINSTONE_FRAGMENTS, 1000 } },
-								}),
-								i(184220, {	-- Encyclopedia of Sinstone Fragment Recovery
-									["questID"] = 62821,	-- same spell / quest trigger as Treatise but this is BoA version that can be mailed to alts
-									["cost"] = { { "c", SINSTONE_FRAGMENTS, 600 } },
-								}),
-								i(184222, {	-- Lemet's Requisition Orders
-									["questID"] = 62822,
-									["cost"] = { { "c", SINSTONE_FRAGMENTS, 350 } },
-								}),
-								i(182890, {	-- Rapid Recitation Quill (TOY!)
-									["cost"] = { { "c", SINSTONE_FRAGMENTS, 500 } },
-								}),
-								i(182660, {	-- Recipe: Shadestone (RECIPE!)
-									["cost"] = { { "c", SINSTONE_FRAGMENTS, 35 } },
-								}),
-								i(184219, {	-- Treatise on Sinstone Fragment Acquisition
-									["questID"] = 62821,
-									["cost"] = { { "c", SINSTONE_FRAGMENTS, 600 } },
-								}),
-								i(184218, {	-- Vulgarity Arbiter (TOY!)
-									["cost"] = { { "c", SINSTONE_FRAGMENTS, 1000 } },
-								}),
-								n(VENTHYR, sharedData({["customCollect"] = { "SL_COV_VEN" }},{
-									i(180940, {	-- Ebony Crypt Keeper's Mantle
+							["g"] = bubbleDownClassicRep(FACTION_THE_AVOWED, {
+								{		-- Neutral
+								}, {	-- Friendly
+								}, {	-- Honored
+									i(184222, {	-- Lemet's Requisition Orders
+										["questID"] = 62822,
+										["cost"] = { { "c", SINSTONE_FRAGMENTS, 350 } },
+									}),
+									i(182660, {	-- Recipe: Shadestone (RECIPE!)
+										["cost"] = { { "c", SINSTONE_FRAGMENTS, 35 } },
+									}),
+								}, {	-- Revered
+									n(VENTHYR, sharedData({["customCollect"] = "SL_COV_VEN" }, {
+										i(180940, {	-- Ebony Crypt Keeper's Mantle
+											["cost"] = { { "c", SINSTONE_FRAGMENTS, 500 } },
+										}),
+									})),
+									i(182890, {	-- Rapid Recitation Quill (TOY!)
 										["cost"] = { { "c", SINSTONE_FRAGMENTS, 500 } },
 									}),
-									i(182954, {	-- Inquisition Gargon (MOUNT!)
-										["cost"] = { { "c", SINSTONE_FRAGMENTS, 2000 } },
+									i(184219, {	-- Treatise on Sinstone Fragment Acquisition
+										["questID"] = 62821,
+										["cost"] = { { "c", SINSTONE_FRAGMENTS, 600 } },
 									}),
-								})),
-							},
+								}, {	-- Exalted
+									i(184221, {	-- Archivist's Quill
+										["cost"] = { { "c", SINSTONE_FRAGMENTS, 1000 } },
+									}),
+									i(184220, {	-- Encyclopedia of Sinstone Fragment Recovery
+										["questID"] = 62821,	-- same spell / quest trigger as Treatise but this is BoA version that can be mailed to alts
+										["cost"] = { { "c", SINSTONE_FRAGMENTS, 1200 } },
+									}),
+									n(VENTHYR, sharedData({["customCollect"] = "SL_COV_VEN" }, {
+										i(182954, {	-- Inquisition Gargon (MOUNT!)
+											["cost"] = { { "c", SINSTONE_FRAGMENTS, 2000 } },
+										}),
+									})),
+									i(184218, {	-- Vulgarity Arbiter (TOY!)
+										["cost"] = { { "c", SINSTONE_FRAGMENTS, 1000 } },
+									}),
+								},
+							}),
 						}),
 						n(159088, {	-- Bored Dredger
 							["description"] = "There is a chance to find this vendor when opening a crypt with an |cFFFFFFFFAtonement Crypt Key|r.\n\nHe runs away shortly after exiting the crypt, so make your purchases quickly!",

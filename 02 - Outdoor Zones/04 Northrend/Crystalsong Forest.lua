@@ -5,7 +5,7 @@ root(ROOTS.Zones, {
 	m(NORTHREND, applyclassicphase(WRATH_PHASE_ONE, {
 		m(CRYSTALSONG_FOREST, {
 			["lore"] = "Crystalsong Forest is a tranquil forest in the center of Northrend, from which Dalaran floats above. Originally intended to be the site of the Argent Tournament, it is a peaceful zone with hardly any quests.",
-			["icon"] = "Interface\\Icons\\achievement_zone_crystalsong_01",
+			["icon"] = 236735,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					explorationAch(1457),	-- Explore Crystalsong Forest
@@ -15,11 +15,9 @@ root(ROOTS.Zones, {
 						385,	-- Mouse (PET!)
 						378,	-- Rabbit (PET!)
 						379,	-- Squirrel (PET!)
-						1238,	-- Unborn Val'kyr (PET!)
 					}},
 				}),
-				-- #if ANYCLASSIC
-				n(EXPLORATION, {
+				explorationHeader({
 					exploration(4553),	-- Forlorn Woods
 					exploration(4554),	-- Ruins of Shandaral
 					exploration(4558),	-- Sunreaver's Command
@@ -30,18 +28,23 @@ root(ROOTS.Zones, {
 					exploration(4556),	-- Violet Stand
 					exploration(4559),	-- Windrunner's Overlook
 				}),
-				-- #endif
 				prof(COOKING, {
 					i(43148, {	-- Crystalsong Carrot
 						["provider"] = { "o", 192828 },	-- Crystalsong Carrot
 					}),
 				}),
 				prof(FISHING, {
+					-- #if ANYCLASSIC
 					ach(1517, {	-- Northrend Angler
 						["provider"] = { "o", 192059 },	-- Glassfin Minnow School
 						["criteriaID"] = 5283,	-- Glassfin Minnow School
 						["requireSkill"] = FISHING,
 					}),
+					-- #else
+					o(192059, {	-- Glassfin Minnow School
+						["requireSkill"] = FISHING,
+					}),
+					-- #endif
 				}),
 				n(FLIGHT_PATHS, {
 					fp(337, {	-- Sunreaver's Command

@@ -6,12 +6,18 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_2_0 } }, 
 		n(WORLD_QUESTS, sharedData({ ["isWorldQuest"] = true, ["sourceQuests"] = { 64230 } }, {
 			q(65081, {	-- An Apple A Day
 				["coord"] = { 47.9, 88.7, ZERETH_MORTIS },
+				["g"] = {
+					i(187949),	-- Catalyzed Apple (QI!)
+				},
 			}),
 			q(65232, {	-- Annelid-ilation
 				["coord"] = { 57.2, 66.5, ZERETH_MORTIS },
 			}),
 			q(65119, {	-- Automa Ops
 				["coord"] = { 56.8, 32.7, ZERETH_MORTIS },
+				["g"] = {
+					i(188137),	-- Targeting Relic (QI!)
+				},
 			}),
 			q(65117, {	-- Bad Samples
 				["coord"] = { 44.1, 30.8, ZERETH_MORTIS },
@@ -21,12 +27,19 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_2_0 } }, 
 			}),
 			q(64974, {	-- Clean Up, Automa Aisle
 				["coord"] = { 57.6, 47.5, ZERETH_MORTIS },
+				["g"] = {
+					i(187841),	-- Explosive Core
+				},
 			}),
 			q(65244, {	-- Devourable
-				["coord"] = { 42.1, 71, ZERETH_MORTIS },
+				["coord"] = { 42.1, 71.0, ZERETH_MORTIS },
 			}),
 			q(64960, {	-- Feed the Annelids
 				["coord"] = { 56.8, 31.9, ZERETH_MORTIS },
+				["g"] = {
+					i(187816),	-- Irresistible Goop (QI!)
+					i(187820),	-- Piece of Goop (QI!)
+				},
 			}),
 			q(65102, {	-- Fish Eyes
 				["coord"] = { 47.8, 64, ZERETH_MORTIS },
@@ -39,12 +52,21 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_2_0 } }, 
 				["sym"] = {
 					{"select","objectID",373561},	-- Forgotten Proto-Vault
 				},
+				["g"] = {
+					i(187987),	-- Call Bounding Bufonid (QI!)
+				},
 			}),
 			q(65231, {	-- Plundered Knowledge
 				["coord"] = { 67.2, 39.1, ZERETH_MORTIS },
+				["g"] = {
+					i(188522),	-- Ancient Archive (QI!)
+				},
 			}),
 			q(65115, {	-- Researching The Solution
 				["coord"] = { 44.6, 30.9, ZERETH_MORTIS },
+				["g"] = {
+					i(188118),	-- Enigmatic Scrolls (QI!)
+				},
 			}),
 			q(65262, {	-- Save the Vombata
 				["coord"] = { 43.5, 63.7, ZERETH_MORTIS },
@@ -53,7 +75,10 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_2_0 } }, 
 				["coord"] = { 37.9, 39.9, ZERETH_MORTIS },
 			}),
 			q(65234, {	-- Sweet On Them
-				["coord"] = { 63, 58, ZERETH_MORTIS },
+				["coord"] = { 63.0, 58.0, ZERETH_MORTIS },
+				["g"] = {
+					i(188529),	-- Hexagonal Nectar (QI!)
+				},
 			}),
 		})),
 		n(WORLD_QUESTS, sharedData({ ["isWorldQuest"] = true, ["sourceQuests"] = { 64230 }, ["description"] = "Requires Cachial" }, {

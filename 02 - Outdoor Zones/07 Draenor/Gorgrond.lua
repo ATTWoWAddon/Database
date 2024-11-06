@@ -74,7 +74,7 @@ root(ROOTS.Zones, {
 	m(DRAENOR, {
 		m(GORGROND, {
 			["lore"] = "Gorgrond is a zone in northern Draenor. It is home to the Blackrock clan and the industrial heart of the Iron Horde and their ancestral home, the Blackrock Foundry, lies near the northern coast. However the industrial efforts of the Blackrock are dwarfed by the perpetual war that rages across the region. Two groups of creatures, both descended from ancients, fight a furious, unending war to determine what form the region's landscape should take. Along the northern and western side of Gorgrond the mighty Breakers have created a barren desert with rocky mesas and hot-springs bubbling up from the ground. Along the southern and eastern side of the region the savage Primals have created a lush jungle with thick foliage and dangerous animate plant-life that waits to devour those foolish enough to stray into its depths. If either side triumphed over the other, then Gorgrond and all of Draenor would soon be transformed into the victor's favoured environment. For the Blackrock, however, this war acts as perfect barricade preventing invasion from the south, allowing them to churn out weapons for the Iron Horde unopposed.",
-			["icon"] = "Interface\\Icons\\achievement_zone_gorgrond",
+			["icon"] = 1046803,
 			["maps"] = {
 				544,	-- Moira's Reach
 				545,	-- Moira's Reach
@@ -86,41 +86,12 @@ root(ROOTS.Zones, {
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					ach(9678,  {	-- Ancient No More
-						crit(1),	-- Swift Onyx Flayer
-						crit(2),	-- Mogarnago
-						crit(3),	-- Protectors of the Grove
-						crit(4),	-- Venolasix
-						crit(5),	-- Alkali
-						crit(6),	-- Depthroot
-						crit(7),	-- Firestarter Grash
-						crit(8),	-- Grove Warden Yal
-						crit(9),	-- Hunter Bal'ra
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9667),		-- Burn It to the Ground (Everbloom Wilds)
-					ach(8939, {		-- Explore Gorgrond
-						crit(1),		-- Bastion Rise
-						crit(2),		-- Beastwatch
-						crit(3),		-- Grimrail Depot
-						crit(4),		-- Crimson Fen
-						crit(5),		-- Deadgrin
-						crit(6),		-- Everbloom Wilds
-						crit(7),		-- Evermorn Springs
-						crit(8),		-- Gronn Canyon
-						crit(9),		-- Highpass
-						crit(10),		-- Iyun Weald
-						crit(11),		-- Stonemaul Arena
-						crit(12),		-- Tangleheart
-						crit(13),		-- The Iron Approach
-						crit(14),		-- The Pit
-					}),
+					explorationAch(8939),		-- Explore Gorgrond
 					ach(9655, {		-- Fight the Power (The Pit)
-						crit(1),		-- Maniacal Madgard
-						crit(2),		-- Defector Dazgo
-						crit(3),		-- Durp the Hated
-						crit(4),		-- Inventor Blammo
-						crit(5),		-- Horgg
-						crit(6),		-- Blademaster Ro'gor
-						crit(7),		-- Morgo Kain
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9656,  {	-- In Plain Sight (The Pit)
 						["coords"] = {
@@ -132,11 +103,11 @@ root(ROOTS.Zones, {
 					}),
 					ach(9659),		-- Iron Wings (The Pit)
 					ach(9400, {		-- Gorgrond Monster Hunter
-						crit(1, {	-- Biolante
+						crit(25568, {	-- Biolante
 							["crs"] = { 75207 },	-- Biolante
 							["coord"] = { 62.8, 54.0, GORGROND },
 						}),
-						crit(2, {	-- Roardan the Sky Terror
+						crit(25569, {	-- Roardan the Sky Terror
 							["crs"] = { 77093 },	-- Roardan the Sky Terror
 							["coords"] = {
 								{ 51.2, 65.6, GORGROND },
@@ -144,68 +115,33 @@ root(ROOTS.Zones, {
 								{ 61.6, 61.8, GORGROND },
 							},
 						}),
-						crit(3, {	-- Crater Lord Igneous
+						crit(25570, {	-- Crater Lord Igneous
 							["crs"] = { 81528 },	-- Crater Lord Igneous
 							["coord"] = { 43.6, 59.6, GORGROND },
 						}),
-						crit(4, {	-- Dessicus of the Dead Pools
+						crit(25571, {	-- Dessicus of the Dead Pools
 							["crs"] = { 81529 },	-- Dessicus of the Dead Pools
 							["coord"] = { 38.8, 51.2, GORGROND },
 						}),
-						crit(5, {	-- Khargax the Devourer
+						crit(25572, {	-- Khargax the Devourer
 							["crs"] = { 81537 },	-- Khargax the Devourer
 							["coord"] = { 53.0, 66.6, GORGROND },
 						}),
-						crit(6, {	-- Erosian the Violent
+						crit(25573, {	-- Erosian the Violent
 							["crs"] = { 81540 },	-- Erosian the Violent
 							["coord"] = { 51.8, 41.6, GORGROND },
 						}),
-						crit(7, {	-- Charl Doomwing
+						crit(25574, {	-- Charl Doomwing
 							["crs"] = { 81548 },	-- Charl Doomwing
 							["coord"] = { 46.0, 46.8, GORGROND },
 						}),
-						crit(8, {	-- Fungal Praetorian
+						crit(25575, {	-- Fungal Praetorian
 							["crs"] = { 80785 },	-- Fungal Praetorian
 							["coord"] = { 58.0, 63.6, GORGROND },
 						}),
 					}),
 					ach(9607,  {	-- Make It a Bonus
-						crit(1, {	-- Bonus Objective: Brimstone Springs
-							["sourceQuest"] = 36603,
-						}),
-						crit(2, {	-- Bonus Objective: Iyun Weald
-							["sourceQuest"] = 36571,
-						}),
-						crit(3, {	-- Bonus Objective: Mistcreep Mire
-							["sourceQuest"] = 36563,
-						}),
-						crit(4, {	-- Bonus Objective: Valley of Destruction
-							["sourceQuest"] = 36480,
-						}),
-						crit(5, {	-- Bonus Objective: Ruins of the First Bastion
-							["sourceQuest"] = 35881,
-						}),
-						crit(6, {	-- Bonus Objective: The Forgotten Caves
-							["sourceQuest"] = 34724,
-						}),
-						crit(7, {	-- South Gronn Canyon or Evermorn Springs
-							["sourceQuests"] = {
-								36476,	-- South Gronn Canyon (Lumber Yard)
-								36504,	-- Evermorn Springs (Sparring Arena)
-							},
-						}),
-						crit(8, {	-- Stonemaul Arena or Tangleheart
-							["sourceQuests"] = {
-								36566,	-- Stonemaul Arena (Lumber Yard)
-								36564,	-- Tangleheart (Sparring Arena)
-							},
-						}),
-						crit(9, {	-- Affliction Ridge or The Razorbloom
-							["sourceQuests"] = {
-								36473,	-- Affliction Ridge (Lumber Yard)
-								36500,	-- The Razorbloom (Sparring Arena)
-							},
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9654),		-- Mean and Green (Everbloom Wilds)
 					ach(9663, {	-- Picky Palate (Everbloom Wilds)
@@ -223,106 +159,30 @@ root(ROOTS.Zones, {
 						},
 					}),
 					ach(9402,  {	-- Prove Your Strength
-						crit(1, {	-- Ancient Branch
-							["sourceQuests"] = { 36092, 36094 },	-- Proof of Strength: (A/H)
-						}),
-						crit(2, {	-- Basilisk Scale
-							["sourceQuests"] = { 36103, 36104 },	-- Proof of Strength: (A/H)
-						}),
-						crit(3, {	-- Botani Bloom
-							["sourceQuests"] = { 36084, 36086 },	-- Proof of Strength: (A/H)
-						}),
-						crit(4, {	-- Elemental Crystal
-							["sourceQuests"] = { 36105, 36106 },	-- Proof of Strength: (A/H)
-						}),
-						crit(5, {	-- Goren Tooth
-							["sourceQuests"] = { 35944, 35948 },	-- Proof of Strength: (A/H)
-						}),
-						crit(6, {	-- Gronn Eye
-							["sourceQuests"] = { 36081, 36083 },	-- Proof of Strength: (A/H)
-						}),
-						crit(7, {	-- Gronnling Scale
-							["sourceQuests"] = { 36078, 36080 },	-- Proof of Strength: (A/H)
-						}),
-						crit(8, {	-- Ogron Horn
-							["sourceQuests"] = { 36075, 36076 },	-- Proof of Strength: Ogron Horn (A/H)
-						}),
-						crit(9, {	-- Orc Thorn
-							["sourceQuests"] = { 36090, 36091 },	-- Proof of Strength: (A/H)
-						}),
-						crit(10, {	-- Ravager Claw
-							["sourceQuests"] = { 36096, 36097 },	-- Proof of Strength: (A/H)
-						}),
-						crit(11, {	-- Wasp Stinger
-							["sourceQuests"] = { 36098, 36101 },	-- Proof of Strength: (A/H)
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(8923,  {	-- Putting the Gore in Gorgrond (A) (unlocks ability to buy Gorgrond Treasure Map from Grakis in Stormshield)
 						["races"] = ALLIANCE_ONLY,
-						["g"] = {
-							crit(1, {	-- We Need An Outpost
-								["sourceQuest"] = 35063,	-- We Need an Outpost
-							}),
-							crit(2, {	-- Supporting Your Garrison
-								["sourceQuests"] = {
-									35508,	-- Chapter I: Plant Food (Lumber Yard)
-									35527,	-- Chapter II: The Harvest (Lumber Yard)
-									35524,	-- Chapter III: Ritual of the Charred (Lumber Yard)
-									35652,	-- Growing Wood (Lumber Yard)
-									35137,	-- The Sparring Arena (Sparring Arena)
-								},
-							}),
-							crit(3, {	-- In the Land of Giants
-								["sourceQuest"] = 35702,	-- Chains of Iron
-							}),
-							crit(4, {	-- The Iron Approach
-								["sourceQuests"] = {
-									36575,	-- Strike While the Iron is Hot
-									36576,	-- Strike While the Iron is Hot (Sparring Arena)
-								},
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(8924,  {	-- Putting the Gore in Gorgrond (H)
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							crit(1, {	-- Your Base, Your Choice
-								["sourceQuest"] = 35151,	-- Your Base, Your Choice
-							}),
-							crit(2, {	-- Supporting Your Garrison
-								["sourceQuests"] = {
-									35508,	-- Chapter I: Plant Food (Lumber Yard)
-									35527,	-- Chapter II: The Harvest (Lumber Yard)
-									35524,	-- Chapter III: Ritual of the Charred (Lumber Yard)
-									35506,	-- Growing Wood (Lumber Yard)
-									35152,	-- The Sparring Arena (Sparring Arena)
-								},
-							}),
-							crit(3, {	-- In the Land of Giants
-								["sourceQuest"] = 35136,	-- Chains of Iron
-							}),
-							crit(4, {	-- The Iron Approach
-								["sourceQuests"] = {
-									36574,	-- Strike While the Iron is Hot (Lumber Yard)
-									36573,	-- Strike While the Iron is Hot (Sparring Arena)
-								},
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9564,  {	-- Securing Draenor (A)
 						["collectible"] = false,
 						["races"] = ALLIANCE_ONLY,
 						["g"] = {
-							crit(4),	-- Assault on the Pit
-							crit(5),	-- Assault on the Everbloom Wilds
+							crit(26248),	-- Assault on the Pit
+							crit(26249),	-- Assault on the Everbloom Wilds
 						},
 					}),
 					ach(9562,  {	-- Securing Draenor (H)
 						["collectible"] = false,
 						["races"] = HORDE_ONLY,
 						["g"] = {
-							crit(4),	-- Assault on the Pit
-							crit(5),	-- Assault on the Everbloom Wilds
+							crit(26229),	-- Assault on the Pit
+							crit(26232),	-- Assault on the Everbloom Wilds
 						},
 					}),
 					ach(9401),		-- Shredder Maniac
@@ -357,6 +217,37 @@ root(ROOTS.Zones, {
 						}),
 					},
 				})),
+				explorationHeader({
+					exploration(6876),	-- Bastion Rise
+					exploration(6881),	-- Beastwatch
+					exploration(6889),	-- Brimstone Springs
+					exploration(6885),	-- Cragplume Cauldron
+					exploration(7149),	-- Crimson Fen
+					exploration(6877),	-- Deadgrin
+					exploration(6914),	-- Deeproot
+					exploration(7320),	-- Everbloom Wilds
+					exploration(7402),	-- Evermorn Rise
+					exploration(6880),	-- Evermorn Springs
+					exploration(7319),	-- Gorgorek's Fall
+					exploration(6901),	-- Grimrail Depot
+					exploration(6891),	-- Gronn Canyon
+					exploration(7158),	-- Highpass
+					exploration(6893),	-- Iyun Weald
+					exploration(6884),	-- Mistcreep Mire
+					exploration(7298),	-- Overlook Ruins
+					exploration(6935),	-- Razorbloom
+					exploration(7394),	-- Steamburst Cauldron
+					exploration(7304),	-- Steamscar Rise
+					exploration(6887),	-- Stonemaul Arena
+					exploration(6900),	-- Sulfur Basin
+					exploration(6878),	-- Tailthrasher Basin
+					exploration(7224),	-- Tangleheart
+					exploration(6915),	-- The Fertile Ground
+					exploration(7415),	-- The Iron Approach
+					exploration(7411),	-- The Iron Approach
+					exploration(6892),	-- The Pit
+					exploration(7153),	-- Wildwood Wash
+				}),
 				n(FLIGHT_PATHS, {
 					fp(1511, {	-- Bastion Rise, Gorgrond
 						["coord"] = { 46.4, 92.4, GORGROND },
@@ -402,7 +293,7 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 					}),
 				}),
-				petbattles({ "added 6.0.1" }, {
+				petbattles({ ADDED_6_0_2 }, {
 					n(83837, {	-- Cymre Brightblade <Grand Master Pet Tamer>
 						["coord"] = { 51.0, 70.6, GORGROND },
 					}),
@@ -563,8 +454,6 @@ root(ROOTS.Zones, {
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = {
 								35216,	-- Super Seeds
-								35214,	-- The Infested (TODO: verify if needed)
-								35213,	-- The Razorbloom
 								35215,	-- The Voice of Iyu
 							},
 						}),
@@ -738,8 +627,6 @@ root(ROOTS.Zones, {
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = {
 								35216,	-- Super Seeds
-								35214,	-- The Infested
-								35213,	-- The Razorbloom
 								35215,	-- The Voice of Iyu
 							},
 						}),
@@ -976,6 +863,7 @@ root(ROOTS.Zones, {
 					}),
 					n(-357,  {	-- Sparring Arena
 						q(35210,  {	-- A Great Escape
+							["provider"] = { "o", 236140 },	-- Goren Tunnel
 							["coord"] = { 34.7, 66.9, 547 },
 							["description"] = "Available once you complete the objectives for |cFFFFD700Fair Warning|r and |cFFFFD700Leave Every Solder Behind|r.",
 							["isBreadcrumb"] = true,	-- unavailable once you turn in "Leave Every Soldier Behind"
@@ -1038,6 +926,9 @@ root(ROOTS.Zones, {
 							["provider"] = { "n", 82832 },	-- Rexxar
 							["coord"] = { 44.2, 61.6, GORGROND },
 							["sourceQuest"] = 35730,	-- Cauterizing Wounds
+							["groups"] = {
+								i(113504),	-- Basilisk Meat (QI!)
+							},
 						}),
 						q(36438,  {	-- Beatface vs. Boulder (A)
 							["provider"] = { "n", 85432 },	-- Altauur
@@ -1066,6 +957,11 @@ root(ROOTS.Zones, {
 								35665,	-- We Have Company (A)
 								35025,	-- We Have Company (H)
 							},
+							["groups"] = {
+								o(233180, {	-- Iron Horde Bonfire
+									i(113398),	-- Burning Log (QI!)
+								}),
+							},
 						}),
 						q(35702,  {	-- Chains of Iron (A)
 							["provider"] = { "n", 84131 },	-- Rexxar
@@ -1073,6 +969,9 @@ root(ROOTS.Zones, {
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuest"] = 35139,	-- Eye in the Sky
 							["g"] = {
+								o(231775, {	-- Heart of the Magnaron
+									i(112680),	-- Heart of the Magnaron (QI!)
+								}),
 								i(112588),	-- Foundry-Fired Plate Chestplate
 								i(112590),	-- Overgrowth Cutter Vest
 								i(112607),	-- Steamburst Robe
@@ -1146,6 +1045,9 @@ root(ROOTS.Zones, {
 							["coord"] = { 46.1, 55.0, GORGROND },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuest"] = 36508,	-- Is This One of Yours?
+							["groups"] = {
+								i(112786),	-- Goren Shell (QI!)
+							},
 						}),
 						q(35218,  {	-- Iron Horde Orders
 							["provider"] = { "n", 80856 },	-- Rexxar
@@ -1189,6 +1091,11 @@ root(ROOTS.Zones, {
 							["coord"] = { 46.1, 55.0, GORGROND },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuest"] = 36209,	-- What's Under There?
+							["groups"] = {
+								o(233594, {	-- Thukmar's Research
+									i(113629),	-- Thukmar's Intel
+								}),
+							},
 						}),
 						q(35129,  {	-- Leave Every Soldier Behind (H)
 							["provider"] = { "n", 80856 },	-- Rexxar
@@ -1220,6 +1127,9 @@ root(ROOTS.Zones, {
 								34704,	-- A Rediscovered Legend (A)
 								34697,	-- A Rediscovered Legend (H)
 							},
+							["groups"] = {
+								i(108898),	-- Ogre Tooth (QI!)
+							},
 						}),
 						q(35934,  {	-- Nisha's Vengeance
 							["provider"] = { "n", 80856 },	-- Rexxar
@@ -1234,6 +1144,7 @@ root(ROOTS.Zones, {
 							["coord"] = { 44.2, 61.6, GORGROND },
 							["sourceQuest"] = 35730,	-- Cauterizing Wounds
 							["g"] = {
+								i(113009),	-- Quenching Waters (QI!)
 								i(119064),	-- Steamfury Band
 								i(118039),	-- Steamfury Loop
 								i(119072),	-- Steamfury Ring
@@ -1258,6 +1169,9 @@ root(ROOTS.Zones, {
 							["coord"] = { 46.2, 66.6, GORGROND },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuest"] = 35686,	-- Rage and Wisdom
+							["groups"] = {
+								i(114967),	-- Torch (QI!)
+							},
 						}),
 						q(35035,  {	-- Seedbearers of Bad News (H)
 							["provider"] = { "n", 81202 },	-- Bony Xuk
@@ -1271,6 +1185,11 @@ root(ROOTS.Zones, {
 							["sourceQuests"] = {
 								34704,	-- A Rediscovered Legend (A)
 								34697,	-- A Rediscovered Legend (H)
+							},
+							["groups"] = {
+								i(108899),	-- Pendant of Brol (QI!)
+								i(111527),	-- Pendant of Krag (QI!)
+								i(111528),	-- Pendant of Mol (QI!)
 							},
 						}),
 						q(36576,  {	-- Strike While the Iron is Hot (A)
@@ -1306,6 +1225,7 @@ root(ROOTS.Zones, {
 							["coord"] = { 36.8, 67.9, GORGROND },
 							["sourceQuest"] = 34699,	-- Getting Gladiators
 							["g"] = {
+								i(109023),	-- Serathil (QI!)
 								i(112888),	-- Anger of Kor'gall
 								i(112886),	-- Ferocity of Kor'gall
 								i(112884),	-- Might of Kor'gall
@@ -1317,6 +1237,7 @@ root(ROOTS.Zones, {
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuest"] = 36508,	-- Is This One of Yours?
 							["g"] = {
+								i(112911),	-- Goren Crystal (QI!)
 								i(112864),	-- Laughing Skull Trophy Necklace
 								i(119085),	-- Xuk's Bad Xuk Charm
 								i(119076),	-- Xuk's Fingerbone Pouch
@@ -1334,11 +1255,15 @@ root(ROOTS.Zones, {
 							},
 						}),
 						q(35925,  {	-- The Gronn Strategy
-							["icon"] = "Interface\\Icons\\inv_letter_07",
+							["provider"] = { "o", 233391 },	-- Weaponization Orders
+							["icon"] = 133463,
 							["coord"] = { 47.7, 52.0, GORGROND },
 							["sourceQuests"] = {
 								35218,	-- Iron Horde Orders
 								35730,	-- Cauterizing Wounds
+							},
+							["groups"] = {
+								i(116909),	-- Weaponization Orders
 							},
 						}),
 						q(35882,  {	-- The Interest of Bruto
@@ -1444,8 +1369,13 @@ root(ROOTS.Zones, {
 							["coord"] = { 46.1, 55.0, GORGROND },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = {
+								35925,	-- The Gronn Strategy
 								36210,	-- Hard Shell
 								36208,	-- The Crystal Shard
+							},
+							["groups"] = {
+								i(112958),	-- Goren Disguise (QI!)
+								i(114963),	-- Grom'kar Dispatch (QI!)
 							},
 						}),
 						q(35041, {	-- Xuk It!
@@ -1489,7 +1419,7 @@ root(ROOTS.Zones, {
 						}),
 					}),
 					n(-357, sharedData({	-- Sparring Arena (A) (Proofs of Strength)
-						["description"] = "Quest Item will only drop from mobs which are attacked by your special Sparring Arena follower.",
+						["description"] = "Quest Item will only drop from mobs killed while your Sparring Arena follower is summoned, they do not need to hit any.",
 						["sourceQuest"] = 35137,	-- The Sparring Arena (A)
 						["races"] = ALLIANCE_ONLY,
 					},{
@@ -1579,7 +1509,7 @@ root(ROOTS.Zones, {
 						}),
 					})),
 					n(-357, sharedData({	-- Sparring Arena (H) (Proofs of Strength)
-						["description"] = "Quest Item will only drop from mobs which are attacked by your special Sparring Arena follower.",
+						["description"] = "Quest Item will only drop from mobs killed while your Sparring Arena follower is summoned, they do not need to hit any.",
 						["sourceQuest"] = 35152,	-- The Sparring Arena (H)
 						["races"] = HORDE_ONLY,
 					},{
@@ -1693,6 +1623,9 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = {
 							35644,	-- Mercy for the Living
 							35645,	-- The Secret of the Fungus
+						},
+						["groups"] = {
+							i(112394),	-- Enlarged Stomper Spore Pod (QI!)
 						},
 					}),
 					q(35030, {	-- A Grim Harvest (H)
@@ -1819,6 +1752,11 @@ root(ROOTS.Zones, {
 							i(112605),	-- Wildwood Wrangler Leggings
 						},
 					}),
+					heroscall(q(49564, {	-- Hero's Call: Gorgrond!
+						["timeline"] = { ADDED_7_3_5 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 92,
+					})),
 					q(34279, {	-- I Am Blook
 						["provider"] = { "n", 78030 },	-- Blook
 						["coord"] = { 41.3, 91.5, GORGROND },
@@ -1909,7 +1847,7 @@ root(ROOTS.Zones, {
 					q(34463, {	-- Mysterious Ring
 						["provider"] = { "o", 229330 },	-- Mysterious Ring
 						["coord"] = { 39.6, 39.9, GORGROND },
-						["icon"] = "Interface\\Icons\\inv_jewelry_ring_10",
+						["icon"] = 133352,
 					}),
 					q(36495, {	-- News from Talador (A)
 						["provider"] = { "n", 75127 },	-- Vindicator Maraad
@@ -1977,8 +1915,8 @@ root(ROOTS.Zones, {
 						["isBreadcrumb"] = true,
 					}),
 					q(36441, {	-- Reclaiming Property
-						--["objectID"] = 234474,	-- Saberon Stash
-						["icon"] = "Interface\\Icons\\inv_misc_herb_whiptail",
+						["provider"] = {"o",234474},	-- Saberon Stash
+						["icon"] = 459041,
 						["coord"] = { 51.0, 51.6, GORGROND },
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 36438,	-- Beatface vs. Boulder
@@ -2001,6 +1939,11 @@ root(ROOTS.Zones, {
 					q(33633, {	-- Rooter the Ravenous
 						["provider"] = { "n", 75593 },	-- Rooter
 						["coord"] = { 42.6, 37.8, GORGROND },
+						["groups"] = {
+							o(225596, {	-- Prickly Nopal
+								i(107609),	-- Prickly Nopal (QI!)
+							}),
+						},
 					}),
 					q(36440, {	-- Saberon Population Reduction
 						["provider"] = { "n", 85431 },	-- Altauur
@@ -2016,16 +1959,12 @@ root(ROOTS.Zones, {
 							i(118005),	-- Steamscar Vessel
 						},
 					}),
-					o(234474, {	-- Saberon Stash
+					q(33660, {	-- The Sacking of the Saberon
+						["provider"] = {"o",234474},	-- Saberon Stash
 						["coord"] = { 51.0, 51.6, GORGROND },
-						["g"] = {
-							q(33660, {	-- The Sacking of the Saberon
-								--["objectID"] = 234474,	-- Saberon Stash
-								["icon"] = "Interface\\Icons\\inv_misc_herb_whiptail",
-								["races"] = HORDE_ONLY,
-								["sourceQuest"] = 33662,	-- Beatface vs. Boulder
-							}),
-						},
+						["icon"] = 459041,
+						["races"] = HORDE_ONLY,
+						["sourceQuest"] = 33662,	-- Beatface vs. Boulder
 					}),
 					n(85374, {	-- Sappy
 						["questID"] = 35630,
@@ -2036,6 +1975,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 59.3, 56.3, GORGROND },
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 35666,	-- Rangari in the Red
+						["groups"] = {
+							i(113243),	-- Rangari Pouch (QI!)
+						},
 					}),
 					q(36432, {	-- Seeking the Scout
 						["provider"] = { "n", 75146 },	-- Rangari D'kaan
@@ -2092,7 +2034,9 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = {
 							34867,	-- The Secrets of Gorgrond
 							35557,	-- The Secrets of Gorgrond
+							-- #if AFTER 7.3.5
 							49546,	-- Warchief's Command: Gorgrond!
+							-- #endif
 						},
 					}),
 					q(35645, {	-- The Secret of the Fungus (A)
@@ -2103,6 +2047,11 @@ root(ROOTS.Zones, {
 							35642,	-- Mysterious Pod
 							35633,	-- Scout Forensics
 							35640,	-- Vengeance for the Fallen
+						},
+						["groups"] = {
+							o(231769, {	-- Glowing Mushroom
+								i(112672),	-- Glowing Mushroom (QI!)
+							}),
 						},
 					}),
 					q(35029, {	-- The Secret of the Fungus (H)
@@ -2299,11 +2248,16 @@ root(ROOTS.Zones, {
 							i(112611),	-- Wildwood Wrangler Monnion
 						},
 					}),
+					warchiefscommand(q(49546, {	-- Warchief's Command: Gorgrond!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+					})),
 					q(35487, {	-- We Burn the Dead
 						["provider"] = { "n", 82274 },	-- Cutter
+						["sourceQuest"] = 35430,	-- Cutter
 						["coord"] = { 43.7, 84.0, GORGROND },
 						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 35430,	-- Cutter
 					}),
 					q(33548, {	-- We Die Laughing
 						["provider"] = { "n", 76987 },	-- Kaz the Shrieker
@@ -2334,7 +2288,9 @@ root(ROOTS.Zones, {
 							33533,	-- The Secrets of Gorgrond
 							35556,	-- The Secrets of Gorgrond
 							36632,	-- The Secrets of Gorgrond
+							-- #if AFTER 7.3.5
 							49564,	-- Hero's Call: Gorgrond!
+							-- #endif
 						},
 					}),
 					q(35151, {	-- Your Base, Your Choice
@@ -2409,9 +2365,6 @@ root(ROOTS.Zones, {
 							{ 71.4, 40.2, GORGROND },
 						},
 						["g"] = {
-							crit(5, {	-- Alkali
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
 							i(119361),	-- Thorn-Knuckled Gloves
 						},
 					}),
@@ -2424,7 +2377,6 @@ root(ROOTS.Zones, {
 					}),
 					n(86257, {	-- Basten (Protectors of the Grove)
 						["description"] = "Kill Basten LAST or you will not be able to loot him.",
-						["modelID"] = 57964,
 						["questID"] = 37369,
 						["isDaily"] = true,
 						["coord"] = { 69.2, 44.6, GORGROND },
@@ -2433,9 +2385,6 @@ root(ROOTS.Zones, {
 							86259,	-- Valstil
 						},
 						["g"] = {
-							crit(3, {	-- Protectors of the Grove)
-								["achievementID"] = 9678,	-- Ancient No More (Everbloom Wilds)
-							}),
 							i(119432),	-- Botani Camouflage (TOY!)
 							i(119357),	-- Grovetender's Cummerbund
 						},
@@ -2456,9 +2405,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(6, {	-- Fight the Power
-								["achievementID"] = 9655,	-- Fight the Power
-							}),
 							i(119228),	-- Ro'gor's Slippers of Silence
 						},
 					}),
@@ -2475,9 +2421,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 48.25, 20.83, GORGROND },
 						["lvl"] = 100,
 						["g"] = {
-							crit(2, {	-- Defector Dazgo
-								["achievementID"] = 9655,	-- Fight the Power
-							}),
 							i(119224),	-- Foereaver Polearm
 						},
 					}),
@@ -2486,9 +2429,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 72.6, 40.8, GORGROND },
 						["g"] = {
-							crit(6, {	-- Depthroot
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
 							i(119406),	-- Depthroot's Forearm
 						},
 					}),
@@ -2498,9 +2438,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 49.8, 23.8, GORGROND },	-- **Coords unconfirmed, relied on wowhead**
 						["lvl"] = 100,
 						["g"] = {
-							crit(3, {	-- Durp the Hated
-								["achievementID"] = 9655,	-- Fight the Power
-							}),
 							i(119225),	-- Studded Gronn-Stitched Girdle
 						},
 					}),
@@ -2513,9 +2450,6 @@ root(ROOTS.Zones, {
 							{ 72.8, 35.8, GORGROND },
 						},
 						["g"] = {
-							crit(7, {	-- Firestarter Grash
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
 							i(119381),	-- Grash's Fireproof Handguards
 						},
 					}),
@@ -2574,10 +2508,7 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 59.6, 43.0, GORGROND },
 						["g"] = {
-							crit(8, {	-- Grove Warden Yal
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
-							i(119414),  -- Yal's Leafwrap Cloak
+							i(119414),	-- Yal's Leafwrap Cloak
 						},
 					}),
 					n(83522, {	-- Hive Queen Skrikka
@@ -2596,9 +2527,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(5, {	-- Horgg
-								["achievementID"] = 9655,	-- Fight the Power
-							}),
 							i(119229),	-- Horgg's Bandolier
 						},
 					}),
@@ -2607,9 +2535,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 55.0, 46.2, GORGROND },
 						["g"] = {
-							crit(9, {	-- Hunter Bal'ra
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
 							i(119412),	-- Bal'ra's Compound Bow
 						},
 					}),
@@ -2619,9 +2544,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 47.6, 30.8, GORGROND },	-- **Coords unconfirmed, relied on wowhead**
 						["lvl"] = 100,
 						["g"] = {
-							crit(4, {	-- Inventor Blammo
-								["achievementID"] = 9655,	-- Fight the Power
-							}),
 							i(119226),	-- Blammo's Blammer
 						},
 					}),
@@ -2650,9 +2572,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 49.17, 33.11, GORGROND },
 						["lvl"] = 100,
 						["g"] = {
-							crit(1, {	-- Maniacal Madgard
-								["achievementID"] = 9655,	-- Fight the Power
-							}),
 							i(119230),	-- Unpopped Pustule Pendant
 						},
 					}),
@@ -2661,9 +2580,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 61.6, 39.2, GORGROND },
 						["g"] = {
-							crit(2, {	-- Mogamago
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
 							i(119391),	-- Etched Osteoderm Shield
 						},
 					}),
@@ -2676,9 +2592,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(7, {	-- Morgo Kain
-								["achievementID"] = 9655,	-- Fight the Power
-							}),
 							i(119227),	-- Morgo's Unstoppable Ramming Helm
 						},
 					}),
@@ -2693,6 +2606,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(50985, {	-- Poundfist
+						["description"] = "Poundfist has a respawn timer between 48-142 hours. Mount drop rate is 100% for all participants.",
 						["coords"] = {
 							{ 42.0, 25.0, GORGROND },
 							{ 51.4, 43.1, GORGROND },
@@ -2758,9 +2672,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 59.52, 31.97, GORGROND },
 						["g"] = {
-							crit(1, {	-- Swift Onyx Flayer
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
 							i(119367),	-- Flayerscale Carapace Stompers
 						},
 					}),
@@ -2785,9 +2696,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 63.4, 30.8, GORGROND },
 						["g"] = {
-							crit(4, {	-- Venolasix
-								["achievementID"] = 9678,	-- Ancient No More
-							}),
 							i(119395),	-- Hydratooth Dagger
 						},
 					}),
@@ -3134,9 +3042,12 @@ root(ROOTS.Zones, {
 							},
 						}),
 						o(233505, {	-- Unknown Petrified Egg
-							["description"] = "Inside the cave with Pale and Spiders.",
+							["description"] = "Inside The Forgotten Caves with Pale and Spiders.",
 							["questID"] = 36713,
-							["coord"] = { 53.0, 79.0, GORGROND },
+							["coords"] = {
+								{ 53.0, 79.0, GORGROND }, -- Egg Location
+								{ 51.4, 77.6, GORGROND }, -- Cave Entrance
+							},
 							["g"] = {
 								currency(824),	-- Garrison Resources
 							},
@@ -3181,8 +3092,12 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(236169, {	-- Harvestable Precious Crystal
+						["description"] = "Inside Glut's burrow.",
 						["questID"] = 36651,
-						["coord"] = { 46.1, 50.0, GORGROND },
+						["coords"] = {
+							{ 46.1, 50.0, GORGROND },  -- Crystal
+							{ 44.5, 50.75, GORGROND }, -- Glut's Burrow Entrance
+						},
 						["g"] = {
 							currency(824),	-- Garrison Resources
 						},
@@ -3199,6 +3114,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(233149, {	-- Laughing Skull Cache
+						["description"] = "On a tree branch above these coordinates.",
 						["questID"] = 35709,
 						["coord"] = { 44.2, 74.3, GORGROND },
 						["g"] = {
@@ -3243,6 +3159,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(236149, {	-- Sasha's Secret Stash
+						["description"] = "Hanging at the ledge of a beam. Can be accessed from the top of the tower or by precise flying.",
 						["questID"] = 36631,
 						["coord"] = { 39.0, 68.1, GORGROND },
 						["sym"] = COMMON_TREASURE_SYM,
@@ -3255,14 +3172,18 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(236092, {	-- Stashed Emergency Rucksack
+						["description"] = "Tied to a rope. Jumping around required to access the platform.",
 						["questID"] = 36604,
 						["coord"] = { 48.1, 93.4, GORGROND },
 						["sym"] = COMMON_TREASURE_SYM,
 					}),
 					o(231069, {	-- Strange Looking Dagger
-						["description"] = "Inside the cave with Pale and Spiders",
+						["description"] = "Inside The Forgotten Caves with Pale and Spiders.",
 						["questID"] = 34940,
-						["coord"] = { 53.0, 80.0, GORGROND },
+						["coords"] = {
+							{ 53.0, 80.0, GORGROND }, -- Dagger Location
+							{ 51.4, 77.6, GORGROND }, -- Cave Entrance
+						},
 						["g"] = {
 							i(118718),	-- Pale Bloodthief Dagger
 						},
@@ -3312,7 +3233,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(36249),	-- Active Choice: Lumbermill - triggers if the Lumbermill is currently active
 		q(36250),	-- Active Choice: Lumbermill - triggers if the Lumbermill is currently active
 		q(36251),	-- Active Choice: Sparring Arena - triggers if the Sparring Arena is currently active
@@ -3332,12 +3253,5 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(36588),	-- Tracking - See Closed Chest — triggeres immediately after accepting "The Beating Heart" (questID 34410)
 		q(35064),	-- Sparring Arena
 		q(35149),	-- Sparring Arena - triggers if you choose to build the Sparring Arena for the first time
-	}),
-});
-root(ROOTS.NeverImplemented, {
-	tier(WOD_TIER, {
-		n(WEAPONS, {
-			i(119408),	-- Foereaver Polearm [This version wasn't added]
-		}),
 	}),
 });

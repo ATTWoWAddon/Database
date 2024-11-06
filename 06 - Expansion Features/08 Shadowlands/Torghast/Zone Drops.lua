@@ -1,7 +1,7 @@
 ---------------------------------------------------
 --          Z O N E S       M O D U L E          --
 ---------------------------------------------------
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	m(TORGHAST, {
 		n(176761, {	-- Adamant Vault
 			n(COMMON_BOSS_DROPS, sharedData({ ["timeline"] = { ADDED_9_1_0 } }, {
@@ -28,7 +28,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				},
 			})),
 		}),
-		n(COMMON_BOSS_DROPS, sharedData({ ["timeline"] = { "added 9.2.0" } }, {
+		n(COMMON_BOSS_DROPS, sharedData({ ["timeline"] = { ADDED_9_2_0 } }, {
 			i(188688, {	-- Burnished Eye Crescent
 				["crs"] = {
 					155945,	-- Gherus the Chained
@@ -66,7 +66,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					159190,	-- Synod
 				},
 			}),
-			i(187044, {	-- Deathbringer's Epaulettes
+			i(187044, {	-- Deathbringer's Epaulets
 				["crs"] = {
 					151331,	-- Cellblock Sentinel
 					170418,	-- Goxul the Devourer
@@ -170,6 +170,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 			}),
 		})),
 		n(COMMON_BOSS_DROPS, {
+			currency(1828),	-- Soul Ash
 			i(183193, {	-- Ashen Chomper (PET!)
 				["crs"] = {
 					151331,	-- Cellblock Sentinel
@@ -217,6 +218,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					159190,	-- Synod
 				},
 			}),
+			i(178585),	-- The Forgotten Key (QI!)
 			i(183195, {	-- Torghast Lurker (PET!)
 				["crs"] = {
 					153011,	-- Binder Baritas

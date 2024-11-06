@@ -1,21 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	inst(558, {	-- Iron Docks
 		["mapID"] = 595,
 		["coord"] = { 45.36, 13.52, GORGROND },
 		["lvl"] = 92,
 		["g"] = {
-			n(ACHIEVEMENTS, {
-				ach(9838, {	-- What A Strange, Interdimensional Trip It's Been
-					["collectible"] = false,
-					["g"] = {
-						crit(2),	-- Skulloc, Son of Gruul
-					},
-				}),
-			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1235, {	-- Fleshrender Nok'gar
 					["crs"] = {
 						81297,	-- Dreadfang
@@ -92,7 +84,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				n(ACHIEVEMENTS, {
 					ach(9081),	-- Expert Timing
 				}),
@@ -106,7 +98,13 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, FINGER},
 					},
 					["g"] = {
-						ach(9083),	-- Militaristic, Expansionist
+						ach(9083, {	-- Militaristic, Expansionist
+							["crs"] = {
+								83026,	-- Siegemaster Olugar
+								84520,	-- Pitwarden Gwarnok
+								81603,	-- Champion Druna
+							},
+						}),
 						i(110055),	-- Gutwrench Goreaxe
 						i(110002),	-- Fleshrender's Meathook
 					},
@@ -158,7 +156,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(1235, {	-- Fleshrender Nok'gar
 					["crs"] = {
 						81297,	-- Dreadfang
@@ -223,7 +221,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(34536),	-- Iron Docks Challenge Mode - Bronze Addition (Nth)
 		q(34526),	-- Iron Docks Challenge Mode - Consolation (Nth)
 		q(34538),	-- Iron Docks Challenge Mode - Gold Addition (Nth)

@@ -2,7 +2,7 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	n(VENTHYR, {
 		["customCollect"] = "SL_COV_VEN",
 		["maps"] = {
@@ -48,16 +48,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 						i(181732),	-- Tribute of the Ambitious
 					},
 				}),
-				q(60378, {	-- A Source of Sorrowvine
+				q(60463, {	-- Anima Appeal
 					--["provider"] = { "n",  },	--
-					--["coord"] = { ,  },
-					["g"] = {
-						i(181556),	-- Tribute of the Court
-					},
-				}),
-				q(60370, {	-- A Wealth of Wealdwood
-					--["provider"] = { "n",  },	--
-					--["coord"] = { ,  },
+					--["coord"] = { X, Y, SINFALL_DEPTHS },
 					["g"] = {
 						i(181556),	-- Tribute of the Court
 					},
@@ -94,13 +87,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 					["provider"] = { "n", 164738 },	-- Tenaval
 					["coord"] = { 45.4, 28.5, SINFALL_REACHES },
 					["g"] = {
-						i(181556),	-- Tribute of the Court
-					},
-				}),
-				q(60375, {	-- Bonemetal Bonanza
-					--["provider"] = { "n",  },	--
-					--["coord"] = { ,  },
-					["g"] = {
+						i(184561),	-- Anima Embers (QI!)
 						i(181556),	-- Tribute of the Court
 					},
 				}),
@@ -132,17 +119,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 						i(181557),	-- Favor of the Court
 					},
 				}),
-				q(60365, {	-- Gildenite Grab
-					["provider"] = { "n", 158713 },	-- The Curator
-					--["coord"] = { ,  },
-					["g"] = {
-						i(181556),	-- Tribute of the Court
-					},
-				}),
 				q(60417, {	-- Rare Resources
 					["provider"] = { "n", 158713 },	-- The Curator
 					["coord"] = { 61.3, 66.7, SINFALL_DEPTHS },
 					["g"] = {
+						i(179327),	-- Coin of Brokerage (QI!)
 						i(181556),	-- Tribute of the Court
 					},
 				}),
@@ -191,4 +172,4 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 			})),
 		},
 	}),
-}));
+})));

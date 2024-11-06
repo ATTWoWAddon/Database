@@ -3,39 +3,38 @@
 -------------------------------------------------------------------
 
 root(ROOTS.ExpansionFeatures,
-	tier(BFA_TIER, {
-		n(WARFRONT, {
+	expansion(EXPANSION.BFA, {
+		n(WAR_EFFORT, {
 			n(-236, {	-- Alliance War Campaign
 				["races"] = ALLIANCE_ONLY,
 				["g"] = {
 					ach(12510, {	-- Ready for War
-						["collectible"] = false,
 						["races"] = ALLIANCE_ONLY,
 						["maps"] = { BORALUS },
 						["lvl"] = 110,
 						["g"] = {
-							crit(1, {	-- Nazmir Foothold
+							crit(40201, {	-- Nazmir Foothold
 								["sourceQuests"] = { 51967 },	-- Return to Boralus (Nazmir)
 							}),
-							crit(2, {	-- Vol'dun Foothold
+							crit(40202, {	-- Vol'dun Foothold
 								["sourceQuests"] = { 51969 },	-- Return to Boralus (Vol'dun)
 							}),
-							crit(3, {	-- Zuldazar Foothold
+							crit(40203, {	-- Zuldazar Foothold
 								["sourceQuests"] = { 51968 },	-- Return to Boralus (Zuldazar)
 							}),
-							crit(4, {	-- Blood on the Sand
+							crit(40573, {	-- Blood on the Sand
 								["sourceQuests"] = { 52146 },	-- Blood on the Sand
 							}),
-							crit(5, {	-- Chasing Darkness
+							crit(40574, {	-- Chasing Darkness
 								["sourceQuests"] = { 52219 },	-- Target: Blood Prince Dreven
 							}),
-							crit(6, {	-- A Golden Opportunity
+							crit(40583, {	-- A Golden Opportunity
 								["sourceQuests"] = { 52261 },	-- Gallywix Got Away
 							}),
-							crit(7, {	-- Blood in the Water
+							crit(40869, {	-- Blood in the Water
 								["sourceQuests"] = { 52496 },	-- A Clean Escape
 							}),
-							crit(8, {	-- The Strike on Zuldazar
+							crit(40870, {	-- The Strike on Zuldazar
 								["sourceQuests"] = { 52790 },	-- The Strike on Zuldazar
 							}),
 						},
@@ -47,16 +46,16 @@ root(ROOTS.ExpansionFeatures,
 					ach(13467, {	-- Tides of Vengeance
 						["races"] = ALLIANCE_ONLY,
 						["g"] = {
-							crit(1, {	-- War Marches On
+							crit(44260, {	-- War Marches On
 								["sourceQuests"] = { 53887 },	-- War Marches On
 							}),
-							crit(2, {	-- The Sleeper Agent
+							crit(44261, {	-- The Sleeper Agent
 								["sourceQuests"] = { 54206 },	-- The Sleeper Agent
 							}),
-							crit(3, {	-- Mischief Managed
+							crit(44262, {	-- Mischief Managed
 								["sourceQuests"] = { 54510 },	-- Mischief Managed
 							}),
-							crit(4, {	-- He Who Walks in the Light
+							crit(44263, {	-- He Who Walks in the Light
 								["sourceQuests"] = { 54459 },	-- He Who Walks in the Light
 							}),
 						},
@@ -64,9 +63,11 @@ root(ROOTS.ExpansionFeatures,
 					a(ach(13925, {	-- The Fourth War
 					--	not nesting 'ready for war' and 'tides of vengeance' achievements inside, because when you try to utilize the sourceQuests on 'the fourth war' it does not display properly.
 						["sourceQuests"] = { 57002 },	-- Old Soldier
+						["sym"] = {{"meta_achievement",
+							12510,	-- Ready for War
+							13467,	-- Tides of Vengeance
+						}},
 						["g"] = {
-							crit(1),	-- Ready for War
-							crit(2),	-- Tides of Vengeance
 							title(412),	-- Veteran of the Fourth War
 						},
 					})),
@@ -109,6 +110,7 @@ root(ROOTS.ExpansionFeatures,
 						q(53052, {	-- Deeper Into Zandalar
 							["races"] = ALLIANCE_ONLY,
 							["isBreadcrumb"] = true,
+							["description"] = "Conquer one foothold, then relog while in Zandalar.",
 						}),
 						q(47099, {	-- Get Your Bearings
 							["coord"] = { 75.7, 23.5, BORALUS },
@@ -131,6 +133,11 @@ root(ROOTS.ExpansionFeatures,
 							["sourceQuests"] = { 47186 },	-- Sanctum of Sages
 							["coord"] = { 68.1, 21.9, BORALUS },
 							["provider"] = { "n", 121235 },	-- Taelia
+							["groups"] = {
+								ach(12582, {	-- Come Sail Away
+									["races"] = ALLIANCE_ONLY,
+								}),
+							},
 						}),
 						q(52654, {	-- The War Campaign
 							["sourceQuests"] = { 47189 },	-- A Nation Divided
@@ -360,12 +367,18 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 39.0, 42.9, VOLDUN },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 51349 },	-- Honor Bound
+							["g"] = {
+								i(160044),	-- Prickly Pear Root (QI!)
+							},
 						}),
 						q(51351, {	-- Poisoned Barbs
 							["provider"] = { "n", 137337 },	-- Sergeant Ermey
 							["coord"] = { 39.0, 42.9, VOLDUN },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 51349 },	-- Honor Bound
+							["g"] = {
+								i(159958),	-- Saltspine Barb (QI!)
+							},
 						}),
 						q(51366, {	-- Antidote Application
 							["provider"] = { "n", 137337 },	-- Sergeant Ermey
@@ -456,18 +469,27 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 77.1, 55.5, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 51201 },	-- The Troll's Tale
+							["g"] = {
+								i(160249),	-- Bundle of Supplies (QI!)
+							},
 						}),
 						q(51193, {	-- That One's Mine
 							["provider"] = { "n", 136192 },	-- Degdod
 							["coord"] = { 77.1, 55.5, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 51201 },	-- The Troll's Tale
+							["g"] = {
+								i(159779),	-- Degdod's Hammer (QI!)
+							},
 						}),
 						q(51191, {	-- Save Them All
 							["provider"] = { "n", 136195 },	-- Medic Feorea
 							["coord"] = { 77.1, 55.5, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 51201 },	-- The Troll's Tale
+							["g"] = {
+								i(160433),	-- Bandages (QI!)
+							},
 						}),
 						q(51418, {	-- Xibala
 							["provider"] = { "n", 135620 },	-- Kelsey Steelspark
@@ -493,6 +515,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 137401 },	-- Anvil-Thane Thurgaden
 							["coord"] = { 40.7, 70.8, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
+							["g"] = {
+								i(159910),	-- Firelands Slag (QI!)
+							},
 						}),
 						q(51359, {	-- Fragment of the Firelands
 							["provider"] = { "n", 137401 },	-- Anvil-Thane Thurgaden
@@ -501,6 +526,9 @@ root(ROOTS.ExpansionFeatures,
 							["sourceQuests"] = {
 								51331,	-- Mole Machinations
 								51309,	-- Rocks of Ragnaros
+							},
+							["g"] = {
+								i(160058),	-- Stabilize Magma Elemental (QI!)
 							},
 						}),
 						q(52003, {	-- Champion: Kelsey Steelspark
@@ -579,6 +607,9 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 40.7, 47.8, VOLDUN },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52028 },	-- Comb the Desert
+							["g"] = {
+								i(161086),	-- Reliquary Orders (QI!)
+							},
 						}),
 						q(52030, {	-- Keep Combing
 							["provider"] = { "n", 139705 },	-- Halford Wyrmbane
@@ -591,6 +622,9 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 44.9, 58.7, VOLDUN },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52030 },	-- Keep Combing
+							["g"] = {
+								i(161087),	-- Reliquary Map: Vol'dun (QI!)
+							},
 						}),
 						q(52032, {	-- Never Stop Combing
 							["provider"] = { "n", 139705 },	-- Halford Wyrmbane
@@ -603,6 +637,10 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 41.0, 72.5, VOLDUN },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52032 },	-- Never Stop Combing
+							["g"] = {
+								i(161241),	-- Zandalari Dunemelon (QI!)
+								i(161240),	-- Zandalari Water Jug (QI!)
+							},
 						}),
 						q(52034, {	-- A Message to the Zandalari
 							["provider"] = { "n", 139719 },	-- Shandris Feathermoon
@@ -615,6 +653,9 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 41.0, 72.5, VOLDUN },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52032 },	-- Never Stop Combing
+							["g"] = {
+								i(161333),	-- Ultra-Safe Electrified Alpaca Lasso (QI!)
+							},
 						}),
 						q(52038, {	-- Splitting Up
 							["provider"] = { "n", 139705 },	-- Halford Wyrmbane
@@ -664,6 +705,9 @@ root(ROOTS.ExpansionFeatures,
 							["races"] = ALLIANCE_ONLY,
 							["isBreadcrumb"] = true,
 							["sourceQuests"] = { 52146 },	-- Blood on the Sand
+							["minReputation"] = { FACTION_7TH_LEGION, FRIENDLY+4500 },
+							["description"] = "Relog (outside of Boralus) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(52147, {	-- Crippling the Horde
 							["provider"] = { "n", 135612 },	-- Halford Wyrmbane
@@ -701,6 +745,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 140258 },	-- Shandris Feathermoon
 							["coord"] = { 51.2, 21.8, NAZMIR },
 							["races"] = ALLIANCE_ONLY,
+							["g"] = {
+								i(161332),	-- Horde Missive (QI!)
+							},
 						}),
 						q(52171, {	-- One Option: Fire
 							["provider"] = { "n", 139609 },	-- John J. Keeshan
@@ -729,6 +776,9 @@ root(ROOTS.ExpansionFeatures,
 								52171,	-- One Option: Fire
 								52172,	-- They Can't Stay Here
 							},
+							["g"] = {
+								i(163196),	-- Invisibility Flask (QI!)
+							},
 						}),
 						q(52219, {	-- Target: Blood Prince Dreven
 							["provider"] = { "n", 140519 },	-- Shandris Feathermoon
@@ -741,6 +791,9 @@ root(ROOTS.ExpansionFeatures,
 							["races"] = ALLIANCE_ONLY,
 							["isBreadcrumb"] = true,
 							["sourceQuests"] = { 52219 },	-- Target: Blood Prince Dreven
+							["minReputation"] = { FACTION_7TH_LEGION, HONORED+3000 },
+							["description"] = "Relog (outside of Boralus) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(52154, {	-- Our Next Target
 							["provider"] = { "n", 135612 },	-- Halford Wyrmbane
@@ -769,12 +822,18 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 40.6, 70.7, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52173 },	-- The Void Elves Stand Ready
+							["g"] = {
+								i(161422),	-- Magister Umbric's Void Shard (QI!)
+							},
 						}),
 						q(52203, {	-- Find the Paper Trail
 							["provider"] = { "n", 140477 },	-- Magister Umbric
 							["coord"] = { 40.6, 70.7, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52173 },	-- The Void Elves Stand Ready
+							["g"] = {
+								i(161420),	-- Orders from Gallywix (QI!)
+							},
 						}),
 						q(52241, {	-- A Greedy Goblin's Paradise
 							["provider"] = { "n", 140477 },	-- Magister Umbric
@@ -813,6 +872,9 @@ root(ROOTS.ExpansionFeatures,
 							["races"] = ALLIANCE_ONLY,
 							["isBreadcrumb"] = true,
 							["sourceQuests"] = { 52261 },	-- Gallywix Got Away
+							["minReputation"] = { FACTION_7TH_LEGION, HONORED+7500 },
+							["description"] = "Relog (outside of Boralus) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(52308, {	-- Intercepted Orders
 							["provider"] = { "n", 135612 },	-- Halford Wyrmbane
@@ -888,6 +950,9 @@ root(ROOTS.ExpansionFeatures,
 							["races"] = ALLIANCE_ONLY,
 							["isBreadcrumb"] = true,
 							["sourceQuests"] = { 52496 },	-- A Clean Escape
+							["minReputation"] = { FACTION_7TH_LEGION, REVERED },
+							["description"] = "Relog (outside of Boralus) if this doesn't appear upon hitting the reputation requirement",
+							["DisablePartySync"] = true,
 						}),
 						q(52473, {	-- Bringing Down the Fleet
 							["provider"] = { "n", 135612 },	-- Halford Wyrmbane
@@ -916,6 +981,10 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 57.6, 87.5, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52281 },	-- Under the Cover of Swiftwing
+							["g"] = {
+								i(162264),	-- Kelsey's Jump Boots (QI!)
+								i(162253),	-- Naval Records (QI!)
+							},
 						}),
 						q(52283, {	-- Sabotaging the Pa'ku
 							["provider"] = { "n", 141289 },	-- John J. Keeshan
@@ -955,6 +1024,9 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 48.8, 68.5, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 52290 },	-- My Enemy's Enemy is My Disguise
+							["g"] = {
+								i(162450),	-- Portal Orb (QI!)
+							},
 						}),
 						q(52289, {	-- Victory is Assured
 							["provider"] = { "n", 141291 },	-- Shandris Feathermoon
@@ -1070,6 +1142,9 @@ root(ROOTS.ExpansionFeatures,
 								54519,	-- Squad Goals
 								54518,	-- Zero Zeppelins
 							},
+							["g"] = {
+								i(166682),	-- Blight Specialist Mask (QI!)
+							},
 						}),
 						q(54559, {	-- Free Plumeria
 							["provider"] = { "n", 145632 },	-- Okri Putterwrench
@@ -1179,6 +1254,9 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 41.1, 70.6, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 54200 },	-- Bring the Base
+							["g"] = {
+								i(165759),	-- Azerite Infused Ore (QI!)
+							},
 						}),
 						q(54202, {	-- Calibrate the Core
 							["provider"] = { "n", 147148 },	-- Megs
@@ -1206,6 +1284,9 @@ root(ROOTS.ExpansionFeatures,
 							["coord"] = { 41.1, 70.6, ZULDAZAR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 54204 },	-- Total Temple Destruction
+							["g"] = {
+								i(165815),	-- Tranquilizer Dart (QI!)
+							},
 						}),
 						q(54206, {	-- The Sleeper Agent
 							["provider"] = { "n", 147519 },	-- Kelsey Steelspark
@@ -1323,12 +1404,18 @@ root(ROOTS.ExpansionFeatures,
 								54421,	-- Taming their Beasts
 								54418,	-- The Mech of Death
 							},
+							["g"] = {
+								i(166230),	-- Re-Discombobulator (QI!)
+							},
 						}),
 						q(54459, {	-- He Who Walks in the Light
 							["provider"] = { "n", 147842 },	-- Lady Jaina Proudmoore
 							["coord"] = { 50.4, 84.1, NAZMIR },
 							["races"] = ALLIANCE_ONLY,
 							["sourceQuests"] = { 54441 },	-- Taking the Blood Gate
+							["g"] = {
+								i(166230),	-- Re-Discombobulator (QI!)
+							},
 						}),
 					--	AFTER TIDES OF VENGEANCE
 						q(54485, {	-- Battle of Dazar'alor
@@ -1366,6 +1453,13 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 150796 },	-- Kelsey Steelspark
 							["coord"] = { 80.1, 75.0, TIRAGARDE_SOUND },
 							["races"] = ALLIANCE_ONLY,
+							["g"] = {
+								i(167151),	-- A Pile of Betting Slips (QI!)
+								i(167149),	-- An Annotated Recipe (QI!)
+								i(167153),	-- Ashvane Shipping Record (QI!)
+								i(167154),	-- Bad Poetry (QI!)
+								i(167065),	-- Suspiciously Encrypted Letter (QI!)
+							},
 						}),
 						q(55116, {	-- Getting a Clue
 							["sourceQuests"] = {
@@ -1375,12 +1469,18 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 150796 },	-- Kelsey Steelspark
 							["coord"] = { 80.1, 75.0, TIRAGARDE_SOUND },
 							["races"] = ALLIANCE_ONLY,
+							["g"] = {
+								i(167155),	-- Ashvane Cipher Ring (QI!)
+							},
 						}),
 						q(55119, {	-- Reporting In!
 							["sourceQuests"] = { 55116 },	-- Getting A Clue
 							["provider"] = { "n", 150796 },	-- Kelsey Steelspark
 							["coord"] = { 80.1, 75.0, TIRAGARDE_SOUND },
 							["races"] = ALLIANCE_ONLY,
+							["g"] = {
+								i(167102),	-- A Decrypted Letter from Ashvane (QI!)
+							},
 						}),
 						q(55044, {	-- Don't Shoot the Messenger
 							["sourceQuests"] = { 55119 },	-- Reporting In!
@@ -1423,6 +1523,9 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 150637 },	-- Kelsey Steelspark
 							["coord"] = { 48.2, 41.4, STORMSONG_VALLEY },
 							["races"] = ALLIANCE_ONLY,
+							["g"] = {
+								i(167216),	-- Salvaged Parts (QI!)
+							},
 						}),
 						q(55183, {	-- Seeking Higher Ground
 							["sourceQuests"] = {
@@ -1469,6 +1572,11 @@ root(ROOTS.ExpansionFeatures,
 							["provider"] = { "n", 146374 },	-- Shandris Feathermoon
 							["coord"] = { 11.5, 17.6, ASHENVALE },
 							["races"] = ALLIANCE_ONLY,
+							["g"] = {
+								i(165232),	-- Ancient Kaldorei Tome (QI!)
+								i(165233),	-- Discarded Nightsaber Bridle (QI!)
+								i(165250),	-- Elun'tara, Bow of the High Priestess (QI!)
+							},
 						}),
 						q(54041, {	-- No Survivors
 							["sourceQuests"] = { 53988 },	-- Shores of Fate

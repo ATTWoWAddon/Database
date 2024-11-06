@@ -2,8 +2,8 @@
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
 
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 }, {
-	inst(185, {	-- Well of Eternity
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_3_0 }, {
+	applyclassicphase(CATA_PHASE_HOUR_OF_TWILIGHT, inst(185, {	-- Well of Eternity
 		["mapID"] = 398,
 		["coords"] = {
 			{ 22.9, 64.4, CAVERNS_OF_TIME },	-- dungeon entrance
@@ -48,7 +48,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 					["sourceQuest"] = 30099,	-- In Unending Numbers
 				}),
 			}),
-			n(ZONE_DROPS, { 
+			n(ZONE_DROPS, {
 				i(76158, {	-- Courtier's Slippers
 					["crs"] = {
 						55654,	-- Corrupted Arcanist
@@ -75,8 +75,8 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 						55503,	-- Legion Demon
 						54645,	-- Royal Handmaiden
 						55453,	-- Shadowbat
-					},	
-				}),			
+					},
+				}),
 				i(76159, {	-- Legion Bindings
 					["crs"] = {
 						55654,	-- Corrupted Arcanist
@@ -92,7 +92,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, sharedData({ ["modID"] = 0, }, {
+			d(DIFFICULTY.DUNGEON.HEROIC, sharedData({ ["modID"] = 0, }, {
 				e(290, {	-- Peroth'arn
 					["crs"] = { 55085 },	-- Peroth'arn
 					["groups"] = {
@@ -138,11 +138,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_3_0 },
 				}),
 			})),
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35435),	-- Well of Eternity Reward Quest - Heroic completion
 	}),
 });

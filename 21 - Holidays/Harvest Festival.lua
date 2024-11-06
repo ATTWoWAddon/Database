@@ -15,6 +15,8 @@ HARVEST_FESTIVAL_HEADER = createHeader({
 	-- #endif
 	text = {
 		en = "Harvest Festival",
+		ru = "Неделя урожая",
+		cn = "收获节",
 	},
 });
 local BLUE_FIREWORK = i(9312);	-- Blue Firework
@@ -27,11 +29,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.HARVEST_FESTIVAL, n(HARVEST_FESTIVAL_HEAD
 	n(QUESTS, {
 		q(8149, {	-- Honoring a Hero (A)
 			["qg"] = 15011,	-- Wagner Hammerstrike
-			-- #if AFTER CATA
-			["coord"] = { 59.8, 34.2, DUN_MOROGH },
-			-- #else
-			["coord"] = { 52.6, 36.0, DUN_MOROGH },
-			-- #endif
+			["coords"] = {
+				-- #if AFTER CATA
+				{ 59.8, 34.2, DUN_MOROGH },
+				-- #else
+				{ 52.6, 36.0, DUN_MOROGH },
+				-- #endif
+			},
 			["maps"] = { WESTERN_PLAGUELANDS },
 			["races"] = ALLIANCE_ONLY,
 			["isYearly"] = true,
@@ -46,11 +50,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.HARVEST_FESTIVAL, n(HARVEST_FESTIVAL_HEAD
 		}),
 		q(8150, {	-- Honoring a Hero (H)
 			["qg"] = 15012,	-- Javnir Nashak
-			-- #if AFTER CATA
-			["coord"] = { 46.2, 15.0, DUROTAR },
-			-- #else
-			["coord"] = { 46.0, 13.6, DUROTAR },
-			-- #endif
+			["coords"] = {
+				-- #if AFTER CATA
+				{ 46.2, 15.0, DUROTAR },
+				-- #else
+				{ 46.0, 13.6, DUROTAR },
+				-- #endif
+			},
 			["maps"] = { ASHENVALE },
 			["races"] = HORDE_ONLY,
 			["isYearly"] = true,
@@ -62,6 +68,13 @@ root(ROOTS.Holidays, applyevent(EVENTS.HARVEST_FESTIVAL, n(HARVEST_FESTIVAL_HEAD
 				}),
 				i(20010),	-- The Horde's Hellscream
 			},
+		}),
+		q(54996, {	-- Remembrance
+			["qg"] = 149084,	-- Spiritwalker Ussoh
+			["coord"] = { 46.8, 15.4, DUROTAR },
+			["timeline"] = { ADDED_8_2_0 },
+			["races"] = { TAUREN },
+			["isYearly"] = true,
 		}),
 	}),
 	n(REWARDS, {

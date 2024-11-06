@@ -1,0 +1,34 @@
+1.15.3.55112
+faction(2650),	-- S03 - 60 - Western Plaguelands - Mage Runecarving
+1.15.3.55391
+faction(2660),	-- Elemental (The Molten Core Adds)
+faction(2661),	-- Hydraxian (The Molten Core Adds)
+1.15.4.56400
+faction(2679),	-- Order of the Silver Hand
+faction(2686),	-- S03 - Scourge Disguise
+faction(2687),	-- Hunter Quest Boss (Tamed Beast)
+11.0.0.54311
+faction(2569),	-- The War Within \\ (11.0 Header) The War Within
+faction(2579),	-- zzOldDelves: Season 1 \\ Delves: Season 1
+faction(2580),	-- Test Faction Alpha
+faction(2595),	-- Order of Night
+faction(2596),	-- The Severed Threads (Paragon)
+faction(2602),	-- Umbral Bazaar
+faction(2606),	-- The High Hollows
+faction(2609),	-- The Burrows
+faction(2610),	-- Azj-Kaheti Nerubian (Always Hostile) (Hidden) \\ Azj-Kahetti Nerubian (Always Hostile) (Hidden)
+faction(2611),	-- Hallowfall Arathi (Paragon)
+faction(2612),	-- Council of Dornogal (Paragon)
+faction(2613),	-- The Assembly of the Deeps (Paragon)
+faction(2614),	-- The Siegehold
+faction(2635),	-- The Skeins
+faction(2637),	-- PLAYER, Earthen Alliance
+faction(2638),	-- PLAYER, Earthen Horde
+faction(2640),	-- Brann Bronzebeard
+faction(2644),	-- Delves: Season 1 \\ [DNT] Delves: Season 1 Renown Track
+faction(2645),	-- Earthen
+faction(2647),	-- The Vizier (Paragon) \\ The Vizier (Notoriety), Paragon
+faction(2648),	-- The Weaver (Paragon) \\ The Weaver (Notoriety), Paragon
+faction(2649),	-- The General (Paragon) \\ The General (Notoriety), Paragon
+11.0.5.56487
+faction(2682),	-- 

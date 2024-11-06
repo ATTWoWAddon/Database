@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(STORMSONG_VALLEY, {
 		petbattle(filter(BATTLE_PETS, {
 			["sym"] = {{"select","speciesID",
@@ -21,7 +21,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 						{ 50.6, 50.4, STORMSONG_VALLEY },
 					},
 				}),
- 				pet(2373, {	-- River Frog (PET!)
+				pet(2373, {	-- River Frog (PET!)
 					["description"] = "Best found along the waterways above Sagehold. Coords are a route.",
 					["coords"] = {
 						{ 64.6, 44.6, STORMSONG_VALLEY },

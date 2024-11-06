@@ -1,21 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	inst(536, {	-- Grimrail Depot
 		["coord"] = { 55.0, 31.3, GORGROND },
 		["maps"] = { 606, 607, 608, 609 },
 		["lvl"] = 100,
 		["g"] = {
-			n(ACHIEVEMENTS, {
-				ach(9838, {	-- What A Strange, Interdimensional Trip It's Been
-					["collectible"] = false,
-					["g"] = {
-						crit(5),	-- Skylord Tovra
-					},
-				}),
-			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1138, {	-- Rocketspark and Borka
 					["crs"] = {
 						77816,	-- Borka the Brute
@@ -70,7 +62,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(1138, {	-- Rocketspark and Borka
 					["crs"] = {
 						77816,	-- Borka the Brute
@@ -81,7 +73,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, FINGER},
 					},
 					["g"] = {
-						ach(9024),	-- This Is Why We Can't Have Nice Things
+						ach(9024, {	-- This Is Why We Can't Have Nice Things
+							["crs"] = { 81834 },	-- Priceless Paraphernalia
+						}),
 						i(110051),	-- Overseer's Final Word
 					},
 				}),
@@ -95,7 +89,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, CHEST},
 					},
 					["g"] = {
-						ach(9007),	-- No Ticket
+						ach(9007, {	-- No Ticket
+							["crs"] = { 80936 },	-- Grom'kar Grenadier
+						}),
 						i(110052),	-- Scepter of Brutality
 						i(109996),	-- Thundertower's Targeting Reticle
 					},
@@ -117,7 +113,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(1138, {	-- Rocketspark and Borka
 					["crs"] = {
 						77816,	-- Borka the Brute
@@ -166,7 +162,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(34548),	-- Iron Depot Challenge Mode - Bronze Addition (Nth)
 		q(34529),	-- Iron Depot Challenge Mode - Consolation (Nth)
 		q(34550),	-- Iron Depot Challenge Mode - Gold Addition (Nth)

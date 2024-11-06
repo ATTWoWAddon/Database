@@ -3,7 +3,7 @@
 -----------------------------------------------------
 STORMING_THE_CITADEL = createHeader({
 	readable = "Storming the Citadel",
-	icon = "Interface\\Icons\\achievement_dungeon_icecrown_icecrownentrance",
+	icon = 343640,
 	text = {
 		en = "Storming the Citadel",
 		es = "Asaltar la Ciudadela",
@@ -18,7 +18,7 @@ STORMING_THE_CITADEL = createHeader({
 });
 THE_PLAGUEWORKS = createHeader({
 	readable = "The Plagueworks",
-	icon = "Interface\\Icons\\achievement_dungeon_plaguewing",
+	icon = 342919,
 	text = {
 		en = "The Plagueworks",
 		es = "Los Talleres de la Peste",
@@ -33,14 +33,14 @@ THE_PLAGUEWORKS = createHeader({
 });
 THE_CRIMSON_HALLS = createHeader({
 	readable = "The Crimson Halls",
-	icon = "Interface\\Icons\\achievement_dungeon_crimsonhall",
+	icon = 341981,
 	text = {
 		en = [[~C_Map.GetAreaInfo(4892)]],
 	},
 });
 THE_FROSTWING_HALLS = createHeader({
 	readable = "The Frostwing Halls",
-	icon = "Interface\\Icons\\achievement_dungeon_icecrown_frostwinghalls",
+	icon = 343638,
 	text = {
 		-- #if AFTER BFA
 		en = [[~C_Map.GetAreaInfo(7932)]],
@@ -58,12 +58,16 @@ THE_FROSTWING_HALLS = createHeader({
 	},
 });
 
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbleDown({ ["timeline"] = { "added 3.3.0" } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_FOUR, bubbleDown({ ["timeline"] = { ADDED_3_3_0 } }, {
 	inst(758, {	-- Icecrown Citadel
 		["mapID"] = ICECROWN_CITADEL,
-		["maps"] = { 187, 188, 189, 190, 191, 192, 193, 699, 1359 },	-- 1359 may be a specific scenario map - it was reported as missing in early 2019, but i couldn't find context for it
+		["maps"] = {
+			187, 188, 189, 190, 191, 192, 193,
+			-- #if AFTER LEGION
+			699, 1359,	-- 1359 may be a specific scenario map - it was reported as missing in early 2019, but i couldn't find context for it
+			-- #endif
+		},
 		["coord"] = { 53.7, 87.0, ICECROWN },
-		["sins"] = { "Eiskronenzitadelle" },
 		-- #if AFTER CATA
 		["sharedLockout"] = 1,
 		-- #endif
@@ -71,6 +75,57 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 		["lvl"] = 80,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
+				applyclassicphase(WRATH_PHASE_FOUR, ach(4602, {	-- Glory of the Icecrown Raider (10 player)
+					-- Meta Achievement
+					["sym"] = {{"meta_achievement",
+						4628,	-- Heroic: Storming the Citadel (10 player)
+						4629,	-- Heroic: The Plagueworks (10 player)
+						4630,	-- Heroic: The Crimson Hall (10 player)
+						4631,	-- Heroic: The Frostwing Halls (10 player)
+						4534,	-- Boned (10 player)
+						4535,	-- Full House (10 player)
+						4536,	-- I'm on a Boat (10 player)
+						4537,	-- I've Gone and Made a Mess (10 player)
+						4538,	-- Dances with Oozes (10 player)
+						4577,	-- Flu Shot Shortage (10 player)
+						4578,	-- Nausea, Heartburn, Indigestion... (10 player)
+						4582,	-- The Orb Whisperer (10 player)
+						4539,	-- Once Bitten, Twice Shy (10 player)
+						4579,	-- Portal Jockey (10 player)
+						4580,	-- All You Can Eat (10 player)
+						4601,	-- Been Waiting a Long Time for This (10 player)
+					}},
+					["timeline"] = { ADDED_3_0_2 },
+					["groups"] = {
+						i(51954),		-- Bloodbathed Frostbrood Vanquisher (MOUNT!)
+					},
+				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(4603, {	-- Glory of the Icecrown Raider (25 player)
+					-- Meta Achievement
+					["sym"] = {{"meta_achievement",
+						4632,	-- Heroic: Storming the Citadel (25 player)
+						4633,	-- Heroic: The Plagueworks (25 player)
+						4634,	-- Heroic: The Crimson Hall (25 player)
+						4635,	-- Heroic: The Frostwing Halls (25 player)
+						4610,	-- Boned (25 player)
+						4611,	-- Full House (25 player)
+						4612,	-- I'm on a Boat (25 player)
+						4613,	-- I've Gone and Made a Mess (25 player)
+						4614,	-- Dances with Oozes (25 player)
+						4615,	-- Flu Shot Shortage (25 player)
+						4616,	-- Nausea, Heartburn, Indigestion... (25 player)
+						4617,	-- The Orb Whisperer (25 player)
+						4618,	-- Once Bitten, Twice Shy (25 player)
+						4619,	-- Portal Jockey (25 player)
+						4620,	-- All You Can Eat (25 player)
+						4621,	-- Been Waiting a Long Time for This (25 player)
+						4622,	-- Neck-Deep in Vile (25 player)
+					}},
+					["timeline"] = { ADDED_3_0_2 },
+					["groups"] = {
+						i(51955),		-- Icebound Frostbrood Vanquisher (MOUNT!)
+					},
+				})),
 				ach(4532, {	-- Fall of the Lich King (10 player)
 					-- Meta Achievement
 					["sym"] = {{"meta_achievement",
@@ -111,24 +166,28 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						4584,	-- The Light of Dawn
 					}},
 				}),
-				achWithRep(4598, 1156, {	-- The Ashen Verdict
+				achWithRep(4598, FACTION_THE_ASHEN_VERDICT, {	-- The Ashen Verdict
 					title(141),	-- <Name> of the Ashen Verdict
+				}),
+				ach(11753, {["timeline"] = {ADDED_7_2_0}}),	-- Winter Catalog (Icecrown Citadel)
+				ach(4576, {	-- Realm First! Fall of the Lich King
+					["timeline"] = { ADDED_3_3_3, REMOVED_3_3_5 },
 				}),
 			}),
 			n(FACTIONS, {
-				faction(1156),	-- The Ashen Verdict
+				faction(FACTION_THE_ASHEN_VERDICT),	-- The Ashen Verdict
 			}),
-			n(QUALITY_LEGENDARY, {
+			applyclassicphase(WRATH_PHASE_FOUR_SHADOWMOURNE, n(QUALITY_LEGENDARY, {
 				["description"] = "These quests can only be completed on 25-Man Normal or Heroic difficulty.",
 				["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 				["title"] = "Shadowmourne",
-				["icon"] = "Interface\\Icons\\INV_Axe_113",
+				["icon"] = 313914,
 				["isRaid"] = true,
 				["lvl"] = 80,
 				["groups"] = {
 					q(24545, {	-- The Sacred and the Corrupt
 						["qg"] = 37120,	-- Highlord Darion Mograine
-						["minReputation"] = { 1156, FRIENDLY },	-- The Ashen Verdict
+						["minReputation"] = { FACTION_THE_ASHEN_VERDICT, FRIENDLY },	-- The Ashen Verdict
 						["groups"] = {
 							i(49869, {	-- Light's Vengeance
 								["description"] = "Fly out to Dragonblight and collect this item from a cave after some short RP.",
@@ -210,69 +269,66 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["qg"] = 36597,	-- The Lich King
 						["questID"] = 24914,	-- Personal Property
 						["sourceQuest"] = 24549,	-- Shadowmourne...
-						["description"] = "Dropped by the Lich King on 25-Man difficulty while on the quest |cFFefc400The Lich King's Last Stand|r. Only your first kill will trigger the item to drop. You do NOT need to have Shadowmourne equipped.",
+						["provider"] = { "i", 51316 },	-- Unsealed Chest
+						["description"] = "Dropped by the Lich King on 25-Man difficulty while on the quest |cFFefc400The Lich King's Last Stand|r. Only your first kill will trigger the item to drop. You do NOT need to have Shadowmourne equipped.\n\nThis item contains a lot of BoE cosmetic items that sell very well. During its time, this was used to reward other members of the raid for assisting the guild master (more than likely) with Shadowmourne for the many months it took to complete the quest chain.\n\nIn addition to being very rewarding, these quests were some of the most treasured throughout World of Warcraft's long history.",
 						["groups"] = {
-							i(51316, {	-- Unsealed Chest
-								["description"] = "This item contains a lot of BoE cosmetic items that sell very well. During its time, this was used to reward other members of the raid for assisting the guild master (more than likely) with Shadowmourne for the many months it took to complete the quest chain.\n\nIn addition to being very rewarding, these quests were some of the most treasured throughout World of Warcraft's long history.",
-								["sourceQuest"] = 24914,	-- Personal Property
+							i(51317, {	-- Alexandros' Soul Shard
+								["description"] = "Alexandros: Darion, my son. At last I am able to lay my eyes upon you again. The Lich King tormented me without end, Darion. Endlessly he sought to break my will, to force me to serve him, to bind me to his blade. Finally, when events demanded his full attention, he left me. The one memory I clung to Darion, the one thought that kept me from giving in, it was your sacrifice, my son. That again saved me from eternal peril.\n\nDarion: Father, father, I… I feared for your sanity, father, for you, I would give my life a thousand times.",
+								["questID"] = 24915,	-- Mograine's Reunion
 								["groups"] = {
-									i(51317, {	-- Alexandros' Soul Shard
-										["description"] = "Alexandros: Darion, my son. At last I am able to lay my eyes upon you again. The Lich King tormented me without end, Darion. Endlessly he sought to break my will, to force me to serve him, to bind me to his blade. Finally, when events demanded his full attention, he left me. The one memory I clung to Darion, the one thought that kept me from giving in, it was your sacrifice, my son. That again saved me from eternal peril.\n\nDarion: Father, father, I… I feared for your sanity, father, for you, I would give my life a thousand times.",
-										["questID"] = 24915,	-- Mograine's Reunion
-										["groups"] = {
-											i(52200)	-- Crimson Deathcharger (MOUNT!)
-										},
+									i(52200, {	-- Crimson Deathcharger (MOUNT!)
+										["b"] = 2,	-- Mounts don't inherently assign themselves as BoE, so the Ignore Filters for BoEs trigger wasn't picking this up.
 									}),
-									i(51319, {	-- Arthas' Training Sword
-										["description"] = "Muradin: Oh lad, how I missed those endless days in Lordaeron, sharpening your skill with this dull blade. Forging you into a weapon meant to withstand the demands of a great destiny. Heh… You sure put them skills to use, didn't you lad?\n\nIf only I'd been able to stop you that day, how different things migha' been. If only I'da never discovered that accursed blade. Farewell, Arthas, my brother.",
-										["questID"] = 24917,	-- Muradin's Lament
-										["groups"] = {
-											i(52201)	-- Muradin's Favor (TOY!)
-										},
-									}),
-									i(51320, {	-- Badge of the Silver Hand
-										["description"] = "Uther: Arthas... Alas, hero of Azeroth. You give me a greater gift than you know. Long have I struggled to forgive the prince for his terrible transgressions. My soul has been wracked with unbearable anxiety, dark thoughts, distancing me from the light.\n\nI recall clearly... the gleam of pride in his eye as he stood before me, eager to defeat the enemies of the light... eager to defend his people, no matter the cost. It is this memory of Arthas that I choose to keep in my heart.\n\nI shall always be in your debt, friend. Thank you.",
-										["questID"] = 24919,	-- The Lightbringer's Redemption
-										["groups"] = {
-											i(52252)	-- Tabard of the Lightbringer
-										},
-									}),
-									i(51321, {	-- Blood of Sylvanas
-										["description"] = "Sylvanas: So, it is done. I had not dared to trust my senses. Too many times has the Lich King made me to be a fool. Finally, he has been made to pay for the atrocities he imposed upon my people.\n\nMay Azeroth never fail to remember the horrible price we paid for our weakness, for our pride. But what now, Hero? What of those freed from his grasp but still shackled to their mortal coils?\n\nLeave me. I have much to ponder.",
-										["questID"] = 24918,	-- Sylvanas' Vengeance
-										["groups"] = {
-											i(52253)	-- Sylvanas' Music Box (TOY!)
-										},
-									}),
-									i(51318, {	-- Jaina's Locket
-										["description"] = "Jaina: What's this?\nHe... he kept it.. all this time he kept it!\n<Cries> I knew!\n<Cries> I sensed a part of him still alive... trapped... struggling. Oh Arthas!\nPerhaps he might someday remember from what he once was...\nBy the Light may he at last find rest, free from the icy grip of that terrible blade!",
-										["questID"] = 24916,	-- Jaina's Locket
-										["groups"] = {
-											i(52251, {	-- Jaina's Locket
-												-- #if NOT ANYCLASSIC
-												["ignoreSource"] = true,
-												["collectible"] = false
-												-- #endif
-											})
-										},
-									}),
+								},
+							}),
+							i(51319, {	-- Arthas' Training Sword
+								["description"] = "Muradin: Oh lad, how I missed those endless days in Lordaeron, sharpening your skill with this dull blade. Forging you into a weapon meant to withstand the demands of a great destiny. Heh… You sure put them skills to use, didn't you lad?\n\nIf only I'd been able to stop you that day, how different things migha' been. If only I'da never discovered that accursed blade. Farewell, Arthas, my brother.",
+								["questID"] = 24917,	-- Muradin's Lament
+								["groups"] = {
+									i(52201)	-- Muradin's Favor (TOY!)
+								},
+							}),
+							i(51320, {	-- Badge of the Silver Hand
+								["description"] = "Uther: Arthas... Alas, hero of Azeroth. You give me a greater gift than you know. Long have I struggled to forgive the prince for his terrible transgressions. My soul has been wracked with unbearable anxiety, dark thoughts, distancing me from the light.\n\nI recall clearly... the gleam of pride in his eye as he stood before me, eager to defeat the enemies of the light... eager to defend his people, no matter the cost. It is this memory of Arthas that I choose to keep in my heart.\n\nI shall always be in your debt, friend. Thank you.",
+								["questID"] = 24919,	-- The Lightbringer's Redemption
+								["groups"] = {
+									i(52252)	-- Tabard of the Lightbringer
+								},
+							}),
+							i(51321, {	-- Blood of Sylvanas
+								["description"] = "Sylvanas: So, it is done. I had not dared to trust my senses. Too many times has the Lich King made me to be a fool. Finally, he has been made to pay for the atrocities he imposed upon my people.\n\nMay Azeroth never fail to remember the horrible price we paid for our weakness, for our pride. But what now, Hero? What of those freed from his grasp but still shackled to their mortal coils?\n\nLeave me. I have much to ponder.",
+								["questID"] = 24918,	-- Sylvanas' Vengeance
+								["groups"] = {
+									i(52253)	-- Sylvanas' Music Box (TOY!)
+								},
+							}),
+							i(51318, {	-- Jaina's Locket
+								["description"] = "Jaina: What's this?\nHe... he kept it.. all this time he kept it!\n<Cries> I knew!\n<Cries> I sensed a part of him still alive... trapped... struggling. Oh Arthas!\nPerhaps he might someday remember from what he once was...\nBy the Light may he at last find rest, free from the icy grip of that terrible blade!",
+								["questID"] = 24916,	-- Jaina's Locket
+								["groups"] = {
+									i(52251, {	-- Jaina's Locket
+										-- #if NOT ANYCLASSIC
+										["ignoreSource"] = true,
+										["collectible"] = false
+										-- #endif
+									})
 								},
 							}),
 						},
 					}),
 				},
-			}),
+			})),
 			n(QUESTS, {
 				q(24815, {	-- Choose Your Path
 					["qg"] = 38316,	-- Ormus the Penitent
-					["minReputation"] = { 1156, FRIENDLY },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, FRIENDLY },	-- The Ashen Verdict
 					["description"] = "If the quest does not appear when you hit Friendly, you may have to relog.",
 					["groups"] = {
 						i(50375, {	-- Ashen Band of Courage
 							["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 						}),
 						i(50377, {	-- Ashen Band of Destruction
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 						i(52569, {	-- Ashen Band of Might
 							["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
@@ -281,7 +337,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							["classes"] = { DRUID, HUNTER, ROGUE, SHAMAN, MONK, DEMONHUNTER },
 						}),
 						i(50378, {	-- Ashen Band of Wisdom
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 					},
 				}),
@@ -289,7 +345,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24827, {	-- Path of Courage (Honored)
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24815,	-- Choose Your Path
-					["minReputation"] = { 1156, HONORED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, HONORED },	-- The Ashen Verdict
 					["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 					["groups"] = {
 						i(50388, {	-- Ashen Band of Greater Courage
@@ -300,7 +356,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24834, {	-- Path of Courage (Revered)
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24827,	-- Path of Courage (Honored)
-					["minReputation"] = { 1156, REVERED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, REVERED },	-- The Ashen Verdict
 					["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 					["groups"] = {
 						i(50403, {	-- Ashen Band of Unmatched Courage
@@ -311,7 +367,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24835, {	-- Path of Courage (Exalted)
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24834,	-- Path of Courage (Revered)
-					["minReputation"] = { 1156, EXALTED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, EXALTED },	-- The Ashen Verdict
 					["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 					["groups"] = {
 						i(50404, {	-- Ashen Band of Endless Courage
@@ -323,33 +379,33 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24828, {	-- Path of Destruction (Honored)
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24815,	-- Choose Your Path
-					["minReputation"] = { 1156, HONORED },	-- The Ashen Verdict
-					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, HONORED },	-- The Ashen Verdict
+					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 					["groups"] = {
 						i(50384, {	-- Ashen Band of Greater Destruction
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 					},
 				}),
 				q(24823, {	-- Path of Destruction (Revered)
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24828,	-- Path of Destruction [Honored]
-					["minReputation"] = { 1156, REVERED },	-- The Ashen Verdict
-					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, REVERED },	-- The Ashen Verdict
+					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 					["groups"] = {
 						i(50397, {	-- Ashen Band of Unmatched Destruction
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 					},
 				}),
 				q(24829, {	-- Path of Destruction (Exalted)
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24823,	-- Path of Destruction (Revered)
-					["minReputation"] = { 1156, EXALTED },	-- The Ashen Verdict
-					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, EXALTED },	-- The Ashen Verdict
+					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 					["groups"] = {
 						i(50398, {	-- Ashen Band of Endless Destruction
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 					},
 				}),
@@ -357,7 +413,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(25239, {	-- Path of Might (Honored)
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24815,	-- Choose Your Path
-					["minReputation"] = { 1156, HONORED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, HONORED },	-- The Ashen Verdict
 					["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 					["groups"] = {
 						i(52570, {	-- Ashen Band of Greater Might
@@ -368,7 +424,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(25240, {	-- Path of Might [Revered]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 25239,	-- Path of Might [Honored]
-					["minReputation"] = { 1156, REVERED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, REVERED },	-- The Ashen Verdict
 					["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 					["groups"] = {
 						i(52571, {	-- Ashen Band of Unmatched Might
@@ -379,7 +435,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(25242, {	-- Path of Might [Exalted]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 25240,	-- Path of Might [Revered]
-					["minReputation"] = { 1156, EXALTED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, EXALTED },	-- The Ashen Verdict
 					["classes"] = { WARRIOR, PALADIN, DEATHKNIGHT },
 					["groups"] = {
 						i(52572, {	-- Ashen Band of Endless Might
@@ -391,7 +447,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24826, {	-- Path of Vengeance [Honored]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24815,	-- Choose Your Path
-					["minReputation"] = { 1156, HONORED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, HONORED },	-- The Ashen Verdict
 					["classes"] = { DRUID, HUNTER, ROGUE, SHAMAN, MONK, DEMONHUNTER },
 					["groups"] = {
 						i(50387, {	-- Ashen Band of Greater Vengeance
@@ -402,7 +458,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24832, {	-- Path of Vengeance [Revered]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24826,	-- Path of Vengeance [Honored]
-					["minReputation"] = { 1156, REVERED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, REVERED },	-- The Ashen Verdict
 					["classes"] = { DRUID, HUNTER, ROGUE, SHAMAN, MONK, DEMONHUNTER },
 					["groups"] = {
 						i(50401, {	-- Ashen Band of Unmatched Vengeance
@@ -413,7 +469,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24833, {	-- Path of Vengeance [Exalted]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24832,	-- Path of Vengeance [Revered]
-					["minReputation"] = { 1156, EXALTED },	-- The Ashen Verdict
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, EXALTED },	-- The Ashen Verdict
 					["classes"] = { DRUID, HUNTER, ROGUE, SHAMAN, MONK, DEMONHUNTER },
 					["groups"] = {
 						i(50402, {	-- Ashen Band of Endless Vengeance
@@ -425,317 +481,407 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				q(24825, {	-- Path of Wisdom [Honored]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24815,	-- Choose Your Path
-					["minReputation"] = { 1156, HONORED },	-- The Ashen Verdict
-					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, HONORED },	-- The Ashen Verdict
+					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 					["groups"] = {
 						i(50386, {	-- Ashen Band of Greater Wisdom
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 					},
 				}),
 				q(24830, {	-- Path of Wisdom [Revered]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24825,	-- Path of Wisdom [Honored]
-					["minReputation"] = { 1156, REVERED },	-- The Ashen Verdict
-					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, REVERED },	-- The Ashen Verdict
+					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 					["groups"] = {
 						i(50399, {	-- Ashen Band of Unmatched Wisdom
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 					},
 				}),
 				q(24831, {	-- Path of Wisdom [Exalted]
 					["qg"] = 38316,	-- Ormus the Penitent
 					["sourceQuest"] = 24830,	-- Path of Wisdom [Revered]
-					["minReputation"] = { 1156, EXALTED },	-- The Ashen Verdict
-					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+					["minReputation"] = { FACTION_THE_ASHEN_VERDICT, EXALTED },	-- The Ashen Verdict
+					["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 					["groups"] = {
 						i(50400, {	-- Ashen Band of Endless Wisdom
-							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK },
+							["classes"] = { PALADIN, MAGE, DRUID, PRIEST, SHAMAN, WARLOCK, MONK, EVOKER },
 						}),
 					},
 				}),
-				q(24819, { -- A Change of Heart
+				q(24819, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24820, { -- A Change of Heart
+				q(24820, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24821, { -- A Change of Heart
+				q(24821, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24822, { -- A Change of Heart
+				q(24822, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24836, { -- A Change of Heart
+				q(24836, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24837, { -- A Change of Heart
+				q(24837, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24838, { -- A Change of Heart
+				q(24838, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24839, { -- A Change of Heart
+				q(24839, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24840, { -- A Change of Heart
+				q(24840, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24841, { -- A Change of Heart
+				q(24841, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24842, { -- A Change of Heart
+				q(24842, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24843, { -- A Change of Heart
+				q(24843, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24844, { -- A Change of Heart
+				q(24844, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24845, { -- A Change of Heart
+				q(24845, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24846, { -- A Change of Heart
+				q(24846, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(24847, { -- A Change of Heart
+				q(24847, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(25246, { -- A Change of Heart
+				q(25246, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(25247, { -- A Change of Heart
+				q(25247, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(25248, { -- A Change of Heart
+				q(25248, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
 				}),
-				q(25249, { -- A Change of Heart
+				q(25249, {	-- A Change of Heart
 					["qg"] = 38316,	-- Ormus the Penitent
 					["isRepeatable"] = true,
+				}),
+				--  Weekly Raid Quests
+				q(24874, {	-- Blood Quickening [10]
+					["qg"] = 38551,	-- Alrin the Agile
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- Minchar Rescued
+							["provider"] = { "n", 38558 },	-- Infiltrator Minchar
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24879, {	-- Blood Quickening [25]
+					["qg"] = 38551,	-- Alrin the Agile
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- Minchar Rescued
+							["provider"] = { "n", 38558 },	-- Infiltrator Minchar
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24869, {	-- Deprogramming [10]
+					["qg"] = 38471,	-- Infiltrator Minchar
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- Rescue Darnavan
+							["provider"] = { "n", 38485 },	-- Darnavan
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24875, {	-- Deprogramming [25]
+					["qg"] = 38471,	-- Infiltrator Minchar
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- Rescue Darnavan
+							["provider"] = { "n", 38485 },	-- Darnavan
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24873, {	-- Residue Rendezvous [10]
+					["qg"] = 38501,	-- Alchemist Adrianna
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- Return with two strains of Blight.
+							["providers"] = {
+								{ "n", 36626 },	-- Festergut
+								{ "n", 36627 },	-- Rotface
+							},
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24878, {	-- Residue Rendezvous[25]
+					["qg"] = 38501,	-- Alchemist Adrianna
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- Return with two strains of Blight.
+							["providers"] = {
+								{ "n", 36626 },	-- Festergut
+								{ "n", 36627 },	-- Rotface
+							},
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24872, {	-- Respite for a Tormented Soul [10]
+					["qg"] = 38589,	-- Valithria Dreamwalker
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- 0/1 Crystalline Essence of Sindragosa
+							["providers"] = {
+								{ "i", 51026 },	-- Crystalline Essence of Sindragosa
+								{ "i", 50851 },	-- Pulsing Life Crystal
+							},
+							["cr"] = 36853,	-- Sindragosa
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24880, {	-- Respite for a Tormented Soul [25]
+					["qg"] = 38589,	-- Valithria Dreamwalker
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- 0/1 Crystalline Essence of Sindragosa
+							["providers"] = {
+								{ "i", 51027 },	-- Crystalline Essence of Sindragosa
+								{ "i", 50851 },	-- Pulsing Life Crystal
+							},
+							["cr"] = 36853,	-- Sindragosa
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24871, {	-- Securing the Ramparts [10] (A)
+					["qg"] = 38492,	-- Skybreaker Lieutenant
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- 0/1 Rotting Frost Giant slain
+							["provider"] = { "n", 38490 },	-- Rotting Frost Giant
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24876, {	-- Securing the Ramparts [25] (A)
+					["qg"] = 38492,	-- Skybreaker Lieutenant
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- 0/1 Rotting Frost Giant slain
+							["provider"] = { "n", 38494 },	-- Rotting Frost Giant
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24870, {	-- Securing the Ramparts [10] (H)
+					["qg"] = 38491,	-- Kor'kron Lieutenant
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- 0/1 Rotting Frost Giant slain
+							["provider"] = { "n", 38490 },	-- Rotting Frost Giant
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
+				}),
+				q(24877, {	-- Securing the Ramparts [25] (H)
+					["qg"] = 38491,	-- Kor'kron Lieutenant
+					["timeline"] = { REMOVED_4_0_1 },
+					["isWeekly"] = true,
+					["lvl"] = 80,
+					["groups"] = {
+						objective(1, {	-- 0/1 Rotting Frost Giant slain
+							["provider"] = { "n", 38494 },	-- Rotting Frost Giant
+						}),
+						i(52006),	-- Sack of Frosty Treasures
+					},
 				}),
 			}),
+			-- #if BEFORE 4.0.1
+			n(REWARDS, {
+				["sourceQuests"] = {
+					24874,	-- Blood Quickening [10]
+					24879,	-- Blood Quickening [25]
+					24869,	-- Deprogramming [10]
+					24875,	-- Deprogramming [25]
+					24873,	-- Residue Rendezvous [10]
+					24878,	-- Residue Rendezvous [25]
+					24872,	-- Respite for a Tormented Soul [10]
+					24880,	-- Respite for a Tormented Soul [25]
+					24871,	-- Securing the Ramparts [10] (A)
+					24876,	-- Securing the Ramparts [25] (A)
+					24870,	-- Securing the Ramparts [10] (H)
+					24877,	-- Securing the Ramparts [25] (H)
+				},
+				["description"] = "Rewarded for completing the Weekly Raid quests.",
+				["groups"] = {
+					i(52006, {	-- Sack of Frosty Treasures
+						["timeline"] = { REMOVED_4_0_1 },
+						["sym"] = {
+							{
+								"select", "itemID",
+								50452,	-- Wodin's Lucky Necklace
+								50020,	-- Raging Behemoth's Shoulderplates
+								50449,	-- Stiffened Corpse Shoulderpads
+								50001,	-- Ikfirus's Sack of Wonder
+								49994,	-- The Lady's Brittle Bracers
+								50015,	-- Belt of the Blood Nova
+								50447,	-- Harbinger's Bone Band
+								50453,	-- Ring of Rotting Sinew
+								36931,	-- Ametrine
+								36919,	-- Cardinal Ruby
+								36934,	-- Eye of Zul
+								36928,	-- Dreadstone
+								36922,	-- King's Amber
+								36925,	-- Majestic Zircon
+							}
+						},
+					}),
+				},
+			}),
+			-- #endif
 			n(VENDORS, {
-				n(37999, {	-- Alana Moonstrike <Druid Armor>
-					["races"] = ALLIANCE_ONLY,
-					["groups"] = {
-						i(50821),	-- Lasherweave Cover
-						i(50107),	-- Lasherweave Gauntlets
-						i(50822),	-- Lasherweave Gloves
-						i(50827),	-- Lasherweave Handgrips
-						i(50826),	-- Lasherweave Headguard
-						i(50108),	-- Lasherweave Helmet
-						i(50825),	-- Lasherweave Legguards
-						i(50109),	-- Lasherweave Legplates
-						i(50819),	-- Lasherweave Mantle
-						i(50113),	-- Lasherweave Pauldrons
-						i(50828),	-- Lasherweave Raiment
-						i(50106),	-- Lasherweave Robes
-						i(50824),	-- Lasherweave Shoulderpads
-						i(50820),	-- Lasherweave Trousers
-						i(50823),	-- Lasherweave Vestment
-						i(51149, {	-- Sanctified Lasherweave Cover (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50821, 1 },	-- Lasherweave Cover
-							},
-						}),
-						i(51290, {	-- Sanctified Lasherweave Cover (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51149, 1 },	-- Sanctified Lasherweave Cover
-							},
-						}),
-						i(51138, {	-- Sanctified Lasherweave Gauntlets (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50107, 1 },	-- Lasherweave Gauntlets
-							},
-						}),
-						i(51301, {	-- Sanctified Lasherweave Gauntlets (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51138, 1 },	-- Sanctified Lasherweave Gauntlets
-							},
-						}),
-						i(51148, {	-- Sanctified Lasherweave Gloves (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50822, 1 },	-- Lasherweave Gloves
-							},
-						}),
-						i(51291, {	-- Sanctified Lasherweave Gloves (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51148, 1 },	-- Sanctified Lasherweave Gloves
-							},
-						}),
-						i(51144, {	-- Sanctified Lasherweave Handgrips (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50827, 1 },	-- Lasherweave Handgrips
-							},
-						}),
-						i(51295, {	-- Sanctified Lasherweave Handgrips (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51144, 1 },	-- Sanctified Lasherweave Handgrips
-							},
-						}),
-						i(51143, {	-- Sanctified Lasherweave Headguard (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50826, 1 },	-- Lasherweave Headguard
-							},
-						}),
-						i(51296, {	-- Sanctified Lasherweave Headguard (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51143, 1 },	-- Sanctified Lasherweave Headguard
-							},
-						}),
-						i(51137, {	-- Sanctified Lasherweave Helmet (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50108, 1 },	-- Lasherweave Helmet
-							},
-						}),
-						i(51302, {	-- Sanctified Lasherweave Helmet (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51137, 1 },	-- Sanctified Lasherweave Helmet
-							},
-						}),
-						i(51142, {	-- Sanctified Lasherweave Legguards (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50825, 1 },	-- Lasherweave Legguards
-							},
-						}),
-						i(51297, {	-- Sanctified Lasherweave Legguards (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51142, 1 },	-- Sanctified Lasherweave Legguards
-							},
-						}),
-						i(51136, {	-- Sanctified Lasherweave Legplates (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50109, 1 },	-- Lasherweave Legplates
-							},
-						}),
-						i(51303, {	-- Sanctified Lasherweave Legplates (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51136, 1 },	-- Sanctified Lasherweave Legplates
-							},
-						}),
-						i(51147, {	-- Sanctified Lasherweave Mantle (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50819, 1 },	-- Lasherweave Mantle
-							},
-						}),
-						i(51292, {	-- Sanctified Lasherweave Mantle (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51147, 1 },	-- Sanctified Lasherweave Mantle
-							},
-						}),
-						i(51135, {	-- Sanctified Lasherweave Pauldrons (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50113, 1 },	-- Lasherweave Pauldrons
-							},
-						}),
-						i(51304, {	-- Sanctified Lasherweave Pauldrons (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51135, 1 },	-- Sanctified Lasherweave Pauldrons
-							},
-						}),
-						i(51141, {	-- Sanctified Lasherweave Raiment (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50828, 1 },	-- Lasherweave Raiment
-							},
-						}),
-						i(51298, {	-- Sanctified Lasherweave Raiment (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51141, 1 },	-- Sanctified Lasherweave Raiment
-							},
-						}),
-						i(51139, {	-- Sanctified Lasherweave Robes (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50106, 1 },	-- Lasherweave Robes
-							},
-						}),
-						i(51300, {	-- Sanctified Lasherweave Robes (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51139, 1 },	-- Sanctified Lasherweave Robes
-							},
-						}),
-						i(51140, {	-- Sanctified Lasherweave Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50824, 1 },	-- Lasherweave Shoulderpads
-							},
-						}),
-						i(51299, {	-- Sanctified Lasherweave Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51140, 1 },	-- Sanctified Lasherweave Shoulderpads
-							},
-						}),
-						i(51146, {	-- Sanctified Lasherweave Trousers (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50820, 1 },	-- Lasherweave Trousers
-							},
-						}),
-						i(51293, {	-- Sanctified Lasherweave Trousers (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51146, 1 },	-- Sanctified Lasherweave Trousers
-							},
-						}),
-						i(51145, {	-- Sanctified Lasherweave Vestment (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50823, 1 },	-- Lasherweave Vestment
-							},
-						}),
-						i(51294, {	-- Sanctified Lasherweave Vestment (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51145, 1 },	-- Sanctified Lasherweave Vestment
-							},
-						}),
+				cl(DEATHKNIGHT, {
+					["cr"] = 38316,	-- Ormus the Penitent <Death Knight Armor>
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.DEATHKNIGHT,
+						TIER_TEN_NORMAL_GROUPS.DEATHKNIGHT,
+						TIER_TEN_GROUPS.DEATHKNIGHT, {}),
+				}),
+				cl(DRUID, {
+					["crs"] = {
+						37999,	-- Alana Moonstrike <Druid Armor>
+						37992,	-- Tortunok <Druid Armor>
 					},
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.DRUID,
+						TIER_TEN_NORMAL_GROUPS.DRUID,
+						TIER_TEN_GROUPS.DRUID, {}),
+				}),
+				cl(HUNTER, {
+					["crs"] = {
+						37993,	-- Gerardo the Suave <Hunter Armor>
+						37998,	-- Talan Moonstrike <Hunter Armor>
+					},
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.HUNTER,
+						TIER_TEN_NORMAL_GROUPS.HUNTER,
+						TIER_TEN_GROUPS.HUNTER, {}),
+				}),
+				cl(MAGE, {
+					["crs"] = {
+						38283,	-- Malfus Grimfrost <Mage Armor>
+						38284,	-- Uvlus Banefire <Mage Armor>
+					},
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.MAGE,
+						TIER_TEN_NORMAL_GROUPS.MAGE,
+						TIER_TEN_GROUPS.MAGE, {}),
+				}),
+				cl(PALADIN, {
+					["cr"] = 37696,	-- Crusader Halford <Paladin Armor>
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.PALADIN,
+						TIER_TEN_NORMAL_GROUPS.PALADIN,
+						TIER_TEN_GROUPS.PALADIN, {}),
+				}),
+				cl(PRIEST, {
+					["cr"] = 38054,	-- Scott the Merciful <Priest Armor>
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.PRIEST,
+						TIER_TEN_NORMAL_GROUPS.PRIEST,
+						TIER_TEN_GROUPS.PRIEST, {}),
+				}),
+				cl(ROGUE, {
+					["crs"] = {
+						37991,	-- Ikfirus the Vile <Rogue Armor>
+						37997,	-- Yili <Rogue Armor>
+					},
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.ROGUE,
+						TIER_TEN_NORMAL_GROUPS.ROGUE,
+						TIER_TEN_GROUPS.ROGUE, {}),
+				}),
+				cl(SHAMAN, {
+					["crs"] = {
+						38840,	-- Jedebia <Shaman Armor>
+						38841,	-- Vol'guk <Shaman Armor>
+					},
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.SHAMAN,
+						TIER_TEN_NORMAL_GROUPS.SHAMAN,
+						TIER_TEN_GROUPS.SHAMAN, {}),
+				}),
+				cl(WARLOCK, {
+					["crs"] = {
+						38181,	-- Haragg the Unseen <Warlock Armor>
+						38182,	-- Niby the Almighty <Warlock Armor>
+					},
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.WARLOCK,
+						TIER_TEN_NORMAL_GROUPS.WARLOCK,
+						TIER_TEN_GROUPS.WARLOCK, {}),
+				}),
+				cl(WARRIOR, {
+					["cr"] = 37688,	-- Crusader Grimtong <Warrior Armor>
+					["groups"] = appendGroups(
+						TIER_TEN_HEROIC_GROUPS.WARRIOR,
+						TIER_TEN_NORMAL_GROUPS.WARRIOR,
+						TIER_TEN_GROUPS.WARRIOR, {}),
 				}),
 				n(37687, {	-- Alchemist Finklestein
 					i(49959, {	-- Pattern: Bladeborn Leggings (RECIPE!)
@@ -780,9 +926,9 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 					i(49972, {	-- Plans: Hellfrozen Bonegrinders (RECIPE!)
 						["cost"] = { { "i", 49908, 1 }, },	-- 1x Primordial Saronite
 					}),
-					i(52023, {	-- Plans: Iceblade Arrow
+					i(52023, {	-- Plans: Iceblade Arrow (RECIPE!)
 						["cost"] = { { "i", 49908, 1 }, },	-- 1x Primordial Saronite
-						["timeline"] = { "deleted 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 					}),
 					i(49971, {	-- Plans: Legplates of Painful Death (RECIPE!)
 						["cost"] = { { "i", 49908, 1 }, },	-- 1x Primordial Saronite
@@ -796,866 +942,90 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 					i(49969, {	-- Plans: Puresteel Legplates (RECIPE!)
 						["cost"] = { { "i", 49908, 1 }, },	-- 1x Primordial Saronite
 					}),
-					i(52022, {	-- Plans: Shatter Rounds
+					i(52022, {	-- Plans: Shatter Rounds (RECIPE!)
 						["cost"] = { { "i", 49908, 1 }, },	-- 1x Primordial Saronite
-						["timeline"] = { "deleted 4.0.1" },
+						["timeline"] = { REMOVED_4_0_1 },
 					}),
-				}),
-				n(37688, {	-- Crusader Grimtong <Warrior Armor>
-					i(51214, {	-- Sanctified Ymirjar Lord's Battleplate (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50078, 1 },	-- Ymirjar Lord's Battleplate
-						},
-					}),
-					i(51225, {	-- Sanctified Ymirjar Lord's Battleplate (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51214, 1 },	-- Sanctified Ymirjar Lord's Battleplate
-						},
-					}),
-					i(51219, {	-- Sanctified Ymirjar Lord's Breastplate (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50850, 1 },	-- Ymirjar Lord's Breastplate
-						},
-					}),
-					i(51220, {	-- Sanctified Ymirjar Lord's Breastplate (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51219, 1 },	-- Sanctified Ymirjar Lord's Breastplate
-						},
-					}),
-					i(51213, {	-- Sanctified Ymirjar Lord's Gauntlets (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50079, 1 },	-- Ymirjar Lord's Gauntlets
-						},
-					}),
-					i(51226, {	-- Sanctified Ymirjar Lord's Gauntlets (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51213, 1 },	-- Sanctified Ymirjar Lord's Gauntlets
-						},
-					}),
-					i(51218, {	-- Sanctified Ymirjar Lord's Greathelm (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50848, 1 },	-- Ymirjar Lord's Greathelm
-						},
-					}),
-					i(51221, {	-- Sanctified Ymirjar Lord's Greathelm (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51218, 1 },	-- Sanctified Ymirjar Lord's Greathelm
-						},
-					}),
-					i(51217, {	-- Sanctified Ymirjar Lord's Handguards (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50849, 1 },	-- Ymirjar Lord's Handguards
-						},
-					}),
-					i(51222, {	-- Sanctified Ymirjar Lord's Handguards (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51217, 1 },	-- Sanctified Ymirjar Lord's Handguards
-						},
-					}),
-					i(51212, {	-- Sanctified Ymirjar Lord's Helmet (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50080, 1 },	-- Ymirjar Lord's Helmet
-						},
-					}),
-					i(51227, {	-- Sanctified Ymirjar Lord's Helmet (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51212, 1 },	-- Sanctified Ymirjar Lord's Helmet
-						},
-					}),
-					i(51216, {	-- Sanctified Ymirjar Lord's Legguards (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50847, 1 },	-- Ymirjar Lord's Legguards
-						},
-					}),
-					i(51223, {	-- Sanctified Ymirjar Lord's Legguards (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51216, 1 },	-- Sanctified Ymirjar Lord's Legguards
-						},
-					}),
-					i(51211, {	-- Sanctified Ymirjar Lord's Legplates (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50081, 1 },	-- Ymirjar Lord's Legplates
-						},
-					}),
-					i(51228, {	-- Sanctified Ymirjar Lord's Legplates (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51211, 1 },	-- Sanctified Ymirjar Lord's Legplates
-						},
-					}),
-					i(51215, {	-- Sanctified Ymirjar Lord's Pauldrons (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50846, 1 },	-- Ymirjar Lord's Pauldrons
-						},
-					}),
-					i(51224, {	-- Sanctified Ymirjar Lord's Pauldrons (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51215, 1 },	-- Sanctified Ymirjar Lord's Pauldrons
-						},
-					}),
-					i(51210, {	-- Sanctified Ymirjar Lord's Shoulderplates (N)
-						["cost"] = {
-							{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 50082, 1 },	-- Ymirjar Lord's Shoulderplates
-						},
-					}),
-					i(51229, {	-- Sanctified Ymirjar Lord's Shoulderplates (H)
-						["cost"] = {
-							{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-							{ "i", 51210, 1 },	-- Sanctified Ymirjar Lord's Shoulderplates
-						},
-					}),
-					i(50078),	-- Ymirjar Lord's Battleplate
-					i(50850),	-- Ymirjar Lord's Breastplate
-					i(50079),	-- Ymirjar Lord's Gauntlets
-					i(50848),	-- Ymirjar Lord's Greathelm
-					i(50849),	-- Ymirjar Lord's Handguards
-					i(50080),	-- Ymirjar Lord's Helmet
-					i(50847),	-- Ymirjar Lord's Legguards
-					i(50081),	-- Ymirjar Lord's Legplates
-					i(50846),	-- Ymirjar Lord's Pauldrons
-					i(50082),	-- Ymirjar Lord's Shoulderplates
-				}),
-				n(37696, {	-- Crusader Halford <Paladin Armor>
-					i(50328),	-- Lightsworn Battleplate
-					i(50864),	-- Lightsworn Chestguard
-					i(50862),	-- Lightsworn Faceguard
-					i(50327),	-- Lightsworn Gauntlets
-					i(50868),	-- Lightsworn Gloves
-					i(50866),	-- Lightsworn Greaves
-					i(50863),	-- Lightsworn Handguards
-					i(50867),	-- Lightsworn Headpiece
-					i(50326),	-- Lightsworn Helmet
-					i(50861),	-- Lightsworn Legguards
-					i(50325),	-- Lightsworn Legplates
-					i(50860),	-- Lightsworn Shoulderguards
-					i(50324),	-- Lightsworn Shoulderplates
-					i(50865),	-- Lightsworn Spaulders
-					i(50869),	-- Lightsworn Tunic
-					i(51164, {	-- Sanctified Lightsworn Battleplate (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50328, 1 },	-- Lightsworn Battleplate
-						},
-					}),
-					i(51275, {	-- Sanctified Lightsworn Battleplate (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51164, 1 },	-- Sanctified Lightsworn Battleplate
-						},
-					}),
-					i(51174, {	-- Sanctified Lightsworn Chestguard (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50864, 1 },	-- Lightsworn Chestguard
-						},
-					}),
-					i(51265, {	-- Sanctified Lightsworn Chestguard (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51174, 1 },	-- Sanctified Lightsworn Chestguard
-						},
-					}),
-					i(51173, {	-- Sanctified Lightsworn Faceguard (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50862, 1 },	-- Lightsworn Faceguard
-						},
-					}),
-					i(51266, {	-- Sanctified Lightsworn Faceguard (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51173, 1 },	-- Sanctified Lightsworn Faceguard
-						},
-					}),
-					i(51163, {	-- Sanctified Lightsworn Gauntlets (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50327, 1 },	-- Lightsworn Gauntlets
-						},
-					}),
-					i(51276, {	-- Sanctified Lightsworn Gauntlets (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51163, 1 },	-- Sanctified Lightsworn Gauntlets
-						},
-					}),
-					i(51169, {	-- Sanctified Lightsworn Gloves (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50868, 1 },	-- Lightsworn Gloves
-						},
-					}),
-					i(51270, {	-- Sanctified Lightsworn Gloves (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51169, 1 },	-- Sanctified Lightsworn Gloves
-						},
-					}),
-					i(51168, {	-- Sanctified Lightsworn Greaves (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50866, 1 },	-- Lightsworn Greaves
-						},
-					}),
-					i(51271, {	-- Sanctified Lightsworn Greaves (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51168, 1 },	-- Sanctified Lightsworn Greaves
-						},
-					}),
-					i(51172, {	-- Sanctified Lightsworn Handguards (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50863, 1 },	-- Lightsworn Handguards
-						},
-					}),
-					i(51267, {	-- Sanctified Lightsworn Handguards (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51172, 1 },	-- Sanctified Lightsworn Handguards
-						},
-					}),
-					i(51167, {	-- Sanctified Lightsworn Headpiece (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50867, 1 },	-- Lightsworn Headpiece
-						},
-					}),
-					i(51272, {	-- Sanctified Lightsworn Headpiece (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51167, 1 },	-- Sanctified Lightsworn Headpiece
-						},
-					}),
-					i(51162, {	-- Sanctified Lightsworn Helmet (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50326, 1 },	-- Lightsworn Helmet
-						},
-					}),
-					i(51277, {	-- Sanctified Lightsworn Helmet (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51162, 1 },	-- Sanctified Lightsworn Helmet
-						},
-					}),
-					i(51171, {	-- Sanctified Lightsworn Legguards (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50861, 1 },	-- Lightsworn Legguards
-						},
-					}),
-					i(51268, {	-- Sanctified Lightsworn Legguards (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51171, 1 },	-- Sanctified Lightsworn Legguards
-						},
-					}),
-					i(51161, {	-- Sanctified Lightsworn Legplates (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50325, 1 },	-- Lightsworn Legplates
-						},
-					}),
-					i(51278, {	-- Sanctified Lightsworn Legplates (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51161, 1 },	-- Sanctified Lightsworn Legplates
-						},
-					}),
-					i(51170, {	-- Sanctified Lightsworn Shoulderguards (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50860, 1 },	-- Lightsworn Shoulderguards
-						},
-					}),
-					i(51269, {	-- Sanctified Lightsworn Shoulderguards (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51170, 1 },	-- Sanctified Lightsworn Shoulderguards
-						},
-					}),
-					i(51160, {	-- Sanctified Lightsworn Shoulderplates (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50324, 1 },	-- Lightsworn Shoulderplates
-						},
-					}),
-					i(51279, {	-- Sanctified Lightsworn Shoulderplates (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51160, 1 },	-- Sanctified Lightsworn Shoulderplates
-						},
-					}),
-					i(51166, {	-- Sanctified Lightsworn Spaulders (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50865, 1 },	-- Lightsworn Spaulders
-						},
-					}),
-					i(51273, {	-- Sanctified Lightsworn Spaulders (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51166, 1 },	-- Sanctified Lightsworn Spaulders
-						},
-					}),
-					i(51165, {	-- Sanctified Lightsworn Tunic (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 50869, 1 },	-- Lightsworn Tunic
-						},
-					}),
-					i(51274, {	-- Sanctified Lightsworn Tunic (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification
-							{ "i", 51165, 1 },	-- Sanctified Lightsworn Tunic
-						},
-					}),
-				}),
-				n(37993, {	-- Gerardo the Suave <Hunter Armor>
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						i(50114),	-- Ahn'Kahar Blood Hunter's Handguards
-						i(50115),	-- Ahn'Kahar Blood Hunter's Headpiece
-						i(50116),	-- Ahn'Kahar Blood Hunter's Legguards
-						i(50117),	-- Ahn'Kahar Blood Hunter's Spaulders
-						i(50118),	-- Ahn'Kahar Blood Hunter's Tunic
-						i(51154, {	-- Sanctified Ahn'Kahar Blood Hunter's Handguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50114, 1 },	-- Ahn'Kahar Blood Hunter's Handguards
-							},
-						}),
-						i(51285, {	-- Sanctified Ahn'Kahar Blood Hunter's Handguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51154, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Handguards
-							},
-						}),
-						i(51153, {	-- Sanctified Ahn'Kahar Blood Hunter's Headpiece (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50115, 1 },	-- Ahn'Kahar Blood Hunter's Headpiece
-							},
-						}),
-						i(51286, {	-- Sanctified Ahn'Kahar Blood Hunter's Headpiece (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51153, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Headpiece
-							},
-						}),
-						i(51152, {	-- Sanctified Ahn'Kahar Blood Hunter's Legguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50116, 1 },	-- Ahn'Kahar Blood Hunter's Legguards
-							},
-						}),
-						i(51287, {	-- Sanctified Ahn'Kahar Blood Hunter's Legguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51152, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Legguards
-							},
-						}),
-						i(51151, {	-- Sanctified Ahn'Kahar Blood Hunter's Spaulders (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50117, 1 },	-- Ahn'Kahar Blood Hunter's Spaulders
-							},
-						}),
-						i(51288, {	-- Sanctified Ahn'Kahar Blood Hunter's Spaulders (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51151, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Spaulders
-							},
-						}),
-						i(51150, {	-- Sanctified Ahn'Kahar Blood Hunter's Tunic (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50118, 1 },	-- Ahn'Kahar Blood Hunter's Tunic
-							},
-						}),
-						i(51289, {	-- Sanctified Ahn'Kahar Blood Hunter's Tunic (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51150, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Tunic
-							},
-						}),
-					},
 				}),
 				n(38858, {	-- Goodman the "Closer" <Legacy Justice Quartermaster>
 					["sym"] = {
-						{"sub", "pvp_gear_base", WOTLK_TIER, SEASON_RELENTLESS, PVP_GLADIATOR },
+						{"sub", "pvp_gear_base", EXPANSION.WRATH, SEASON_RELENTLESS, PVP_GLADIATOR },
 						{"merge"},	-- Subroutines are automatically finalized, so merge back for further processing
 						{"pop"},	-- Discard the Set header and acquire the children.
 						{"exclude", "headerID", NECK, FINGER, TRINKET, BACK, WRIST, WAIST, FEET, WEAPONS },	-- Exclude Neck, Finger, Trinkets, Back, Wrist, Waist, Feet and Weapons
 						{"isnt","c"},	-- Discard headers for Classes [c]
 					},
 					["groups"] = {
-						i(50993),	-- Band of the Night Raven
-						i(50996),	-- Belt of Omission
-						i(50994),	-- Belt of Petrified Ivy
-						i(50980),	-- Blizzard Keeper's Mitts
-						i(50965),	-- Castle Breaker's Battleplate
-						i(50982),	-- Cat Burglar's Grips
-						i(50968),	-- Cataclysmic Chestguard
-						i(50969),	-- Chestplate of Unspoken Truths
-						i(50997),	-- Circle of Ossus
-						i(50356),	-- Corroded Skeleton Key
-						i(50468),	-- Drape of the Violet Tower
-						i(50975),	-- Ermine Coronation Robes
-						i(50977),	-- Gatecrasher's Gauntlets
-						i(50976),	-- Gauntlets of Overexposure
-						i(50978),	-- Gauntlets of the Kraken
-						i(50984),	-- Gloves of Ambivalence
-						i(50983),	-- Gloves of False Gestures
-						i(50981),	-- Gloves of the Great Horned Owl
-						i(50355),	-- Herkumi War Token
-						i(50989),	-- Lich Killer's Lanyard
-						i(50979),	-- Logsplitters
-						i(50970),	-- Longstrider's Vest
-						i(50357),	-- Maghia's Misguised Quill
-						i(50971),	-- Mail of the Geyser
-						i(50987),	-- Malevolent Girdle
-						i(50974),	-- Meteor Chaser's Raiment
-						i(50467),	-- Might of the Ocean Serpent
-						i(49908),	-- Primordial Saronite
-						i(50358),	-- Purified Lunar Dust
-						i(50470),	-- Recovered Scarlet Onsalught Cape
-						i(50466),	-- Sentinel's Winter Cloak
-						i(50972),	-- Shadow Seeker's Tunic
-						i(50995),	-- Vengeful Noose
-						i(50991),	-- Verdigris Chain Belt
-						i(50973),	-- Vestments of Spruce and Fir
-						i(50469),	-- Volde's Cloak of the Night Sky
-						i(50992),	-- Waistband of Despair
-					},
-				}),
-				n(38181, {	-- Haragg the Unseen <Warlock Armor>
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						i(50240),	-- Dark Coven Gloves
-						i(50241),	-- Dark Coven Hood
-						i(50242),	-- Dark Coven Leggings
-						i(50243),	-- Dark Coven Robe
-						i(50244),	-- Dark Coven Shoulderpads
-						i(51209, {	-- Sanctified Dark Coven Gloves (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50240, 1 },	-- Dark Coven Gloves
-							},
-						}),
-						i(51230, {	-- Sanctified Dark Coven Gloves (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51209, 1 },	-- Sanctified Dark Coven Gloves
-							},
-						}),
-						i(51208, {	-- Sanctified Dark Coven Hood (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50241, 1 },	-- Dark Coven Hood
-							},
-						}),
-						i(51231, {	-- Sanctified Dark Coven Hood (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51208, 1 },	-- Sanctified Dark Coven Hood
-							},
-						}),
-						i(51207, {	-- Sanctified Dark Coven Leggings (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50242, 1 },	-- Dark Coven Leggings
-							},
-						}),
-						i(51232, {	-- Sanctified Dark Coven Leggings (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51207, 1 },	-- Sanctified Dark Coven Leggings
-							},
-						}),
-						i(51206, {	-- Sanctified Dark Coven Robe (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50243, 1 },	-- Dark Coven Robe
-							},
-						}),
-						i(51233, {	-- Sanctified Dark Coven Robe (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51206, 1 },	-- Sanctified Dark Coven Robe
-							},
-						}),
-						i(51205, {	-- Sanctified Dark Coven Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50244, 1 },	-- Dark Coven Shoulderpads
-							},
-						}),
-						i(51234, {	-- Sanctified Dark Coven Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51205, 1 },	-- Sanctified Dark Coven Shoulderpads
-							},
-						}),
-					},
-				}),
-				n(37991, {	-- Ikfirus the Vile <Rogue Armor>
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						i(51189, {	-- Sanctified Shadowblade Breastplate (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50087, 1 },	-- Shadowblade Breastplate
-							},
-						}),
-						i(51250, {	-- Sanctified Shadowblade Breastplate (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51189, 1 },	-- Sanctified Shadowblade Breastplate
-							},
-						}),
-						i(51188, {	-- Sanctified Shadowblade Gauntlets (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50088, 1 },	-- Shadowblade Gauntlets
-							},
-						}),
-						i(51251, {	-- Sanctified Shadowblade Gauntlets (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51188, 1 },	-- Sanctified Shadowblade Gauntlets
-							},
-						}),
-						i(51187, {	-- Sanctified Shadowblade Helmet (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50089, 1 },	-- Shadowblade Helmet
-							},
-						}),
-						i(51252, {	-- Sanctified Shadowblade Helmet (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51187, 1 },	-- Sanctified Shadowblade Helmet
-							},
-						}),
-						i(51186, {	-- Sanctified Shadowblade Legplates (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50090, 1 },	-- Shadowblade Legplates
-							},
-						}),
-						i(51253, {	-- Sanctified Shadowblade Legplates (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51186, 1 },	-- Sanctified Shadowblade Legplates
-							},
-						}),
-						i(51185, {	-- Sanctified Shadowblade Pauldrons (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50105, 1 },	-- Shadowblade Pauldrons
-							},
-						}),
-						i(51254, {	-- Sanctified Shadowblade Pauldrons (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51185, 1 },	-- Sanctified Shadowblade Pauldrons
-							},
-						}),
-						i(50087),	-- Shadowblade Breastplate
-						i(50088),	-- Shadowblade Gauntlets
-						i(50089),	-- Shadowblade Helmet
-						i(50090),	-- Shadowblade Legplates
-						i(50105),	-- Shadowblade Pauldrons
-					},
-				}),
-				n(38840, {	-- Jedebia <Shaman Armor>
-					["races"] = ALLIANCE_ONLY,
-					["groups"] = {
-						i(50830),	-- Frost Witch's Chestguard
-						i(50832),	-- Frost Witch's Faceguard
-						i(50842),	-- Frost Witch's Gloves
-						i(50831),	-- Frost Witch's Grips
-						i(50836),	-- Frost Witch's Handguards
-						i(50841),	-- Frost Witch's Hauberk
-						i(50837),	-- Frost Witch's Headpiece
-						i(50843),	-- Frost Witch's Helm
-						i(50844),	-- Frost Witch's Kilt
-						i(50838),	-- Frost Witch's Legguards
-						i(50834),	-- Frost Witch's Shoulderguards
-						i(50845),	-- Frost Witch's Shoulderpads
-						i(50839),	-- Frost Witch's Spaulders
-						i(50835),	-- Frost Witch's Tunic
-						i(50833),	-- Frost Witch's War-Kilt
-						i(51195, {	-- Sanctified Frost Witch's Chestguard (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50830, 1 },	-- Frost Witch's Chestguard
-							},
-						}),
-						i(51244, {	-- Sanctified Frost Witch's Chestguard (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51195, 1 },	-- Sanctified Frost Witch's Chestguard
-							},
-						}),
-						i(51197, {	-- Sanctified Frost Witch's Faceguard (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50832, 1 },	-- Frost Witch's Faceguard
-							},
-						}),
-						i(51242, {	-- Sanctified Frost Witch's Faceguard (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51197, 1 },	-- Sanctified Frost Witch's Faceguard
-							},
-						}),
-						i(51201, {	-- Sanctified Frost Witch's Gloves (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50842, 1 },	-- Frost Witch's Gloves
-							},
-						}),
-						i(51238, {	-- Sanctified Frost Witch's Gloves (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51201, 1 },	-- Sanctified Frost Witch's Gloves
-							},
-						}),
-						i(51196, {	-- Sanctified Frost Witch's Grips (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50831, 1 },	-- Frost Witch's Grips
-							},
-						}),
-						i(51243, {	-- Sanctified Frost Witch's Grips (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51196, 1 },	-- Sanctified Frost Witch's Grips
-							},
-						}),
-						i(51191, {	-- Sanctified Frost Witch's Handguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50836, 1 },	-- Frost Witch's Handguards
-							},
-						}),
-						i(51248, {	-- Sanctified Frost Witch's Handguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51191, 1 },	-- Sanctified Frost Witch's Handguards
-							},
-						}),
-						i(51200, {	-- Sanctified Frost Witch's Hauberk (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50841, 1 },	-- Frost Witch's Hauberk
-							},
-						}),
-						i(51239, {	-- Sanctified Frost Witch's Hauberk (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51200, 1 },	-- Sanctified Frost Witch's Hauberk
-							},
-						}),
-						i(51192, {	-- Sanctified Frost Witch's Headpiece (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50837, 1 },	-- Frost Witch's Headpiece
-							},
-						}),
-						i(51247, {	-- Sanctified Frost Witch's Headpiece (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51192, 1 },	-- Sanctified Frost Witch's Headpiece
-							},
-						}),
-						i(51202, {	-- Sanctified Frost Witch's Helm (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50843, 1 },	-- Frost Witch's Helm
-							},
-						}),
-						i(51237, {	-- Sanctified Frost Witch's Helm (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51202, 1 },	-- Sanctified Frost Witch's Helm
-							},
-						}),
-						i(51203, {	-- Sanctified Frost Witch's Kilt (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50844, 1 },	-- Frost Witch's Kilt
-							},
-						}),
-						i(51236, {	-- Sanctified Frost Witch's Kilt (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51203, 1 },	-- Sanctified Frost Witch's Kilt
-							},
-						}),
-						i(51193, {	-- Sanctified Frost Witch's Legguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50838, 1 },	-- Frost Witch's Legguards
-							},
-						}),
-						i(51246, {	-- Sanctified Frost Witch's Legguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51193, 1 },	-- Sanctified Frost Witch's Legguards
-							},
-						}),
-						i(51199, {	-- Sanctified Frost Witch's Shoulderguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50834, 1 },	-- Frost Witch's Shoulderguards
-							},
-						}),
-						i(51240, {	-- Sanctified Frost Witch's Shoulderguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51199, 1 },	-- Sanctified Frost Witch's Shoulderguards
-							},
-						}),
-						i(51204, {	-- Sanctified Frost Witch's Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50845, 1 },	-- Frost Witch's Shoulderpads
-							},
-						}),
-						i(51235, {	-- Sanctified Frost Witch's Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51204, 1 },	-- Sanctified Frost Witch's Shoulderpads
-							},
-						}),
-						i(51194, {	-- Sanctified Frost Witch's Spaulders (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50839, 1 },	-- Frost Witch's Spaulders
-							},
-						}),
-						i(51245, {	-- Sanctified Frost Witch's Spaulders (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51194, 1 },	-- Sanctified Frost Witch's Spaulders
-							},
-						}),
-						i(51190, {	-- Sanctified Frost Witch's Tunic (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50835, 1 },	-- Frost Witch's Tunic
-							},
-						}),
-						i(51249, {	-- Sanctified Frost Witch's Tunic (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51190, 1 },	-- Sanctified Frost Witch's Tunic
-							},
-						}),
-						i(51198, {	-- Sanctified Frost Witch's War-Kilt (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50833, 1 },	-- Frost Witch's War-Kilt
-							},
-						}),
-						i(51241, {	-- Sanctified Frost Witch's War-Kilt (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51198, 1 },	-- Sanctified Frost Witch's War-Kilt
-							},
-						}),
-					},
-				}),
-				n(38283, {	-- Malfus Grimfrost <Mage Armor>
-					["races"] = ALLIANCE_ONLY,
-					["groups"] = {
-						i(50275),	-- Bloodmage Gloves
-						i(50276),	-- Bloodmage Hood
-						i(50277),	-- Bloodmage Leggings
-						i(50278),	-- Bloodmage Robe
-						i(50279),	-- Bloodmage Shoulderpads
-						i(51159, {	-- Sanctified Bloodmage Gloves (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50275, 1 },	-- Bloodmage Gloves
-							},
-						}),
-						i(51280, {	-- Sanctified Bloodmage Gloves (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51159, 1 },	-- Sanctified Bloodmage Gloves
-							},
-						}),
-						i(51158, {	-- Sanctified Bloodmage Hood (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50276, 1 },	-- Bloodmage Hood
-							},
-						}),
-						i(51281, {	-- Sanctified Bloodmage Hood (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51158, 1 },	-- Sanctified Bloodmage Hood
-							},
-						}),
-						i(51157, {	-- Sanctified Bloodmage Leggings (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50277, 1 },	-- Bloodmage Leggings
-							},
-						}),
-						i(51282, {	-- Sanctified Bloodmage Leggings (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51157, 1 },	-- Sanctified Bloodmage Leggings
-							},
-						}),
-						i(51156, {	-- Sanctified Bloodmage Robe (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50278, 1 },	-- Bloodmage Robe
-							},
-						}),
-						i(51283, {	-- Sanctified Bloodmage Robe (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51156, 1 },	-- Sanctified Bloodmage Robe
-							},
-						}),
-						i(51155, {	-- Sanctified Bloodmage Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50279, 1 },	-- Bloodmage Shoulderpads
-							},
-						}),
-						i(51284, {	-- Sanctified Bloodmage Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51155, 1 },	-- Sanctified Bloodmage Shoulderpads
-							},
-						}),
+						emof(60, i(50993)),	-- Band of the Night Raven
+						emof(60, i(50996)),	-- Belt of Omission
+						emof(60, i(50994)),	-- Belt of Petrified Ivy
+						emof(30, i(50458, {	-- Bizuri's Totem of Shattered Ice
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(60, i(50980)),	-- Blizzard Keeper's Mitts
+						emof(95, i(50965)),	-- Castle Breaker's Battleplate
+						emof(60, i(50982)),	-- Cat Burglar's Grips
+						emof(95, i(50968)),	-- Cataclysmic Chestguard
+						emof(95, i(50969)),	-- Chestplate of Unspoken Truths
+						emof(60, i(50997)),	-- Circle of Ossus
+						emof(60, i(50356)),	-- Corroded Skeleton Key
+						emof(50, i(50468)),	-- Drape of the Violet Tower
+						emof(95, i(50975)),	-- Ermine Coronation Robes
+						emof(60, i(50977)),	-- Gatecrasher's Gauntlets
+						emof(60, i(50976)),	-- Gauntlets of Overexposure
+						emof(60, i(50978)),	-- Gauntlets of the Kraken
+						emof(60, i(50984)),	-- Gloves of Ambivalence
+						emof(60, i(50983)),	-- Gloves of False Gestures
+						emof(60, i(50981)),	-- Gloves of the Great Horned Owl
+						emof(60, i(50355)),	-- Herkumi War Token
+						emof(30, i(50454, {	-- Idol of the Black Willow
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50456, {	-- Idol of the Crying Moon
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50457, {	-- Idol of the Lunar Eclipse
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50460, {	-- Libram of Blinding Light
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50461, {	-- Libram of the Eternal Tower
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50455, {	-- Libram of Three Truths
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(60, i(50989)),	-- Lich Killer's Lanyard
+						emof(60, i(50979)),	-- Logsplitters
+						emof(95, i(50970)),	-- Longstrider's Vest
+						emof(60, i(50357)),	-- Maghia's Misguised Quill
+						emof(95, i(50971)),	-- Mail of the Geyser
+						emof(60, i(50987)),	-- Malevolent Girdle
+						emof(95, i(50974)),	-- Meteor Chaser's Raiment
+						emof(50, i(50467)),	-- Might of the Ocean Serpent
+						emof(23, i(49908)),	-- Primordial Saronite
+						emof(60, i(50358)),	-- Purified Lunar Dust
+						emof(50, i(50470)),	-- Recovered Scarlet Onsalught Cape
+						emof(50, i(50466)),	-- Sentinel's Winter Cloak
+						emof(95, i(50972)),	-- Shadow Seeker's Tunic
+						emof(30, i(50462, {	-- Sigil of the Bone Gryphon
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50459, {	-- Sigil of the Hanged Man
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50463, {	-- Totem of the Avalanche
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(30, i(50464, {	-- Totem of the Surging Sea
+							["timeline"] = { REMOVED_5_0_4 },
+						})),
+						emof(60, i(50995)),	-- Vengeful Noose
+						emof(60, i(50991)),	-- Verdigris Chain Belt
+						emof(95, i(50973)),	-- Vestments of Spruce and Fir
+						emof(50, i(50469)),	-- Volde's Cloak of the Night Sky
+						emof(60, i(50992)),	-- Waistband of Despair
 					},
 				}),
 				n(37936, {	-- Morgan Dayblaze
@@ -1671,340 +1041,6 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						3421,    -- Simple Wildflowers
 					}},
 				}),
-				n(38182, {	-- Niby the Almighty <Warlock Armor>
-					["races"] = ALLIANCE_ONLY,
-					["groups"] = {
-						i(50240),	-- Dark Coven Gloves
-						i(50241),	-- Dark Coven Hood
-						i(50242),	-- Dark Coven Leggings
-						i(50243),	-- Dark Coven Robe
-						i(50244),	-- Dark Coven Shoulderpads
-						i(51209, {	-- Sanctified Dark Coven Gloves (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50240, 1 },	-- Dark Coven Gloves
-							},
-						}),
-						i(51230, {	-- Sanctified Dark Coven Gloves (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51209, 1 },	-- Sanctified Dark Coven Gloves
-							},
-						}),
-						i(51208, {	-- Sanctified Dark Coven Hood (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50241, 1 },	-- Dark Coven Hood
-							},
-						}),
-						i(51231, {	-- Sanctified Dark Coven Hood (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51208, 1 },	-- Sanctified Dark Coven Hood
-							},
-						}),
-						i(51207, {	-- Sanctified Dark Coven Leggings (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50242, 1 },	-- Dark Coven Leggings
-							},
-						}),
-						i(51232, {	-- Sanctified Dark Coven Leggings (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51207, 1 },	-- Sanctified Dark Coven Leggings
-							},
-						}),
-						i(51206, {	-- Sanctified Dark Coven Robe (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50243, 1 },	-- Dark Coven Robe
-							},
-						}),
-						i(51233, {	-- Sanctified Dark Coven Robe (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51206, 1 },	-- Sanctified Dark Coven Robe
-							},
-						}),
-						i(51205, {	-- Sanctified Dark Coven Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-								{ "i", 50244, 1 },	-- Dark Coven Shoulderpads
-							},
-						}),
-						i(51234, {	-- Sanctified Dark Coven Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-								{ "i", 51205, 1 },	-- Sanctified Dark Coven Shoulderpads
-							},
-						}),
-					},
-				}),
-				n(38316, {	-- Ormus the Penitent <Death Knight Armor>
-					i(51129, {	-- Sanctified Scourgelord Battleplate (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50094, 1 },	-- Scourgelord Battleplate
-						},
-					}),
-					i(51310, {	-- Sanctified Scourgelord Battleplate (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51129, 1 },	-- Sanctified Scourgelord Battleplate
-						},
-					}),
-					i(51134, {	-- Sanctified Scourgelord Chestguard (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50857, 1 },	-- Scourgelord Chestguard
-						},
-					}),
-					i(51305, {	-- Sanctified Scourgelord Chestguard (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51134, 1 },	-- Sanctified Scourgelord Chestguard
-						},
-					}),
-					i(51133, {	-- Sanctified Scourgelord Faceguard (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50855, 1 },	-- Scourgelord Faceguard
-						},
-					}),
-					i(51306, {	-- Sanctified Scourgelord Faceguard (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51133, 1 },	-- Sanctified Scourgelord Faceguard
-						},
-					}),
-					i(51128, {	-- Sanctified Scourgelord Gauntlets (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50095, 1 },	-- Scourgelord Gauntlets
-						},
-					}),
-					i(51311, {	-- Sanctified Scourgelord Gauntlets (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51128, 1 },	-- Sanctified Scourgelord Gauntlets
-						},
-					}),
-					i(51132, {	-- Sanctified Scourgelord Handguards (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50856, 1 },	-- Scourgelord Handguards
-						},
-					}),
-					i(51307, {	-- Sanctified Scourgelord Handguards (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51132, 1 },	-- Sanctified Scourgelord Handguards
-						},
-					}),
-					i(51127, {	-- Sanctified Scourgelord Helmet (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50096, 1 },	-- Scourgelord Helmet
-						},
-					}),
-					i(51312, {	-- Sanctified Scourgelord Helmet (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51127, 1 },	-- Sanctified Scourgelord Helmet
-						},
-					}),
-					i(51131, {	-- Sanctified Scourgelord Legguards (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50854, 1 },	-- Scourgelord Legguards
-						},
-					}),
-					i(51308, {	-- Sanctified Scourgelord Legguards (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51131, 1 },	-- Sanctified Scourgelord Legguards
-						},
-					}),
-					i(51126, {	-- Sanctified Scourgelord Legplates (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50097, 1 },	-- Scourgelord Legplates
-						},
-					}),
-					i(51313, {	-- Sanctified Scourgelord Legplates (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51126, 1 },	-- Sanctified Scourgelord Legplates
-						},
-					}),
-					i(51130, {	-- Sanctified Scourgelord Pauldrons (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50853, 1 },	-- Scourgelord Pauldrons
-						},
-					}),
-					i(51309, {	-- Sanctified Scourgelord Pauldrons (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51130, 1 },	-- Sanctified Scourgelord Pauldrons
-						},
-					}),
-					i(51125, {	-- Sanctified Scourgelord Shoulderplates (N)
-						["cost"] = {
-							{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 50098, 1 },	-- Scourgelord Shoulderplates
-						},
-					}),
-					i(51314, {	-- Sanctified Scourgelord Shoulderplates (H)
-						["cost"] = {
-							{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification
-							{ "i", 51125, 1 },	-- Sanctified Scourgelord Shoulderplates
-						},
-					}),
-					i(50094),	-- Scourgelord Battleplate
-					i(50857),	-- Scourgelord Chestguard
-					i(50855),	-- Scourgelord Faceguard
-					i(50095),	-- Scourgelord Gauntlets
-					i(50856),	-- Scourgelord Handguards
-					i(50096),	-- Scourgelord Helmet
-					i(50854),	-- Scourgelord Legguards
-					i(50097),	-- Scourgelord Legplates
-					i(50853),	-- Scourgelord Pauldrons
-					i(50098),	-- Scourgelord Shoulderplates
-				}),
-				n(38054, {	-- Scott the Merciful <Priest Armor>
-					i(50392),	-- Crimson Acolyte Cowl
-					i(50766),	-- Crimson Acolyte Gloves
-					i(50391),	-- Crimson Acolyte Handwraps
-					i(50765),	-- Crimson Acolyte Hood
-					i(50769),	-- Crimson Acolyte Leggings
-					i(50396),	-- Crimson Acolyte Mantle
-					i(50393),	-- Crimson Acolyte Pants
-					i(50394),	-- Crimson Acolyte Raiments
-					i(50768),	-- Crimson Acolyte Robe
-					i(50767),	-- Crimson Acolyte Shoulderpads
-					i(51184, {	-- Sanctified Crimson Acolyte Cowl (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50392, 1 },	-- Crimson Acolyte Cowl
-						},
-					}),
-					i(51255, {	-- Sanctified Crimson Acolyte Cowl (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51184, 1 },	-- Sanctified Crimson Acolyte Cowl
-						},
-					}),
-					i(51179, {	-- Sanctified Crimson Acolyte Gloves (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50766, 1 },	-- Crimson Acolyte Gloves
-						},
-					}),
-					i(51260, {	-- Sanctified Crimson Acolyte Gloves (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51179, 1 },	-- Sanctified Crimson Acolyte Gloves
-						},
-					}),
-					i(51183, {	-- Sanctified Crimson Acolyte Handwraps (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50391, 1 },	-- Crimson Acolyte Handwraps
-						},
-					}),
-					i(51256, {	-- Sanctified Crimson Acolyte Handwraps (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51183, 1 },	-- Sanctified Crimson Acolyte Handwraps
-						},
-					}),
-					i(51178, {	-- Sanctified Crimson Acolyte Hood (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50765, 1 },	-- Crimson Acolyte Hood
-						},
-					}),
-					i(51261, {	-- Sanctified Crimson Acolyte Hood (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51178, 1 },	-- Sanctified Crimson Acolyte Hood
-						},
-					}),
-					i(51177, {	-- Sanctified Crimson Acolyte Leggings (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50769, 1 },	-- Crimson Acolyte Leggings
-						},
-					}),
-					i(51262, {	-- Sanctified Crimson Acolyte Leggings (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51177, 1 },	-- Sanctified Crimson Acolyte Leggings
-						},
-					}),
-					i(51182, {	-- Sanctified Crimson Acolyte Mantle (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50396, 1 },	-- Crimson Acolyte Mantle
-						},
-					}),
-					i(51257, {	-- Sanctified Crimson Acolyte Mantle (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51182, 1 },	-- Sanctified Crimson Acolyte Mantle
-						},
-					}),
-					i(51181, {	-- Sanctified Crimson Acolyte Pants (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50393, 1 },	-- Crimson Acolyte Pants
-						},
-					}),
-					i(51258, {	-- Sanctified Crimson Acolyte Pants (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51181, 1 },	-- Sanctified Crimson Acolyte Pants
-						},
-					}),
-					i(51180, {	-- Sanctified Crimson Acolyte Raiments (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50394, 1 },	-- Crimson Acolyte Raiments
-						},
-					}),
-					i(51259, {	-- Sanctified Crimson Acolyte Raiments (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51180, 1 },	-- Sanctified Crimson Acolyte Raiments
-						},
-					}),
-					i(51176, {	-- Sanctified Crimson Acolyte Robe (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50768, 1 },	-- Crimson Acolyte Robe
-						},
-					}),
-					i(51263, {	-- Sanctified Crimson Acolyte Robe (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51176, 1 },	-- Sanctified Crimson Acolyte Robe
-						},
-					}),
-					i(51175, {	-- Sanctified Crimson Acolyte Shoulderpads (N)
-						["cost"] = {
-							{ "i", 52027, 1 },	-- Conqueror's Mark of Sanctification (N)
-							{ "i", 50767, 1 },	-- Crimson Acolyte Shoulderpads
-						},
-					}),
-					i(51264, {	-- Sanctified Crimson Acolyte Shoulderpads (H)
-						["cost"] = {
-							{ "i", 52030, 1 },	-- Conqueror's Mark of Sanctification (H)
-							{ "i", 51175, 1 },	-- Sanctified Crimson Acolyte Shoulderpads
-						},
-					}),
-				}),
 				n(37903, {	-- Shely Steelbowels
 					["races"] = ALLIANCE_ONLY,
 					["sym"] = {{"select","itemID",
@@ -2012,649 +1048,66 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						30750,    -- Draenic Warblade
 					}},
 				}),
-				n(37998, {	-- Talan Moonstrike <Hunter Armor>
-					["races"] = ALLIANCE_ONLY,
-					["groups"] = {
-						i(50114),	-- Ahn'Kahar Blood Hunter's Handguards
-						i(50115),	-- Ahn'Kahar Blood Hunter's Headpiece
-						i(50116),	-- Ahn'Kahar Blood Hunter's Legguards
-						i(50117),	-- Ahn'Kahar Blood Hunter's Spaulders
-						i(50118),	-- Ahn'Kahar Blood Hunter's Tunic
-						i(51154, {	-- Sanctified Ahn'Kahar Blood Hunter's Handguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50114, 1 },	-- Ahn'Kahar Blood Hunter's Handguards
-							},
-						}),
-						i(51285, {	-- Sanctified Ahn'Kahar Blood Hunter's Handguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51154, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Handguards
-							},
-						}),
-						i(51153, {	-- Sanctified Ahn'Kahar Blood Hunter's Headpiece (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50115, 1 },	-- Ahn'Kahar Blood Hunter's Headpiece
-							},
-						}),
-						i(51286, {	-- Sanctified Ahn'Kahar Blood Hunter's Headpiece (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51153, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Headpiece
-							},
-						}),
-						i(51152, {	-- Sanctified Ahn'Kahar Blood Hunter's Legguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50116, 1 },	-- Ahn'Kahar Blood Hunter's Legguards
-							},
-						}),
-						i(51287, {	-- Sanctified Ahn'Kahar Blood Hunter's Legguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51152, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Legguards
-							},
-						}),
-						i(51151, {	-- Sanctified Ahn'Kahar Blood Hunter's Spaulders (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50117, 1 },	-- Ahn'Kahar Blood Hunter's Spaulders
-							},
-						}),
-						i(51288, {	-- Sanctified Ahn'Kahar Blood Hunter's Spaulders (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51151, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Spaulders
-							},
-						}),
-						i(51150, {	-- Sanctified Ahn'Kahar Blood Hunter's Tunic (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50118, 1 },	-- Ahn'Kahar Blood Hunter's Tunic
-							},
-						}),
-						i(51289, {	-- Sanctified Ahn'Kahar Blood Hunter's Tunic (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51150, 1 },	-- Sanctified Ahn'Kahar Blood Hunter's Tunic
-							},
-						}),
-					},
-				}),
-				n(37992, {	-- Tortunok <Druid Armor>
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						i(50821),	-- Lasherweave Cover
-						i(50107),	-- Lasherweave Gauntlets
-						i(50822),	-- Lasherweave Gloves
-						i(50827),	-- Lasherweave Handgrips
-						i(50826),	-- Lasherweave Headguard
-						i(50108),	-- Lasherweave Helmet
-						i(50825),	-- Lasherweave Legguards
-						i(50109),	-- Lasherweave Legplates
-						i(50819),	-- Lasherweave Mantle
-						i(50113),	-- Lasherweave Pauldrons
-						i(50828),	-- Lasherweave Raiment
-						i(50106),	-- Lasherweave Robes
-						i(50824),	-- Lasherweave Shoulderpads
-						i(50820),	-- Lasherweave Trousers
-						i(50823),	-- Lasherweave Vestment
-						i(51149, {	-- Sanctified Lasherweave Cover (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50821, 1 },	-- Lasherweave Cover
-							},
-						}),
-						i(51290, {	-- Sanctified Lasherweave Cover (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51149, 1 },	-- Sanctified Lasherweave Cover
-							},
-						}),
-						i(51138, {	-- Sanctified Lasherweave Gauntlets (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50107, 1 },	-- Lasherweave Gauntlets
-							},
-						}),
-						i(51301, {	-- Sanctified Lasherweave Gauntlets (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51138, 1 },	-- Sanctified Lasherweave Gauntlets
-							},
-						}),
-						i(51148, {	-- Sanctified Lasherweave Gloves (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50822, 1 },	-- Lasherweave Gloves
-							},
-						}),
-						i(51291, {	-- Sanctified Lasherweave Gloves (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51148, 1 },	-- Sanctified Lasherweave Gloves
-							},
-						}),
-						i(51144, {	-- Sanctified Lasherweave Handgrips (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50827, 1 },	-- Lasherweave Handgrips
-							},
-						}),
-						i(51295, {	-- Sanctified Lasherweave Handgrips (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51144, 1 },	-- Sanctified Lasherweave Handgrips
-							},
-						}),
-						i(51143, {	-- Sanctified Lasherweave Headguard (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50826, 1 },	-- Lasherweave Headguard
-							},
-						}),
-						i(51296, {	-- Sanctified Lasherweave Headguard (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51143, 1 },	-- Sanctified Lasherweave Headguard
-							},
-						}),
-						i(51137, {	-- Sanctified Lasherweave Helmet (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50108, 1 },	-- Lasherweave Helmet
-							},
-						}),
-						i(51302, {	-- Sanctified Lasherweave Helmet (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51137, 1 },	-- Sanctified Lasherweave Helmet
-							},
-						}),
-						i(51142, {	-- Sanctified Lasherweave Legguards (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50825, 1 },	-- Lasherweave Legguards
-							},
-						}),
-						i(51297, {	-- Sanctified Lasherweave Legguards (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51142, 1 },	-- Sanctified Lasherweave Legguards
-							},
-						}),
-						i(51136, {	-- Sanctified Lasherweave Legplates (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50109, 1 },	-- Lasherweave Legplates
-							},
-						}),
-						i(51303, {	-- Sanctified Lasherweave Legplates (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51136, 1 },	-- Sanctified Lasherweave Legplates
-							},
-						}),
-						i(51147, {	-- Sanctified Lasherweave Mantle (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50819, 1 },	-- Lasherweave Mantle
-							},
-						}),
-						i(51292, {	-- Sanctified Lasherweave Mantle (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51147, 1 },	-- Sanctified Lasherweave Mantle
-							},
-						}),
-						i(51135, {	-- Sanctified Lasherweave Pauldrons (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50113, 1 },	-- Lasherweave Pauldrons
-							},
-						}),
-						i(51304, {	-- Sanctified Lasherweave Pauldrons (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51135, 1 },	-- Sanctified Lasherweave Pauldrons
-							},
-						}),
-						i(51141, {	-- Sanctified Lasherweave Raiment (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50828, 1 },	-- Lasherweave Raiment
-							},
-						}),
-						i(51298, {	-- Sanctified Lasherweave Raiment (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51141, 1 },	-- Sanctified Lasherweave Raiment
-							},
-						}),
-						i(51139, {	-- Sanctified Lasherweave Robes (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50106, 1 },	-- Lasherweave Robes
-							},
-						}),
-						i(51300, {	-- Sanctified Lasherweave Robes (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51139, 1 },	-- Sanctified Lasherweave Robes
-							},
-						}),
-						i(51140, {	-- Sanctified Lasherweave Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50824, 1 },	-- Lasherweave Shoulderpads
-							},
-						}),
-						i(51299, {	-- Sanctified Lasherweave Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51140, 1 },	-- Sanctified Lasherweave Shoulderpads
-							},
-						}),
-						i(51146, {	-- Sanctified Lasherweave Trousers (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50820, 1 },	-- Lasherweave Trousers
-							},
-						}),
-						i(51293, {	-- Sanctified Lasherweave Trousers (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51146, 1 },	-- Sanctified Lasherweave Trousers
-							},
-						}),
-						i(51145, {	-- Sanctified Lasherweave Vestment (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50823, 1 },	-- Lasherweave Vestment
-							},
-						}),
-						i(51294, {	-- Sanctified Lasherweave Vestment (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51145, 1 },	-- Sanctified Lasherweave Vestment
-							},
-						}),
-					},
-				}),
-				n(38284, {	-- Uvlus Banefire <Mage Armor>
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						i(50275),	-- Bloodmage Gloves
-						i(50276),	-- Bloodmage Hood
-						i(50277),	-- Bloodmage Leggings
-						i(50278),	-- Bloodmage Robe
-						i(50279),	-- Bloodmage Shoulderpads
-						i(51159, {	-- Sanctified Bloodmage Gloves (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50275, 1 },	-- Bloodmage Gloves
-							},
-						}),
-						i(51280, {	-- Sanctified Bloodmage Gloves (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51159, 1 },	-- Sanctified Bloodmage Gloves
-							},
-						}),
-						i(51158, {	-- Sanctified Bloodmage Hood (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50276, 1 },	-- Bloodmage Hood
-							},
-						}),
-						i(51281, {	-- Sanctified Bloodmage Hood (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51158, 1 },	-- Sanctified Bloodmage Hood
-							},
-						}),
-						i(51157, {	-- Sanctified Bloodmage Leggings (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50277, 1 },	-- Bloodmage Leggings
-							},
-						}),
-						i(51282, {	-- Sanctified Bloodmage Leggings (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51157, 1 },	-- Sanctified Bloodmage Leggings
-							},
-						}),
-						i(51156, {	-- Sanctified Bloodmage Robe (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50278, 1 },	-- Bloodmage Robe
-							},
-						}),
-						i(51283, {	-- Sanctified Bloodmage Robe (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51156, 1 },	-- Sanctified Bloodmage Robe
-							},
-						}),
-						i(51155, {	-- Sanctified Bloodmage Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50279, 1 },	-- Bloodmage Shoulderpads
-							},
-						}),
-						i(51284, {	-- Sanctified Bloodmage Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51155, 1 },	-- Sanctified Bloodmage Shoulderpads
-							},
-						}),
-					},
-				}),
-				n(38841, {	-- Vol'guk <Shaman Armor>
-					["races"] = HORDE_ONLY,
-					["groups"] = {
-						i(50830),	-- Frost Witch's Chestguard
-						i(50832),	-- Frost Witch's Faceguard
-						i(50842),	-- Frost Witch's Gloves
-						i(50831),	-- Frost Witch's Grips
-						i(50836),	-- Frost Witch's Handguards
-						i(50841),	-- Frost Witch's Hauberk
-						i(50837),	-- Frost Witch's Headpiece
-						i(50843),	-- Frost Witch's Helm
-						i(50844),	-- Frost Witch's Kilt
-						i(50838),	-- Frost Witch's Legguards
-						i(50834),	-- Frost Witch's Shoulderguards
-						i(50845),	-- Frost Witch's Shoulderpads
-						i(50839),	-- Frost Witch's Spaulders
-						i(50835),	-- Frost Witch's Tunic
-						i(50833),	-- Frost Witch's War-Kilt
-						i(51195, {	-- Sanctified Frost Witch's Chestguard (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50830, 1 },	-- Frost Witch's Chestguard
-							},
-						}),
-						i(51244, {	-- Sanctified Frost Witch's Chestguard (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51195, 1 },	-- Sanctified Frost Witch's Chestguard
-							},
-						}),
-						i(51197, {	-- Sanctified Frost Witch's Faceguard (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50832, 1 },	-- Frost Witch's Faceguard
-							},
-						}),
-						i(51242, {	-- Sanctified Frost Witch's Faceguard (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51197, 1 },	-- Sanctified Frost Witch's Faceguard
-							},
-						}),
-						i(51201, {	-- Sanctified Frost Witch's Gloves (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50842, 1 },	-- Frost Witch's Gloves
-							},
-						}),
-						i(51238, {	-- Sanctified Frost Witch's Gloves (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51201, 1 },	-- Sanctified Frost Witch's Gloves
-							},
-						}),
-						i(51196, {	-- Sanctified Frost Witch's Grips (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50831, 1 },	-- Frost Witch's Grips
-							},
-						}),
-						i(51243, {	-- Sanctified Frost Witch's Grips (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51196, 1 },	-- Sanctified Frost Witch's Grips
-							},
-						}),
-						i(51191, {	-- Sanctified Frost Witch's Handguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50836, 1 },	-- Frost Witch's Handguards
-							},
-						}),
-						i(51248, {	-- Sanctified Frost Witch's Handguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51191, 1 },	-- Sanctified Frost Witch's Handguards
-							},
-						}),
-						i(51200, {	-- Sanctified Frost Witch's Hauberk (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50841, 1 },	-- Frost Witch's Hauberk
-							},
-						}),
-						i(51239, {	-- Sanctified Frost Witch's Hauberk (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51200, 1 },	-- Sanctified Frost Witch's Hauberk
-							},
-						}),
-						i(51192, {	-- Sanctified Frost Witch's Headpiece (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50837, 1 },	-- Frost Witch's Headpiece
-							},
-						}),
-						i(51247, {	-- Sanctified Frost Witch's Headpiece (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51192, 1 },	-- Sanctified Frost Witch's Headpiece
-							},
-						}),
-						i(51202, {	-- Sanctified Frost Witch's Helm (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50843, 1 },	-- Frost Witch's Helm
-							},
-						}),
-						i(51237, {	-- Sanctified Frost Witch's Helm (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51202, 1 },	-- Sanctified Frost Witch's Helm
-							},
-						}),
-						i(51203, {	-- Sanctified Frost Witch's Kilt (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50844, 1 },	-- Frost Witch's Kilt
-							},
-						}),
-						i(51236, {	-- Sanctified Frost Witch's Kilt (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51203, 1 },	-- Sanctified Frost Witch's Kilt
-							},
-						}),
-						i(51193, {	-- Sanctified Frost Witch's Legguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50838, 1 },	-- Frost Witch's Legguards
-							},
-						}),
-						i(51246, {	-- Sanctified Frost Witch's Legguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51193, 1 },	-- Sanctified Frost Witch's Legguards
-							},
-						}),
-						i(51199, {	-- Sanctified Frost Witch's Shoulderguards (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50834, 1 },	-- Frost Witch's Shoulderguards
-							},
-						}),
-						i(51240, {	-- Sanctified Frost Witch's Shoulderguards (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51199, 1 },	-- Sanctified Frost Witch's Shoulderguards
-							},
-						}),
-						i(51204, {	-- Sanctified Frost Witch's Shoulderpads (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50845, 1 },	-- Frost Witch's Shoulderpads
-							},
-						}),
-						i(51235, {	-- Sanctified Frost Witch's Shoulderpads (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51204, 1 },	-- Sanctified Frost Witch's Shoulderpads
-							},
-						}),
-						i(51194, {	-- Sanctified Frost Witch's Spaulders (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50839, 1 },	-- Frost Witch's Spaulders
-							},
-						}),
-						i(51245, {	-- Sanctified Frost Witch's Spaulders (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51194, 1 },	-- Sanctified Frost Witch's Spaulders
-							},
-						}),
-						i(51190, {	-- Sanctified Frost Witch's Tunic (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50835, 1 },	-- Frost Witch's Tunic
-							},
-						}),
-						i(51249, {	-- Sanctified Frost Witch's Tunic (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51190, 1 },	-- Sanctified Frost Witch's Tunic
-							},
-						}),
-						i(51198, {	-- Sanctified Frost Witch's War-Kilt (N)
-							["cost"] = {
-								{ "i", 52026, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 50833, 1 },	-- Frost Witch's War-Kilt
-							},
-						}),
-						i(51241, {	-- Sanctified Frost Witch's War-Kilt (H)
-							["cost"] = {
-								{ "i", 52029, 1 },	-- Protector's Mark of Sanctification
-								{ "i", 51198, 1 },	-- Sanctified Frost Witch's War-Kilt
-							},
-						}),
-					},
-				}),
-				n(37997, {	-- Yili <Rogue Armor>
-					["races"] = ALLIANCE_ONLY,
-					["groups"] = {
-						i(51189, {	-- Sanctified Shadowblade Breastplate (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50087, 1 },	-- Shadowblade Breastplate
-							},
-						}),
-						i(51250, {	-- Sanctified Shadowblade Breastplate (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51189, 1 },	-- Sanctified Shadowblade Breastplate
-							},
-						}),
-						i(51188, {	-- Sanctified Shadowblade Gauntlets (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50088, 1 },	-- Shadowblade Gauntlets
-							},
-						}),
-						i(51251, {	-- Sanctified Shadowblade Gauntlets (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51188, 1 },	-- Sanctified Shadowblade Gauntlets
-							},
-						}),
-						i(51187, {	-- Sanctified Shadowblade Helmet (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50089, 1 },	-- Shadowblade Helmet
-							},
-						}),
-						i(51252, {	-- Sanctified Shadowblade Helmet (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51187, 1 },	-- Sanctified Shadowblade Helmet
-							},
-						}),
-						i(51186, {	-- Sanctified Shadowblade Legplates (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50090, 1 },	-- Shadowblade Legplates
-							},
-						}),
-						i(51253, {	-- Sanctified Shadowblade Legplates (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51186, 1 },	-- Sanctified Shadowblade Legplates
-							},
-						}),
-						i(51185, {	-- Sanctified Shadowblade Pauldrons (N)
-							["cost"] = {
-								{ "i", 52025, 1 },	-- Vanquisher's Mark of Sanctification (N)
-								{ "i", 50105, 1 },	-- Shadowblade Pauldrons
-							},
-						}),
-						i(51254, {	-- Sanctified Shadowblade Pauldrons (H)
-							["cost"] = {
-								{ "i", 52028, 1 },	-- Vanquisher's Mark of Sanctification (H)
-								{ "i", 51185, 1 },	-- Sanctified Shadowblade Pauldrons
-							},
-						}),
-						i(50087),	-- Shadowblade Breastplate
-						i(50088),	-- Shadowblade Gauntlets
-						i(50089),	-- Shadowblade Helmet
-						i(50090),	-- Shadowblade Legplates
-						i(50105),	-- Shadowblade Pauldrons
-					},
+				n(37184, {	-- Zafod Boombox
+					i(49278, {	-- Goblin Rocket Pack
+						["collectible"] = false,	-- We can't collect it so we don't want it to hurt our numbers
+						-- #if NOT ANYCLASSIC
+						["u"] = UNLEARNABLE,
+						-- #endif
+					}),
 				}),
 			}),
 			n(ZONE_DROPS, {
 				i(50451),	-- Belt of the Lonely Noble
 				i(50447),	-- Harbinger's Bone Band
 				i(50450),	-- Leggings of Dubious Charms
+				i(52019, {	-- Precious' Ribbon
+					["cr"] = 37217,	-- Precious
+				}),
 				i(50453),	-- Ring of Rotting Sinew
 				i(50444),	-- Rowan's Rifle of Silver Bullets
 				i(50449),	-- Stiffened Corpse Shoulderpads
 				i(50452),	-- Wodin's Lucky Necklace
 			}),
-			n(37184, {	-- Zafod Boombox
-				-- Note!! Putting him here rather than 4 times for an unlearnable shirt
-				i(49278, {	-- Goblin Rocket Pack
-					-- #if NOT ANYCLASSIC
-					["collectible"] = false,	-- We can't collect it so we don't want it to hurt our numbers
-					["u"] = 15,			-- Unlearnable Filter
+			n(COMMON_BOSS_DROPS, {
+				["crs"] = {
+					36612,	-- Lord Marrowgar
+					36855,	-- Lady Deathwhisper
+					36939,	-- High Overlord Saurfang
+					36948,	-- Muradin Bronzebeard
+					37813,	-- Deathbringer Saurfang
+					36626,	-- Festergut
+					36627,	-- Rotface
+					36678,	-- Professor Putricide
+					37970,	-- Blood Prince Council
+					37955,	-- Blood-Queen Lana'thel
+					36789,	-- Valithria Dreamwalker
+					36853,	-- Sindragosa
+					36597,	-- The Lich King
+				},
+				["groups"] = {
+					-- #if BEFORE 4.0.1
+					currency(341),	-- Emblem of Frost
 					-- #endif
-				}),
+					i(49908, {	-- Primordial Saronite
+						["description"] = "Can drop on all difficulties other than 10 Man Normal.",
+					}),
+				},
 			}),
-			d(3, {	-- 10-Player (Normal)
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL, {
 				n(STORMING_THE_CITADEL, {
 					ach(4531, {	-- Storming the Citadel (10 player)
 						crit(12770, {	-- Lord Marrowgar
-							["_encounter"] = { 1624, 3 },
+							["_encounter"] = { 1624, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 						crit(12773, {	-- Lady Deathwhisper
-							["_encounter"] = { 1625, 3 },
+							["_encounter"] = { 1625, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 						crit(12771, {	-- Icecrown Gunship Battle
-							["_encounter"] = { 1626, 3 },
+							["_encounter"] = { 1626, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 						crit(12772, {	-- Deathbringer Saurfang
-							["_encounter"] = { 1628, 3 },
+							["_encounter"] = { 1628, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 					}),
 					e(1624, {	-- Lord Marrowgar
@@ -2662,7 +1115,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["groups"] = {
 							ach(4534),	-- Boned (10 player)
 							i(142094, {	-- Boneshard (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50761),	-- Citadel Enforcer's Claymore
 							i(50759),	-- Bone Warden's Splitter
@@ -2696,11 +1149,21 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50342),	-- Whispering Fanged Skull
 						},
 					}),
-					e(1626, {	-- Icecrown Gunship Battle
-						["crs"] = {
-							36939,	-- High Overlord Saurfang
-							36948,	-- Muradin Bronzebeard
+					e(1626, {	-- Icecrown Gunship Battle [High Overlord Saurfang (A) / Muradin Bronzebeard (H)]
+						-- This is a smart header that will change itself to the faction specific version on initial load.
+						["providers"] = {
+							{ "o", 201873 },	-- Gunship Armory (A)
+							{ "o", 202180 },	-- Gunship Armory (H)
 						},
+						["crs"] = {
+							36939,    -- High Overlord Saurfang
+							36948,    -- Muradin Bronzebeard
+						},
+						["OnInit"] = [[function(t)
+							t.objectID = t.providers[_.FactionID == Enum.FlightPathFaction.Horde and 2 or 1][2];
+							t.providers = nil;
+							return t;
+						end]],
 						["groups"] = {
 							ach(4536),	-- I'm on a Boat (10 player)
 							i(50787),	-- Frost Giant's Cleaver
@@ -2722,7 +1185,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["groups"] = {
 							ach(4537),	-- I've Gone and Made a Mess (10 player)
 							i(142095, {	-- Blood Boil (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50805),	-- Mag'hari Chieftain's Staff
 							i(50798),	-- Ramaladni's Blade of Culling
@@ -2738,7 +1201,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50803),	-- Saurfang's Cold-Forged Band
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -2753,17 +1216,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_PLAGUEWORKS, {
 					ach(4528, {	-- The Plagueworks (10 player)
 						crit(12759, {	-- Festergut
-							["_encounter"] = { 1629, 3 },
+							["_encounter"] = { 1629, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 						crit(12760, {	-- Rotface
-							["_encounter"] = { 1630, 3 },
+							["_encounter"] = { 1630, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 						crit(12761, {	-- Professor Putricide
-							["_encounter"] = { 1631, 3 },
+							["_encounter"] = { 1631, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
-					}),
-					n(37217, {	-- Precious
-						i(52019),	-- Precious' Ribbon
 					}),
 					e(1629, {	-- Festergut
 						["creatureID"] = 36626,	-- Festergut
@@ -2782,7 +1242,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50812),	-- Taldron's Long Neglected Boots
 							i(50986),	-- Signet of Putrefaction
 							i(50999, {	-- Gluth's Fetching Knife
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 						},
 					}),
@@ -2808,7 +1268,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["groups"] = {
 							ach(4578),	-- Nausea, Heartburn, Indigestion... (10 player)
 							i(142096, {	-- Blightbreath (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(51011),	-- Flesh-Carving Scalpel
 							i(51010),	-- The Facelifter
@@ -2828,10 +1288,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_CRIMSON_HALLS, {
 					ach(4529, {	-- The Crimson Hall (10 player)
 						crit(12762, {	-- Blood Prince Council
-							["_encounter"] = { 1632, 3 },
+							["_encounter"] = { 1632, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 						crit(12763, {	-- Blood-Queen Lana'thel
-							["_encounter"] = { 1633, 3 },
+							["_encounter"] = { 1633, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 					}),
 					e(1632, {	-- Blood Prince Council
@@ -2860,8 +1320,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["creatureID"] = 37955,	-- Blood-Queen Lana'thel
 						["groups"] = {
 							ach(4539, {	-- Once Bitten, Twice Shy (10 player)
-								crit(1),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
-								crit(2),	-- Defeat Blood-Queen Lana'thel while a vampire
+								crit(12780),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
+								crit(13011),	-- Defeat Blood-Queen Lana'thel while a vampire
 							}),
 							i(51384),	-- Bloodsipper
 							i(51553),	-- Lana'thel's Bloody Nail
@@ -2881,10 +1341,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_FROSTWING_HALLS, {
 					ach(4527, {	-- The Frostwing Halls (10 player)
 						crit(12757, {	-- Valithria Dreamwalker
-							["_encounter"] = { 1634, 3 },
+							["_encounter"] = { 1634, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 						crit(12758, {	-- Sindragosa
-							["_encounter"] = { 1635, 3 },
+							["_encounter"] = { 1635, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 						}),
 					}),
 					e(1634, {	-- Valithria Dreamwalker
@@ -2910,7 +1370,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["groups"] = {
 							ach(4580),	-- All You Can Eat (10 player)
 							i(142097, {	-- Soulbroken Whelpling (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(51788),	-- Bleak Coldarra Carver
 							i(51784),	-- Splintershard
@@ -2935,11 +1395,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 								title(140),	-- the Kingslayer
 							}),
 							i(142098, {	-- Drudge Ghoul (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
-							i(138955, {	-- Illusion: Rune of Razorice
+							i(138955, {	-- Illusion: Rune of Razorice (ILLUSION!)
 								["classes"] = { DEATHKNIGHT },
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(51799),	-- Halion, Staff of Forgotten Love
 							i(51797),	-- Tainted Twig of Nordrassil
@@ -2951,49 +1411,30 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(51798),	-- Valius, Gavel of the Lightbringer
 							i(51802),	-- Windrunner's Heartseeker
 							i(122229, {	-- Music Roll: Invincible
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
 				}),
 			}),
-			d(5, {	-- 10-Player (Heroic)
-				n(COMMON_BOSS_DROPS, {
-					i(49908, {	-- Primordial Saronite
-						["crs"] = {
-							36612,	-- Lord Marrowgar
-							36855,	-- Lady Deathwhisper
-							36939,	-- High Overlord Saurfang
-							36948,	-- Muradin Bronzebeard
-							37813,	-- Deathbringer Saurfang
-							36626,	-- Festergut
-							36627,	-- Rotface
-							36678,	-- Professor Putricide
-							37970,	-- Blood Prince Council
-							37955,	-- Blood-Queen Lana'thel
-							36789,	-- Valithria Dreamwalker
-							36853,	-- Sindragosa
-							36597,	-- The Lich King
-						},
-					}),
-				}),
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC, {
 				n(STORMING_THE_CITADEL, {
 					ach(4628, {	-- Heroic: Storming the Citadel (10 player)
 						crit(13090, {	-- Lord Marrowgar
-							["_encounter"] = { 1624, 5 },
+							["_encounter"] = { 1624, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 						crit(13104, {	-- Lady Deathwhisper
-							["_encounter"] = { 1625, 5 },
+							["_encounter"] = { 1625, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 						crit(13110, {	-- Icecrown Gunship Battle
-							["_encounter"] = { 1626, 5 },
+							["_encounter"] = { 1626, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 						crit(13113, {	-- Deathbringer Saurfang
-							["_encounter"] = { 1628, 5 },
+							["_encounter"] = { 1628, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 					}),
 					e(1624, {	-- Lord Marrowgar
@@ -3001,7 +1442,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["groups"] = {
 							ach(4534),	-- Boned (10 player)
 							i(142094, {	-- Boneshard (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(51936),	-- Citadel Enforcer's Claymore
 							i(51938),	-- Bone Warden's Splitter
@@ -3035,11 +1476,21 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50343),	-- Whispering Fanged Skull
 						},
 					}),
-					e(1626, {	-- Icecrown Gunship Battle
-						["crs"] = {
-							36939,	-- High Overlord Saurfang
-							36948,	-- Muradin Bronzebeard
+					e(1626, {	-- Icecrown Gunship Battle [High Overlord Saurfang (A) / Muradin Bronzebeard (H)]
+						-- This is a smart header that will change itself to the faction specific version on initial load.
+						["providers"] = {
+							{ "o", 201873 },	-- Gunship Armory (A)
+							{ "o", 202180 },	-- Gunship Armory (H)
 						},
+						["crs"] = {
+							36939,    -- High Overlord Saurfang
+							36948,    -- Muradin Bronzebeard
+						},
+						["OnInit"] = [[function(t)
+							t.objectID = t.providers[_.FactionID == Enum.FlightPathFaction.Horde and 2 or 1][2];
+							t.providers = nil;
+							return t;
+						end]],
 						["groups"] = {
 							ach(4536),	-- I'm on a Boat (10 player)
 							i(51916),	-- Frost Giant's Cleaver
@@ -3064,7 +1515,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142095, {	-- Blood Boil (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(51898),	-- Mag'hari Chieftain's Staff
 							i(51905),	-- Ramaladni's Blade of Culling
@@ -3080,7 +1531,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(51900),	-- Saurfang's Cold-Forged Band
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -3095,17 +1546,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_PLAGUEWORKS, {
 					ach(4629, {	-- Heroic: The Plagueworks (10 player)
 						crit(13116, {	-- Festergut
-							["_encounter"] = { 1629, 5 },
+							["_encounter"] = { 1629, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 						crit(13119, {	-- Rotface
-							["_encounter"] = { 1630, 5 },
+							["_encounter"] = { 1630, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 						crit(13128, {	-- Professor Putricide
-							["_encounter"] = { 1631, 5 },
+							["_encounter"] = { 1631, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
-					}),
-					n(37217, {	-- Precious
-						i(52019),	-- Precious' Ribbon
 					}),
 					e(1629, {	-- Festergut
 						["creatureID"] = 36626,	-- Festergut
@@ -3141,7 +1589,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(51873),	-- Shuffling Shoes
 							i(51878),	-- Rotface's Rupturing Ring
 							i(51880, {	-- Gluth's Fetching Knife
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 						},
 					}),
@@ -3153,7 +1601,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142096, {	-- Blightbreath (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(51868),	-- Flesh-Carving Scalpel
 							i(51869),	-- The Facelifter
@@ -3173,10 +1621,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_CRIMSON_HALLS, {
 					ach(4630, {	-- Heroic: The Crimson Hall (10 player)
 						crit(13122, {	-- Blood Prince Council
-							["_encounter"] = { 1632, 5 },
+							["_encounter"] = { 1632, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 						crit(13131, {	-- Blood-Queen Lana'thel
-							["_encounter"] = { 1633, 5 },
+							["_encounter"] = { 1633, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 					}),
 					e(1632, {	-- Blood Prince Council
@@ -3205,8 +1653,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["creatureID"] = 37955,	-- Blood-Queen Lana'thel
 						["groups"] = {
 							ach(4539, {	-- Once Bitten, Twice Shy (10 player)
-								crit(1),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
-								crit(2),	-- Defeat Blood-Queen Lana'thel while a vampire
+								crit(12780),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
+								crit(13011),	-- Defeat Blood-Queen Lana'thel while a vampire
 							}),
 							i(52027),	-- Conqueror's Mark of Sanctification (Normal)
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
@@ -3229,10 +1677,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_FROSTWING_HALLS, {
 					ach(4631, {	-- Heroic: The Frostwing Halls (10 player)
 						crit(13125, {	-- Valithria Dreamwalker
-							["_encounter"] = { 1634, 5 },
+							["_encounter"] = { 1634, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 						crit(13134, {	-- Sindragosa
-							["_encounter"] = { 1635, 5 },
+							["_encounter"] = { 1635, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 						}),
 					}),
 					e(1634, {	-- Valithria Dreamwalker
@@ -3261,7 +1709,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142097, {	-- Soulbroken Whelpling (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(51815),	-- Bleak Coldarra Carver
 							i(51819),	-- Splintershard
@@ -3286,17 +1734,17 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							ach(4601),	-- Been Waiting a Long Time for This (10 player)
 							ach(4581),	-- Neck-Deep in Vile (10 player)
 							ach(5023, {	-- The Frozen Throne - Guild Edition
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(52027),	-- Conqueror's Mark of Sanctification (Normal)
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142099, {	-- Wicked Soul (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
-							i(138955, {	-- Illusion: Rune of Razorice
+							i(138955, {	-- Illusion: Rune of Razorice (ILLUSION!)
 								["classes"] = { DEATHKNIGHT },
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(51943),	-- Halion, Staff of Forgotten Love
 							i(51945),	-- Tainted Twig of Nordrassil
@@ -3308,49 +1756,30 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(51944),	-- Valius, Gavel of the Lightbringer
 							i(51940),	-- Windrunner's Heartseeker
 							i(122229, {	-- Music Roll: Invincible
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
 				}),
 			}),
-			d(4, {	-- 25-Player (Normal)
-				n(COMMON_BOSS_DROPS, {
-					i(49908, {	-- Primordial Saronite
-						["crs"] = {
-							36612,	-- Lord Marrowgar
-							36855,	-- Lady Deathwhisper
-							36939,	-- High Overlord Saurfang
-							36948,	-- Muradin Bronzebeard
-							37813,	-- Deathbringer Saurfang
-							36626,	-- Festergut
-							36627,	-- Rotface
-							36678,	-- Professor Putricide
-							37970,	-- Blood Prince Council
-							37955,	-- Blood-Queen Lana'thel
-							36789,	-- Valithria Dreamwalker
-							36853,	-- Sindragosa
-							36597,	-- The Lich King
-						},
-					}),
-				}),
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL, {
 				n(STORMING_THE_CITADEL, {
 					ach(4604, {	-- Storming the Citadel (25 player)
 						crit(12945, {	-- Lord Marrowgar
-							["_encounter"] = { 1624, 4 },
+							["_encounter"] = { 1624, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 						crit(12948, {	-- Lady Deathwhisper
-							["_encounter"] = { 1625, 4 },
+							["_encounter"] = { 1625, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 						crit(12947, {	-- Icecrown Gunship Battle
-							["_encounter"] = { 1626, 4 },
+							["_encounter"] = { 1626, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 						crit(12946, {	-- Deathbringer Saurfang
-							["_encounter"] = { 1628, 4 },
+							["_encounter"] = { 1628, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 					}),
 					e(1624, {	-- Lord Marrowgar
@@ -3358,7 +1787,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["groups"] = {
 							ach(4610),	-- Boned (25 player)
 							i(142094, {	-- Boneshard (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50415),	-- Bryntroll, the Bone Arbiter
 							i(49968),	-- Frozen Bonespike
@@ -3398,11 +1827,21 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(49990),	-- Ring of Maddening Whispers
 						},
 					}),
-					e(1626, {	-- Icecrown Gunship Battle
-						["crs"] = {
-							36939,	-- High Overlord Saurfang
-							36948,	-- Muradin Bronzebeard
+					e(1626, {	-- Icecrown Gunship Battle [High Overlord Saurfang (A) / Muradin Bronzebeard (H)]
+						-- This is a smart header that will change itself to the faction specific version on initial load.
+						["providers"] = {
+							{ "o", 201873 },	-- Gunship Armory (A)
+							{ "o", 202180 },	-- Gunship Armory (H)
 						},
+						["crs"] = {
+							36939,    -- High Overlord Saurfang
+							36948,    -- Muradin Bronzebeard
+						},
+						["OnInit"] = [[function(t)
+							t.objectID = t.providers[_.FactionID == Enum.FlightPathFaction.Horde and 2 or 1][2];
+							t.providers = nil;
+							return t;
+						end]],
 						["groups"] = {
 							ach(4612),	-- I'm on a Boat (25 player)
 							i(50411),	-- Scourgeborne Waraxe
@@ -3430,7 +1869,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142095, {	-- Blood Boil (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50412),	-- Bloodvenom Blade
 							i(50014),	-- Greatcloak of the Turned Champion
@@ -3439,7 +1878,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50362),	-- Deathbringer's Will
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -3454,17 +1893,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_PLAGUEWORKS, {
 					ach(4605, {	-- The Plagueworks (25 player)
 						crit(12949, {	-- Festergut
-							["_encounter"] = { 1629, 4 },
+							["_encounter"] = { 1629, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 						crit(12950, {	-- Rotface
-							["_encounter"] = { 1630, 4 },
+							["_encounter"] = { 1630, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 						crit(12951, {	-- Professor Putricide
-							["_encounter"] = { 1631, 4 },
+							["_encounter"] = { 1631, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
-					}),
-					n(37217, {	-- Precious
-						i(52019),	-- Precious' Ribbon
 					}),
 					e(1629, {	-- Festergut
 						["creatureID"] = 36626,	-- Festergut
@@ -3525,7 +1961,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142096, {	-- Blightbreath (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50179),	-- Last Word
 							i(50068),	-- Rigormortis
@@ -3538,10 +1974,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_CRIMSON_HALLS, {
 					ach(4606, {	-- The Crimson Hall (25 player)
 						crit(12952, {	-- Blood Prince Council
-							["_encounter"] = { 1632, 4 },
+							["_encounter"] = { 1632, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 						crit(12953, {	-- Blood-Queen Lana'thel
-							["_encounter"] = { 1633, 4 },
+							["_encounter"] = { 1633, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 					}),
 					e(1632, {	-- Blood Prince Council
@@ -3573,8 +2009,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["creatureID"] = 37955,	-- Blood-Queen Lana'thel
 						["groups"] = {
 							ach(4618, {	-- Once Bitten, Twice Shy (25 player)
-								crit(1),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
-								crit(2),	-- Defeat Blood-Queen Lana'thel while a vampire
+								crit(13012),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
+								crit(13013),	-- Defeat Blood-Queen Lana'thel while a vampire
 							}),
 							i(52027),	-- Conqueror's Mark of Sanctification (Normal)
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
@@ -3591,19 +2027,19 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_FROSTWING_HALLS, {
 					ach(4607, {	-- The Frostwing Halls (25 player)
 						crit(12954, {	-- Valithria Dreamwalker
-							["_encounter"] = { 1634, 4 },
+							["_encounter"] = { 1634, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 						crit(12955, {	-- Sindragosa
-							["_encounter"] = { 1635, 4 },
+							["_encounter"] = { 1635, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 						}),
 					}),
 					e(1634, {	-- Valithria Dreamwalker
 						["creatureID"] = 36789,	-- Valithria Dreamwalker
 						["groups"] = {
 							ach(4619),	-- Portal Jockey (25 player)
-							i(138832, {	-- Illusion: Earthliving
+							i(138832, {	-- Illusion: Earthliving (ILLUSION!)
 								["classes"] = { SHAMAN },
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(50183),	-- Lungbreaker
 							i(50472),	-- Nightmare Ender
@@ -3630,7 +2066,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142097, {	-- Soulbroken Whelpling (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50423),	-- Sundial of Eternal Dusk
 							i(50421),	-- Sindragosa's Cruel Claw
@@ -3651,11 +2087,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52026),	-- Protector's Mark of Sanctifaction (Normal)
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(142098, {	-- Drudge Ghoul (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
-							i(138955, {	-- Illusion: Rune of Razorice
+							i(138955, {	-- Illusion: Rune of Razorice (ILLUSION!)
 								["classes"] = { DEATHKNIGHT },
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(50429),	-- Archus, Greatstaff of Antonidas
 							i(50070),	-- Glorenzelg, High-Blade of the Silver Hand
@@ -3667,49 +2103,30 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50428),	-- Royal Scepter of Terenas II
 							i(49981),	-- Fal'inrush, Defender of Quel'thalas
 							i(122229, {	-- Music Roll: Invincible
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
 				}),
 			}),
-			d(6, {	-- 25-Player (Heroic)
-				n(COMMON_BOSS_DROPS, {
-					i(49908, {	-- Primordial Saronite
-						["crs"] = {
-							36612,	-- Lord Marrowgar
-							36855,	-- Lady Deathwhisper
-							36939,	-- High Overlord Saurfang
-							36948,	-- Muradin Bronzebeard
-							37813,	-- Deathbringer Saurfang
-							36626,	-- Festergut
-							36627,	-- Rotface
-							36678,	-- Professor Putricide
-							37970,	-- Blood Prince Council
-							37955,	-- Blood-Queen Lana'thel
-							36789,	-- Valithria Dreamwalker
-							36853,	-- Sindragosa
-							36597,	-- The Lich King
-						},
-					}),
-				}),
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC, {
 				n(STORMING_THE_CITADEL, {
 					ach(4632, {	-- Heroic: Storming the Citadel (25 player)
 						crit(13091, {	-- Lord Marrowgar
-							["_encounter"] = { 1624, 6 },
+							["_encounter"] = { 1624, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 						crit(13106, {	-- Lady Deathwhisper
-							["_encounter"] = { 1625, 6 },
+							["_encounter"] = { 1625, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 						crit(13111, {	-- Icecrown Gunship Battle
-							["_encounter"] = { 1626, 6 },
+							["_encounter"] = { 1626, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 						crit(13114, {	-- Deathbringer Saurfang
-							["_encounter"] = { 1628, 6 },
+							["_encounter"] = { 1628, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 					}),
 					e(1624, {	-- Lord Marrowgar
@@ -3717,7 +2134,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["groups"] = {
 							ach(4610),	-- Boned (25 player)
 							i(142094, {	-- Boneshard (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50709),	-- Bryntroll, the Bone Arbiter
 							i(50608),	-- Frozen Bonespike
@@ -3757,11 +2174,21 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50644),	-- Ring of Maddening Whispers
 						},
 					}),
-					e(1626, {	-- Icecrown Gunship Battle
-						["crs"] = {
-							36939,	-- High Overlord Saurfang
-							36948,	-- Muradin Bronzebeard
+					e(1626, {	-- Icecrown Gunship Battle [High Overlord Saurfang (A) / Muradin Bronzebeard (H)]
+						-- This is a smart header that will change itself to the faction specific version on initial load.
+						["providers"] = {
+							{ "o", 201873 },	-- Gunship Armory (A)
+							{ "o", 202180 },	-- Gunship Armory (H)
 						},
+						["crs"] = {
+							36939,    -- High Overlord Saurfang
+							36948,    -- Muradin Bronzebeard
+						},
+						["OnInit"] = [[function(t)
+							t.objectID = t.providers[_.FactionID == Enum.FlightPathFaction.Horde and 2 or 1][2];
+							t.providers = nil;
+							return t;
+						end]],
 						["groups"] = {
 							ach(4612),	-- I'm on a Boat (25 player)
 							i(50654),	-- Scourgeborne Waraxe
@@ -3792,7 +2219,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(52028),	-- Vanquisher's Mark of Sanctification (Heroic)
 							i(142095, {	-- Blood Boil (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50672),	-- Bloodvenom Blade
 							i(50668),	-- Greatcloak of the Turned Champion
@@ -3801,7 +2228,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50363),	-- Deathbringer's Will
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -3816,17 +2243,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_PLAGUEWORKS, {
 					ach(4633, {	-- Heroic: The Plagueworks (25 player)
 						crit(13117, {	-- Festergut
-							["_encounter"] = { 1629, 6 },
+							["_encounter"] = { 1629, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 						crit(13120, {	-- Rotface
-							["_encounter"] = { 1630, 6 },
+							["_encounter"] = { 1630, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 						crit(13129, {	-- Professor Putricide
-							["_encounter"] = { 1631, 6 },
+							["_encounter"] = { 1631, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
-					}),
-					n(37217, {	-- Precious
-						i(52019),	-- Precious' Ribbon
 					}),
 					e(1629, {	-- Festergut
 						["creatureID"] = 36626,	-- Festergut
@@ -3890,7 +2314,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(52028),	-- Vanquisher's Mark of Sanctification (Heroic)
 							i(142096, {	-- Blightbreath (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50708),	-- Last Word
 							i(50704),	-- Rigormortis
@@ -3903,10 +2327,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_CRIMSON_HALLS, {
 					ach(4634, {	-- Heroic: The Crimson Hall (25 player)
 						crit(13123, {	-- Blood Prince Council
-							["_encounter"] = { 1632, 6 },
+							["_encounter"] = { 1632, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 						crit(13132, {	-- Blood-Queen Lana'thel
-							["_encounter"] = { 1633, 6 },
+							["_encounter"] = { 1633, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 					}),
 					e(1632, {	-- Blood Prince Council
@@ -3938,8 +2362,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 						["creatureID"] = 37955,	-- Blood-Queen Lana'thel
 						["groups"] = {
 							ach(4618, {	-- Once Bitten, Twice Shy (25 player)
-								crit(1),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
-								crit(2),	-- Defeat Blood-Queen Lana'thel while a vampire
+								crit(13012),	-- Defeat Blood-Queen Lana'thel without becoming a vampire
+								crit(13013),	-- Defeat Blood-Queen Lana'thel while a vampire
 							}),
 							i(52027),	-- Conqueror's Mark of Sanctification (Normal)
 							i(52030),	-- Conqueror's Mark of Sanctification (Heroic)
@@ -3959,19 +2383,19 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 				n(THE_FROSTWING_HALLS, {
 					ach(4635, {	-- Heroic: The Frostwing Halls (25 player)
 						crit(13126, {	-- Valithria Dreamwalker
-							["_encounter"] = { 1634, 6 },
+							["_encounter"] = { 1634, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 						crit(13135, {	-- Sindragosa
-							["_encounter"] = { 1635, 6 },
+							["_encounter"] = { 1635, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 						}),
 					}),
 					e(1634, {	-- Valithria Dreamwalker
 						["creatureID"] = 36789,	-- Valithria Dreamwalker
 						["groups"] = {
 							ach(4619),	-- Portal Jockey (25 player)
-							i(138832, {	-- Illusion: Earthliving
+							i(138832, {	-- Illusion: Earthliving (ILLUSION!)
 								["classes"] = { SHAMAN },
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(50621),	-- Lungbreaker
 							i(50631),	-- Nightmare Ender
@@ -4001,7 +2425,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(52028),	-- Vanquisher's Mark of Sanctification (Heroic)
 							i(142097, {	-- Soulbroken Whelpling (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
 							i(50635),	-- Sundial of Eternal Dusk
 							i(50633),	-- Sindragosa's Cruel Claw
@@ -4016,7 +2440,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							ach(4621),	-- Been Waiting a Long Time for This (25 player)
 							ach(4622),	-- Neck-Deep in Vile (25 player)
 							ach(5023, {	-- The Frozen Throne - Guild Edition
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(4584, {	-- The Light of Dawn
 								title(138),	-- the Light of Dawn
@@ -4033,11 +2457,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(52025),	-- Vanquisher's Mark of Sanctification (Normal)
 							i(52028),	-- Vanquisher's Mark of Sanctification (Heroic)
 							i(142099, {	-- Wicked Soul (PET!)
-								["timeline"] = { "added 7.1.0.22731" },
+								["timeline"] = { ADDED_7_1_0 },
 							}),
-							i(138955, {	-- Illusion: Rune of Razorice
+							i(138955, {	-- Illusion: Rune of Razorice (ILLUSION!)
 								["classes"] = { DEATHKNIGHT },
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(50731),	-- Archus, Greatstaff of Antonidas
 							i(50730),	-- Glorenzelg, High-Blade of the Silver Hand
@@ -4049,11 +2473,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 							i(50734),	-- Royal Scepter of Terenas II
 							i(50733),	-- Fal'inrush, Defender of Quel'thalas
 							i(122229, {	-- Music Roll: Invincible
-								["timeline"] = { "added 6.1.0.19445" },
+								["timeline"] = { ADDED_6_1_0 },
 							}),
 							i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 								["sourceQuest"] = 38990,	-- The Call of Icecrown
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -4065,11 +2489,12 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, bubbl
 
 -- #if AFTER WRATH
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOTLK_TIER, {
+	expansion(EXPANSION.WRATH, {
 		q(24808),	-- Tank Ring Flag - doing "A Change of Heart" in ICC and choosing strength ring
 		q(24809),	-- Healer Ring Flag - doing "A Change of Heart" in ICC and choosing intellect haste/versa ring
 		q(24810),	-- Melee Ring Flag - doing "A Change of Heart" in ICC and choosing agility ring
 		q(24811),	-- Caster Ring Flag - doing "Choose Your Path" in ICC and choosing intellect crit/haste ring
+		q(25238),	-- Strength Ring Flag - doing "A Change of Heart" in ICC and choosing strength ring
 	}),
 });
 -- #endif

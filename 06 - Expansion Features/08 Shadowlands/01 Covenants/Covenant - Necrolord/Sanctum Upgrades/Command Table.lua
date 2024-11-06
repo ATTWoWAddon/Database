@@ -2,17 +2,18 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL_COV_NEC" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["customCollect"] = "SL_COV_NEC" }, {
 	n(NECROLORD, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_maldraxxus01",
+			["icon"] = 3641396,
 			["g"] = {
 				n(COMMAND_TABLE, {
 					n(TIER_ONE, {
-						["icon"] = "Interface\\Icons\\Sanctum_features_missiontable",
+						["icon"] = 3675495,
 						["g"] = {
 							n(FOLLOWERS, bubbleDownSelf({
-								["u"] = 15,	-- Temporary troops
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,	-- Temporary troops
 							}, {
 								follower(1243),	-- Maldraxxus Plaguesinger
 								follower(1314),	-- Maldraxxus Plaguesinger
@@ -108,6 +109,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["customCollect"] = "SL
 								}),
 							}),
 							n(REWARDS, {
+								currency(1828),	-- Soul Ash
 								i(183744),	-- Superior Parts
 							}),
 						},

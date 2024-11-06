@@ -13,7 +13,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							{ "i", 202871, 1 },	-- 1x Draconic Artifact [Have no Source of This yet]
 						},
 						["g"] = {
-							i(200452),	-- Dragonscale Expedition (Accwide)
+							i(200452),	-- Dragonscale Expedition [Rare]
 						},
 					}),
 					i(204558, {	-- Reliquary Scroll of Perception
@@ -30,6 +30,19 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							i(191915),	-- Shaggy (PET!)
 						},
 					}),
+					i(202196, {	-- Zskera Vault Key
+						["timeline"] = { ADDED_10_2_0 },
+						["cost"] = {
+							{ "c", DRAGON_SUPPLIES, 50 },
+						},
+					}),
+				},
+			}),
+			n(200987, {	-- Fusethrian <Munitions & Aspiring Sous-chef>
+				["coord"] = { 34.2, 59.8, THE_FORBIDDEN_REACH },
+				["g"] = {
+					i(200305),	-- Dracthyr Water Rations
+					i(200304),	-- Stored Dracthyr Rations
 				},
 			}),
 			n(200563, {	-- Kraxxus
@@ -40,7 +53,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							{ "c", ELEMENTAL_OVERFLOW, 2000 },
 						},
 					}),
-					i(197136, {	-- Highland Drake: Tapered Nose (DM!)
+					i(197136, {	-- Highland Drake: Tapered Nose (MM!)
 						["cost"] = {
 							{ "c", ELEMENTAL_OVERFLOW, 2500 },
 						},
@@ -51,12 +64,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							{ "i", 202870, 1 },	-- 1x Mysterious Writings [Have no Source of This yet]
 						},
 						["g"] = {
-							i(200455),	-- Valdrakken Accord Insignia (Accwide)
+							i(200455),	-- Valdrakken Accord Insignia [Rare]
 						},
 					}),
-					i(197626, {	-- Windborne Velocidrake: Exposed Finned Neck (DM!)
+					i(197626, {	-- Windborne Velocidrake: Exposed Finned Neck (MM!)
 						["cost"] = {
 							{ "c", ELEMENTAL_OVERFLOW, 2500 },
+						},
+					}),
+					i(202196, {	-- Zskera Vault Key
+						["timeline"] = { ADDED_10_2_0 },
+						["cost"] = {
+							{ "c", DRAGON_SUPPLIES, 50 },
 						},
 					}),
 				},
@@ -237,12 +256,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							{ "i", 202872, 1 },	-- 1x Token of Blessing [Have no Source of This yet]
 						},
 						["g"] = {
-							i(200454),	-- Maruuk Centaur Insignia (Accwide)
+							i(200454),	-- Maruuk Centaur Insignia [Rare]
 						},
 					}),
 					i(204382, {	-- Noble Bruffalon (MOUNT!)
 						["cost"] = {
 							{ "c", ELEMENTAL_OVERFLOW, 100000 },
+						},
+					}),
+					i(202196, {	-- Zskera Vault Key
+						["timeline"] = { ADDED_10_2_0 },
+						["cost"] = {
+							{ "c", DRAGON_SUPPLIES, 50 },
 						},
 					}),
 				},
@@ -290,6 +315,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 					i(204564, {	-- Dragonscale Expeditioner's Rifle
 						["cost"] = {
 							{ "c", ELEMENTAL_OVERFLOW, 5000 },
+						},
+					}),
+					i(217893, {	-- Emerald Winglord's Chain
+						["timeline"] = { ADDED_10_2_7 },
+						["cost"] = {
+							{ "c", ELEMENTAL_OVERFLOW, 2500 },
+						},
+					}),
+					i(217892, {	-- Emerald Winglord's Shoulders
+						["timeline"] = { ADDED_10_2_7 },
+						["cost"] = {
+							{ "c", ELEMENTAL_OVERFLOW, 2500 },
 						},
 					}),
 					i(204566, {	-- Journal of the Forbidden Reach
@@ -348,12 +385,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							{ "i", 202854, 1 },	-- 1x Wondrous Fish [Have no Source of This yet]
 						},
 						["g"] = {
-							i(200453),	-- Iskaara Tuskarr Insignia (Accwide)
+							i(200453),	-- Iskaara Tuskarr Insignia [Rare]
 						},
 					}),
 					i(204481, {	-- Morqut Hearth Totem
 						["cost"] = {
 							{ "c", ELEMENTAL_OVERFLOW, 2000 },
+						},
+					}),
+					i(202196, {	-- Zskera Vault Key
+						["timeline"] = { ADDED_10_2_0 },
+						["cost"] = {
+							{ "c", DRAGON_SUPPLIES, 50 },
 						},
 					}),
 				},

@@ -4,9 +4,9 @@
 root(ROOTS.NeverImplemented, n(PROFESSIONS, {
 	prof(HERBALISM, {
 		filter(MISC, {
-			tier(DF_TIER, {
+			expansion(EXPANSION.DF, {
 				-- 10.0.2
-				tier(DF_TIER, 0.2, bubbleDown({ ["timeline"] = { CREATED_10_0_2 } }, {
+				expansion(EXPANSION.DF, patch(0,2), bubbleDownSelf({ ["timeline"] = { CREATED_10_0_2 } }, {
 					i(194041),	-- Driftbloom Sprout
 					i(194054),	-- Dredged Seedling
 					i(194081),	-- Mutated Root
@@ -17,27 +17,38 @@ root(ROOTS.NeverImplemented, n(PROFESSIONS, {
 			}),
 		}),
 		n(CRAFTABLES, {
-			tier(WOD_TIER, {
+			expansion(EXPANSION.WOD, {
 				-- 6.0.2
-				tier(WOD_TIER, 0.2, bubbleDown({ ["timeline"] = { CREATED_6_0_2 } }, {
+				expansion(EXPANSION.WOD, patch(0,2), bubbleDownSelf({ ["timeline"] = { CREATED_6_0_2 } }, {
 					i(108334),	-- Arthas' Tears Petal
 				})),
+
+				expansion(EXPANSION.TWW, {
+					-- 11.0.0
+					expansion(EXPANSION.TWW, patch(0,01), bubbleDownSelf({ ["timeline"] = { CREATED_11_0_0 } }, {
+						i(217105),	-- Refine Khaz Algar Herbs
+					})),
+				}),
 			}),
 		}),
 		filter(RECIPES, {
-			tier(CLASSIC_TIER, {
-				r(2369),	-- Herb Gathering
-				r(2371),	-- Herb Gathering
+			expansion(EXPANSION.CLASSIC, {
+				-- 1.x.x
+				n(P1xx, {
+					r(8387),	-- Find Herbs [Rank 2]
+					r(2369),	-- Herb Gathering
+					r(2371),	-- Herb Gathering
+				}),
 			}),
-			tier(TBC_TIER, {
+			expansion(EXPANSION.TBC, {
 				-- 2.0.1
-				tier(TBC_TIER, 0.1, bubbleDown({ ["timeline"] = { CREATED_2_0_1 } }, {
+				expansion(EXPANSION.TBC, patch(0,1), bubbleDownSelf({ ["timeline"] = { CREATED_2_0_1 } }, {
 					r(32605),	-- Herb Gathering
 				})),
 			}),
-			tier(DF_TIER, {
+			expansion(EXPANSION.DF, {
 				-- 10.0.0
-				tier(DF_TIER, 0.01, bubbleDown({ ["timeline"] = { CREATED_10_0_0 } }, {
+				expansion(EXPANSION.DF, patch(0,01), bubbleDownSelf({ ["timeline"] = { CREATED_10_0_0 } }, {
 					r(382582),	-- Opening
 				})),
 			}),

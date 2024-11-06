@@ -298,7 +298,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 				}),
 				}),
 			}),
-			header(HEADERS.Achievement, 18792, bubbleDownSelf({ ["timeline"] = ADDED_10_1_7 }, {	-- Dragonriding Challenge: Dragon Isles: Gold
+			header(HEADERS.Achievement, 18792, bubbleDownSelf({ ["timeline"] = { ADDED_10_1_7 } }, {	-- Dragonriding Challenge: Dragon Isles: Gold
 				n(ACHIEVEMENTS, {
 					ach(18779, {	--  Forbidden Reach Challenge: Bronze
 						-- Meta Achievement
@@ -461,6 +461,65 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_7 } }
 							ach(18033),	-- Stormsunder Crater Circuit Reverse Challenge: Gold
 						},
 					}),
+				}),
+			})),
+			ach(19478, bubbleDownSelf({ ["timeline"] = { ADDED_10_2_6 } }, {	-- Now THIS is Dragon Racing!
+				-- Meta Achievement
+				["sym"] = {{"meta_achievement",
+					16577,	-- Azure Span Glyph Hunter
+					15939,	-- Dragon Racing Completionist: Bronze
+					19306,	-- Emerald Dream Glyph Hunter
+					19118,	-- Emerald Dream Racing Completionist
+					17411,	-- Forbidden Reach Glyph Hunter
+					17294,	-- Forbidden Reach Racing Completionist
+					16576,	-- Ohn'ahran Plains Glyph Hunter
+					16578,	-- Thaldraszus Glyph Hunter
+					16575,	-- Waking Shores Glyph Hunter
+					18150,	-- Zaralek Cavern Glyph Hunter
+					17492,	-- Zaralek Cavern Racing Completionist
+				}},
+				["g"] = {
+					i(207776),	-- Grotto Netherwing Drake: Black Scales (MM!)
+				},
+			})),
+			n(WORLD_QUESTS, {
+				i(204359,	-- Reach Racer's Purse
+				bubbleDownSelf({ ["timeline"] = { ADDED_10_0_7 } }, {
+					i(197002),	-- Cliffside Wylderdrake: Flared Cheek (MM!)
+					i(197124),	-- Highland Drake: Swept Horns (MM!)
+					i(202274),	-- Renewed Proto-Drake: Plated Brow (MM!)
+					i(197594),	-- Windborne Velocidrake: Small Ears (MM!)
+				})),
+			}),
+			n(WORLD_QUESTS, sharedData({
+				["sourceQuests"] = {
+					71232,	-- Renown of the Dragon Isles
+					DF_ACCOUNT_CAMPAIGN_QUEST,
+				},
+				["sourceQuestNumRequired"] = 1,
+				["maxReputation"] = { FACTION_VALDRAKKEN_ACCORD, 30 },
+				["isWorldQuest"] = true,
+				["timeline"] = { ADDED_10_0_7 },
+				["sym"] = {{"select","itemID",204359}},	-- Reach Racer's Purse
+				}, {
+				------ The Forbidden Reach ------
+				q(73080, {	-- Dragonrider Racing - Aerie Chasm Cruise
+					["coord"] = { 63.3, 51.8, THE_FORBIDDEN_REACH },
+				}),
+				q(73083, {	-- Dragonrider Racing - Caldera Climb
+					["coord"] = { 41.2, 14.3, THE_FORBIDDEN_REACH },
+				}),
+				q(73084, {	-- Dragonrider Racing - Forbidden Reach Rush
+					["coord"] = { 66.9, 5.6, THE_FORBIDDEN_REACH },
+				}),
+				q(73079, {	-- Dragonrider Racing - Morqut Ascent
+					["coord"] = { 34, 59.8, THE_FORBIDDEN_REACH },
+				}),
+				q(73082, {	-- Dragonrider Racing - Southern Reach Route
+					["coord"] = { 63.5, 83.6, THE_FORBIDDEN_REACH },
+				}),
+				q(73078, {	-- Dragonrider Racing - Stormsunder Crater Circuit
+					["coord"] = { 76.3, 65.7, THE_FORBIDDEN_REACH },
 				}),
 			})),
 		}),

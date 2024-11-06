@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 } }, {
+root(ROOTS.Instances, expansion(EXPANSION.MOP, bubbleDown({ ["timeline"] = { ADDED_5_2_0 } }, {
 	inst(362, {	-- Throne of Thunder
 		["isRaid"] = true,
 		["coord"] = { 63.4, 32.6, ISLE_OF_THUNDER },	-- Throne of Thunder
@@ -19,47 +19,47 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 		["g"] = {
 			n(ACHIEVEMENTS, {
 				ach(8069, {	-- Last Stand of the Zandalari
-					crit(1, {	-- Jin'rokh the Breaker
-						["_encounter"] = { 827, 7 },
+					crit(22912, {	-- Jin'rokh the Breaker
+						["_encounter"] = { 827, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(2, {	-- Horridon
-						["_encounter"] = { 819, 7 },
+					crit(22984, {	-- Horridon
+						["_encounter"] = { 819, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(3, {	-- Council of Elders
-						["_encounter"] = { 816, 7 },
+					crit(22963, {	-- Council of Elders
+						["_encounter"] = { 816, DIFFICULTY.RAID.FINDER },
 					}),
 				}),
 				ach(8070, {	-- Forgotten Depths
-					crit(1, {	-- Tortos
-						["_encounter"] = { 825, 7 },
+					crit(22985, {	-- Tortos
+						["_encounter"] = { 825, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(2, {	-- Megaera
-						["_encounter"] = { 821, 7 },
+					crit(22986, {	-- Megaera
+						["_encounter"] = { 821, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(3, {	-- Ji-Kun
-						["_encounter"] = { 828, 7 },
+					crit(22987, {	-- Ji-Kun
+						["_encounter"] = { 828, DIFFICULTY.RAID.FINDER },
 					}),
 				}),
 				ach(8071, {	-- Halls of Flesh-Shaping
-					crit(1, {	-- Durumu the Forgotten
-						["_encounter"] = { 818, 7 },
+					crit(22988, {	-- Durumu the Forgotten
+						["_encounter"] = { 818, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(2, {	-- Primordius
-						["_encounter"] = { 820, 7 },
+					crit(22989, {	-- Primordius
+						["_encounter"] = { 820, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(3, {	-- Dark Animus
-						["_encounter"] = { 824, 7 },
+					crit(22990, {	-- Dark Animus
+						["_encounter"] = { 824, DIFFICULTY.RAID.FINDER },
 					}),
 				}),
 				ach(8072, {	-- Pinnacle of Storms
-					crit(1, {	-- Iron Qon
-						["_encounter"] = { 817, 7 },
+					crit(22991, {	-- Iron Qon
+						["_encounter"] = { 817, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(2, {	-- Twin Empyreans
-						["_encounter"] = { 829, 7 },
+					crit(22965, {	-- Twin Empyreans
+						["_encounter"] = { 829, DIFFICULTY.RAID.FINDER },
 					}),
-					crit(3, {	-- Lei Shen
-						["_encounter"] = { 832, 7 },
+					crit(23317, {	-- Lei Shen
+						["_encounter"] = { 832, DIFFICULTY.RAID.FINDER },
 					}),
 				}),
 				ach(8124, {		-- Glory of the Thundering Raider
@@ -94,6 +94,7 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					},
 				}),
 				ach(11758),	-- Thunderwear
+				ach(8210),	-- Shado-Pan Assault
 
 				-- Guild Achievements
 				ach(8140),	-- Throne of Thunder Guild Run
@@ -104,10 +105,22 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 				i(94593),	-- Secrets of the Empire
 				i(94594),	-- Titan Runestone
 			})),
+			n(FACTIONS, {
+				faction(FACTION_SHADO_PAN_ASSAULT),	-- Shado-Pan Assault
+			}),
 			n(QUESTS, sharedData({
 				["isWeekly"] = true,
 				["g"] = {
-					i(97153),	-- Spoils of the Thunder King
+					i(97153, {	-- Spoils of the Thunder King
+						["description"] = "This bag contains gold, flasks, reagents, epic necklaces, and has chance to drop a Primal Egg.",
+						["g"] = {
+							i(95215),	-- Abandoned Zandalari Bucklebreaker
+							i(95202),	-- Necklace of the Terra-Cotta Archer
+							i(95203),	-- Necklace of the Terra-Cotta Invoker
+							i(95204),	-- Necklace of the Terra-Cotta Mender
+							i(95959),	-- Spiderweb Tabi
+						},
+					}),
 				},
 			}, {
 				q(32711, {	-- Agony and Anima
@@ -135,41 +148,14 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					["provider"] = { "n", 69843 },	-- Zao'cho <The Emperor's Shield>
 				}),
 			})),
-			n(REWARDS, {
-				i(97153, {	-- Spoils of the Thunder King
-					["description"] = "This bag contains gold, flasks, reagents, epic necklaces, and has chance to drop a Primal Egg.",
-					["g"] = {
-						i(95215),	-- Abandoned Zandalari Bucklebreaker
-						i(95202),	-- Necklace of the Terra-Cotta Archer
-						i(95203),	-- Necklace of the Terra-Cotta Invoker
-						i(95204),	-- Necklace of the Terra-Cotta Mender
-						i(95959),	-- Spiderweb Tabi
-					},
-				}),
-			}),
-			n(DROPS, {
-				i(94574, {	-- Pygmy Direhorn (PET!)
-					["crs"] = { 68476 },	-- Horridon
-					["timeline"] = { ADDED_5_3_0 },
-				}),
-				i(94835, {	-- Ji-Kun Hatchling (PET!)
-					["crs"] = { 69712 },	-- Ji-Kun
-				}),
-				i(97960, {	-- Viscous Horror (PET!)
-					["crs"] = { 69017 },	-- Primordius
-					["timeline"] = { ADDED_5_3_0 },
-				}),
-				i(94152, {	-- Son of Animus (PET!)
-					["crs"] = {
-						69756,	-- Anima Orb
-						69427,	-- Dark Animus
-					},
-				}),
-			}),
 			n(SPECIAL, {
 				i(98136, {	-- Gastropod Shell (TOY!)
 					["description"] = "Go up and give this mob a BIG HUG...just kidding; stay out of its melee range.",
 					["crs"] = { 68220 },	-- Gastropod
+				}),
+				i(212750, {	-- Grimoire of the Ancient Observer (CI!)
+					["description"] = "1. Queue for Halls of Flesh-Shaping LFR at Mogu'Shan Palace in the Vale of Eternal Blossoms. If you can't see the LFR queue NPC, speak to Zidormi outside to change phase.\n2. Kill Durumu and loot Durumus Glass Pupil, then use the item, it doesn't matter where you target the throw.\n3. Wait for the candles around the edge of the platform to spawn in, then head for the purple circle with the cauldrons and the book.\n4. Click the book to get started. :)\n\nYou'll be shown a puzzle that connects some of the candles with coloured beams. You have to count how many beams there are of each colour and click the corresponding cauldron colour that many times.\ne.g 2 candles are connected with 1 beam of green light. Click the green cauldron once.\nYou can keep track of your clicks in your buffs. Once you have the numbers right, click the book to proceed. If you're wrong, the book will knock you over and reset your buffs but will not reset the whole chain of puzzles. You can also right-click off the buff if you overshoot to avoid resetting all of them.\nAs the puzzles progress and get more complicated, the purple cauldron will start giving you more than 1 stack of the purple buff when you click it. This is to help you get to the higher numbers faster. Be careful when you start spam clicking!\n\nTo calculate the higher purple numbers:\nThere are a couple different methods to count them, however the easiest way is using the automatic calculator linked in the WoWhead comments for this item.\n\nThanks to Fiamma from WoWhead for the comment.",
+					["timeline"] = { ADDED_10_2_5 },
 				}),
 				i(94125, {	-- Living Sandling (PET!)
 					["crs"] = { 69944 },	-- Sand Elemental
@@ -228,17 +214,38 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					i(96340),	-- Vaultwalker Sabatons
 				}),
 			}),
-			d(7, {	-- LFR Queue NPC
+			d(DIFFICULTY.RAID.FINDER, {	-- Queue NPC
 				["crs"] = { 80633 },	-- Lorewalker Han <Raid Finder Storyteller>
 				["coord"] = { 83.0, 30.6, VALE_OF_ETERNAL_BLOSSOMS },
 			}),
-			d(7, {	-- LFR
-				i(95343, {	-- Treasures of the Thunder
-					["description"] = "Since the introduction of Legacy Loot this bag is only obtainable if you queue up as a Level 91-100 for the intended raid.  If you are 101+ then you will need to seek out each item based on their original sources.  This change occured in Patch 8.0.1",
-					["timeline"] = { ADDED_5_2_0, REMOVED_8_0_1 },
-					["sym"] = {
-						{ "select", "headerID", 95343 },
-						{ "pop" },
+			d(DIFFICULTY.RAID.FINDER, {
+				header(HEADERS.Item, 95343, {	-- Treasures of the Thunder
+					-- Could sym it to every Throne boss for MOP Classic
+					["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },
+					["description"] = "This item is awarded as a consolation prize to players who do not win loot after defeating a boss encounter in the Raid Finder mode of Throne of Thunder.",
+					["sym"] = {MOP_SYM_PETS},
+					["g"] = {
+						i(95972),	-- Abandoned Zandalari Arrowlinks
+						i(95976),	-- Abandoned Zandalari Bucklebreaker
+						i(95961),	-- Abandoned Zandalari Firecord
+						i(95975),	-- Abandoned Zandalari Goreplate
+						i(95974),	-- Abandoned Zandalari Greatbelt
+						i(95971),	-- Abandoned Zandalari Moonstrap
+						i(95962),	-- Abandoned Zandalari Shadowgirdle
+						i(95970),	-- Abandoned Zandalari Silentbelt
+						i(95973),	-- Abandoned Zandalari Waterchain
+						i(95979),	-- Columnbreaker Stompers
+						i(95966),	-- Deeproot Treads
+						i(95965),	-- Home-Warding Slippers
+						i(95978),	-- Locksmasher Greaves
+						i(95958),	-- Necklace of the Terra-Cotta Archer
+						i(95969),	-- Necklace of the Terra-Cotta Mender
+						i(95980),	-- Necklace of the Terra-Cotta Protector
+						i(95960),	-- Scalehide Spurs
+						i(95963),	-- Silentflame Sandals
+						i(95959),	-- Spiderweb Tabi
+						i(95967),	-- Spiritbound Boots
+						i(95968),	-- Vaultwalker Sabatons
 					},
 				}),
 				n(COMMON_BOSS_DROPS, {
@@ -341,6 +348,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							i(95656),	-- Vaccinator's Armwraps
 							i(95660),	-- Venomlord's Totemic Wand
 							i(95645),	-- Wastewalker's Sandblasted Drape
+							i(94574, {	-- Pygmy Direhorn (PET!)
+								["timeline"] = { ADDED_5_3_0 },
+							}),
 						},
 					}),
 					e(816, {	-- Council of Elders
@@ -442,6 +452,7 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							i(95717),	-- Pinionfeather Greatcloak
 							i(95719),	-- Robe of Midnight Dawn
 							i(95724),	-- Talonrender Chestplate
+							i(94835),	-- Ji-Kun Hatchling (PET!)
 						},
 					}),
 				}),
@@ -456,8 +467,15 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							i(95729),	-- Crimson Bloom Legguards
 							i(95741),	-- Deadly Glare Cape
 							i(95728),	-- Durumu's Baleful Gaze
-							i(95737),	-- Durumu's Severed Tentacle
 							i(95742),	-- Durumu's Captive Eyeball
+							i(211949, {	-- Durumu's Glass Pupil
+								["timeline"] = { ADDED_10_2_5 },
+								["classes"] = { WARLOCK },
+								["sym"] = {{"select","itemID",
+									212750,    -- Grimoire of the Ancient Observer (CI!)
+								}},
+							}),
+							i(95737),	-- Durumu's Severed Tentacle
 							i(95746),	-- Iceshatter Gauntlets
 							i(95739),	-- Leggings of Pulsing Blood
 							i(95733),	-- Legplates of the Dark Parasite
@@ -498,6 +516,9 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							i(95763),	-- Stolen Relic of Zuldazar
 							i(95751),	-- Synapse-String Handguards
 							i(95748),	-- Talisman of Bloodlust
+							i(97960, {	-- Viscous Horror (PET!)
+								["timeline"] = { ADDED_5_3_0 },
+							}),
 						},
 					}),
 					e(824, {	-- Dark Animus
@@ -520,6 +541,7 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							i(95771),	-- Hood of the Crimson Wake
 							i(95777),	-- Matter-Swapped Legplates
 							i(95775),	-- Worldbinder Leggings
+							i(94152),	-- Son of Animus (PET!)
 						},
 					}),
 				}),
@@ -598,9 +620,212 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					}),
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.LEGACY_RAID.MULTI.NORMAL_HEROIC, {
+				e(827, {	-- Jin'rokh the Breaker
+					["crs"] = { 69465 },	-- Jin'rokh the Breaker
+					["g"] = {
+						ach(8094),	-- Lightning Overload
+					},
+				}),
+				e(819, {	-- Horridon
+					["crs"] = { 68476 },	-- Horridon
+					["g"] = {
+						ach(8038),	-- Cretaceous Collector
+						i(93666),	-- Spawn of Horridon (MOUNT!)
+						i(94574, {	-- Pygmy Direhorn (PET!)
+							["timeline"] = { ADDED_5_3_0 },
+						}),
+					},
+				}),
+				e(816, {	-- Council of Elders
+					["crs"] = {
+						69131,	-- Frost King Malakk
+						69132,	-- High Priestess Mar'li
+						69134,	-- Kazra'jin
+						69078,	-- Sul the Sandrawler
+					},
+					["g"] = {
+						ach(8073),	-- Cage Match
+					},
+				}),
+				e(825, {	-- Tortos
+					["crs"] = { 67977 },	-- Tortos
+					["g"] = {
+						ach(8077),	-- One-Up
+					},
+				}),
+				e(821, {	-- Megaera
+					["crs"] = {
+						70248,	-- Arcane Head <Head of Megaera>
+						70212,	-- Flaming Head <Head of Megaera>
+						70235,	-- Frozen Head <Head of Megaera>
+						68065,	-- Megaera <Terror of the Depths>
+						70247,	-- Venomous Head <Head of Megaera>
+					},
+					["g"] = {
+						ach(8082, {	-- Head Case
+							crit(22744, {	-- Flaming
+								["crs"] = { 70212 },
+							}),
+							crit(22746, {	-- Frozen
+								["crs"] = { 70235 },
+							}),
+							crit(22747, {	-- Venomous
+								["crs"] = { 70247 },
+							}),
+						}),
+					},
+				}),
+				e(828, {	-- Ji-Kun
+					["crs"] = { 69712 },	-- Ji-Kun
+					["g"] = {
+						ach(8097),	-- Soft Hands
+						i(95059),	-- Clutch of Ji-Kun (MOUNT!)
+						i(94835),	-- Ji-Kun Hatchling (PET!)
+					},
+				}),
+				e(818, {	-- Durumu the Forgotten
+					["crs"] = { 68036 },	-- Durumu the Forgotten
+					["g"] = {
+						ach(8098),	-- You Said Crossing the Streams Was Bad
+					},
+				}),
+				e(820, {	-- Primordius
+					["crs"] = { 69017 },	-- Primordius
+					["g"] = {
+						ach(8037),	-- Genectically Unmodified Organism
+						i(97960, {	-- Viscous Horror (PET!)
+							["timeline"] = { ADDED_5_3_0 },
+						}),
+					},
+				}),
+				e(824, {	-- Animus
+					["crs"] = {
+						69756,	-- Anima Orb
+						69427,	-- Dark Animus
+					},
+					["g"] = {
+						ach(8081, {	-- Ritualist Who?
+								crit(22765, {	-- Aridian
+									["cr"] = 69726,
+								}),
+								crit(22766, {	-- Auton
+									["cr"] = 69718,
+								}),
+								crit(22767, {	-- Bandril
+									["cr"] = 69728,
+								}),
+								crit(22768, {	-- Drahvin
+									["cr"] = 69727,
+								}),
+								crit(22769, {	-- Drashig
+									["cr"] = 69731,
+								}),
+								crit(22770, {	-- Fendahl
+									["cr"] = 69734,
+								}),
+								crit(22771, {	-- Gond
+									["cr"] = 69729,
+								}),
+								crit(22772, {	-- Jagaroth
+									["cr"] = 69721,
+								}),
+								crit(22773, {	-- Kroll
+									["cr"] = 69710,
+								}),
+								crit(22774, {	-- Kitling
+									["cr"] = 69716,
+								}),
+								crit(22775, {	-- Malus
+									["cr"] = 69733,
+								}),
+								crit(22776, {	-- Mandrel
+									["cr"] = 69737,
+								}),
+								crit(22777, {	-- Megara
+									["cr"] = 69719,
+								}),
+								crit(22778, {	-- Morok
+									["cr"] = 69722,
+								}),
+								crit(22779, {	-- Ogri
+									["cr"] = 69735,
+								}),
+								crit(22780, {	-- Ogron
+									["cr"] = 69730,
+								}),
+								crit(22781, {	-- Rill
+									["cr"] = 69725,
+								}),
+								crit(22782, {	-- Rutan
+									["cr"] = 69736,
+								}),
+								crit(22783, {	-- Sirian
+									["cr"] = 69720,
+								}),
+								crit(22784, {	-- Tetrap
+									["cr"] = 69738,
+								}),
+								crit(22785, {	-- Thal
+									["cr"] = 69709,
+								}),
+								crit(22786, {	-- Voord
+									["cr"] = 69723,
+								}),
+								crit(22787, {	-- Wirrn
+									["cr"] = 69732,
+								}),
+								crit(22789, {	-- Xeron
+									["cr"] = 69724,
+								}),
+							}),
+						i(94152, {	-- Son of Animus (PET!)
+						}),
+					},
+				}),
+				e(817, {	-- Iron Qon
+					["crs"] = {
+						68081,	-- Dam'ren <The Frozen Sage>
+						68078,	-- Iron Qon <Mastern of Quilen>
+						68080,	-- Quet'zal <The Stormcaller>
+						68079,	-- Ro'shak <The Molten Flare>
+					},
+					["g"] = {
+						ach(8087, {	-- Can't Touch This
+							crit(22791),	-- Burning Cinders
+							crit(22792),	-- Frozen Blood
+							crit(22793),	-- Storm Cloud
+							crit(22794),	-- Frozen Solid!
+							crit(22795),	-- Rushing Winds
+						}),
+					},
+				}),
+				e(829, {	-- Twin Empyreans
+					["crs"] = {
+						68904,	-- Suen <Mistress of Anger>
+						68905,	-- Lu'lin <Mistress of Solitude>
+					},
+					["g"] = {
+						ach(8086),	-- From Dusk 'til Dawn
+					},
+				}),
+				e(832, {	-- Lei Shen
+					["crs"] = { 68397 },	-- Lei Shen
+					["g"] = {
+						ach(8249, {	-- Ahead of the Curve: Lei Shen
+							["timeline"] = { ADDED_5_2_0, REMOVED_5_4_0 },
+						}),
+						ach(8090, {	-- A Complete Circuit
+							crit(22797),	-- Static Shock Conduit Disabled First
+							crit(22996),	-- Diffusion Chain Conduit Disabled First
+							crit(22997),	-- Overcharge Conduit Disabled First
+							crit(22998),	-- Bouncing Bolt Conduit Disabled First
+						}),
+					},
+				}),
+			}),
+			d(DIFFICULTY.LEGACY_RAID.MULTI.NORMAL, {
 				["ignoreBonus"] = true,
-				["difficulties"] = { 3, 4 },
 				["g"] = {
 					n(COMMON_BOSS_DROPS, {
 						["description"] = "These can drop from any of the bosses other than Ra-den.",
@@ -681,7 +906,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					e(827, {	-- Jin'rokh the Breaker
 						["crs"] = { 69465 },	-- Jin'rokh the Breaker
 						["g"] = {
-							ach(8094),	-- Lightning Overload
 							i(94739),	-- Al'set's Tormented Leggings
 							i(94727),	-- Bracers of Constant Implosion
 							i(94723),	-- Chestplate of Violent Detonation
@@ -729,8 +953,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					e(819, {	-- Horridon
 						["crs"] = { 68476 },	-- Horridon
 						["g"] = {
-							ach(8038),	-- Cretaceous Collector
-							i(93666),	-- Spawn of Horridon (MOUNT!)
 							i(94751),	-- Armplates of the Vanquished Abomination
 							i(94743),	-- Bindings of Multiplicative Strikes
 							i(94747),	-- Bloodlord's Bloodsoaked Legplates
@@ -785,7 +1007,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							69078,	-- Sul the Sandrawler
 						},
 						["g"] = {
-							ach(8073),	-- Cage Match
 							i(95575),	-- Gauntlets of the Crackling Conqueror
 							i(95580),	-- Gauntlets of the Crackling Protector
 							i(95570),	-- Gauntlets of the Crackling Vanquisher
@@ -822,7 +1043,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					e(825, {	-- Tortos
 						["crs"] = { 67977 },	-- Tortos
 						["g"] = {
-							ach(8077),	-- One-Up
 							i(94776),	-- Amulet of the Primal Turtle
 							i(94781),	-- Azure Shell Bracers
 							i(94775),	-- Beady-Eye Bracers
@@ -876,17 +1096,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							70247,	-- Venomous Head <Head of Megaera>
 						},
 						["g"] = {
-							ach(8082, {	-- Head Case
-								crit(1, {	-- Flaming
-									["crs"] = { 70212 },
-								}),
-								crit(2, {	-- Frozen
-									["crs"] = { 70235 },
-								}),
-								crit(3, {	-- Venomous
-									["crs"] = { 70247 },
-								}),
-							}),
 							i(94521),	-- Breath of the Hydra
 							i(94797),	-- Chain of Consuming Magic
 							i(94796),	-- Fetish of the Hydra
@@ -932,8 +1141,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					e(828, {	-- Ji-Kun
 						["crs"] = { 69712 },	-- Ji-Kun
 						["g"] = {
-							ach(8097),	-- Soft Hands
-							i(95059),	-- Clutch of Ji-Kun (MOUNT!)
 							i(95576),	-- Leggings of the Crackling Conqueror
 							i(95581),	-- Leggings of the Crackling Protector
 							i(95572),	-- Leggings of the Crackling Vanquisher
@@ -966,7 +1173,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					e(818, {	-- Durumu the Forgotten
 						["crs"] = { 68036 },	-- Durumu the Forgotten
 						["g"] = {
-							ach(8098),	-- You Said Crossing the Streams Was Bad
 							i(94818),	-- Aberrant Chestguard of Torment
 							i(94821),	-- Artery Rippers
 							i(94820),	-- Caustic Spike Bracers
@@ -975,6 +1181,13 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							i(94929),	-- Deadly Glare Cape
 							i(94814),	-- Durumu's Baleful Gaze
 							i(94931),	-- Durumu's Captive Eyeball
+							i(211949, {	-- Durumu's Glass Pupil
+								["timeline"] = { ADDED_10_2_5 },
+								["classes"] = { WARLOCK },
+								["sym"] = {{"select","itemID",
+									212750,    -- Grimoire of the Ancient Observer (CI!)
+								}},
+							}),
 							i(95511),	-- Durumu's Severed Tentacle
 							i(94924),	-- Iceshatter Gauntlets
 							i(94923),	-- Leggings of Pulsing Blood
@@ -1014,7 +1227,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					e(820, {	-- Primordius
 						["crs"] = { 69017 },	-- Primordius
 						["g"] = {
-							ach(8037),	-- Genectically Unmodified Organism
 							i(94937),	-- Acid-Spine Bonemace
 							i(95513),	-- Band of the Scaled Tyrant
 							i(94944),	-- Black Blood Legplates
@@ -1061,86 +1273,12 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							}),
 						},
 					}),
-					e(824, {
+					e(824, {	-- Animus
 						["crs"] = {
 							69756,	-- Anima Orb
 							69427,	-- Dark Animus
 						},
 						["g"] = {
-							ach(8081, {	-- Ritualist Who?
-								crit(1, {	-- Aridian
-									["cr"] = 69726,
-								}),
-								crit(2, {	-- Auton
-									["cr"] = 69718,
-								}),
-								crit(3, {	-- Bandril
-									["cr"] = 69728,
-								}),
-								crit(4, {	-- Drahvin
-									["cr"] = 69727,
-								}),
-								crit(5, {	-- Drashig
-									["cr"] = 69731,
-								}),
-								crit(6, {	-- Fendahl
-									["cr"] = 69734,
-								}),
-								crit(7, {	-- Gond
-									["cr"] = 69729,
-								}),
-								crit(8, {	-- Jagaroth
-									["cr"] = 69721,
-								}),
-								crit(9, {	-- Kroll
-									["cr"] = 69710,
-								}),
-								crit(10, {	-- Kitling
-									["cr"] = 69716,
-								}),
-								crit(11, {	-- Malus
-									["cr"] = 69733,
-								}),
-								crit(12, {	-- Mandrel
-									["cr"] = 69737,
-								}),
-								crit(13, {	-- Megara
-									["cr"] = 69719,
-								}),
-								crit(14, {	-- Morok
-									["cr"] = 69722,
-								}),
-								crit(15, {	-- Ogri
-									["cr"] = 69735,
-								}),
-								crit(16, {	-- Ogron
-									["cr"] = 69730,
-								}),
-								crit(17, {	-- Rill
-									["cr"] = 69725,
-								}),
-								crit(18, {	-- Rutan
-									["cr"] = 69736,
-								}),
-								crit(19, {	-- Sirian
-									["cr"] = 69720,
-								}),
-								crit(20, {	-- Tetrap
-									["cr"] = 69738,
-								}),
-								crit(21, {	-- Thal
-									["cr"] = 69709,
-								}),
-								crit(22, {	-- Voord
-									["cr"] = 69723,
-								}),
-								crit(23, {	-- Wirrn
-									["cr"] = 69732,
-								}),
-								crit(24, {	-- Xeron
-									["cr"] = 69724,
-								}),
-							}),
 							i(95574),	-- Chest of the Crackling Conqueror
 							i(95579),	-- Chest of the Crackling Protector
 							i(95569),	-- Chest of the Crackling Vanquisher
@@ -1178,18 +1316,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							68079,	-- Ro'shak <The Molten Flare>
 						},
 						["g"] = {
-							ach(8087, {	-- Can't Touch This
-								crit(1, {	-- Burning Cinders
-								}),
-								crit(2, {	-- Frozen Blood
-								}),
-								crit(3, {	-- Storm Cloud
-								}),
-								crit(4, {	-- Frozen Solid!
-								}),
-								crit(5, {	-- Rushing Winds
-								}),
-							}),
 							i(95578),	-- Shoulders of the Crackling Conqueror
 							i(95583),	-- Shoulders of the Crackling Protector
 							i(95573),	-- Shoulders of the Crackling Vanquisher
@@ -1225,7 +1351,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							68905,	-- Lu'lin <Mistress of Solitude>
 						},
 						["g"] = {
-							ach(8086),	-- From Dusk 'til Dawn
 							i(95577),	-- Helm of the Crackling Conqueror
 							i(95582),	-- Helm of the Crackling Protector
 							i(95571),	-- Helm of the Crackling Vanquisher
@@ -1258,19 +1383,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					e(832, {	-- Lei Shen
 						["crs"] = { 68397 },	-- Lei Shen
 						["g"] = {
-							ach(8090, {	-- A Complete Circuit
-								crit(1, {	-- Static Shock Conduit Disabled First
-								}),
-								crit(2, {	-- Diffusion Chain Conduit Disabled First
-								}),
-								crit(3, {	-- Overcharge Conduit Disabled First
-								}),
-								crit(4, {	-- Bouncing Bolt Conduit Disabled First
-								}),
-							}),
-							ach(8249, {	-- Ahead of the Curve: Lei Shen
-								["timeline"] = { ADDED_5_2_0, REMOVED_5_4_0 },
-							}),
 							i(94986),	-- Conduit-Breaker Chain Leggings
 							i(94984),	-- Doomed Crown of Lei Shen
 							i(94987),	-- Fusion Slasher Chestguard
@@ -1318,9 +1430,8 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 					}),
 				},
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.LEGACY_RAID.MULTI.HEROIC, {
 				["ignoreBonus"] = true,
-				["difficulties"] = { 5, 6 },
 				["g"] = {
 					n(COMMON_BOSS_DROPS, {
 						["description"] = "These can drop from any of the bosses other than Ra-den.",
@@ -1450,7 +1561,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 						["crs"] = { 68476 },	-- Horridon
 						["g"] = {
 							ach(8057),	-- Heroic: Horridon
-							i(93666),	-- Spawn of Horridon (MOUNT!)
 							i(96408),	-- Armplates of the Vanquished Abomination
 							i(96392),	-- Bindings of Multiplicative Strikes
 							i(96395),	-- Bloodlord's Bloodsoaked Legplates
@@ -1642,7 +1752,6 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 						["crs"] = { 69712 },	-- Ji-Kun
 						["g"] = {
 							ach(8061),	-- Heroic: Ji-Kun
-							i(95059),	-- Clutch of Ji-Kun (MOUNT!)
 							i(96632),	-- Leggings of the Crackling Conqueror
 							i(96633),	-- Leggings of the Crackling Protector
 							i(96631),	-- Leggings of the Crackling Vanquisher
@@ -1683,8 +1792,15 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 							i(96473),	-- Crimson Bloom Legguards
 							i(96485),	-- Deadly Glare Cape
 							i(96472),	-- Durumu's Baleful Gaze
-							i(96481),	-- Durumu's Severed Tentacle
 							i(96486),	-- Durumu's Captive Eyeball
+							i(211949, {	-- Durumu's Glass Pupil
+								["timeline"] = { ADDED_10_2_5 },
+								["classes"] = { WARLOCK },
+								["sym"] = {{"select","itemID",
+									212750,    -- Grimoire of the Ancient Observer (CI!)
+								}},
+							}),
+							i(96481),	-- Durumu's Severed Tentacle
 							i(96490),	-- Iceshatter Gauntlets
 							i(96483),	-- Leggings of Pulsing Blood
 							i(96477),	-- Legplates of the Dark Parasite
@@ -2004,7 +2120,7 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_2_0 }
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(MOP_TIER, {
+	expansion(EXPANSION.MOP, {
 		q(32752),	-- Dark Animus Dead - triggers on the first kill of the week
 		q(32750),	-- Durumu Dead - triggers on the first kill of the week
 		q(32755),	-- Empyreal Queens Dead - triggers on the first kill of the week
@@ -2018,80 +2134,5 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(32753),	-- Ra-den Dead - triggers on the first kill of the week
 		q(32747),	-- Tortos Dead - triggers on the first kill of the week
 		q(32746),	-- Zandalari Council Dead - triggers on the first kill of the week
-	}),
-});
-
-root(ROOTS.NeverImplemented, {
-	tier(MOP_TIER, {
-		inst(362, {
-			filter(CONSUMABLES, {
-				i(96194),	-- Chest of the Crackling Vanquisher
-				i(96195),	-- Chest of the Crackling Conqueror
-				i(96196),	-- Chest of the Crackling Protector
-				i(96227),	-- Gauntlets of the Crackling Vanquisher
-				i(96228),	-- Gauntlets of the Crackling Conqueror
-				i(96229),	-- Gauntlets of the Crackling Protector
-				i(96251),	-- Helm of the Crackling Vanquisher
-				i(96252),	-- Helm of the Crackling Conqueror
-				i(96253),	-- Helm of the Crackling Protector
-				i(96259),	-- Leggings of the Crackling Vanquisher
-				i(96260),	-- Leggings of the Crackling Conqueror
-				i(96261),	-- Leggings of the Crackling Protector
-				i(96327),	-- Shoulders of the Crackling Vanquisher
-				i(96328),	-- Shoulders of the Crackling Conqueror
-				i(96329),	-- Shoulders of the Crackling Protector
-				i(96938),	-- Chest of the Crackling Vanquisher
-				i(96939),	-- Chest of the Crackling Conqueror
-				i(96940),	-- Chest of the Crackling Protector
-				i(96971),	-- Gauntlets of the Crackling Vanquisher
-				i(96972),	-- Gauntlets of the Crackling Conqueror
-				i(96973),	-- Gauntlets of the Crackling Protector
-				i(96995),	-- Helm of the Crackling Vanquisher
-				i(96996),	-- Helm of the Crackling Conqueror
-				i(96997),	-- Helm of the Crackling Protector
-				i(97003),	-- Leggings of the Crackling Vanquisher
-				i(97004),	-- Leggings of the Crackling Conqueror
-				i(97005),	-- Leggings of the Crackling Protector
-				i(97071),	-- Shoulders of the Crackling Vanquisher
-				i(97072),	-- Shoulders of the Crackling Conqueror
-				i(97073),	-- Shoulders of the Crackling Protector
-			}),
-			i(97075),	-- Spiderweb Tabi
-			i(97082),	-- Deeproot Treads
-			i(97086),	-- Abandoned Zandalari Silentbelt
-			i(97087),	-- Abandoned Zandalari Moonstrap
-			i(97077),	-- Abandoned Zandalari Firecord (Heroic Thunderforged)
-			i(97078),	-- Abandoned Zandalari Shadowgirdle (Heroic Thunderforged)
-			i(97079),	-- Silentflame Sandals (Heroic Thunderforged)
-			i(97081),	-- Home-Warding Slippers (Heroic Thunderforged)
-			i(97076),	-- Scalehide Spurs
-			i(97083),	-- Spiritbound Boots
-			i(97088),	-- Abandoned Zandalari Arrowlinks
-			i(97089),	-- Abandoned Zandalari Waterchain
-			i(97084),	-- Vaultwalker Sabatons
-			i(97090),	-- Abandoned Zandalari Greatbelt
-			i(97091),	-- Abandoned Zandalari Goreplate
-			i(97092),	-- Abandoned Zandalari Bucklebreaker
-			i(97094),	-- Locksmasher Greaves
-			i(97095),	-- Columnbreaker Stompers
-			i(96703),	-- Spiderweb Tabi
-			i(96710),	-- Deeproot Treads
-			i(96714),	-- Abandoned Zandalari Silentbelt
-			i(96715),	-- Abandoned Zandalari Moonstrap
-			i(96704),	-- Scalehide Spurs
-			i(96711),	-- Spiritbound Boots
-			i(96716),	-- Abandoned Zandalari Arrowlinks
-			i(96717),	-- Abandoned Zandalari Waterchain
-			i(96705),	-- Abandoned Zandalari Firecord
-			i(96706),	-- Abandoned Zandalari Shadowgirdle
-			i(96707),	-- Silentflame Sandals
-			i(96709),	-- Home-Warding Slippers
-			i(96712),	-- Vaultwalker Sabatons
-			i(96718),	-- Abandoned Zandalari Greatbelt
-			i(96719),	-- Abandoned Zandalari Goreplate
-			i(96720),	-- Abandoned Zandalari Bucklebreaker
-			i(96722),	-- Locksmasher Greaves
-			i(96723),	-- Columnbreaker Stompers
-		}),
 	}),
 });

@@ -30,16 +30,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			}),
 			n(173003, {	-- Nalcorn Talsen <Undying Army Quartermaster>
 				["coord"] = { 50.6, 53.4, MALDRAXXUS },
-				["g"] = bubbleDownRepSkip(FACTION_THE_UNDYING_ARMY, {
+				["g"] = bubbleDownClassicRep(FACTION_THE_UNDYING_ARMY, {
 					{		-- Neutral
 						i(183112, {	-- Animated Radius
-							["cost"] = { { "i", 163036, 250 } },	-- 250x Polished Pet Charm
+							["cost"] = { { "i", POLISHED_PET_CHARM, 250 } },
 						}),
 						i(190644, {	-- Vessel of Profound Possibilities
+							["cost"] = {{"c",2009,10000}},	-- 10,000 Cosmic Flux
 							["timeline"] = { ADDED_9_2_0 },
 							["sym"] = {
-								{"select","tierID",SL_TIER},{"pop"},	-- SL Tier
-								{"where","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
+								{"select","expansionID",EXPANSION.SL},	-- Select Shadowlands
+								{"find","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
 							},
 						}),
 					}, {	-- Friendly
@@ -51,18 +52,34 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						i(183095),	-- Plans: Shadowsteel Pauldrons (RECIPE!)
 						i(184742),	-- Rattling Bonefists
 						i(183858),	-- Schematic: Wormhole Generator: Shadowlands (RECIPE!)
+						i(217596, {	-- Glyph of Abomination Limb
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { DEATHKNIGHT },
+						}),
+						i(217592, {	-- Glyph of Adaptive Swarm
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { DRUID },
+						}),
+						i(217593, {	-- Glyph of Death Chakram
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { HUNTER },
+						}),
+						i(217599, {	-- Glyph of Primordial Wave
+							["timeline"] = { ADDED_10_2_6 },
+							["classes"] = { SHAMAN },
+						}),
 					}, {	-- Revered
 						i(184744),	-- Gnarled Boneloop
 						i(183244),	-- Memory of the Rattle of the Maw
 						i(183104),	-- Technique: Contract: The Undying Army (RECIPE!)
 						i(181272, {	-- Toenail (PET!)
-							["cost"] = { { "i", 163036, 250 } },	-- 250x Polished Pet Charm
+							["cost"] = { { "i", POLISHED_PET_CHARM, 250 } },
 						}),
 					}, {	-- Exalted
 						i(184738),	-- Chainmail of the March Warden
 						i(184737),	-- Chestplate of the March Warden
 						i(180456),	-- Colors of the Undying Army
-						i(183189),	-- Illusion: Undying Spirit
+						i(183189),	-- Illusion: Undying Spirit (ILLUSION!)
 						i(182082),	-- Lurid Bloodtusk (MOUNT!)
 						i(184736),	-- Robe of the March Warden
 						i(184745),	-- Tunic of the March Warden

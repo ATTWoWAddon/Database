@@ -1,10 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1202, {	-- Ruby Life Pools
 		["coord"] = { 60.1, 75.7, THE_WAKING_SHORES },
 		["maps"] = {
@@ -19,7 +16,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					["coord"] = { 60.0, 76.0, THE_WAKING_SHORES },
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2488, {	-- Melidrussa Chillworn
 					["crs"] = { 188252 },	-- Melidrussa Chillworn
 					["g"] = {
@@ -57,13 +54,13 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193691),	-- Sky Saddle Cord
 						i(193756),	-- Skyferno Rondel
 						i(193750),	-- Wind Soarer's Breeches
-						i(197401),	-- Renewed Proto-Drake: Beaked Snout (DM!)
-						i(197601),	-- Windborne Velocidrake: Wavy Horns (DM!)
+						i(197401),	-- Renewed Proto-Drake: Beaked Snout (MM!)
+						i(197601),	-- Windborne Velocidrake: Wavy Horns (MM!)
 						i(201742),	-- Technique: Renewed Proto-Drake: Silver and Blue Armor (RECIPE!)
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2503, {	-- Kyrakka and Erkhart Stormvein
 					["crs"] = {
 						190484,	-- Kyrakka
@@ -74,7 +71,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(2488, {	-- Melidrussa Chillworn
 					["crs"] = { 188252 },	-- Melidrussa Chillworn
 					["g"] = {

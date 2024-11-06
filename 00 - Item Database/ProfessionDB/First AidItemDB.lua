@@ -1,1 +1,0 @@
-local i = GetRecipeHelperForProfession(FIRST_AID);

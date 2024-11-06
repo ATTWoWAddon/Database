@@ -5,7 +5,7 @@ root(ROOTS.Zones, {
 	m(NORTHREND, applyclassicphase(WRATH_PHASE_ONE, {
 		m(ZULDRAK, {
 			["lore"] = "Zul'Drak is a zone in central Northrend, intended for level 20+ players leveling. It is the home of the Drakkari ice trolls, who have gone insane after sacrificing their loa gods to fight off the Scourge. The Argent Dawn and the Zandalari tribe have tried to restore order to the zone, after its decimation and betrayal by Drakkuru. The zone is covered in Scourge blight and abandoned ziggurats, with Gundrak at its pinnacle.",
-			["icon"] = "Interface\\Icons\\Achievement_zone_zuldrak_03",
+			["icon"] = 236858,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					explorationAch(1267),	-- Explore Zul'Drak
@@ -52,50 +52,59 @@ root(ROOTS.Zones, {
 						["rank"] = 100,
 						-- #endif
 						-- #else
-						crit(1, {	-- Sseratus
+						crit(39098, {	-- Sseratus
 							["sourceQuest"] = 12516,	-- Too Much of a Good Thing
 						}),
-						crit(2, {	-- Quetz'lun
+						crit(39099, {	-- Quetz'lun
 							["sourceQuest"] = 12685,	-- You Reap What You Sow
 						}),
-						crit(3, {	-- Akali
+						crit(39100, {	-- Akali
 							["sourceQuest"] = 12730,	-- Convocation at Zol'Heb
 						}),
-						crit(4, {	-- The Amphitheater of Anguish
+						crit(5799, {	-- The Amphitheater of Anguish
 							["sourceQuest"] = 12948,	-- The Champion of Anguish
 						}),
-						crit(5, {	-- Finding Allies
-							["sourceQuests"] = {
-								12861,	-- Trolls Is Gone Crazy!
-								-- TODO: verify below:
-								12902,	-- In Search of Answers
-								12859,	-- This Just In: Fire Still Hot!
-							},
+						crit(39083, {	-- Finding Allies
+							["sourceQuest"] = 12859,	-- This Just In: Fire Still Hot!
 						}),
-						crit(6, {	-- The Storm King's Crusade
-							["sourceQuests"] = {
-								12904,	-- Light Won't Grant Me Vengeance
-								12919,	-- The Storm King's Crusade
-								-- TODO: verify below:
-								12901,	-- Making Something Out Of Nothing
-								12903,	-- That's What Friends Are For...
-							},
+						crit(39084, {	-- Finding Allies
+							["sourceQuest"] = 12861,	-- Trolls Is Gone Crazy!
 						}),
-						crit(7, {	-- Betrayal
+						crit(39086, {	-- The Storm King's Crusade
+							["sourceQuest"] = 12903,	-- That's What Friends Are For...
+						}),
+						crit(39087, {	-- The Storm King's Crusade
+							["sourceQuest"] = 12901,	-- Making Something Out Of Nothing
+						}),
+						crit(39088, {	-- The Storm King's Crusade
+							["sourceQuest"] = 12904,	-- Light Won't Grant Me Vengeance
+						}),
+						crit(39089, {	-- The Storm King's Crusade
+							["sourceQuest"] = 12919,	-- The Storm King's Crusade
+						}),
+						crit(5805, {	-- Betrayal
 							["sourceQuest"] = 12713,	-- Betrayal
 						}),
-						crit(8, {	-- The Argent Patrol
-							["sourceQuests"] = {
-								12584,	-- Pure Evil
-								12506,	-- Trouble at the Altar of Sseratus
-								-- TODO: confirm the following:
-								12555,	-- A Tangled Skein
-								12504,	-- Argent Crusade, We Are Leaving!
-								12606,	-- Cocooned!
-								12512,	-- Leave No One Behind
-								12554,	-- Malas the Corrupter
-								12508,	-- Mopping Up
-							},
+						crit(39090, {	-- The Argent Patrol
+							["sourceQuest"] = 12504,	-- Argent Crusade, We Are Leaving!
+						}),
+						crit(39091, {	-- The Argent Patrol
+							["sourceQuest"] = 12508,	-- Mopping Up
+						}),
+						crit(39092, {	-- The Argent Patrol
+							["sourceQuest"] = 12584,	-- Pure Evil
+						}),
+						crit(39093, {	-- The Argent Patrol
+							["sourceQuest"] = 12554,	-- Malas the Corrupter
+						}),
+						crit(39094, {	-- The Argent Patrol
+							["sourceQuest"] = 12555,	-- A Tangled Skein
+						}),
+						crit(39095, {	-- The Argent Patrol
+							["sourceQuest"] = 12506,	-- Trouble at the Altar of Sseratus
+						}),
+						crit(39096, {	-- The Argent Patrol
+							["sourceQuest"] = 12512,	-- Leave No One Behind
 						}),
 						-- #endif
 					}),
@@ -105,7 +114,6 @@ root(ROOTS.Zones, {
 						641,	-- Arctic Hare (PET!)
 						387,	-- Snake (PET!)
 						412,	-- Spider (PET!)
-						1238,	-- Unborn Val'kyr (PET!)
 					}},
 					["groups"] = {
 						pet(535, {	-- Water Waveling (PET!)
@@ -114,8 +122,7 @@ root(ROOTS.Zones, {
 						}),
 					},
 				}),
-				-- #if ANYCLASSIC
-				n(EXPLORATION, {
+				explorationHeader({
 					exploration(4322),	-- Altar of Har'koa
 					exploration(4329),	-- Altar of Mam'toth
 					exploration(4325),	-- Altar of Quetz'lun
@@ -150,7 +157,6 @@ root(ROOTS.Zones, {
 					exploration(4323),	-- Zim'Torga
 					exploration(4372),	-- Zol'Maz Stronghold
 				}),
-				-- #endif
 				n(FLIGHT_PATHS, {
 					fp(305, {	-- Ebon Watch
 						["cr"] = 28615,	-- Baneflight <Flight Master>
@@ -229,7 +235,11 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 12647,	-- An End to the Suffering
 					}),
 					q(12713, {	-- Betrayal
-						["coord"] = { 28.4, 44.9, ZULDRAK },	-- technically, this can be done any at the Reliquary of Pain
+						["coords"] = {
+							{ 28.4, 44.9, ZULDRAK },
+							{ 14.0, 73.8, ZULDRAK },
+							{ 27.6, 53.8, ZULDRAK },
+						},
 						["qg"] = 28518,	-- Stefan Vadu
 						["sourceQuests"] = {
 							12652,	-- Feedin' Da Goolz
@@ -318,8 +328,12 @@ root(ROOTS.Zones, {
 						-- TODO: based on speed completion of "Troll Patrol" daily. Determine condition and add as description
 						["qg"] = 28039,	-- Commander Kunz
 						["coord"] = { 40.2, 66.6, ZULDRAK },
-						["maxReputation"] = { 1106, EXALTED },	-- Argent Crusade, Exalted.
+						["maxReputation"] = { FACTION_ARGENT_CRUSADE, EXALTED },	-- Argent Crusade, Exalted.
 						["isDaily"] = true,
+						-- #if NOT ANYCLASSIC
+						-- TODO: Investigate if this is necessary, we have maxReputation already for this since it's a repeatable quest.
+						["lockCriteria"] = { 1, "factionID", 1106.8 },	-- Argent Crusade, Exalted
+						-- #endif
 						["groups"] = {
 							i(43556, {	-- Patroller's Pack
 								["description"] = "Small chance to contain listed items.",
@@ -405,7 +419,7 @@ root(ROOTS.Zones, {
 						["altQuests"] = { 12713 },	-- Betrayal
 						["sourceQuest"] = 12649,	-- Suit Up!
 						["coord"] = { 19.8, 75.4, ZULDRAK },
-						["description"] = "Must be on |cFFFFD700Suit Up!|r to see this quest.\n\nWARNING: Once you complete |cFFFFD700Betrayal|r this quest will become unavailable forever!",
+						["description"] = "Must be on |cFFFFD700Suit Up!|r or |cFFFFD700Dressing Down|r to see this quest.\n\nWARNING: Once you complete |cFFFFD700Betrayal|r this quest will become unavailable forever!",
 						["groups"] = {
 							i(39812),	-- Soiled Trousers
 							i(39876),	-- Aged Abomination Tripe
@@ -440,7 +454,11 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 12912,	-- A Great Storm Approaches
 					}),
 					q(12677, {	-- Hazardous Materials
-						["coord"] = { 28.4, 44.9, ZULDRAK },	-- technically, this can be done any at the Reliquary of Pain
+						["coords"] = {
+							{ 28.4, 44.9, ZULDRAK },
+							{ 14.0, 73.8, ZULDRAK },
+							{ 27.6, 53.8, ZULDRAK },
+						},
 						["qg"] = 28518,	-- Stefan Vadu
 						["sourceQuest"] = 12669,	-- So Far, So Bad
 					}),
@@ -455,6 +473,11 @@ root(ROOTS.Zones, {
 							i(39841),	-- Ancestral Girdle
 						},
 					}),
+					heroscall(q(49552, {	-- Hero's Call: Zul'Drak!
+						["timeline"] = { ADDED_7_3_5 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 64,
+					})),
 					q(12709, {	-- Hexed Caches
 						["coord"] = { 59.9, 57.9, ZULDRAK },
 						["qg"] = 28527,	-- Chronicler To'kini
@@ -504,13 +527,13 @@ root(ROOTS.Zones, {
 					}),
 					q(13099, {	-- Just Checkin'
 						["qg"] = 28527,	-- Chronicler To'kini
-						["timeline"] = { "added 3.3.0.10772", "removed 4.3.0.14732" },
+						["timeline"] = { ADDED_3_3_0, REMOVED_4_3_0 },
 						["isBreadcrumb"] = true,
 					}),
 					q(29836, {	-- Just Checkin'
 						["qg"] = 28527,	-- Chronicler To'kini
 						["coord"] = { 59.9, 57.9, ZULDRAK },
-						["timeline"] = { "added 4.3.0.14732" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					q(12630, {	-- Kickin' Nass and Takin' Manes
 						["coord"] = { 14.0, 73.8, ZULDRAK },
@@ -674,7 +697,11 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 12649,	-- Suit Up!
 					}),
 					q(12676, {	-- Sabotage
-						["coord"] = { 28.4, 44.9, ZULDRAK },	-- technically, this can be done any at the Reliquary of Pain
+						["coords"] = {
+							{ 28.4, 44.9, ZULDRAK },
+							{ 14.0, 73.8, ZULDRAK },
+							{ 27.6, 53.8, ZULDRAK },
+						},
 						["qg"] = 28518,	-- Stefan Vadu
 						["sourceQuest"] = 12677,	-- Hazardous Materials
 						["groups"] = {
@@ -725,7 +752,11 @@ root(ROOTS.Zones, {
 					q(12793, {	-- Smoke on the Horizon -- completes along with 12763, 12770, 12789, 12792 (probably a breadcrumb)
 					}),
 					q(12669, {	-- So Far, So Bad
-						["coord"] = { 28.4, 44.9, ZULDRAK },	-- technically, this can be done any at the Reliquary of Pain
+						["coords"] = {
+							{ 28.4, 44.9, ZULDRAK },
+							{ 14.0, 73.8, ZULDRAK },
+							{ 27.6, 53.8, ZULDRAK },
+						},
 						["qg"] = 28518,	-- Stefan Vadu
 						["sourceQuest"] = 12661,	-- Infiltrating Voltarus
 						["groups"] = {
@@ -952,7 +983,7 @@ root(ROOTS.Zones, {
 						["qg"] = 28039,	-- Commander Kunz
 						["sourceQuest"] = 12596,	-- Pa'Troll
 						["coord"] = { 40.2, 66.6, ZULDRAK },
-						["maxReputation"] = { 1106, EXALTED },	-- Argent Crusade, Exalted.
+						["maxReputation"] = { FACTION_ARGENT_CRUSADE, EXALTED },	-- Argent Crusade, Exalted.
 						["isDaily"] = true,
 					}),
 					q(12563, {	-- Troll Patrol
@@ -960,7 +991,7 @@ root(ROOTS.Zones, {
 						["qg"] = 28039,	-- Commander Kunz
 						["sourceQuest"] = 12596,	-- Pa'Troll
 						["coord"] = { 40.2, 66.6, ZULDRAK },
-						["maxReputation"] = { 1106, EXALTED },	-- Argent Crusade, Exalted.
+						["maxReputation"] = { FACTION_ARGENT_CRUSADE, EXALTED },	-- Argent Crusade, Exalted.
 						["isDaily"] = true,
 					}),
 					q(12587, {	-- Troll Patrol
@@ -969,7 +1000,7 @@ root(ROOTS.Zones, {
 						["qg"] = 28039,	-- Commander Kunz
 						["sourceQuest"] = 12596,	-- Pa'Troll
 						["coord"] = { 40.2, 66.6, ZULDRAK },
-						["maxReputation"] = { 1106, EXALTED },	-- Argent Crusade, Exalted.
+						["maxReputation"] = { FACTION_ARGENT_CRUSADE, EXALTED },	-- Argent Crusade, Exalted.
 						["isDaily"] = true,
 					}),
 					q(12588, {	-- Troll Patrol: Can You Dig It?
@@ -1051,13 +1082,13 @@ root(ROOTS.Zones, {
 						["qg"] = 28401,	-- Har'koa
 						["sourceQuest"] = 12730,	-- Convocation at Zol'Heb
 						["coord"] = { 60.2, 57.7, ZULDRAK },
-						["timeline"] = { "removed 4.3.0.14732" },
+						["timeline"] = { REMOVED_4_3_0 },
 					}),
 					q(29833, {	-- Unfinished Business
 						["qg"] = 28401,	-- Har'koa
 						["sourceQuest"] = 12730,	-- Convocation at Zol'Heb
 						["coord"] = { 60.2, 57.7, ZULDRAK },
-						["timeline"] = { "added 4.3.0.14732" },
+						["timeline"] = { ADDED_4_3_0 },
 					}),
 					q(12857, {	-- Wanted: Ragemane's Flipper
 						["provider"] = { "o", 191728 },	-- Wanted!
@@ -1069,6 +1100,11 @@ root(ROOTS.Zones, {
 							i(44736),	-- Sword of Heartwrenching Slaughter
 						},
 					}),
+					warchiefscommand(q(49534, {	-- Warchief's Command: Zul'Drak!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+					})),
 					q(12707, {	-- Wooly Justice
 						["coord"] = { 59.1, 56.2, ZULDRAK },
 						["qg"] = 28484,	-- Scalper Ahunae
@@ -1106,7 +1142,7 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 12669,	-- So Far, So Bad
 					}),
 					q(39208, {	-- Zul'Drak
-						["timeline"] = { "added 6.2.0.19934", "removed 7.3.5" },	-- old quest from the adventure guide. Pretty sure this was removed (CRIEVE NOTE: Not sure what patch it was removed.)
+						["timeline"] = { ADDED_6_2_0, REMOVED_7_3_5 },	-- old quest from the adventure guide. Pretty sure this was removed (CRIEVE NOTE: Not sure what patch it was removed.)
 						["isBreadcrumb"] = true,
 					}),
 				}),
@@ -1218,11 +1254,13 @@ root(ROOTS.Zones, {
 					}),
 					i(38673, {	-- Writhing Choker
 						["description"] = "This Item will drop instead of |cffffffffUnliving Choker|r once |cffffd700Cleansing Drak'Tharon|r has been completed.",
-						-- #if AFTER 4.3.0.14890
-						["sourceQuest"] = 30120,	-- Cleansing Drak'Tharon
-						-- #else
-						["sourceQuest"] = 12238,	-- Cleansing Drak'Tharon
-						-- #endif
+						["sourceQuests"] = {
+							-- #if AFTER 4.3.0.14890
+							30120,	-- Cleansing Drak'Tharon
+							-- #else
+							12238,	-- Cleansing Drak'Tharon
+							-- #endif
+						},
 						["cr"] = 28519,	-- Withered Troll
 						["coords"] = {
 							{ 14.0, 69.0, ZULDRAK },

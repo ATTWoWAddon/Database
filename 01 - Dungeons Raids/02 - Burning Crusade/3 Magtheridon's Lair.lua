@@ -1,10 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(747, {	-- Magtheridon's Lair
 		["lore"] = "After the Legion came to Outland, Magtheridon controlled all but small pockets of Outland. Even so, he was taken largely by surprise when Illidan and his allies conquered the Black Temple. Many believed that Magtheridon had been slain in the attack, but, when Illidan discovered that Magtheridon's blood had a transformative, corrupting effect on orcs, the beaten pit lord was dragged to Hellfire Citadel.\n\nBound by chains both physical and magical, Magtheridon survives, at the brink of death. Each day, Illidan's minions drain his tainted blood, pooling it for a purpose as malevolent as Magtheridon himself: the creation of a new army of barbaric fel orcs.",
+		-- #if BEFORE WRATH
 		["zone-text-areaID"] = 3836,	-- Magtheridon's Lair
+		-- #endif
 		["coord"] = { 47.51, 52.08, HELLFIRE_PENINSULA },	-- Magtheridon's Lair, Hellfire Peninsula
 		["mapID"] = MAGTHERIDONS_LAIR,
 		["sharedLockout"] = 1,
@@ -40,7 +42,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						10886,	-- Trial of the Naaru: Tenacity
 					},
 					["coord"] = { 54.2, 44.4, SHATTRATH_CITY },
-					["timeline"] = { "removed 3.0.2" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["groups"] = {
 						objective(1, {	-- Magtheridon slain
 							["provider"] = { "n", 17257 },	-- Magtheridon
@@ -48,15 +50,15 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(31746),	-- Phoenix-Fire Band
 						i(31704, {	-- The Tempest Key
 							-- #if AFTER WRATH
-							["timeline"] = { "removed 2.3.0" },
+							["timeline"] = { REMOVED_2_3_0 },
 							-- #endif
 						}),
 						ach(432, {	-- Champion of the Naaru (Achievement)
 							["sourceQuest"] = 10888,	-- Trial of the Naaru: Magtheridon
-							["timeline"] = { "removed 3.0.1" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 						title(36, {	-- Champion of the Naaru
-							["timeline"] = { "removed 3.0.2" },
+							["timeline"] = { REMOVED_3_0_2 },
 						}),
 					},
 				}),
@@ -69,7 +71,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 					["altQuests"] = { 10888 },	-- Trial of the Naaru: Magtheridon (legacy version)
 					["coord"] = { 54.2, 44.4, SHATTRATH_CITY },
-					["timeline"] = { "added 3.0.2" },
+					["timeline"] = { ADDED_3_0_2 },
 					["groups"] = {
 						objective(1, {	-- Magtheridon slain
 							["provider"] = { "n", 17257 },	-- Magtheridon
@@ -92,7 +94,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #endif
 					}),
 					ach(5087, {	-- Magtheridon's Lair Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					i(32385, {	-- Magtheridon's Head
 						["races"] = ALLIANCE_ONLY,
@@ -126,7 +128,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #if BEFORE WRATH
 						["description"] = "The epic gems may not be available until Black Temple is released, however, some users have reported getting one out of this bag already.",
 						-- #endif
-						["timeline"] = { "added 2.4.0.7923" },
+						["timeline"] = { ADDED_2_4_0 },
 						["groups"] = {
 							i(32227),	-- Crimson Spinel
 							i(32228),	-- Empyrean Sapphire
@@ -149,7 +151,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER TBC
 root(ROOTS.HiddenQuestTriggers, {
-	tier(TBC_TIER, {
+	expansion(EXPANSION.TBC, {
 		q(11116),	-- Trial of the Naaru: (QUEST FLAG)
 	}),
 });

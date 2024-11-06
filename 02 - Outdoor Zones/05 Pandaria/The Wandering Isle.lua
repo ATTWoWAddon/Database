@@ -6,8 +6,14 @@ root(ROOTS.Zones, {
 	m(PANDARIA, {
 		m(378, {	-- The Wandering Isle Starter Zones
 			["races"] = { PANDAREN_NEUTRAL, PANDAREN_ALLIANCE, PANDAREN_HORDE },	-- [Adding faction just to be safe]
-			["icon"] = "Interface\\Icons\\INV_Misc_Fish_Turtle_03",
+			["icon"] = 133937,
 			["g"] = {
+				n(FACTIONS, {
+					faction(1216, {	-- Shang Xi's Academy
+						["description"] = "The maximum obtainable reputation with this faction is 8510/12000 (Honored).",
+						["collectible"] = false,
+					}),
+				}),
 				n(QUESTS, {
 					q(31450, {	-- A New Fate
 						["provider"] = { "n", 56013 },	-- Spirit of Master Shang Xi
@@ -17,7 +23,7 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29678 },	-- Shu, the Spirit of Water
 						["g"] = {
 							i(131908, {	-- Gauntlets of Splashing Water
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74573),	-- Glistening Breastplate
 							i(74572),	-- Gloves of Splashing Water
@@ -68,7 +74,7 @@ root(ROOTS.Zones, {
 							i(74608),	-- Legguards of the Brave
 							i(74606),	-- Protector's Robes
 							i(131917, {	-- Waders of Bravery
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -77,7 +83,7 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29417 },	-- The Way of the Huojin
 						["g"] = {
 							i(131906, {	-- Initiate's Boots
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(73231),	-- Initiate's Footgear
 							i(73232),	-- Initiate's Sabatons
@@ -122,7 +128,7 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(74585),	-- Dancing Boots
 							i(131912, {	-- Ringing Boots
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74583),	-- Silk Shoes
 							i(74584),	-- Summer Shoes
@@ -153,7 +159,7 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 29796 },	-- Urgent News
 						["g"] = {
 							i(131916, {	-- Empathetic Mail
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74605),	-- Gauntlets of Mercy
 							i(74603),	-- Survival Leggings
@@ -180,7 +186,7 @@ root(ROOTS.Zones, {
 							i(74599),	-- Cinch of Grieving
 							i(74597),	-- Cord of Grieving
 							i(131914, {	-- Links of Grieving
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74598),	-- Ropes of Grieving
 						},
@@ -204,7 +210,7 @@ root(ROOTS.Zones, {
 							i(74595),	-- Gloves of Verity
 							i(74594),	-- Gloves of Wisdom
 							i(131913, {	-- Handgrips of Verity
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74596),	-- Unvarnished Vambraces
 						},
@@ -228,7 +234,7 @@ root(ROOTS.Zones, {
 							i(74582),	-- Comfortable Greaves
 							i(74580),	-- Homespun Leggings
 							i(131911, {	-- Padded Greaves
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74581),	-- Soft Britches
 						},
@@ -237,23 +243,22 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 60042 },	-- Korga Strongmane
 						["sourceQuests"] = { 29792 },	-- Bidden to Greatness
 					}),
-					o(209673, {	-- Jade Tiger Pillar
-						q(29782, {	-- Stronger Than Bone
-							["sourceQuests"] = { 29778 },	-- Rewritten Wisdoms
-							["g"] = {
-								i(157020, {	-- Humble Cudgel
-									["timeline"] = { "added 7.0.3.22248" },
-								}),
-								i(74588),	-- Jade Crossbow
-								i(74590),	-- Jade Hilted Dagger
-								i(74589),	-- Jade Hilted Sword
-								i(74587),	-- Jade Shield
-							},
-						}),
+					q(29782, {	-- Stronger Than Bone
+						["sourceQuests"] = { 29778 },	-- Rewritten Wisdoms
+						["provider"] = { "o", 209673 },	-- Jade Tiger Pillar
+						["coord"] = { 26.5, 33.8, THE_WANDERING_ISLE },
+						["g"] = {
+							i(157020, {	-- Humble Cudgel
+								["timeline"] = { ADDED_7_0_3 },
+							}),
+							i(74588),	-- Jade Crossbow
+							i(74590),	-- Jade Hilted Dagger
+							i(74589),	-- Jade Hilted Sword
+							i(74587),	-- Jade Shield
+						},
 					}),
 					q(29662, {	-- Stronger Than Reeds
 						["provider"] = { "n", 55585 },	-- Jojo Ironbrow
-						["sourceQuests"] = { 29521 },	-- The Singing Pools
 					}),
 					q(29783, {	-- Stronger Than Stone
 						["provider"] = { "n", 55585 },	-- Jojo Ironbrow
@@ -278,7 +283,7 @@ root(ROOTS.Zones, {
 							i(73222),	-- Initiate's Gauntlets
 							i(73220),	-- Initiate's Gloves
 							i(131903, {	-- Initiate's Grips
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(73221),	-- Initiate's Handguards
 						},
@@ -291,7 +296,7 @@ root(ROOTS.Zones, {
 							i(74600),	-- Healer's Wristwraps
 							i(74602),	-- Ritual Breastplate
 							i(131915, {	-- Service Greaves
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 						},
 					}),
@@ -301,7 +306,7 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(74570),	-- Unmarred Belt
 							i(131907, {	-- Unmarred Chain
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74568),	-- Unmarred Cord
 							i(74569),	-- Unmarred Waistband
@@ -313,7 +318,7 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(73218),	-- Initiate's Belt
 							i(131902, {	-- Initiate's Braided Belt
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(73219),	-- Initiate's Plate Belt
 							i(73217),	-- Initiate's Rope Belt
@@ -335,9 +340,9 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 53566 },	-- Master Shang Xi
 						["classes"] = { WARRIOR },
 					}),
-					q(30033, {	-- The Lesson of the Iron Bough (Mage)
+					q(30033, {	-- The Lesson of the Iron Bough (Mage, Warlock)
 						["provider"] = { "n", 53566 },	-- Master Shang Xi
-						["classes"] = { MAGE },
+						["classes"] = { MAGE, WARLOCK },
 					}),
 					q(30035, {	-- The Lesson of the Iron Bough (Priest?)
 						["provider"] = { "n", 53566 },	-- Master Shang Xi
@@ -351,9 +356,9 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 53566 },	-- Master Shang Xi
 						["classes"] = { ROGUE },
 					}),
-					q(30037, {	-- The Lesson of the Iron Bough (Shaman, Warlock)
+					q(30037, {	-- The Lesson of the Iron Bough (Shaman)
 						["provider"] = { "n", 53566 },	-- Master Shang Xi
-						["classes"] = { SHAMAN, WARLOCK },
+						["classes"] = { SHAMAN },
 					}),
 					q(29406, {	-- The Lesson of the Sandy Fist
 						["provider"] = { "n", 53566 },	-- Master Shang Xi
@@ -362,7 +367,7 @@ root(ROOTS.Zones, {
 							i(73216),	-- Initiate's Armguards
 							i(73215),	-- Initiate's Bracers
 							i(131901, {	-- Initiate's Cuffs
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(73214),	-- Initiate's Wristwraps
 						},
@@ -398,7 +403,7 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(74578),	-- Bindings of the Earth Spirit
 							i(131910, {	-- Bracers of the Earth Spirit
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74579),	-- Gauntlets of Earth and Water
 							i(74577),	-- Robes of the Water Spirit
@@ -422,7 +427,7 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(74576),	-- Sun Pearl Bracers
 							i(131909, {	-- Sun Pearl Chainmail
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(74574),	-- Sun Pearl Gloves
 							i(74575),	-- Sun Pearl Vest
@@ -434,7 +439,7 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(73228),	-- Initiate's Britches
 							i(131905, {	-- Initiate's Greaves
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(73227),	-- Initiate's Leggings
 							i(73229),	-- Initiate's Legguards
@@ -446,7 +451,7 @@ root(ROOTS.Zones, {
 						["g"] = {
 							i(73226),	-- Initiate's Breastplate
 							i(131904, {	-- Initiate's Chestpiece
-								["timeline"] = { "added 7.0.3.22248" },
+								["timeline"] = { ADDED_7_0_3 },
 							}),
 							i(73224),	-- Initiate's Robes
 							i(73225),	-- Initiate's Vest
@@ -566,7 +571,7 @@ root(ROOTS.Zones, {
 	}),
 });
 root(ROOTS.HiddenQuestTriggers,{
-	tier(MOP_TIER, {
+	expansion(EXPANSION.MOP, {
 		q(30454),	-- Pandaren Alliance Tracking Quest - triggers after choosing Alliance faction
 		q(30455),	-- Pandaren Horde Tracking Quest - triggers after choosing Horde faction
 	}),

@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4, REMOVED_6_0_2 } }, {
+root(ROOTS.Instances, expansion(EXPANSION.MOP, bubbleDown({ ["timeline"] = { ADDED_5_0_4, REMOVED_6_0_2 } }, {
 	n(CHALLENGE_MODE, {
 		ach(6920, {	-- Challenge Conqueror
 			-- Meta Achievement
@@ -213,15 +213,15 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4, 
 		ach(8903, bubbleDownSelf({ ["timeline"] = { ADDED_6_0_2, REMOVED_6_0_3_LAUNCH } }, {		-- Mistwalker
 			-- Meta Achievement
 			["sym"] = {{"meta_achievement",
-				8434, 	-- Challenge Master: Gate of the Setting Sun
-				8433, 	-- Challenge Master: Mogu'shan Palace
-				8436, 	-- Challenge Master: Scarlet Halls
-				8437, 	-- Challenge Master: Scarlet Monastery
-				8438, 	-- Challenge Master: Scholomance
-				8432, 	-- Challenge Master: Shado-Pan Monastery
-				8439, 	-- Challenge Master: Siege of Niuzao Temple
-				8431, 	-- Challenge Master: Stormstout Brewery
-				8430, 	-- Challenge Master: Temple of the Jade Serpent
+				8434,	-- Challenge Master: Gate of the Setting Sun
+				8433,	-- Challenge Master: Mogu'shan Palace
+				8436,	-- Challenge Master: Scarlet Halls
+				8437,	-- Challenge Master: Scarlet Monastery
+				8438,	-- Challenge Master: Scholomance
+				8432,	-- Challenge Master: Shado-Pan Monastery
+				8439,	-- Challenge Master: Siege of Niuzao Temple
+				8431,	-- Challenge Master: Stormstout Brewery
+				8430,	-- Challenge Master: Temple of the Jade Serpent
 			}},
 			["g"] = {
 				title(255),	-- Mistwalker <Name>
@@ -308,5 +308,8 @@ root(ROOTS.Instances, tier(MOP_TIER, bubbleDown({ ["timeline"] = { ADDED_5_0_4, 
 		ach(8430, bubbleDownSelf({ ["timeline"] = { ADDED_5_4_0, REMOVED_6_0_2 } }, {	-- Challenge Master: Temple of the Jade Serpent
 			title(249),	-- Jade Protector <Name>
 		})),
+		ach(6433, {	-- Realm First! Challenge Conqueror: Gold
+			["timeline"] = { ADDED_5_0_4, REMOVED_5_2_0 },
+		}),
 	}),
 })));

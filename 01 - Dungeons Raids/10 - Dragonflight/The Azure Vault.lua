@@ -1,10 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1203, {	-- The Azure Vault
 		["coord"] = { 38.9, 64.7, THE_AZURE_SPAN },
 		["maps"] = {
@@ -21,13 +18,19 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					["provider"] = { "n", 186188 },	-- Sindragosa
 					["coord"] = { 39.5, 63.1, THE_AZURE_SPAN },
 				}),
+				q(75388, {	-- The Azure Vaults
+					--["sourceQuests"] = { }, -- TODO
+					["provider"] = { "n", 186188 },	-- Sindragosa
+					["coord"] = { 39.5, 63.1, THE_AZURE_SPAN },
+					["timeline"] = { ADDED_10_1_0 }
+				}),
 			}),
 			n(ZONE_DROPS, {
 				i(194255),	-- Pattern: Amice of the Blue (RECIPE!)
 				i(194491),	-- Plans: Frostfire Legguards of Preparation (RECIPE!)
 				i(194492),	-- Plans: Unstable Frostfire Belt (RECIPE!)
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2492, {	-- Leymor
 					["crs"] = { 186644 },	-- Leymor
 					["g"] = {
@@ -45,7 +48,12 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193629),	-- Cloak of Lost Devotion
 						i(193632),	-- Fear Striker Tz'onna
 						i(193631),	-- Horizon Splitter
-						i(193628),	-- Tome of Unstable Power
+						i(193628, {	-- Tome of Unstable Power
+							["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_2_6 },
+						}),
+						i(212685, {	-- Tome of Unstable Power
+							["timeline"] = { ADDED_10_2_6 },
+						}),
 						i(193630),	-- Twenty-Two-League Striders
 					},
 				}),
@@ -69,13 +77,18 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193642),	-- Mantle of Yearned Freedom
 						i(193646),	-- Refraction's Edge
 						i(193643),	-- Stasis Freed Leggings
-						i(193639),	-- Umbrelskul's Fractured Heart
-						i(197127),	-- Highland Drake: Grand Thorn Horns (DM!)
-						i(197140),	-- Highland Drake: Small Spotted Pattern (DM!)
+						i(193639, {	-- Umbrelskul's Fractured Heart
+							["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_2_6 },
+						}),
+						i(212684, {	-- Umbrelskul's Fractured Heart
+							["timeline"] = { ADDED_10_2_6 },
+						}),
+						i(197127),	-- Highland Drake: Grand Thorn Horns (MM!)
+						i(197140),	-- Highland Drake: Small Spotted Pattern (MM!)
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2508, {	-- Umbrelskul
 					["crs"] = { 186738 },	-- Umbrelskul
 					["g"] = {
@@ -83,7 +96,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
 					ach(16330),	-- You Must Be Made of Hide
 				}),

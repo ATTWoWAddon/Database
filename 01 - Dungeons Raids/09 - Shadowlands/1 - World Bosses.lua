@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	n(WORLD_BOSSES, {
 		["isRaid"] = true,
 		["modID"] = 14,
@@ -117,7 +117,6 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 				["g"] = sharedData({ ["modID"] = 3 }, {
 					i(187507),	-- Adaptive Armor Fragment
 					i(187506),	-- Condensed Anima Sphere
-					i(187061),	-- Shard of Rev
 					i(186355),	-- Wristwraps of Anguish
 					i(186361),	-- Grips of Unleashed Suffering
 					i(186368),	-- Mor'geth's Gauntlets of Damnation
@@ -256,11 +255,3 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 		}),
 	}),
 })));
-
-root(ROOTS.NeverImplemented, {
-	tier(SL_TIER, {
-		n(WORLD_BOSSES, {
-			i(190622),	-- [DNT] 9.2 Raid - Sepulcher of the First Ones - World Boss - Accessory - Trinket - Omni
-		}),
-	}),
-});

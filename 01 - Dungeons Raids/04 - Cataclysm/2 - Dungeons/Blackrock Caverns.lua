@@ -1,15 +1,14 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON};
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
-	inst(66, {	-- Blackrock Caverns
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
+	applyclassicphase(CATA_PHASE_ONE, inst(66, {	-- Blackrock Caverns
 		["mapID"] = 283,
 		["maps"] = { 284 },
 		["coord"] = { 71.77, 52.98, BLACKROCK_MOUNTAIN_LEVEL2 },
 		["groups"] = {
 			n(QUESTS, {
-				q(28741, { -- Ascendant Lord Obsidius
+				q(28741, {	-- Ascendant Lord Obsidius
 					["qg"] = 49476,	-- Pip Quickwit
 					["sourceQuest"] = 28738,	-- The Twilight Forge
 					["groups"] = {
@@ -18,7 +17,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(66884),	-- Raz's Breastplate
 					},
 				}),
-				q(28740, { -- Do My Eyes Deceive Me?
+				q(28740, {	-- Do My Eyes Deceive Me?
 					["qg"] = 49476,	-- Pip Quickwit
 					["sourceQuest"] = 28738,	-- The Twilight Forge
 					["groups"] = {
@@ -27,21 +26,36 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(66890),	-- Auto-Decoding Band
 					},
 				}),
-				q(28738, { -- The Twilight Forge
+				q(28738, {	-- The Twilight Forge
 					["qg"] = 49476,	-- Pip Quickwit
 					["sourceQuest"] = 28737,	-- What Is This Place?
 				}),
-				q(28735, { -- To the Chamber of Incineration!
+				q(28732, {	-- This Can Only Mean One Thing...
+					["qg"] = 49444,	-- Pip Quickwit
+					["coord"] = { 42.6, 28.1, MOUNT_HYJAL },
+					["isBreadcrumb"] = true,
+					["groups"] = {
+						objective(1, {	-- Arrive at Blackrock Caverns.
+							["provider"] = { "o", 207327 },	-- Pip's Mole Machine
+						}),
+					},
+				}),
+				q(28735, {	-- To the Chamber of Incineration!
 					["qg"] = 49476,	-- Pip Quickwit
 					["sourceQuest"] = 28732,	-- This Can Only Mean One Thing...
 				}),
-				q(28737, { -- What Is This Place?
+				q(28737, {	-- What Is This Place?
 					["qg"] = 49476,	-- Pip Quickwit
 					["sourceQuest"] = 28735,	-- To the Chamber of Incineration!
 				}),
+				q(28804, {	-- Dark Iron Contingency Plan
+					["provider"] = { "o", 207412 },	-- Stone Tablet
+					["requireSkill"] = ARCHAEOLOGY,
+					["isRepeatable"] = true,
+				}),
 			}),
 			n(ZONE_DROPS, {
-				i(55791, { -- Acanthia's Lost Pendant
+				i(55791, {	-- Acanthia's Lost Pendant
 					["crs"] = {
 						40084,	-- Bellows Slave
 						40013,	-- Buster
@@ -63,7 +77,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						50284,	-- Twilight Zealot
 					},
 				}),
-				i(55789, { -- Berto's Staff
+				i(55789, {	-- Berto's Staff
 					["crs"] = {
 						40084,	-- Bellows Slave
 						40013,	-- Buster
@@ -85,7 +99,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						50284,	-- Twilight Zealot
 					},
 				}),
-				i(55790, { -- Toxidunk Dagger
+				i(55790, {	-- Toxidunk Dagger
 					["crs"] = {
 						40084,	-- Bellows Slave
 						40013,	-- Buster
@@ -108,7 +122,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
+			d(DIFFICULTY.DUNGEON.NORMAL, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
 				e(105, {  -- Rom'ogg Bonecrusher
 					["crs"] = { 39665 },	-- Rom'ogg Bonecrusher
 					["groups"] = {
@@ -128,7 +142,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55263),	-- Renouncer's Cowl
 						i(55265),	-- Signet of Transformation
 					},
-				}),				
+				}),
 				e(107, {  -- Karsh Steelbender
 					["crs"] = { 39698 },	-- Karsh Steelbender
 					["groups"] = {
@@ -138,7 +152,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55271),	-- Quicksilver Amulet
 						i(55272),	-- Steelbender's Masterpiece
 					},
-				}),	
+				}),
 				e(108, {  -- Beauty
 					["crs"] = { 39700 },	-- Beauty
 					["groups"] = {
@@ -148,7 +162,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55277),	-- Beauty's Favorite Bone
 						i(55276),	-- Kibble
 					},
-				}),	
+				}),
 				e(109, {  -- Ascendent Lord Obsidius
 					["crs"] = { 39705 },	-- Ascendent Lord Obsidius
 					["groups"] = {
@@ -164,15 +178,20 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55780),	-- Twitching Shadows
 						i(55785),	-- Willowy Crown
 						i(55787),	-- Witching Hourglass
+						-- #if BEFORE MOP
+						i(55783, {	-- Sandshift Relic
+							["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 			})),
 			-- #if BEFORE 7.3.5
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(105, {  -- Rom'ogg Bonecrusher
 					["crs"] = { 39665 },	-- Rom'ogg Bonecrusher
 					["groups"] = {
-						ach(5281),	-- Crushing Bones and Cracking Skulls						
+						ach(5281),	-- Crushing Bones and Cracking Skulls
 						i(56311),	-- Inquisition Robes
 						i(56313),	-- Manacles of Pain
 						i(56314),	-- Shield of the Iron Maiden
@@ -190,7 +209,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56298),	-- Renouncer's Cowl
 						i(56299),	-- Signet of Transformation
 					},
-				}),				
+				}),
 				e(107, {  -- Karsh Steelbender
 					["crs"] = { 39698 },	-- Karsh Steelbender
 					["groups"] = {
@@ -201,7 +220,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56300),	-- Quicksilver Amulet
 						i(56302),	-- Steelbender's Masterpiece
 					},
-				}),	
+				}),
 				e(108, {  -- Beauty
 					["crs"] = { 39700 },	-- Beauty
 					["groups"] = {
@@ -211,7 +230,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56309),	-- Beauty's Chew Toy
 						i(56307),	-- Kibble
 					},
-				}),	
+				}),
 				e(109, {  -- Ascendent Lord Obsidius
 					["crs"] = { 39705 },	-- Ascendent Lord Obsidius
 					["groups"] = {
@@ -227,77 +246,82 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(56315),	-- Twitching Shadows
 						i(56321),	-- Willowy Crown
 						i(56320),	-- Witching Hourglass
+						-- #if BEFORE MOP
+						i(56316, {	-- Sandshift Relic
+							["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+						}),
+						-- #endif
 					},
 				}),
 			}),
-			-- #else	
-			d(NormalPlus, {				
+			-- #else
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_HEROIC, {
 				e(105, {  -- Rom'ogg Bonecrusher
 					["crs"] = { 39665 },	-- Rom'ogg Bonecrusher
 					["groups"] = {
-						i(157608, { -- Groundrumble Boots
+						i(157608, {	-- Groundrumble Boots
 							["timeline"] = { ADDED_7_3_5 },
 						}),
-						i(56311), -- Inquisition Robes
-						i(56313), -- Manacles of Pain
-						i(56314), -- Shield of the Iron Maiden
-						i(56310), -- Skullcracker Ring
-						i(56312), -- Torturer's Mercy
+						i(56311),	-- Inquisition Robes
+						i(56313),	-- Manacles of Pain
+						i(56314),	-- Shield of the Iron Maiden
+						i(56310),	-- Skullcracker Ring
+						i(56312),	-- Torturer's Mercy
 					},
 				}),
 				e(106, {  -- Corla, Herald of Twilight
 					["crs"] = { 39679 },	-- Corla, Herald of Twilight
 					["groups"] = {
-						i(56297), -- Armbands of Change
-						i(56296), -- Corla's Baton
-						i(56295), -- Grace of the Herald
-						i(56298), -- Renouncer's Cowl
-						i(56299), -- Signet of Transformation
+						i(56297),	-- Armbands of Change
+						i(56296),	-- Corla's Baton
+						i(56295),	-- Grace of the Herald
+						i(56298),	-- Renouncer's Cowl
+						i(56299),	-- Signet of Transformation
 					},
 				}),
 				e(107, {  -- Karsh Steelbender
 					["crs"] = { 39698 },	-- Karsh Steelbender
 					["groups"] = {
-						i(56301), -- Bracers of Cooled Anger
-						i(56304), -- Burned Gatherings
-						i(56303), -- Heat Wave Leggings
-						i(157610, { -- Heat-Shielded Tunic
+						i(56301),	-- Bracers of Cooled Anger
+						i(56304),	-- Burned Gatherings
+						i(56303),	-- Heat Wave Leggings
+						i(157610, {	-- Heat-Shielded Tunic
 							["timeline"] = { ADDED_7_3_5 },
 						}),
-						i(56300), -- Quicksilver Amulet
-						i(56302), -- Steelbender's Masterpiece
+						i(56300),	-- Quicksilver Amulet
+						i(56302),	-- Steelbender's Masterpiece
 					},
 				}),
 				e(108, {  -- Beauty
 					["crs"] = { 39700 },	-- Beauty
 					["groups"] = {
-						i(56305), -- Beauty's Silken Ribbon
-						i(56306), -- Beauty's Favorite Bone
-						i(56308), -- Beauty's Plate
-						i(56309), -- Beauty's Chew Toy
-						i(157607, { -- Gently Gnawed Hauberk
+						i(56305),	-- Beauty's Silken Ribbon
+						i(56306),	-- Beauty's Favorite Bone
+						i(56308),	-- Beauty's Plate
+						i(56309),	-- Beauty's Chew Toy
+						i(157607, {	-- Gently Gnawed Hauberk
 							["timeline"] = { ADDED_7_3_5 },
 						}),
-						i(56307), -- Kibble
+						i(56307),	-- Kibble
 					},
 				}),
 				e(109, {  -- Ascendent Lord Obsidius
 					["crs"] = { 39705 },	-- Ascendent Lord Obsidius
 					["groups"] = {
 						ach(4833),	-- Blackrock Caverns
-						i(56317), -- Amber Messenger
-						i(56319), -- Carrier Wave Pendant
-						i(56323), -- Clutches of Dying Light
-						i(56322), -- Crepuscular Shield
-						i(56324), -- Kyrstel Mantle
-						i(56318), -- Raz's Pauldrons
-						i(56315), -- Twitching Shadows
-						i(56321), -- Willowy Crown
-						i(56320), -- Witching Hourglass
+						i(56317),	-- Amber Messenger
+						i(56319),	-- Carrier Wave Pendant
+						i(56323),	-- Clutches of Dying Light
+						i(56322),	-- Crepuscular Shield
+						i(56324),	-- Kyrstel Mantle
+						i(56318),	-- Raz's Pauldrons
+						i(56315),	-- Twitching Shadows
+						i(56321),	-- Willowy Crown
+						i(56320),	-- Witching Hourglass
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(105, {  -- Rom'ogg Bonecrusher
 					["crs"] = { 39665 },	-- Rom'ogg Bonecrusher
 					["groups"] = {
@@ -325,13 +349,13 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					},
 				}),
 			}),
-			-- #endif	
+			-- #endif
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35348),	-- Blackrock Caverns Reward Quest
 		q(35351),	-- Blackrock Caverns Reward Quest
 		q(35349),	-- Blackrock Caverns Bonus Reward

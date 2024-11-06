@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_FOUR, {
 	inst(278, {	-- Pit of Saron
 		["mapID"] = PIT_OF_SARON,
 		["coord"] = { 52.3, 89.3, ICECROWN },
@@ -9,25 +9,25 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(4517, {	-- The Pit of Saron
-					crit(13317, { -- Forgemaster Garfrost
-						["_encounter"] = { 608, 1 },
+					crit(13317, {	-- Forgemaster Garfrost
+						["_encounter"] = { 608, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(13318, { -- Ick and Krick
-						["_encounter"] = { 609, 1 },
+					crit(13318, {	-- Ick and Krick
+						["_encounter"] = { 609, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(13319, { -- Scourgelord Tyrannus and Rimefang
-						["_encounter"] = { 610, 1 },
+					crit(13319, {	-- Scourgelord Tyrannus and Rimefang
+						["_encounter"] = { 610, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 				}),
 				ach(4520, {	-- Heroic: The Pit of Saron
-					crit(13182, { -- Forgemaster Garfrost
-						["_encounter"] = { 608, 2 },
+					crit(13182, {	-- Forgemaster Garfrost
+						["_encounter"] = { 608, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(13173, { -- Ick and Krick
-						["_encounter"] = { 609, 2 },
+					crit(13173, {	-- Ick and Krick
+						["_encounter"] = { 609, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(13175, { -- Scourgelord Tyrannus and Rimefang
-						["_encounter"] = { 610, 2 },
+					crit(13175, {	-- Scourgelord Tyrannus and Rimefang
+						["_encounter"] = { 610, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -97,7 +97,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			-- #if ANYCLASSIC
+			n(ZONE_DROPS, {
+				i(49718, {	-- Infused Saronite Bar
+					["provider"] = { "o", 201592 },	-- Infused Saronite Bars
+				}),
+			}),
+			-- #endif
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(49852),	-- Coffin Nail
 					i(49854),	-- Mantle of Tattered Feathers
@@ -190,7 +197,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ACHIEVEMENTS, {
@@ -258,7 +265,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 						["creatureID"] = 36658,	-- Scourgelord Tyrannus
 						["groups"] = {
 							ach(5113, {	-- Heroic: The Pit of Saron Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(50273),	-- Engraved Gargoyle Femur
 							i(50267),	-- Tyrannical Beheader
@@ -300,7 +307,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35438),	-- Pit of Saron Reward Quest - Normal completion
 		q(35440),	-- Pit of Saron Reward Quest - Heroic completion
 	}),

@@ -1,14 +1,29 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
+SNIFFENSEEKING = createHeader({
+	readable = "Sniffenseeking",
+	icon = 648644,
+	text = {
+		en = "Sniffenseeking",
+		es = "Olfatobúsqueda",
+		de = "Schnüffelsuchen",
+		fr = "Recherches olfactives",
+		it = "Il Fiutatutto",
+		pt = "Busca farejante",
+		ru = "Нюхорысканье",
+		ko = "냄새 추적",
+		cn = "嗅味探寻",
+	},
+});
 root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
 	m(ZARALEK_CAVERN, {
 		n(SNIFFENSEEKING, {
-			["description"] = "",
 			["cost"] = {
 				{ "i", 205982, 1 },	-- 1x Lost Dig Map
 				{ "i", 205984, 1 },	-- 1x Bartered Dig Map
 			},
+			["crs"] = { 201426 },	-- Myrrit
 			["g"] = {
 				n(ACHIEVEMENTS, {
 					ach(18284, {	-- A Niffen's Best Buddy
@@ -21,34 +36,35 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 							title(507),	-- <Name>, Sniffenseeker
 						},
 					}),
-					ach(18257),	-- Can You Dig It?
+					ach(18257, {	-- Can You Dig It?
+						["_noautomation"] = true,
+					}),
 					ach(18271, {	-- He'sSss All Mine
 						["provider"] = { "i", 205151 },	-- Salverun
 					}),
 					ach(18255, {	-- Proof of Myrrit [_quests handled by AchievementDB]
-						crit(1),	-- Vertical Anomaly
-						crit(2),	-- Flapping and Screaming
-						crit(3),	-- Scratch and Sniff
-						crit(4),	-- Element Whispers
-						crit(5),	-- Successful Interventions
-						crit(6),	-- Those Rascally Worms
-						crit(7),	-- Your Weight in Gold
-						crit(8),	-- Sneak and Sniff
-						crit(9),	-- The Living Drill
-						crit(10),	-- Thieving Critters
-						crit(11),	-- Making Scents
-						crit(12),	-- Living Statue
-						crit(13),	-- Heart of Iron
-						crit(14),	-- Liars in Light
-						crit(15),	-- Frostfire Finesse
-						crit(16),	-- Liars of Spirit
+						crit(59744),	-- Vertical Anomaly
+						crit(59745),	-- Flapping and Screaming
+						crit(59746),	-- Scratch and Sniff
+						crit(59755),	-- Element Whispers
+						crit(59747),	-- Successful Interventions
+						crit(59749),	-- Those Rascally Worms
+						crit(59750),	-- Your Weight in Gold
+						crit(59751),	-- Sneak and Sniff
+						crit(59752),	-- The Living Drill
+						crit(59754),	-- Thieving Critters
+						crit(59753),	-- Making Scents
+						crit(59756),	-- Living Statue
+						crit(59757),	-- Heart of Iron
+						crit(59758),	-- Liars in Light
+						crit(59759),	-- Frostfire Finesse
+						crit(59760),	-- Liars of Spirit
 					}),
 					ach(17832, {	-- Sniffen Around
-						-- identical criteria as full achievement
-						["sym"] = {{"select","achievementID",17833},{"pop"} },	--  Sniffen Sage Criteria
+						-- not using partial_achievement since there are not actual Criteria generated for Sniffen Sage
+						["sym"] = {{"select","achievementID",17833},{"pop"}},	--  Sniffen Sage
 					}),
 					ach(17833, {	-- Sniffen Sage
-						-- No longer individual criteria here...
 						["sym"] = {{"select","questID",
 							75765,	-- Liquid Art
 							75766,	-- Ruby in the Rough
@@ -85,6 +101,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					}),
 					q(75397, {	-- Those Rascally Worms
 						["coord"] = { 57.3, 51.4, ZARALEK_CAVERN },
+						["g"] = {
+							i(202180),	-- Pipsee Cheese Snack (QI!)
+						},
 					}),
 					q(75390, {	-- Vertical Anomaly
 						["coord"] = { 54.6, 49.5, ZARALEK_CAVERN },
@@ -139,7 +158,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(76027, {	-- Flapping and Screaming
 						["coord"] = { 54.6, 49.5, ZARALEK_CAVERN },
 						["g"] = {
-							i(205969),	-- Glowing Key
+							o(402578, {	-- Glowing Key
+								i(205969),	-- Glowing Key
+							}),
 						},
 					}),
 					q(76016, {  -- The Living Drill
@@ -181,8 +202,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(74877, {	-- Best Friends
 						["sourceQuests"] = {
 							74876,	-- The Buddy System
-							75459,	-- Brand New Digs
+							DF_ACCOUNT_ZC_UNLOCK_QUEST,
 						},
+						["sourceQuestNumRequired"] = 1,
 						["provider"] = { "n", 201426 },	-- Myrrit
 						["coord"] = { 55.6, 57.4, ZARALEK_CAVERN },
 						["cost"] = { { "i", 204791, 1 } },	-- 1x Squishy Snack
@@ -259,7 +281,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 						["isWeekly"] = true,
 					}),
 				})),
-				n(REWARDS, {
+				n(SCENARIO_COMPLETION, {
 					i(205260),	-- Fleeting Glowspores
 					i(205288),	-- Buried Niffen Collection (Frostfire)
 					i(205347),	-- Gathered Niffen Resources (Thieving Critters)
@@ -316,71 +338,74 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 		}),
 	}),
 })));
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
+	m(DRAGON_ISLES, {
+		m(ZARALEK_CAVERN, {
+			n(SNIFFENSEEKING, {
+				q(75241),	-- Flag Niffen Cave Account Tracking (spellID 407744)
+				q(75747),	-- Completing a Sniffenseeking quest
+				q(75748),	-- Completing a Sniffenseeking quest
+				q(75749),	-- Completing a Sniffenseeking quest
+				q(75997),	-- Completing Heart of Iron Sniffenseeking Quest
+				q(75914),	-- Starting the first Sniffenseeking map after tutorial, unflagged after completing Sniffenseeking quest
+				q(75883),	-- 3rd charge (map) for adventure / unflagged when 3rd map completed
+				q(76109),	-- Salverun (spellID 411721) [Summon Salverun as a battle pet]
 
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, {
-	n(SNIFFENSEEKING, {
-		q(75241),	-- Flag Niffen Cave Account Tracking (spellID 407744)
-		q(75747),	-- Completing a Sniffenseeking quest
-		q(75748),	-- Completing a Sniffenseeking quest
-		q(75749),	-- Completing a Sniffenseeking quest
-		q(75997),	-- Completing Heart of Iron Sniffenseeking Quest
-		q(75914),	-- Starting the first Sniffenseeking map after tutorial, unflagged after completing Sniffenseeking quest
-		q(75883),	-- 3rd charge (map) for adventure / unflagged when 3rd map completed
-		q(76109),	-- Salverun (spellID 411721) [Summon Salverun as a battle pet]
+				q(75904),	-- Unknown [When going to Those Rascally Wroms (75397)] /Unflagged after complete
+				q(75880),	-- Completed Those Rascally Wroms (75397),			This Might Be Achievement Tracker/Daily/weekly etc..
+				q(75928),	-- Completed Those Rascally Wroms (75397),			This Might Be Achievement Tracker/Daily/weekly etc..
 
-		q(75904),	-- Unknown [When going to Those Rascally Wroms (75397)] /Unflagged after complete
-		q(75880),	-- Completed Those Rascally Wroms (75397),			This Might Be Achievement Tracker/Daily/weekly etc..
-		q(75928),	-- Completed Those Rascally Wroms (75397),			This Might Be Achievement Tracker/Daily/weekly etc..
+				-- AlexSoft
+				q(75916),	-- Unknown [When Going to Frostfire Finesse (76084)] /Unflagged After Complete
+				q(75880),	-- Completed Frostfire Finesse (76084),			This Might Be Achievement Tracker/Daily/weekly etc..
+				q(75993),	-- Completed Frostfire Finesse (76084),			This Might Be Achievement Tracker/Daily/weekly etc..
 
-		-- AlexSoft
-		q(75916),	-- Unknown [When Going to Frostfire Finesse (76084)] /Unflagged After Complete
-		q(75880),	-- Completed Frostfire Finesse (76084),			This Might Be Achievement Tracker/Daily/weekly etc..
-		q(75993),	-- Completed Frostfire Finesse (76084),			This Might Be Achievement Tracker/Daily/weekly etc..
+				-- AlexSoft
+				q(75910),	-- Unknown [When Going to Thieving Critters (75619)] /Unflagged After Complete
+				q(75930),	-- Completed Thieving Critters (75619),			This Might Be Achievement Tracker/Daily/weekly etc..
+				q(75882),	-- Completed Thieving Critters (75619),			/unflagged?
 
-		-- AlexSoft
-		q(75910),	-- Unknown [When Going to Thieving Critters (75619)] /Unflagged After Complete
-		q(75930),	-- Completed Thieving Critters (75619),			This Might Be Achievement Tracker/Daily/weekly etc..
-		q(75882),	-- Completed Thieving Critters (75619),			 /unflagged?
+				-- AlexSoft
+				q(75892),	-- Unknown [When Going to Vertical Anomaly (75390)] /Unflagged After Complete
+				q(75924),	-- Completed Vertical Anomaly (75390),			This Might Be Achievement Tracker/Daily/weekly etc..
+				q(75882),	-- Completed Vertical Anomaly (75390),			/unflagged?
 
-		-- AlexSoft
-		q(75892),	-- Unknown [When Going to Vertical Anomaly (75390)] /Unflagged After Complete
-		q(75924),	-- Completed Vertical Anomaly (75390),			This Might Be Achievement Tracker/Daily/weekly etc..
-		q(75882),	-- Completed Vertical Anomaly (75390),			 /unflagged?
+				-- Pr3vention
+				q(75908),	-- Starting The Living Drill (76016)
+				q(76000),	-- Completed The Living Drill (76016)
 
-		-- Pr3vention
-		q(75908),	-- Starting The Living Drill (76016)
-		q(76000),	-- Completed The Living Drill (76016)
+				-- Pr3vention
+				q(75913),	-- Accepting Living Statue (76014)
+				q(75994),	-- Completed Living Statue (76014)
 
-		-- Pr3vention
-		q(75913),	-- Accepting Living Statue (76014)
-		q(75994),	-- Completed Living Statue (76014)
+				-- AlexSoft
+				q(75875),	-- Started Making Scents (75393) /Unflagged after map was completed
+				q(75876),	-- Completed Making Scents (75393)
 
-		-- AlexSoft
-		q(75875),	-- Started Making Scents (75393) /Unflagged after map was completed
-		q(75876),	-- Completed Making Scents (75393)
+				q(75906),	-- Started Your Weight in Gold (75996) /Unflagged after map was completed
+				q(76003),	-- Completed Your Weight in Gold (75996)
 
-		q(75906),	-- Started Your Weight in Gold (75996) /Unflagged after map was completed
-		q(76003),	-- Completed Your Weight in Gold (75996)
+				q(75915),	-- Started Liars in Light (75620) /Unflagged after map was completed
+				q(75931),	-- Completed Liars in Light (75620)
 
-		q(75915),	-- Started Liars in Light (75620) /Unflagged after map was completed
-		q(75931),	-- Completed Liars in Light (75620)
+				q(75901),	-- Started Successful Interventions (75516) /Unflagged after map was completed
+				q(75927),	-- Completed Successful Interventions (75516)
 
-		q(75901),	-- Started Successful Interventions (75516) /Unflagged after map was completed
-		q(75927),	-- Completed Successful Interventions (75516)
+				q(75895),	-- Started Scratch and Sniff (75234) /Unflagged after map was completed
+				q(75925),	-- Completed Scratch and Sniff (75234)
 
-		q(75895),	-- Started Scratch and Sniff (75234) /Unflagged after map was completed
-		q(75925),	-- Completed Scratch and Sniff (75234)
+				q(75898),	-- Started Element Whispers (75621) /Unflagged after map was completed
+				q(75926),	-- Completed Element Whispers (75621)
 
-		q(75898),	-- Started Element Whispers (75621) /Unflagged after map was completed
-		q(75926),	-- Completed Element Whispers (75621)
+				q(75907),	-- Started Sneak and Sniff (75517) /Unflagged after map was completed
+				q(75929),	-- Completed Sneak and Sniff (75517)
 
-		q(75907),	-- Started Sneak and Sniff (75517) /Unflagged after map was completed
-		q(75929),	-- Completed Sneak and Sniff (75517)
+				q(75917),	-- Started Liars of Spirit (76081) /Unflagged after map was completed
+				q(75992),	-- Completed Liars of Spirit (76081)
 
-		q(75917),	-- Started Liars of Spirit (76081) /Unflagged after map was completed
-		q(75992),	-- Completed Liars of Spirit (76081)
-
-		q(75893),	-- Started Flapping and Screaming (76027) /Unflagged after map was completed
-		q(76011),	-- Completed Flapping and Screaming (76027)
+				q(75893),	-- Started Flapping and Screaming (76027) /Unflagged after map was completed
+				q(76011),	-- Completed Flapping and Screaming (76027)
+			}),
+		}),
 	}),
-}));
+})));

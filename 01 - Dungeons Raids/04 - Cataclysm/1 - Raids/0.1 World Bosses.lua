@@ -1,21 +1,30 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-
-root(ROOTS.Instances, tier(CATA_TIER, {
-	n(WORLD_BOSSES, {
+-- Blizzard added the original drops for ONLY the first phase of Cataclysm Classic.
+-- #if ANYCLASSIC
+local CATA_CLASSIC_WORLD_BOSS_ONUPDATE = [[function(t)
+	if _.Settings:GetUnobtainableFilter(]] .. CATA_PHASE_ADJUSTED_WORLD_BOSS_LOOT .. [[) then
+		t.u = ]] .. REMOVED_FROM_GAME .. [[;
+		t.rwp = nil;
+	else
+		t.u = ]] .. CATA_PHASE_ONE .. [[;
+		t.rwp = 40100;
+	end
+end]];
+-- #endif
+root(ROOTS.Instances, expansion(EXPANSION.CATA, {
+	applyclassicphase(CATA_PHASE_ONE, n(WORLD_BOSSES, bubbleDownSelf({ ["timeline"] = { ADDED_4_0_3 }, }, {
 		["isRaid"] = true,
 		["lvl"] = 85,
-		["groups"] = sharedData({
-			["isRaid"] = true,
-		},{
+		["groups"] = {
 			n(COMMON_BOSS_DROPS, {
-				["isRaid"] = false,
 				["crs"] = {
 					50063,	-- Akma'hat
 					50056,	-- Garr
 					50089,	-- Julak-Doom
 					50009,	-- Mobus
+					50005,	-- Poseidus
 					50061,	-- Xariona
 				},
 				["groups"] = {
@@ -41,9 +50,17 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 			}),
 			n(50063, {	-- Akma'hat
 				["coord"] = { 38.0, 60.6, ULDUM },
+				["isRaid"] = true,
 				["groups"] = {
-					i(69877),	-- Belt of a Thousand Gaping Mouths
-					un(REMOVED_FROM_GAME, i(67240)),	-- Belt of A Thousand Mouths [Replaced with 69877]
+					applyclassicphase(CATA_PHASE_ADJUSTED_WORLD_BOSS_LOOT, i(69877, {	-- Belt of a Thousand Gaping Mouths
+						["timeline"] = { ADDED_4_1_0 },
+					})),
+					i(67240, {	-- Belt of A Thousand Mouths
+						["timeline"] = { ADDED_4_0_3, REMOVED_4_1_0 },
+						-- #if ANYCLASSIC
+						["OnUpdate"] = CATA_CLASSIC_WORLD_BOSS_ONUPDATE,
+						-- #endif
+					}),
 				},
 			}),
 			n(50056, {	-- Garr
@@ -51,9 +68,17 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					{ 37.6, 73.4, MOUNT_HYJAL },
 					{ 40.4, 81.8, MOUNT_HYJAL },
 				},
+				["isRaid"] = true,
 				["groups"] = {
-					i(69842),	-- Garr's Reinforced Girdle of Memories
-					un(REMOVED_FROM_GAME, i(67235)), --	Garr's Girdle of Memories [Replaced with 69842]
+					applyclassicphase(CATA_PHASE_ADJUSTED_WORLD_BOSS_LOOT, i(69842, {	-- Garr's Reinforced Girdle of Memories
+						["timeline"] = { ADDED_4_1_0 },
+					})),
+					i(67235, {	-- Garr's Girdle of Memories
+						["timeline"] = { ADDED_4_0_3, REMOVED_4_1_0 },
+						-- #if ANYCLASSIC
+						["OnUpdate"] = CATA_CLASSIC_WORLD_BOSS_ONUPDATE,
+						-- #endif
+					}),
 				},
 			}),
 			n(50089, {	-- Julak-Doom
@@ -64,24 +89,56 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					{ 57.2, 7.8, TWILIGHT_HIGHLANDS },
 					{ 59.8, 6.8, TWILIGHT_HIGHLANDS },
 				},
+				["isRaid"] = true,
 				["groups"] = {
-					i(69844),	-- Vitreous Beak of Julak-Doom
-					un(REMOVED_FROM_GAME, i(67246)),	-- Beak of Julak-Doom [Replaced with 69844]
+					applyclassicphase(CATA_PHASE_ADJUSTED_WORLD_BOSS_LOOT, i(69844, {	-- Vitreous Beak of Julak-Doom
+						["timeline"] = { ADDED_4_1_0 },
+					})),
+					i(67246, {	-- Beak of Julak-Doom
+						["timeline"] = { ADDED_4_0_3, REMOVED_4_1_0 },
+						-- #if ANYCLASSIC
+						["OnUpdate"] = CATA_CLASSIC_WORLD_BOSS_ONUPDATE,
+						-- #endif
+					}),
 				},
 			}),
 			n(50009, {	-- Mobus
 				["coords"] = {	-- Vashj'ir (Abyssal Depths)
-					{ 63.4, 32.6, 204 },
-					{ 65.8, 20.4, 204 },
-					{ 71.8, 18.4, 204 },
-					{ 75.6, 36.6, 204 },
-					{ 77.0, 25.4, 204 },
+					{ 63.4, 32.6, VASHJIR_ABYSSAL_DEPTHS },
+					{ 65.8, 20.4, VASHJIR_ABYSSAL_DEPTHS },
+					{ 71.8, 18.4, VASHJIR_ABYSSAL_DEPTHS },
+					{ 75.6, 36.6, VASHJIR_ABYSSAL_DEPTHS },
+					{ 77.0, 25.4, VASHJIR_ABYSSAL_DEPTHS },
 				},
+				["isRaid"] = true,
 				["groups"] = {
-					i(69843),	-- Mobus's Dripping Halberd
+					applyclassicphase(CATA_PHASE_ADJUSTED_WORLD_BOSS_LOOT, i(69843, {	-- Mobus's Dripping Halberd
+						["timeline"] = { ADDED_4_1_0 },
+					})),
 					i(67153, {	-- Mobus's Vile Halberd
-						["timeline"] = { "added 4.0.3", "removed 4.1.0" },
+						["timeline"] = { ADDED_4_0_3, REMOVED_4_1_0 },
+						-- #if ANYCLASSIC
+						["OnUpdate"] = CATA_CLASSIC_WORLD_BOSS_ONUPDATE,
+						-- #endif
 					}),
+				},
+			}),
+			n(50005, {	-- Poseidus
+				["coords"] = {
+					{ 39.4, 71.9, VASHJIR_ABYSSAL_DEPTHS },
+					{ 40.4, 73.8, VASHJIR_ABYSSAL_DEPTHS },
+					{ 41.0, 76.6, VASHJIR_ABYSSAL_DEPTHS },
+					{ 42.2, 76.0, VASHJIR_ABYSSAL_DEPTHS },
+					{ 41.8, 73.4, VASHJIR_ABYSSAL_DEPTHS },
+					{ 66.4, 44.2, VASHJIR_SHIMMERING_EXPANSE },
+					{ 46.2, 48.6, VASHJIR_SHIMMERING_EXPANSE },
+					{ 57.2, 80.8, VASHJIR_SHIMMERING_EXPANSE },
+					{ 38.5, 67.0, VASHJIR_SHIMMERING_EXPANSE },
+				},
+				["maps"] = { VASHJIR },
+				["isRaid"] = true,
+				["groups"] = {
+					i(67151),	-- Subdued Seahorse (MOUNT!)
 				},
 			}),
 			n(50061, {	-- Xariona
@@ -92,11 +149,19 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					{ 56.6, 42.6, DEEPHOLM },
 					{ 57.2, 59.0, DEEPHOLM },
 				},
+				["isRaid"] = true,
 				["groups"] = {
-					i(69876),	-- Xariona's Spectral Gauntlets
-					un(REMOVED_FROM_GAME, i(67239)),	-- Xariona's Spectral Claws [Replaced with 69876]
+					applyclassicphase(CATA_PHASE_ADJUSTED_WORLD_BOSS_LOOT, i(69876, {	-- Xariona's Spectral Gauntlets
+						["timeline"] = { ADDED_4_1_0 },
+					})),
+					i(67239, {	-- Xariona's Spectral Claws
+						["timeline"] = { ADDED_4_0_3, REMOVED_4_1_0 },
+						-- #if ANYCLASSIC
+						["OnUpdate"] = CATA_CLASSIC_WORLD_BOSS_ONUPDATE,
+						-- #endif
+					}),
 				},
 			}),
-		}),
-	}),
+		},
+	}))),
 }));

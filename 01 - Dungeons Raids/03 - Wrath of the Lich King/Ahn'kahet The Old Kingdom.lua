@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(271, {	-- Ahn'kahet: The Old Kingdom
 		["mapID"] = AHNKAHET_THE_OLD_KINGDOM,
 		["coord"] = { 28.3, 51.6, DRAGONBLIGHT },
@@ -9,62 +9,62 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(481, {	-- Ahn'kahet: The Old Kingdom
-					crit(5439, { -- Prince Taldaram
-						["_encounter"] = { 581, NORMAL_DUNGEON },
+					crit(5439, {	-- Prince Taldaram
+						["_encounter"] = { 581, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5440, { -- Elder Nadox
-						["_encounter"] = { 580, NORMAL_DUNGEON },
+					crit(5440, {	-- Elder Nadox
+						["_encounter"] = { 580, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5441, { -- Jedoga Shadowseeker
-						["_encounter"] = { 582, NORMAL_DUNGEON },
+					crit(5441, {	-- Jedoga Shadowseeker
+						["_encounter"] = { 582, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					-- NOTE: This boss has a different criteriaUID in classic for some dumb reason. BLIZZARD.
-					crit(5624, { -- Herald Volazj
-						["_encounter"] = { 584, NORMAL_DUNGEON },
+					crit(5624, {	-- Herald Volazj
+						["_encounter"] = { 584, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #else
-					crit(5442, { -- Herald Volazj
-						["_encounter"] = { 584, NORMAL_DUNGEON },
+					crit(5442, {	-- Herald Volazj
+						["_encounter"] = { 584, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #endif
 				}),
 				-- #if ANYCLASSIC
 				applyclassicphase(WRATH_PHASE_TWO, ach(17291, {	-- Defense Protocol Alpha: Ahn'kahet: The Old Kingdom
-					crit(57731, { -- Elder Nadox
-						["_encounter"] = { 580, HEROIC_DUNGEON },
+					crit(57731, {	-- Elder Nadox
+						["_encounter"] = { 580, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39249),	-- Shoulderplates of Bloodshed
 							i(39255),	-- Staff of the Plague Beast
 							i(39263),	-- Dissevered Leggings
 						},
 					}),
-					crit(57733, { -- Prince Taldaram
-						["_encounter"] = { 581, HEROIC_DUNGEON },
+					crit(57733, {	-- Prince Taldaram
+						["_encounter"] = { 581, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39260),	-- Helm of the Corrupted Mind
 							i(39247),	-- Cuffs of Dark Shadows
 							i(39251),	-- Necrogenic Belt
 						},
 					}),
-					crit(57734, { -- Amanitar
-						["_encounter"] = { 583, HEROIC_DUNGEON },
+					crit(57734, {	-- Amanitar
+						["_encounter"] = { 583, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39247),	-- Cuffs of Dark Shadows
 							i(39260),	-- Helm of the Corrupted Mind
 							i(39251),	-- Necrogenic Belt
 						},
 					}),
-					crit(57732, { -- Jedoga Shadowseeker
-						["_encounter"] = { 582, HEROIC_DUNGEON },
+					crit(57732, {	-- Jedoga Shadowseeker
+						["_encounter"] = { 582, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39246),	-- Amulet of Autopsy
 							i(39250),	-- Ring of Holy Cleansing
 							i(39258),	-- Legplates of Inescapable Death
 						},
 					}),
-					crit(57730, { -- Herald Volazj
-						["_encounter"] = { 584, HEROIC_DUNGEON },
+					crit(57730, {	-- Herald Volazj
+						["_encounter"] = { 584, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(43998),	-- Chestguard of Flagrant Prowess
 							i(39417),	-- Death's Bite
@@ -81,34 +81,34 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
-				applyclassicphase(WRATH_PHASE_TWO, ach(18593, {	-- Defense Protocol Beta: Ahn'kahet: The Old Kingdom
-					crit(60583, { -- Elder Nadox
-						["_encounter"] = { 580, HEROIC_DUNGEON },
+				applyclassicphase(WRATH_PHASE_THREE, ach(18593, {	-- Defense Protocol Beta: Ahn'kahet: The Old Kingdom
+					crit(60583, {	-- Elder Nadox
+						["_encounter"] = { 580, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45314),	-- Igniter Rod
 						},
 					}),
-					crit(60586, { -- Prince Taldaram
-						["_encounter"] = { 581, HEROIC_DUNGEON },
+					crit(60586, {	-- Prince Taldaram
+						["_encounter"] = { 581, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45321),	-- Pauldrons of Tempered Will
 							i(46019),	-- Leggings of the Insatiable
 						},
 					}),
-					crit(60585, { -- Amanitar
-						["_encounter"] = { 583, HEROIC_DUNGEON },
+					crit(60585, {	-- Amanitar
+						["_encounter"] = { 583, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
-							
+
 						},
 					}),
-					crit(60584, { -- Jedoga Shadowseeker
-						["_encounter"] = { 582, HEROIC_DUNGEON },
+					crit(60584, {	-- Jedoga Shadowseeker
+						["_encounter"] = { 582, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45702),	-- Emerald Signet Ring
 						},
 					}),
-					crit(60582, { -- Herald Volazj
-						["_encounter"] = { 584, HEROIC_DUNGEON },
+					crit(60582, {	-- Herald Volazj
+						["_encounter"] = { 584, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							currency(SIDEREAL_ESSENCE),
 							i(45699),	-- Pendant of the Piercing Glare
@@ -116,22 +116,54 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(19430, {	-- Defense Protocol Gamma: Ahn'kahet: The Old Kingdom
+					crit(63330, {	-- Elder Nadox
+						["_encounter"] = { 580, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63332, {	-- Prince Taldaram
+						["_encounter"] = { 581, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63333, {	-- Amanitar
+						["_encounter"] = { 583, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63331, {	-- Jedoga Shadowseeker
+						["_encounter"] = { 582, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63329, {	-- Herald Volazj
+						["_encounter"] = { 584, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+				})),
 				-- #endif
 				ach(492, {	-- Heroic: Ahn'kahet: The Old Kingdom
-					crit(6851, { -- Prince Taldaram
-						["_encounter"] = { 581, HEROIC_DUNGEON },
+					crit(6851, {	-- Prince Taldaram
+						["_encounter"] = { 581, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6852, { -- Elder Nadox
-						["_encounter"] = { 580, HEROIC_DUNGEON },
+					crit(6852, {	-- Elder Nadox
+						["_encounter"] = { 580, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(6853, { -- Jedoga Shadowseeker
-						["_encounter"] = { 582, HEROIC_DUNGEON },
+					crit(6853, {	-- Jedoga Shadowseeker
+						["_encounter"] = { 582, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5611, { -- Herald Volazj
-						["_encounter"] = { 584, HEROIC_DUNGEON },
+					crit(5611, {	-- Herald Volazj
+						["_encounter"] = { 584, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5054, { -- Amanitar
-						["_encounter"] = { 583, HEROIC_DUNGEON },
+					crit(5054, {	-- Amanitar
+						["_encounter"] = { 583, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -150,7 +182,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(13204, {	-- Funky Fungi
 					["provider"] = { "i", 43512 },	-- Ooze-Covered Fungus
-					["timeline"] = { "removed 4.3.0" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["cr"] = 30329,	-- Savage Cave Beast
 					["lvl"] = lvlsquish(73, 73, 15),
 					["groups"] = {
@@ -161,7 +193,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				}),
 				q(29825, {	-- Pupil No More
 					["qg"] = 55658,	-- Seer Ixit
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(71, 71, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Elder Nadox slain
@@ -172,7 +204,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				q(29826, {	-- Reclaiming Ahn'Kahet
 					["qg"] = 55658,	-- Seer Ixit
 					["sourceQuest"] = 29825,	-- Pupil No More
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(71, 71, 15),
 					["groups"] = {
 						objective(1, {	-- 0/3 Eye of Taldaram slain
@@ -191,7 +223,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["qg"] = 55658,	-- Seer Ixit
 					["sourceQuest"] = 29826,	-- Reclaiming Ahn'Kahet
 					-- #else
-					["qg"] = 26653,	-- Kilix the Unraveler
+					["provider"] =  {"n", 26653 },	-- Kilix the Unraveler
 					["coord"] = { 26.2, 50.6, DRAGONBLIGHT },
 					-- #endif
 					["lvl"] = lvlsquish(71, 71, 15),
@@ -212,11 +244,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 			-- #if AFTER 7.3.5
 			n(ZONE_DROPS, {
 				i(35616, {	-- Spored Tendrils Spaulders
-					["timeline"] = { "created 3.0.2", "added 7.3.5" },
+					["timeline"] = { CREATED_3_0_2, ADDED_7_3_5 },
 				}),
 			}),
 			-- #endif
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(35615),	-- Glowworm Cavern Bindings
 					-- #if BEFORE 7.3.5
@@ -261,7 +293,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(43281),	-- Edge of Oblivion (7.3.5 - Used to be only Heroic Mode)
 						i(44191, {	-- Ice-Rimed Chopper (7.3.5 - Used to be only Heroic Mode)
-							["timeline"] = { "created 3.0.1", "added 6.2.0" },
+							["timeline"] = { ADDED_6_2_0 },
 						}),
 						i(43280),	-- Faceguard of the Hammer Clan (7.3.5 - Used to be only Heroic Mode)
 						i(43282),	-- Shadowseeker's Pendant (7.3.5 - Used to be only Heroic Mode)
@@ -297,7 +329,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ZONE_DROPS, {
@@ -307,7 +339,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if BEFORE CATA
 					n(COMMON_BOSS_DROPS, {
 						currency(101, {	-- Emblem of Heroism
-							["timeline"] = { "added 3.0.2.8905", "removed 4.0.1" },
+							["timeline"] = { ADDED_3_0_2, REMOVED_4_0_1 },
 						}),
 					}),
 					-- #endif
@@ -360,11 +392,9 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						["groups"] = {
 							ach(2056),	-- Volunteer Work
 							i(43281),	-- Edge of Oblivion
-							-- #if AFTER 6.2.0
 							i(44191, {	-- Ice-Rimed Chopper
-								["timeline"] = { "created 3.0.1", "added 6.2.0" },
+								["timeline"] = { ADDED_6_2_0 },
 							}),
-							-- #endif
 							i(43280),	-- Faceguard of the Hammer Clan
 							i(43282),	-- Shadowseeker's Pendant
 							-- #if AFTER 7.3.5
@@ -381,13 +411,9 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						["creatureID"] = 29311,	-- Herald Volazj
 						["groups"] = {
 							ach(5098, {	-- Heroic: Ahn'kahet: The Old Kingdom Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(1862),	-- Volazj's Quick Demise
-							{	-- Champion of the Frozen Wastes
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 5611,			-- Herald Volazj slain
-							},
 							i(41790),	-- Design: Precise Scarlet Ruby
 							i(37617),	-- Staff of Sinister Claws
 							i(37615),	-- Titanium Compound Bow
@@ -419,20 +445,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35489),	-- Ahn'kahet: The Old Kingdom Reward Quest - Normal completion
 		q(35490),	-- Ahn'kahet: The Old Kingdom Reward Quest - Heroic completion
 		q(35493),	-- Ahn'kahet: The Old Kingdom Bonus Reward - kill Amanitar (Heroic only)
 	}),
-});
--- #endif
-
--- #if AFTER 4.3.0.14732
-root(ROOTS.NeverImplemented, {
-	-- #if BEFORE 6.2.0
-	i(44191, {	-- Ice-Rimed Chopper
-		["timeline"] = { "created 3.0.1", "added 6.2.0" },
-	}),
-	-- #endif
 });
 -- #endif

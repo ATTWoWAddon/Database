@@ -1,9 +1,19 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
-
-root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } }, {
+root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { ADDED_8_2_0 } }, {
 	n(PROFESSIONS, {
+		prof(ALCHEMY, {
+			["crs"] = {
+				153811, -- Instructor Okanu <Profession Trainer> (A)
+				154393, -- Narv <Profession Trainer> (H)
+			},
+			["coords"] = {
+				{ 38.0, 53.2, NAZJATAR },
+				{ 49.2, 61.6, NAZJATAR },
+			},
+			["g"] = NAZJATAR_ALCHEMY,
+		}),
 		prof(BLACKSMITHING, {
 			["crs"] = {
 				153817, -- Instructor Alikana <Profession Trainer> (A)
@@ -15,6 +25,17 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 			},
 			["g"] = NAZJATAR_BLACKSMITHING,
 		}),
+		prof(COOKING, {
+			["crs"] = {
+				154257, -- Instructor Ulooaka <Profession Trainer> (A)
+				154408, -- Rolm <Profession Trainer> (H)
+			},
+			["coords"] = {
+				{ 38.0, 53.0, NAZJATAR },
+				{ 49.2, 61.8, NAZJATAR },
+			},
+			["g"] = NAZJATAR_COOKING,
+		}),
 		prof(ENCHANTING, {
 			["crs"] = {
 				153811, -- Instructor Okanu <Profession Trainer> (A)
@@ -25,6 +46,17 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 				{ 49.2, 61.6, NAZJATAR },
 			},
 			["g"] = NAZJATAR_ENCHANTING,
+		}),
+		prof(ENGINEERING, {
+			["crs"] = {
+				153817, -- Instructor Alikana <Profession Trainer> (A)
+				154321, -- Jada <Profession Trainer> (H)
+			},
+			["coords"] = {
+				{ 38.0, 53.6, NAZJATAR },
+				{ 49.0, 61.6, NAZJATAR },
+			},
+			["g"] = NAZJATAR_ENGINEERING,
 		}),
 		prof(HERBALISM, {
 			["crs"] = {
@@ -46,23 +78,18 @@ root(ROOTS.Zones, m(NAZJATAR, bubbleDownSelf({ ["timeline"] = { "added 8.2.0" } 
 				{ 38.0, 53.2, NAZJATAR },
 				{ 49.2, 61.6, NAZJATAR },
 			},
-			["g"] = {
-				cat(773, {	-- Cards
-					r(302190),	-- Highborne Compendium of Mystical Bulwark
-					r(302189),	-- Highborne Compendium of Storms
-					r(302188),	-- Highborne Compendium of Sundering
-					r(302187),	-- Highborne Compendium of Swirling Tides
-				}),
-				cat(1026, {	-- Inks
-					r(298929),	-- Maroon Ink
-				}),
-				cat(775, {	-- Mass Milling
-					r(298927),	-- Mass Mill Zin'anthid
-				}),
-				cat(774, {	-- Off-Hands
-					r(294790),	-- Notorious Combatant's Etched Vessel [Rank 1]
-				}),
+			["g"] = NAZJATAR_INSCRIPTION,
+		}),
+		prof(JEWELCRAFTING, {
+			["crs"] = {
+				153811, -- Instructor Okanu <Profession Trainer> (A)
+				154393, -- Narv <Profession Trainer> (H)
 			},
+			["coords"] = {
+				{ 38.0, 53.2, NAZJATAR },
+				{ 49.2, 61.6, NAZJATAR },
+			},
+			["g"] = NAZJATAR_JEWELCRAFTING,
 		}),
 		prof(LEATHERWORKING, {
 			["crs"] = {

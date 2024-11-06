@@ -1,15 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(255, {	-- The Black Morass
 		["lore"] = "The Black Morass (also known as Opening of the Dark Portal) is one of the timeways accessible in the Caverns of Time. In this wing, a group of players must defend the last Guardian Medivh, in a swamp known as The Black Morass. The Guardian Medivh, possessed by Sargeras, attempts to open the Dark Portal to Draenor, while wave upon wave of dragonkin of the Infinite Dragonflight attempt to defeat Medivh in order to alter time and halt the invasion of Azeroth from Draenor.",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 2366,	-- The Black Morass
-		["sins"] = {
-			"Caverns of Time: The Black Morass",
-			"Opening of the Dark Portal",
-			"Öffnung des Dunklen Portals",
-		},
+		-- #endif
 		["coord"] = { 37.2, 83.3, CAVERNS_OF_TIME },
 		["mapID"] = CAVERNS_OF_TIME_BLACK_MORASS,
 		["lvl"] = lvlsquish(65, 65, 25),
@@ -18,7 +15,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(10298, {	-- Hero of the Brood
 					["qg"] = 20201,	-- Sa'at
 					["sourceQuest"] = 10297,	-- The Opening of the Dark Portal
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(66, 66, 25),
 					-- #if BEFORE 4.3.0.14732
 					["groups"] = {
@@ -33,12 +30,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 15608,	-- Medivh
 					["sourceQuest"] = 9836,	-- The Master's Touch
 					["coord"] = { 48.8, 71.8, CAVERNS_OF_TIME_BLACK_MORASS },
-					["timeline"] = { "removed 7.1.0.1233" },
+					["timeline"] = { REMOVED_7_1_0 },
 					["maps"] = { SHATTRATH_CITY },
-					["cost"] = {
-						{ "i", 24490, 1 },	-- The Master's Key
-					},
 					["lvl"] = lvlsquish(69, 69, 30),
+					["groups"] = {
+						i(24490, {	-- The Master's Key
+							["timeline"] = { ADDED_2_0_1, DELETED_4_2_0 },
+						}),
+					},
 				}),
 				q(10296, {	-- The Black Morass
 					["qg"] = 20130,	-- Andormu
@@ -49,30 +48,39 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["lvl"] = lvlsquish(66, 66, 25),
 				}),
 				q(9836, {	-- The Master's Touch
-					["qg"] = 18166,	-- Khadgar <Sons of Lothar>
+					["providers"] = {
+						{ "n", 18166 },	-- Khadgar <Sons of Lothar>
+						{ "i", 24489 },	-- Restored Apprentice's Key
+					},
 					["sourceQuest"] = 9832,	-- The Second and Third Fragments
 					["coord"] = { 54.8, 44.3, SHATTRATH_CITY },
-					["timeline"] = { "removed 7.1.0.1233" },
-					["cost"] = {
-						{ "i", 24489, 1 },	-- Restored Apprentice's Key
-					},
+					["timeline"] = { REMOVED_7_1_0 },
 					["lvl"] = lvlsquish(69, 69, 30),
 				}),
 				q(10297, {	-- The Opening of the Dark Portal
 					["qg"] = 20201,	-- Sa'at
+					-- TODO Confirm if required in classic
+					-- #if ANYCLASSIC
 					["sourceQuest"] = 10296,	-- The Black Morass
-					["cost"] = {
-						{ "i", 24289, 1 },	-- Chrono-beacon
-					},
-					["lvl"] = lvlsquish(66, 66, 25),
-					-- #if AFTER 4.3.0.14732
-					["groups"] = {
-						i(29320),	-- Band of the Guardian
-						i(29322),	-- Keeper's Ring of Piety
-						i(29321),	-- Time-Bending Gem
-						i(29323),	-- Andormu's Tear
-					},
 					-- #endif
+					["lvl"] = lvlsquish(66, 66, 25),
+					["groups"] = {
+						objective(1, {	-- The Dark Portal Opened
+							["provider"] = { "i", 24289 },	-- Chrono-beacon
+						}),
+						i(29320, {	-- Band of the Guardian
+							["timeline"] = { ADDED_4_3_0 },
+						}),
+						i(29322, {	-- Keeper's Ring of Piety
+							["timeline"] = { ADDED_4_3_0 },
+						}),
+						i(29321, {	-- Time-Bending Gem
+							["timeline"] = { ADDED_4_3_0 },
+						}),
+						i(29323, {	-- Andormu's Tear
+							["timeline"] = { ADDED_4_3_0 },
+						}),
+					},
 				}),
 			}),
 			n(ZONE_DROPS, {
@@ -89,7 +97,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(552, {	-- Chrono Lord Deja
 					["creatureID"] = 17879,
 					["groups"] = {
@@ -162,7 +170,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				})
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -225,10 +233,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 17881,
 						["groups"] = {
 							ach(676, {	-- Heroic: Opening of the Dark Portal
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5076, {	-- Heroic: Opening of the Dark Portal Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(28188),	-- Bloodfire Greatstaff
 							i(28189),	-- Latro's Shifting Sword
@@ -266,11 +274,11 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 
 -- #if AFTER TBC
 root(ROOTS.HiddenQuestTriggers, {
-	tier(TBC_TIER, {
+	expansion(EXPANSION.TBC, {
 		q(10737),	-- The Master's Touch Quest Completion Credit?
 	}),
 	-- #if AFTER WOD
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35521),	-- The Black Morass Reward Quest - Normal completion
 		q(35522),	-- The Black Morass Reward Quest - Heroic completion
 	}),

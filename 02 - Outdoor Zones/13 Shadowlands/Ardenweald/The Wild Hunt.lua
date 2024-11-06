@@ -30,18 +30,19 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						{ 48.4, 50.4, ARDENWEALD },
 						{ 59.6, 31.8, THE_TRUNK },	-- Heart of the Forest
 					},
-					["g"] = bubbleDownRepSkip(FACTION_THE_WILD_HUNT, {
+					["g"] = bubbleDownClassicRep(FACTION_THE_WILD_HUNT, {
 						{		-- Neutral
 							i(190644, {	-- Vessel of Profound Possibilities
+								["cost"] = {{"c",2009,10000}},	-- 10,000 Cosmic Flux
 								["timeline"] = { ADDED_9_2_0 },
 								["sym"] = {
-									{"select","tierID",SL_TIER},{"pop"},	-- SL Tier
-									{"where","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
+									{"select","expansionID",EXPANSION.SL},	-- Select Shadowlands
+									{"find","headerID",CONDUITS},{"pop"},	-- grab the main Conduits category (to keep the class grouping)
 								},
 							}),
 						}, {	-- Friendly
 							i(180641, {	-- Floofa (PET!)
-								["cost"] = { { "i", 163036, 250 } },	-- Polished Pet Charm
+								["cost"] = { { "i", POLISHED_PET_CHARM, 250 } },
 							}),
 						}, {	-- Honored
 							i(183096),	-- Formula: Sacred Shard (RECIPE!)
@@ -52,6 +53,34 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 									["cost"] = { { "c", ANIMA, 1500 } },
 								}),
 							})),
+							i(217594, {	-- Glyph of Shifting Power
+								["timeline"] = { ADDED_10_2_6 },
+								["classes"] = { MAGE },
+							}),
+							i(217588, {	-- Glyph of Blessing of the Seasons
+								["timeline"] = { ADDED_10_2_6 },
+								["classes"] = { PALADIN },
+							}),
+							i(217585, {	-- Glyph of Convoke the Spirits
+								["timeline"] = { ADDED_10_2_6 },
+								["classes"] = { DRUID },
+							}),
+							i(217494, {	-- Glyph of Faeline Stomp
+								["timeline"] = { ADDED_10_2_6 },
+								["classes"] = { MONK },
+							}),
+							i(217583, {	-- Glyph of Sepsis
+								["timeline"] = { ADDED_10_2_6 },
+								["classes"] = { ROGUE },
+							}),
+							i(217600, {	-- Glyph of Soul Rot
+								["timeline"] = { ADDED_10_2_6 },
+								["classes"] = { WARLOCK },
+							}),
+							i(217590, {	-- Glyph of the Hunt
+								["timeline"] = { ADDED_10_2_6 },
+								["classes"] = { DEMONHUNTER },
+							}),
 						}, {	-- Revered
 							i(184747),	-- Gamekeeper's Slippers
 							i(184749),	-- Gametender's Bramblewards

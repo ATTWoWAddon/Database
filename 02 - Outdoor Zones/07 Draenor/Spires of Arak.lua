@@ -77,171 +77,60 @@ root(ROOTS.Zones, {
 	m(DRAENOR, {
 		m(SPIRES_OF_ARAK, {
 			["lore"] = "Spires of Arak is a zone in southern Draenor. Previously known only as Arak, it once contained a single massive spire that dominated the forested landscape, before it was sundered by the destruction of the Apexis' Breath of Rukhmar. It is the homeland of arakkoa, who rule over the land from the Skyreach, a majestic palace situated atop the largest spire in the area. Their society, however underwent a great schism between the winged arakkoa and the wingless, who are considered lesser beings by their winged brethren. Many of the wingless arakkoa flee the Spires and pour into Talador, while the Iron Horde's Shattered Hand clan strengthens their presence. Many Azerothians also have built their bases along the coast, such as the Steamwheedle Cartel or the Alliance expedition led by Admiral Taylor.",
-			["icon"] = "Interface\\Icons\\achievement_zone_spiresofarak",
+			["icon"] = 1060981,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					ach(9605,  {	-- Arak Star
-						crit(1, {	-- The Howling Crag
-							["sourceQuest"] = 36590,	-- The Howling Crag
-						}),
-						crit(2, {	-- Bloodmane Pridelands
-							["sourceQuest"] = 36660,	-- Bloodmane Pridelands
-						}),
-						crit(3, {	-- The Writhing Mire
-							["sourceQuest"] = 35649,	-- The Writhing Mire
-						}),
-						crit(4, {	-- Bladefist Hold
-							["sourceQuest"] = 36792,	-- Bladefist Hold
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9433),		-- A-VOID-ance
+					ach(9469),		-- Arakkoa Outcasts
 					ach(8925,  {	-- Between Arak and a Hard Place (Alliance)
 						["races"] = ALLIANCE_ONLY,
+						["sym"] = {{ "achievement_criteria" }},
 						["g"] = {
 							follower(218),	-- Talonpriest Ishaal
-							crit(26023, {	-- Shadows Gather
-								["_quests"] = { 35671 },	-- A Gathering of Shadows
-							}),
-							crit(26022, {	-- Admiral Taylor's Garrison
-								["_quests"] = { 35482 },	-- Admiral Taylor [A]
-							}),
-							crit(26024, {	-- Secrets of the Talonpriests
-								["_quests"] = { 34942 },	-- Back from Beyond
-							}),
-							crit(26025, {	-- The Gods of Arak
-								["_quests"] = { 35245 },	-- A Sentimental Relic
-							}),
-							crit(26026, {	-- The Gods of Arak
-								["_quests"] = { 35012 },	-- Sethe, the Dead God
-							}),
-							crit(26027, {	-- Legacy of the Apexis
-								["_quests"] = { 35634 },	-- Control is King
-							}),
-							crit(26028, {	-- Terokk's Legend
-								["_quests"] = { 35896 },	-- The Avatar of Terokk
-							}),
-							crit(27696, {	-- Veil Zekk
-								["_quests"] = { 35835 },	--  The Ebon Hunter (Smuggler's Den)
-							}),
-							crit(27697, {	-- The Antidote
-								["_quests"] = { 36165 },	-- No Time to Waste (Stoktron Brewery)
-							}),
-							crit(26030, {	-- Pinchwhistle Gearworks
-								["_quests"] = { 35298 },	-- Flame On
-							}),
-							crit(26029, {	-- When the Raven Swallows the Day
-								["_quests"] = { 35704 },	-- When All is Aligned
-							}),
 						},
 					}),
 					ach(8926,  {	-- Between Arak and a Hard Place (Horde)
 						["races"] = HORDE_ONLY,
+						["sym"] = {{ "achievement_criteria" }},
 						["g"] = {
 							follower(218),	-- Talonpriest Ishaal
-							crit(26023, {	-- Shadows Gather
-								["_quests"] = { 35671 },	-- A Gathering of Shadows
-							}),
-							crit(26035, {	-- Admiral Taylor's Garrison
-								["_quests"] = { 36183 },	-- Admiral Taylor [H]
-							}),
-							crit(26024, {	-- Secrets of the Talonpriests
-								["_quests"] = { 34942 },	-- Back from Beyond
-							}),
-							crit(26025, {	-- The Gods of Arak
-								["_quests"] = { 35245 },	-- A Sentimental Relic
-							}),
-							crit(26026, {	-- The Gods of Arak
-								["_quests"] = { 35012 },	-- Sethe, the Dead God
-							}),
-							crit(26027, {	-- Legacy of the Apexis
-								["_quests"] = { 35634 },	-- Control is King
-							}),
-							crit(26028, {	-- Terokk's Legend
-								["_quests"] = { 35896 },	-- The Avatar of Terokk
-							}),
-							crit(27698, {	-- Veil Zekk
-								["_quests"] = { 35797 },	--  The Ebon Hunter (Smuggler's Den)
-							}),
-							crit(27699, {	-- The Antidote
-								["_quests"] = { 36166 },	-- No Time to Waste (Stoktron Brewery)
-							}),
-							crit(26030, {	-- Pinchwhistle Gearworks
-								["_quests"] = { 35298 },	-- Flame On
-							}),
-							crit(26029, {	-- When the Raven Swallows the Day
-								["_quests"] = { 35704 },	-- When All is Aligned
-							}),
 						},
 					}),
 					ach(9612),		-- Eggs in One Basket
-					ach(8941, {		-- Explore Spires of Arak
-						crit(1),		-- Skettis
-						crit(2),		-- The Howling Crag
-						crit(3),		-- The Writhing Mire
-						crit(4),		-- Pinchwhistle Point
-						crit(5),		-- Veil Zekk
-						crit(6),		-- Veil Akraz
-						crit(7),		-- Southport
-						crit(8),		-- Windswept Terrace
-						crit(9),		-- Terrace of Dawn
-						crit(10),		-- Sethekk Hollow
-						crit(11),		-- Bladefist Hold
-						crit(12),		-- Admiral Taylor's Garrison
-						crit(13),		-- Lost Veil Anzu
-						crit(14),		-- Pinchwhistle Gearworks
-						crit(15),		-- Ravenskar
-						crit(16),		-- Bloodmane Valley
-						crit(17),		-- Axefall
-					}),
+					explorationAch(8941),		-- Explore Spires of Arak
 					ach(9613),		-- Fish Gotta Swim, Birds Gotta Eat
 					ach(9601, {		-- King of the Monsters (Lost Veil Anzu)
-						crit(1, {	-- Morphed Sentient
-							["_quests"] = { 37493 },
-						}),
-						crit(2, {	-- Giga Sentinel
-							["_quests"] = { 37393 },
-						}),
-						crit(3, {	-- Shadow Hulk
-							["_quests"] = { 37392 },
-						}),
-						crit(4, {	-- Mecha Plunderer
-							["_quests"] = { 37391 },
-						}),
-						crit(5, {	-- Gluttonous Giant
-							["_quests"] = { 37390 },
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9072,  {	-- Mantle of the Talon King
 						["sourceQuest"] = 37177,	-- Call of the Talon King
 						["g"] = {
-							title_gendered(278, 279),	-- Talon King / Talon Queen
-							--title(278),	-- Talon King %s
-							--title(279),	-- Talon Queen %s
+							--title_gendered(278, 279),	-- Talon King / Talon Queen
+							title_male(278),	-- Talon King <Name>
+							title_female(279),	-- Talon Queen <Name>
 							follower(224),	-- Talon Guard Kurekk
 						},
 					}),
 					ach(9600, {		-- Monster Mash (Lost Veil Anzu)
-						crit(1, {	-- Shadow Hulk
-							["_quests"] = { 37392 },
-						}),
-						crit(2, {	-- Gluttonous Giant)
-							["_quests"] = { 37390 },
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9564,  {	-- Securing Draenor (Alliance)
 						["collectible"] = false,	-- We want to hide the achievement after the finished the criteria for the zone since they can't earn anything more here
 						["races"] = ALLIANCE_ONLY,
 						["g"] = {
-							crit(10),	-- Assault on Skettis
-							crit(11),	-- Assault on Pillars of Fate
+							crit(26255),	-- Assault on Skettis
+							crit(26256),	-- Assault on Pillars of Fate
 						},
 					}),
 					ach(9562,  {	-- Securing Draenor (Horde)
 						["collectible"] = false,	-- We want to hide the achievement after the finished the criteria for the zone since they can't earn anything more here
 						["races"] = HORDE_ONLY,
 						["g"] = {
-							crit(11),	-- Assault on Pillars of Fate
-							crit(12),	-- Assault on Skettis
+							crit(26240),	-- Assault on Pillars of Fate
+							crit(26243),	-- Assault on Skettis
 						},
 					}),
 				}),
@@ -280,6 +169,47 @@ root(ROOTS.Zones, {
 						pet(1456),	-- Thicket Skitterer (PET!)
 					},
 				})),
+				explorationHeader({
+					exploration(6999),	-- Admiral Taylor's Garrison
+					exploration(7199),	-- Apexis Excavation
+					exploration(7197),	-- Axefall
+					exploration(7317),	-- Bladefist Hold
+					exploration(7277),	-- Bloodmane Pridelands
+					exploration(7140),	-- Bloodmane Valley
+					exploration(7126),	-- Camp Thornscar
+					exploration(7034),	-- Dreadtalon Peak
+					exploration(7276, {	-- Forlorn Delta
+						-- CRIEVE NOTE: I was initially able to collect this, but if you collect Pinchwhistle Gearworks, it gets masked behind it.
+						["collectible"] = false,
+					}),
+					exploration(7308),	-- Harvesting Pits
+					exploration(7046),	-- Lost Veil Anzu
+					exploration(7272),	-- Murkbog
+					exploration(7142),	-- Nest of the Ravenspeakers
+					exploration(7162),	-- Pinchwhistle Gearworks
+					exploration(7163),	-- Pinchwhistle Point
+					exploration(7035),	-- Ravenskar
+					exploration(7145),	-- Sethekk Hollow
+					exploration(7125),	-- Shadowglade
+					exploration(7031),	-- Skettis
+					exploration(7316),	-- Skettis
+					exploration(7198),	-- Southport
+					exploration(7182),	-- Talon Altar
+					exploration(7305),	-- Terrace of Dawn
+					exploration(7147),	-- The Broken Spire
+					exploration(7270),	-- The Howling Crag
+					exploration(7110),	-- The Undergrowth
+					exploration(7202),	-- The Writhing Mire
+					exploration(7127),	-- Veil Akraz
+					exploration(7274, {	-- Veil Zekk
+						-- CRIEVE NOTE: I was initially able to collect this, but if you collect Bloodmane Valley, it gets masked behind it.
+						["collectible"] = false,
+					}),
+					exploration(7306),	-- Windswept Terrace
+				}),
+				n(FACTIONS, {
+					faction(FACTION_ARAKKOA_OUTCASTS),	-- Arakkoa Outcasts
+				}),
 				n(FLIGHT_PATHS, {
 					fp(1513, {	-- Apexis Excavation, Spires of Arak
 						["coord"] = { 37.0, 24.6, SPIRES_OF_ARAK },
@@ -305,7 +235,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 46.2, 44.0, SPIRES_OF_ARAK },
 					}),
 				}),
-				petbattles({ "added 6.0.1" }, {
+				petbattles({ ADDED_6_0_2 }, {
 					n(87123, {	-- Vesharr <Grand Master Pet Tamer>
 						["coord"] = { 46.4, 45.2, SPIRES_OF_ARAK },
 					}),
@@ -614,7 +544,7 @@ root(ROOTS.Zones, {
 							i(114953),	-- Skettis Deceiver's Signet
 						},
 					}),
-					q(34883, { -- A Feast of Shadows
+					q(34883, {	-- A Feast of Shadows
 						["sourceQuests"] = { 34830 },	-- Behind the Veil
 						["coord"] = { 44.4, 24.0, SPIRES_OF_ARAK },
 						["provider"] = { "n", 80508 },	-- Talonpriest Zellek
@@ -762,7 +692,7 @@ root(ROOTS.Zones, {
 					q(37177, {	-- Call of the Talon King
 						["provider"] = { "n", 84122 },	-- Shade of Terokk
 						["coord"] = { 46.6, 46.7, SPIRES_OF_ARAK },
-						["minReputation"] = { 1515, EXALTED },
+						["minReputation"] = { FACTION_ARAKKOA_OUTCASTS, EXALTED },
 						["description"] = "Granted automatically. If you're in the zone when you hit exalted, leave the zone and return.",
 					}),
 					q(35081, {	-- Clearing Out Before Cleaning Up
@@ -901,6 +831,11 @@ root(ROOTS.Zones, {
 							i(114718),	-- Skysinger Boots
 						},
 					}),
+					heroscall(q(49566, {	-- Hero's Call: Spires of Arak!
+						["timeline"] = { ADDED_7_3_5 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 96,
+					})),
 					q(34656, {  -- Hidden in Plain Sight
 						["sourceQuests"] = { 34655 },	-- The Shadows of Skettis
 						["coord"] = { 43.6, 12.9, SPIRES_OF_ARAK },
@@ -920,9 +855,9 @@ root(ROOTS.Zones, {
 					}),
 					q(35273, {  -- Hot Seat
 						["sourceQuests"] = { 35261 },	-- Shot Caller
-						--["objectID"] = 232353,	-- Overseer's Chair
+						["provider"] = {"o",232353},	-- Overseer's Chair
 						["coord"] = { 35.5, 32.1, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\ability_skyreach_shielded",
+						["icon"] = 1029590,
 						["g"] = {
 							i(114727),	-- Cragplate Legguards
 							i(114729),	-- Ravenchain Leggings
@@ -1190,7 +1125,6 @@ root(ROOTS.Zones, {
 					}),
 					q(35003, {	-- Ritual Severance
 						["sourceQuests"] = {
-							34999,	-- Hatred Undying
 							35001,	-- Gaze of the Raven God
 							35002,	-- Sons of Sethe
 						},
@@ -1211,7 +1145,6 @@ root(ROOTS.Zones, {
 					}),
 					q(35004, {  -- Servants of a Dead God
 						["sourceQuests"] = {
-							34999,	-- Hatred Undying
 							35001,	-- Gaze of the Raven God
 							35002,	-- Sons of Sethe
 						},
@@ -1292,7 +1225,7 @@ root(ROOTS.Zones, {
 					q(37144, {	-- Talon Guard Kurekk
 						["provider"] = { "n", 80758 },	-- Talon Guard Kurekk
 						["coord"] = { 62.2, 42.6, SPIRES_OF_ARAK },
-						["minReputation"] = { 1515, EXALTED },
+						["minReputation"] = { FACTION_ARAKKOA_OUTCASTS, EXALTED },
 						["g"] = {
 							follower(224),	-- Talon Guard Kurekk
 						},
@@ -1424,8 +1357,10 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = {
 							34653,	-- Arakkoa Exodus
 							36951,	-- Arakkoa Exodus
+							-- #if AFTER 7.3.5
 							49566,	-- Hero's Call: Spires of Arak!
 							49548,	-- Warchief's Command: Spires of Arak!
+							-- #endif
 						},
 						["coord"] = { 37.8, 18.0, SPIRES_OF_ARAK },
 						["provider"] = { "n", 79539 },	-- Azik
@@ -1461,38 +1396,44 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = { 35286 },	-- Orders, Commander?
 						["coord"] = { 39.6, 61.3, SPIRES_OF_ARAK },
 						["races"] = ALLIANCE_ONLY,
-						["icon"] = "Interface\\Icons\\INV_Inscription_ScrollOfWisdom_01",
+						["icon"] = 632821,
 					}),
 					q(35669, {	-- Wanted: Keeho's Severed Paw (Horde)
 						["sourceQuests"] = { 35277 },	-- Orders, Commander?
 						["coord"] = { 40.1, 43.0, SPIRES_OF_ARAK },
 						["races"] = HORDE_ONLY,
-						["icon"] = "Interface\\Icons\\INV_Inscription_ScrollOfWisdom_01",
+						["icon"] = 632821,
 					}),
 					q(35675, {	-- Wanted: Spineslicer's Husk (Alliance)
 						["sourceQuests"] = { 35286 },	-- Orders, Commander?
 						["coord"] = { 39.6, 61.3, SPIRES_OF_ARAK },
 						["races"] = ALLIANCE_ONLY,
-						["icon"] = "Interface\\Icons\\INV_Inscription_ScrollOfWisdom_01",
+						["icon"] = 632821,
 					}),
 					q(35670, {	-- Wanted: Spineslicer's Husk (Horde)
 						["sourceQuests"] = { 35277 },	-- Orders, Commander?
 						["coord"] = { 40.1, 43.0, SPIRES_OF_ARAK },
 						["races"] = HORDE_ONLY,
-						["icon"] = "Interface\\Icons\\INV_Inscription_ScrollOfWisdom_01",
+						["icon"] = 632821,
 					}),
 					q(35676, {	-- Wanted: Venombarb (Alliance)
 						["sourceQuests"] = { 35286 },	-- Orders, Commander?
 						["coord"] = { 39.6, 61.3, SPIRES_OF_ARAK },
 						["races"] = ALLIANCE_ONLY,
-						["icon"] = "Interface\\Icons\\INV_Inscription_ScrollOfWisdom_01",
+						["icon"] = 632821,
 					}),
 					q(35672, {	-- Wanted: Venombarb (Horde)
 						["sourceQuests"] = { 35277 },	-- Orders, Commander?
 						["coord"] = { 40.1, 43.0, SPIRES_OF_ARAK },
 						["races"] = HORDE_ONLY,
-						["icon"] = "Interface\\Icons\\INV_Inscription_ScrollOfWisdom_01",
+						["icon"] = 632821,
 					}),
+					warchiefscommand(q(49548, {	-- Warchief's Command: Spires of Arak!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+						["lvl"] = 96,
+					})),
 					q(35295, {	-- What's Theirs is Ours
 						["sourceQuests"] = { 35277 },	-- Orders, Commander?
 						["races"] = HORDE_ONLY,
@@ -1868,7 +1809,7 @@ root(ROOTS.Zones, {
 						["repeatable"] = true,
 						["questID"] = 36397,
 						["coord"] = { 43.8, 24.7, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv_potion_122",
+						["icon"] = 134746,
 						["g"] = {
 							i(115463),	-- Elixir of Shadow Sight
 						},
@@ -1877,7 +1818,7 @@ root(ROOTS.Zones, {
 						["repeatable"] = true,
 						["questID"] = 36401,
 						["coord"] = { 53.1, 84.5, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv_potion_122",
+						["icon"] = 134746,
 						["g"] = {
 							i(115463),	-- Elixir of Shadow Sight
 						},
@@ -1886,7 +1827,7 @@ root(ROOTS.Zones, {
 						["repeatable"] = true,
 						["questID"] = 36398,
 						["coord"] = { 69.2, 43.5, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv_potion_122",
+						["icon"] = 134746,
 						["g"] = {
 							i(115463),	-- Elixir of Shadow Sight
 						},
@@ -1895,7 +1836,7 @@ root(ROOTS.Zones, {
 						["repeatable"] = true,
 						["questID"] = 36395,
 						["coord"] = { 43.9, 15.0, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv_potion_122",
+						["icon"] = 134746,
 						["g"] = {
 							i(115463),	-- Elixir of Shadow Sight
 						},
@@ -1904,7 +1845,7 @@ root(ROOTS.Zones, {
 						["repeatable"] = true,
 						["questID"] = 36400,
 						["coord"] = { 55.6, 22.1, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv_potion_122",
+						["icon"] = 134746,
 						["g"] = {
 							i(115463),	-- Elixir of Shadow Sight
 						},
@@ -1913,7 +1854,7 @@ root(ROOTS.Zones, {
 						["repeatable"] = true,
 						["questID"] = 36399,
 						["coord"] = { 48.9, 62.5, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv_potion_122",
+						["icon"] = 134746,
 						["g"] = {
 							i(115463),	-- Elixir of Shadow Sight
 						},
@@ -1921,7 +1862,7 @@ root(ROOTS.Zones, {
 					o(235097, {	-- Ephial's Dark Grimoire
 						["questID"] = 36418,
 						["coord"] = { 36.5, 57.9, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv_potion_122",
+						["icon"] = 134746,
 						["g"] = {
 							i(116914),	-- Ephial's Grimoire
 						},
@@ -1950,6 +1891,7 @@ root(ROOTS.Zones, {
 					}),
 					o(234618, {	-- Gift of Anzu
 						["description"] = "Drink an Elixir of Shadow Sight near the Shrine to get the Gift of Anzu.",
+						["cost"] = {{"i",115463,1}},	-- Elixir of Shadow Sight
 						["questID"] = 36381,
 						["coord"] = { 61.1, 55.3, SPIRES_OF_ARAK },
 						["modelScale"] = 0.4,
@@ -1959,45 +1901,50 @@ root(ROOTS.Zones, {
 					}),
 					n(86961,  {	-- Gift of Anzu
 						["description"] = "Drink an Elixir of Shadow Sight near the Shrine to get the Gift of Anzu.",
+						["cost"] = {{"i",115463,1}},	-- Elixir of Shadow Sight
 						["questID"] = 36386,
 						["coord"] = { 48.6, 44.4, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv-mount_raven_54",	-- TODO: not working
+						["icon"] = 132372,	-- TODO: not working
 						["g"] = {
 							i(118237),	-- Anzu's Malice
 						},
 					}),
 					n(86941,  {	-- Gift of Anzu
 						["description"] = "Drink an Elixir of Shadow Sight near the Shrine to get the Gift of Anzu.",
+						["cost"] = {{"i",115463,1}},	-- Elixir of Shadow Sight
 						["questID"] = 36388,
 						["coord"] = { 42.42, 26.69, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv-mount_raven_54",	-- TODO: not working
+						["icon"] = 132372,	-- TODO: not working
 						["g"] = {
 							i(118242),	-- Anzu's Scorn
 						},
 					}),
 					n(86962,  {	-- Gift of Anzu
 						["description"] = "Drink an Elixir of Shadow Sight near the Shrine to get the Gift of Anzu.",
+						["cost"] = {{"i",115463,1}},	-- Elixir of Shadow Sight
 						["questID"] = 36389,
 						["coord"] = { 46.9, 40.46, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv-mount_raven_54",	-- TODO: not working
+						["icon"] = 132372,	-- TODO: not working
 						["g"] = {
 							i(118238),	-- Anzu's Reach
 						},
 					}),
 					n(86953,  {	-- Gift of Anzu
 						["description"] = "Drink an Elixir of Shadow Sight near the Shrine to get the Gift of Anzu.",
+						["cost"] = {{"i",115463,1}},	-- Elixir of Shadow Sight
 						["questID"] = 36390,
 						["coord"] = { 57.01, 78.93, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv-mount_raven_54",	-- TODO: not working
+						["icon"] = 132372,	-- TODO: not working
 						["g"] = {
 							i(118241),	-- Anzu's Piercing Talon
 						},
 					}),
 					n(86956,  {	-- Gift of Anzu
 						["description"] = "Drink an Elixir of Shadow Sight near the Shrine to get the Gift of Anzu.",
+						["cost"] = {{"i",115463,1}},	-- Elixir of Shadow Sight
 						["questID"] = 36392,
 						["coord"] = { 52.0, 19.7, SPIRES_OF_ARAK },
-						["icon"] = "Interface\\Icons\\inv-mount_raven_54",	-- TODO: not working
+						["icon"] = 132372,	-- TODO: not working
 						["g"] = {
 							i(118239),	-- Anzu's Stoicism
 						},
@@ -2029,7 +1976,7 @@ root(ROOTS.Zones, {
 					}),
 					o(234154, {	-- Misplaced Scrolls
 						["questID"] = 36244,
-						["icon"] = "Interface\\Icons\\trade_archaeology_silverscrollcase",
+						["icon"] = 454060,
 						["coord"] = { 42.7, 18.3, SPIRES_OF_ARAK },
 						["g"] = {
 							i(109585),	-- Arakkoa Cipher
@@ -2048,7 +1995,7 @@ root(ROOTS.Zones, {
 					}),
 					o(234744, {	-- Offering to the Raven Mother
 						["questID"] = 36403,
-						["coord"] = { 53.5, 55.6, SPIRES_OF_ARAK },
+						["coord"] = { 53.31, 55.51, SPIRES_OF_ARAK },
 						["g"] = {
 							i(118267),	-- Ravenmother Offering
 						},
@@ -2108,42 +2055,41 @@ root(ROOTS.Zones, {
 					o(235168, {	-- Outcast's Pouch
 						["questID"] = 36446,
 						["coord"] = { 46.9, 34.0, SPIRES_OF_ARAK },
-						["modelID"] = 32854,
 						["sym"] = COMMON_TREASURE_SYM,
 					}),
 					o(234449, {	-- Relics of the Outcasts
 						["questID"] = 36355,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 43.2, 27.2, SPIRES_OF_ARAK },
 						["description"] = "Must have archaeology.",
 					}),
 					o(234454, {	-- Relics of the Outcasts
 						["questID"] = 36359,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 60.2, 53.8, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
 					o(234446, {	-- Relics of the Outcasts
 						["questID"] = 36354,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 45.9, 44.2, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
 					o(234451, {	-- Relics of the Outcasts
 						["questID"] = 36356,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 67.5, 39.9, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
 					o(234455, {	-- Relics of the Outcasts
 						["questID"] = 36360,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 51.8, 48.9, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
 					o(234155, {	-- Relics of the Outcasts
 						["questID"] = 36245,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 43.0, 16.5, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
@@ -2213,7 +2159,7 @@ root(ROOTS.Zones, {
 					}),
 					o(235135, {	-- Smuggled Apexis Artifacts
 						["questID"] = 36433,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 56.3, 45.3, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
@@ -2230,13 +2176,13 @@ root(ROOTS.Zones, {
 					}),
 					o(235104, {	-- Sun-Touched Cache
 						["questID"] = 36421,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 34.1, 27.5, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
 					o(235105, {	-- Sun-Touched Cache
 						["questID"] = 36422,
-						["icon"] = "Interface\\Icons\\achievement_dungeon_arakkoaspires",
+						["icon"] = 1002596,
 						["coord"] = { 33.3, 27.3, SPIRES_OF_ARAK },
 						["description"] = "Requires archaeology.",
 					}),
@@ -2248,7 +2194,6 @@ root(ROOTS.Zones, {
 						},
 					}),
 					o(235307, {	-- Waterlogged Satchel
-						["modelID"] = 32854,
 						["questID"] = 36455,
 						["coord"] = { 66.5, 56.5, SPIRES_OF_ARAK },
 						["sym"] = COMMON_TREASURE_SYM,
@@ -2272,7 +2217,7 @@ root(ROOTS.Zones, {
 								i(116915, {	-- Inactive Apexis Guardian
 									["isLimited"] = true,
 									["g"] = {
-										follower(168),  -- Ziri'ak
+										follower(168),	-- Ziri'ak
 									},
 								}),
 								i(113277, {	-- Ogreblood Potion
@@ -2315,7 +2260,7 @@ root(ROOTS.Zones, {
 								i(116915, {	-- Inactive Apexis Guardian
 									["isLimited"] = true,
 									["g"] = {
-										follower(168),  -- Ziri'ak
+										follower(168),	-- Ziri'ak
 									},
 								}),
 								i(113277, {	-- Ogreblood Potion
@@ -2381,7 +2326,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35874),	-- Apparatus - triggers after finishing "The Ebon Hunter" (questID 35835 & 35797)
 		q(35290),	-- Inn - Inn selected (A)
 		q(37315),	-- Inn - Inn selected (A)
@@ -2403,12 +2348,5 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(37316),	-- Trading Post - Trading Post selected (A)
 		q(35284),	-- Trading Post - Trading Post selected (H)
 		q(37314),	-- Trading Post - Trading Post selected (H)
-	}),
-});
-root(ROOTS.NeverImplemented, {
-	tier(WOD_TIER, {
-		n(WEAPONS, {
-			i(114946),	-- Admiral Taylor's Spellguard
-		}),
 	}),
 });

@@ -6,7 +6,7 @@ root(ROOTS.Zones, {
 	m(PANDARIA, {
 		m(KUN_LAI_SUMMIT, {
 			["lore"] = "Kun-Lai Summit is a zone in northern Pandaria, surrounded by the Vale of Eternal Blossoms to the south, the Townlong Steppes to the west, and the Jade Forest to the east. It is a vast area with majestic mountains, autumnal plains, and a lush coastal area. High atop the frigid northern peaks looms the Temple of the White Tiger, an ancient training ground protected by an elite force of martial priests, along with the spirit of the White Tiger itself, Xuen. Deeper into the mountains is the hideout of the Shado-pan clan: a mysterious order charged with protecting Pandaria from the dark things buried beneath its surface. When the isolated people of Kun-Lai are threatened by marauders from the west and a Zandalari troll menace invading its northern shores, they turn to the Alliance and Horde for help.",
-			["icon"] = "Interface\\Icons\\achievement_zone_kunlaisummit",
+			["icon"] = 617832,
 			["timeline"] = { ADDED_5_0_4 },
 			["maps"] = {
 				380,	-- Howlingwind Cavern
@@ -18,6 +18,7 @@ root(ROOTS.Zones, {
 				386,	-- Ruins of Korune (Upper Floor)
 				387,	-- Ruins of Korune (Lower Floor)
 				434,	-- The Ancient Passage
+				843,	-- Shadow-Pan Showdown
 			},
 			["groups"] = {
 				n(-362, bubbleDownSelf({	-- Peak of Serenity
@@ -28,6 +29,7 @@ root(ROOTS.Zones, {
 						n(QUESTS, {
 							q(31834, {	-- Begin Your Training: Master Cheng
 								["sourceQuest"] = 31856,	-- The Peak of Serenity - Begin Your Training
+								["coord"] = { 48.6, 42.7, KUN_LAI_SUMMIT },
 								["g"] = {
 									i(89551),	-- Aspirant's Staff of Harmony
 									i(89553),	-- Aspirant's Staff of Grace
@@ -80,7 +82,7 @@ root(ROOTS.Zones, {
 								},
 							}),
 							q(31833, bubbleDownSelf({	-- Continue Your Training: Master Woo
-								["timeline"] = { "added 5.0", "removed 8.0.1" },
+								["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },
 							},{
 								["sourceQuests"] = {
 									31834,	-- Begin Your Training: Master Cheng
@@ -160,32 +162,32 @@ root(ROOTS.Zones, {
 									31834,	-- Begin Your Training: Master Cheng
 								-- #endif
 								},
-								["timeline"] = { "added 5.0", "removed 8.0.1" },	-- baiting this for #errors to get more information
+								["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },	-- baiting this for #errors to get more information
 							}),
 							q(31858, {	-- The Peak of Serenity - Continue Your Training /lvl 15
 								["isBreadcrumb"] = true,
 								["sourceQuest"] = 31835,	-- Continue Your Training: Master Kistane
-								["timeline"] = { "added 5.0", "removed 8.0.1" },	-- baiting this for #errors to get more information
+								["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },	-- baiting this for #errors to get more information
 							}),
 							q(31859, {	-- The Peak of Serenity - Continue Your Training /lvl 20
 								["isBreadcrumb"] = true,
 								["sourceQuest"] = 31836,	-- Continue Your Training: Master Yoon
-								["timeline"] = { "added 5.0", "removed 8.0.1" },	-- baiting this for #errors to get more information
+								["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },	-- baiting this for #errors to get more information
 							}),
 							q(31860, {	-- The Peak of Serenity - Continue Your Training /lvl 25
 								["isBreadcrumb"] = true,
 								["sourceQuest"] = 31837,	-- Continue Your Training: Master Cheng
-								["timeline"] = { "added 5.0", "removed 8.0.1" },	-- baiting this for #errors to get more information
+								["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },	-- baiting this for #errors to get more information
 							}),
 							q(31861, {	-- The Peak of Serenity - Continue Your Training /lvl 30
 								["isBreadcrumb"] = true,
 								["sourceQuest"] = 31838,	-- Continue Your Training: Master Tsang
-								["timeline"] = { "added 5.0", "removed 8.0.1" },	-- baiting this for #errors to get more information
+								["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },	-- baiting this for #errors to get more information
 							}),
 							q(31989, {	-- The Peak of Serenity - Complete Your Training /lvl 35
 								["isBreadcrumb"] = true,
 								["sourceQuest"] = 31839,	-- Continue Your Training: Master Hsu
-								["timeline"] = { "added 5.0", "removed 8.0.1" },	-- baiting this for #errors to get more information
+								["timeline"] = { ADDED_5_0_4, REMOVED_8_0_1 },	-- baiting this for #errors to get more information
 							}),
 						}),
 						n(VENDORS, {
@@ -237,252 +239,40 @@ root(ROOTS.Zones, {
 									i(89575),	-- Handwraps of Serenity
 								},
 							}),
+							n(64978, {	-- Number Nine Jia <Monk Trainer - Master Crane>
+								["coord"] = { 45.2, 43.2, KUN_LAI_SUMMIT },
+								["g"] = {
+									i(232491, { ["timeline"] = { ADDED_11_0_5 } }),	-- Glyph of Jab
+								},
+							}),
 						}),
 					},
 				})),
 				n(ACHIEVEMENTS, {
-					ach(6716, {	-- Between a Saurok and a Hard Place
-						["collectible"] = false,
-						["g"] = {
-							crit(2, {	-- The Defiant
-								["description"] = "At the north end of the circular room at the back of the cave.",
-								["coords"] = {
-									{ 73.2, 94.6, KUN_LAI_SUMMIT },	-- entrance
-									{ 54.9, 16.9, 434 },	-- actual object
-								},
-							}),
-						},
-					}),
-					ach(6976, {	-- Explore Kun-Lai Summit
-						crit(1),	-- Binan Village
-						crit(2),	-- Firebough Nook
-						crit(3),	-- Gate of the August Celestials
-						crit(4),	-- Isle of Reckoning
-						crit(5),	-- Kota Peak
-						crit(6),	-- Mogujia
-						crit(7),	-- Mount Neverest
-						crit(8),	-- Muskpaw Ranch
-						crit(9),	-- Peak of Serenity
-						crit(10),	-- Shado-Pan Monastery
-						crit(11),	-- Temple of the White Tiger
-						crit(12),	-- The Burlap Trail
-						crit(13),	-- Valley of Emperors
-						crit(14),	-- Zouchin Village
-					}),
+					explorationAch(6976),	-- Explore Kun-Lai Summit
 					ach(7286, {	-- Finish Them! (Temple of the White Tiger)
-						crit(1),	-- Brewmaster Chani
-						crit(2),	-- Lun-Chi
-						crit(3),	-- Clever Ashyo
-						crit(4),	-- Ken-Ken
-						crit(5),	-- Kang Bramblestaff
-						crit(6),	-- The Wrestler
-						crit(7),	-- Master Boom Boom
-						crit(8),	-- Master Windfur
-						crit(9),	-- Hackiss
-						crit(10),	-- Healiss
-						crit(11),	-- Tankiss
+						crit(20440),	-- Brewmaster Chani
+						crit(20442),	-- Lun-Chi
+						crit(20443),	-- Clever Ashyo
+						crit(20451),	-- Ken-Ken
+						crit(20444),	-- Kang Bramblestaff
+						crit(20445),	-- The Wrestler
+						crit(20446),	-- Master Boom Boom
+						crit(20447),	-- Master Windfur
+						crit(20448),	-- Hackiss
+						crit(20449),	-- Healiss
+						crit(20450),	-- Tankiss
 					}),
 					ach(7386, {	-- Grand Expedition Yak
 						["provider"] = { "i", 84101 },	-- Grand Expedition Yak
 					}),
-					ach(7284, {	-- Is Another Man's Treasure
-						["collectible"] = false,
-						["g"] = {
-							o(213768, {	-- Hozen Warrior Spear
-								["description"] = "Cave entrance is at |cFFFFD70052.8 71.3|r, go down and to the section with water, it is in a rock. Might take some time to spawn.",
-								["questID"] = 31413,
-								["coords"] = {
-									{ 52.8, 71.3, KUN_LAI_SUMMIT },	-- Cave entrance
-									{ 23.9, 68.1, 384 },	-- The Deeper
-								},
-								["g"] = {
-									i(86394),	-- Hozen Warrior Spear
-								},
-							}),
-							n(64227, {	-- Frozen Trail Packer
-								["coords"] = {
-									{ 37.4, 77.9, KUN_LAI_SUMMIT },	-- Cave entrance
-									{ 35.2, 76.4, KUN_LAI_SUMMIT },
-								},
-								["g"] = {
-									i(86125, {	-- Kafa Press
-										["questID"] = 31304,
-									}),
-								},
-							}),
-							o(213751, {	-- Sprite's Cloth Chest
-								["questID"] = 31412,
-								["description"] = "Cave entrance is at 73.2, 73.6.  This chest is personal loot and based on your current Spec, NOT your Loot Spec.",
-								["coord"] = { 74.6, 74.8, 381 },
-								["modelScale"] = 1.5,
-								["g"] = {
-									i(86223, {	-- Agile Sprite Cloak
-										["description"] = "Only lootable while in an Agility DPS Spec (Hunter/Rogue).", -- verified 2021-10-21 Hunter(Surv)
-									}),
-									i(86222, {	-- Precise Sprite Cloak
-										["description"] = "Only lootable while in an Intellect DPS Spec (Mage/Warlock).", -- verified 2021-10-18 Mage(Frost)
-									}),
-									i(86225, {	-- Strong Sprite Cloak
-										["description"] = "Only lootable while in a Strength DPS Spec.", -- verified 2021-10-22 DK(Unholy)
-									}),
-									i(86221, {	-- Wise Sprite Cloak
-										["description"] = "Only lootable while in a Healer Spec.", -- verified ?? Shaman(Resto)
-									}),
-									i(86224, {	-- Steadfast Sprite Cape
-										["description"] = "Only lootable while in a Tank Spec.", -- verified 2021-10-18 Paladin(Prot)
-									}),
-								},
-							}),
-							o(213842, {	-- Stash of Yaungol Weapons
-								["modelScale"] = 3.2,
-								["questID"] = 31421,
-								["coords"] = {
-									{ 70.1, 63.9, KUN_LAI_SUMMIT },
-									{ 71.1, 62.6, KUN_LAI_SUMMIT },
-								},
-								["g"] = {
-									i(88723),	-- Sturdy Yaungol Spear
-								},
-							}),
-							o(213765, {	-- Tablet of Ren Yun
-								["questID"] = 31417,	-- FLAG - Tablet of Ren Yun
-								["g"] = {
-									i(86393),	-- Tablet of Ren Yun (RECIPE!)
-								},
-							}),
-						},
-					}),
-					ach(7997, {	-- Riches of Pandaria
-						["collectible"] = false,
-						["g"] = {
-							o(214438, {	-- Ancient Mogu Tablet
-								["description"] = "Entrance is at |cFFFFD70063.94 49.84|r.",
-								["questID"] = 31420,
-								["coord"] = { 64.2, 45.2, KUN_LAI_SUMMIT },
-								["g"] = {
-									i(86471),	-- Ancient Mogu Tablet
-								},
-							}),
-							o(213769, {	-- Hozen Treasure Cache
-								["questID"] = 31414,	-- Hozen Treasure Cache
-								["coord"] = { 49.5, 59.4, KUN_LAI_SUMMIT },
-							}),
-							o(213774, {	-- Lost Adventurer's Belongings
-								["questID"] = 31418,	-- Lost Adventurer's Belongings
-								["coord"] = { 36.7, 79.8, KUN_LAI_SUMMIT },
-							}),
-							o(213793, {	-- Rikktik's Tiny Chest
-								["questID"] = 31419,
-								["coord"] = { 52.5, 51.5, KUN_LAI_SUMMIT },
-								["g"] = {
-									i(86430),	-- Rikktik's Tiny Chest
-								},
-							}),
-							o(213771, {	-- Statue of Xuen
-								["questID"] = 31416,	-- Statue of Xuen
-								["coord"] = { 72.0, 33.9, KUN_LAI_SUMMIT },
-							}),
-							o(213770, {	-- Stolen Sprite Treasure
-								["description"] = "Entrance is at |cFFFFD70059.5 52.9|r.",
-								["questID"] = 31415,	-- Stolen Sprite Treasure
-								["coord"] = { 41.6, 44.1, 380 },	-- Howlingwind Cavern
-							}),
-							o(213782, {	-- Terracotta Head
-								["questID"] = 31422,
-								["coord"] = { 59.2, 73.0, KUN_LAI_SUMMIT },
-								["g"] = {
-									i(86427),	-- Terracotta Head
-								},
-							}),
-						},
-					}),
 					ach(6537, {	-- Slum It in the Summit (A)
 						["races"] = ALLIANCE_ONLY,
-						["g"] = {
-							crit(1, {	-- Westwind Rest
-								["sourceQuest"] = 30514,	-- Challenge Accepted
-							}),
-							crit(2, {	-- The Yaungol Invasion
-								["description"] = "This criteria doesn't trigger automatically. You will need to log out for it to get marked completed.",
-								["sourceQuests"] = {
-									30651,	-- Barrels of Fun
-									30650,	-- Pandaren Prisoners
-									30660,	-- The Ordo Warbringer
-									30662,	-- The Ordo Warbringer
-								},
-							}),
-							crit(3, {	-- Inkgill Mere
-								["sourceQuest"] = 30855,	-- The Fall of Shai-Hu
-							}),
-							crit(4, {	-- The Yak Wash
-								["sourceQuest"] = 30492,	-- Back in Yak
-							}),
-							crit(5, {	-- The Burlap Trail
-								["sourceQuest"] = 30612,	-- The Leader Hozen
-							}),
-							crit(6, {	-- Kota Peak
-								["sourceQuest"] = 30747,	-- The Burlap Grind
-							}),
-							crit(7, {	-- The Thunder King
-								["sourceQuest"] = 30800,	-- Stealing Their Thunder King
-							}),
-							crit(8, {	-- Temple of the White Tiger
-								["sourceQuest"] = 31394,	-- A Celestial Experience
-							}),
-							crit(9, {	-- Zouchin Village
-								["sourceQuest"] = 30946,	-- Revelations
-							}),
-							crit(10, {	-- The Shado-Pan
-								["sourceQuest"] = 30752,	-- Unbelievable!
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(6538, {	-- Slum It in the Summit (H)
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							crit(1, {	-- Eastwind Rest
-								["sourceQuest"] = 30515,	-- Challenge Accepted
-							}),
-							crit(2, {	-- The Yaungol Invasion
-								["description"] = "This criteria doesn't trigger automatically. You will need to log out for it to get marked completed.",
-								["sourceQuests"] = {
-									30656,	-- Barrels of Fun (H)
-									30655,	-- Pandaren Prisoners (H)
-									30661,	-- The Ordo Warbringer
-									30663,	-- The Ordo Warbringer
-								},
-							}),
-							crit(3, {	-- Inkgill Mere
-								["sourceQuest"] = 30855,	-- The Fall of Shai-Hu
-							}),
-							crit(4, {	-- The Yak Wash
-								["sourceQuest"] = 30492,	-- Back in Yak
-							}),
-							crit(5, {	-- The Burlap Trail
-								["sourceQuest"] = 30612,	-- The Leader Hozen
-							}),
-							crit(6, {	-- Kota Peak
-								["sourceQuest"] = 30747,	-- The Burlap Grind
-							}),
-							crit(7, {	-- The Thunder King
-								["sourceQuest"] = 30800,	-- Stealing Their Thunder King
-							}),
-							crit(8, {	-- Temple of the White Tiger
-								["sourceQuest"] = 31395,	-- A Celestial Experience
-							}),
-							crit(9, {	-- Zouchin Village
-								["sourceQuest"] = 30946,	-- Revelations
-							}),
-							crit(10, {	-- The Shado-Pan
-								["sourceQuest"] = 30752,	-- Unbelievable!
-							}),
-						},
-					}),
-					ach(6754, {	-- The Dark Heart of the Mogu
-						crit(1, {	-- Valley of the Emperors (Kun-Lai Summit)
-							["coord"] = { 53.0, 46.58, KUN_LAI_SUMMIT },
-							["description"] = "The scroll is in the first big room."
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 				}),
 				battlepets({
@@ -499,7 +289,7 @@ root(ROOTS.Zones, {
 						pet(726),	-- Plains Monitor (PET!)
 						pet(727),	-- Prairie Mouse (PET!)
 						pet(679),	-- Summit Kid (PET!)
-						pet(728, { -- Szechuan Chicken (PET!)
+						pet(728, {	-- Szechuan Chicken (PET!)
 							['description'] = "Can sometimes be easier to find as a secondary pet. Can accompany almost any other pet in Kun-Lai.",
 						}),
 						pet(729),	-- Tolai Hare (PET!)
@@ -507,11 +297,44 @@ root(ROOTS.Zones, {
 						pet(731),	-- Zooey Snake (PET)
 					},
 				}),
+				explorationHeader({
+					exploration(6076),	-- Auburn Bluffs
+					exploration(6059),	-- Binan Village
+					exploration(6098),	-- Chow Farmstead
+					exploration(6094),	-- Eastwind Rest
+					exploration(6121),	-- Fire Camp Ruqin
+					exploration(6152),	-- Fire Camp Yongqi
+					exploration(6129),	-- Firebough Nook
+					exploration(6498),	-- Gate of the August Celestials
+					exploration(6406),	-- Isle of Reckoning
+					exploration(6157),	-- Kota Basecamp
+					exploration(6156),	-- Kota Peak
+					exploration(6062),	-- Kun-Lai Pass
+					exploration(6114),	-- Mogujia
+					exploration(6185),	-- Mount Neverest
+					exploration(6100),	-- Muskpaw Ranch
+					exploration(6085),	-- One Keg
+					exploration(6081),	-- Peak of Serenity
+					exploration(6294),	-- Shado-Li Basin
+					exploration(6128),	-- Shado-Pan Fallback
+					exploration(6173),	-- Shado-Pan Monastery
+					exploration(6174),	-- Temple of the White Tiger
+					exploration(6090),	-- The Burlap Trail
+					exploration(6087),	-- The Dooker Dome
+					exploration(6207),	-- The Zandalari Vanguard
+					exploration(6198, {	-- Valley of Emperors
+						-- CRIEVE NOTE: This appears to be unavailable after Legion, someone let me know if you RECENTLY collect this.
+						["collectible"] = false,
+					}),
+					exploration(6095),	-- Westwind Rest
+					exploration(6154),	-- Yinying Village
+					exploration(6169),	-- Zouchin Village
+				}),
 				n(FACTIONS, {
-					faction(1341, {	-- The August Celestials
+					faction(FACTION_THE_AUGUST_CELESTIALS, {	-- The August Celestials
 						["description"] = "Each day, the August Celestials require your aid at one of their temples.  Speak to the representative in your faction's Vale of Eternal Blossoms shrine to find out where your help is needed (|cff3f48ccSage Whiteheart for Alliance|r and |cff880015Sage Lotusbloom for Horde|r).\n\nThe dailies will be in one of these locations:\nJade Forest - Temple of the Jade Serpent\nKrasarang Wilds - Cradle of Chi-Ji\nKun-Lai Summit - Temple of the White Tiger\nTownlong Steppes - Niuzao Temple\n\n",
 						["collectible"] = false,
-						["icon"] = "Interface\\Icons\\achievement_faction_celestials",
+						["icon"] = 645203,
 						["g"] = {
 							n(QUESTS, {
 								q(31394, {	-- A Celestial Experience (A)
@@ -661,11 +484,25 @@ root(ROOTS.Zones, {
 							30569,	-- Trouble on the Farmstead (A)
 							30570,	-- Trouble on the Farmstead (H)
 						},
+						["groups"] = {
+							o_repeated({
+								i(80227),	-- Root Vegetable (QI!)
+								o(211017),	-- Root Vegetable
+								o(211018),	-- Root Vegetable
+								o(211019),	-- Root Vegetable
+							}),
+							o(211023, {	-- Cast Iron Pot
+								i(80230),	-- Cast Iron Pot (QI!)
+							}),
+						},
 					}),
 					q(30746, {	-- A Fair Trade
 						["coord"] = { 42.4, 69.6, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60503 },	-- Uncle Keenbean
 						["sourceQuest"] = 30825,	-- Kota Blend
+						["groups"] = {
+							i(80944),	-- Bundle of Kafa'kota Berries (QI!)
+						},
 					}),
 					q(30820, {	-- A Funeral
 						["coord"] = { 63.1, 29.3, KUN_LAI_SUMMIT },
@@ -686,6 +523,14 @@ root(ROOTS.Zones, {
 					q(30808, {	-- A Grummle's Luck
 						["coord"] = { 64.7, 61.7, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59371 },	-- Lucky Eightcoins
+						["groups"] = {
+							o_repeated({
+								i(81293),	-- Stolen Luckydos (QI!)
+								o(211536),	-- Stolen Bag of Luckydos
+								o(211537),	-- Stolen Bag of Luckydos
+								o(211538),	-- Stolen Bag of Luckydos
+							}),
+						},
 					}),
 					q(30715, {	-- A Line Unbroken
 						["coord"] = { 35.1, 59.6, KUN_LAI_SUMMIT },
@@ -700,6 +545,9 @@ root(ROOTS.Zones, {
 							30602,	-- The Rabbitsfoot
 						},
 						["g"] = {
+							i(80428),	-- Corpse of Dak Dak (QI!)
+							i(80429),	-- Corpse of Ko Ko (QI!)
+							i(80430),	-- Corpse of Tak Tak (QI!)
 							i(88385),	-- Hozen Idol (TOY!)
 						},
 					}),
@@ -713,6 +561,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 29.2, 62.3, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 61820 },	-- Lao-Chin the Iron Belly
 						["sourceQuest"] = 30724,	-- To the Wall!
+						["groups"] = {
+							o(212003, {	-- Yaungol Oil Barrel
+								i(82799),	-- Yaungol Oil Barrel (QI!)
+							}),
+						},
 					}),
 					q(30506, {	-- Admiral Taylor has Awakened (3 versions of this quest from 3 different npc's but completing one gives credit for all 3)
 						["coord"] = { 70.8, 90.4, KUN_LAI_SUMMIT },
@@ -747,6 +600,11 @@ root(ROOTS.Zones, {
 					q(30459, {	-- All of the Arrows
 						["coord"] = { 70.7, 90.3, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59076 },	-- Commander Hsieh
+						["groups"] = {
+							o(210759, {	-- Arrow for Commander Hsieh
+								i(79806),	-- Arrow for Commander Hsieh (QI!)
+							}),
+						},
 					}),
 					q(30796, {	-- An End to Everything
 						["coord"] = { 57.3, 48.0, KUN_LAI_SUMMIT },
@@ -817,6 +675,9 @@ root(ROOTS.Zones, {
 							30620,	-- Mogu?! Oh No-gu!
 						},
 						["g"] = {
+							o(211312, {	-- Explosives Barrel
+								i(80528),	-- Explosives Barrel (QI!)
+							}),
 							i(88577),	-- Explosive Barrel
 						},
 					}),
@@ -825,6 +686,9 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["provider"] = { "n", 59448 },	-- Rivett Clutchpop
 						["sourceQuest"] = 30515,	-- Challenge Accepted
+						["groups"] = {
+							i(80245),	-- Kun-Lai Meaty Bits (QI!)
+						},
 					}),
 					q(31847, {	-- Better Dead than Dread
 						["coord"] = { 34.6, 59.0, KUN_LAI_SUMMIT },
@@ -843,7 +707,8 @@ root(ROOTS.Zones, {
 							{ "n", 63535 },	-- Elder Shiao
 						},
 						["altQuests"] = {
-							30768,	-- My Husband...
+							31386,	-- The Shado-Pan Offensive (A)
+							31388,	-- The Shado-Pan Offensive (H)
 						},
 						["sourceQuests"] = {
 							30660,	-- The Ordo Warbringer (A)
@@ -884,6 +749,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 60.6, 21.3, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60785 },	-- Sage Liao
 						["sourceQuest"] = 30794,	-- Emergency Care
+						["groups"] = {
+							o(211510, {	-- Sage Liao's Belongings
+								i(81177),	-- Pandaren Healing Draught (QI!)
+							}),
+						},
 					}),
 					q(30457, {	-- Call Out Their Leader
 						["coord"] = { 72.2, 91.8, KUN_LAI_SUMMIT },
@@ -916,6 +786,7 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 61297 },	-- Image of Lorewalker Cho
 						["sourceQuest"] = 30801,	-- Lessons from History
 						["g"] = {
+							i(81890),	-- Blood-Revealed Map (QI!)
 							i(82579),	-- Lorewalker's Mark
 							i(82580),	-- Lorewalker's Emblem
 							i(82581),	-- Lorewalker's Sigil
@@ -1062,6 +933,9 @@ root(ROOTS.Zones, {
 					q(30489, {	-- Fresh Needle Scent
 						["coord"] = { 71.6, 70.2, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59353 },	-- Lao Muskpaw
+						["groups"] = {
+							i(79952),	-- Pungent Sprite Needles (QI!)
+						},
 					}),
 					q(30967, {	-- Free the Dissenters
 						["coord"] = { 75.1, 87.9, KUN_LAI_SUMMIT },
@@ -1124,10 +998,23 @@ root(ROOTS.Zones, {
 						["coord"] = { 63.4, 28.7, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 61495 },	-- Elder Shu
 						["sourceQuest"] = 30935,	-- Fisherman's Tale
+						["groups"] = {
+							o(211684, {	-- Volatile Blooms
+								i(82298),	-- Handful of Volatile Blooms (QI!)
+							}),
+						},
 					}),
+					heroscall(q(49559, {	-- Hero's Call: Kun-Lai Summit!
+						["timeline"] = { ADDED_7_3_5 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 82,
+					})),
 					q(30460, {	-- Hit Medicine
 						["coord"] = { 71.5, 92.8, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59077 },	-- Apothecary Cheng
+						["groups"] = {
+							i(79819),	-- Dit Da Jow (QI!)
+						},
 					}),
 					q(30682, {	-- Holed Up
 						["coord"] = { 42.9, 88.3, KUN_LAI_SUMMIT },
@@ -1145,6 +1032,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 50.5, 64.0, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59894 },	-- Brother Yakshoe
 						["sourceQuest"] = 30605,	-- Bros Before Hozen
+						["groups"] = {
+							i(80535),	-- Yeti Shackle Key (QI!)
+						},
 					}),
 					q(30652, {	-- In Tents Channeling (A)
 						["coord"] = { 53.8, 83.6, KUN_LAI_SUMMIT },
@@ -1176,6 +1066,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 57.2, 61.1, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59696 },	-- Uncle Cloverleaf
 						["sourceQuest"] = 30999,	-- Path Less Traveled
+						["groups"] = {
+							i(80308),	-- Fire Lotus Incense (QI!)
+						},
 					}),
 					q(31030, {	-- Into the Monastery
 						["coord"] = { 36.6, 47.7, KUN_LAI_SUMMIT },
@@ -1202,6 +1095,11 @@ root(ROOTS.Zones, {
 							30684,	-- Seeker's Folly
 							31306,	-- Seeker's Folly
 						},
+						["groups"] = {
+							o(211780, {	-- Curious Text
+								i(81892),	-- Curious Text (QI!)
+							}),
+						},
 					}),
 					q(30805, {	-- Justice
 						["coord"] = { 60.6, 21.3, KUN_LAI_SUMMIT },
@@ -1211,6 +1109,13 @@ root(ROOTS.Zones, {
 					q(30825, {	-- Kota Blend
 						["coord"] = { 40.3, 81.5, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60677 },	-- Uncle Tallmug
+						["groups"] = {
+							o_repeated({
+								i(81054),	-- Kafa'Kota Berry
+								o(211454),	-- Kafa'kota Bush
+								o(211480),	-- Kafa'kota Berries
+							}),
+						},
 					}),
 					q(30994, {	-- Lao-Chin's Gambit
 						["coord"] = { 29.3, 62.2, KUN_LAI_SUMMIT },
@@ -1313,12 +1218,17 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 30992,	-- Finish This!
 						["altQuests"] = {
 							31695,	-- Beyond the Wall
+							31386,	-- The Shado-Pan Offensive (A)
+							31388,	-- The Shado-Pan Offensive (H)
 						},
 					}),
 					q(30467, {	-- My Son...
 						["coord"] = { 74.9, 88.8, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59263 },	-- Merchant Shi
-						["sourceQuest"] = 31451,	-- The Missing Merchant
+						["sourceQuests"] = {
+							31451,	-- The Missing Merchant (H)
+							31452,	-- The Missing Merchant (A)
+						},
 					}),
 					q(57071, {	-- No Brew Left Behind
 						["lvl"] = 120,
@@ -1333,6 +1243,9 @@ root(ROOTS.Zones, {
 							30603,	-- The Broketooth Ravage
 							30602,	-- The Rabbitsfoot
 						},
+						["groups"] = {
+							i(80307),	-- Grummlepack (QI!)
+						},
 					}),
 					q(30750, {	-- Off the Wall!
 						["coord"] = { 29.3, 62.2, KUN_LAI_SUMMIT },
@@ -1342,6 +1255,10 @@ root(ROOTS.Zones, {
 					q(30614, {	-- Oil Stop
 						["coord"] = { 65.4, 60.8, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59402 },	-- Slimy Inkstain
+						["groups"] = {
+							i(80312),	-- Empty Oil Vial (QI!)
+							i(80311),	-- Filled Oil Vial (QI!)
+						},
 					}),
 					q(30683, {	-- One Traveler's Misfortune
 						["coord"] = { 48.1, 49.0, KUN_LAI_SUMMIT },
@@ -1426,10 +1343,23 @@ root(ROOTS.Zones, {
 					q(30595, {	-- Profiting off of the Past
 						["coord"] = { 59.6, 78.2, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59821 },	-- Bao Jian
+						["groups"] = {
+							o_repeated({
+								i(80294),	-- Mogu Relic (QI!)
+								o(211143),	-- Mogu Relic
+								o(211147),	-- Mogu Relic
+								o(211148),	-- Mogu Relic
+							}),
+						},
 					}),
 					q(30469, {	-- Repossession
 						["coord"] = { 74.9, 88.8, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59263 },	-- Merchant Shi
+						["groups"] = {
+							o(210887, {	--Untainted Supplies
+								i(79880),	-- Stolen Supplies (QI!)
+							}),
+						},
 					}),
 					q(31228, {	-- Prophet Khar'zul
 						["coord"] = { 62.3, 29.0, KUN_LAI_SUMMIT },
@@ -1466,6 +1396,13 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 59695 },	-- Big Sal
 						["sourceQuest"] = 30999,	-- Path Less Traveled
 						["g"] = {
+							o_repeated({
+								i(80315),	-- Stolen Supplies (QI!)
+								o(211266),	-- Stolen Supplies
+								o(211268),	-- Stolen Supplies
+								o(211269),	-- Stolen Supplies
+								o(211270),	-- Stolen Supplies
+							}),
 							i(88070),	-- Waterfall Wristwraps
 							i(88069),	-- Mushan Hide Wristwraps
 							i(88068),	-- Dreaming Spirit Wristwraps
@@ -1553,11 +1490,19 @@ root(ROOTS.Zones, {
 						["coord"] = { 43.7, 51.1, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60795 },	-- Lorewalker Cho
 						["sourceQuest"] = 30829,	-- The Tongue of Ba-Shon
+						["groups"] = {
+							i(81712),	-- The Tongue of Ba-Shon (QI!)
+						},
 					}),
 					q(30800, {	-- Stealing Their Thunder King
 						["coord"] = { 57.3, 47.9, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 61297 },	-- Image of Lorewalker Cho
 						["sourceQuest"] = 30798,	-- Breaking the Emperor's Shield
+						["groups"] = {
+							o(211967, {	-- King's Coffer
+								i(82764),	-- Bottom Fragment of Lei Shen's Tablet (QI!)
+							}),
+						},
 					}),
 					q(30340, {	-- Stick in the Mud
 						["coord"] = { 55.0, 92.0, KUN_LAI_SUMMIT },
@@ -1624,12 +1569,16 @@ root(ROOTS.Zones, {
 						["coord"] = { 49.1, 70.4, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59806 },	-- Brother Rabbitsfoot
 						["sourceQuest"] = 30592,	-- The Burlap Trail: To Burlap Waystation
+						["groups"] = {
+							i(81137),	-- Rabbitsfoot's Luckydo (QI!)
+						},
 					}),
 					q(30747, {	-- The Burlap Grind
 						["coord"] = { 42.5, 69.3, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60679 },	-- Nephew Burrberry
 						["sourceQuest"] = 30746,	-- A Fair Trade
 						["g"] = {
+							i(81183),	-- Flask of Kafa (QI!)
 							i(82525),	-- Dreaming Spirit Sabatons
 							i(82527),	-- Mindbender Treads
 							i(82524),	-- Mushan Hide Footguards
@@ -1667,12 +1616,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 44.4, 89.9, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60161 },	-- Shado-Master Chong
 						["sourceQuests"] = {
-							30656,	-- Barrels of Fun
-							30650,	-- Pandaren Prisoners (A)
-							30655,	-- Pandaren Prisoners (H)
-							30661,	-- The Ordo Warbringer
-							30663,	-- The Ordo Warbringer
-							31453,	-- The Shado-Pan (breadcrumb)
+							30459,	-- All of the Arrows
+							30457,	-- Call Out Their Leader
+							30460,	-- Hit Medicine
 						},
 					}),
 					q(30855, {	-- The Fall of Shai Hu
@@ -1731,7 +1677,7 @@ root(ROOTS.Zones, {
 							i(82549),	-- Wallwatcher Gauntlets
 						},
 					}),
-					q(31452, {	-- The Missing Merchant
+					q(31452, {	-- The Missing Merchant (A)
 						["coord"] = { 54.1, 83.4, KUN_LAI_SUMMIT },
 						["races"] = ALLIANCE_ONLY,
 						["provider"] = { "n", 63542 },	-- Elder Tsulan
@@ -1743,7 +1689,7 @@ root(ROOTS.Zones, {
 							30662,	-- The Ordo Warbringer
 						},
 					}),
-					q(31451, {	-- The Missing Merchant
+					q(31451, {	-- The Missing Merchant (H)
 						["coord"] = { 62.3, 79.6, KUN_LAI_SUMMIT },
 						["races"] = HORDE_ONLY,
 						["provider"] = { "n", 63535 },	-- Elder Shiao
@@ -1851,7 +1797,9 @@ root(ROOTS.Zones, {
 					}),
 					q(31254, {	-- The Road to Kun-Lai
 						["races"] = ALLIANCE_ONLY,
+						-- #if AFTER 7.3.5
 						["sourceQuests"] = { 49559 },	-- Hero's Call: Kun-Lai Summit!
+						-- #endif
 						["qgs"] = {
 							63778,	-- Messenger Grummle
 						},
@@ -1860,16 +1808,19 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(31255, {	-- The Road to Kun-Lai
-						["races"] = HORDE_ONLY,
-						["sourceQuests"] = { 49541 },	-- Warchief's Command: Kun-Lai Summit!
-						["qgs"] = {
-							63778,	-- Messenger Grummle
-						},
+						["qg"] = 63778,	-- Messenger Grummle
+						-- #if AFTER 7.3.5
+						["sourceQuest"] = 49541,	-- Warchief's Command: Kun-Lai Summit!
+						-- #endif
 						["coords"] = {
 							{ 70.0, 23.6, VALLEY_OF_THE_FOUR_WINDS },
 							{ 41.7, 29.9, KRASARANG_WILDS },
 					--	TODO: Flew by the area before and it wasn't here. Possibly requires "Boom Goes the Doonamite!" ?
 							{ 45.7, 43.8, THE_JADE_FOREST },
+						},
+						["races"] = HORDE_ONLY,
+						["groups"] = {
+							i(85694),	-- A Missive from Lorewalker Cho (QI!)
 						},
 					}),
 					q(38936, {	-- The Road to Kun-Lai (Adventure guide)
@@ -1938,6 +1889,15 @@ root(ROOTS.Zones, {
 						["provider"] = { "n", 61297 },	-- Image of Lorewalker Cho
 						["sourceQuest"] = 30797,	-- It Was Almost Alive
 						["g"] = {
+							o(211770, {	-- Shen Dynasty Tablet
+								i(82393),	-- Shen Dynasty Rubbbing (QI!)
+							}),
+							o(211794, {	-- Qiang Dynasty Tablet
+								i(82394),	-- Qiang Dynasty Rubbbing (QI!)
+							}),
+							o(211793, {	-- Wai Dynasty Tablet
+								i(82393),	-- Wai Dynasty Rubbbing (QI!)
+							}),
 							i(82564),	-- Spiritbinder Band
 							i(82565),	-- Flamefury Ring
 							i(82566),	-- Jade Inlaid Signet
@@ -1956,11 +1916,20 @@ root(ROOTS.Zones, {
 					q(30496, {	-- The Waterspeaker's Staff
 						["coord"] = { 75.1, 87.9, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60973 },	-- Waterspeaker Gorai
+						["groups"] = {
+							i(81385),	-- Stolen Inkgill Ritual Staff (QI!)
+						},
 					}),
 					q(30621, {	-- They Stole My Luck!
 						["coord"] = { 57.3, 60.1, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 59716 },	-- Ji-Lu the Lucky
 						["sourceQuest"] = 30999,	-- Path Less Traveled
+						["groups"] = {
+							i(80316),	-- Lucky Virmen's Foot (QI!)
+							i(80317),	-- Lucky Yak Shoe (QI!)
+							i(80318),	-- Lucky Four Winds Clover (QI!)
+							i(80319),	-- Lucky "Gold" Coin (QI!)
+						},
 					}),
 					q(30606, {	-- Thumping Knucklethump
 						["coord"] = { 50.5, 64.0, KUN_LAI_SUMMIT },
@@ -2024,11 +1993,9 @@ root(ROOTS.Zones, {
 					q(30670, {	-- Turnabout
 						["coord"] = { 44.4, 89.9, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 60161 },	-- Shado-Master Chong
-						["sourceQuests"] = {
-							30656,	-- Barrels of Fun
-							30650,	-- Pandaren Prisoners
-							30661,	-- The Ordo Warbringer
-							30663,	-- The Ordo Warbringer
+						["sourceQuest"] = 30457,	-- Call Out Their Leader
+						["groups"] = {
+							i(81713),	-- Blind Rage Essence (QI!)
 						},
 					}),
 					q(30752, {	-- Unbelievable!
@@ -2060,6 +2027,7 @@ root(ROOTS.Zones, {
 							30670,	-- Turnabout
 						},
 						["g"] = {
+							i(81741),	-- Blinding Rage Trap (QI!)
 							i(88079),	-- Waterfall Cap
 							i(88078),	-- Mushan Hide Cap
 							i(88077),	-- Dreaming Spirit Cap
@@ -2071,6 +2039,12 @@ root(ROOTS.Zones, {
 							i(88071),	-- Wallwatcher Cap
 						},
 					}),
+					warchiefscommand(q(49541, {	-- Warchief's Command: Kun-Lai Summit!
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+						["lvl"] = 82,
+					})),
 					q(30512, {	-- Westwind Rest
 						["coord"] = { 71.5, 93.0, KUN_LAI_SUMMIT },
 						["races"] = ALLIANCE_ONLY,
@@ -2085,6 +2059,9 @@ root(ROOTS.Zones, {
 						["coord"] = { 63.3, 30.6, KUN_LAI_SUMMIT },
 						["provider"] = { "n", 61496 },	-- Steelbender Doshu
 						["sourceQuest"] = 30935,	-- Fisherman's Tale
+						["groups"] = {
+							i(82299),	-- Blood-Stained Blade (QI!)
+						},
 					}),
 					q(30993, {	-- Where are My Reinforcements?
 						["coord"] = { 31.2, 61.5, KUN_LAI_SUMMIT },
@@ -2132,18 +2109,12 @@ root(ROOTS.Zones, {
 						["coord"] = { 40.8, 42.5, KUN_LAI_SUMMIT },
 						["g"] = {
 							i(86588),	-- Pandaren Firework Launcher (TOY!)
-							crit(39, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
 						},
 					}),
 					n(50341, {	-- Borginn Darkfist
 						["coord"] = { 55.7, 43.4, KUN_LAI_SUMMIT },
 						["g"] = {
 							i(86570),	-- Crate of Kidnapped Puppies
-							crit(25, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
 						},
 					}),
 					n(50354, {	-- Havak
@@ -2154,9 +2125,6 @@ root(ROOTS.Zones, {
 						},
 						["g"] = {
 							i(86573),	-- Shard of Archstone (TOY!)
-							crit(32, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
 						},
 					}),
 					n(66933, {	-- Kishak
@@ -2181,19 +2149,12 @@ root(ROOTS.Zones, {
 							{ 51.23, 79.59, KUN_LAI_SUMMIT },
 						},
 						["g"] = {
-							i(86566, {	-- Forager's Gloves
-								crit(6, {	-- Forager's Gloves
-									["achievementID"] = 8728,	-- Going to Need a Bigger Bag
-								}),
-							}),
-							crit(53, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
+							i(86566),	-- Forager's Gloves
 						},
 					}),
 					n(70323, {	-- Krakkanon
 						q(31664, {	-- An Angler's Quest
-							["icon"] = "Interface\\Icons\\inv_misc_book_11",
+							["icon"] = 133743,
 							["provider"] = { "i", 88563 },	-- Nat's Fishing Journal
 							["repeatable"] = true,
 							["collectible"] = false,
@@ -2202,14 +2163,7 @@ root(ROOTS.Zones, {
 					n(50789, {	-- Nessos the Oracle
 						["coord"] = { 63.8, 13.7, KUN_LAI_SUMMIT },
 						["g"] = {
-							i(86584, {	-- Hardened Shell (TOY!)
-								crit(9, {	-- Hardened Shell
-									["achievementID"] = 8728,	-- Going To Need A Bigger Bag
-								}),
-							}),
-							crit(46, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
+							i(86584),	-- Hardened Shell (TOY!)
 						},
 					}),
 					n(50831, {	-- Scritch
@@ -2219,19 +2173,11 @@ root(ROOTS.Zones, {
 							{ 47.2, 63.0, KUN_LAI_SUMMIT },
 							{ 46.2, 61.5, KUN_LAI_SUMMIT },
 						},
-						["g"] = {
-							crit(4, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
-						},
 					}),
 					n(50733, {	-- Ski'thik
 						["coord"] = { 36.71, 79.76, KUN_LAI_SUMMIT },
 						["g"] = {
 							i(86577),	-- Rod of Ambershaping
-							crit(18, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
 						},
 					}),
 					n(50769, {	-- Zai the Outcast
@@ -2242,9 +2188,6 @@ root(ROOTS.Zones, {
 						},
 						["g"] = {
 							i(86581),	-- Farwater Conch (TOY!)
-							crit(11, {	-- Glorious!
-								["achievementID"] = 7439,
-							}),
 						},
 					}),
 					n(69841, {	-- Zandalari Warbringer (Amber)
@@ -2299,38 +2242,10 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["g"] = {
 							n(WEAPONS, {
-								i(144251, {	-- Arsenal: Grievous Gladiator's Weapons (A)
+								i(144251, {	-- Arsenal: Grievous Gladiator's Weapons (H)
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
-										{"select", "itemID",
-											102982,	-- Grievous Gladiator's Barrier
-											102793,	-- Grievous Gladiator's Baton of Light
-											102798,	-- Grievous Gladiator's Battle Staff
-											102806,	-- Grievous Gladiator's Bonecracker
-											102797,	-- Grievous Gladiator's Cleaver
-											102807,	-- Grievous Gladiator's Decapitator
-											102983,	-- Grievous Gladiator's Endgame
-											102804,	-- Grievous Gladiator's Energy Staff
-											102787,	-- Grievous Gladiator's Gavel
-											102796,	-- Grievous Gladiator's Greatsword
-											102801,	-- Grievous Gladiator's Hacker
-											102788,	-- Grievous Gladiator's Longbow
-											102795,	-- Grievous Gladiator's Mageblade
-											102803,	-- Grievous Gladiator's Pike
-											102789,	-- Grievous Gladiator's Pummeler
-											102809,	-- Grievous Gladiator's Quickblade
-											102979,	-- Grievous Gladiator's Redoubt
-											102805,	-- Grievous Gladiator's Render
-											102980,	-- Grievous Gladiator's Reprieve
-											102794,	-- Grievous Gladiator's Rifle
-											102800,	-- Grievous Gladiator's Ripper
-											102799,	-- Grievous Gladiator's Shanker
-											102981,	-- Grievous Gladiator's Shield Wall
-											102802,	-- Grievous Gladiator's Slicer
-											102791,	-- Grievous Gladiator's Spellblade
-											102790,	-- Grievous Gladiator's Staff
-										},
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR },
 									},
 								}),
 								i(102982, {	-- Grievous Gladiator's Barrier
@@ -2416,7 +2331,7 @@ root(ROOTS.Zones, {
 								i(138662, {	-- Ensemble: Grievous Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											100717,	-- Grievous Gladiator's Armplates of Alacrity
 											100583,	-- Grievous Gladiator's Girdle of Accuracy
@@ -2452,7 +2367,7 @@ root(ROOTS.Zones, {
 								i(138670, {	-- Ensemble: Grievous Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											100637,	-- Grievous Gladiator's Bindings of Meditation
 											100669,	-- Grievous Gladiator's Bindings of Prowess
@@ -2534,7 +2449,7 @@ root(ROOTS.Zones, {
 								i(138668, {	-- Ensemble: Grievous Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											100699,	-- Grievous Gladiator's Wristguards of Accuracy
 											100634,	-- Grievous Gladiator's Wristguards of Alacrity
@@ -2576,7 +2491,7 @@ root(ROOTS.Zones, {
 								i(138676, {	-- Ensemble: Grievous Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											100679,	-- Grievous Gladiator's Cuffs of Prowess
 											100630,	-- Grievous Gladiator's Cord of Cruelty
@@ -2612,7 +2527,7 @@ root(ROOTS.Zones, {
 								i(138672, {	-- Ensemble: Grievous Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											100657,	-- Grievous Gladiator's Armwraps of Accuracy
 											100590,	-- Grievous Gladiator's Waistband of Cruelty
@@ -2668,7 +2583,7 @@ root(ROOTS.Zones, {
 								i(138664, {	-- Ensemble: Grievous Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 										100711,	-- Grievous Gladiator's Bracers of Meditation
 										100641,	-- Grievous Gladiator's Bracers of Prowess
@@ -2730,7 +2645,7 @@ root(ROOTS.Zones, {
 								i(138678, {	-- Ensemble: Grievous Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											100610,	-- Grievous Gladiator's Cuffs of Meditation
 											100655,	-- Grievous Gladiator's Cord of Meditation
@@ -2786,7 +2701,7 @@ root(ROOTS.Zones, {
 								i(138674, {	-- Ensemble: Grievous Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											100700,	-- Grievous Gladiator's Armwraps of Alacrity
 											100654,	-- Grievous Gladiator's Waistband of Accuracy
@@ -2822,7 +2737,7 @@ root(ROOTS.Zones, {
 								i(138666, {	-- Ensemble: Grievous Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											100567,	-- Grievous Gladiator's Armbands of Meditation
 											100609,	-- Grievous Gladiator's Armbands of Prowess
@@ -2904,7 +2819,7 @@ root(ROOTS.Zones, {
 								i(143826, {	-- Ensemble: Grievous Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											100633,	-- Grievous Gladiator's Cuffs of Accuracy
 											100606,	-- Grievous Gladiator's Cord of Accuracy
@@ -2940,7 +2855,7 @@ root(ROOTS.Zones, {
 								i(138660, {	-- Ensemble: Grievous Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_GRIEVOUS, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 											100648,	-- Grievous Gladiator's Armplates of Proficiency
 											100670,	-- Grievous Gladiator's Girdle of Prowess
@@ -3152,7 +3067,8 @@ root(ROOTS.Zones, {
 								i(144243, {	-- Arsenal: Malevolent Gladiator's Weapons
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR },
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR },
+										{"merge"},
 										{"exclude", "itemID",
 											84911,	-- Malevolent Gladiator's Barrier
 											84787,	-- Malevolent Gladiator's Battle Staff
@@ -3176,7 +3092,7 @@ root(ROOTS.Zones, {
 											84962,	-- Malevolent Gladiator's Ripper
 											84967,	-- Malevolent Gladiator's Shanker
 											84910,	-- Malevolent Gladiator's Shield Wall
-											84900,	-- Malevolent Gladiator's Slicer
+											84968,	-- Malevolent Gladiator's Slicer
 											84961,	-- Malevolent Gladiator's Spellblade
 											84789,	-- Malevolent Gladiator's Staff
 											84894,	-- Malevolent Gladiator's Slasher
@@ -3207,7 +3123,7 @@ root(ROOTS.Zones, {
 								un(REMOVED_FROM_GAME, i(84967)),	-- Malevolent Gladiator's Shanker
 								un(REMOVED_FROM_GAME, i(84910)),	-- Malevolent Gladiator's Shield Wall
 								un(REMOVED_FROM_GAME, i(84894)),	-- Malevolent Gladiator's Slasher
-								un(REMOVED_FROM_GAME, i(84900)),	-- Malevolent Gladiator's Slicer
+								un(REMOVED_FROM_GAME, i(84968)),	-- Malevolent Gladiator's Slicer
 								un(REMOVED_FROM_GAME, i(84961)),	-- Malevolent Gladiator's Spellblade
 								un(REMOVED_FROM_GAME, i(84789)),	-- Malevolent Gladiator's Staff
 								-- S13 Tag
@@ -3294,7 +3210,7 @@ root(ROOTS.Zones, {
 								i(138704, {	-- Ensemble: Malevolent Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											84985,	-- Malevolent Gladiator's Armplates of Proficiency
 											84949,	-- Malevolent Gladiator's Girdle of Accuracy
@@ -3337,7 +3253,7 @@ root(ROOTS.Zones, {
 								i(138708, {	-- Ensemble: Malevolent Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											84976,	-- Malevolent Gladiator's Bindings of Meditation
 											84982,	-- Malevolent Gladiator's Bindings of Prowess
@@ -3436,7 +3352,7 @@ root(ROOTS.Zones, {
 								i(138707, {	-- Ensemble: Malevolent Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											84981,	-- Malevolent Gladiator's Wristguards of Accuracy
 											84980,	-- Malevolent Gladiator's Wristguards of Alacrity
@@ -3485,7 +3401,7 @@ root(ROOTS.Zones, {
 								i(138711, {	-- Ensemble: Malevolent Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											84978,	-- Malevolent Gladiator's Cuffs of Prowess
 											84954,	-- Malevolent Gladiator's Cord of Cruelty
@@ -3540,7 +3456,7 @@ root(ROOTS.Zones, {
 								i(138709, {	-- Ensemble: Malevolent Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											84973,	-- Malevolent Gladiator's Armwraps of Accuracy
 											84947,	-- Malevolent Gladiator's Waistband of Cruelty
@@ -3608,7 +3524,7 @@ root(ROOTS.Zones, {
 								i(138705, {	-- Ensemble: Malevolent Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 											84975,	-- Malevolent Gladiator's Bracers of Meditation
 											84974,	-- Malevolent Gladiator's Bracers of Prowess
@@ -3682,7 +3598,7 @@ root(ROOTS.Zones, {
 								i(138712, {	-- Ensemble: Malevolent Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											84979,	-- Malevolent Gladiator's Cuffs of Meditation
 											84956,	-- Malevolent Gladiator's Cord of Meditation
@@ -3757,7 +3673,7 @@ root(ROOTS.Zones, {
 								i(138710, {	-- Ensemble: Malevolent Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											84972,	-- Malevolent Gladiator's Armwraps of Alacrity
 											84948,	-- Malevolent Gladiator's Waistband of Accuracy
@@ -3800,7 +3716,7 @@ root(ROOTS.Zones, {
 								i(138706, {	-- Ensemble: Malevolent Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											84984,	-- Malevolent Gladiator's Armbands of Meditation
 											84983,	-- Malevolent Gladiator's Armbands of Prowess
@@ -3899,7 +3815,7 @@ root(ROOTS.Zones, {
 								i(138713, {	-- Ensemble: Malevolent Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											84977,	-- Malevolent Gladiator's Cuffs of Accuracy
 											84955,	-- Malevolent Gladiator's Cord of Accuracy
@@ -3942,7 +3858,7 @@ root(ROOTS.Zones, {
 								i(138703, {	-- Ensemble: Malevolent Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 										-- 84985,	-- Malevolent Gladiator's Armplates of Alacrity	-- 25/10.2021 Sha/DK Only
 											84950,	-- Malevolent Gladiator's Girdle of Prowess
@@ -4171,7 +4087,7 @@ root(ROOTS.Zones, {
 								i(138715, {	-- Ensemble: Dreadful Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, DEATHKNIGHT },
 										{"select", "itemID",
 											84438,	-- Dreadful Gladiator's Armplates of Proficiency
 											84434,	-- Dreadful Gladiator's Girdle of Accuracy
@@ -4199,7 +4115,7 @@ root(ROOTS.Zones, {
 								i(138719, {	-- Ensemble: Dreadful Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, DRUID },
 										{"select", "itemID",
 											84384,	-- Dreadful Gladiator's Bindings of Meditation
 											84392,	-- Dreadful Gladiator's Bindings of Prowess
@@ -4260,7 +4176,7 @@ root(ROOTS.Zones, {
 								i(138718, {	-- Ensemble: Dreadful Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, HUNTER },
 										{"select", "itemID",
 											84407,	-- Dreadful Gladiator's Wristguards of Accuracy
 											84406,	-- Dreadful Gladiator's Wristguards of Alacrity
@@ -4291,7 +4207,7 @@ root(ROOTS.Zones, {
 								i(138722, {	-- Ensemble: Dreadful Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, MAGE },
 										{"select", "itemID",
 											84360,	-- Dreadful Gladiator's Cuffs of Prowess
 											84353,	-- Dreadful Gladiator's Cord of Cruelty
@@ -4319,7 +4235,7 @@ root(ROOTS.Zones, {
 								i(138720, {	-- Ensemble: Dreadful Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, MONK },
 										{"select", "itemID",
 											84461,	-- Dreadful Gladiator's Armwraps of Accuracy
 											84456,	-- Dreadful Gladiator's Waistband of Cruelty
@@ -4362,7 +4278,7 @@ root(ROOTS.Zones, {
 								i(138716, {	-- Ensemble: Dreadful Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, PALADIN },
 										{"select", "itemID",
 											84428,	-- Dreadful Gladiator's Bracers of Meditation
 											84427,	-- Dreadful Gladiator's Bracers of Prowess
@@ -4408,7 +4324,7 @@ root(ROOTS.Zones, {
 								i(138723, {	-- Ensemble: Dreadful Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, PRIEST },
 										{"select", "itemID",
 											84361,	-- Dreadful Gladiator's Cuffs of Meditation
 											84355,	-- Dreadful Gladiator's Cord of Meditation
@@ -4451,7 +4367,7 @@ root(ROOTS.Zones, {
 								i(138721, {	-- Ensemble: Dreadful Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, ROGUE },
 										{"select", "itemID",
 											84460,	-- Dreadful Gladiator's Armwraps of Alacrity
 											84457,	-- Dreadful Gladiator's Waistband of Accuracy
@@ -4479,7 +4395,7 @@ root(ROOTS.Zones, {
 								i(138717, {	-- Ensemble: Dreadful Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, SHAMAN },
 										{"select", "itemID",
 											84471,	-- Dreadful Gladiator's Armbands of Meditation
 											84470,	-- Dreadful Gladiator's Armbands of Prowess
@@ -4540,7 +4456,7 @@ root(ROOTS.Zones, {
 								i(138724, {	-- Ensemble: Dreadful Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, WARLOCK },
 										{"select", "itemID",
 											84359,	-- Dreadful Gladiator's Cuffs of Accuracy
 											84354,	-- Dreadful Gladiator's Cord of Accuracy
@@ -4568,7 +4484,7 @@ root(ROOTS.Zones, {
 								i(138714, {	-- Ensemble: Dreadful Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_MALEVOLENT, PVP_HONOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_MALEVOLENT, PVP_HONOR, WARRIOR },
 										{"select", "itemID",
 											84439,	-- Dreadful Gladiator's Armplates of Alacrity
 											84435,	-- Dreadful Gladiator's Girdle of Prowess
@@ -4772,7 +4688,7 @@ root(ROOTS.Zones, {
 								i(144245, {	-- Arsenal: Tyrannical Gladiator's Weapons
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR },
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR },
 										{"select", "itemID",
 											100171,	-- Tyrannical Gladiator's Barrier
 											99974,	-- Tyrannical Gladiator's Battle Staff
@@ -4874,7 +4790,7 @@ root(ROOTS.Zones, {
 								i(138684, {	-- Ensemble: Tyrannical Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											94487,	-- Tyrannical Gladiator's Armplates of Alacrity
 											94353,	-- Tyrannical Gladiator's Girdle of Accuracy
@@ -4910,7 +4826,7 @@ root(ROOTS.Zones, {
 								i(138692, {	-- Ensemble: Tyrannical Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											94407,	-- Tyrannical Gladiator's Bindings of Meditation
 											94439,	-- Tyrannical Gladiator's Bindings of Prowess
@@ -4992,7 +4908,7 @@ root(ROOTS.Zones, {
 								i(138690, {	-- Ensemble: Tyrannical Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											94469,	-- Tyrannical Gladiator's Wristguards of Accuracy
 											94404,	-- Tyrannical Gladiator's Wristguards of Alacrity
@@ -5034,7 +4950,7 @@ root(ROOTS.Zones, {
 								i(138698, {	-- Ensemble: Tyrannical Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											94449,	-- Tyrannical Gladiator's Cuffs of Prowess
 											94400,	-- Tyrannical Gladiator's Cord of Cruelty
@@ -5070,7 +4986,7 @@ root(ROOTS.Zones, {
 								i(138694, {	-- Ensemble: Tyrannical Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											94427,	-- Tyrannical Gladiator's Armwraps of Accuracy
 											94360,	-- Tyrannical Gladiator's Waistband of Cruelty
@@ -5126,7 +5042,7 @@ root(ROOTS.Zones, {
 								i(138686, {	-- Ensemble: Tyrannical Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 											94481,	-- Tyrannical Gladiator's Bracers of Meditation
 											94411,	-- Tyrannical Gladiator's Bracers of Prowess
@@ -5188,7 +5104,7 @@ root(ROOTS.Zones, {
 								i(138700, {	-- Ensemble: Tyrannical Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											94380,	-- Tyrannical Gladiator's Cuffs of Meditation
 											94425,	-- Tyrannical Gladiator's Cord of Meditation
@@ -5244,7 +5160,7 @@ root(ROOTS.Zones, {
 								i(138696, {	-- Ensemble: Tyrannical Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											94470,	-- Tyrannical Gladiator's Armwraps of Alacrity
 											94424,	-- Tyrannical Gladiator's Waistband of Accuracy
@@ -5280,7 +5196,7 @@ root(ROOTS.Zones, {
 								i(138688, {	-- Ensemble: Tyrannical Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											94337,	-- Tyrannical Gladiator's Armbands of Meditation
 											94379,	-- Tyrannical Gladiator's Armbands of Prowess
@@ -5362,7 +5278,7 @@ root(ROOTS.Zones, {
 								i(138702, {	-- Ensemble: Tyrannical Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											94403,	-- Tyrannical Gladiator's Cuffs of Accuracy
 											94376,	-- Tyrannical Gladiator's Cord of Accuracy
@@ -5398,7 +5314,7 @@ root(ROOTS.Zones, {
 								i(138682, {	-- Ensemble: Tyrannical Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 											94418,	-- Tyrannical Gladiator's Armplates of Proficiency
 											94440,	-- Tyrannical Gladiator's Girdle of Prowess
@@ -5600,12 +5516,14 @@ root(ROOTS.Zones, {
 						["coord"] = { 35.4, 83.2, KUN_LAI_SUMMIT },
 						["races"] = HORDE_ONLY,
 						["g"] = {
-							un(ELITE_PVP_REQUIREMENT, i(120286)),	-- Enchanter's Illusion - Glorious Tyranny
+							elitepvp(i(120286, {	-- Enchanter's Illusion - Glorious Tyranny (ILLUSION!)
+								["timeline"] = { ADDED_6_0_2 },
+							})),
 							n(WEAPONS, {
 								i(144250, {	-- Arsenal: Prideful Gladiator's Weapons (A)
 									["cost"] = { { "i", 137642, 80 } },	-- 80x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_weapons_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
+										{"sub", "pvp_weapons_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_ALLIANCE, PVP_GLADIATOR },
 									},
 								}),
 								i(103364, {	-- Prideful Gladiator's Barrier
@@ -5691,7 +5609,7 @@ root(ROOTS.Zones, {
 								i(138640, {	-- Ensemble: Prideful Gladiator's Dreadplate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DEATHKNIGHT },
 										{"select", "itemID",
 											103460,	-- Prideful Gladiator's Armplates of Alacrity
 											103455,	-- Prideful Gladiator's Girdle of Accuracy
@@ -5719,7 +5637,7 @@ root(ROOTS.Zones, {
 								i(138648, {	-- Ensemble: Prideful Gladiator's Dragonhide Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_TYRANNICAL, FACTION_HEADER_HORDE, PVP_GLADIATOR, DRUID },
 										{"select", "itemID",
 											103388,	-- Prideful Gladiator's Bindings of Meditation
 											103397,	-- Prideful Gladiator's Bindings of Prowess
@@ -5780,7 +5698,7 @@ root(ROOTS.Zones, {
 								i(138646, {	-- Ensemble: Prideful Gladiator's Chain Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, HUNTER },
 										{"select", "itemID",
 											103415,	-- Prideful Gladiator's Wristguards of Accuracy
 											103414,	-- Prideful Gladiator's Wristguards of Alacrity
@@ -5811,7 +5729,7 @@ root(ROOTS.Zones, {
 								i(138654, {	-- Ensemble: Prideful Gladiator's Silk Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MAGE },
 										{"select", "itemID",
 											103358,	-- Prideful Gladiator's Cuffs of Prowess
 											103351,	-- Prideful Gladiator's Cord of Cruelty
@@ -5839,7 +5757,7 @@ root(ROOTS.Zones, {
 								i(138650, {	-- Ensemble: Prideful Gladiator's Ironskin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, MONK },
 										{"select", "itemID",
 											103428,	-- Prideful Gladiator's Armwraps of Accuracy
 											103426,	-- Prideful Gladiator's Waistband of Cruelty
@@ -5882,7 +5800,7 @@ root(ROOTS.Zones, {
 								i(138642, {	-- Ensemble: Prideful Gladiator's Scaled Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PALADIN },
 										{"select", "itemID",
 											103449,	-- Prideful Gladiator's Bracers of Meditation
 											103448,	-- Prideful Gladiator's Bracers of Prowess
@@ -5928,7 +5846,7 @@ root(ROOTS.Zones, {
 								i(138656, {	-- Ensemble: Prideful Gladiator's Satin Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, PRIEST },
 										{"select", "itemID",
 											103359,	-- Prideful Gladiator's Cuffs of Meditation
 											103353,	-- Prideful Gladiator's Cord of Meditation
@@ -5972,7 +5890,7 @@ root(ROOTS.Zones, {
 								i(138652, {	-- Ensemble: Prideful Gladiator's Leather Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, ROGUE },
 										{"select", "itemID",
 											103428,	-- Prideful Gladiator's Armwraps of Alacrity
 											103472,	-- Prideful Gladiator's Waistband of Accuracy
@@ -6000,7 +5918,7 @@ root(ROOTS.Zones, {
 								i(138644, {	-- Ensemble: Prideful Gladiator's Ringmail Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, SHAMAN },
 										{"select", "itemID",
 											103484,	-- Prideful Gladiator's Armbands of Meditation
 											103483,	-- Prideful Gladiator's Armbands of Prowess
@@ -6061,7 +5979,7 @@ root(ROOTS.Zones, {
 								i(138658, {	-- Ensemble: Prideful Gladiator's Felweave Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARLOCK },
 										{"select", "itemID",
 											103357,	-- Prideful Gladiator's Cuffs of Accuracy
 											103352,	-- Prideful Gladiator's Cord of Accuracy
@@ -6089,7 +6007,7 @@ root(ROOTS.Zones, {
 								i(138638, {	-- Ensemble: Prideful Gladiator's Plate Armor
 									["cost"] = { { "i", 137642, 12 } },	-- 12x Mark of Honor
 									["sym"] = {
-										{"sub", "pvp_set_ensemble", MOP_TIER, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
+										{"sub", "pvp_set_ensemble", EXPANSION.MOP, SEASON_PRIDEFUL, FACTION_HEADER_HORDE, PVP_GLADIATOR, WARRIOR },
 										{"select", "itemID",
 											103459,	-- Prideful Gladiator's Armplates of Proficiency
 											103456,	-- Prideful Gladiator's Girdle of Prowess
@@ -6421,7 +6339,7 @@ root(ROOTS.Zones, {
 });
 
 root(ROOTS.HiddenQuestTriggers,{
-	tier(MOP_TIER, {
+	expansion(EXPANSION.MOP, {
 		q(30453),	-- Binan Village Intro Event Tracking Event - triggeres when flying into Binan village through the Ancient Passage on mount
 		q(31310),	-- Interrogation Tracking - triggers during "Revelations" (questID 30946)
 		q(30854),	-- Lha-Po Tracking Quest - triggers after turning in "One Traveler's Misfortune" (questID 30683)

@@ -1325,26 +1325,29 @@ local EPIC_GEM_COSTS = { { "c", 42, 15 } };	-- 15x Badge of Justice
 local EPIC_GEM_COSTS = { { "i", 29434, 15 } };	-- 15x Badge of Justice
 -- #endif
 root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
-	m(ISLE_OF_QUELDANAS, bubbleDownSelf({ ["timeline"] = { "added 2.4.0" } }, {
+	m(ISLE_OF_QUELDANAS, bubbleDownSelf({ ["timeline"] = { ADDED_2_4_0 } }, {
 		["lore"] = "The Isle of Quel'Danas is an island located north of Eversong Woods. It is most commonly reached by the direct portal from Shattrath City. It is the major daily quest hub for the Shattered Sun Offensive, a group of Aldor and Scryers working together to reclaim the island from Kael'thas, who reactivated the Sunwell.",
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\achievement_zone_isleofqueldanas",
-		-- #endif
+		["icon"] = 236806,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
-				explorationAch(868, {	-- Explore Isle of Quel'Danas
-					-- #if BEFORE WRATH
-					["description"] = "Explore Isle of Quel'Danas, revealing the covered areas of the world map.",
-					-- #endif
-				}),
-				achWithRep(897, 1077, {	-- You're So Offensive
-					-- #if BEFORE WRATH
-					["description"] = "Raise your reputation with the Shattered Sun Offensive to Exalted.",
-					-- #endif
-				}),
+				explorationAch(868),	-- Explore Isle of Quel'Danas
+				achWithRep(897, FACTION_SHATTERED_SUN_OFFENSIVE),	-- You're So Offensive
+			}),
+			explorationHeader({
+				exploration(4089),	-- Dawnstar Village
+				exploration(4091),	-- Greengill Coast
+				exploration(4095),	-- Magister's Terrace
+				-- #if AFTER CATA
+				exploration(4083),	-- Silvermoon's Pride
+				exploration(4088),	-- Sun's Reach Armory
+				exploration(4087),	-- Sun's Reach Harbor
+				exploration(4086),	-- Sun's Reach Sanctum
+				-- #endif
+				exploration(4094),	-- Sunwell Plateau
+				exploration(4092),	-- The Dead Scar
 			}),
 			n(FACTIONS, {
-				faction(1077, {	-- Shattered Sun Offensive
+				faction(FACTION_SHATTERED_SUN_OFFENSIVE, {	-- Shattered Sun Offensive
 					["maps"] = { MAGISTERS_TERRACE },
 				}),
 			}),
@@ -1361,8 +1364,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, q(11545, {	-- A Charitable Donation (Removed completion of Phase 4)
 					["qg"] = 25112,	-- Anchorite Ayuri
 					["coord"] = { 49.1, 37.6, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					-- #if BEFORE WRATH
 					["OnUpdate"] = [[function(t) t.u = _.Settings:GetUnobtainableFilter(]] .. TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR_B .. [[) and ]] .. REMOVED_FROM_GAME .. [[ or ]] .. TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR .. [[; end]],
 					-- #endif
@@ -1373,7 +1376,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				q(11554, {	-- A Friend in the Frontlines
 					["qg"] = 25032,	-- Eldara Dawnrunner
 					["coord"] = { 47.3, 30.7, ISLE_OF_QUELDANAS },
-					["minReputation"] = { 1077, FRIENDLY },	-- Shattered Sun Offensive, Friendly.
+					["minReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, FRIENDLY },	-- Shattered Sun Offensive, Friendly.
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
 						i(34583),	-- Aldor Supplies Package (Friendly)
@@ -1383,7 +1386,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, q(11549, {	-- A Magnanimous Benefactor
 					["qg"] = 25163,	-- Anchorite Kairthos
 					["coord"] = { 51.2, 33.1, ISLE_OF_QUELDANAS },
-					["minReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["minReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["cost"] = { { "g", 10000000 } },	-- 1000g
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1393,7 +1396,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_TWO, q(11523, {	-- Arm the Wards!
 					["qg"] = 24967,	-- Captain Theris Dawnhearth
 					["coord"] = { 47.4, 30.4, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1414,7 +1417,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE_B, q(11544, {	-- Ata'mal Armaments
 					["qg"] = 25046,	-- Smith Hauthaa
 					["coord"] = { 50.5, 40.7, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["maps"] = { SHADOWMOON_VALLEY },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
@@ -1437,7 +1440,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, q(11540, {	-- Crush the Dawnblade
 					["qg"] = 25069,	-- Magister Ilastar
 					["coord"] = { 49.3, 40.3, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1455,7 +1458,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, q(11541, {	-- Disrupt the Greengill Coast
 					["qg"] = 25088,	-- Captain Valindria
 					["coord"] = { 53.7, 34.2, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1469,8 +1472,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_ONE, q(11532, {	-- Distraction at the Dead Scar (Removed completion of Phase 2)
 					["qg"] = 25057,	-- Battlemage Arynna
 					["coord"] = { 47.5, 35.0, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
@@ -1494,7 +1497,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE_B, q(11536, {	-- Don't Stop Now....
 					["qg"] = 25046,	-- Smith Hauthaa
 					["coord"] = { 50.5, 40.7, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1511,7 +1514,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_ONE, q(11550, {	-- Enter, the Deceiver...
 					["qg"] = 25167,	-- General Tiras'alan
 					["coord"] = { 54.3, 44.3, SHATTRATH_CITY },
-					["timeline"] = { "removed 3.0.1" },
+					["timeline"] = { REMOVED_3_0_2 },
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
 					["OnUpdate"] = [[function(t) t.u = _.Settings:GetUnobtainableFilter(]] .. TBC_PHASE_FIVE_OFFENSIVE_PHASE_TWO .. [[) and ]] .. REMOVED_FROM_GAME .. [[ or ]] .. TBC_PHASE_FIVE_OFFENSIVE_PHASE_ONE .. [[; end]],
@@ -1520,8 +1523,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_ONE, q(11524, {	-- Erratic Behavior (Removed completion of Phase 1)
 					["qg"] = 24965,	-- Vindicator Xayann
 					["coord"] = { 47.1, 30.6, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
@@ -1537,7 +1540,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				q(11557, {	-- Exalted Among All Combatants
 					["qg"] = 25032,	-- Eldara Dawnrunner
 					["coord"] = { 47.3, 30.7, ISLE_OF_QUELDANAS },
-					["minReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["minReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
 						i(34595),	-- Aldor Supplies Package (Exalted)
@@ -1547,7 +1550,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_TWO, q(11525, {	-- Further Conversions
 					["qg"] = 24965,	-- Vindicator Xayann
 					["coord"] = { 47.1, 30.6, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1560,7 +1563,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				q(11555, {	-- Honored by Your Allies
 					["qg"] = 25032,	-- Eldara Dawnrunner
 					["coord"] = { 47.3, 30.7, ISLE_OF_QUELDANAS },
-					["minReputation"] = { 1077, HONORED },	-- Shattered Sun Offensive, Honored.
+					["minReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, HONORED },	-- Shattered Sun Offensive, Honored.
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
 						i(34587),	-- Aldor Supplies Package (Honored)
@@ -1570,8 +1573,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE, q(11542, {	-- Intercept the Reinforcements (Removed completion of Phase 3)
 					["qg"] = 25108,	-- Vindicator Kaalan
 					["coord"] = { 50.5, 38.9, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
@@ -1595,7 +1598,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, q(11543, {	-- Keeping the Enemy at Bay
 					["qg"] = 25108,	-- Vindicator Kaalan
 					["coord"] = { 50.5, 38.9, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1616,7 +1619,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_TWO_B, q(11547, {	-- Know Your Ley Lines
 					["qg"] = 25133,	-- Astromancer Darnarian
 					["coord"] = { 47.4, 35.3, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1638,8 +1641,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE, q(11535, {	-- Making Ready
 					["qg"] = 25046,	-- Smith Hauthaa
 					["coord"] = { 50.5, 40.7, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
@@ -1659,7 +1662,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR_C, q(11546, {	-- Open for Business
 					["qg"] = 24975,	-- Mar'nah
 					["coord"] = { 51.4, 32.4, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1675,8 +1678,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, q(11520, {	-- Discovering Your Roots (Removed completion of Phase 4)
 					["qg"] = 24975,	-- Mar'nah
 					["coord"] = { 51.4, 32.4, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["maps"] = { TEROKKAR_FOREST },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
@@ -1697,7 +1700,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR_C, q(11521, {	-- Rediscovering Your Roots
 					["qg"] = 24975,	-- Mar'nah
 					["coord"] = { 51.4, 32.4, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["maps"] = { TEROKKAR_FOREST },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
@@ -1731,7 +1734,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				q(11556, {	-- Revered in the Field of Battle
 					["qg"] = 25032,	-- Eldara Dawnrunner
 					["coord"] = { 47.3, 30.7, ISLE_OF_QUELDANAS },
-					["minReputation"] = { 1077, REVERED },	-- Shattered Sun Offensive, Revered.
+					["minReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, REVERED },	-- Shattered Sun Offensive, Revered.
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
 						i(34592),	-- Aldor Supplies Package (Revered)
@@ -1741,8 +1744,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE, q(11539, {	-- Taking the Harbor (Removed completion of Phase 3)
 					["qg"] = 25069,	-- Magister Ilastar
 					["coord"] = { 49.3, 40.3, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
@@ -1763,7 +1766,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE, q(11533, {	-- The Air Strikes Must Continue
 					["qg"] = 25057,	-- Battlemage Arynna
 					["coord"] = { 47.5, 35.0, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1784,8 +1787,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_TWO, q(11538, {	-- The Battle for the Sun's Reach Armory (Removed completion of Phase 2)
 					["qg"] = 25061,	-- Harbinger Inuuro
 					["coord"] = { 47.6, 35.0, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
@@ -1809,7 +1812,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE, q(11537, {	-- The Battle Must Go On
 					["qg"] = 25061,	-- Harbinger Inuuro
 					["coord"] = { 47.6, 35.0, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					["groups"] = {
@@ -1830,8 +1833,8 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_ONE, q(11496, {	-- The Sanctum Wards (Removed completion of Phase 1)
 					["qg"] = 24967,	-- Captain Theris Dawnhearth
 					["coord"] = { 47.4, 30.4, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
-					["timeline"] = { "removed 3.0.1" },
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["timeline"] = { REMOVED_3_0_2 },
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
 					-- #if BEFORE WRATH
@@ -1863,7 +1866,7 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR_B, q(11548, {	-- Your Continued Support
 					["qg"] = 25112,	-- Anchorite Ayuri
 					["coord"] = { 49.1, 37.6, ISLE_OF_QUELDANAS },
-					["maxReputation"] = { 1077, EXALTED },	-- Shattered Sun Offensive, Exalted.
+					["maxReputation"] = { FACTION_SHATTERED_SUN_OFFENSIVE, EXALTED },	-- Shattered Sun Offensive, Exalted.
 					["cost"] = { { "g", 100000 } },	-- 10g
 					["isDaily"] = true,
 					["lvl"] = lvlsquish(70, 70, 25),
@@ -1872,50 +1875,57 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 			n(VENDORS, {
 				n(25032, {	-- Eldara Dawnrunner <Shattered Sun Quartermaster>
 					["coord"] = { 47.2, 30.7, ISLE_OF_QUELDANAS },
-					["groups"] = {
-						i(34667),	-- Archmage's Guile
-						i(34665),	-- Bombardier's Blade
-						i(34676),	-- Dawnforged Defender
-						i(35505),	-- Design: Ember Skyfire Diamond
-						i(35502),	-- Design: Eternal Earthstorm Diamond
-						i(35697),	-- Design: Figurine - Crimson Serpent
-						i(35695),	-- Design: Figurine - Empyrean Tortoise
-						i(35696),	-- Design: Figurine - Khorium Boar
-						i(35699),	-- Design: Figurine - Seaspray Albatross
-						i(35698),	-- Design: Figurine - Shadowsong Panther
-						i(35769),	-- Design: Forceful Seaspray Emerald
-						-- #if BEFORE CATA
-						i(35268),	-- Design: Luminous Pyrestone [TBC] / Design: Reckless Pyrestone [CATA+]
-						-- #endif
-						i(35768),	-- Design: Quick Lionseye
-						i(35767),	-- Design: Reckless Pyrestone
-						-- #if AFTER CATA
-						i(35268),	-- Design: Reckless Pyrestone [CATA+] / Design: Luminous Pyrestone [TBC]
-						-- #endif
-						i(35708),	-- Design: Regal Talasite
-						i(35766),	-- Design: Steady Seaspray Emerald
-						i(35500),	-- Formula: Enchant Chest - Dodge / TBC: Formula: Enchant Chest - Defense (RECIPE!)
-						i(34872),	-- Formula: Void Shatter (RECIPE!)
-						i(29193, {	-- Glyph of the Gladiator
-							["timeline"] = { "removed 5.0.4" },
-						}),
-						i(34672),	-- Inuuro's Blade
-						i(34671),	-- K'iru's Presage
-						i(34673),	-- Legionfoe
-						i(35755),	-- Recipe: Assassin's Alchemist Stone (RECIPE!)
-						i(35752),	-- Recipe: Guardian's Alchemist Stone (RECIPE!)
-						i(35754),	-- Recipe: Redeemer's Alchemist Stone (RECIPE!)
-						i(35753),	-- Recipe: Sorcerer's Alchemist Stone (RECIPE!)
-						i(34670),	-- Seeker's Gavel
-						i(34678),	-- Shattered Sun Pendant of Acumen
-						i(34679),	-- Shattered Sun Pendant of Might
-						i(34680),	-- Shattered Sun Pendant of Resolve
-						i(34677),	-- Shattered Sun Pendant of Restoration
-						i(34675),	-- Sunward Crest
-						i(35221),	-- Tabard of the Shattered Sun
-						i(34666),	-- The Sunbreaker
-						i(34674),	-- Truestrike Crossbow
-					},
+					["groups"] = bubbleDownClassicRep(FACTION_SHATTERED_SUN_OFFENSIVE, {
+						{		-- Neutral
+						}, {	-- Friendly
+							i(35780),	-- Naaru Ration
+						}, {	-- Honored
+							i(35500),	-- Formula: Enchant Chest - Dodge / TBC: Formula: Enchant Chest - Defense (RECIPE!)
+							i(34872),	-- Formula: Void Shatter (RECIPE!)
+						}, {	-- Revered
+							i(34667),	-- Archmage's Guile
+							i(34665),	-- Bombardier's Blade
+							i(35505),	-- Design: Ember Skyfire Diamond (RECIPE!)
+							i(35502),	-- Design: Eternal Earthstorm Diamond (RECIPE!)
+							i(35697),	-- Design: Figurine - Crimson Serpent (RECIPE!)
+							i(35695),	-- Design: Figurine - Empyrean Tortoise (RECIPE!)
+							i(35696),	-- Design: Figurine - Khorium Boar (RECIPE!)
+							i(35699),	-- Design: Figurine - Seaspray Albatross (RECIPE!)
+							i(35698),	-- Design: Figurine - Shadowsong Panther (RECIPE!)
+							i(35769),	-- Design: Forceful Seaspray Emerald (RECIPE!)
+							-- #if BEFORE CATA
+							i(35268),	-- Design: Luminous Pyrestone [TBC] / Design: Reckless Pyrestone [CATA+]
+							-- #endif
+							i(35768),	-- Design: Quick Lionseye (RECIPE!)
+							i(35767),	-- Design: Reckless Pyrestone (RECIPE!)
+							-- #if AFTER CATA
+							i(35268),	-- Design: Reckless Pyrestone [CATA+] / Design: Luminous Pyrestone [TBC]
+							-- #endif
+							i(35708),	-- Design: Regal Talasite (RECIPE!)
+							i(35766),	-- Design: Steady Seaspray Emerald (RECIPE!)
+							i(29193, {	-- Glyph of the Gladiator
+								["timeline"] = { REMOVED_5_0_4 },
+							}),
+							i(34672),	-- Inuuro's Blade
+							i(34671),	-- K'iru's Presage
+							i(34673),	-- Legionfoe
+							i(34670),	-- Seeker's Gavel
+							i(34666),	-- The Sunbreaker
+							i(34674),	-- Truestrike Crossbow
+						}, {	-- Exalted
+							i(34676),	-- Dawnforged Defender
+							i(35755),	-- Recipe: Assassin's Alchemist Stone (RECIPE!)
+							i(35752),	-- Recipe: Guardian's Alchemist Stone (RECIPE!)
+							i(35754),	-- Recipe: Redeemer's Alchemist Stone (RECIPE!)
+							i(35753),	-- Recipe: Sorcerer's Alchemist Stone (RECIPE!)
+							i(34678),	-- Shattered Sun Pendant of Acumen
+							i(34679),	-- Shattered Sun Pendant of Might
+							i(34680),	-- Shattered Sun Pendant of Resolve
+							i(34677),	-- Shattered Sun Pendant of Restoration
+							i(34675),	-- Sunward Crest
+							i(35221),	-- Tabard of the Shattered Sun
+						},
+					}),
 				}),
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE, n(26090, {	-- Karynna <Exotic Gear Purveyor>
 					["coord"] = { 49.6, 40.5, ISLE_OF_QUELDANAS },
@@ -1929,130 +1939,127 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, applyclassicphase(TBC_PHASE_FIVE, {
 					["coord"] = { 50.2, 40.1, ISLE_OF_QUELDANAS },
 					["groups"] = OLUS_GROUPS,
 				})),
-				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, n(25950, {	-- Shaani
+				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_FOUR, n(25950, {	-- Shaani <Jewelcrafting Supplies>
 					["coord"] = { 51.5, 32.5, ISLE_OF_QUELDANAS },
-					["groups"] = {
-						-- #if BEFORE CATA
-						i(35238),	-- Design: Balanced Shadowsong Amethyst [TBC] / Design: Shifting Shadowsong Amethyst [CATA+]
-						-- #endif
-						i(35244),	-- Design: Bold Crimson Spinel
-						-- #if BEFORE CATA
-						i(35245),	-- Design: Bright Crimson Spinel [TBC] / Design: Delicate Crimson Spinel [CATA+]
-						-- #endif
-						i(35255),	-- Design: Brilliant Lionseye [TBC] / Design: Brilliant Crimson Spinel [CATA+]
-						-- #if AFTER CATA
-						i(35248),	-- Design: Brilliant Crimson Spinel [CATA+] / Design: Runed Crimson Spinel [TBC]
-						i(35250),	-- Design: Brilliant Crimson Spinel [CATA+] / Design: Teardrop Crimson Spinel [TBC]
-						-- #endif
-						-- #if BEFORE CATA
-						i(35251),	-- Design: Dazzling Seaspray Emerald [TBC] / Design: Purified Shadowsong Amethyst [CATA+]
-						-- #endif
-						-- #if AFTER CATA
-						i(35271),	-- Design: Deadly Pyrestone [CATA+] / Design: Wicked Pyrestone [TBC]
-						-- #endif
-						i(35246),	-- Design: Delicate Crimson Spinel
-						-- #if AFTER CATA
-						i(35245),	-- Design: Delicate Crimson Spinel [CATA+] / Design: Bright Crimson Spinel [TBC]
-						-- #endif
-						-- #if BEFORE CATA
-						i(35252),	-- Design: Enduring Seaspray Emerald [TBC] / Design: Regal Seaspray Emerald [CATA+]
-						-- #endif
-						i(35247),	-- Design: Flashing Crimson Spinel
-						i(35769),	-- Design: Forceful Seaspray Emerald
-						i(35325),	-- Design: Forceful Talasite
-						-- #if BEFORE CATA
-						i(35256),	-- Design: Gleaming Lionseye [TBC] / Design: Smooth Lionseye [CATA+]
-						i(35266),	-- Design: Glinting Pyrestone [TBC] / Design: Glinting Shadowsong Amethyst [CATA+]
-						-- #endif
-						-- #if AFTER CATA
-						i(35266),	-- Design: Glinting Shadowsong Amethyst [CATA+] / Design: Glinting Pyrestone [TBC]
-						i(35240),	-- Design: Glinting Shadowsong Amethyst [CATA+] / Design: Infused Shadowsong Amethyst [TBC]
-						-- #endif
-						-- #if BEFORE CATA
-						i(35239),	-- Design: Glowing Shadowsong Amethyst [TBC] / Design: Timeless Shadowsong Amethyst [CATA+]
-						i(35257),	-- Design: Great Lionseye [TBC] / Design: Rigid Empyrean Sapphire [CATA+]
-						i(35240),	-- Design: Infused Shadowsong Amethyst [TBC] / Design: Glinting Shadowsong Amethyst [CATA+]
-						-- #endif
-						i(35267),	-- Design: Inscribed Pyrestone
-						i(35253),	-- Design: Jagged Seaspray Emerald
-						-- #if BEFORE CATA
-						i(35268),	-- Design: Luminous Pyrestone [TBC] / Design: Reckless Pyrestone [CATA+]
-						i(35262),	-- Design: Lustrous Empyrean Sapphire [TBC] / Design: Sparkling Empyrean Sapphire [CATA+]
-						-- #endif
-						i(35258),	-- Design: Mystic Lionseye
-						i(35269),	-- Design: Potent Pyrestone
-						-- #if AFTER CATA
-						i(35251),	-- Design: Purified Shadowsong Amethyst [CATA+] / Design: Dazzling Seaspray Emerald [TBC]
-						i(35241),	-- Design: Purified Shadowsong Amethyst [CATA+] / Design: Royal Shadowsong Amethyst [TBC]
-						-- #endif
-						i(37504),	-- Design: Purified Shadowsong Amethyst
-						i(35322),	-- Design: Quick Dawnstone
-						i(35768),	-- Design: Quick Lionseye
-						i(35254),	-- Design: Radiant Seaspray Emerald
-						i(35323),	-- Design: Reckless Noble Topaz
-						i(35767),	-- Design: Reckless Pyrestone
-						-- #if AFTER CATA
-						i(35268),	-- Design: Reckless Pyrestone [CATA+] / Design: Luminous Pyrestone [TBC]
-						i(35252),	-- Design: Regal Seaspray Emerald [CATA+] / Design: Enduring Seaspray Emerald [TBC]
-						-- #endif
-						i(35259),	-- Design: Rigid Lionseye [TBC] / Design: Rigid Empyrean Sapphire [CATA+]
-						-- #if AFTER CATA
-						i(35257),	-- Design: Rigid Empyrean Sapphire [CATA+] / Design: Great Lionseye [TBC]
-						-- #endif
-						-- #if BEFORE CATA
-						i(35241),	-- Design: Royal Shadowsong Amethyst [TBC] / Design: Purified Shadowsong Amethyst [CATA+]
-						i(35248),	-- Design: Runed Crimson Spinel [TBC] / Design: Brilliant Crimson Spinel [CATA+]
-						-- #endif
-						i(35242),	-- Design: Shifting Shadowsong Amethyst
-						-- #if AFTER CATA
-						i(35238),	-- Design: Shifting Shadowsong Amethyst [CATA+] / Design: Balanced Shadowsong Amethyst [TBC]
-						-- #endif
-						i(35260),	-- Design: Smooth Lionseye
-						-- #if AFTER CATA
-						i(35256),	-- Design: Smooth Lionseye [CATA+] / Design: Gleaming Lionseye [TBC]
-						-- #endif
-						i(35263),	-- Design: Solid Empyrean Sapphire
-						i(35243),	-- Design: Sovereign Shadowsong Amethyst
-						i(35264),	-- Design: Sparkling Empyrean Sapphire
-						-- #if AFTER CATA
-						i(35262),	-- Design: Sparkling Empyrean Sapphire [CATA+] / Design: Lustrous Empyrean Sapphire [TBC]
-						-- #endif
-						i(35766),	-- Design: Steady Seaspray Emerald
-						i(35265),	-- Design: Stormy Empyrean Sapphire
-						i(35249),	-- Design: Subtle Crimson Spinel [TBC] / Design: Subtle Lionseye [CATA+]
-						-- #if BEFORE CATA
-						i(35250),	-- Design: Teardrop Crimson Spinel [TBC] / Design: Brilliant Crimson Spinel [CATA+]
-						-- #endif
-						i(35261),	-- Design: Thick Lionseye [TBC] / Design: Subtle Lionseye [CATA+] (both)
-						-- #if AFTER CATA
-						i(35239),	-- Design: Timeless Shadowsong Amethyst [CATA+] / Design: Glowing Shadowsong Amethyst [TBC]
-						-- #endif
-						i(35270),	-- Design: Veiled Pyrestone [TBC] / Design: Veiled Shadowsong Amethyst [CATA+]
-						-- #if BEFORE CATA
-						i(35271),	-- Design: Wicked Pyrestone [TBC] / Design: Deadly Pyrestone [CATA+]
-						-- #endif
-
-						-- #if BEFORE 6.0.1
-						i(32227, {	-- Crimson Spinel
-							["cost"] = EPIC_GEM_COSTS,
-						}),
-						i(32228, {	-- Empyrean Sapphire
-							["cost"] = EPIC_GEM_COSTS,
-						}),
-						i(32229, {	-- Lionseye
-							["cost"] = EPIC_GEM_COSTS,
-						}),
-						i(32231, {	-- Pyrestone
-							["cost"] = EPIC_GEM_COSTS,
-						}),
-						i(32249, {	-- Seaspray Emerald
-							["cost"] = EPIC_GEM_COSTS,
-						}),
-						i(32230, {	-- Shadowsong Amethyst
-							["cost"] = EPIC_GEM_COSTS,
-						}),
-						-- #endif
-					},
+					["groups"] = bubbleDownClassicRep(FACTION_SHATTERED_SUN_OFFENSIVE, {
+						{		-- Neutral
+							-- #if BEFORE 6.0.1
+							i(32227, {	-- Crimson Spinel
+								["cost"] = EPIC_GEM_COSTS,
+							}),
+							i(32228, {	-- Empyrean Sapphire
+								["cost"] = EPIC_GEM_COSTS,
+							}),
+							i(32229, {	-- Lionseye
+								["cost"] = EPIC_GEM_COSTS,
+							}),
+							i(32231, {	-- Pyrestone
+								["cost"] = EPIC_GEM_COSTS,
+							}),
+							i(32249, {	-- Seaspray Emerald
+								["cost"] = EPIC_GEM_COSTS,
+							}),
+							i(32230, {	-- Shadowsong Amethyst
+								["cost"] = EPIC_GEM_COSTS,
+							}),
+							-- #endif
+						}, {	-- Friendly
+							i(35244),	-- Design: Bold Crimson Spinel (RECIPE!)
+							-- #if BEFORE CATA
+							i(35245),	-- Design: Bright Crimson Spinel [TBC] / Design: Delicate Crimson Spinel [CATA+] (RECIPE!)
+							i(35255),	-- Design: Brilliant Lionseye [TBC] / Design: Brilliant Crimson Spinel [CATA+] (RECIPE!)
+							-- #else
+							i(35248),	-- Design: Brilliant Crimson Spinel [CATA+] / Design: Runed Crimson Spinel [TBC] (RECIPE!)
+							i(35250),	-- Design: Brilliant Crimson Spinel [CATA+] / Design: Teardrop Crimson Spinel [TBC] (RECIPE!)
+							i(35245),	-- Design: Delicate Crimson Spinel [CATA+] / Design: Bright Crimson Spinel [TBC] (RECIPE!)
+							-- #endif
+							i(35246),	-- Design: Delicate Crimson Spinel (RECIPE!)
+							-- #if BEFORE CATA
+							i(35256),	-- Design: Gleaming Lionseye [TBC] / Design: Smooth Lionseye [CATA+] (RECIPE!)
+							i(35262),	-- Design: Lustrous Empyrean Sapphire [TBC] / Design: Sparkling Empyrean Sapphire [CATA+] (RECIPE!)
+							-- #else
+							i(35256),	-- Design: Smooth Lionseye [CATA+] / Design: Gleaming Lionseye [TBC] (RECIPE!)
+							-- #endif
+							i(35260),	-- Design: Smooth Lionseye (RECIPE!)
+							i(35263),	-- Design: Solid Empyrean Sapphire (RECIPE!)
+							i(35264),	-- Design: Sparkling Empyrean Sapphire (RECIPE!)
+							-- #if BEFORE CATA
+							i(35249),	-- Design: Subtle Crimson Spinel [TBC] / Design: Subtle Lionseye [CATA+] (RECIPE!)
+							i(35250),	-- Design: Teardrop Crimson Spinel [TBC] / Design: Brilliant Crimson Spinel [CATA+] (RECIPE!)
+							i(35261),	-- Design: Thick Lionseye [TBC] / Design: Subtle Lionseye [CATA+] (both) (RECIPE!)
+							-- #endif
+						}, {	-- Honored
+							-- #if BEFORE CATA
+							i(35238),	-- Design: Balanced Shadowsong Amethyst [TBC] / Design: Shifting Shadowsong Amethyst [CATA+] (RECIPE!)
+							i(35251),	-- Design: Dazzling Seaspray Emerald [TBC] / Design: Purified Shadowsong Amethyst [CATA+] (RECIPE!)
+							i(35266),	-- Design: Glinting Pyrestone [TBC] / Design: Glinting Shadowsong Amethyst [CATA+] (RECIPE!)
+							i(35239),	-- Design: Glowing Shadowsong Amethyst [TBC] / Design: Timeless Shadowsong Amethyst [CATA+] (RECIPE!)
+							i(35240),	-- Design: Infused Shadowsong Amethyst [TBC] / Design: Glinting Shadowsong Amethyst [CATA+] (RECIPE!)
+							-- #else
+							i(35266),	-- Design: Glinting Shadowsong Amethyst [CATA+] / Design: Glinting Pyrestone [TBC] (RECIPE!)
+							i(35240),	-- Design: Glinting Shadowsong Amethyst [CATA+] / Design: Infused Shadowsong Amethyst [TBC] (RECIPE!)
+							-- #endif
+							i(35253),	-- Design: Jagged Seaspray Emerald (RECIPE!)
+							-- #if BEFORE CATA
+							i(35268),	-- Design: Luminous Pyrestone [TBC] / Design: Reckless Pyrestone [CATA+] (RECIPE!)
+							-- #endif
+							i(35269),	-- Design: Potent Pyrestone (RECIPE!)
+							-- #if AFTER CATA
+							i(35251),	-- Design: Purified Shadowsong Amethyst [CATA+] / Design: Dazzling Seaspray Emerald [TBC] (RECIPE!)
+							-- #endif
+							i(35254),	-- Design: Radiant Seaspray Emerald (RECIPE!)
+							-- #if BEFORE CATA
+							i(35248),	-- Design: Runed Crimson Spinel [TBC] / Design: Brilliant Crimson Spinel [CATA+] (RECIPE!)
+							-- #else
+							i(35268),	-- Design: Reckless Pyrestone [CATA+] / Design: Luminous Pyrestone [TBC] (RECIPE!)
+							i(35238),	-- Design: Shifting Shadowsong Amethyst [CATA+] / Design: Balanced Shadowsong Amethyst [TBC] (RECIPE!)
+							i(35262),	-- Design: Sparkling Empyrean Sapphire [CATA+] / Design: Lustrous Empyrean Sapphire [TBC] (RECIPE!)
+							i(35239),	-- Design: Timeless Shadowsong Amethyst [CATA+] / Design: Glowing Shadowsong Amethyst [TBC] (RECIPE!)
+							-- #endif
+						}, {	-- Revered
+							-- #if BEFORE CATA
+							i(35252),	-- Design: Enduring Seaspray Emerald [TBC] / Design: Regal Seaspray Emerald [CATA+] (RECIPE!)
+							-- #else
+							i(35271),	-- Design: Deadly Pyrestone [CATA+] / Design: Wicked Pyrestone [TBC] (RECIPE!)
+							-- #endif
+							i(35769),	-- Design: Forceful Seaspray Emerald (RECIPE!)
+							-- #if AFTER CATA
+							i(35241),	-- Design: Purified Shadowsong Amethyst [CATA+] / Design: Royal Shadowsong Amethyst [TBC] (RECIPE!)
+							-- #endif
+							i(35768),	-- Design: Quick Lionseye (RECIPE!)
+							i(35767),	-- Design: Reckless Pyrestone (RECIPE!)
+							-- #if BEFORE CATA
+							i(35259),	-- Design: Rigid Lionseye [TBC] / Design: Rigid Empyrean Sapphire [CATA+] (RECIPE!)
+							i(35241),	-- Design: Royal Shadowsong Amethyst [TBC] / Design: Purified Shadowsong Amethyst [CATA+] (RECIPE!)
+							-- #else
+							i(35252),	-- Design: Regal Seaspray Emerald [CATA+] / Design: Enduring Seaspray Emerald [TBC] (RECIPE!)
+							-- #endif
+							i(35766),	-- Design: Steady Seaspray Emerald (RECIPE!)
+							-- #if BEFORE CATA
+							i(35271),	-- Design: Wicked Pyrestone [TBC] / Design: Deadly Pyrestone [CATA+] (RECIPE!)
+							-- #endif
+						}, {	-- Exalted
+							i(35247),	-- Design: Flashing Crimson Spinel (RECIPE!)
+							i(35325),	-- Design: Forceful Talasite (RECIPE!)
+							-- #if BEFORE CATA
+							i(35257),	-- Design: Great Lionseye [TBC] / Design: Rigid Empyrean Sapphire [CATA+] (RECIPE!)
+							-- #endif
+							i(35267),	-- Design: Inscribed Pyrestone (RECIPE!)
+							i(35258),	-- Design: Mystic Lionseye (RECIPE!)
+							i(37504),	-- Design: Purified Shadowsong Amethyst (RECIPE!)
+							i(35322),	-- Design: Quick Dawnstone (RECIPE!)
+							i(35323),	-- Design: Reckless Noble Topaz (RECIPE!)
+							-- #if AFTER CATA
+							i(35257),	-- Design: Rigid Empyrean Sapphire [CATA+] / Design: Great Lionseye [TBC] (RECIPE!)
+							-- #endif
+							i(35242),	-- Design: Shifting Shadowsong Amethyst (RECIPE!)
+							i(35243),	-- Design: Sovereign Shadowsong Amethyst (RECIPE!)
+							i(35265),	-- Design: Stormy Empyrean Sapphire (RECIPE!)
+							-- #if BEFORE CATA
+							i(35270),	-- Design: Veiled Pyrestone [TBC] / Design: Veiled Shadowsong Amethyst [CATA+] (RECIPE!)
+							-- #endif
+						},
+					}),
 				})),
 				applyclassicphase(TBC_PHASE_FIVE_OFFENSIVE_PHASE_THREE_B, n(25046, {	-- Smith Hauthaa <Weapons & Armorsmith>
 					["coord"] = { 50.5, 40.7, ISLE_OF_QUELDANAS },

@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(STORMSONG_VALLEY, {
 		n(WORLD_QUESTS, sharedData({
 				["lvl"] = { 50 },
@@ -13,24 +13,29 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52115, {	-- In the Shadow of the Kraken
 			}),
-			q(53288, {	-- Overgrown Anchor Weed
-				["requireSkill"] = HERBALISM,
-			}),
-			q(52345, {	-- Work Order: Ravenberry Tarts (this quest was added to Zuldazar WQ file but I'm not sure it can spawn there)
-			}),
 			]]--
 			q(52180, {	-- A Brennadam Shame
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(52935, {	-- A New Era
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(155919),	-- Dead Ringer (QI!)
+				},
 			}),
 			q(52936, {	-- A New Era
+				["g"] = {
+					i(162627),	-- Plague Barrel Sack (QI!)
+				},
 			}),
 			q(51855, {	-- A Pirate's Life For Me
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(52940, {	-- Arms Deal
+				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(162629),	-- Stormfused Weapon (QI!)
+				},
 			}),
 			q(52140, {	-- A Thorny Problem
 				["races"] = ALLIANCE_ONLY,
@@ -41,11 +46,15 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			q(54647, {	-- Ale Intent (Faction Assault WQ)
 				["races"] = ALLIANCE_ONLY,
 			}),
-			q(52165, {	-- Automated Chaos
+			petbattle(q(52165, {	-- Automated Chaos
 				["provider"] = { "n", 140315 },	-- Eddie Fixit
 				["coord"] = { 36.61, 33.61, STORMSONG_VALLEY },
-			}),
+				["filterID"] = BATTLE_PETS,
+			})),
 			q(52986, {	-- A Wicked Vessel
+				["g"] = {
+					i(162650),	-- Tidal Kris (QI!)
+				},
 			}),
 			q(52871, {	-- Azerite Empowerment
 			}),
@@ -65,7 +74,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = HORDE_ONLY,
 			}),
 			q(52330, {	-- Beehemoth
-				["npcID"] = 134147,		-- Beehemoth
+				["cr"] = 134147,		-- Beehemoth
 				["g"] = {
 					i(160459, {	-- Apiarist's Stingproof Belt
 						["bonusID"] = 4803,		-- WQ Bonus ID
@@ -81,6 +90,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			q(53285, {	-- Blooming Star Moss
 				["requireSkill"] = HERBALISM,
 			}),
+			q(53288, {	-- Overgrown Anchor Weed
+				["requireSkill"] = HERBALISM,
+			}),
 			q(52045, {	-- Boarder Patrol
 				["races"] = ALLIANCE_ONLY,
 			}),
@@ -89,8 +101,15 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52071, {	-- Briarback Mountain
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(161123),	-- Stormsong Supplies (QI!)
+				},
 			}),
 			q(52117, {	-- Briarback Mountain
+				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(161123),	-- Stormsong Supplies (QI!)
+				},
 			}),
 			q(51828, {	-- Burning the Legion
 				["races"] = HORDE_ONLY,
@@ -103,9 +122,10 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(51782, {	-- Captain Razorspine
 			}),
-			q(52325, {	-- Captured Evil
+			petbattle(q(52325, {	-- Captured Evil
 				["provider"] = { "n", 141046 },	-- Leana Darkwind
-			}),
+				["filterID"] = BATTLE_PETS,
+			})),
 			q(53106, {	-- Censership
 				["races"] = ALLIANCE_ONLY,
 			}),
@@ -134,6 +154,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(53318, {	-- Ductile Platinum
 				["requireSkill"] = MINING,
+				["g"] = {
+					i(163630),	-- Ductile Platinum (QI!)
+				},
 			}),
 			q(51981, {	-- Earthcaller's Abode
 				["races"] = ALLIANCE_ONLY,
@@ -151,6 +174,10 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52972, {	-- Favored Grandchild
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(159781),	-- Mountain Goat Milk (QI!)
+					i(162647),	-- Pristine Razorclaw Pelt (QI!)
+				},
 			}),
 			q(52011, {	-- Fiendish Fields (A)
 				["races"] = ALLIANCE_ONLY,
@@ -190,6 +217,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(53316, {	-- Hardened Monelite
 				["requireSkill"] = MINING,
+				["g"] = {
+					i(163628),	-- Hardened Monelite (QI!)
+				},
 			}),
 			q(53717, {	-- Hold the Highland
 				["races"] = ALLIANCE_ONLY,
@@ -221,20 +251,40 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52987, {	-- Let's Burn!
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(163120),	-- Welding Torch (QI!)
+				},
 			}),
 			q(52941, {	-- Light in the Darkness (A)
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(162635),	-- Abyssal Beacon (QI!)
+				},
 			}),
 			q(52968, {	-- Light in the Darkness
+				["g"] = {
+					i(162649),	-- Tideblood (QI!)
+				},
 			}),
 			q(52794, {	-- Lizards and Ledgers
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(162540),	-- Lost Supplies (QI!)
+				},
 			}),
 			q(52230, {	-- Loose Change (A)
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(160668),	-- Lost Coin (QI!)
+					i(158226),	-- Magnetized Metal Collector (QI!)
+				},
 			}),
 			q(52239, {	-- Loose Change (H)
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(160668),	-- Lost Coin (QI!)
+					i(158226),	-- Magnetized Metal Collector (QI!)
+				},
 			}),
 			q(51633, {	-- Make Loh Go
 			}),
@@ -248,6 +298,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(54308, {	-- Mine Your Business (Faction Assault WQ)
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(165889),	-- Blackpowder Ore (QI!)
+				},
 			}),
 			q(54266, {	-- Mortar Master Zapfritz (Faction Assault WQ)
 				["races"] = ALLIANCE_ONLY,
@@ -273,6 +326,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52939, {	-- Ordnance Orders
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(162629),	-- Stormfused Weapon (QI!)
+				},
 			}),
 			q(52464, {	-- Osca the Bloodied
 			}),
@@ -302,12 +358,24 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52142, {	-- Restocking
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(161216),	-- Handful of Scraps (QI!)
+					i(156583),	-- Salvaged Azerite Ammunition (QI!)
+				},
 			}),
 			q(52160, {	-- Restocking
+				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(161216),	-- Handful of Scraps (QI!)
+					i(156583),	-- Salvaged Azerite Ammunition (QI!)
+				},
 			}),
 			q(52979, {	-- Ritual Cleansing
 				["races"] = ALLIANCE_ONLY,
 				["coord"] = { 53.2, 33.4, STORMSONG_VALLEY },
+				["g"] = {
+					i(162650),	-- Tidal Kris (QI!)
+				},
 			}),
 			q(53012, {	-- Put Away Your Toys
 				["races"] = ALLIANCE_ONLY,
@@ -316,6 +384,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52164, {	-- Rum- Paaaage!
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(161197),	-- Barrel Busting Bomb (QI!)
+				},
 			}),
 			q(51974),	-- Sabertron (COPPER)
 			q(51976),	-- Sabertron (GREEN)
@@ -332,14 +403,23 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52309, {	-- SandFang
 			}),
-			q(52316, {	-- Sea Creatures Are Weird
+			petbattle(q(52316, {	-- Sea Creatures Are Weird
 				["provider"] = { "n", 141002 },	-- Ellie Vern
-			}),
+				["filterID"] = BATTLE_PETS,
+			})),
 			q(52271, {	-- Sea Salt Flavored (A)
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(161450),	-- Crackling Eel Skin (QI!)
+					i(160055),	-- Seaweed (QI!)
+				},
 			}),
 			q(52280, {	-- Sea Salt Flavored (H)
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(161450),	-- Crackling Eel Skin (QI!)
+					i(160055),	-- Seaweed (QI!)
+				},
 			}),
 			q(51759, {	-- Seabreaker Skoloth
 			}),
@@ -365,9 +445,15 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(52174, {	-- Snakes in the Shallows
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(161313),	-- Energized Tidecore (QI!)
+				},
 			}),
 			q(50591, {	-- Son of a Bee
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(161220),	-- Rich Honey (QI!)
+				},
 			}),
 			q(52452, {	-- Song Mistress Dadalea
 			}),
@@ -375,19 +461,31 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(53040, {	-- Squall Squelching
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(163033),	-- Surging Mote (QI!)
+				},
 			}),
 			q(52507, {	-- Sticky Mess
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(52879, {	-- Stiff Policy
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(162599),	-- Treated Shipwood (QI!)
+				},
 			}),
 			q(53042, {	-- Stormcaller
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(163033),	-- Surging Mote (QI!)
+				},
 			}),
 			q(51982, {	-- Storm's Rage (Faction Assault WQ)
 				["provider"] = { "n", 135800 },	-- Sister Lilyana <Storm's Wake Emissary>
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(166459),	-- Xibek's Key (QI!)
+				},
 			}),
 			q(52380, {	-- Supplies Needed: Frenzied Fangtooth
 				["races"] = ALLIANCE_ONLY,
@@ -407,19 +505,25 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			q(51827, {	-- They Came From Behind!
 				["races"] = HORDE_ONLY,
 			}),
-			q(52126, {	-- This Little Piggy Has Sharp Tusks
+			petbattle(q(52126, {	-- This Little Piggy Has Sharp Tusks
 				["provider"] = { "n", 139987 },	-- Bristlespine
 				["coord"] = { 42.41, 76.61, STORMSONG_VALLEY },
 				["filterID"] = BATTLE_PETS,
-			}),
+			})),
 			q(54403, {	-- Tidesage Clarissa (Faction Assault WQ)
 				["races"] = HORDE_ONLY,
 			}),
 			q(52054, {	-- Too Much To Bear (A)
 				["races"] = ALLIANCE_ONLY,
+				["g"] = {
+					i(161114),	-- Barbedclaw Flank (QI!)
+				},
 			}),
 			q(52229, {	-- Too Much To Bear (H)
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(161114),	-- Barbedclaw Flank (QI!)
+				},
 			}),
 			q(51817, {	-- Trapped Tortollans (A)
 				["races"] = ALLIANCE_ONLY,
@@ -447,6 +551,9 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 			}),
 			q(53983, {	-- Wet Work: Fort Knight (Faction Assault WQ)
 				["races"] = HORDE_ONLY,
+				["g"] = {
+					i(164731),	-- Enchanted Shroud (QI!)
+				},
 			}),
 			q(52299, {	-- Whiplash
 				["g"] = {
@@ -455,7 +562,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 						["description"] = "This rare only spawns during its associated world quest.",
 						["coord"] = { 47.32, 65.81, STORMSONG_VALLEY },
 						["g"] = {
-							crit(27, {	-- Whiplash
+							crit(41841, {	-- Whiplash
 								["achievementID"] = 12940,	-- Adventurer of Stormsong Valley
 							}),
 						},
@@ -497,7 +604,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				["races"] = ALLIANCE_ONLY,
 				["requireSkill"] = ENGINEERING,
 				["g"] = {
-					i(162340),	-- Schematic: Electroshock Mount Motivator
+					i(162340),	-- Schematic: Electroshock Mount Motivator  [Rank 3] (RECIPE!)
 				},
 			}),
 			q(52353, {	-- Work Order: Enchant Ring - Seal of Haste
@@ -514,11 +621,11 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					i(162300),	-- Formula: Enchant Ring - Seal of Mastery [Rank 3] (RECIPE!)
 				},
 			}),
-			q(52347, {	-- Work Order: Honey-Glazed Haunchs
+			q(52347, {	-- Work Order: Honey-Glazed Haunches
 				["provider"] = { "n", 135793 },	-- Collector Kojo <Tortollan Seekers Emissary>
 				["requireSkill"] = COOKING,
 				["g"] = {
-					i(162286),	-- Recipe: Honey-Glazed Haunchs [Rank 3] (RECIPE!)
+					i(162286),	-- Recipe: Honey-Glazed Haunches [Rank 3] (RECIPE!)
 				},
 			}),
 			q(52344, {	-- Work Order: Kul Tiramisu

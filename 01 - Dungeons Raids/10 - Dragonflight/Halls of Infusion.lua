@@ -1,10 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1204, {	-- Halls of Infusion
 		["description"] = "The Entrance is located at the last layer inside the cyndrical building.",
 		["coord"] = { 59.2, 60.6, THALDRASZUS },
@@ -20,7 +17,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					["coord"] = { 54.4, 40.9, VALDRAKKEN },
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2504, {	-- Watcher Irideus
 					["crs"] = { 189719 },	-- Watcher Irideus
 					["g"] = {
@@ -48,7 +45,12 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					["g"] = {
 						i(193731),	-- Circle of Ascended Frost
 						i(193735),	-- Earthshaker's Steel Visor
-						i(193732),	-- Globe of Jagged Ice
+						i(193732, {	-- Globe of Jagged Ice
+							["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_2_6 },
+						}),
+						i(212683, {	-- Globe of Jagged Ice
+							["timeline"] = { ADDED_10_2_6 },
+						}),
 						i(193734),	-- Hauberk of Frozen Fervor
 						i(193733),	-- Khajin's Hailstone Footwraps
 					},
@@ -62,13 +64,18 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193740),	-- Torrential Downpour Gauntlets
 						i(193739),	-- Treads of Restored Order
 						i(193742),	-- Undertow Tideblade
-						i(193736),	-- Water's Beating Heart
-						i(196975),	-- Cliffside Wylderdrake: Head Fin (DM!)
-						i(197007),	-- Cliffside Wylderdrake: Wide Stripes Pattern (DM!)
+						i(193736, {	-- Water's Beating Heart
+							["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_2_6 },
+						}),
+						i(212682, {	-- Water's Beating Heart
+							["timeline"] = { ADDED_10_2_6 },
+						}),
+						i(196975),	-- Cliffside Wylderdrake: Head Fin (MM!)
+						i(197007),	-- Cliffside Wylderdrake: Wide Stripes Pattern (MM!)
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2511, {	-- Primal Tsunami
 					["crs"] = { 189729 },	-- Primal Tsunami
 					["g"] = {
@@ -76,7 +83,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
 					ach(16517),	-- Toxicity Strike Team
 				}),

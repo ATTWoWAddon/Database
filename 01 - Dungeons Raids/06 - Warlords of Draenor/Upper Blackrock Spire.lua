@@ -1,21 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	inst(559, {	-- Upper Blackrock Spire
 		["coord"] = { 78.94, 33.62, BLACKROCK_MOUNTAIN },
 		["maps"] = { UPPER_BLACKROCK_SPIRE_WOD, 617, 618 },
 		["lvl"] = 100,
 		["g"] = {
-			n(ACHIEVEMENTS, {
-				ach(9838, {	-- What A Strange, Interdimensional Trip It's Been
-					["collectible"] = false,
-					["g"] = {
-						crit(3),	-- Warlord Zaela
-					},
-				}),
-			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(1226,  {	-- Orebender Gor'ashan
 					["crs"] = { 76413 },	-- Orebender Gor'ashan
 					["sym"] = {
@@ -126,9 +118,10 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				n(ACHIEVEMENTS, {
 					ach(9058, {	-- Leeeeeeeeeeeeeroy...?
+						["crs"] = { 77075 },	-- Leeroy Jenkins
 						["g"] = {
 							follower(178),	-- Leeroy Jenkins
 							title(110, {	-- Jenkins
@@ -204,7 +197,9 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 						{"sub", "common_wod_dungeon_drop", 2, WAIST},
 					},
 					["g"] = {
-						ach(9057),	-- Dragonmaw? More Like Dragonfall!
+						ach(9057, {	-- Dragonmaw? More Like Dragonfall!
+							["crs"] = { 82428 },	-- Emberscale Ironflight
+						}),
 						ach(9055),	-- Heroic: Upper Blackrock Spire
 						ach(9376),	-- Heroic: Upper Blackrock Spire Guild Run
 						i(118740),	-- Bleakblade of Shahram
@@ -214,7 +209,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(1226,  {	-- Orebender Gor'ashan
 					["crs"] = { 76413 },	-- Orebender Gor'ashan
 					["sym"] = {
@@ -293,7 +288,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(36865),	-- UBRS Event Dungeon Reward Quest
 		q(34554),	-- Upper Blackrock Spire Challenge Mode - Bronze Addition (Nth)
 		q(34531),	-- Upper Blackrock Spire Challenge Mode - Consolation (Nth)

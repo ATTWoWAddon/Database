@@ -41,6 +41,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57425 },	-- Land of Opportunity
 					["provider"] = { "n", 162069 },	-- Baroness Draka
 					["coord"] = { 48.3, 57.1, MALDRAXXUS },
+					["g"] = {
+						i(172020),	-- Battered Weapon (QI!)
+					},
 				}),
 				q(57512, {	-- Walk Among Death
 					["sourceQuests"] = { 57425 },	-- Land of Opportunity
@@ -55,6 +58,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "n", 164244 },	-- Grandmaster Vole
 					["coord"] = { 50.3, 44.3, MALDRAXXUS },
 					["g"] = {
+						i(178496),	-- Baron's Warhorn (QI!)
 						i(180827),	-- Maldraxxi Warhorn
 						i(175739),	-- Reclaimed Maldraxxi Choker
 					},
@@ -65,6 +69,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						60179,	-- Memory of Honor
 					},
 					["provider"] = { "n", 167535 },	-- Chosen Scrapper
+					["coord"] = { 45.0, 61.6, MALDRAXXUS },
 				}),
 				------ Chapter 2 ------
 				q(57514, {	-- The First Act of War
@@ -95,6 +100,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "n", 159065 },	-- Baroness Draka
 					["coord"] = { 38.9, 65.1, MALDRAXXUS },
 					["g"] = {
+						i(178662),	-- Unfinished Blade (QI!)
 						i(175471),	-- Corpse-Stitcher's Cord
 						i(175470),	-- Cruel Executioner's Girdle
 						i(175473),	-- Deceitful Agent's Belt
@@ -110,12 +116,16 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58616 },	-- Forging a Champion
 					["provider"] = { "n", 157676 },	-- Bonesmith Heirmir
 					["coord"] = { 36.2, 71.0, MALDRAXXUS },
+					["g"] = {
+						i(174499),	-- Empowered Bones (QI!)
+					},
 				}),
 				q(58726, {	-- Thick Skin
 					["sourceQuests"] = { 58616 },	-- Forging a Champion
 					["provider"] = { "n", 157676 },	-- Bonesmith Heirmir
 					["coord"] = { 36.2, 71.0, MALDRAXXUS },
 					["g"] = {
+						i(178676),	-- Pulsating Hide Scraps (QI!)
 						i(175463),	-- Corpse-Stitcher's Leggings
 						i(175462),	-- Cruel Executioner's Legguards
 						i(175464),	-- Flesh Architect's Leggings
@@ -161,16 +171,25 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60886 },	-- The Seat of the Primus
 					["provider"] = { "n", 168381 },	-- Baroness Draka
 					["coord"] = { 50.3, 67.7, MALDRAXXUS },
+					["g"] = {
+						i(174755),	-- Summons of the Chosen (QI!)
+					},
 				}),
 				q(58821, {	-- Glorious Pursuits
 					["sourceQuests"] = { 58751 },	-- A Common Peril
 					["provider"] = { "n", 162487 },	-- Baroness Vashj
 					["coord"] = { 50.3, 67.7, MALDRAXXUS },
+					["g"] = {
+						i(178940),	-- Vashj's Signal (QI!)
+					},
 				}),
 				q(59171, {	-- Prey Upon Them
 					["sourceQuests"] = { 58751 },	-- A Common Peril
 					["provider"] = { "n", 162487 },	-- Baroness Vashj
 					["coord"] = { 50.3, 67.7, MALDRAXXUS },
+					["g"] = {
+						i(174934),	-- Anima-charged Maldracite (QI!)
+					},
 				}),
 				q(59172, {	-- War is Deception
 					["sourceQuests"] = {
@@ -187,17 +206,26 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59172 },	-- War is Deception
 					["provider"] = { "n", 162487 },	-- Baroness Vashj
 					["coord"] = { 50.3, 67.7, MALDRAXXUS },
+					["g"] = {
+						i(178684),	-- Maldracite Dust (QI!)
+					},
 				}),
 				q(59210, {	-- Tainted Cores
 					["sourceQuests"] = { 59172 },	-- War is Deception
 					["provider"] = { "n", 162487 },	-- Baroness Vashj
 					["coord"] = { 50.3, 67.7, MALDRAXXUS },
+					["g"] = {
+						i(175409),	-- Fractured Anima Crystal (QI!)
+					},
 				}),
 				q(59188, {	-- Vaunted Vengeance
 					["sourceQuests"] = { 59172 },	-- War is Deception
 					["provider"] = { "n", 164297 },	-- Khaliiq
 					["coord"] = { 67.7, 45.6, MALDRAXXUS },
 					["g"] = {
+						i(178657),	-- Halen's Ritual Drafts (QI!)
+						i(178655),	-- Lye's Ritual Drafts (QI!)
+						i(178656),	-- Xeeli's Ritual Drafts (QI!)
 						i(175459),	-- Corpse-Stitcher's Hood
 						i(175446),	-- Cruel Executioner's Helmet
 						i(175461),	-- Deceitful Agent's Helm
@@ -239,6 +267,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57912 },	-- Baron of the Chosen
 					["provider"] = { "n", 159894 },	-- Baron Vyraz
 					["coord"] = { 39.2, 55.9, MALDRAXXUS },
+					["g"] = {
+						i(179923),	-- Attack Battlehorn (QI!)
+					},
 				}),
 				q(57976, {	-- Lead By Example
 					["sourceQuests"] = { 57912 },	-- Baron of the Chosen
@@ -259,6 +290,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["provider"] = { "n", 169226 },	-- Secutor Mevix
 					["coord"] = { 39.4, 46.7, MALDRAXXUS },
 					["g"] = {
+						i(179923),	-- Attack Battlehorn (QI!)
 						i(175763),	-- Salvaged Mercenary's Drape
 					},
 				}),
@@ -271,6 +303,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59616 },	-- Army of One
 					["provider"] = { "n", 160211 },	-- Aspirant Thales
 					["coord"] = { 33.8, 31.0, MALDRAXXUS },
+					["g"] = {
+						i(176456),	-- Prisoner Cage Key (QI!)
+					},
 				}),
 				q(57984, {	-- The Ones in Charge
 					["sourceQuests"] = { 57983 },	-- Archon Save Us
@@ -296,6 +331,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57984 },	-- The Ones in Charge
 					["provider"] = { "n", 165397 },	-- Secutor Mevix
 					["coord"] = { 31.9, 27.3, MALDRAXXUS },
+					["g"] = {
+						i(180120),	-- Harvesting Hook (QI!)
+					},
 				}),
 				q(57982, {	-- Breaking Down Barriers
 					["sourceQuests"] = {
@@ -337,16 +375,31 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59130 },	-- The House of Plagues
 					["provider"] = { "o", 353645 },	-- Marileth's Journal
 					["coord"] = { 56.5, 57.2, MALDRAXXUS },
+					["g"] = {
+						i(180235),	-- Marileth's Journal - Page One (QI!)
+						i(180236),	-- Marileth's Journal - Page Two (QI!)
+						i(180237),	-- Marileth's Journal - Page Three (QI!)
+						i(180238),	-- Marileth's Journal - Page Four (QI!)
+					},
 				}),
 				q(58011, {	-- Bug Bites
 					["sourceQuests"] = { 59130 },	-- The House of Plagues
 					["provider"] = { "n", 159930 },	-- Plague Deviser Marileth
 					["coord"] = { 56.4, 57.2, MALDRAXXUS },
+					["g"] = {
+						i(173368),	-- Bloated Venom Sac (QI!)
+					},
 				}),
 				q(58016, {	-- Spores Galore
 					["sourceQuests"] = { 59130 },	-- The House of Plagues
-					["provider"] = { "n", 168381 },	-- Baroness Draka
-					["coord"] = { 50.3, 67.7, MALDRAXXUS },
+					["providers"] = {
+						{ "n", 168381 },	-- Baroness Draka
+						{ "n", 159930 },	-- Plague Deviser Marileth
+					},
+					["coords"] = {
+						{ 50.3, 67.7, MALDRAXXUS },
+						{ 56.5, 57.3, MALDRAXXUS },
+					},
 				}),
 				q(58027, {	-- Slime, Anyone?
 					["sourceQuests"] = {
@@ -363,6 +416,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58027 },	-- Slime, Anyone?
 					["provider"] = { "n", 159930 },	-- Plague Deviser Marileth
 					["coord"] = { 56.4, 57.2, MALDRAXXUS },
+					["g"] = {
+						i(173536),	-- Laboratory Equipment (QI!)
+					},
 				}),
 				q(58045, {	-- Plague is Thicker Than Water
 					["sourceQuests"] = { 58027 },	-- Slime, Anyone?
@@ -383,6 +439,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 159930 },	-- Plague Deviser Marileth
 					["coord"] = { 58.3, 71.6, MALDRAXXUS },
+					["g"] = {
+						i(175410),	-- Dreadshade Extract (QI!)
+					},
 				}),
 				q(60831, {	-- Fit For a Margrave
 					["sourceQuests"] = { 59223 },	-- By Any Other Name
@@ -426,12 +485,18 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				q(59960, {	-- A Cooling Trail
 					["sourceQuests"] = { 60972 },	-- The Hunt for the Baron
 					["maps"] = { 1960 },	-- The Maw (Scenario Map)
+					["g"] = {
+						i(181174),	-- Amulet of the Horsemen (QI!)
+					},
 				}),
 				q(59959, {	-- The Brand Holds the Key
 					["sourceQuests"] = { 59960 },	-- A Cooling Trail
 					["provider"] = { "o", 355798 },	-- Cage
 					["coord"] = { 38.3, 48.5, THE_MAW },
 					["maps"] = { 1960 },	-- The Maw (Scenario Map)
+					["g"] = {
+						i(178018),	-- The Brand's Key (QI!)
+					},
 				}),
 				q(59962, {	-- Hope Never Dies
 					["sourceQuests"] = { 59959 },	-- The Brand Holds the Key
@@ -543,11 +608,18 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 58088 },	-- Juicing Up
 					["provider"] = { "n", 159833 },	-- So'narynar
 					["coord"] = { 53.7, 47.8, MALDRAXXUS },
+					["g"] = {
+						i(177957),	-- Necessary Enhancers (QI!)
+					},
 				}),
 				q(59750, {	-- How To Get A Head
 					["sourceQuests"] = { 62785 },	-- I Could Be A Contender
 					["provider"] = { "n", 161559 },	-- Louison
 					["coord"] = { 54.4, 48.6, MALDRAXXUS },
+					["g"] = {
+						i(177837),	-- Bloodtusk Skull (QI!)
+						i(177835),	-- Louison's Gristle Cutter (QI!)
+					},
 				}),
 				q(59781, {	-- The Last Guy
 					["sourceQuests"] = { 62785 },	-- I Could Be A Contender
@@ -564,6 +636,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 161559 },	-- Louison
 					["coord"] = { 54.4, 48.6, MALDRAXXUS },
+					["g"] = {
+						i(174324),	-- Weapons of the Fallen (QI!)
+					},
 				}),
 				q(59800, {	-- Team Spirit
 					["sourceQuests"] = {
@@ -572,6 +647,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 161559 },	-- Louison
 					["coord"] = { 54.4, 48.6, MALDRAXXUS },
+					["g"] = {
+						i(177877),	-- Flask of Team Spirit (QI!)
+					},
 				}),
 				q(58947, {	-- Test Your Mettle
 					["sourceQuests"] = {
@@ -593,6 +671,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59879 },	-- This Thing of Ours
 					["provider"] = { "n", 159830 },	-- Au'narim
 					["coord"] = { 53.6, 47.5, MALDRAXXUS },
+					["g"] = {
+						i(175413),	-- Anima Vial (QI!)
+					},
 				}),
 				q(59837, {	-- Working For The Living
 					["sourceQuests"] = { 59203 },	-- Leave Me a Loan
@@ -674,6 +755,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 60900 },	-- Archival Protection
 					["provider"] = { "n", 162476 },	-- Ta'eran
 					["g"] = {
+						i(178020),	-- Volume of Victory: Vol 1 (QI!)
 						i(175517),	-- Corpse-Stitcher's Slippers
 						i(175516),	-- Cruel Executioner's Stompers
 						i(175519),	-- Deceitful Agent's Treads
@@ -684,6 +766,10 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 59994 },	-- Trust Fall
 					["provider"] = { "n", 166806 },	-- Ta'eran
 					["coord"] = { 43.0, 25.1, MALDRAXXUS },
+					["g"] = {
+						i(178019),	-- Additional Volumes of Victory (QI!)
+						i(174377),	-- Volume of Victory (QI!)
+					},
 				}),
 			}),
 			header(HEADERS.AchCriteria, 14799.03, {	-- Mixing Monstrosities
@@ -708,6 +794,10 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					["sourceQuests"] = { 57425 },	-- Land of Opportunity
 					["provider"] = { "n", 162474 },	-- Dundae
 					["coord"] = { 46.8, 48.5, MALDRAXXUS },
+					["g"] = {
+						i(174749),	-- Bone Splinter (QI!)
+						i(174751),	-- Juicy Nibbler (QI!)
+					},
 				}),
 				q(58794, {	-- Stabbing Wasteward
 					["sourceQuests"] = {
@@ -716,22 +806,39 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 					},
 					["provider"] = { "n", 162474 },	-- Dundae
 					["coord"] = { 46.8, 48.5, MALDRAXXUS },
+					["g"] = {
+						i(174749),	-- Bone Splinter (QI!)
+						i(174751),	-- Juicy Nibbler (QI!)
+					},
 				}),
 			}),
 			------ Miscellaneous ------
 			q(57284, {	-- Blade of Blades
 				["description"] = "Has a chance to be offered by a Recruitable Animate when using the |cffffffffAni-Matter Orb|r provided by 'Synder Sixfold' at |cffffffff26.3, 42.7|r.",
 				["sourceQuests"] = { 57245 },	-- Ani-Matter Animator
-				["provider"] = { "n", 157168 },	-- Stubborn Animate
+				["providers"] = {
+					{ "n", 157168 },	-- Stubborn Animate
+					{ "n", 157169 },	-- Bone Remains
+				},
 				["coord"] = { 27.1, 51.7, MALDRAXXUS },
 				["_drop"] = { "isDaily" },
+				["g"] = {
+					i(171205),	-- Foe Cleaver (QI!)
+					i(171206),	-- Forgotten Weapon (QI!)
+				},
 			}),
 			q(57278, {	-- Bring Me Their Heads
 				["description"] = "Has a chance to be offered by a Recruitable Animate when using the |cffffffffAni-Matter Orb|r provided by 'Synder Sixfold' at |cffffffff26.3, 42.7|r.",
 				["sourceQuests"] = { 57245 },	-- Ani-Matter Animator
-				["provider"] = { "n", 157168 },	-- Stubborn Animate
+				["providers"] = {
+					{ "n", 157168 },	-- Stubborn Animate
+					{ "n", 157169 },	-- Bone Remains
+				},
 				["coord"] = { 29.8, 49.7, MALDRAXXUS },
 				["_drop"] = { "isDaily" },
+				["g"] = {
+					i(171204),	-- Traitor's Head (QI!)
+				},
 			}),
 			q(62804, {	-- Filling the Tanks
 				["provider"] = { "i", 184155 },	-- Recovered Containment Pack
@@ -752,13 +859,19 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(62462, {	-- WANTED: The Key of Eyes
 				["provider"] = { "o", 358382 },	-- Wanted: Chelicera
 				["coord"] = { 53.0, 41.4, MALDRAXXUS },
+				["g"] = {
+					i(183728),	-- Key of Eyes (QI!)
+				},
+			}),
+			q(62085, {	-- ...Why Me?
+				["provider"] = { "i", 182618 },	-- Reclaimed Vessel
 			}),
 			n(BONUS_OBJECTIVES, sharedData({
 				["sourceQuests"] = { 62159 },	-- Aiding the Shadowlands
 				["customCollect"] = "SL_SKIP",	-- SL Skip Character
 				["lockCriteria"] = { 1, "lvl", 60 },
 			}, bubbleDown({
-				["timeline"] = { ADDED_9_0_2, REMOVED_10_0_2 },
+				["timeline"] = { ADDED_9_0_2 },
 			}, {
 				q(62742, {	-- Avoid 'Em Like the P	lague
 					["coord"] = { 58.0, 63.6, MALDRAXXUS },
@@ -785,6 +898,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 						i(181682),	-- Corpsehide Wristwraps
 						i(181681),	-- Fleshscale Wristwraps
 						i(181680),	-- Steelcore Wristwraps
+						i(183987),	-- Prisoner Cage Key (QI!)
 					},
 				}),
 				q(62712, {	-- War of Attrition
@@ -802,6 +916,9 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 			q(57245, {	-- Ani-Matter Animator
 				["provider"] = { "n", 157076 },	-- Synder Sixfold
 				["coord"] = { 26.3, 42.7, MALDRAXXUS },
+				["g"] = {
+					i(175827),	-- Ani-Matter Orb (QI!)
+				},
 			}),
 			q(57301, {	-- Callous Concoctions
 				["sourceQuests"] = { 58431 },	-- Pool of Potions
@@ -809,7 +926,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 				["coord"] = { 58.5, 73.4, MALDRAXXUS },
 			}),
 		})),
-		n(QUESTS, sharedData({ ["isWorldQuest"] = true }, { -- shows up in /attwq without this even though there are no related collectibles
+		n(QUESTS, sharedData({ ["isWorldQuest"] = true }, {	-- shows up in /attwq without this even though there are no related collectibles
 			q(59827, {	-- Bet On Yourself (Devmorta)
 				["provider"] = { "n", 159830 },	-- Au'narim
 				["coord"] = { 53.7, 47.5, MALDRAXXUS },
@@ -825,42 +942,17 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNC
 		})),
 	}),
 })));
-
-root(ROOTS.NeverImplemented, {
-	tier(SL_TIER, {
-		n(ARMOR, {
-			filter(CLOTH, {
-				i(175512),	-- Corpse-Stitcher's Raiment
-				i(175528),	-- Corpse-Stitcher's Trousers
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	m(SHADOWLANDS, {
+		m(MALDRAXXUS, {
+			n(QUESTS, {
+				q(59429),	-- Triggered along with 59428 when looting Strange Growth (spellID 348521)
+				q(59439),	-- triggered when throwing Viscous Oil from Burning Extract into the Pool of Potions while on the quest "Pool of Potions"
+				q(59677),	-- Triggered when looting the Battlefront Rations Key (itemID 180277)
+				q(57619),	-- triggered while on "In Death We Are Truly Tested" -- not sure if from using the extra action button to summon Vyraz, during the encounter, or when Draka picks you up
+				q(59843),	-- triggered when turning in "A Sure Bet"
+				q(62411),	-- First time turning in Ani-Matter Animator (57245)
 			}),
-			filter(LEATHER, {
-				i(175515),	-- Deceitful Agent's Tunic
-				i(175530),	-- Deceitful Agent's Legwraps
-			}),
-			filter(MAIL, {
-				i(175514),	-- Flesh Architect's Hauberk
-				i(175529),	-- Flesh Architect's Greaves
-			}),
-			filter(PLATE, {
-				i(175513),	-- Cruel Executioner's Breastplate
-				i(175527),	-- Cruel Executioner's Greaves
-			}),
-		}),
-		n(WEAPONS, {
-			i(183086),	-- Battle Tested Warglaive
-			i(183077),	-- Battle Tested Shank
-			i(183088),	-- Battle Tested Dagger
-			i(183078),	-- Battle Tested Basher
-			i(183079),	-- Battle Tested Stave
-			i(183090),	-- Battle Tested Staff
-			i(183080),	-- Battle Tested Shortsword
-			i(183087),	-- Battle Tested Longsword
-			i(183089),	-- Battle Tested Spellblade
-			i(183081),	-- Battle Tested Crossbow
-			i(183082),	-- Battle Tested Wand
-			i(183083),	-- Battle Tested Greatsword
-			i(183084),	-- Battle Tested Bulwark
-			i(183085),	-- Battle Tested Tome
 		}),
 	}),
-});
+})));

@@ -8,9 +8,11 @@ THOUSAND_BOAT_BASH_HEADER = createHeader({
 	eventID = EVENTS.THOUSAND_BOAT_BASH,
 	text = {
 		en = "Thousand Boat Bash",
+		ru = "Вечеринка тысячи лодок",
+		cn = "赛艇大会",
 	},
 });
-root(ROOTS.Holidays, applyevent(EVENTS.THOUSAND_BOAT_BASH, n(THOUSAND_BOAT_BASH_HEADER, bubbleDownSelf({ ["timeline"] = { "added 7.1.5" } }, {
+root(ROOTS.Holidays, applyevent(EVENTS.THOUSAND_BOAT_BASH, n(THOUSAND_BOAT_BASH_HEADER, bubbleDownSelf({ ["timeline"] = { ADDED_7_1_5 } }, {
 	n(WORLD_QUESTS, sharedData({
 		["description"] = "Thousand Boat Bash must be available for this World Quest to display.",
 		["isWorldQuest"] = true,

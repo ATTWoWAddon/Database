@@ -2,10 +2,21 @@
 --     W O R L D   E V E N T S   M O D U L E       --
 -----------------------------------------------------
 
-root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "added 7.0.3.22248", "removed 7.0.3.22810" } }, {
-	tier(LEGION_TIER, {
+root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADDED_7_0_3, REMOVED_7_0_3 } }, {
+	expansion(EXPANSION.LEGION, {
 		["lvl"] = 98,
 		["groups"] = {
+			n(ACHIEVEMENTS, {
+				ach(11201, {		-- Defender of Azeroth: Legion Invasions
+					["timeline"] = { ADDED_7_0_3, REMOVED_7_0_3_LAUNCH },
+				}),
+				ach(11065, {		-- It All Makes Sense Now
+					["timeline"] = { ADDED_7_0_3, REMOVED_7_0_3_LAUNCH },
+				}),
+				ach(11200, {		-- Stand Against the Legion
+					["timeline"] = { ADDED_7_0_3, REMOVED_7_0_3_LAUNCH },
+				}),
+			}),
 			n(MAILBOX, {
 				["description"] = "These items came automatically in the mail box (sometimes even pre-equipped), once the pre-expansion patch launched due to class & ability changes.",
 				["groups"] = {
@@ -216,7 +227,7 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					["sourceQuestNumRequired"] = 1,
 					-- #if AFTER SHADOWLANDS
 					["description"] = "This is available to players choosing the Legion Timeline during Chromie Time.",
-					["timeline"] = { "added 7.0.3.22248", "removed 7.0.3.22810", ADDED_9_0_1 },
+					["timeline"] = { ADDED_7_0_3, REMOVED_7_0_3, ADDED_9_0_1 },
 					-- TODO: confirm if this can somehow be picked up via Party Sync
 					["DisablePartySync"] = false,	-- false = "hasn't been verified yet"
 					-- #endif
@@ -274,7 +285,7 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 						{ 52.6, 57.6, ORGRIMMAR },
 						{ 41.2, 78.8, STORMWIND_CITY },
 					},
-					["timeline"] = { "added 7.0.3.22290" },
+					["timeline"] = { ADDED_7_0_3 },
 					["groups"] = {
 						i(136924),	-- Felbat Pup (PET!)
 						i(141604),	-- Glaive of the Fallen
@@ -287,58 +298,10 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 						i(138170),	-- Felstalker Spine
 						i(138171),	-- Inquisitor's Talisman
 						i(138161),	-- Mo'arg Clan Token
-						i(139170, {	-- Ensemble: Fel-Infused Cloth Armor
-							["ignoreBonus"] = true,
-							["groups"] = {
-								i(138184),	-- Fel-Infused Helm
-								i(138186),	-- Fel-Infused Spaulders
-								i(138187),	-- Fel-Infused Hauberk
-								i(138181),	-- Fel-Infused Bracers
-								i(138182),	-- Fel-Infused Grips
-								i(138180),	-- Fel-Infused Cinch
-								i(138185),	-- Fel-Infused Leggings
-								i(138183),	-- Fel-Infused Boots
-							},
-						}),
-						i(139169, {	-- Ensemble: Felshroud Lather Armor
-							["ignoreBonus"] = true,
-							["groups"] = {
-								i(138167),	-- Felshroud Hood
-								i(138168),	-- Felshroud Shoulders
-								i(138192),	-- Felshroud Vest
-								i(138163),	-- Felshroud Bindings
-								i(138166),	-- Felshroud Gloves
-								i(138169),	-- Felshroud Belt
-								i(138165),	-- Felshroud Pants
-								i(138164),	-- Felshroud Boots
-							},
-						}),
-						i(139168, {	-- Ensemble: Fel-Chain Mail Armor
-							["ignoreBonus"] = true,
-							["groups"] = {
-								i(138176),	-- Fel-Chain Helm
-								i(138178),	-- Fel-Chain Spaulders
-								i(138179),	-- Fel-Chain Hauberk
-								i(138173),	-- Fel-Chain Bracers
-								i(138174),	-- Fel-Chain Grips
-								i(138172),	-- Fel-Chain Cinch
-								i(138177),	-- Fel-Chain Leggings
-								i(138175),	-- Fel-Chain Boots
-							},
-						}),
-						i(139167, {	-- Ensemble: Felforged Plate Armor
-							["ignoreBonus"] = true,
-							["groups"] = {
-								i(138155),	-- Felforged Helmet
-								i(138157),	-- Felforged Pauldrons
-								i(138152),	-- Felforged Chestplate
-								i(138159),	-- Felforged Vambracers
-								i(138153),	-- Felforged Gauntlets
-								i(138154),	-- Felforged Waistplate
-								i(138156),	-- Felforged Legplates
-								i(138158),	-- Felforged Warboots
-							},
-						}),
+						iensemble(139170),	-- Ensemble: Fel-Infused Cloth Armor
+						iensemble(139169),	-- Ensemble: Felshroud Lather Armor
+						iensemble(139168),	-- Ensemble: Fel-Chain Mail Armor
+						iensemble(139167),	-- Ensemble: Felforged Plate Armor
 					},
 				}),
 			}),
@@ -353,13 +316,3 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 		},
 	}),
 })));
-
-root(ROOTS.NeverImplemented, {
-	tier(LEGION_TIER, {
-		n(WEAPONS, {
-			i(150611),	-- Guardian's Oaken Spear
-			i(150584),	-- Pike of Feral Rage
-			i(150613),	-- Survivalist's Hunting Spear
-		}),
-	}),
-});

@@ -690,7 +690,7 @@ root(ROOTS.Zones, {
 					["coord"] = { 36.8, 46.5, SURAMAR },
 					["provider"] = { "n", 107126 },	-- Valewalker Farodin
 					["sourceQuest"] = 44561,	-- Seed of Hope
-					["minReputation"] = { 1859, HONORED },
+					["minReputation"] = { FACTION_THE_NIGHTFALLEN, HONORED },
 				}),
 				q(43969, {	-- Hired Help
 					["coord"] = { 48.4, 83.2, SURAMAR },
@@ -1000,6 +1000,9 @@ root(ROOTS.Zones, {
 					["coord"] = { 30.3, 30.8, SURAMAR },
 					["provider"] = { "n", 103571 },	-- Solendra Featherdown
 					["sourceQuest"] = 41478,	-- The Final Blessing
+					["g"] = {
+						i(136605),	-- Solendra's Compassion (QI!)
+					},
 				}),
 				q(44723, {	-- More Like Me
 					["coord"] = { 52.0, 79.1, SURAMAR },
@@ -1326,7 +1329,6 @@ root(ROOTS.Zones, {
 						41426,	-- Against Their Will
 						41709,	-- Breaking Down the Big Guns
 						41425,	-- Sunken Foes
-						41409,	-- Timing Is Everything
 					},
 				}),
 				q(44842, {	-- Shield, Meet Spell
@@ -1389,7 +1391,6 @@ root(ROOTS.Zones, {
 						41426,	-- Against Their Will
 						41709,	-- Breaking Down the Big Guns
 						41425,	-- Sunken Foes
-						41409,	-- Timing Is Everything
 					},
 				}),
 				q(45316, {	-- Stabilizing Suramar
@@ -1787,7 +1788,6 @@ root(ROOTS.Zones, {
 						41426,	-- Against Their Will
 						41709,	-- Breaking Down the Big Guns
 						41425,	-- Sunken Foes
-						41409,	-- Timing Is Everything
 					},
 				}),
 				q(40368, {	-- Turtle Powered
@@ -1882,7 +1882,7 @@ root(ROOTS.Zones, {
 	}),
 });
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(44677),	-- Ancient Mana Tutorial Chest A - triggers during "Ancient Mana" (questID 44672)
 		q(44678),	-- Ancient Mana Tutorial Chest B - triggers during "Ancient Mana" (questID 44672)
 		q(44679),	-- Ancient Mana Tutorial Chest C - triggers during "Ancient Mana" (questID 44672)

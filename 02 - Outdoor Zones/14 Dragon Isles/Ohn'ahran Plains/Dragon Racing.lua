@@ -30,7 +30,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 							15758,	-- Sundapple Copse Circuit: Silver
 						}},
 						["g"] = {
-							i(197599),	-- Windborne Velocidrake: Red Hair (DM!)
+							i(197599),	-- Windborne Velocidrake: Red Hair (MM!)
 						},
 					}),
 					ach(15920, {	-- Ohn'ahran Plains: Gold
@@ -65,7 +65,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 							15761,	-- Sundapple Copse Circuit Advanced: Silver
 						}},
 						["g"] = {
-							i(197580),	-- Windborne Velocidrake: Gold and Red Armor (DM!)
+							i(197580),	-- Windborne Velocidrake: Gold and Red Armor (MM!)
 						},
 					}),
 					ach(15932, {	-- Ohn'ahran Plains Advanced: Gold
@@ -291,8 +291,8 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 						},
 					}),
 					dragonridingrace(75802, {	-- Mirror of the Sky Dash - Challenge
-						["provider"] = { "n", 191422 },	-- Bronze Timekeeper
-						["coord"] = { 59.9, 35.6, OHNAHRAN_PLAINS },
+						["provider"] = { "n", 191511 },	-- Bronze Timekeeper
+						["coord"] = { 47.5, 70.6, OHNAHRAN_PLAINS },
 						["g"] = {
 							ach(17950),	-- Mirror of the Sky Dash Challenge: Bronze
 							ach(17951),	-- Mirror of the Sky Dash Challenge: Silver
@@ -326,7 +326,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 							ach(17943),	-- River Rapids Route Challenge: Gold
 						},
 					}),
-					dragonridingrace(75798, {	-- River Rapids Route - Reverse Challenge
+					dragonridingrace(75804, {	-- River Rapids Route - Reverse Challenge
 						["provider"] = { "n", 196092 },	-- Bronze Timekeeper
 						["coord"] = { 43.8, 66.8, OHNAHRAN_PLAINS },
 						["g"] = {

@@ -1,15 +1,13 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1201, {	-- Algeth'ar Academy
 		["coord"] = { 58.3, 42.4, THALDRASZUS },
 		["maps"] = {
 			2097,	-- Algeth'ar Academy
 			2098,	-- The Pitch
+			2099,	-- Algeth'ar Academy
 		},
 		["g"] = {
 			n(QUESTS, {
@@ -33,7 +31,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 				i(194491),	-- Plans: Frostfire Legguards of Preparation (RECIPE!)
 				i(194492),	-- Plans: Unstable Frostfire Belt (RECIPE!)
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2509, {	-- Vexamus
 					["crs"] = {
 						189668,	-- Professor Madormu
@@ -79,13 +77,13 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193703),	-- Organized Pontificator's Cap
 						i(193704),	-- Scaled Commencement Spaulders
 						i(193706),	-- Venerated Professor's Greaves
-						i(197147),	-- Highland Drake: Heavy Scales (DM!)
-						i(197112),	-- Highland Drake: Single Horned Head (DM!)
+						i(197147),	-- Highland Drake: Heavy Scales (MM!)
+						i(197112),	-- Highland Drake: Single Horned Head (MM!)
 						i(198910),	-- Technique: Illusion Parchment: Shadow Orb (RECIPE!)
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2514, {	-- Echo of Doragosa
 					["crs"] = { 190609 },	-- Echo of Doragosa
 					["g"] = {
@@ -93,7 +91,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(2509, {	-- Vexamus
 					["crs"] = {
 						189668,	-- Professor Madormu

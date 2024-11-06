@@ -1,10 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1198, {	-- The Nokhud Offensive
 		["coord"] = { 60.9, 39.1, OHNAHRAN_PLAINS },
 		["maps"] = { 2093 },	-- The Nokhud Offensive
@@ -40,6 +37,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					["provider"] = { "n", 190164 },	-- Elder Nazuun
 					["coord"] = { 41.6, 56.7, OHNAHRAN_PLAINS },
 					["g"] = {
+						i(193483),	-- Medallion of the Ancestors (QI!)
 						i(200251),	-- Medallion of the Ancestors
 					},
 				}),
@@ -48,11 +46,13 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					["provider"] = { "n", 193985 },	-- Initiate Zorig
 					["coord"] = { 31.4, 71.0, OHNAHRAN_PLAINS },	-- Follows you
 					["g"] = {
+						i(200100),	-- Batubar the Relentless (QI!)
+						i(200115),	-- Sarantuya the Ever-True (QI!)
 						i(197891),	-- Embroidered Broadhoof Cowl
 						i(197889),	-- Geyserwalker Visage
 						i(197897),	-- Keratin-Reinforced Coif
 						i(197899),	-- Speakbreaker Barbuta
-						i(197359),	-- Renewed Proto-Drake: Hairy Brow (DM!)
+						i(197359),	-- Renewed Proto-Drake: Hairy Brow (MM!)
 					},
 				}),
 				q(66339, {	-- The Wind Belongs to the Sky
@@ -65,13 +65,18 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2498, {	-- Granyth
 					["crs"] = { 186616 },	-- Granyth
 					["g"] = {
 						i(193690),	-- Drake Hunter Shoulderpads
 						i(193694),	-- Drake Slayer's Greaves
-						i(193689),	-- Granyth's Enduring Scale
+						i(193689, {	-- Granyth's Enduring Scale
+							["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_2_6 },
+						}),
+						i(212757, {	-- Granyth's Enduring Scale
+							["timeline"] = { ADDED_10_2_6 },
+						}),
 						i(193695),	-- Quarry Slayer Glaive
 						i(193693),	-- Shikaar Ranger Bracers
 						i(193692),	-- Stoneroot Headdress
@@ -113,12 +118,12 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193688),	-- Stormslash
 						i(201929),	-- Stolen Breath of Ohn'ahra
 						i(201743),	-- Technique: Windborne Velocidrake: Silver and Blue Armor (RECIPE!)
-						i(197625),	-- Windborne Velocidrake: Feathery Tail (DM!)
-						i(197635),	-- Windborne Velocidrake: Reaver Pattern (DM!)
+						i(197625),	-- Windborne Velocidrake: Feathery Tail (MM!)
+						i(197635),	-- Windborne Velocidrake: Reaver Pattern (MM!)
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2477, {	-- Balakar Khan
 					["crs"] = { 186151 },	-- Balakar Khan
 					["g"] = {
@@ -126,7 +131,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
 					ach(16620),	-- Ohuna Incubation
 				}),

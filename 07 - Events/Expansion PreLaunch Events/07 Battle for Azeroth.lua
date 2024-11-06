@@ -2,10 +2,10 @@
 --     W O R L D   E V E N T S   M O D U L E       --
 -----------------------------------------------------
 
-root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "added 8.0.1.27101", "removed 8.0.1.28153" }, ["lvl"] = 110 }, {
-	tier(BFA_TIER, {
+root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADDED_8_0_1, REMOVED_8_0_1 }, ["lvl"] = 110 }, {
+	expansion(EXPANSION.BFA, {
 		n(QUESTS, {
-			-- Attaching the quests to each zone that is involved in the "War of the Thorns" Campaign.  Excluding Undercity, Stomrwind and Northern Barrens due to only one quest taking place in these zones and it's not relevant to link for just the one.
+			-- Attaching the quests to each zone that is involved in the "War of the Thorns" Campaign.  Excluding Undercity, Stormwind and Northern Barrens due to only one quest taking place in these zones and it's not relevant to link for just the one.
 			["maps"] = {
 				ASHENVALE,
 				DARNASSUS,
@@ -25,6 +25,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 				}),
 				q(52058, {	-- A Short-Lived Peace
 					["races"] = ALLIANCE_ONLY,
+					["g"] = {
+						i(157832),	-- A Royal Summons (QI!)
+					},
 				}),
 				q(52116, {	-- A Soft Glow
 					["qg"] = 134578,	-- Captain Delaryn Summermoon
@@ -84,6 +87,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					["qg"] = 107574,	-- Anduin Wrynn
 					["races"] = ALLIANCE_ONLY,
 					["sourceQuest"] = 52058,	-- A Short-Lived Pace
+					["g"] = {
+						i(157832),	-- A Royal Summons (QI!)
+					},
 				}),
 				q(53617, {	-- Mercy for the Mad
 					["qg"] = 133693,	-- Malfurion Stormrage
@@ -147,6 +153,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					["races"] = ALLIANCE_ONLY,
 					["sourceQuest"] = 52977,	-- The Guidance of Our Shan'do
 					["description"] = "You do not have to save all 982 people.  Once timer runs out this quest is removed and next one is auto-accepted.",
+					["g"] = {
+						i(163189),	-- Bucket of Moonwell Water (QI!)
+					},
 				}),
 				q(53310, {	-- From the Ashes… [Note: Final Quest for Part 2]
 					["races"] = ALLIANCE_ONLY,
@@ -169,6 +178,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					["qg"] = 134554,	-- Lady Sylvanas Windrunner
 					["races"] = HORDE_ONLY,
 					["sourceQuest"] = 50880,	-- An Unstoppable Force
+					["g"] = {
+						i(158937),	--Everburning Torch (QI!)
+					},
 				}),
 				q(52806, {	-- A Looming Threat [Note: Final Quest for Part 1]
 					["qg"] = 134554,	-- Lady Sylvanas Windrunner
@@ -227,6 +239,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					["qg"] = 134573,	-- Lorash
 					["races"] = HORDE_ONLY,
 					["sourceQuest"] = 50646,	-- A Quick Diversion
+					["g"] = {
+						i(158190),	-- Target Marker (QI!)
+					},
 				}),
 				q(53608, {	-- Fueling the Horde War Machine
 					["qg"] = 144346,	-- Jux Burstkix
@@ -268,6 +283,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 				}),
 				q(50476, {	-- The Warchief Awaits
 					["races"] = HORDE_ONLY,
+					["g"] = {
+						i(157832),	-- A Royal Summons (QI!)
+					},
 				}),
 				q(50642, {	-- The Warchief Commands
 					["qg"] = 134554,	-- Lady Sylvanas Windrunner
@@ -355,6 +373,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					}),
 					q(52504, {	-- So We Meat Again
 						["races"] = ALLIANCE_ONLY,
+						["g"] = {
+							i(162013),	-- Haunch of Meat (QI!)
+						},
 					}),
 					q(52307, {	-- Spiritual Aid
 						["races"] = ALLIANCE_ONLY,
@@ -367,6 +388,9 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					}),
 					q(52343, {	-- They Eat Like Orcs
 						["races"] = HORDE_ONLY,
+						["g"] = {
+							i(162013),	-- Haunch of Meat (QI!)
+						},
 					}),
 					q(52896, {	-- Under Pressure
 						["races"] = HORDE_ONLY,
@@ -404,7 +428,7 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 					cl(WARLOCK, {
 						i(162853),	-- Unshackled Belt
 						i(162849),	-- Unshackled Crown
-						i(162852),	-- Unshackled Epaulettes
+						i(162852),	-- Unshackled Epaulets
 						i(162848),	-- Unshackled Handguards
 						i(162847),	-- Unshackled Shoes
 						i(163016),	-- Unshackled Staff
@@ -539,23 +563,3 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { "ad
 		}),
 	}),
 })));
-
-root(ROOTS.NeverImplemented, {
-	tier(BFA_TIER, {	-- Battle For Azeroth
-		n(EXPANSION_PRELAUNCH, {
-			n(QUESTS, {
-				q(50882,{	-- All to Ash
-					["_drop"] = { "g" },
-				}),
-				q(52220, {	-- Dragon Attack
-					["races"] = ALLIANCE_ONLY,
-					["sourceQuest"] = 52197,	-- Long Away
-				}),
-				q(53550, {	-- A Change in Leadership
-					["races"] = HORDE_ONLY,
-					["sourceQuest"] = 50879,	-- The Trees Have Ears
-				}),
-			}),
-		}),
-	}),
-});

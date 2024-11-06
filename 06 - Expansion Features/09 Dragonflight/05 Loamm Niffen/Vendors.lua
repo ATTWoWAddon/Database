@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
 	n(LOAMM_NIFFEN, {
 		n(VENDORS, {
 			n(202468, {	-- Harlowe Marl
@@ -12,17 +12,17 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					}, {	-- RENOWN 3 --
 					}, {	-- RENOWN 4 --
 					}, {	-- RENOWN 5 --
-						i(203310, {	-- Winding Slitherdrake: Grand Chin Thorn (DM!)
+						i(203310, {	-- Winding Slitherdrake: Grand Chin Thorn (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 150 },
 							},
 						}),
-						i(203316, {	-- Winding Slitherdrake: Large Finned Crest (DM!)
+						i(203316, {	-- Winding Slitherdrake: Large Finned Crest (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 150 },
 							},
 						}),
-						i(203327, {	-- Winding Slitherdrake: Tan Horns (DM!)
+						i(203327, {	-- Winding Slitherdrake: Tan Horns (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 150 },
 							},
@@ -126,17 +126,17 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 							},
 						}),
 					}, {	-- RENOWN 13 --
-						i(203323, {	-- Winding Slitherdrake: Brown Hair (DM!)
+						i(203323, {	-- Winding Slitherdrake: Brown Hair (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 300 },
 							},
 						}),
-						i(203335, {	-- Winding Slitherdrake: Curved Horns (DM!)
+						i(203335, {	-- Winding Slitherdrake: Curved Horns (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 300 },
 							},
 						}),
-						i(203341, {	-- Winding Slitherdrake: Long Jaw Horns (DM!)
+						i(203341, {	-- Winding Slitherdrake: Long Jaw Horns (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 300 },
 							},
@@ -174,28 +174,22 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 							},
 						}),
 					}, {	-- RENOWN 16 --
-						i(205363, {	-- Ensemble: Ornate Black Dragon Labwear
-							["questID"] = 75832,
+						iensemble(205363, {	-- Ensemble: Ornate Black Dragon Labwear
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 250 },
 							},
-							["g"] = {
-								i(205416),	-- Ornate Black Dragon Labwear Cloak
-								i(205414),	-- Ornate Black Dragon Labwear Coat
-								i(205415),	-- Ornate Black Dragon Labwear Mantle
-							},
 						}),
-						i(203362, {	-- Winding Slitherdrake: Hairy Tail (DM!)
+						i(203362, {	-- Winding Slitherdrake: Hairy Tail (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 600 },
 							},
 						}),
-						i(203365, {	-- Winding Slitherdrake: Hairy Throat (DM!)
+						i(203365, {	-- Winding Slitherdrake: Hairy Throat (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 600 },
 							},
 						}),
-						i(203347, {	-- Winding Slitherdrake: Large Spiked Nose (DM!)
+						i(203347, {	-- Winding Slitherdrake: Large Spiked Nose (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 600 },
 							},
@@ -218,15 +212,15 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 							},
 						}),
 					}, {	-- RENOWN 19 --
-						i(197120, {	-- Highland Drake: Ornate Helm (DM!)
+						i(197120, {	-- Highland Drake: Ornate Helm (MM!)
 							["cost"] = {
 								{ "c", DRAGON_SUPPLIES, 1000 },
 							},
 						}),
-						i(196990),	-- Cliffside Wylderdrake: Helm (DM!)
-						i(197373),	-- Renewed Proto-Drake: Helm (DM!)
-						i(197600),	-- Windborne Velocidrake: Helm (DM!)
-						i(203326),	-- Winding Slitherdrake: Helm (DM!)
+						i(196990),	-- Cliffside Wylderdrake: Helm (MM!)
+						i(197373),	-- Renewed Proto-Drake: Helm (MM!)
+						i(197600),	-- Windborne Velocidrake: Helm (MM!)
+						i(203326),	-- Winding Slitherdrake: Helm (MM!)
 					}, {	-- RENOWN 20 --
 					i(205188, {	-- Barter Boulder
 						["cost"] = {

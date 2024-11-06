@@ -1,10 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1199, {	-- Neltharus
 		["coord"] = { 25.5, 56.9, THE_WAKING_SHORES },
 		["maps"] = {
@@ -22,14 +19,18 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193787),	-- Mammoth-Trainer's Cape
 						i(193788),	-- Molten Magma Mantle
 						i(193789),	-- Fural's Blazing Faulds
+						i(201263),	-- Obsidian Journal (QI!)
+						i(201264),	-- Neltharion's Notes (QI!)
+						i(201266),	-- Research Tome (QI!)
 					},
 				}),
 			}),
 			n(TREASURES, {
-				-- Don't have ObjectID etc.. atm
-				i(199229),	-- Schematic: Tinker: Breath of Neltharion (RECIPE!)
+				o(384317, {	-- Crumpled Schematic
+					i(199229),	-- Schematic: Tinker: Breath of Neltharion (RECIPE!)
+				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2490, {	-- Chargath, Bane of Scales
 					["crs"] = { 189340 },	-- Chargath, Bane of Scales
 					["g"] = {
@@ -49,6 +50,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193785),	-- Forgestorm
 						i(193783),	-- Irontorch Igniter
 						i(193781),	-- Lavabearer Legwraps
+						i(194508),	-- Plans: Alvin the Anvil (RECIPE!)
 					},
 				}),
 				e(2494, {	-- Magmatusk
@@ -71,12 +73,12 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(193779),	-- Sargha's Smasher
 						i(193773),	-- Spoils of Neltharus
 						i(193775),	-- Warlord's Cindermitts
-						i(197376),	-- Renewed Proto-Drake: Ears (DM!)
-						i(197397),	-- Renewed Proto-Drake: Heavy Scales (DM!)
+						i(197376),	-- Renewed Proto-Drake: Ears (MM!)
+						i(197397),	-- Renewed Proto-Drake: Heavy Scales (MM!)
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2501, {	-- Warlord Sargha
 					["crs"] = { 189901 },	-- Warlord Sargha
 					["g"] = {
@@ -84,7 +86,7 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				e(2490, {	-- Chargath, Bane of Scales
 					["crs"] = { 189340 },	-- Chargath, Bane of Scales
 					["g"] = {

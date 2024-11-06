@@ -40,9 +40,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					i(205936),	-- New Niffen No-Sniffin' Tonic (TOY!)
 				},
 			}),
-			n(205676, {	-- Norzko the Proud
+			n(205676, bubbleDown({ ["timeline"] = { REMOVED_11_0_0 } }, {	-- Norzko the Proud
 				["coord"] = { 52.0, 25.6, ZARALEK_CAVERN },
-				["g"] = bubbleDown({ ["bonusID"] = 7532 }, {
+				["g"] = bubbleDownFiltered({
+					["cost"] = {{ "i", 204843, 1 }},	-- Draconic Mark of Mastery
+					["bonusID"] = 7532,
+				},FILTERFUNC_itemID,{
 					cl(DEATHKNIGHT, {
 						i(205810),	-- Lingering Phantom's Dreadhorns
 						i(205811),	-- Lingering Phantom's Gauntlets
@@ -55,7 +58,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 						i(205845),	-- Kinslayer's Hood
 						i(205844),	-- Kinslayer's Legguards
 						i(205843),	-- Kinslayer's Tainted Spaulders
-						i(202527),	-- Kinslayer's Vest
+						i(205847),	-- Kinslayer's Vest
 					}),
 					cl(DRUID, {
 						i(205840),	-- Bough of the Autumn Blaze
@@ -135,7 +138,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 						i(205800),	-- Thraexhelm of the Onyx Crucible
 					}),
 				}),
-			}),
+			})),
 			n(203615, {	-- Saccratros
 				["coord"] = { 55.9, 55.4, ZARALEK_CAVERN },
 				["g"] = {

@@ -6,7 +6,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		n(ZONE_DROPS, {
 			i(199216),	-- A Box of Rocks
 			i(202062, {	-- Ash Feather
-				["description"] = "Can be looted while Dragonriding.\nPer-Player visibility.\nSpawns nearby and disappears after ~1 minute.",
+				["description"] = "Can be collected in <10 minutes inside the Neltharus dungeon, by staying near the entrance. They spawn very quickly here for some reason.",
 				["cost"] = {{"i",199177,1}},	-- Ash Feather Amulet
 				["crs"] = {
 					195759,	-- Ash Feather
@@ -36,6 +36,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					193137,	-- Restless Lava
 				},
 			}),
+			i(201883, {	-- Empty Magma Shell
+				["crs"] = {
+					193139,	-- Basalt Shell
+					186623,	-- Lavaslurper
+					193138,	-- Lavaslurper
+				},
+			}),
 			i(191904, {	-- Orb of Primal Stone
 				["cr"] = 189795,	-- Unsettled Rubble
 			}),
@@ -49,7 +56,8 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					195448,	-- Blazing Firesquall
 					189581,	-- Lava Fledgling
 					187923,	-- Lava Hatchling
-					204110,	-- Lava Phoenix
+					191637,	-- Lava Phoenix (Waking Shores)
+					204110,	-- Lava Phoenix (Zaralek)
 					199829,	-- Magma Phoenix
 					189247,	-- Tamed Phoenix (Neltharus)
 				},

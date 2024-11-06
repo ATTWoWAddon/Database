@@ -3,7 +3,7 @@
 -------------------------------------------------------------------
 
 root(ROOTS.ExpansionFeatures,
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		n(-543, {	-- Broken Isles: Legion Invasions
 			["description"] = "Complete 4 Legion Invasion World Quests, then complete the Scenario in the respective zone",
 			["maps"] = {
@@ -20,59 +20,16 @@ root(ROOTS.ExpansionFeatures,
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					ach(11544, {	-- Defender of the Broken Isles
-						crit(1),	-- Battle for Azsuna
-						crit(2),	-- Battle for Highmountain
-						crit(3),	-- Battle for Stormheim
-						crit(4),	-- Battle for Val'sharah
+						crit(36546),	-- Battle for Azsuna
+						crit(36547),	-- Battle for Highmountain
+						crit(36548),	-- Battle for Stormheim
+						crit(36549),	-- Battle for Val'sharah
 					}),
 					ach(11240, {	-- Harbinger
-						crit(1),		-- Waterlogged Tome (Deadwind Pass - near Karazhan - Master's Cellar)
-						crit(2),		-- Fel-Ravaged Tome (Vault of the Wardens)
-						crit(3),		-- Cursed Tome (Shadowmoon Valley - D)
+						crit(33145),		-- Waterlogged Tome (Deadwind Pass - near Karazhan - Master's Cellar)
+						crit(33146),		-- Fel-Ravaged Tome (Vault of the Wardens)
+						crit(33147),		-- Cursed Tome (Shadowmoon Valley - D)
 					}),
-				}),
-				n(REWARDS, {
-					["crs"] = {
-						118180,	-- Dread Vizier Gra'tork <Legion Commander>
-						119579,	-- Fel Commander Erixtol
-						118840,	-- Lord Commander Alexius
-						118975,	-- Xeritas
-					},
-					["sym"] = {
-						{"select", "headerID", -543},	-- Select Legion Invasions
-						{"pop"},	-- Push all of the groups contained to the processing layer.
-						{"where", "headerID", WORLD_QUESTS },
-						{"pop"},	-- Push all of the groups contained to the processing layer.
-						{"select", "itemID",
-							147216,	-- Dauntless Hood
-							147221,	-- Dauntless Choker
-							147218,	-- Dauntless Spaulders
-							147222,	-- Dauntless Cloak
-							147213,	-- Dauntless Tunic
-							147212,	-- Dauntless Bracers
-							147215,	-- Dauntless Gauntlets
-							147219,	-- Dauntless Girdle
-							147217,	-- Dauntless Leggings
-							147214,	-- Dauntless Treads
-							147220,	-- Dauntless Ring
-							147223,	-- Dauntless Trinket
-						},
-					},
-					["g"] = {
-						i(139158),	-- Battle Mace of the Niskaran Guard
-						i(139163),	-- Star of Niskara
-						i(138762),	-- Niskaran Morning Star
-						i(139155),	-- Legion's Edge
-						i(139157),	-- Dread Vanquisher's Hacker
-						i(139156),	-- Argus Decapitator
-						i(139159),	-- Face of Ruin
-						i(139160),	-- Eredar Battle Staff
-						i(139161),	-- Soulmage's Spire
-						i(139162),	-- Blood Guard's Tooth
-						i(139164),	-- Wrathblade
-						i(139165),	-- Bloodseeker's Bulwark
-						i(139166),	-- Soulstealer's Barrier
-					},
 				}),
 				n(QUESTS, {
 					q(46205, {	-- A Conduit No More
@@ -149,6 +106,49 @@ root(ROOTS.ExpansionFeatures,
 						["provider"] = { "n", 116868 },	-- Vethir
 					}),
 				}),
+				n(SCENARIO_COMPLETION, {
+					["crs"] = {
+						118180,	-- Dread Vizier Gra'tork <Legion Commander>
+						119579,	-- Fel Commander Erixtol
+						118840,	-- Lord Commander Alexius
+						118975,	-- Xeritas
+					},
+					["sym"] = {
+						{"select", "headerID", -543},	-- Select Legion Invasions
+						{"pop"},	-- Push all of the groups contained to the processing layer.
+						{"where", "headerID", WORLD_QUESTS },
+						{"pop"},	-- Push all of the groups contained to the processing layer.
+						{"select", "itemID",
+							147216,	-- Dauntless Hood
+							147221,	-- Dauntless Choker
+							147218,	-- Dauntless Spaulders
+							147222,	-- Dauntless Cloak
+							147213,	-- Dauntless Tunic
+							147212,	-- Dauntless Bracers
+							147215,	-- Dauntless Gauntlets
+							147219,	-- Dauntless Girdle
+							147217,	-- Dauntless Leggings
+							147214,	-- Dauntless Treads
+							147220,	-- Dauntless Ring
+							147223,	-- Dauntless Trinket
+						},
+					},
+					["g"] = {
+						i(139158),	-- Battle Mace of the Niskaran Guard
+						i(139163),	-- Star of Niskara
+						i(138762),	-- Niskaran Morning Star
+						i(139155),	-- Legion's Edge
+						i(139157),	-- Dread Vanquisher's Hacker
+						i(139156),	-- Argus Decapitator
+						i(139159),	-- Face of Ruin
+						i(139160),	-- Eredar Battle Staff
+						i(139161),	-- Soulmage's Spire
+						i(139162),	-- Blood Guard's Tooth
+						i(139164),	-- Wrathblade
+						i(139165),	-- Bloodseeker's Bulwark
+						i(139166),	-- Soulstealer's Barrier
+					},
+				}),
 				n(WORLD_QUESTS, {
 					i(146766),  -- Nethercaller Cloak
 					i(146786),	-- Vileweave Cap
@@ -190,7 +190,7 @@ root(ROOTS.ExpansionFeatures,
 	})
 );
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(46964),	-- Assault Treasure - Azsuna
 		q(46966),	-- Assault Treasure - Azsuna
 		q(46967),	-- Assault Treasure - Azsuna

@@ -6,7 +6,7 @@
 -- Do not move this elsewhere, please leave it here for now. -Darkal
 root(ROOTS.NeverImplemented, {
 	n(QUALITY_COMMON, {
-		tier(CLASSIC_TIER, {
+		expansion(EXPANSION.CLASSIC, {
 			-- NYI Classic Common Items
 			n(WEAPONS, {
 				filter(ONE_HANDED_AXES, {
@@ -136,7 +136,7 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(TBC_TIER, {
+		expansion(EXPANSION.TBC, {
 			-- NYI The Burning Crusade Common Items
 			n(WEAPONS, {
 				filter(ONE_HANDED_AXES, {
@@ -212,7 +212,7 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(WOTLK_TIER, {
+		expansion(EXPANSION.WRATH, {
 			-- NYI Wrath of the Lich King Common Items
 			n(WEAPONS, {
 				filter(ONE_HANDED_AXES, {
@@ -291,24 +291,17 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(CATA_TIER, {
+		expansion(EXPANSION.CATA, {
 			-- NYI Cataclysm Common Items
 			n(ARMOR, {
 				filter(CLOTH, {
 					n(WRIST, {
 						i(57156),	-- Prodigal Lich Bracer
 					}),
-					n(HANDS, {
-						i(53365),	-- Empowered Hands
-					}),
 					n(WAIST, {
-						i(53363),	-- Circle of Suffering
 						i(49530),	-- Goblin Acolyte's Belt
 						i(49509),	-- Goblin Apprentice's Belt
 						i(49513),	-- Goblin Neophyte's Belt
-					}),
-					n(FEET, {
-						i(57529),	-- Fur-Lined Slippers
 					}),
 				}),
 				filter(LEATHER, {
@@ -322,22 +315,10 @@ root(ROOTS.NeverImplemented, {
 						i(53356),	-- Beast Tracker's Bracers
 					}),
 					n(HANDS, {
-						i(53376),	-- Lockpicker's Glovelettes
 						i(53385),	-- Rockbitten Gloves
 					}),
 					n(WAIST, {
 						i(49534),	-- Goblin Primitive's Belt
-					}),
-					n(FEET, {
-						i(57254),	-- Runner's Boots
-					}),
-				}),
-				filter(MAIL, {
-					n(WRIST, {
-						i(57533),	-- Dwarven Iron Bracer
-					}),
-					n(HANDS, {
-						i(57392),	-- Willem's Mitts
 					}),
 				}),
 				filter(PLATE, {
@@ -362,7 +343,6 @@ root(ROOTS.NeverImplemented, {
 				}),
 				filter(DAGGERS, {
 					i(49605),	-- Battlescarred Dagger
-					i(49395),	-- Rigging Slicer
 				}),
 				filter(FIST_WEAPONS, {
 					i(56090),	-- Monster, Controller
@@ -411,12 +391,9 @@ root(ROOTS.NeverImplemented, {
 					i(56064),	-- Monster, Grimtotem Alliance Weapon (2H Sword)
 					i(49396),	-- Rusty Prybar
 				}),
-				filter(WANDS, {
-					i(57394),	-- Long Lost Wand
-				}),
 			}),
 		}),
-		tier(MOP_TIER, {
+		expansion(EXPANSION.MOP, {
 			-- NYI Mists of Pandaria Common Items
 			n(ARMOR, {
 				filter(CLOTH, {
@@ -464,7 +441,7 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(WOD_TIER, {
+		expansion(EXPANSION.WOD, {
 			-- NYI Warlods of Draenor Common Items
 			n(ARMOR, {
 				filter(CLOTH, {
@@ -499,17 +476,14 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(LEGION_TIER, {
+		expansion(EXPANSION.LEGION, {
 			-- NYI Legion Common Items
 			n(ARMOR, {
 				filter(MAIL, {
 					n(WRIST, {
-						i(131848),	-- Beast Tracker's Bracers
-						i(131203),	-- Chain Link Winter Bracers
 						i(131256),	-- Fur Lined Chain Bracers
 					}),
 					n(HANDS, {
-						i(131854),	-- Rockbitten Gloves
 						i(131925),	-- Wanderer's Grips
 					}),
 					n(FEET, {
@@ -553,7 +527,6 @@ root(ROOTS.NeverImplemented, {
 				filter(MISC, {
 					i(140209),	-- 'Imported' Blacksmith Hammer
 					i(140208),	-- 'Imported' Mining Pick
-					i(136350),	-- Brumdysla, Hammer of Vrorsk
 				}),
 				filter(ONE_HANDED_SWORDS, {
 					i(132470),	-- 7.0 Weapon - Sword_1h_LordRavencrest_B_01 - Purple
@@ -564,7 +537,7 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(BFA_TIER, {
+		expansion(EXPANSION.BFA, {
 			-- NYI Battle for Azeroth Common Items
 			n(ARMOR, {
 				filter(LEATHER, {
@@ -644,7 +617,7 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(SL_TIER, {
+		expansion(EXPANSION.SL, {
 			-- NYI Shadowlands Common Items
 			n(ARMOR, {
 				filter(CLOTH, {
@@ -730,7 +703,7 @@ root(ROOTS.NeverImplemented, {
 				}),
 			}),
 		}),
-		tier(DF_TIER, {
+		expansion(EXPANSION.DF, {
 			-- NYI Dragonflight Common Items
 			n(WEAPONS, {
 				filter(TWO_HANDED_AXES, {

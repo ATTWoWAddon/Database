@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubbleDown({ ["timeline"] = { "added 3.2.0" } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_THREE, bubbleDown({ ["timeline"] = { ADDED_3_2_0 } }, {
 	inst(757, {	-- Trial of the Crusader
 		["mapID"] = TRIAL_OF_THE_CRUSADER,
 		["coord"] = { 75.0, 21.8, ICECROWN },	-- Trial of the Crusader (Argent Tournament Grounds)
@@ -15,114 +15,123 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 			n(ACHIEVEMENTS, {
 				ach(3917, {	-- Call of the Crusade (10 player)
 					crit(13326, {	-- Northrend Beasts
-						["_encounter"] = { 1618, 3 },
+						["_encounter"] = { 1618, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					crit(13327, {	-- Lord Jaraxxus
-						["_encounter"] = { 1619, 3 },
+						["_encounter"] = { 1619, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					-- Blizzaaaaard why do you waste my time like this?
 					crit(13328, {	-- Champions of the Alliance
-						["_encounter"] = { 1620, 3 },
+						["_encounter"] = { 1620, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					crit(13328, {	-- Champions of the Horde
-						["_encounter"] = { 1621, 3 },
+						["_encounter"] = { 1621, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					crit(13329, {	-- Twin Val'kyr
-						["_encounter"] = { 1622, 3 },
+						["_encounter"] = { 1622, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					crit(13308, {	-- Anub'arak
-						["_encounter"] = { 1623, 3 },
+						["_encounter"] = { 1623, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					-- #else
 					crit(12236, {	-- Champions of the Alliance
-						["_encounter"] = { 1620, 3 },
+						["_encounter"] = { 1620, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					crit(12236, {	-- Champions of the Horde
-						["_encounter"] = { 1621, 3 },
+						["_encounter"] = { 1621, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					crit(12240, {	-- Twin Val'kyr
-						["_encounter"] = { 1622, 3 },
+						["_encounter"] = { 1622, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					crit(12244, {	-- Anub'arak
-						["_encounter"] = { 1623, 3 },
+						["_encounter"] = { 1623, DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL },
 					}),
 					-- #endif
 				}),
 				ach(3918, {	-- Call of the Grand Crusade (10 player)
 					crit(12229, {	-- Northrend Beasts
-						["_encounter"] = { 1618, 5 },
+						["_encounter"] = { 1618, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 					}),
 					crit(12233, {	-- Lord Jaraxxus
-						["_encounter"] = { 1619, 5 },
+						["_encounter"] = { 1619, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 					}),
 					crit(12237, {	-- Champions of the Alliance
-						["_encounter"] = { 1620, 5 },
+						["_encounter"] = { 1620, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 					}),
 					crit(12237, {	-- Champions of the Horde
-						["_encounter"] = { 1621, 5 },
+						["_encounter"] = { 1621, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 					}),
 					crit(12241, {	-- Twin Val'kyr
-						["_encounter"] = { 1622, 5 },
+						["_encounter"] = { 1622, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 					}),
 					crit(12245, {	-- Anub'arak
-						["_encounter"] = { 1623, 5 },
+						["_encounter"] = { 1623, DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC },
 					}),
 				}),
 				ach(3916, {	-- Call of the Crusade (25 player)
 					-- #if ANYCLASSIC
 					crit(13346, {	-- Northrend Beasts
-						["_encounter"] = { 1618, 4 },
+						["_encounter"] = { 1618, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					-- #else
 					crit(12230, {	-- Northrend Beasts
-						["_encounter"] = { 1618, 4 },
+						["_encounter"] = { 1618, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					-- #endif
 					crit(13347, {	-- Lord Jaraxxus
-						["_encounter"] = { 1619, 4 },
+						["_encounter"] = { 1619, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					crit(13348, {	-- Champions of the Alliance
-						["_encounter"] = { 1620, 4 },
+						["_encounter"] = { 1620, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					crit(13348, {	-- Champions of the Horde
-						["_encounter"] = { 1621, 4 },
+						["_encounter"] = { 1621, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					crit(13349, {	-- Twin Val'kyr
-						["_encounter"] = { 1622, 4 },
+						["_encounter"] = { 1622, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					crit(13346, {	-- Anub'arak
-						["_encounter"] = { 1623, 4 },
+						["_encounter"] = { 1623, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					-- #else
 					crit(12242, {	-- Twin Val'kyr
-						["_encounter"] = { 1622, 4 },
+						["_encounter"] = { 1622, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					crit(12246, {	-- Anub'arak
-						["_encounter"] = { 1623, 4 },
+						["_encounter"] = { 1623, DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL },
 					}),
 					-- #endif
 				}),
 				ach(3812, {	-- Call of the Grand Crusade (25 player)
 					crit(12231, {	-- Northrend Beasts
-						["_encounter"] = { 1618, 6 },
+						["_encounter"] = { 1618, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 					}),
 					crit(12235, {	-- Lord Jaraxxus
-						["_encounter"] = { 1619, 6 },
+						["_encounter"] = { 1619, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 					}),
 					crit(12239, {	-- Champions of the Alliance
-						["_encounter"] = { 1620, 6 },
+						["_encounter"] = { 1620, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 					}),
 					crit(12239, {	-- Champions of the Horde
-						["_encounter"] = { 1621, 6 },
+						["_encounter"] = { 1621, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 					}),
 					crit(12243, {	-- Twin Val'kyr
-						["_encounter"] = { 1622, 6 },
+						["_encounter"] = { 1622, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 					}),
 					crit(12247, {	-- Anub'arak
-						["_encounter"] = { 1623, 6 },
+						["_encounter"] = { 1623, DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC },
 					}),
+				}),
+				ach(11752, {["timeline"] = {ADDED_7_2_0}}),	-- Style of the Crusader (Trial of the Crusader)
+				ach(4078, {	-- Realm First! Grand Crusader
+					["timeline"] = { ADDED_3_2_0, REMOVED_3_2_2 },
+					["g"] = {
+						title(135, {	-- Grand Crusader <Name>
+							["timeline"] = { ADDED_3_2_0, REMOVED_3_2_2 },
+						}),
+					},
 				}),
 			}),
 			n(VENDORS, {
@@ -465,7 +474,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					["description"] = "|CFFFF0000Purchasing this exact piece (shared appearances don't work) and letting the 2 hour timer disappear unlocks the Alliance equivalent.|r",
 					-- #endif
 					["races"] = HORDE_ONLY,
-					["groups"] = bubbleDown({ ["timeline"] = { "added 3.2.0", "removed 4.0.3" } }, {
+					["groups"] = bubbleDown({ ["timeline"] = { ADDED_3_2_0, REMOVED_4_0_3 } }, {
 						-- TODO: Finish sorting this.
 						cl(WARRIOR, {	-- Hellscream's Battlegear (657)
 							["cost"] = { { "i", 47558, 1 } },	-- Regalia of the Grand Protector
@@ -659,7 +668,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					["description"] = "|CFFFF0000Purchasing this exact piece (shared appearances don't work) and letting the 2 hour timer disappear unlocks the Horde equivalent.|r",
 					-- #endif
 					["races"] = ALLIANCE_ONLY,
-					["groups"] = bubbleDown({ ["timeline"] = { "added 3.2.0", "removed 4.0.3" } }, {
+					["groups"] = bubbleDown({ ["timeline"] = { ADDED_3_2_0, REMOVED_4_0_3 } }, {
 						-- TODO: Finish sorting this.
 						cl(WARRIOR, {	-- Wrynn's Battlegear (658)
 							["cost"] = { { "i", 47558, 1 } },	-- Regalia of the Grand Protector
@@ -1223,6 +1232,9 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 				},
 				["description"] = "These drop on all difficulties other than 10 Man Normal.",
 				["groups"] = {
+					-- #if BEFORE 4.0.1
+					currency(301),	-- Emblem of Triumph
+					-- #endif
 					a(i(47654)),	-- Pattern: Bejeweled Wizard's Bracers [Alliance]
 					h(i(47639)),	-- Pattern: Bejeweled Wizard's Bracers [Horde]
 					i(47629, {	-- Pattern: Black Chitin Bracers [A] (RECIPE!)
@@ -1317,11 +1329,15 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					}),
 					i(47556),	-- Crusader Orb
 					i(47242, {	-- Trophy of the Crusade
+						-- #if AFTER 4.0.3
 						["description"] = "This only drops on either of the 25-Player Modes.",
+						-- #else
+						["description"] = "This only drops on either of the 25-Player Modes or from the Tribute Chest at the end of 10 man Heroic.",
+						-- #endif
 					}),
 				},
 			}),
-			d(3, {	-- 10-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL, {
 				e(1618, {	-- Northrend Beasts
 					["crs"] = {
 						34797,	-- Icehowl
@@ -1333,10 +1349,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 						ach(3936),	-- Not One, But Two Jormungars (10 player)
 						ach(3797),	-- Upper Back Pain (10 player)
 						i(142083, {	-- Dreadmaw (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						i(142084, {	-- Snobold Runt (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						a(i(47612)),	-- Rod of Imprisoned Souls
 						h(i(47856)),	-- Scepter of Imprisoned Souls
@@ -1500,7 +1516,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					["groups"] = {
 						ach(3800),	-- The Traitor King (10 player)
 						i(142085, {	-- Nerubian Swarmer (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						h(i(47911)),	-- Anguish
 						a(i(47815)),	-- Cold Convergence
@@ -1541,7 +1557,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					},
 				}),
 			}),
-			d(5, {	-- 10-Player Heroic
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC, {
 				e(1618, {	-- Northrend Beasts
 					["crs"] = {
 						34797,	-- Icehowl
@@ -1553,10 +1569,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 						ach(3936),	-- Not One, But Two Jormungars (10 player)
 						ach(3797),	-- Upper Back Pain (10 player)
 						i(142083, {	-- Dreadmaw (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						i(142084, {	-- Snobold Runt (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						a(i(47922)),	-- Rod of Imprisoned Souls
 						h(i(47995)),	-- Scepter of Imprisoned Souls
@@ -1719,11 +1735,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					["crs"] = { 34564 },	-- Anub'arak
 					["groups"] = {
 						ach(5021, {	-- Call of the Crusade - Guild Edition
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						ach(3800),	-- The Traitor King (10 player)
 						i(142085, {	-- Nerubian Swarmer (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						h(i(48056)),	-- Anguish
 						a(i(47968)),	-- Cold Convergence
@@ -1763,7 +1779,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 						h(i(48053)),	-- Sunwalker Legguards
 					},
 				}),
-				o(195665, bubbleDown({ ["timeline"] = { "added 3.2.0", "removed 4.0.3" } }, {	-- Argent Crusade Tribute Chest
+				o(195665, bubbleDown({ ["timeline"] = { ADDED_3_2_0, REMOVED_4_0_3 } }, {	-- Argent Crusade Tribute Chest
 					["description"] = "This chest appears after the defeat of Anub'arak in successful Tribute runs in the Trial of the Crusader.",
 					--[[
 						Alliance	Description	Horde
@@ -1822,11 +1838,17 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 							a(ig(48708)),		-- Spellstorm Blade
 							h(ig(48703)),		-- The Facebreaker
 							a(ig(48712)),		-- The Spinebreaker
+
 						}),
+						-- #if BEFORE 4.0.3
+						i(47242, {	-- Trophy of the Crusade
+							["description"] = "This only drops on either of the 25-Player Modes or from the Tribute Chest at the end of 10 man Heroic.",
+						}),
+						-- #endif
 					},
 				})),
 			}),
-			d(4, {	-- 25-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL, {
 				e(1618, {	-- Northrend Beasts
 					["crs"] = {
 						34797,	-- Icehowl
@@ -1838,10 +1860,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 						ach(3937),		-- Not One, But Two Jormungars (25 player)
 						ach(3813),		-- Upper Back Pain (25 player)
 						i(142083, {	-- Dreadmaw (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						i(142084, {	-- Snobold Runt (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						h(i(47261)),	-- Barb of Tarasque
 						a(i(46979)),	-- Blade of Tarasque
@@ -1931,7 +1953,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					},
 					["groups"] = {
 						ach(3814, {	-- Resilience Will Fix It (25 player)
-							["timeline"] = { "deleted 4.0.3" },
+							["timeline"] = { DELETED_4_0_3 },
 						}),
 						i(47285),	-- Dual-Blade Butcher
 						i(47287),	-- Bastion of Resolve
@@ -1970,7 +1992,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					},
 					["groups"] = {
 						ach(3814, {	-- Resilience Will Fix It (25 player)
-							["timeline"] = { "deleted 4.0.3" },
+							["timeline"] = { DELETED_4_0_3 },
 						}),
 						i(47069),	-- Justicebringer
 						i(47079),	-- Bastion of Purity
@@ -2033,7 +2055,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					["groups"] = {
 						ach(3816),	-- The Traitor King (25 player)
 						i(142085, {	-- Nerubian Swarmer (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						a(i(47233)),	-- Archon Glaive
 						h(i(47329)),	-- Hellion Glaive
@@ -2078,7 +2100,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					},
 				}),
 			}),
-			d(6, {	-- 25-Player Heroic
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC, {
 				e(1618, {	-- Northrend Beasts
 					["crs"] = {
 						34797,	-- Icehowl
@@ -2090,10 +2112,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 						ach(3937),		-- Not One, But Two Jormungars (25 player)
 						ach(3813),		-- Upper Back Pain (25 player)
 						i(142083, {	-- Dreadmaw (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						i(142084, {	-- Snobold Runt (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						h(i(47422)),	-- Barb of Tarasque
 						a(i(46980)),	-- Blade of Tarasque
@@ -2278,11 +2300,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 					["crs"] = { 34564 },	-- Anub'arak
 					["groups"] = {
 						ach(5021, {	-- Call of the Crusade - Guild Edition
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						ach(3816),	-- The Traitor King (25 player)
 						i(142085, {	-- Nerubian Swarmer (PET!)
-							["timeline"] = { "added 7.1.0.22731" },
+							["timeline"] = { ADDED_7_1_0 },
 						}),
 						a(i(47239)),	-- Archon Glaive
 						h(i(47491)),	-- Hellion Glaive
@@ -2326,7 +2348,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_THREE, bubb
 						a(i(47188)),	-- Reign of the Unliving
 					},
 				}),
-				o(195665, bubbleDown({ ["timeline"] = { "added 3.2.0", "removed 4.0.3" } }, {	-- Argent Crusade Tribute Chest
+				o(195665, bubbleDown({ ["timeline"] = { ADDED_3_2_0, REMOVED_4_0_3 } }, {	-- Argent Crusade Tribute Chest
 					["description"] = "This chest appears after the defeat of Anub'arak in successful Tribute runs in the Trial of the Crusader.",
 					--[[
 						Alliance	Description	Horde

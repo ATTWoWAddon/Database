@@ -3,9 +3,8 @@
 -------------------------------------------------------------------
 
 root(ROOTS.ExpansionFeatures, {
-	tier(BFA_TIER, {
-		-- TODO: probably give this a better name/header
-		o(311218, {	-- Xal'atath, Blade of the Black Empire
+	expansion(EXPANSION.BFA, {
+		header(HEADERS.Object, 311218, {	-- Xal'atath, Blade of the Black Empire
 			q(54438, {	-- Crucible of Storms: Relics of Shadow
 				["sourceQuests"] = { 54126 },	-- Twist the Knife
 				["provider"] = { "n", 146902 },	-- Brother Pike
@@ -86,6 +85,9 @@ root(ROOTS.ExpansionFeatures, {
 				["coord"] = { 40.4, 36.4, STORMSONG_VALLEY },
 				["provider"] = { "n", 135793 },	-- Collector Kojo
 				["classes"] = exclude(PRIEST, ALL_CLASSES),
+				["g"] = {
+					i(164761),	-- Xal'atath, Blade of the Black Empire (QI!)
+				},
 			}),
 			q(54174, {	-- Orders from Azshara
 				["sourceQuests"] = { 54172 },	-- The Azsharan Medallion
@@ -93,6 +95,9 @@ root(ROOTS.ExpansionFeatures, {
 				["coord"] = { 71.4, 30.2, ZULDAZAR },
 				["provider"] = { "n", 134345 },	-- Collector Kojo
 				["classes"] = exclude(PRIEST, ALL_CLASSES),
+				["g"] = {
+					i(164761),	-- Xal'atath, Blade of the Black Empire (QI!)
+				},
 			}),
 			q(54265, {	-- Orders from Azshara
 				["sourceQuests"] = { 54172 },	-- The Azsharan Medallion
@@ -153,11 +158,18 @@ root(ROOTS.ExpansionFeatures, {
 				},
 				["provider"] = { "n", 144773 },	-- Xal'atath
 				["coord"] = { 20.0, 35.8, DRUSTVAR },
+				["g"] = {
+					i(164976),	-- Skeleton Key (QI!)
+					i(164763),	-- Trident of Deep Ocean (QI!)
+				},
 			}),
 			q(53762, {	-- The Tempest Crown
 				["sourceQuests"] = { 53761 },	-- The Pirate's Treasure
 				["provider"] = { "n", 145396 },	-- Xal'atath
 				["coord"] = { 75.0, 77.7, TIRAGARDE_SOUND },
+				["g"] = {
+					i(165018),	-- Tempest Caller (QI!)
+				},
 			}),
 			q(54126, {	-- Twist the Knife
 				["races"] = ALLIANCE_ONLY,
@@ -183,6 +195,9 @@ root(ROOTS.ExpansionFeatures, {
 					{ 78.0, 36.7, ZULDAZAR },
 					{ 34.2, 31.8, STORMSONG_VALLEY },
 				},
+				["g"] = {
+					i(164911),	-- Void Stone (QI!)
+				},
 			}),
 			q(54058, {	-- Unintended Consequences [Priest]
 				["sourceQuests"] = { 54114 },	-- Every Little Death Helps [Priest]
@@ -191,18 +206,9 @@ root(ROOTS.ExpansionFeatures, {
 					{ 78.0, 36.7, ZULDAZAR },
 					{ 34.2, 31.8, STORMSONG_VALLEY },
 				},
-			}),
-		}),
-	}),
-});
-
-root(ROOTS.NeverImplemented, {
-	tier(BFA_TIER, {
-		n(ARMOR, {
-			-- You get the transmog attached to your head during 'Twist the Knife' but you dont get the item to learn the mog
-			-- Removed after the Quest 'His Eye Upon You'
-			i(168004, {	-- Gift of N'Zoth
-				["timeline"] = { "created 8.1.5" },
+				["g"] = {
+					i(164911),	-- Void Stone (QI!)
+				},
 			}),
 		}),
 	}),

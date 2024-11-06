@@ -10,27 +10,52 @@ end
 -----------------
 -- TBC Classic --
 i(184871);	-- Dark Portal
--- #if BEFORE MOP
+-- #if ANYCLASSIC
 i(38233);	-- Path of Illidan
 -- #endif
 
 -- Wrath Classic --
--- #if BEFORE MOP
-i(40110);	-- Haunted Momento	-- TODO: It would be neat if Retail ATT could detect items manually in your inventory as toys you should keep
+-- #if ANYCLASSIC
+i(40110);	-- Haunted Momento (Should be a toy...)
 -- #endif
 i(198647);	-- Fishspeaker's Lucky Lure
+-- #if ANYCLASSIC
+i(38506);	-- Don Carlos' Famous Hat -- With ICC Patch of Wrath Classic, they made the hat (the original removed version) into a Toy. Whether it also functions as a transmog still is not known.
+-- #endif
+
+-- Cata Classic
+i(216893);	-- Goblin Town-in-a-Box
 
 -----------------
 --   CLASSIC   --
 -----------------
 i(18984);	-- Dimensional Ripper - Everlook
 i(21540);	-- Elune's Lantern
+-- #if ANYCLASSIC
+i(6948);	-- Hearthstone (Should be a toy...)
+-- #endif
 i(1973);	-- Orb of Deception
 i(13379);	-- Piccolo of the Flaming Fire
 i(17716);	-- Snowmaster 9000
 i(18986);	-- Ultrasafe Transporter: Gadgetzan
 i(17712);	-- Winter Veil Disguise Kit
 i(18660);	-- World Enlarger
+-- #if SEASON_OF_DISCOVERY
+i(221315);	-- Rainbow Generator
+i(215449);	-- World Shrinker
+i(228189);	-- Gift of Gob
+i(228502);	-- Piccolo of the Flaming Fire (Blizzard... Why did you duplicate this... Dumbasses.)
+-- #endif
+
+-----------------
+-- PATCH 2.0.1 --
+-----------------
+-- #if ANYCLASSIC
+i(31337);	-- Orb of the Blackwhelp (Should be a toy...)
+-- #endif
+-- #if BEFORE 7.0.3
+i(30847);	-- X-52 Rocket Helmet
+-- #endif
 
 -----------------
 -- PATCH 2.0.5 --
@@ -39,6 +64,9 @@ i(23767);	-- Crashin' Thrashin' Robot
 i(30542);	-- Dimensional Ripper - Area 52
 i(30690);	-- Power Converter
 i(30544);	-- Ultrasafe Transporter: Toshley's Station
+-- #if ANYCLASSIC
+i(23821);	-- Zapthrottle Mote Extractor (Should be a toy...)
+-- #endif
 
 -----------------
 -- PATCH 2.1.0 --
@@ -81,6 +109,9 @@ i(38301);	-- D.I.S.C.O.
 -- PATCH 2.4.3 --
 -----------------
 i(37710);	-- Crashin' Thrashin' Racer Controller
+-- #if ANYCLASSIC
+i(37863);	-- Direbrew's Remote (Should be a toy...)
+-- #endif
 
 -----------------
 -- PATCH 3.0.3 --
@@ -101,6 +132,9 @@ i(36862);	-- Worn Troll Dice
 -----------------
 -- PATCH 3.1.0 --
 -----------------
+-- #if BEFORE 7.0.3
+i(46349);	-- Chef's Hat
+-- #endif
 i(45021);	-- Darnassus Banner
 i(45020);	-- Exodar Banner
 i(45063);	-- Foam Sword Rack
@@ -120,6 +154,9 @@ i(45057);	-- Wind-Up Train Wrecker
 -- PATCH 3.2.0 --
 -----------------
 i(46843);	-- Argent Crusader's Banner
+-- #if ANYCLASSIC
+i(49040);	-- Jeeves (Should be a toy...)
+-- #endif
 i(46780);	-- Ogre Pinata
 i(48933);	-- Wormhole Generator: Northrend
 
@@ -135,6 +172,9 @@ i(50471);	-- The Heartbreaker
 -----------------
 i(54343);	-- Blue Crashin' Thrashin' Racer Controller
 i(54212);	-- Instant Statue Pedestal
+-- #if ANYCLASSIC
+i(52251);	-- Jaina's Locket (Should be a toy...)
+-- #endif
 i(52201);	-- Muradin's Favor
 i(52253);	-- Sylvanas' Music Box
 i(54438);	-- Tiny Blue Ragdoll
@@ -158,6 +198,9 @@ i(67097);	-- Grim Campfire
 i(64456);	-- Arrival of the Naaru
 i(64481);	-- Blessing of the Old God
 i(64646);	-- Bones of Transformation
+-- #if BEFORE 7.0.3
+i(65665);	-- Burgy Blackheart's Handsome Hat
+-- #endif
 i(64373);	-- Chalice of the Mountain Kings
 i(64361);	-- Druid and Priest Statue Set
 i(53057);	-- Faded Wizard Hat
@@ -169,6 +212,9 @@ i(60854);	-- Loot-a-Rang
 i(46709);	-- MiniZep Controller
 i(64881);	-- Pendant of the Scarab Storm
 i(64482);	-- Puzzle Box of Yogg-Saron
+-- #if BEFORE 7.0.3
+i(65357);	-- Rainbow Generator
+-- #endif
 i(66888);	-- Stave of Fur and Claw
 i(64488);	-- The Innkeeper's Daughter
 i(63141);	-- Tol Barad Searchlight (A)
@@ -184,6 +230,9 @@ i(68806);	-- Kalytha's Haunted Locket
 -- PATCH 4.1.0 --
 -----------------
 i(69776);	-- Ancient Amber
+-- #if BEFORE 7.0.3
+i(69262);	-- Black Ice
+-- #endif
 i(69227);	-- Fool's Gold
 i(69895);	-- Green Balloon
 i(69777);	-- Haunted War Drum
@@ -1029,13 +1078,11 @@ i(187793);	-- Personal Containment Trap
 i(190457);	-- Protopological Cube
 i(190177);	-- Sphere of Enlightened Cogitation
 i(190238);	-- Xy'rath's Booby-Trapped Cache
---- NYI ---
-i(190196);	-- Enlightened Hearthstone
 
 -----------------
 -- PATCH 9.2.5 --
 -----------------
-i(192099);	 -- Earpieces of Tranquil Focus
+i(192099);	-- Earpieces of Tranquil Focus
 i(192485);	-- Stored Wisdom Device
 i(193588);	-- Timewalker's Hearthstone
 i(187958);	-- Shrouded Banner of the Opportune
@@ -1184,12 +1231,11 @@ i(206008);	-- Nightmare Banner
 i(206267);	-- Obsidian Legend's Pennant
 i(205963);	-- Sniffin' Salts
 i(204389);	-- Stone Breaker
-i(204686);	-- Titan's Containment Device
+i(204686);	-- Titan Containment Device
 i(205904);	-- Vibrant Clacking Claw
 --- NYI ---
 i(205034);	-- Enormous Ball of Yarn
 i(205027);	-- Explorer's Banner
-i(205463);	-- Skornak's Lava Ball
 
 ------------------
 -- PATCH 10.1.5 --
@@ -1199,25 +1245,163 @@ i(140192);	-- Dalaran Hearthstone
 i(206268);	-- Ethereal Transmogrifier
 i(208096);	-- Familiar Journal
 i(110560);	-- Garrison Hearthstone
+i(207730);	-- Idol of Ohn'ahra
 i(206993);	-- Investi-gator's Pocketwatch
 i(208058);	-- Minute Glass
 i(206565);	-- Plagued Grain
 i(208057);	-- Smoldering Banner of the Aspects
 i(208415);	-- Stasis Sand
 i(207099);	-- Tiny Box of Tiny Rocks
+i(208092);	-- Torch of Pyrreth
+i(206696);	-- Tricked-Out Thinking Cap
 i(197961);	-- Whelps on Strings
---- NYI ---
-i(206195);	-- Path of the Naaru
-i(206696);	-- Unknown
-i(207730);	-- Unknown
-i(208092);	-- Unknown
 
 ------------------
 -- PATCH 10.1.7 --
 ------------------
-i(208433);	-- Bronze Racer's Pennant
-i(208421);	-- Compendium of the New Moon
---- Unsorted ---
-i(208229);	-- Honor of the Forsaken
-i(208880);	-- Brewhahat
 i(209052);	-- Brew Barrel
+i(208433);	-- Bronze Racer's Pennant
+i(210042);	-- Chilling Celebration Banner
+i(208421);	-- Compendium of the New Moon
+i(208704);	-- Deepdwellers Earthen Hearthstone
+i(209858);	-- Dreamsurge Remnant
+i(209944);	-- Friendsurge Defenders
+i(208658);	-- Mirror of Humility
+i(206195);	-- Path of the Naaru
+i(208883);	-- Sandbox Storm Gryphon
+i(201931);  -- Warcraft Rumble Toy: Maiev
+i(202862);  -- Warcraft Rumble Toy: Murloc
+i(202851);  -- Warcraft Rumble Toy: Night Elf Huntress
+i(202261);  -- Warcraft Rumble Toy: Sneed
+i(202856);  -- Warcraft Rumble Toy: Stonehoof Tauren
+i(202859);  -- Warcraft Rumble Toy: Undead Ghoul
+i(202865);  -- Warcraft Rumble Toy: Whelp Egg
+--- NYI ---
+i(208880);	-- Brewhahat
+i(208229);	-- Honor of the Forsaken
+
+------------------
+-- PATCH 10.2.0 --
+------------------
+i(210411);	-- Fast Growing Seed
+i(209035);	-- Hearthstone of the Flame
+i(210864);	-- Improvised Leafbed
+i(208825);	-- Junior Timekeeper's Racing Belt
+i(205463);	-- Molten Lava Ball
+i(210725);	-- Owl Post
+i(207092);	-- Portable Party Platter
+i(208798);	-- Recorded Memories of Tyr's Guard
+i(210497);	-- Verdant Legend's Pennant
+i(209859);	-- Festive Trans-Dimensional Bird Whistle
+i(210656);	-- Winter Veil Socks
+--- NYI ---
+i(211424);	-- Dreaming Banner of the Aspects
+i(208087);	-- Unknown
+
+------------------
+-- PATCH 10.2.5 --
+------------------
+i(210975);	-- Date Simulation Modulator
+i(212523);	-- Delicate Jade Parasol
+i(190196);	-- Enlightened Hearthstone
+i(211864);	-- Exquisite Love Boat
+i(210974);	-- Eyes For You Only
+i(211946);	-- Hearthstone Game Table
+i(210467);	-- Magical Murkmorpher
+i(206347);	-- Mannequin Charm
+i(212337);	-- Stone of the Hearth
+i(211788);	-- Tess's Peacebloom
+i(212518);	-- Vial of Endless Draconic Scales
+--- NYI ---
+i(212525);	-- Delicate Ebony Parasol
+
+------------------
+-- PATCH 10.2.6 --
+------------------
+i(212500);	-- Delicate Silk Parasol
+i(211869);	-- Draconic Legend's Pennant
+i(216881);	-- Duck Disguiser
+i(170197);	-- Swarthy Warning Sign
+
+------------------
+-- PATCH 10.2.7 --
+------------------
+i(220777);	-- Cherry Blossom Trail
+i(218112);	-- Colorful Beach Chair
+i(212524);	-- Delicate Crimson Parasol
+i(218128);	-- Draconic Banner of the Aspects
+i(210455);	-- Draenic Hologem
+i(217725);	-- Essence of Yu'lon
+i(217726);	-- Fortitude of Niuzao
+i(217723);	-- Fury of Xuen
+i(217724);	-- Kindness of Chi-ji
+i(223146);	-- Satchel of Stormborn Seeds
+i(220692);	-- X-treme Water Blaster Display
+
+------------------
+-- PATCH 11.0.0 --
+------------------
+-- #if AFTER TWW
+i(204405);	-- Stuffed Bear
+-- #endif
+i(212174);	-- The Warband Map to Everywhere All At Once
+--- NYI ---
+i(218310);	-- Box of Puntables
+i(224809);	-- Earthen Plumber's Pipe
+i(216887);	-- Unknown
+
+------------------
+-- PATCH 11.0.2 --
+------------------
+i(211931);	-- Abyss Caller Horn
+i(225556);	-- Ancient Construct
+i(228914);	-- Arachnophile Spectacles
+i(228705);	-- Arachnoserum
+i(225659);	-- Arathi Book Collection
+i(219387);	-- Barrel of Fireworks
+i(215147);	-- Beautification Iris
+i(228698);	-- Candleflexer's Dumbbell
+i(224552);	-- Cave Spelunker's Torch
+i(221962);	-- Defective Escape Pod
+i(221964);	-- Filmless Camera
+i(225969);	-- Forged Flag of Victory
+i(225933);	-- Forged Legend's Pennant
+i(226519);	-- General's Expertise
+i(224585);	-- Hanna's Locket
+i(225641);	-- Illusive Kobyss Lure
+i(226810);	-- Infiltrator's Shroud
+i(228413);	-- Lampyridae Lure
+i(224251);	-- Memory Chord
+i(228940);	-- Notorious Thread's Hearthstone
+i(224643);	-- Pet-Sized Candle
+i(225910);	-- Pileus Delight
+i(215145);	-- Remembrance Stone
+i(228706);	-- Rockslidomancer's Stone
+i(224554);	-- Silver Linin' Scepter
+i(224783);	-- Sovereign's Finery Chest
+i(219403);	-- Stonebound Lantern
+i(225547);	-- Toxic Victory
+i(228707);	-- Trial of Burning Light
+i(223312);	-- Trusty Hat
+i(227538);	-- Unbound Legend's Pennant
+i(227539);	-- Unbound Strategist's Pennant
+i(216665);	-- Warband Bank Distance Inhibitor
+i(226191);	-- Web Pet Leash
+i(225347);	-- Web-Vandal's Spinning Wheel
+i(221966);	-- Wormhole Generator: Khaz Algar
+
+------------------
+-- PATCH 11.0.2 --
+------------------
+i(229828);	-- 20th Anniversary Balloon Chest
+i(228789);	-- Coldflame Ring
+i(232305);	-- Forged Champion's Prestigious Banner
+i(224192);	-- Practice Ravager
+i(232301);	-- Tempered Banner of the Algari
+--- UNSORTED ---
+i(232302);	-- Unknown
+i(232303);	-- Unknown
+i(232304);	-- Unknown
+i(232306);	-- Unknown
+i(232307);	-- Unknown
+i(232308);	-- Unknown

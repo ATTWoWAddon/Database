@@ -103,10 +103,14 @@ root(ROOTS.Zones, {
 					["coord"] = { 28.5, 48.9, LEGION_DALARAN },
 				}),
 				q(72129, {	-- Aiding Khadgar
+					["timeline"] = { ADDED_10_0_2 },
 					["classes"] = { EVOKER },
 					["coord"] = { 28.8, 48.4, LEGION_DALARAN },
+					["_drop"] = { "classes" },	-- bad API data
 				}),
 				q(72134, {	-- An Adventurer's Aid
+					["sourceQuest"] = 72129,	-- Aiding Khadgar
+					["timeline"] = { ADDED_10_0_2 },
 					["classes"] = { EVOKER },
 					["provider"] = { "n", 90417 },	-- Archmage Khadgar
 					["coord"] = { 28.8, 48.4, LEGION_DALARAN },
@@ -133,16 +137,16 @@ root(ROOTS.Zones, {
 				q(49472, {	-- A Titanic Effort
 					["sourceQuest"] = 49474,	-- The Cursed Shard
 					["timeline"] = {
-						"added 7.3.5",
-						"removed 8.0"
+						ADDED_7_3_5,
+						REMOVED_8_0_1
 					},
 				}),
 				q(49473, {	-- A Titanic Effort
 					["sourceQuest"] = 49472,	-- A Titanic Effort
 					["repeatable"] = true,
 					["timeline"] = {
-						"added 7.3.5",
-						"removed 8.0"
+						ADDED_7_3_5,
+						REMOVED_8_0_1
 					},
 				}),
 				q(47041, {	-- Affliction: The Twisted Twin
@@ -1068,8 +1072,8 @@ root(ROOTS.Zones, {
 					["provider"] = { "i", 154880 },	-- Cursed Shard
 					["isBreadcrumb"] = true,
 					["timeline"] = {
-						"added 7.3.5",
-						"removed 8.0"
+						ADDED_7_3_5,
+						REMOVED_8_0_1
 					}
 				}),
 				q(42970, {	-- The Diamond King
@@ -1148,7 +1152,7 @@ root(ROOTS.Zones, {
 					["provider"] = { "n", 110018 },	-- Gazrix Gearlock <Steamwheedle Cartel>
 					["g"] = {
 						i(140601, {	-- Sixtrigger Resource Crate
-							i(133815),	-- Recipe: Spiced Rib Roast
+							i(133815),	-- Recipe: Spiced Rib Roast [Rank 1] (RECIPE!)
 							i(140600),	-- Sixtrigger Lucky Ring
 						}),
 						i(140599),	-- Pretty Silk Gloves
@@ -1273,7 +1277,8 @@ root(ROOTS.Zones, {
 	}),
 });
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
+		q(46955),	-- Akazamzarak Silenced
 		q(40340),	-- Alard Schmied Greeting Seen - "Well, I'll be... the Ashbringer. ...' in Dalaran
 		q(45518),	-- First Aid Shop Searched - triggered after searching first aid shop during "Confirming Suspicions" (questID 45414)
 		q(47282),	-- First Aid Shop Searched - triggered after searching first aid shop during "Confirming Suspicions" (questID 45414)
@@ -1282,7 +1287,7 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(46835),	-- Whispers of a Frightened World Tracking - triggers while doing "Whispers of a Frightened World" (questID 46206)
 		q(41694),	-- World Quests Available - triggers when turning in "Uniting the Isles" (questID 45727)
 	}),
-	tier(BFA_TIER, {
+	expansion(EXPANSION.BFA, {
 		q(58658),	-- Selecting an option to hide Vulpera hyena mount canopy/sunshade
 	}),
 });

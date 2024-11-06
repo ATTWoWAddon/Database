@@ -2,7 +2,7 @@
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
 
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1 } }, {
 	m(STORMSONG_VALLEY, {
 		n(PROFESSIONS, {
 			prof(JEWELCRAFTING, {
@@ -13,7 +13,10 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["sourceQuest"] = 49599,	-- The Missing Chapter (H)
 					["requireSkill"] = JEWELCRAFTING,
 					["races"] = HORDE_ONLY,
-					["lvl"] = 120,
+					["lvl"] = 50,
+					["g"] = {
+						i(155590),	-- Shard of Golden Beryl (QI!)
+					},
 				}),
 			}),
 		}),

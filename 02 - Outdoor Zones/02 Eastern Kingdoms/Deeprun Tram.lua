@@ -6,12 +6,10 @@
 root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 	m(DEEPRUN_TRAM, {
 		["lore"] = "The Deeprun Tram is a long, fully enclosed, underground (and partially underwater) set of double tracks upon which rolls two sets of three wagons, all credited to the gnomes' technical engineering. The service is fast and smooth, and is provided free of charge to travelers between the Alliance-aligned cities of Ironforge and Stormwind City.",
-		-- #if BEFORE CATA
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 2257,	-- Deeprun Tram's mapID doesn't exist until later as well, maybe Cataclysm?
 		-- #endif
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\INV_Misc_EngGizmos_03",
-		-- #endif
+		["icon"] = 133861,
 		["groups"] = {
 			n(QUESTS, {
 				q(6661, {	-- Deeprun Rat Roundup
@@ -26,12 +24,12 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 					},
 				}),
 				q(6662, {	-- Me Brother, Nipsy
-					["qg"] = 12997,	-- Monty
+					["providers"] = {
+						{ "n", 12997 },	-- Monty
+						{ "i", 17118 },	-- Carton of Mystery Meat
+					},
 					["sourceQuest"] = 6661, -- Deeprun Rat Roundup
 					["races"] = ALLIANCE_ONLY,
-					["cost"] = {
-						{ "i", 17118, 1 },	-- Carton of Mystery Meat
-					},
 					["lvl"] = lvlsquish(10, 10, 1),
 					["groups"] = {
 						i(17119),	-- Deeprun Rat Kabob
@@ -42,11 +40,11 @@ root(ROOTS.Zones, m(EASTERN_KINGDOMS, {
 			n(VENDORS, {
 				n(149806, {	-- A. Shady
 					["coord"] = { 34.2, 32.9, DEEPRUN_TRAM },
-					["timeline"] = { "added 8.1.5.29701" },
+					["timeline"] = { ADDED_8_1_5 },
 					["groups"] = {
 						i(166805, {	-- Blood-Soaked Invitation
 							["cost"] = { { "g", 1000000 } },	-- 100g
-							["timeline"] = { "added 8.1.5.29701" },
+							["timeline"] = { ADDED_8_1_5 },
 						}),
 					},
 				}),

@@ -33,13 +33,13 @@ local COSTUME_PROVIDERS = {
 	{ "i", 116891 },	-- "Snowy Owl" Contender's Costume
 };
 root(ROOTS.Holidays, applyevent(EVENTS.DAY_OF_THE_DEAD, n(DAY_OF_THE_DEAD_HEADER, {
-	["timeline"] = { "added 3.2.2.10505" },
+	["timeline"] = { ADDED_3_2_2 },
 	["groups"] = {
 		-- #if AFTER WRATH
 		n(ACHIEVEMENTS, {
 			ach(3456, {	-- Dead Man's Party
 				["provider"] = { "n", 34383 },	-- Catrina
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["coords"] = {
 					{ 47.8, 55.9, AZUREMYST_ISLE },
 					-- #if AFTER 7.0.1
@@ -62,20 +62,20 @@ root(ROOTS.Holidays, applyevent(EVENTS.DAY_OF_THE_DEAD, n(DAY_OF_THE_DEAD_HEADER
 			}),
 			ach(9426, {	-- To The Afterlife
 				["providers"] = COSTUME_PROVIDERS,
-				["timeline"] = { "added 6.0.1.18594" },
+				["timeline"] = { ADDED_6_0_2 },
 			}),
 			ach(9427, {	-- Vientos!
 				["providers"] = COSTUME_PROVIDERS,
-				["timeline"] = { "added 6.0.1.18594" },
+				["timeline"] = { ADDED_6_0_2 },
 			}),
 			ach(9428, {	-- Calavera
 				["providers"] = COSTUME_PROVIDERS,
-				["timeline"] = { "added 6.0.1.18594" },
+				["timeline"] = { ADDED_6_0_2 },
 			}),
 		}),
 		-- #endif
 		n(QUESTS, bubbleDown({
-			["timeline"] = { "added 3.2.2.10505" },
+			["timeline"] = { ADDED_3_2_2 },
 			["cost"] = {
 				{ "i", 46861, 1 },	-- Bouquet of Orange Marigolds
 				{ "i", 46718, 1 },	-- Orange Marigold
@@ -84,7 +84,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DAY_OF_THE_DEAD, n(DAY_OF_THE_DEAD_HEADER
 			["isYearly"] = true,
 			["groups"] = {
 				i(46831, {	-- Macabre Marionette (PET!)
-					["timeline"] = { "added 3.2.2.10505" },
+					["timeline"] = { ADDED_3_2_2 },
 				}),
 			},
 		}, {
@@ -110,7 +110,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DAY_OF_THE_DEAD, n(DAY_OF_THE_DEAD_HEADER
 			q(27846, {	-- The Grateful Dead — Darnassus, Worgen
 				["qg"] = 46908,	-- Cheerful Worgen Spirit
 				["coord"] = { 68.6, 40.6, DARNASSUS },
-				["timeline"] = { "added 4.0.3.13277" },
+				["timeline"] = { ADDED_4_0_3 },
 				["races"] = { WORGEN },
 			}),
 			q(14167, {	-- The Grateful Dead — Dun Morogh, Dwarf
@@ -126,7 +126,7 @@ root(ROOTS.Holidays, applyevent(EVENTS.DAY_OF_THE_DEAD, n(DAY_OF_THE_DEAD_HEADER
 			q(27841, {	-- The Grateful Dead — Durotar, Goblin
 				["qg"] = 46901,	-- Cheerful Goblin Spirit
 				["coord"] = { 47.4, 17.6, DUROTAR },
-				["timeline"] = { "added 4.0.3.13277" },
+				["timeline"] = { ADDED_4_0_3 },
 				["races"] = { GOBLIN },
 			}),
 			q(14175, {	-- The Grateful Dead — Durotar, Orc
@@ -146,21 +146,23 @@ root(ROOTS.Holidays, applyevent(EVENTS.DAY_OF_THE_DEAD, n(DAY_OF_THE_DEAD_HEADER
 			}),
 			q(13952, {	-- The Grateful Dead — Stormwind City, Human
 				["qg"] = 34435,	-- Cheerful Human Spirit
-				-- #if AFTER CATA
-				["coord"] = { 47.6, 26.6, STORMWIND_CITY },
-				-- #else
-				["coord"] = { 39.4, 61.1, ELWYNN_FOREST },
-				-- #endif
+				["coords"] = {
+					-- #if AFTER CATA
+					{ 47.6, 26.6, STORMWIND_CITY },
+					-- #else
+					{ 39.4, 61.1, ELWYNN_FOREST },
+					-- #endif
+				},
 				["races"] = { HUMAN },
 			}),
 			q(14172, {	-- The Grateful Dead — Terokkar Forest, Aldor, all
 				["qg"] = 35260,	-- Cheerful Aldor Spirit
-				["minReputation"] = { 932, NEUTRAL },	-- The Aldor, Neutral.
+				["minReputation"] = { FACTION_THE_ALDOR, NEUTRAL },	-- The Aldor, Neutral.
 				["coord"] = { 40.1, 22.2, TEROKKAR_FOREST },
 			}),
 			q(14173, {	-- The Grateful Dead — Terokkar Forest, Scryer, all
 				["qg"] = 35261,	-- Cheerful Aldor Spirit
-				["minReputation"] = { 934, NEUTRAL },	-- The Scryers, Neutral.
+				["minReputation"] = { FACTION_THE_SCRYERS, NEUTRAL },	-- The Scryers, Neutral.
 				["coord"] = { 40.1, 22.2, TEROKKAR_FOREST },
 			}),
 			q(14174, {	-- The Grateful Dead — Tirisfal Glades, Undead
@@ -189,46 +191,49 @@ root(ROOTS.Holidays, applyevent(EVENTS.DAY_OF_THE_DEAD, n(DAY_OF_THE_DEAD_HEADER
 					{ 39.9, 21.8, TEROKKAR_FOREST },
 					{ 62.2, 67.4, TIRISFAL_GLADES },
 				},
-				["timeline"] = { "added 3.2.2.10505" },
+				["timeline"] = { ADDED_3_2_2 },
 				["groups"] = {
 					i(116856, {	-- "Blooming Rose" Contender's Costume (TOY!)
-						["timeline"] = { "added 6.0.1.18594" },
+						["timeline"] = { ADDED_6_0_2 },
 					}),
 					i(116888, {	-- "Night Demon" Contender's Costume (TOY!)
-						["timeline"] = { "added 6.0.1.18594" },
+						["timeline"] = { ADDED_6_0_2 },
 					}),
 					i(116889, {	-- "Purple Phantom" Contender's Costume (TOY!)
-						["timeline"] = { "added 6.0.1.18594" },
+						["timeline"] = { ADDED_6_0_2 },
 					}),
 					i(116890, {	-- "Santo's Sun" Contender's Costume (TOY!)
-						["timeline"] = { "added 6.0.1.18594" },
+						["timeline"] = { ADDED_6_0_2 },
 					}),
 					i(116891, {	-- "Snowy Owl" Contender's Costume (TOY!)
-						["timeline"] = { "added 6.0.1.18594" },
+						["timeline"] = { ADDED_6_0_2 },
 					}),
 					i(46861, {	-- Bouquet of Orange Marigolds
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
 					}),
 					i(46690, {	-- Candy Skull
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
+					}),
+					i(208859, {	-- Cliffside Wylderdrake: Day of the Dead Armor (MM!)
+						["timeline"] = { ADDED_10_1_7 },
 					}),
 					i(188689, {	-- Marigold Petal Offering Bowl
 						["timeline"] = { ADDED_9_1_5 },
 					}),
 					i(46718, {	-- Orange Marigold
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
 					}),
 					i(46710, {	-- Recipe: Bread of the Dead (RECIPE!)
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
 					}),
 					i(46711, {	-- Spirit Candle
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
 					}),
 					i(46860, {	-- Whimsical Skull Mask (Cosmetic)
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_3_2_2 },
 					}),
 					i(79048, {	-- Whimsical Skull Mask
-						["timeline"] = { "added 3.2.2.10505" },
+						["timeline"] = { ADDED_5_0_4 },
 					}),
 				},
 			}),

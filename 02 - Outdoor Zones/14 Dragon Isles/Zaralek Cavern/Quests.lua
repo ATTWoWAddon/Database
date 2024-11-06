@@ -144,6 +144,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 						i(204607),	-- Bestowed Crushers
 						i(204583),	-- Endowed Mitts
 						i(204591),	-- Inherited Gloves
+						i(204713),	-- Sundered Flame Expedition Notes (QI!)
 					},
 				}),
 				q(72958, {	-- Save-A-Mole
@@ -171,6 +172,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["coord"] = { 62.6, 73.3, ZARALEK_CAVERN },
 					["g"] = {
 						i(204387),	-- Buzzing Orb Core
+						i(204833),	-- Buzzing Orb Core (QI!)
 					},
 				}),
 				q(72962, {	-- Open That Door!
@@ -225,7 +227,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 						i(204602),	-- Bequeathed Spaulders
 						i(204610),	-- Bestowed Pauldrons
 						i(204586),	-- Endowed Mantle
+						i(204694),	-- Greater Flamesight Rune (QI!)
 						i(204594),	-- Inherited Epaulets
+						i(203385),	-- Flamesight Rune (QI!)
 					},
 				}),
 				q(72910, {	-- Know Thy Enemy
@@ -243,6 +247,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 						i(204628),	-- Scaled Titan's Tooth
 						i(204624),	-- Staff of the Unlit Sky
 						i(204459),	-- Wand of Shifting Stone
+						i(203458),	-- Black Dragonscale Robes (QI!)
+						i(203453),	-- Dragonbone Totem (QI!)
+						i(203455),	-- Draketooth Fetish (QI!)
+						i(203456),	-- Obsidian Prayer Beads (QI!)
+						i(203457),	-- Volcanic Herb Sachet (QI!)
+						i(203454),	-- Zaqali Equipment (QI!)
 					},
 				}),
 				q(72909, {	-- Legends of the Zaqali
@@ -267,6 +277,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["sourceQuests"] = { 72912 },	-- Consequences
 					["provider"] = { "n", 199863 },	-- Ebyssian
 					["coord"] = { 38.2, 48.5, ZARALEK_CAVERN },
+					["g"] = {
+						i(203653),	-- Vacant Elemental Core (QI!)
+						i(203654),	-- Zaqali Flame Totem (QI!)
+					},
 				}),
 				q(72914, {	-- Rushing Quality
 					["sourceQuests"] = { 72912 },	-- Consequences
@@ -274,6 +288,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["coord"] = { 37.0, 47.0, ZARALEK_CAVERN },
 					["g"] = {
 						i(204386),	-- Pocket Darkened Elemental Core
+						i(203682),	-- Darkened Elemental Core (QI!)
 					},
 				}),
 				q(72915, {	-- Alliance of Convenience
@@ -305,6 +320,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					},
 					["provider"] = { "n", 201647 },	-- Sabellian
 					["coord"] = { 29.3, 54.6, ZARALEK_CAVERN },
+					["g"] = {
+						i(204085),	-- Zaqali Dragonslayer's Spear (QI!)
+					},
 				}),
 				q(72917, {	-- From Hell's Heart
 					["sourceQuests"] = { 74494 },	-- A Scale for a Scale
@@ -334,6 +352,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["sourceQuests"] = { 72919 },	-- Raked Over the Coals
 					["provider"] = { "n", 199958 },	-- Ebyssian
 					["coord"] = { 56.0, 54.3, ZARALEK_CAVERN },
+					["g"] = {
+						i(203707),	-- Water Bucket (QI!)
+					},
 				}),
 				q(75145, {	-- In the Wake of the Ashes
 					["sourceQuests"] = { 72920 },	-- The Endless Burning Sky
@@ -401,7 +422,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["provider"] = { "n", 202523 },	-- Ebyssian
 					["coord"] = { 53.6, 30.2, ZARALEK_CAVERN },
 					["g"] = {
-						i(203330),	-- Winding Slitherdrake: Swept Horns (DM!)
+						i(203330),	-- Winding Slitherdrake: Swept Horns (MM!)
 					},
 				}),
 				q(74563, {	-- Worst of the Worst
@@ -411,6 +432,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["g"] = {
 						ach(17779),	-- A Serpentine Discovery
 						i(204361),	-- Winding Slitherdrake (MOUNT!)
+						i(205992),	-- Regurgitated Half-Digested Fish
 					},
 				}),
 				------ Chapter 5 ------
@@ -437,14 +459,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["provider"] = { "n", 199965 },	-- Ebyssian
 					["coord"] = { 51.5, 25.8, ZARALEK_CAVERN },
 					["g"] = {
-						i(204447, {	-- Ensemble: Black Dragonflight's Vestments
-							["questID"] = 76038,
-							["g"] = {
-								i(204446),	-- Black Dragonflight's Cape
-								i(204444),	-- Black Dragonflight's Spaulders
-								i(204445),	-- Black Dragonflight's Tabard
-							},
-						}),
+						iensemble(204447),	-- Ensemble: Black Dragonflight's Vestments
 					},
 				}),
 				q(72931, {	-- Forward Camp
@@ -456,6 +471,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					["sourceQuests"] = { 72925 },	-- With Our Powers Combined
 					["provider"] = { "n", 200101 },	-- Wrathion
 					["coord"] = { 47.2, 27.8, ZARALEK_CAVERN },
+					["g"] = {
+						i(204877),	-- 'The Resting Blade' (QI!)
+						i(204184),	-- Ebon Eviscerator (QI!)
+					},
 				}),
 				q(72928, {	-- Wipe Them Out
 					["sourceQuests"] = { 72925 },	-- With Our Powers Combined
@@ -498,7 +517,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				}),
 				q(74521, {	-- A Flame, Extinguished
 					["sourceQuests"] = { 72930 },	-- Stopping Sarkareth
-					-- also Requires kill of Sarkareth
+					-- also requires kill of Sarkareth
 					["provider"] = { "n", 201727 },	-- Ebyssian
 					["coord"] = { 48.0, 11.8, ZARALEK_CAVERN },
 				}),
@@ -562,6 +581,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["sourceQuests"] = { 76101 },	-- Tougher Down Under
 				["provider"] = { "n", 203404 },	-- Vaskarn
 				["coord"] = { 56.2, 56.2, ZARALEK_CAVERN },
+				["timeline"] = { REMOVED_10_2_0 },
 				["g"] = {
 					i(202171),	-- Obsidian Flightstone
 				},
@@ -570,6 +590,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["sourceQuests"] = { 72658 },	-- Flightstones
 				["provider"] = { "n", 203404 },	-- Vaskarn
 				["coord"] = { 56.2, 56.2, ZARALEK_CAVERN },
+				["timeline"] = { REMOVED_10_2_0 },
 				["g"] = {
 					i(204728),	-- Friendship Censer
 					i(202171),	-- Obsidian Flightstone
@@ -579,6 +600,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["sourceQuests"] = { 75506 },	-- Shadowflame Crests
 				["provider"] = { "n", 203404 },	-- Vaskarn
 				["coord"] = { 56.2, 56.2, ZARALEK_CAVERN },
+				["timeline"] = { REMOVED_10_2_0 },
 				["_drop"] = { "g" },	-- Drop Crest
 				["g"] = {
 					i(202171),	-- Obsidian Flightstone
@@ -603,6 +625,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["coord"] = { 54.7, 54.7, ZARALEK_CAVERN },
 				["g"] = {
 					i(205980),	-- Snail Lasso
+					i(203442),	-- Snail Slime (QI!)
 				},
 			}),
 			q(72879, {	-- Smells like Kith Spirit
@@ -702,7 +725,11 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 			}),
 			------ Glimmerogg Storyline ------
 			q(73707, {	-- TICKET: Glimmerogg Games
-				["sourceQuests"] = { 72979 },	-- The Earth Gives Way
+				["sourceQuests"] = {
+					72979,	-- The Earth Gives Way
+					DF_ACCOUNT_ZC_UNLOCK_QUEST,
+				},
+				["sourceQuestNumRequired"] = 1,
 				["provider"] = { "o", 387520 },	-- TICKET: Glimmerogg Games
 				["coord"] = { 44.2, 80.0, ZARALEK_CAVERN },
 				["isBreadcrumb"] = true,
@@ -716,6 +743,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["sourceQuests"] = { 73707 },	-- TICKET: Glimmerogg Games
 				["provider"] = { "n", 201098 },	-- Brogg the Beast
 				["coord"] = { 43.7, 82.9, ZARALEK_CAVERN },
+				["g"] = {
+					i(204803),	-- Echoed Lurker Flesh (QI!)
+					i(205169),	-- Glimmer Mushroom (QI!)
+				},
 			}),
 			q(73710, {	-- Rock By Rock
 				["sourceQuests"] = {
@@ -738,16 +769,25 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["sourceQuests"] = { 75145 },	-- In the Wake of the Ashes
 				["provider"] = { "n", 200291 },	-- Rupert, the Gentleman Elemental
 				["coord"] = { 40.1, 68.4, ZARALEK_CAVERN },
+				["g"] = {
+					i(203012),	-- Viridian Heartcrystal (QI!)
+				},
 			}),
 			q(73036, {	-- Medicinal Fungi
 				["sourceQuests"] = { 75145 },	-- In the Wake of the Ashes
 				["provider"] = { "n", 200298 },	-- Veritistrasz
 				["coord"] = { 40.2, 68.3, ZARALEK_CAVERN },
+				["g"] = {
+					i(202873),	-- Drooping Mushroom Cutting (QI!)
+				},
 			}),
 			q(75440, {	-- Satiating Sharpbeak
 				["sourceQuests"] = { 75145 },	-- In the Wake of the Ashes
 				["provider"] = { "n", 200953 },	-- Earthmender Narvra
 				["coord"] = { 40.1, 68.4, ZARALEK_CAVERN },
+				["g"] = {
+					i(205217),	-- Sharpbeak's Feed (QI!)
+				},
 			}),
 			q(73046, {	-- Cavernous Capers
 				["sourceQuests"] = {
@@ -763,7 +803,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["provider"] = { "n", 200290 },	-- Voraxian
 				["coord"] = { 53.6, 79.5, ZARALEK_CAVERN },
 				["g"] = {
-					i(203395),	-- Research Journal
+					i(203394),	-- Elementally Charged Orb (QI!)
+					i(203395),	-- Research Journal (QI!)
+					i(203396),	-- Displayed Armor Piece (QI!)
 				},
 			}),
 			q(73040, {	-- Bringing Disorder to Order
@@ -828,7 +870,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 			}),
 			q(74495, {	-- The Tale of Hraxian
 				["description"] = "Available on next day after Dragonscale Camp quest chain finished.",
-				["sourceQuests"] = { 73045 },	-- Stain Removal
+				["sourceQuests"] = {
+					73045,	-- Stain Removal
+					74996,	-- A Difficult Legacy
+				},
 				["provider"] = { "n", 200298 },	-- Veritistrasz
 				["coord"] = { 40.2, 68.4, ZARALEK_CAVERN },
 			}),
@@ -847,6 +892,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["coord"] = { 59.4, 63.8, ZARALEK_CAVERN },
 				["races"] = { DRACTHYR_ALLIANCE, DRACTHYR_HORDE },
 				["classes"] = { EVOKER },
+				["g"] = {
+					i(204088),	-- Quartzite Spore Bile (QI!)
+					i(203393),	-- Spongy Loamshroom (QI!)
+				},
 			}),
 			q(73081, {	-- Stress Fractures
 				["sourceQuests"] = { 75145 },	-- In the Wake of the Ashes
@@ -861,6 +910,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["coord"] = { 55.6, 57.0, ZARALEK_CAVERN },
 				["races"] = { DRACTHYR_ALLIANCE, DRACTHYR_HORDE },
 				["classes"] = { EVOKER },
+				["g"] = {
+					i(204436),	-- Chipped Horn Signet (QI!)
+				},
 			}),
 			------ Miscellaneous ------
 			q(75232, {	-- Fallen Effects
@@ -879,50 +931,54 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					i(204805),	-- Suspended Sulfuric Droplet
 					i(204810),	-- Drogbar Rocks
 					i(204811),	-- Drogbar Stones
+					i(205031),	-- Broodmother Venom (QI!)
+					i(205030),	-- Crawler Venom (QI!)
 				},
 			}),
 		}),
 	}),
 })));
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
+	m(DRAGON_ISLES, {
+		m(ZARALEK_CAVERN, {
+			n(QUESTS, {
+				-- Various
+				q(76118),	-- Accept Untranslated Obsidian Tome from Wrathion (spellID 411772)
+				q(76363),	-- Break out of the crystal prison in the Deepflayer Nest during 'It Was Not Enough' (questID 72873) (spellID 411853)
+				q(75658, {["name"] = "Zaralek Cavern Unlocked [Account]"}),	-- Zaralek Cavern World Quests (spellID 408876)
+				q(75511),	-- Tracking Quest (that's the name)
+				q(75764),	-- Current Patch - Login Video - Watched (spellID 409608)
+				q(76013),	-- Complete Ch 5 and Delay for Ch 6 after 'Stopping Sakareth' (questID 72930) (spellID 411104)
 
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, {
-	m(ZARALEK_CAVERN, {
-		-- Various
-		q(76118),	-- Accept Untranslated Obsidian Tome from Wrathion (spellID 411772)
-		q(76363),	-- Break out of the crystal prison in the Deepflayer Nest during 'It Was Not Enough' (questID 72873) (spellID 411853)
-		q(75642),	-- Allows you to sense rare fish in high-altitude lakes (spellID 387827)
-		q(75658, {["name"] = "Zaralek Cavern Unlocked [Account]"}),	-- Zaralek Cavern World Quests (spellID 408876)
-		q(75511),	-- Tracking Quest (that's the name)
-		q(75764),	-- Current Patch - Login Video - Watched (spellID 409608)
-		q(76013),	-- Complete Ch 5 and Delay for Ch 6 after 'Stopping Sakareth' (questID 72930) (spellID 411104)
+				-- Talk to npc during Respite (73041)
+				q(75425),	-- Tellywin Sharpfizzle (spellID 407079)
+				q(75424),	-- Chef Butterfingers (spellID 407078)
+				q(75423),	-- Earthmender Narvra (spellID 407083)
+				q(75422),	-- Rupert (spellID 407084)
+				q(75421),	-- Veritistrasz (spellID 407076)
+				q(75420),	-- Voraxian (spellID 407075)
 
-		-- Talk to npc during Respite (73041)
-		q(75425),	-- Tellywin Sharpfizzle (spellID 407079)
-		q(75424),	-- Chef Butterfingers (spellID 407078)
-		q(75423),	-- Earthmender Narvra (spellID 407083)
-		q(75422),	-- Rupert (spellID 407084)
-		q(75421),	-- Veritistrasz (spellID 407076)
-		q(75420),	-- Voraxian (spellID 407075)
+				-- RP after Stain Removal (73045)
+				q(75219),	-- Voraxian (spellID 413020)
 
-		-- RP after Stain Removal (73045)
-		q(75219),	-- Voraxian (spellID 413020)
+				-- Talk with Veritistrasz during (74495)
+				q(74773),	-- 1 (optional) dialog
+				q(74776),	-- after he finished optional gialog
+				q(74777),	-- 1 (quest) dialog
+				q(74778),	-- 2 (optional) dialog
+				q(74779),	-- 2 (quest) dialog
+				q(74789),	-- 3 (optional) dialog
+				q(74780),	-- 3 (quest) dialog
+				q(74781),	-- 4 (quest) dialog
+				q(74782),	-- 5 (quest) dialog
+				q(74788),	-- 6 (quest) dialog
 
-		-- Talk with Veritistrasz during (74495)
-		q(74773),	-- 1 (optional) dialog
-		q(74776),	-- after he finished optional gialog
-		q(74777),	-- 1 (quest) dialog
-		q(74778),	-- 2 (optional) dialog
-		q(74779),	-- 2 (quest) dialog
-		q(74789),	-- 3 (optional) dialog
-		q(74780),	-- 3 (quest) dialog
-		q(74781),	-- 4 (quest) dialog
-		q(74782),	-- 5 (quest) dialog
-		q(74788),	-- 6 (quest) dialog
-
-		-- Ponzo hat price
-		q(75869),	-- Become available with cost at 9999 boulders
-		q(75836),	-- I can't afford that - 4999
-		q(75870),	-- Still too much! - 999
-		q(75871),	-- How about 50 boulders - 249
+				-- Ponzo hat price
+				q(75869),	-- Become available with cost at 9999 boulders
+				q(75836),	-- I can't afford that - 4999
+				q(75870),	-- Still too much! - 999
+				q(75871),	-- How about 50 boulders - 249
+			}),
+		}),
 	}),
-}));
+})));

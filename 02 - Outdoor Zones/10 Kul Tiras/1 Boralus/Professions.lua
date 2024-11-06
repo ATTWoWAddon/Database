@@ -1,10 +1,18 @@
 ---------------------------------------------------
 --          Z O N E S        M O D U L E         --
 ---------------------------------------------------
-
-root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, {
+root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { ADDED_8_0_1_LAUNCH } }, {
 	m(BORALUS, {
 		n(PROFESSIONS, {
+			prof(ALCHEMY, {
+				n(132228, {	-- Elric Whalgrene <Alchemy Trainer>
+					["coord"] = { 74.2, 6.6, BORALUS },
+					["races"] = ALLIANCE_ONLY,
+					["g"] = appendGroups(BFA_ALCHEMY, {
+						r(264255),	-- Kul Tiran Alchemy
+					}),
+				}),
+			}),
 			prof(BLACKSMITHING, {
 				n(133536, {	-- Grix "Ironfists" Barlow <Blacksmithing Trainer>
 					["coord"] = { 73.6, 8.6, BORALUS },
@@ -15,13 +23,12 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				}),
 			}),
 			prof(COOKING, {
-				q(54469, {	-- Fresh Dishes (A)
-					["requireSkill"] = COOKING,
-					["provider"] = { "n", 136052 },	-- "Cap'n" Byron Mehlsack <Cooking Trainer>
+				n(136052, {	-- "Cap'n" Byron Mehlsack <Cooking Trainer>
 					["coord"] = { 71.2, 10.8, BORALUS },
 					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 110,
-					["u"] = REMOVED_FROM_GAME,	-- all introductory quests for new 8.1 recipes appear to now be unobtainable
+					["g"] = appendGroups(BFA_COOKING, {
+						r(264646),	-- Kul Tiran Cooking
+					}),
 				}),
 			}),
 			prof(ENCHANTING, {
@@ -30,7 +37,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["races"] = ALLIANCE_ONLY,
 					["g"] = appendGroups(BFA_ENCHANTING, {
 						r(264473),	-- Kul Tiran Enchanting
-						cat(657, {	-- Armor Enchantments
+						n(ARMOR_ENCHANTMENTS, {
 							r(255070),	-- Kul Tiran Crafting
 							r(255035),	-- Kul Tiran Herbalism
 							r(255040),	-- Kul Tiran Mining
@@ -42,39 +49,21 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				}),
 			}),
 			prof(ENGINEERING, {
-				q(54475, {	-- Engineered Blueprints
-					["requireSkill"] = ENGINEERING,
-					["provider"] = { "n", 136059 },	-- Layla Evenkeel
-					["coord"] = { 77.4, 14.2, BORALUS },
+				n(136059, {	-- Layla Evenkeel <Engineering Trainer>
+					["coord"] = { 73.6, 8.6, BORALUS },
 					["races"] = ALLIANCE_ONLY,
-					["u"] = REMOVED_FROM_GAME,	-- all introductory quests for new 8.1 recipes appear to now be unobtainable
+					["g"] = appendGroups(BFA_ENGINEERING, {
+						r(264492),	-- Kul Tiran Engineering
+					}),
 				}),
-				-- Tools of Trade Questline
-				q(55028, {	-- It's Scrap Work... (A)
-					["provider"] = { "n", 136059 },	-- Layla Evenkeel
-					["coord"] = { 77.4, 14.2, BORALUS },
-					["description"] = "Requires 150 Kul Tiran Engineering.",
-					["requireSkill"] = ENGINEERING,
+			}),
+			prof(FISHING, {
+				n(136102, {	-- Alan Goyle <Fishing Trainer>
+					["coord"] = { 74.2, 5.7, BORALUS },
 					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(53947, {	-- In the Dunes (A)
-					["provider"] = { "n", 136059 },	-- Layla Evenkeel
-					["coord"] = { 77.4, 14.2, BORALUS },
-					["sourceQuest"] = 55028,	-- It's Scrap Work... (A)
-					["requireSkill"] = ENGINEERING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(53949, {	-- The Ub3r-Spanner (A)
-					["provider"] = { "n", 136059 },	-- Layla Evenkeel
-					["coord"] = { 77.4, 14.2, BORALUS },
-					["sourceQuest"] = 53948,	-- Vengeful Venture (A)
-					["requireSkill"] = ENGINEERING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
 					["g"] = {
-						recipe(282975), -- Schematic: The Ub3r-Spanner
+						r(271675),	-- Kul Tiran Fishing
+						r(271990),	-- Fishing Journal
 					},
 				}),
 			}),
@@ -87,76 +76,23 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					}),
 				}),
 			}),
-			prof(INSCRIPTION, bubbleDown({ ["requireSkill"] = INSCRIPTION }, {
+			prof(INSCRIPTION, {
 				n(130399, {	-- Zooey Inksprocket <Inscription Trainer>
-					--["coord"] = { },
+					["coord"] = { 73.4, 6.33, BORALUS },
 					["races"] = ALLIANCE_ONLY,
-					["g"] = {
-						r(264508, {	-- Kul Tiran Inscription
-							["races"] = ALLIANCE_ONLY,
-						}),
-						cat(1242, sharedDataSelf({ ["timeline"] = { "added 8.1.0" } }, {	-- Conversions
-							r(287271),	-- Aqueous Chromotography
-							r(286649),	-- Sanguinated Chromotography
-						})),
-						cat(1026, {	-- Inks
-							r(264777),	-- Crimson Ink
-							r(264776),	-- Ultramarine Ink
-							r(264778),	-- Viridescent Ink
-						}),
-						cat(771, {	-- Books & Scrolls
-							r(256232),	-- Codex of the Quiet Mind [Rank 1]
-							r(256233),	-- Codex of the Quiet Mind [Rank 2]
-							r(269065),	-- Scroll of Unlocking
-							r(256235),	-- Tome of the Quiet Mind [Rank 1]
-							r(256236),	-- Tome of the Quiet Mind [Rank 2]
-							r(264767),	-- War-Scroll of Battle Shout
-							r(264769),	-- War-Scroll of Fortitude
-							r(264766),	-- War-Scroll of Intellect
-						}),
-						cat(772, {	-- Contracts
+					["g"] = appendGroups(BFA_INSCRIPTION, {
+						r(264508),	-- Kul Tiran Inscription
+						f(MISC, {
 							r(284292, {	-- Contract: 7th Legion [Rank 1]
-								["races"] = ALLIANCE_ONLY,
-								["timeline"] = { "added 8.1.0" },
+								["timeline"] = { ADDED_8_1_0 },
 							}),
-							r(256297),	-- Contract: Champions of Azeroth [Rank 1]
-							r(256278, {	-- Contract: Order of Embers [Rank 1]
-								["races"] = ALLIANCE_ONLY,
-							}),
-							r(256275, {	-- Contract: Proudmoore Admiralty [Rank 1]
-								["races"] = ALLIANCE_ONLY,
-							}),
-							r(256281, {	-- Contract: Storm's Wake [Rank 1]
-								["races"] = ALLIANCE_ONLY,
-							}),
-							r(256294),	-- Contract: Tortollan Seekers [Rank 1]
+							r(256278),	-- Contract: Order of Embers [Rank 1]
+							r(256275),	-- Contract: Proudmoore Admiralty [Rank 1]
+							r(256281),	-- Contract: Storm's Wake [Rank 1]
 						}),
-						cat(773, {	-- Cards
-							r(278527),	-- Darkmoon Card of War [Rank 1]
-							r(256245),	-- Darkmoon Card of War [Rank 2]
-						}),
-						cat(774, {	-- Off-Hands
-							r(269740),	-- Honorable Combatant's Etched Vessel [Rank 1]
-							r(256247),	-- Inscribed Vessel of Mysticism [Rank 1]
-							r(256248),	-- Inscribed Vessel of Mysticism [Rank 2]
-							r(282803, {["timeline"]={"added 8.1.0"}}),	-- Sinister Combatant's Etched Vessel [Rank 1]
-							r(305952, {["timeline"]={"added 8.3.0"}}),	-- Uncanny Combatant's Etched Vessel [Rank 1]
-						}),
-						cat(775, {	-- Mass Milling
-							r(256219),	-- Mass Mill Akunda's Bite
-							r(256308),	-- Mass Mill Anchor Weed
-							r(256217),	-- Mass Mill Riverbud
-							r(256223),	-- Mass Mill Sea Stalk
-							r(256221),	-- Mass Mill Siren's Pollen
-							r(256218),	-- Mass Mill Star Moss
-							r(256220),	-- Mass Mill Winter's Kiss
-						}),
-						cat(1235, {	-- Follower Equipment
-							r(278422),	-- Crimson Ink Well
-						}),
-					},
+					}),
 				}),
-			})),
+			}),
 			prof(LEATHERWORKING, {
 				n(136063, {	-- Cassandra Brennor <Leatherworking Trainer>
 					["coord"] = { 75.5, 12.6, BORALUS },
@@ -167,121 +103,12 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 				}),
 			}),
 			prof(JEWELCRAFTING, {
-				q(54479, {	-- Jeweled Designs
-					["requireSkill"] = JEWELCRAFTING,
-					["provider"] = { "n", 130368 },	-- Samuel D. Colton III
+				n(130368, {	-- Samuel D. Colton III <Jewelcrafting Trainer>
 					["coord"] = { 75.2, 9.9, BORALUS },
 					["races"] = ALLIANCE_ONLY,
-					["u"] = REMOVED_FROM_GAME,	-- all introductory quests for new 8.1 recipes appear to now be unobtainable
-				}),
-				-- Tools of Trade Questline
-				q(49570, {	-- A Rocky Start (A)
-					["provider"] = { "o", 278570 },	-- Ancient Journal
-					["coord"] = { 75.0, 10.2, BORALUS },
-					["description"] = "This quest chain requires 150 in Kul Tiran Jewelcrafting.",
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49571, {	-- Digging Through the Past (A)
-					["provider"] = { "n", 130399 },	-- Zooey Inksprocket
-					["coord"] = { 73.4, 6.3, BORALUS },
-					["sourceQuest"] = 49570,	-- A Rocky Start (A)
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49574, {	-- The Shrine of Storms
-					["provider"] = { "n", 130368 },	-- Samuel D. Colton III
-					["coord"] = { 75.2, 9.9, BORALUS },
-					["sourceQuest"] = 49571,	-- Digging Through the Past (A)
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49577, {	-- Cracking the Surface (A)
-					["provider"] = { "n", 150898 },	-- Shrine of Storms
-					["coord"] = { 60.7, 58.5, STORMSONG_VALLEY },
-					["modelScale"] = 2,
-					["sourceQuest"] = 49574,	-- The Shrine of Storms
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(55585, {	-- A Promising Beginning (A)
-					["provider"] = { "n", 152489 },	-- Shrine of Storms
-					["coord"] = { 60.7, 58.5, STORMSONG_VALLEY },
-					["modelScale"] = 2,
-					["sourceQuest"] = 49577,	-- Cracking the Surface (A)
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49572, {	-- The Shrine of the Sea
-					["provider"] = { "n", 130368 },	-- Samuel D. Colton III
-					["coord"] = { 75.2, 9.9, BORALUS },
-					["sourceQuest"] = 55585,	-- A Promising Beginning (A)
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49575, {	-- Tol Dagor: Jewel of the Tides
-					["provider"] = { "n", 150893 },	-- Shrine of the Sea
-					["coord"] = { 46.4, 23.5, TIRAGARDE_SOUND },
-					["modelScale"] = 2,
-					["sourceQuest"] = 49572,	-- The Shrine of the Sea
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(55590, {	-- Setting Things Right (A)
-					["provider"] = { "n", 152495 },	-- Shrine of the Sea
-					["coord"] = { 46.4, 23.5, TIRAGARDE_SOUND },
-					["modelScale"] = 2,
-					["sourceQuest"] = 49575,	-- Tol Dagor: Jewel of the Tides
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49573, {	-- The Shrine of the Eventide
-					["provider"] = { "n", 130368 },	-- Samuel D. Colton III
-					["coord"] = { 75.2, 9.9, BORALUS },
-					["sourceQuest"] = 55585,	-- A Promising Beginning (A)
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49576, {	-- High Prospects
-					["provider"] = { "n", 150896 },	-- Shrine of the Eventide
-					["coord"] = { 34.1, 35.5, DRUSTVAR },
-					["modelScale"] = 2,
-					["sourceQuest"] = 49573,	-- The Shrine of the Eventide
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(55586, {	-- Polished Up (A)
-					["provider"] = { "n", 152497 },	-- Shrine of the Eventide
-					["coord"] = { 34.1, 35.5, DRUSTVAR },
-					["modelScale"] = 2,
-					["sourceQuest"] = 49576,	-- High Prospects
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-				}),
-				q(49584, {	-- The Missing Chapter (A)
-					["provider"] = { "n", 130368 },	-- Samuel D. Colton III
-					["coord"] = { 75.2, 9.9, BORALUS },
-					["sourceQuests"] = {
-						55590,	-- Setting Things Right (A)
-						55586,	-- Polished Up (A)
-					},
-					["requireSkill"] = JEWELCRAFTING,
-					["races"] = ALLIANCE_ONLY,
-					["lvl"] = 120,
-					["g"] = {
-						recipe(256703),	-- Design: Jewelhammer's Focus
-					},
+					["g"] = appendGroups(BFA_JEWELCRAFTING, {
+						r(264548),	-- Kul Tiran Jewelcrafting
+					}),
 				}),
 			}),
 			prof(MINING, {
@@ -303,6 +130,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["requireSkill"] = SKINNING,
 					["g"] = {
 						recipe(257153),	-- Skinning Technique: Bone Gathering (Rank 2)
+						i(161427),	-- Immaculate Quill (QI!)
 					},
 				}),
 				q(52228, {	-- Atal'Dazar: An Unbreakable Bone Needle
@@ -313,6 +141,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["requireSkill"] = SKINNING,
 					["g"] = {
 						recipe(257154),	-- Skinning Technique: Bone Gathering (Rank 3)
+						i(161429),	-- Rezan's Bone Splinter (QI!)
 					},
 				}),
 				-- Leather Gathering
@@ -324,6 +153,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["requireSkill"] = SKINNING,
 					["g"] = {
 						recipe(257147),	-- Skinning Technique: Leather Gathering (Rank 2)
+						i(161423),	-- Brinepinch's "Head" (QI!)
 					},
 				}),
 				-- Scale Gathering
@@ -335,6 +165,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["requireSkill"] = SKINNING,
 					["g"] = {
 						recipe(257150),	-- Skinning Technique: Scale Gathering (Rank 2)
+						i(161425),	-- Pristine Saurlisk Skin (QI!)
 					},
 				}),
 				q(52226, {	-- Turtle Soup
@@ -345,6 +176,7 @@ root(ROOTS.Zones, m(KUL_TIRAS, bubbleDown({ ["timeline"] = { "added 8.0.1" } }, 
 					["requireSkill"] = SKINNING,
 					["g"] = {
 						recipe(257151),	-- Skinning Technique: Scale Gathering (Rank 3)
+						i(161426),	-- Sulphur Speckled Turtle Skin (QI)
 					},
 				}),
 			}),

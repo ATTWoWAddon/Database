@@ -9,14 +9,14 @@ local SBG =	-144;
 local SKY = -145;
 local BLOOM = -146;
 local UBRS = -147;
-root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.WOD, bubbleDown({ ["timeline"] = { ADDED_6_0_3_LAUNCH } }, {
 	n(COMMON_DUNGEON_DROP, {
 		["description"] = "tbd",
 		["g"] = {
 			i(141643, {	-- Technique: Codex of the Clear Mind (RECIPE!)
 				["crs"] = { AUCH, BSM, RAIL, DOCKS, SBG, SKY, BLOOM, UBRS },
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(HANDS, bubbleDown({ ["crs"] = { AUCH, BSM, RAIL, DOCKS, SBG, SKY, BLOOM, UBRS }, },{
 					i(109861),	-- Felflame Grips
 					i(109845),	-- Frost-Touched Gloves
@@ -512,7 +512,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					})),
 				})),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				n(HANDS, sharedData({ ["crs"] = { AUCH, BSM, RAIL, DOCKS, SBG, SKY, BLOOM, UBRS }, },{
 					i(109861),	-- Felflame Grips
 					i(109845),	-- Frost-Touched Gloves
@@ -761,7 +761,7 @@ root(ROOTS.Instances, tier(WOD_TIER, bubbleDown({ ["timeline"] = { ADDED_6_0_3_L
 					i(109777),	-- Unsullied Signet
 				})),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(HANDS, sharedData({ ["crs"] = { AUCH, BSM, RAIL, DOCKS, SBG, SKY, BLOOM, UBRS }, },{
 					i(109861),	-- Felflame Grips
 					i(109845),	-- Frost-Touched Gloves

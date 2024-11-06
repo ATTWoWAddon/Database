@@ -75,7 +75,7 @@ root(ROOTS.Zones, {
 	m(DRAENOR, {
 		m(DRAENOR_NAGRAND, {
 			["lore"] = "Nagrand is a zone in western Draenor. It lies west of Talador. It is home to the Burning Blade and Warsong orcish clans, as well as a seat of the ogre empire situated on the continent of Draenor, with Highmaul as its capital.",
-			["icon"] = "Interface\\Icons\\achievement_zone_nagrand_02",
+			["icon"] = 1032150,
 			["maps"] = {
 				551,	-- The Master's Cavern
 				552,	-- Stonecrag Gorge
@@ -84,56 +84,21 @@ root(ROOTS.Zones, {
 			["groups"] = {
 				n(ACHIEVEMENTS, {
 					ach(9571, {		-- Broke Back Precipice (Broken Precipice)
-						crit(1),		-- Durg Spinecrusher
-						crit(2),		-- Bonebreaker
-						crit(3),		-- Pit Slayer
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9548, {		-- Buried Treasures (Mok'gol Watchpost)
-						crit(1, {	-- Garrosh's Shackles
-							["_quests"] = { 37130 },
-						}),
-						crit(2, {	-- Warsong Relics
-							["_quests"] = { 37132 },
-						}),
-						crit(3, {	-- Warsong Remains
-							["_quests"] = { 37133 },
-						}),
-						crit(4, {	-- Stolen Draenei Tome
-							["_quests"] = { 37134 },
-						}),
-						crit(5, {	-- Wolf Pup Remains
-							["_quests"] = { 37135 },
-						}),
-						crit(6, {	-- Gnarled Bone
-							["_quests"] = { 37136 },
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
-					ach(8942, {		-- Explore Nagrand
-						crit(1),		-- Ancestral Grounds
-						crit(2),		-- Broken Precipice
-						crit(3),		-- Gates of Grommashar
-						crit(4),		-- Hallvalor
-						crit(5),		-- Highmaul Harbor
-						crit(6),		-- Ironfist Harbor
-						crit(7),		-- Lok-rath
-						crit(8),		-- Mar'gok's Overwatch
-						crit(9),		-- Mok'gol Watchpost
-						crit(10),		-- Oshu'gun
-						crit(11),		-- Telaar
-						crit(12),		-- The Ring of Blood
-						crit(13),		-- The Ring of Trials
-						crit(14),		-- Throne of the Elements
-						crit(15),		-- Zangar Shore
-					}),
-					achraw(9610,  {	-- History of Violence (Broken Precipice)
+					explorationAch(8942),	-- Explore Nagrand
+					ach(9610,  {	-- History of Violence (Broken Precipice)
 						["description"] = "In order to get the relics, except the Bust, use Jewel of Transformation in the area and then break boulder piles.",
-						["g"] = {
-							crit(1),	-- Krog the Dominator's Hammer
-							crit(2, {	-- Thak the Conqueror's Bust
+						["groups"] = {
+							crit(26397),	-- Krog the Dominator's Hammer
+							crit(26399, {	-- Thak the Conqueror's Bust
 								["coord"] = { 41.2, 12.2, DRAENOR_NAGRAND },
 							}),
-							crit(3),	-- Thurg the Slave Lord's Necklace
-							crit(4),	-- Gorg the Subjugator's Idol
+							crit(26400),	-- Thurg the Slave Lord's Necklace
+							crit(26404),	-- Gorg the Subjugator's Idol
 						},
 					}),
 					ach(9617,  {	-- Making the Cut (Gorian Proving Grounds)
@@ -142,94 +107,33 @@ root(ROOTS.Zones, {
 					}),
 					ach(8927,  {	-- Nagrandeur (Alliance)
 						["races"] = ALLIANCE_ONLY,
-						["g"] = {
-							crit(1, {	-- The Might of Steel and Blood
-								["sourceQuest"] = 34769,	-- A Choice to Make
-							}),
-							crit(2, {	-- The Ring of Trials
-								["sourceQuest"] = 34666,	-- Ring of Trials: Roakk the Zealot
-							}),
-							crit(3, {	-- The Shadow of the Void
-								["sourceQuest"] = 35088,	-- The Shadow of the Void
-							}),
-							crit(4, {	-- The Dark Heart of Oshu'gun
-								["sourceQuest"] = 35396,	-- The Dark Heart of Oshu'gun
-							}),
-							crit(5, {	-- A Blademaster's Honor
-								["sourceQuest"] = 34957,	-- Challenge of the Masters
-							}),
-							crit(6, {	-- Trouble at the Overwatch
-								["sourceQuest"] = 34596,	-- Reglakk's Research
-							}),
-							crit(7, {	-- The Taking of Lok'rath
-								["sourceQuest"] = 35061,	-- The Pride of Lok'rath
-							}),
-							crit(8, {	-- The Legacy of Garrosh Hellscream
-								["sourceQuest"] = 35169,	-- And Justice for Thrall
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(8928,  {	-- Nagrandeur (Horde)
 						["races"] = HORDE_ONLY,
-						["g"] = {
-							crit(1, {	-- The Might of Steel and Blood
-								["sourceQuest"] = 34899,	-- A Choice to Make
-							}),
-							crit(2, {	-- The Ring of Trials
-								["sourceQuest"] = 34666,	-- Ring of Trials: Roakk the Zealot
-							}),
-							crit(3, {	-- The Shadow of the Void
-								["sourceQuest"] = 35088,	-- The Shadow of the Void
-							}),
-							crit(4, {	-- The Dark Heart of Oshu'gun
-								["sourceQuest"] = 35317,	-- The Dark Heart of Oshu'gun
-							}),
-							crit(5, {	-- Remains of Telaar
-								["sourceQuest"] = 34918,	-- Shields Down!
-							}),
-							crit(6, {	-- Trouble at the Overwatch
-								["sourceQuest"] = 35158,	-- Reglakk's Research
-							}),
-							crit(7, {	-- The Taking of Lok-rath
-								["sourceQuest"] = 35097,	-- The Pride of Lok-Rath
-							}),
-							crit(8, {	-- The Legacy of Garrosh Hellscream
-								["sourceQuest"] = 35171,	-- And Justice for Thrall
-							}),
-						},
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9564,  {	-- Securing Draenor (Alliance)
 						["collectible"] = false,	-- We want to hide the achievement after the finished the criteria for the zone since they can't earn anything more here
 						["races"] = ALLIANCE_ONLY,
 						["g"] = {
-							crit(6),	-- Assault on the Broken Precipice
-							crit(7),	-- Assault on Mok'gol Watchpost
+							crit(26250),	-- Assault on the Broken Precipice
+							crit(26252),	-- Assault on Mok'gol Watchpost
 						},
 					}),
 					ach(9562,  {	-- Securing Draenor (Horde)
 						["collectible"] = false,	-- We want to hide the achievement after the finished the criteria for the zone since they can't earn anything more here
 						["races"] = HORDE_ONLY,
 						["g"] = {
-							crit(6),	-- Assault on the Broken Precipice
-							crit(8),	-- Assault on Mok'gol Watchpost
+							crit(26233),	-- Assault on the Broken Precipice
+							crit(26237),	-- Assault on Mok'gol Watchpost
 						},
 					}),
 					ach(9541,  {	-- The Song of Silence
-						crit(1),	-- Karosh Blackwind
-						crit(2),	-- Brutag Grimblade
-						crit(3),	-- Krahl Deadeye
-						crit(4),	-- Gortag Steelgrip
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 					ach(9615,  {	-- With a Nagrand Cherry On Top
-						crit(1, {	-- Bonus Objective: Hemet's Happy Hunting Grounds
-							["sourceQuest"] = 35379,
-						}),
-						crit(2, {	-- Bonus Objective: Ironfist Harbor
-							["sourceQuest"] = 34723,
-						}),
-						crit(3, {	-- Bonus Objective: Snarlpaw Ledge
-							["sourceQuest"] = 37280,
-						}),
+						["sym"] = {{ "achievement_criteria" }},
 					}),
 				}),
 				petbattle(filter(BATTLE_PETS, {
@@ -247,10 +151,56 @@ root(ROOTS.Zones, {
 						pet(1435),	-- Leatherhide Runt (PET!)
 					},
 				})),
+				explorationHeader({
+					exploration(7072),	-- Ancestral Grounds
+					exploration(7303),	-- Broken Precipice
+					exploration(7331),	-- Cerulean Lagoon
+					exploration(7139),	-- Elemental Plateau
+					exploration(7069),	-- Gates of Grommashar
+					exploration(7375),	-- Gorian Proving Grounds
+					exploration(7188),	-- Gra'ah
+					exploration(7068),	-- Grommashar
+					exploration(7123),	-- Hallvalor
+					exploration(7060),	-- Hemet's Happy Hunting Grounds
+					exploration(7367),	-- Highmaul
+					exploration(7405),	-- Highmaul Harbor
+					exploration(7070),	-- Ironfist Harbor
+					exploration(7065),	-- Lok-rath
+					exploration(7067),	-- Mar'gok's Overwatch
+					exploration(7296, {	-- Mok'gol Watchpost
+						-- CRIEVE NOTE: I was initially able to collect this, but if you collect Highmaul Harbor / Broken Precipe, it gets masked behind it.
+						["collectible"] = false,
+					}),
+					exploration(7150),	-- Oshu'gun
+					exploration(7063),	-- Riverside Post
+					exploration(7297),	-- Ruins of Na'gwa
+					exploration(7052),	-- Sabermaw
+					exploration(7172),	-- Shadowfall Canyon
+					exploration(7071),	-- Snarlpaw Ledge
+					exploration(7151),	-- Spirit Woods
+					exploration(7386),	-- Spiteleaf Thicket
+					exploration(7094),	-- Stonecrag Gorge
+					exploration(7074),	-- Telaar
+					exploration(7406),	-- The Cliffs of Highmaul
+					exploration(7395),	-- The Coliseum
+					exploration(7376),	-- The Ring of Blood
+					exploration(7073),	-- The Ring of Trials
+					exploration(7280),	-- Throne of the Elements
+					exploration(7059),	-- Wor'var
+					exploration(7271),	-- Worgskin's Camp
+					exploration(7095),	-- Wrecked Caravan
+					exploration(7061),	-- Yrel's Watch
+					exploration(7385),	-- Zangar Shore
+				}),
 				n(FACTIONS, {
-					faction(1711, {	-- Steamwheedle Preservation Society
+					faction(FACTION_STEAMWHEEDLE_PRESERVATION_SOCIETY, {	-- Steamwheedle Preservation Society
 						["crs"] = { 87394 },	-- Kwilax Fuseshiv <Reputation Vendor>
 						["g"] = {
+							n(ACHIEVEMENTS, {
+								ach(9472, {		-- Steamwheedle Preservation Society
+									title(284),		-- "Conservationist" <Name>
+								}),
+							}),
 							n(QUESTS, {
 								q(37125, {	-- A Rare Find
 									["provider"] = { "n", 87393 },	-- Sallee Silverclamp
@@ -406,26 +356,44 @@ root(ROOTS.Zones, {
 							n(VENDORS, {
 								n(87394, {	-- Kwilax Fuseshiv <Reputation Vendor>
 									["coord"] = { 50.5, 41.4, DRAENOR_NAGRAND },
-									["g"] = {
-										i(119149, {	-- Forest Sproutling (PET!)
-											["cost"] = { { "c", 823, 2000 } },	-- 2000x Apexis Crystal
-										}),
-										i(116672, {	-- Domesticated Razorback (MOUNT!)
-											["cost"] = { { "c", 823, 5000 } },	-- 5000x Apexis Crystal
-										}),
-										i(119148, {	-- Albino River Calf (PET!)
-											["cost"] = { { "c", 823, 2000 } },	-- 2000x Apexis Crystal
-										}),
-										i(118667, {	-- Steamwheedle Elixir
-											["cost"] = { { "c", 823, 1 } },	-- 1x Apexis Crystal
-										}),
-										i(119165, {	-- Contract: Professor Felblast
-											follower(460),	-- Professor Felblast
-										}),
-										i(110426),	-- Goblin Hot Potato
-										i(118683),	-- Portable Goon Squad
-										i(119137),	-- Steamwheedle "Preservation" Society Tabard
-									},
+									["g"] = bubbleDownClassicRep(FACTION_STEAMWHEEDLE_PRESERVATION_SOCIETY, {
+										{		-- Neutral
+										}, {	-- Friendly
+											i(118667),	-- Steamwheedle Elixir
+										}, {	-- Honored
+											i(110426),	-- Goblin Hot Potato
+											i(118683, {	-- Portable Goon Squad
+												["cost"] = 5000000,	-- 500g
+											}),
+										}, {	-- Revered
+											i(119165, {	-- Contract: Professor Felblast
+												["cost"] = 50000000,	-- 5,000g
+												["g"] = {
+													follower(460),	-- Professor Felblast
+												},
+											}),
+											i(119149, {	-- Forest Sproutling (PET!)
+												["cost"] = {
+													{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
+													{ "g", 10000000 },	-- 1,000g
+												},
+											}),
+											i(119148, {	-- Indentured Albino River Calf (PET!)
+												["cost"] = {
+													{ "c", 823, 2000 },	-- 2,000x Apexis Crystal
+													{ "g", 10000000 },	-- 1,000g
+												},
+											}),
+										}, {	-- Exalted
+											i(116672, {	-- Domesticated Razorback (MOUNT!)
+												["cost"] = {
+													{ "c", 823, 5000 },	-- 5,000x Apexis Crystal
+													{ "g", 50000000 },	-- 5,000g
+												},
+											}),
+											i(119137),	-- Steamwheedle "Preservation" Society Tabard
+										},
+									}),
 								}),
 							}),
 						},
@@ -464,7 +432,7 @@ root(ROOTS.Zones, {
 						["races"] = ALLIANCE_ONLY,
 					}),
 				}),
-				petbattles({ "added 6.0.1" }, {
+				petbattles({ ADDED_6_0_2 }, {
 					n(87110, {	-- Tarr the Terrible <Grand Master Pet Tamer>
 						["coord"] = { 56.2, 9.80, DRAENOR_NAGRAND },
 					}),
@@ -733,7 +701,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(35083, {	-- Disrupt the Rituals
-						--["objectID"] = 233263,	-- Shamanstone
+						["provider"] = {"o",233263},	-- Shamanstone
 						["sourceQuests"] = {
 							35372,	-- The Call of Oshu'gun (alliance)
 							35232,	-- The Call of Oshu'gun (horde)
@@ -842,6 +810,11 @@ root(ROOTS.Zones, {
 						["coord"] = { 75.0, 22.7, DRAENOR_NAGRAND },
 						["sourceQuest"] = 34894,	-- A Rare Bloom
 					}),
+					heroscall(q(49567, {	-- Hero's Call: Nagrand! (Draenor)
+						["timeline"] = { ADDED_7_3_5 },
+						["isBreadcrumb"] = true,
+						["lvl"] = 98,
+					})),
 					q(34915, {	-- I Help Ya Kill Dem
 						["provider"] = { "n", 80429 },	-- Shadow Hunter Kajassa
 						["coord"] = { 68.5, 64.5, DRAENOR_NAGRAND },
@@ -967,8 +940,8 @@ root(ROOTS.Zones, {
 					}),
 					q(34466, {	-- Mysterious Staff
 						["coord"] = { 46.3, 16.0, DRAENOR_NAGRAND },
-						["icon"] = "Interface\\Icons\\inv_staff_52",
-						--["objectID"] = 229344,	-- Buried Timewarped Staff
+						["icon"] = 135188,
+						["provider"] = {"o",229344},	-- Buried Timewarped Staff
 					}),
 					q(34900, {	-- New Babies
 						["provider"] = { "n", 81955 },	-- Digrem Orebar
@@ -1119,17 +1092,17 @@ root(ROOTS.Zones, {
 					}),
 					q(34597, {	-- Removing the Paper Trail
 						["coord"] = { 81.3, 70.3, DRAENOR_NAGRAND },
-						["icon"] = "Interface\\Icons\\trade_archaeology_silverscrollcase",
+						["icon"] = 454060,
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 34769,	-- A Choice to Make (alliance)
-						--["objectID"] = 231901,	-- Ogre Scrolls
+						["provider"] = {"o",231901},	-- Ogre Scrolls
 					}),
 					q(35156, {	-- Removing the Paper Trail
 						["coord"] = { 81.3, 70.3, DRAENOR_NAGRAND },
-						["icon"] = "Interface\\Icons\\trade_archaeology_silverscrollcase",
+						["icon"] = 454060,
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 34899,	-- A Choice to Make (horde)
-						--["objectID"] = 231901,	-- Ogre Scrolls
+						["provider"] = {"o",231901},	-- Ogre Scrolls
 					}),
 					q(34877, {	-- Removing the Reinforcements
 						["provider"] = { "n", 81144 },	-- Rangari Eleena
@@ -1218,20 +1191,20 @@ root(ROOTS.Zones, {
 						["coord"] = { 68.5, 64.5, DRAENOR_NAGRAND },
 						["races"] = HORDE_ONLY,
 					}),
-					q(35338, {	-- Shooting the Breeze
+					q(35338, {	-- Shooting the Breeze (A)
 						["provider"] = { "n", 82094 },	-- Rangari Laara
 						["coord"] = { 63.4, 61.4, DRAENOR_NAGRAND },
 						["races"] = ALLIANCE_ONLY,
 						["sourceQuest"] = 34769,	-- A Choice to Make
 					}),
-					q(35376, {	-- Shooting the Breeze
+					q(35376, {	-- Shooting the Breeze (H)
 						["provider"] = { "n", 82080 },	-- Stalker Ogka
 						["coord"] = { 82.5, 43.9, DRAENOR_NAGRAND },
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 34899,	-- A Choice to Make
 					}),
 					q(35084, {	-- Silence the Call
-						--["objectID"] = 233263,	-- Shamanstone
+						["provider"] = {"o",233263},	-- Shamanstone
 						["sourceQuests"] = {
 							35372,	-- The Call of Oshu'gun (alliance)
 							35232,	-- The Call of Oshu'gun (horde)
@@ -1260,15 +1233,9 @@ root(ROOTS.Zones, {
 						["races"] = HORDE_ONLY,
 						["sourceQuest"] = 35096,	-- Terms of Surrender
 					}),
-					i(113107, {	-- Rangari Arrow
-						["crs"] = { 78278 },	-- Breezestrider Talbuk
+					q(35356, {	-- Someone's Missing Arrow
 						["races"] = ALLIANCE_ONLY,
-						["description"] = "Drops while doing |cFFFFD700Shooting the Breeze|r.",
-						["g"] = {
-							q(35356, {	-- Someone's Missing Arrow
-								["races"] = ALLIANCE_ONLY,
-							}),
-						},
+						["provider"] = {"i",113107},	-- Rangari Arrow
 					}),
 					q(35377, {	-- Someone's Missing Axe
 						["races"] = HORDE_ONLY,
@@ -1530,7 +1497,9 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = {
 							34674,	-- Taking the Fight to Nagrand
 							37184,	-- Taking the Fight to Nagrand
-							49567,	-- Hero's Call: Nagrand!
+							-- #if AFTER 7.3.5
+							49567,	-- Hero's Call: Nagrand! (Draenor)
+							-- #endif
 						},
 					}),
 					q(34795, {	-- The Might of the Warsong
@@ -1540,7 +1509,9 @@ root(ROOTS.Zones, {
 						["sourceQuests"] = {
 							34794,	-- Taking the Fight to Nagrand
 							36952,	-- Taking the Fight to Nagrand
-							49549,	-- Warchief's Command: Nagrand!
+							-- #if AFTER 7.3.5
+							49549,	-- Warchief's Command: Nagrand! (Draenor)
+							-- #endif
 						},
 					}),
 					q(34598, {	-- The Missing Caravan
@@ -1552,7 +1523,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(35087, {	-- The Nether Approaches
-						--["objectID"] = 233263,	-- Shamanstone
+						["provider"] = {"o",233263},	-- Shamanstone
 						["coords"] = {
 							{ 55.4, 55.9, DRAENOR_NAGRAND },
 							{ 51.8, 58.8, DRAENOR_NAGRAND },
@@ -1650,7 +1621,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(35088, {	-- The Shadow of the Void
-						--["objectID"] = 233263,	-- Shamanstone
+						["provider"] = {"o",233263},	-- Shamanstone
 						["coords"] = {
 							{ 55.4, 55.9, DRAENOR_NAGRAND },
 							{ 51.8, 58.8, DRAENOR_NAGRAND },
@@ -1669,7 +1640,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					q(35086, {	-- The Void March
-						--["objectID"] = 233263,	-- Shamanstone
+						["provider"] = {"o",233263},	-- Shamanstone
 						["coords"] = {
 							{ 55.4, 55.9, DRAENOR_NAGRAND },
 							{ 51.8, 58.8, DRAENOR_NAGRAND },
@@ -1681,12 +1652,12 @@ root(ROOTS.Zones, {
 					q(35271, {	-- The Warsong Threat
 						["coord"] = { 51.8, 62.0, DRAENOR_NAGRAND },
 						["races"] = HORDE_ONLY,
-						--["objectID"] = 232024,	-- Warsong Attack Plans
+						["provider"] = {"o",232024},	-- Warsong Attack Plans
 					}),
 					q(35386, {	-- The Warsong Threat
 						["coord"] = { 51.8, 62.0, DRAENOR_NAGRAND },
 						["races"] = ALLIANCE_ONLY,
-						--["objectID"] = 232024,	-- Warsong Attack Plans
+						["provider"] = {"o",232024},	-- Warsong Attack Plans
 					}),
 					q(37981, {	-- The World Famous Ring of Blood!
 						["description"] = "The item that starts this quest has a chance to drop from any of the daily bounties offered in your garrison (Renzik 'The Shiv' for Alliance and Shadow Hunter Ty'jin for Horde).\n\nThe item isn't looted, but will pop directly into your inventory when the quest mob dies.  If it doesn't drop the first time, you can camp the mob for more chances.  You'll get a total of three invitations, which you can sell or trade.\n",
@@ -1710,7 +1681,7 @@ root(ROOTS.Zones, {
 						["sourceQuest"] = 34598,	-- The Missing Caravan
 					}),
 					q(35085, {	-- Through the Nether
-						--["objectID"] = 233263,	-- Shamanstone
+						["provider"] = {"o",233263},	-- Shamanstone
 						["coords"] = {
 							{ 55.4, 55.9, DRAENOR_NAGRAND },
 							{ 51.8, 58.8, DRAENOR_NAGRAND },
@@ -1748,17 +1719,16 @@ root(ROOTS.Zones, {
 							34769,	-- A Choice to Make (alliance)
 							34899,	-- A Choice to Make (horde)
 						},
-						--["objectID"] = 230303,	-- Bounty Board
+						["provider"] = {"o",230303},	-- Bounty Board
 					}),
+					warchiefscommand(q(49549, {	-- Warchief's Command: Nagrand! (Draenor)
+						["timeline"] = { ADDED_7_3_5 },
+						["races"] = HORDE_ONLY,
+						["isBreadcrumb"] = true,
+					})),
 					q(36273, {	-- Whacking Weeds
 						["provider"] = { "n", 84632 },	-- Marybelle Walsh
 						["coord"] = { 77.4, 47.3, DRAENOR_NAGRAND },
-					}),
-					i(113109, {	-- Frostwolf Axe
-						["crs"] = { 78278 },	-- Breezestrider Talbuk
-						["races"] = HORDE_ONLY,
-						["sourceQuest"] = 35376,	-- Shooting the Breeze
-						["description"] = "Drops while doing |cFFFFD700Shooting the Breeze|r.",
 					}),
 					n(BONUS_OBJECTIVES, {
 						-- TODO: Check SQ
@@ -1844,9 +1814,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(2, {	-- Bonebreaker
-								["achievementID"] = 9571,	-- Broke Back Precipice
-							}),
 							i(119370),	-- Rattlekilt
 						},
 					}),
@@ -1856,9 +1823,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 43.2, 36.3, DRAENOR_NAGRAND },
 						["lvl"] = 100,
 						["g"] = {
-							crit(2, {	-- Brutag Grimblade
-								["achievementID"] = 9541,	-- The Song of Silence
-							}),
 							i(119380),	-- Brutag's Iron Toe Boots
 						},
 					}),
@@ -1880,9 +1844,6 @@ root(ROOTS.Zones, {
 						},
 						["lvl"] = 100,
 						["g"] = {
-							crit(1, {	-- Durg Spinecrusher
-								["achievementID"] = 9571,	-- Broke Back Precipice
-							}),
 							i(119405),	-- Durg's Heavy Maul
 						},
 					}),
@@ -1948,7 +1909,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 42.6, 36.2, DRAENOR_NAGRAND },
 						["lvl"] = 100,
 						["g"] = {
-							crit(4, {	-- Gortag Steelgrip
+							crit(26143, {	-- Gortag Steelgrip
 								["achievementID"] = 9541,	-- The Song of Silence
 							}),
 						},
@@ -2005,9 +1966,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 45.8, 34.8, DRAENOR_NAGRAND },
 						["lvl"] = 100,
 						["g"] = {
-							crit(1, {	-- Karosh Blackwind
-								["achievementID"] = 9541,	-- The Song of Silence
-							}),
 							i(119355),	-- Leggings of Howling Winds
 						},
 					}),
@@ -2017,11 +1975,6 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 						["coord"] = { 42.6, 36.2, DRAENOR_NAGRAND },
 						["lvl"] = 100,
-						["g"] = {
-							crit(3, {	-- Krahl Deadeye
-								["achievementID"] = 9541,	-- The Song of Silence
-							}),
-						},
 					}),
 					n(88210, {	-- Krud the Eviscerator
 						["description"] = "Kill 15 mobs near him to make him attackable.",
@@ -2038,6 +1991,7 @@ root(ROOTS.Zones, {
 						["isDaily"] = true,
 					}),
 					n(50981, {	-- Luk'hok
+						["description"] = "Luk'hok has a respawn timer between 12-28 hours. Mount drop rate is 100% for all participants.",
 						["coords"] = {	-- **Coords unconfirmed, relied on wowhead**
 							{ 84.6, 64.0, DRAENOR_NAGRAND },
 							{ 79.6, 56.6, DRAENOR_NAGRAND },
@@ -2064,6 +2018,7 @@ root(ROOTS.Zones, {
 						},
 					}),
 					n(50990, {	-- Nakk the Thunderer
+						["description"] = "Nakk the Thunderer has a respawn timer between 12-28 hours. Mount drop rate is 100% for all participants.",
 						["coords"] = {
 							{ 62.8, 15.8, DRAENOR_NAGRAND },
 							{ 65.0, 20.2, DRAENOR_NAGRAND },
@@ -2115,9 +2070,6 @@ root(ROOTS.Zones, {
 						["coord"] = { 39.6, 14.6, DRAENOR_NAGRAND },	-- **Coords unconfirmed, relied on wowhead**
 						["lvl"] = 100,
 						["g"] = {
-							crit(3, {	-- Pit Slayer
-								["achievementID"] = 9571,	-- Broke Back Precipice
-							}),
 							i(119389),	-- Pit-Slayer's Magmastone
 						},
 					}),
@@ -2210,7 +2162,7 @@ root(ROOTS.Zones, {
 				n(TREASURES, {
 					--[[
 					Note: These objects have known flags to mark completion but they never seem to fire.
-						  The coords have been added to the "Abu'gar" quest instead.
+						The coords have been added to the "Abu'gar" quest instead.
 					o(233157, {	-- Abu'gar's Vitality
 						["questID"] = 35711,
 						["coord"] = { 65.8, 61.1, DRAENOR_NAGRAND },
@@ -2264,7 +2216,6 @@ root(ROOTS.Zones, {
 					o(233658, {	-- Adventurer's Pouch
 						["description"] = "Follow coords in order, start at cave and follow ramp to reach the pouch.",
 						["questID"] = 36088,
-						["modelID"] = 32854,
 						["coords"] = {
 							{ 56.4, 61.8, DRAENOR_NAGRAND },	-- Cave Entrance
 							{ 64.2, 37.9, 553 },	-- Start of Ramp
@@ -2275,11 +2226,9 @@ root(ROOTS.Zones, {
 					o(233623, {	-- Adventurer's Pouch
 						["questID"] = 36050,
 						["coord"] = { 56.6, 72.9, DRAENOR_NAGRAND },
-						["modelID"] = 32854,
 						["sym"] = COMMON_TREASURE_SYM,
 					}),
 					o(233499, {	-- Adventurer's Sack
-						["modelID"] = 32854,
 						["questID"] = 35955,
 						["coord"] = { 73.9, 14.1, DRAENOR_NAGRAND },
 						["sym"] = COMMON_TREASURE_SYM,
@@ -2288,7 +2237,7 @@ root(ROOTS.Zones, {
 						["questID"] = 35953,
 						["coord"] = { 81.5, 13.0, DRAENOR_NAGRAND },
 						["g"] = {
-							i(116640),  -- Howling Staff
+							i(116640),	-- Howling Staff
 						},
 					}),
 					o(233079, {	-- Appropriated Warsong Supplies
@@ -2365,6 +2314,7 @@ root(ROOTS.Zones, {
 						["coord"] = { 75.4, 47.1, DRAENOR_NAGRAND },
 						["g"] = {
 							currency(824),	-- Garrison Resources
+							i(118236),	-- Counterfeit Coin
 						},
 					}),
 					o(233539, {	-- Genedar Debris
@@ -2497,7 +2447,7 @@ root(ROOTS.Zones, {
 						["questID"] = 36115,
 						["coord"] = { 57.8, 62.1, DRAENOR_NAGRAND },
 						["g"] = {
-							i(118278), -- Pale Vision Potion
+							i(118278),	-- Pale Vision Potion
 						},
 					}),
 					o(233593, {	-- Polished Saberon Skull
@@ -2677,21 +2627,33 @@ root(ROOTS.Zones, {
 						},
 					}),
 				}),
+				n(ZONE_DROPS, {
+					i(113109, {	-- Frostwolf Axe
+						["crs"] = { 78278 },	-- Breezestrider Talbuk
+						["sourceQuest"] = 35376,	-- Shooting the Breeze (H)
+						["description"] = "Drops while doing |cFFFFD700Shooting the Breeze|r.",
+					}),
+					i(113107, {	-- Rangari Arrow
+						["crs"] = { 78278 },	-- Breezestrider Talbuk
+						["sourceQuest"] = 35338,	-- Shooting the Breeze (A)
+						["description"] = "Drops while doing |cFFFFD700Shooting the Breeze|r.",
+					}),
+				}),
 			},
 		}),
 	}),
 });
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
-		q(37250),	-- Broken Precipice POI Tracking Quest - triggers after finding Krog the Dominator's Hammer (achievementID 9610)
-		q(37251),	-- Broken Precipice POI Tracking Quest - triggers after finding Thak the Conqueror's Bust (achievementID 9610)
-		q(37252),	-- Broken Precipice POI Tracking Quest - triggers after finding Thurg the Slave Lord's Necklace (achievementID 9610)
-		q(37253),	-- Broken Precipice POI Tracking Quest - triggers after finding Gorg the Subjugator's Idol (achievementID 9610)
+	expansion(EXPANSION.WOD, {
+		hqt(37250, name(HEADERS.AchCriteria, 9610.01)),	-- Krog the Dominator's Hammer
+		hqt(37251, name(HEADERS.AchCriteria, 9610.02)),	-- Thak the Conqueror's Bust
+		hqt(37252, name(HEADERS.AchCriteria, 9610.03)),	-- Thurg the Slave Lord's Necklace
+		hqt(37253, name(HEADERS.AchCriteria, 9610.04)),	-- Gorg the Subjugator's Idol
 	}),
 });
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(34679),	-- Alliance Stables Tracking Event
 		q(34680),	-- Alliance Workshop Tracking Event
 		q(37202),	-- Hemet Nesingwary Visitor Tracking Event

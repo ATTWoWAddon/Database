@@ -3,7 +3,7 @@
 -----------------------------------------------------
 MAIN_GATE = createHeader({
 	readable = "Main Gate",
-	icon = "Interface\\Icons\\INV_Misc_Token_ScarletCrusade",
+	icon = 134503,
 	text = {
 		-- #if ANYCLASSIC
 		en = "Main Gate",
@@ -17,7 +17,7 @@ MAIN_GATE = createHeader({
 });
 SERVICE_ENTRANCE = createHeader({
 	readable = "Service Entrance",
-	icon = "Interface\\Icons\\INV_MISC_KEY_13",
+	icon = 134247,
 	text = {
 		-- #if ANYCLASSIC
 		en = "Service Entrance",
@@ -29,7 +29,7 @@ SERVICE_ENTRANCE = createHeader({
 		en = "Stratholme is divided into two sides.\n\nThis side is commonly referred to as the \"Dead\" or \"Scourge\" side, which the Scourge has taken over.",
 	},
 });
-root(ROOTS.Instances, tier(CLASSIC_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, {
 	inst(236, {	-- Stratholme
 		-- #if BEFORE MOP
 		["lore"] = "Once the jewel of northern Lordaeron, the city of Stratholme is where Prince Arthas turned against his mentor, Uther Lightbringer, and slaughtered hundreds of his own subjects who were believed to have contracted the dreaded plague of undeath. Arthas' downward spiral and ultimate surrender to the Lich King soon followed. The broken city is now inhabited by the undead Scourge -- led by the powerful lich, Kel'Thuzad. A contingent of Scarlet Crusaders, led by Grand Crusader Dathrohan, also holds a portion of the ravaged city. The two sides are locked in constant, violent combat. Those adventurers brave (or foolish) enough to enter Stratholme will be forced to contend with both factions before long. It is said that the city is guarded by three massive watchtowers, as well as powerful necromancers, banshees and abominations. There have also been reports of a malefic Death Knight riding atop an unholy steed, dispensing indiscriminate wrath on all those who venture within the realm of the Scourge.",
@@ -39,6 +39,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 		["lvl"] = 37,
 		-- #else
 		["mapID"] = STRATHOLME,
+		["maps"] = { 318 },	-- Stratholme (OLD)
 		["lvl"] = 48,
 		-- #endif
 		["groups"] = {
@@ -48,10 +49,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["sourceQuest"] = 5263,	-- Above and Beyond
 					-- #endif
 					["groups"] = {
-						crit(1, {	-- Balnazzar
+						crit(550, {	-- Balnazzar
 							["_npcs"] = { 10813 },
 						}),
-						crit(2, {	-- Lord Aurius Rivendare
+						crit(18471, {	-- Lord Aurius Rivendare
 							["_npcs"] = {
 								-- #if AFTER 4.0.3
 								45412,	-- Lord Aurius Rivendare
@@ -63,21 +64,21 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 				}),
 				ach(5055, {	-- Stratholme Guild Run
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 				}),
 			}),
 			n(QUESTS, {
 				q(27422, {	-- A City Under Siege
 					["qg"] = 45482,	-- Argent Officer Irizarry
 					["coord"] = { 51.6, 21.4, EASTERN_PLAGUELANDS },
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(44, 44, 15),
 				}),
 				q(5263, {	-- Above and Beyond
 					["qg"] = 11039,	-- Duke Nicholas Zverenhoff <The Argent Dawn>
 					["sourceQuest"] = 5262,	-- The Truth Comes Crashing Down
 					["coord"] = { 81.4, 59.8, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						objective(1, {	-- 0/1 Head of Baron Rivendare
@@ -87,7 +88,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27359, {	-- Argent Reinforcements
 					["qg"] = 45330,	-- Archmage Angela Dosantos
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(46, 46, 15),
 					["groups"] = {
 						objective(1, {	-- 0/4 Banshee Essence
@@ -103,19 +104,19 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 10917,	-- Aurius
 					["sourceQuest"] = 5122,	-- The Medallion of Faith
 					["cost"] = { { "i", 12845, 1 } },	-- Medallion of Faith
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["groups"] = {
 						i(17044, {	-- Will of the Martyr
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17045, {	-- Blood of the Martyr
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(27185, {	-- Cutting the Competition
 					["qg"] = 45201,	-- Master Craftsman Wilhelm <Brotherhood of the Light>
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(42, 42, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Risen Hammersmith slain
@@ -130,7 +131,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 5848,	-- Of Love and Family (2/2)
 					["coord"] = { 7.6, 43.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 				}),
 				q(5243, {	-- Houses of the Holy
@@ -140,14 +141,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #endif
 					["coord"] = { 81.6, 57.8, EASTERN_PLAGUELANDS },
 					["cost"] = { { "i", 13180, 5 } },	-- Stratholme Holy Water
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						i(13216, {	-- Crown of the Penitent
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(13217, {	-- Band of the Penitent
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #if BEFORE 4.0.3
 						i(6149),	-- Greater Mana Potion
@@ -159,29 +160,29 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 1842,	-- Highlord Taelan Fordring <Highlord of the Scarlet Crusade>
 					["sourceQuest"] = 5862,	-- Scarlet Subterfuge
 					["coord"] = { 42, 14.8, WESTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 					["groups"] = {
 						i(15418, {	-- Shimmering Platinum Warhammer
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(15411, {	-- Mark of Fordring
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(15421, {	-- Shroud of the Exile
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(15413, {	-- Ornate Adamantium Breastplate
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(16058, {	-- Fordring's Seal
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(27352, {	-- Liquid Gold
 					["qg"] = 45328,	-- Packmaster Stonebruiser
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(46, 46, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Stratholme Holy Water
@@ -191,7 +192,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27227, {	-- Lord Aurius Rivendare
 					["qg"] = 45329,	-- Crusade Commander Eligor Dawnbringer
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(46, 46, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Lord Aurius Rivendare slain
@@ -203,12 +204,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 11039,	-- Duke Nicholas Zverenhoff <The Argent Dawn>
 					["sourceQuest"] = 5263,	-- Above and Beyond
 					["coord"] = { 81.4, 59.8, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 				}),
 				q(27228, {	-- Man Against Abomination
 					["qg"] = 45206,	-- Crusade Commander Korfax
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(46, 46, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Ramstein the Gorger slain
@@ -220,11 +221,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 1855,	-- Tirion Fordring
 					["sourceQuest"] = 5742,	-- Redemption
 					["coord"] = { 7.4, 43.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 					["groups"] = {
 						objective(1, {	-- 0/1 Taelan's Hammer
-							["provider"] = { "i", 14613 },	-- Taelan's Hammer
+							["providers"] = {
+								{ "i",  14613 },	-- Taelan's Hammer
+								{ "o", 177240 },	-- Loose Dirt Mound
+							},
 							["coord"] = { 29.8, 85.6, EASTERN_PLAGUELANDS },
 							["cr"] = 11886,	-- Mercutio Filthgorger
 						}),
@@ -234,22 +238,28 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 1855,	-- Tirion Fordring
 					["sourceQuest"] = 5781,	-- Of Forgotten Memories
 					["coord"] = { 7.4, 43.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 					["groups"] = {
 						objective(1, {	-- 0/1 Symbol of Lost Honor
-							["provider"] = { "i", 14625 },	-- Symbol of Lost Honor
+							["providers"] = {
+								{ "i",  14625 },	-- Symbol of Lost Honor
+								{ "o", 177264 },	-- Symbol of Lost Honor
+							},
 							["coord"] = { 71.3, 33.9, EASTERN_PLAGUELANDS },
 						}),
 					},
 				}),
 				q(27305, {	-- Of Love and Family
 					["qg"] = 45200,	-- Crusade Commander Eligor Dawnbringer
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(42, 42, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Of Love and Family
-							["provider"] = { "i", 14679 },	-- Of Love and Family
+							["providers"] = {
+								{ "i",  14679 },	-- Of Love and Family
+								{ "o", 177287 },	-- Unfinished Painting
+							},
 						}),
 					},
 				}),
@@ -257,25 +267,28 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 1855,	-- Tirion Fordring
 					["sourceQuest"] = 5845,	-- Of Lost Honor
 					["coord"] = { 7.4, 43.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 				}),
 				q(5848, {	-- Of Love and Family (2/2)
 					["qg"] = 11936,	-- Artist Renfray
 					["sourceQuest"] = 5846,	-- Of Love and Family (1/2)
 					["coord"] = { 65.6, 75.4, WESTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 					["groups"] = {
 						objective(1, {	-- 0/1 Of Love and Family
-							["provider"] = { "i", 14679 },	-- Of Love and Family
+							["providers"] = {
+								{ "i",  14679 },	-- Of Love and Family
+								{ "o", 177287 },	-- Unfinished Painting
+							},
 						}),
 					},
 				}),
 				q(6163, {	-- Ramstein
 					["qg"] = 11878,	-- Nathanos Blightcaller <Champion of the Banshee Queen>
 					["coord"] = { 26.6, 74.8, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 55,
 					["groups"] = {
@@ -284,10 +297,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["cr"] = 10439,	-- Ramstein the Gorger
 						}),
 						i(18022, {	-- Royal Seal of Alexis
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(17001, {	-- Elemental Circle
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -299,12 +312,12 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						5542,	-- Demon Dogs
 					},
 					["coord"] = { 7.4, 43.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 				}),
 				q(27223, {	-- Retribution
 					["qg"] = 45200,	-- Crusade Commander Eligor Dawnbringer
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(42, 42, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 The Unforgiven slain
@@ -322,82 +335,91 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 					["sourceQuest"] = 5861,	-- Find Myranda
 					["coord"] = { 50.8, 77.8, WESTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 52,
 				}),
 				q(5213, {	-- The Active Agent
 					["qg"] = 11035,	-- Betina Bigglezink <The Argent Dawn>
 					["sourceQuest"] = 5212,	-- The Flesh Does Not Lie
 					["coord"] = { 81.4, 59.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						objective(1, {	-- 0/1 Scourge Data
-							["provider"] = { "i", 13176 },	-- Scourge Data
+							["providers"] = {
+								{ "i",  13176 },	-- Scourge Data
+								{ "o", 176249 },	-- Scourge Data
+							},
 						}),
 						i(19812, {	-- Rune of the Dawn
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(13209, {	-- Seal of the Dawn
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(5251, {	-- The Archivist
 					["qg"] = 11039,	-- Duke Nicholas Zverenhoff <The Argent Dawn>
 					["coord"] = { 81.4, 59.8, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						objective(1, {	-- 0/1 Archivist Galford slain
 							["provider"] = { "n", 10811 },	-- Archivist Galford
 						}),
+						objective(2, {	-- 0/1 Archive Burning
+							["provider"] = { "o", 176245 },	-- Scarlet Archive
+						}),
 					},
 				}),
 				q(5265, {	-- The Argent Hold
-					["qg"] = 11034,	-- Lord Maxwell Tyrosus <The Argent Dawn>
+					["providers"] = {
+						{ "n",  11034 },	-- Lord Maxwell Tyrosus <The Argent Dawn>
+						{ "o", 176317 },	-- The Argent Hold
+					},
 					["sourceQuest"] = 5264,	-- Lord Maxwell Tyrosus
 					["coord"] = { 81.6, 58.0, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						i(13246, {	-- Argent Avenger
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(13249, {	-- Argent Crusader
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(13243, {	-- Argent Defender
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(27208, {	-- The Dreadlord Balnazzar
 					["qg"] = 45200,	-- Crusade Commander Eligor Dawnbringer
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(42, 42, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Balnazzar slain
 							["provider"] = { "n", 10813 },	-- Balnazzar
 						}),
 						i(65998, {	-- Balnazzar's Hide
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65977, {	-- Balnazzar's Horn
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65953, {	-- Dathrohan's Mace
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(65928, {	-- Leggings of Stratholme
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 					},
 				}),
 				q(5212, {	-- The Flesh Does Not Lie
 					["qg"] = 11035,	-- Betina Bigglezink <The Argent Dawn>
 					["coord"] = { 81.4, 59.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						objective(1, {	-- 0/10 Plagued Flesh Sample (20 in Classic)
@@ -407,7 +429,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27192, {	-- The Great Ezra Grimm
 					["qg"] = 45328,	-- Packmaster Stonebruiser
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(42, 42, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Grimm's Premium Tobacco
@@ -419,7 +441,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(5214, {	-- The Great Ezra Grimm
 					["qg"] = 11033,	-- Smokey LaRue
 					["coord"] = { 81.6, 58.0, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						objective(1, {	-- 0/1 Grimm's Premium Tobacco
@@ -427,27 +449,27 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["cr"] = 11058,	-- Ezra Grimm
 						}),
 						i(13171, {	-- Smokey's Lighter
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(5122, {	-- The Medallion of Faith
 					["qg"] = 10917,	-- Aurius
 					["cost"] = { { "i", 12845, 1 } },	-- Medallion of Faith
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["repeatable"] = true,
 				}),
 				q(5281, {	-- The Restless Souls (1/2)
 					["qg"] = 11038,	-- Caretaker Alen <The Argent Dawn>
 					["coord"] = { 79.6, 63.8, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 				}),
 				q(5282, {	-- The Restless Souls (2/2)
 					["qg"] = 11140,	-- Egan
 					["sourceQuest"] = 5281,	-- The Restless Souls (1/2)
 					["coord"] = { 14.4, 33.6, EASTERN_PLAGUELANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 					["groups"] = {
 						objective(1, {	-- 0/15 Souls Freed
@@ -459,19 +481,19 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							},
 						}),
 						i(13315, {	-- Testament of Hope
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(5262, {	-- The Truth Comes Crashing Down
 					["provider"] = { "i", 13250 },	-- Head of Balnazzar
 					["sourceQuest"] = 5251,	-- The Archivist
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 55,
 				}),
 				q(27230, {	-- Weapons for War
 					["qg"] = 45331,	-- Master Craftsman Wilhelm
-					["timeline"] = { "added 4.0.3" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(46, 46, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Black Guard Swordsmith slain
@@ -495,13 +517,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #if BEFORE 4.0.3
 					["description"] = "Can drop from any Undead rare mob or boss in the Plaguelands and associated dungeons so long as you are equipped with one of the Argent Dawn trinkets.",
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 				}),
 				i(12841, {	-- Invader's Scourgestone / Inert Invader's Scourgestone
 					-- #if BEFORE 4.0.3
 					["description"] = "Can drop from any Undead mobs in the Plaguelands and associated dungeons so long as you are equipped with one of the Argent Dawn trinkets.",
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 				}),
 				i(206374, {	-- Invader's Scourgestone
 					["timeline"] = { ADDED_10_1_5 },
@@ -510,10 +532,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #if BEFORE 4.0.3
 					["description"] = "Can drop from weak Undead mobs in the Plaguelands and associated dungeons so long as you are equipped with one of the Argent Dawn trinkets.",
 					-- #endif
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 				}),
 				i(13174, {	-- Plagued Flesh Sample
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 				}),
 				i(12735, {	-- Frayed Abomination Stitching
 					-- NOTE: Not removed from game, but no longer useful for anything.
@@ -527,7 +549,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #endif
 				}),
 				i(142337, {	-- Plans: Blight (RECIPE!)
-					["timeline"] = { "added 7.1.5.23360" },
+					["timeline"] = { ADDED_7_1_5 },
 				}),
 				i(206377, {	-- Ward of Naxxramas
 					["crs"] = { 10411 },	-- Eye of Naxxramas
@@ -535,38 +557,122 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				i(18743),	-- Gracious Cape
 				i(17061),	-- Juno's Shadow
-				i(18741),	-- Morlune's Bracer
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(228532, {	-- Morlune's Bracer
+					["timeline"] = { "added 1.15.3" },
+				})),
+				-- #endif
+				i(18741, {	-- Morlune's Bracer
+					-- #if SEASON_OF_DISCOVERY
+					["timeline"] = { "removed 1.15.3" },
+					-- #endif
+				}),
 				i(18744),	-- Plaguebat Fur Gloves
-				i(18736),	-- Plaguehound Leggings
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(228534, {	-- Plaguehound Leggings
+					["timeline"] = { "added 1.15.3" },
+				})),
+				-- #endif
+				i(18736, {	-- Plaguehound Leggings
+					-- #if SEASON_OF_DISCOVERY
+					["timeline"] = { "removed 1.15.3" },
+					-- #endif
+				}),
 				i(18745),	-- Sacred Cloth Leggings
 				i(18742),	-- Stratholme Militia Shoulderguard
-
+				
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226717, {	-- Beaststalker's Bindings
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						10421,	-- Crimson Defender
+						10407,	-- Fleshflayer Ghoul
+						10406,	-- Ghoul Ravener
+					},
+				})),
+				-- #endif
 				i(16681, {	-- Beaststalker's Bindings
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						10421,	-- Crimson Defender
 						10407,	-- Fleshflayer Ghoul
 						10406,	-- Ghoul Ravener
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226765, {	-- Belt of Valor
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						10416,	-- Bile Spewer
+						10414,	-- Patchwork Horror
+						10417,	-- Venom Belcher
+					},
+				})),
+				-- #endif
 				i(16736, {	-- Belt of Valor
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						10416,	-- Bile Spewer
 						10414,	-- Patchwork Horror
 						10417,	-- Venom Belcher
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226751, {	-- Bindings of Elements
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						11043,	-- Crimson Monk
+						10413,	-- Crypt Beast
+						10412,	-- Crypt Crawler
+					},
+				})),
+				-- #endif
 				i(16671, {	-- Bindings of Elements
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						11043,	-- Crimson Monk
 						10413,	-- Crypt Beast
 						10412,	-- Crypt Crawler
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226742, {	-- Devout Bracers
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						10419,	-- Crimson Conjuror
+						10420,	-- Crimson Initiate
+						10423,	-- Crimson Priest
+						10400,	-- Thuzadin Necromancer
+						10398,	-- Thuzadin Shadowcaster
+					},
+				})),
+				-- #endif
 				i(16697, {	-- Devout Bracers
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						10419,	-- Crimson Conjuror
 						10420,	-- Crimson Initiate
@@ -575,8 +681,25 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						10398,	-- Thuzadin Shadowcaster
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226761, {	-- Dreadmist Belt
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						10419,	-- Crimson Conjuror
+						10422,	-- Crimson Sorcerer
+						10400,	-- Thuzadin Necromancer
+						10398,	-- Thuzadin Shadowcaster
+					},
+				})),
+				-- #endif
 				i(16702, {	-- Dreadmist Belt
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						10419,	-- Crimson Conjuror
 						10422,	-- Crimson Sorcerer
@@ -584,8 +707,25 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						10398,	-- Thuzadin Shadowcaster
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226732, {	-- Lightforge Belt
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						10424,	-- Crimson Gallant
+						10418,	-- Crimson Guardsman
+						10408,	-- Rockwing Gargoyle
+						10409,	-- Rockwing Screecher
+					},
+				})),
+				-- #endif
 				i(16723, {	-- Lightforge Belt
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						10424,	-- Crimson Gallant
 						10418,	-- Crimson Guardsman
@@ -593,8 +733,26 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						10409,	-- Rockwing Screecher
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226724, {	-- Magister's Belt
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						10425,	-- Crimson Battle Mage
+						10419,	-- Crimson Conjuror
+						10422,	-- Crimson Sorcerer
+						10400,	-- Thuzadin Necromancer
+						10398,	-- Thuzadin Shadowcaster
+					},
+				})),
+				-- #endif
 				i(16685, {	-- Magister's Belt
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						10425,	-- Crimson Battle Mage
 						10419,	-- Crimson Conjuror
@@ -603,8 +761,24 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						10398,	-- Thuzadin Shadowcaster
 					},
 				}),
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_FOUR, i(226714, {	-- Wildheart Bracers
+					["timeline"] = { "added 1.15.3" },
+					["crs"] = {
+						10426,	-- Crimson Inquisitor
+						10463,	-- Shrieking Banshee
+						10464,	-- Wailing Banshee
+					},
+				})),
+				-- #endif
 				i(16714, {	-- Wildheart Bracers
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = {
+						-- #if SEASON_OF_DISCOVERY
+						"removed 1.15.3",
+						-- #else
+						REMOVED_4_0_3,
+						-- #endif
+					},
 					["crs"] = {
 						10426,	-- Crimson Inquisitor
 						10463,	-- Shrieking Banshee
@@ -620,11 +794,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					{"contains","headerID",ACHIEVEMENTS,QUESTS,ZONE_DROPS},	-- Select the common Achievements/Quests/Zone Drops
 				},
 				-- #endif
-				-- #if AFTER 4.0.3
-				["coord"] = { 27.66, 11.64, EASTERN_PLAGUELANDS },	-- Stratholme [Main Gate]
-				-- #else
-				["coord"] = { 30.9, 16.6, EASTERN_PLAGUELANDS },	-- Stratholme [Main Gate]
-				-- #endif
+				["coords"] = {
+					-- #if AFTER 4.0.3
+					{ 27.66, 11.64, EASTERN_PLAGUELANDS },	-- Stratholme [Main Gate]
+					-- #else
+					{ 30.9, 16.6, EASTERN_PLAGUELANDS },	-- Stratholme [Main Gate]
+					-- #endif
+				},
 				["groups"] = {
 					n(ZONE_DROPS, {
 						i(12811, {	-- Righteous Orb
@@ -633,26 +809,27 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							-- #endif
 						}),
 						i(12734, {	-- Enchanted Scarlet Thread
+							["provider"] = { "o", 175966 },	-- Enchanted Scarlet Thread
 							-- #if BEFORE 4.0.3
 							["description"] = "These can be found in 4 places in the Scarlet Enclave.\n\n1&2: Malor's Room on the Table\n3: In the next room before you split to Cannon Master or Archivist.\n4: In Archivist's room on a box in the back.",
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(16249, {	-- Formula: Enchant 2H Weapon - Major Intellect (RECIPE!)
 							["cr"] = 10422,  -- Crimson Sorcerer / Risen Sorcerer [CATA+]
 						}),
 						i(14495, {	-- Pattern: Ghostweave Pants
-							["timeline"] = { "removed 4.0.3" },	-- Moved to Trainer
+							["timeline"] = { REMOVED_4_0_3 },	-- Moved to Trainer
 							["cr"] = 10384,  -- Spectral Citizen
 						}),
 						i(15777, {	-- Pattern: Runic Leather Shoulders (RECIPE!)
-							["timeline"] = { "removed 4.0.3" },	-- Moved to Trainer
+							["timeline"] = { REMOVED_4_0_3 },	-- Moved to Trainer
 							["cr"] = 10425,	-- Crimson Battle Mage
 						}),
-						i(18658, {	-- Schematic: Ultra-Flash Shadow Reflector
+						i(18658, {	-- Schematic: Ultra-Flash Shadow Reflector (RECIPE!)
 							["cr"] = 10426,	-- Crimson Inquisitor / Risen Inquisitor [CATA+]
 						}),
-						i(16052, {	-- Schematic: Voice Amplification Modulator
+						i(16052, {	-- Schematic: Voice Amplification Modulator (RECIPE!)
 							["cr"] = 10426,	-- Crimson Inquisitor / Risen Inquisitor [CATA+]
 						}),
 					}),
@@ -674,26 +851,26 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					}),
 					-- #if BEFORE 4.0.3
 					n(11082, {	-- Stratholme Courier
-						["timeline"] = { "removed 4.0.3" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["description"] = "Drops 3 random keys used to open postboxes found throughout Stratholme. All 3 of the postboxes must be opened to spawn the Postmaster.",
 						["groups"] = {
 							i(13303, {	-- Crusaders' Square Postbox Key
-								["timeline"] = { "deleted 4.0.3" },
+								["timeline"] = { DELETED_4_0_3 },
 							}),
 							i(13305, {	-- Elders' Square Postbox Key
-								["timeline"] = { "deleted 4.0.3" },
+								["timeline"] = { DELETED_4_0_3 },
 							}),
 							i(13304, {	-- Festival Lane Postbox Key
-								["timeline"] = { "deleted 4.0.3" },
+								["timeline"] = { DELETED_4_0_3 },
 							}),
 							i(13307, {	-- Fras Siabi's Postbox Key
-								["timeline"] = { "deleted 4.0.3" },
+								["timeline"] = { DELETED_4_0_3 },
 							}),
 							i(13306, {	-- King's Square Postbox Key
-								["timeline"] = { "deleted 4.0.3" },
+								["timeline"] = { DELETED_4_0_3 },
 							}),
 							i(13302, {	-- Market Row Postbox Key
-								["timeline"] = { "deleted 4.0.3" },
+								["timeline"] = { DELETED_4_0_3 },
 							}),
 						},
 					}),
@@ -714,26 +891,118 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						-- #endif
 						["groups"] = {
 							i(13393),	-- Malown's Slam
-							i(13390),	-- The Postmaster's Band
-							i(13388),	-- The Postmaster's Tunic
-							i(13389),	-- The Postmaster's Trousers
-							i(13391),	-- The Postmaster's Treads
-							i(13392),	-- The Postmaster's Seal
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228528, {	-- The Postmaster's Band
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13390, {	-- The Postmaster's Band
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228525, {	-- The Postmaster's Tunic
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13388, {	-- The Postmaster's Tunic
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228527, {	-- The Postmaster's Trousers
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13389, {	-- The Postmaster's Trousers
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228529, {	-- The Postmaster's Treads
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13391, {	-- The Postmaster's Treads
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228524, {	-- The Postmaster's Seal
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13392, {	-- The Postmaster's Seal
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 						},
 					}),
 					e(443, {	-- Hearthsinger Forresten
 						["creatureID"] = 10558,	-- Hearthsinger Forresten
 						["groups"] = {
-							i(13379),	-- Piccolo of the Flaming Fire
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228502, {	-- Piccolo of the Flaming Fire
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13379, {	-- Piccolo of the Flaming Fire
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							-- #if AFTER 6.0.1
 							-- NOTE: We're not sure which patch this was added to Hearthsinger Forresten.
 							i(12103),	-- Star of Mystaria
 							-- #endif
-							i(13378),	-- Songbird Blouse
-							i(13384),	-- Rainbow Girdle
-							i(13383),	-- Woollies of the Prancing Minstrel
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228501, {	-- Songbird Blouse
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13378, {	-- Songbird Blouse
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228504, {	-- Rainbow Girdle
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13384, {	-- Rainbow Girdle
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228503, {	-- Woollies of the Prancing Minstrel
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13383, {	-- Woollies of the Prancing Minstrel
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226730, {	-- Magister's Boots
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16682, {	-- Magister's Boots
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
 						},
 					}),
@@ -745,14 +1014,34 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							applyclassicphase(PHASE_FIVE, i(22406)),	-- Redemption
 							-- #endif
 							i(13408),	-- Soul Breaker
-							i(13404),	-- Mask of the Unforgiven
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228500, {	-- Mask of the Unforgiven
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13404, {	-- Mask of the Unforgiven
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(13405),	-- Wailing Nightbane Pauldrons
 							i(13409),	-- Tearfall Bracers
 							i(151404, {	-- Gauntlets of Purged Sanity
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226711, {	-- Wildheart Gloves
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16717, {	-- Wildheart Gloves
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
 						},
 					}),
@@ -760,61 +1049,160 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["creatureID"] = 10808,	-- Timmy the Cruel
 						["groups"] = {
 							i(13401),	-- The Cruel Hand of Timmy
-							i(13400),	-- Vambraces of the Sadist
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228513, {	-- Vambraces of the Sadist
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13400, {	-- Vambraces of the Sadist
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(151403, {	-- Fetid Stranglers
-								["timeline"] = { "added 7.3.0.24484" },
+								["timeline"] = { ADDED_7_3_0 },
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226737, {	-- Lightforge Gauntlets
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16724, {	-- Lightforge Gauntlets
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
-							i(13403),	-- Grimgore Noose
-							i(13402),	-- Timmy's Galoshes
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228515, {	-- Grimgore Noose
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13403, {	-- Grimgore Noose
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228514, {	-- Timmy's Galoshes
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13402, {	-- Timmy's Galoshes
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 						},
 					}),
 					n(11032, {	-- Malor the Zealous [Classic] / Commander Malor [CATA+]
 						i(12845, {	-- Medallion of Faith
+							["provider"] = { "o", 176112 },	-- Malor's Strongbox
 							-- #if BEFORE 4.0.3
 							["description"] = "Located in Malor's Strongbox. Can be turned in to Aurius on the Dead side of Stratholme to have him aide you during the Baron Rivendare encounter.",
 							-- #endif
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #if AFTER 8.0.1
 						i(22403),	-- Nacreous Shell Necklace
 						-- #endif
 					}),
 					n(11120, {	-- Crimson Hammersmith [Classic] / Risen Hammersmith [CATA+]
-						["description"] = "Loot the Blacksmithing Plans on the ground to spawn this mob.",
+						["provider"] = { "o", 176325 },	-- Blacksmithing Plans
+						["description"] = "Found in the Hoard on the way to Cannon Master Willey.",
 						["groups"] = {
 							i(18781, {	-- Bottom Half of Advanced Armorsmithing: Volume II
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(13351, {	-- Crimson Hammersmith's Apron
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(12827, {	-- Plans: Serenity (RECIPE!)
 								["description"] = "You must be a Blacksmith in order to loot this from the Plans on the floor.",
-								["timeline"] = { "removed 2.0.1", "added 3.0.1" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_2_0_1, ADDED_3_0_2,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228308, {	-- Plans: Tranquility (RECIPE!)
+								["description"] = "You must be a Blacksmith in order to loot this from the Plans on the floor.",
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 						},
 					}),
 					e(446, {	-- Cannon Master Willey [Classic] / Willey Hopebreaker [CATA+]
 						["creatureID"] = 10997,	-- Cannon Master Willey [Classic] / Willey Hopebreaker [CATA+]
 						["groups"] = {
-							i(12839),	-- Plans: Heartseeker (RECIPE!)
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228307, {	-- Plans: Deadly Heartseeker (RECIPE!)
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(12839, {	-- Plans: Heartseeker (RECIPE!)
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							applyclassicphase(PHASE_FIVE, i(22406)),	-- Redemption
 							applyclassicphase(PHASE_FIVE, i(22404)),	-- Willey's Back Scratcher
-							i(13380),	-- Willey's Portable Howitzer
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228522, {	-- Willey's Portable Howitzer
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13380, {	-- Willey's Portable Howitzer
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							applyclassicphase(PHASE_FIVE, i(22407)),	-- Helm of the New Moon
-							applyclassicphase(PHASE_FIVE, i(22403)),	-- Nacreous Shell Necklace
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228533, {	-- Nacreous Shell Necklace
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							applyclassicphase(PHASE_FIVE, i(22403, {	-- Nacreous Shell Necklace
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							})),
 							applyclassicphase(PHASE_FIVE, i(22405)),	-- Mantle of the Scarlet Crusade
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226706, {	-- Shadowcraft Spaulders
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16708, {	-- Shadowcraft Spaulders
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
 							i(18721),	-- Barrage Girdle
 							i(13381),	-- Master Cannoneer Boots
-							i(13382),	-- Cannonball Runner
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228523, {	-- Cannonball Runner
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13382, {	-- Cannonball Runner
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(13377, {	-- Miniature Cannon Balls
-								["timeline"] = { "deleted 4.0.1" },
+								["timeline"] = { DELETED_4_0_1 },
 							}),
 						},
 					}),
@@ -822,24 +1210,35 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["creatureID"] = 10811,	-- Archivist Galford [Classic] / Instructor Galford [CATA+]
 						["groups"] = {
 							i(65615, {	-- Annals of the Silver Hand
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(14679, {	-- Of Love and Family
 								-- #if BEFORE 4.0.3
 								["description"] = "Found the wall near Archivist Galford.",
 								-- #endif
 							}),
-							applyclassicphase(PHASE_SIX, {
+							applyclassicphase(PHASE_SIX_CLASS_BOOKS, {
 								["itemID"] = 22897,	-- Tome of Conjure Food VII
-								["timeline"] = { "removed 4.0.1" },
+								["timeline"] = { REMOVED_4_0_1 },
 								["classes"] = { MAGE },
 								["spellID"] = 28612,	-- Conjure Food VII
 								["rank"] = 7,
 							}),
 							i(13385),	-- Tome of Knowledge
 							i(13386),	-- Archivist Cape
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226740, {	-- Devout Gloves
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16692, {	-- Devout Gloves
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
 							i(13387),	-- Foresight Girdle
 							i(18716),	-- Ash Covered Boots
@@ -847,29 +1246,101 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					}),
 					e(449, {	-- Balnazzar
 						["creatureID"] = 10813,	-- Balnazzar
-						["crs"] = {
-							10812,	-- Grand Crusader Dathrohan
-						},
+						["crs"] = { 10812 },	-- Grand Crusader Dathrohan
 						["groups"] = {
 							i(13250),	-- Head of Balnazzar
 							i(14512),	-- Pattern: Truefaith Vestments
 							i(13520),	-- Recipe: Flask of Distilled Wisdom (RECIPE!)
 							i(13348),	-- Demonshear
-							i(18717),	-- Hammer of the Grand Crusader
-							i(13360),	-- Gift of the Elven Magi
-							i(13353),	-- Book of the Dead
-							i(13359),	-- Crown of Tyranny
-							i(18718),	-- Grand Crusader's Helm
-							i(12103),	-- Star of Mystaria
-							i(18720),	-- Shroud of the Nathrezim
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228544, {	-- Hammer of the Grand Crusader
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18717, {	-- Hammer of the Grand Crusader
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228541, {	-- Gift of the Elven Magi
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13360, {	-- Gift of the Elven Magi
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228539, {	-- Book of the Dead
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13353, {	-- Book of the Dead
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228540, {	-- Crown of Tyranny
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13359, {	-- Crown of Tyranny
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228545, {	-- Grand Crusader's Helm
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18718, {	-- Grand Crusader's Helm
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228536, {	-- Star of Mystaria
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(12103, {	-- Star of Mystaria
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228546, {	-- Shroud of the Nathrezim
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18720, {	-- Shroud of the Nathrezim
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(13358),	-- Wyrmtongue Shoulders
 							i(13369),	-- Fire Striders
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226738, {	-- Lightforge Boots
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16725, {	-- Lightforge Boots
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
 						},
 					}),
-					applyclassicphase(PHASE_FIVE, o(181083, {	-- Sothos and Jarien's Heirlooms
+					applyclassicphase(PHASE_FIVE_TIER_ZERO_POINT_FIVE_SETS, o(181083, {	-- Sothos and Jarien's Heirlooms
 						["crs"] = {
 							16101,	-- Jarien
 							16102,	-- Sothos
@@ -879,31 +1350,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						-- #else
 						["description"] = "This boss can be summoned using the Brazier of Beckoning or the Brazier of Invocation, which can summon any of the spirits.",
 						-- #endif
-						["timeline"] = { "removed 4.0.3", ADDED_10_1_5 },
+						["timeline"] = { REMOVED_4_0_3, ADDED_10_1_5 },
 						["cost"] = {
 							{ "i", 22051, 1 },	-- Brazier of Beckoning [Jarien & Sothos]
 							{ "i", 22057, 1 },	-- Brazier of Invocation
 						},
 						-- #if AFTER 10.1.5
 						-- This init function unmarks the removed from game flag for folks with the brazier.
-						["OnInit"] = [[function(t)
-							if GetItemCount(22057, true) > 0 then
-								t.u = nil;
-								for i,o in ipairs(t.g) do
-									if o.u and o.u == 11 then
-										o.u = nil;
-									end
-								end
-							else
-								t.u = 11;
-								for i,o in ipairs(t.g) do
-									if not o.u then
-										o.u = 11;
-									end
-								end
-							end
-							return t;
-						end]],
+						["OnInit"] = FUNCTION_TEMPLATES.OnInit.BrazierAccess,
 						-- #endif
 						["groups"] = {
 							objective(2, {	-- 0/1 Left Piece of Lord Valthalak's Amulet
@@ -914,41 +1368,62 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 								["questID"] = 8991,	-- The Right Piece of Lord Valthalak's Amulet [PRIEST, MAGE]
 								["provider"] = { "i", 22046 },	-- Right Piece of Lord Valthalak's Amulet
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228548, {	-- Scepter of Interminable Focus
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(22329, {	-- Scepter of Interminable Focus
-								["timeline"] = { "removed 4.0.3", ADDED_10_1_5 },
+								["timeline"] = { 
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3, ADDED_10_1_5,
+									-- #endif
+								},
 							}),
 							i(22327, {	-- Amulet of the Redeemed
-								["timeline"] = { "removed 4.0.3", ADDED_10_1_5 },
+								["timeline"] = { REMOVED_4_0_3, ADDED_10_1_5 },
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228547, {	-- Ironweave Robe
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(22301, {	-- Ironweave Robe
-								["timeline"] = { "removed 4.0.1", ADDED_10_1_5 },
+								["timeline"] = { 
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_1, ADDED_10_1_5,
+									-- #endif
+								},
 							}),
 							i(22328, {	-- Legplates of Vigilance
-								["timeline"] = { "removed 4.0.3", ADDED_10_1_5 },
+								["timeline"] = { REMOVED_4_0_3, ADDED_10_1_5 },
 							}),
 							i(22334, {	-- Band of Mending
-								["timeline"] = { "removed 4.0.3", ADDED_10_1_5 },
+								["timeline"] = { REMOVED_4_0_3, ADDED_10_1_5 },
 							}),
 						},
 					})),
 					applyclassicphase(PHASE_SIX, n(16387, {	-- Atiesh <Hand of Sargeras>
 						["description"] = "Summoned and defeated as part of the Atiesh quest chain to get the Greatstaff of the Guardian.",
-						["timeline"] = { "removed 3.0.2" },
+						["timeline"] = { REMOVED_3_0_2 },
 						["groups"] = {
 							i(22736, {	-- Andonisus, Reaper of Souls
 								-- #if BEFORE 3.0.2
 								["description"] = "He drops this midway through the encounter and one lucky DPS can wield this. However, it is a conjured item and will disappear after a few minutes.",
 								-- #endif
-								["timeline"] = { "removed 3.0.2" },
-								-- #if NOT ANYCLASSIC
-								["u"] = 15,
-								-- #endif
+								["timeline"] = { REMOVED_3_0_2 },
+								["collectible"] = false,
 							}),
 						},
 					})),
 				},
 			}),
 			n(SERVICE_ENTRANCE, {
+				["provider"] = { "o", 175369 },	-- Elders' Square Service Entrance
 				-- #if AFTER 4.0.3
 				["mapID"] = 318, -- Service Entrance
 				["sym"] = {
@@ -956,10 +1431,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					{"contains","headerID",ACHIEVEMENTS,QUESTS,ZONE_DROPS},	-- Select the common Achievements/Quests/Zone Drops
 				},
 				-- #endif
-				-- #if AFTER 4.0.3
-				["coord"] = { 43.76, 17.52, EASTERN_PLAGUELANDS },	-- Stratholme [Undead Side]
-				-- #else
-				["coord"] = { 48.18, 21.90, EASTERN_PLAGUELANDS },	-- Stratholme [Undead Side]
+				["coords"] = {
+					-- #if AFTER 4.0.3
+					{ 43.76, 17.52, EASTERN_PLAGUELANDS },	-- Stratholme [Undead Side]
+					-- #else
+					{ 48.18, 21.90, EASTERN_PLAGUELANDS },	-- Stratholme [Undead Side]
+					-- #endif
+				},
+				-- #if BEFORE 4.0.3
 				["cost"] = { { "i", 12382, 1 } },	-- Key to the City
 				-- #endif
 				["groups"] = {
@@ -968,18 +1447,30 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							["cr"] = 10398,	-- Thuzadin Shadowcaster
 						}),
 						i(15768, {	-- Pattern: Wicked Leather Belt (RECIPE!)
-							["timeline"] = { "removed 2.0.5" },	-- Added to Leatherworking Trainers
+							["timeline"] = { REMOVED_2_0_5 },	-- Added to Leatherworking Trainers
 							["cr"] = 10406,	-- Ghoul Ravener
 						}),
 						i(74274, {	-- Plans: Phantom Blade (RECIPE!)
-							["timeline"] = { "added 4.3.0.15005" },
+							["timeline"] = { ADDED_4_3_0 },
 							["crs"] = {
 								10463,	-- Shrieking Banshee
 								10464,	-- Wailing Banshee
 							},
 						}),
+						-- #if SEASON_OF_DISCOVERY
+						applyclassicphase(SOD_PHASE_FOUR, i(226704, {	-- Shadowcraft Bracers
+							["timeline"] = { "added 1.15.3" },
+							["cr"] = 10405,	-- Plague Ghoul
+						})),
+						-- #endif
 						i(16710, {	-- Shadowcraft Bracers
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = {
+								-- #if SEASON_OF_DISCOVERY
+								"removed 1.15.3",
+								-- #else
+								REMOVED_4_0_3,
+								-- #endif
+							},
 							["cr"] = 10405,	-- Plague Ghoul
 						}),
 					}),
@@ -995,6 +1486,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["creatureID"] = 10437,	-- Nerub'enkan
 						["groups"] = {
 							i(13176, {	-- Scourge Data
+								["provider"] = { "o", 176249 },	-- Scourge Data
 								-- #if BEFORE 4.0.3
 								["description"] = "Located in the Ziggurat behind the boss.",
 								-- #endif
@@ -1003,29 +1495,64 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(13529),	-- Husk of Nerub'enkan
 							i(13533),	-- Acid-Etched Pauldrons
 							i(13532),	-- Darkspinner Claws
-							i(18740),	-- Thuzadin Sash
-							i(18739),	-- Chitinous Plate Legguards
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228531, {	-- Thuzadin Sash
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18740, {	-- Thuzadin Sash
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228530, {	-- Chitinous Plate Legguards
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18739, {	-- Chitinous Plate Legguards
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(13531),	-- Crypt Stalker Leggings
 							i(16675, {	-- Beaststalker's Boots
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(13530),	-- Fangdrip Runners
 							i(13508),	-- Eye of Arachnida
 						},
 					}),
 					n(11121, {	-- Black Guard Swordsmith
-						["description"] = "Loot the Blacksmithing Plans on the ground to spawn this mob.",
+						["providers"] = {
+							{ "o", 176325 },	-- Blacksmithing Plans
+							-- This is what it should be, but since tooltips for objects with EXACTLY THE SAME NAME are wonky in the same instance (due to a lack of coordinates....), this is necessary to make the tooltips make more sense.
+							--{ "o", 176327 },	-- Blacksmithing Plans
+						},
+						["description"] = "Found outside of Baroness Anastari's ziggurat.",
 						["groups"] = {
 							i(18783, {	-- Bottom Half of Advanced Armorsmithing: Volume III
-								["timeline"] = { "removed 4.0.1" },
+								["timeline"] = { REMOVED_4_0_1 },
 							}),
 							i(13350, {	-- Insignia of the Black Guard
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(12830, {	-- Plans: Corruption (RECIPE!)
 								["description"] = "You must be a Blacksmith in order to loot this from the Plans on the floor. This will despawn once a player interacts with it.",
-								["timeline"] = { "removed 2.0.1", "added 3.0.1" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_2_0_1, ADDED_3_0_2,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228306, {	-- Plans: Desecration (RECIPE!)
+								["description"] = "You must be a Blacksmith in order to loot this from the Plans on the floor. This will despawn once a player interacts with it.",
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 						},
 					}),
 					e(451, {	-- Baroness Anastari
@@ -1038,9 +1565,18 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(13535),	-- Coldtouch Phantom Wraps
 							i(13537),	-- Chillhide Bracers
 							i(13539),	-- Banshee's Touch
-							i(18730),	-- Shadowy Laced Handwraps
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228521, {	-- Shadowy Laced Handwraps
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18730, {	-- Shadowy Laced Handwraps
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(16704, {	-- Dreadmist Sandals
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(13514, {	-- Wail of the Banshee
 								-- #if BEFORE 4.0.3
@@ -1053,14 +1589,23 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["creatureID"] = 10438,	-- Maleki the Pallid
 						["groups"] = {
 							i(12833),	-- Plans: Hammer of the Titans (RECIPE!)
-							i(18737),	-- Bone Slicing Hatchet
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228535, {	-- Bone Slicing Hatchet
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18737, {	-- Bone Slicing Hatchet
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(13524),	-- Skull of Burning Shadows
 							i(18734),	-- Pale Moon Cloak
 							i(13528),	-- Twilight Void Bracers
 							i(13525),	-- Darkbind Fingers
 							i(13526),	-- Flamescarred Girdle
 							i(16691, {	-- Devout Sandals
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							i(13527),	-- Lavawalker Greaves
 							i(18735),	-- Maleki's Footwraps
@@ -1072,13 +1617,40 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["description"] = "If you enter from the Main Gate side, you can fight this boss first, otherwise he runs to the Slaughter House.",
 						["groups"] = {
 							i(12382),	-- Key to the City
-							i(18725),	-- Peacemaker
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228516, {	-- Peacemaker
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18725, {	-- Peacemaker
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(18727),	-- Crimson Felt Hat
-							i(13376),	-- Royal Tribunal Cloak
-							i(18726),	-- Magistrate's Cuffs
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228505, {	-- Royal Tribunal Cloak
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13376, {	-- Royal Tribunal Cloak
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228518, {	-- Magistrate's Cuffs
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(18726, {	-- Magistrate's Cuffs
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(18722),	-- Death Grips
 							applyclassicphase(PHASE_FIVE, i(23198, {	-- Idol of Brutality
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							})),
 						},
 					}),
@@ -1089,9 +1661,29 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(13372),	-- Slavedriver's Cane
 							i(13375),	-- Crest of Retribution
 							i(18723),	-- Animated Chain Necklace
-							i(13374),	-- Soulstealer Mantle
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228520, {	-- Soulstealer Mantle
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13374, {	-- Soulstealer Mantle
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226771, {	-- Gauntlets of Valor
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16737, {	-- Gauntlets of Valor
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
 							i(13373),	-- Band of Flesh
 							i(13515),	-- Ramstein's Lightning Bolts
@@ -1107,25 +1699,99 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							i(13251),	-- Head of Baron Rivendare
 							ach(729, {	-- Deathcharger's Reins
 								["provider"] = { "i", 13335 },	-- Rivendare's Deathcharger (MOUNT!)
-								-- #if BEFORE WRATH
-								["description"] = "Obtain the Deathcharger's Reins from Baron Rivendare in Stratholme.",
-								-- #endif
 								["f"] = MOUNTS,
 							}),
 							i(13335),	-- Rivendare's Deathcharger (MOUNT!)
-							i(13505),	-- Runeblade of Baron Rivendare
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228543, {	-- Runeblade of Baron Rivendare
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13505, {	-- Runeblade of Baron Rivendare
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
 							i(13368),	-- Bonescraper
 							applyclassicphase(PHASE_FIVE, i(22408)),	-- Ritssyn's Wand of Bad Mojo
 							i(13349),	-- Scepter of the Unholy
-							i(13361),	-- Skullforge Reaver
-							applyclassicphase(PHASE_FIVE, i(22411)),	-- Helm of the Executioner
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228542, {	-- Skullforge Reaver
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13361, {	-- Skullforge Reaver
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228553, {	-- Helm of the Executioner
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							applyclassicphase(PHASE_FIVE, i(22411, {	-- Helm of the Executioner
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							})),
 							applyclassicphase(PHASE_FIVE, i(22412)),	-- Thuzadin Mantle
 							i(13340),	-- Cape of the Black Baron
 							i(13346),	-- Robes of the Exalted
-							applyclassicphase(PHASE_FIVE, i(22409)),	-- Tunic of the Crescent Moon
-							i(13344),	-- Dracorian Gauntlets
-							applyclassicphase(PHASE_FIVE, i(22410)),	-- Gauntlets of Deftness
-							i(13345),	-- Seal of Rivendare
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228551, {	-- Tunic of the Crescent Moon
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							applyclassicphase(PHASE_FIVE, i(22409, {	-- Tunic of the Crescent Moon
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							})),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228537, {	-- Dracorian Gauntlets
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13344, {	-- Dracorian Gauntlets
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228552, {	-- Gauntlets of Deftness
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							applyclassicphase(PHASE_FIVE, i(22410, {	-- Gauntlets of Deftness
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							})),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(228538, {	-- Seal of Rivendare
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
+							i(13345, {	-- Seal of Rivendare
+								-- #if SEASON_OF_DISCOVERY
+								["timeline"] = { "removed 1.15.3" },
+								-- #endif
+							}),
+							-- #if BEFORE MOP
+							i(66049, {	-- Book of the Paragon
+								["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+							}),
+							i(66050, {	-- Idol of the Paragon
+								["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+							}),
+							i(66051, {	-- Relic of the Paragon
+								["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+							}),
+							i(66048, {	-- Statue of the Paragon
+								["timeline"] = { ADDED_4_0_3, REMOVED_5_0_4 },
+							}),
+							-- #endif
 						},
 					}),
 					n(10440, {	-- Baron Rivendare
@@ -1135,34 +1801,133 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["encounterID"] = 456,	-- Baron Rivendare
 						-- #endif
 						-- #endif
-						["timeline"] = { "removed 4.0.3" },
+						["timeline"] = { REMOVED_4_0_3 },
 						["groups"] = {
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226719, {	-- Beaststalker's Pants
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16678, {	-- Beaststalker's Pants
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226747, {	-- Devout Skirt
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16694, {	-- Devout Skirt
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226760, {	-- Dreadmist Leggings
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16699, {	-- Dreadmist Leggings
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226750, {	-- Kilt of Elements
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16668, {	-- Kilt of Elements
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226767, {	-- Legplates of Valor
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16732, {	-- Legplates of Valor
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226736, {	-- Lightforge Legplates
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16728, {	-- Lightforge Legplates
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226727, {	-- Magister's Leggings
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16687, {	-- Magister's Leggings
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226705, {	-- Shadowcraft Pants
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16709, {	-- Shadowcraft Pants
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
+							-- #if SEASON_OF_DISCOVERY
+							applyclassicphase(SOD_PHASE_FOUR, i(226709, {	-- Wildheart Kilt
+								["timeline"] = { "added 1.15.3" },
+							})),
+							-- #endif
 							i(16719, {	-- Wildheart Kilt
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = {
+									-- #if SEASON_OF_DISCOVERY
+									"removed 1.15.3",
+									-- #else
+									REMOVED_4_0_3,
+									-- #endif
+								},
 							}),
 						},
 					}),
@@ -1174,7 +1939,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35563),	-- Stratholme - Main Gate - Reward Quest - Normal completion
 		q(35564),	-- Stratholme - Main Gate - Bonus Objective Reward Quest
 		q(35574),	-- Stratholme - Service Entrance Reward Quest - Normal completion

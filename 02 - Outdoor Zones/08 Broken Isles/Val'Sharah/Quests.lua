@@ -415,7 +415,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, bubbleDown({ ["timeline"] = { ADDED_7_0_3_LAUN
 					["provider"] = { "o", 248534 },	-- The Tears of Elune
 					["sourceQuests"] = { 38743 },	-- The Fate of Val'Sharah
 					["coord"] = { 53.7, 55.8, VALSHARAH },
-					["icon"] = "Interface\\Icons\\inv_jewelcrafting_gem_42",
+					["icon"] = 237230,
 					["g"] = {
 						i(130001),	-- Shaladrassil Cuirass
 						i(129993),	-- Shaladrassil Tunic
@@ -450,7 +450,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, bubbleDown({ ["timeline"] = { ADDED_7_0_3_LAUN
 					["coord"] = { 37.1, 58.4, VALSHARAH },
 					["provider"] = { "n", 94117 },	-- Cecily Radcliffe
 					["groups"] = {
-						i(133812),	-- Recipe: Deep-Fried Mossgill
+						i(133812),	-- Recipe: Deep-Fried Mossgill [Rank 1] (RECIPE!)
 						i(129168),	-- Band of Sablehide
 						i(130009),	-- Bonefeather Talisman
 					},
@@ -692,11 +692,13 @@ root(ROOTS.Zones, m(BROKEN_ISLES, bubbleDown({ ["timeline"] = { ADDED_7_0_3_LAUN
 						47003,	-- Restoration: The Bradensbrook Investigation, Shaman
 					},
 					["provider"] = { "n", 118752 },	-- Mayor Heathrow
+					["_drop"] = { "classes" },	-- bad API data
 					["classes"] = { DRUID, MONK, PRIEST, PALADIN, SHAMAN },	-- Legion healing classes
 					["lvl"] = 110,
 				}),
 				q(46082, {	-- Shadowsong's Return
 					["sourceQuests"] = { 46079 }, -- Aid on the Front Lines
+					["_drop"] = { "classes" },	-- bad API data
 					["classes"] = { DRUID, MONK, PRIEST, PALADIN, SHAMAN },	-- Legion healing classes
 					["provider"] = { "n", 118752 },	-- Mayor Heathrow
 					["lvl"] = 110,
@@ -704,12 +706,14 @@ root(ROOTS.Zones, m(BROKEN_ISLES, bubbleDown({ ["timeline"] = { ADDED_7_0_3_LAUN
 				q(46106, {	-- Cutting off the Heads
 					["sourceQuests"] = { 46082 }, -- Shadowsong's Return
 					["provider"] = { "n", 118947 },	-- Commander Jarod Shadowsong
+					["_drop"] = { "classes" },	-- bad API data
 					["classes"] = { DRUID, MONK, PRIEST, PALADIN, SHAMAN },	-- Legion healing classes
 					["lvl"] = 110,
 				}),
 				q(46080, {	-- Quieting the Spirits
 					["sourceQuests"] = { 46082 }, -- Shadowsong's Return
 					["provider"] = { "n", 118954 },	-- Commander Jarod Shadowsong
+					["_drop"] = { "classes" },	-- bad API data
 					["classes"] = { DRUID, MONK, PRIEST, PALADIN, SHAMAN },	-- Legion healing classes
 					["lvl"] = 110,
 				}),
@@ -719,14 +723,15 @@ root(ROOTS.Zones, m(BROKEN_ISLES, bubbleDown({ ["timeline"] = { ADDED_7_0_3_LAUN
 						46080,	-- Quieting the Spirits
 					},
 					["provider"] = { "n", 118954 },	-- Commander Jarod Shadowsong
+					["_drop"] = { "classes" },	-- bad API data
 					["classes"] = { DRUID, MONK, PRIEST, PALADIN, SHAMAN },	-- Legion healing classes
 					["lvl"] = 110,
 				}),
 				q(46200, {	-- The Matter Resolved... For Now...
 					["sourceQuests"] = { 46107 },	-- Source of the Corruption
 					["provider"] = { "n", 118954 },	-- Night Elf Warrior
+					["_drop"] = { "classes" },	-- bad API data
 					["classes"] = { DRUID, MONK, PALADIN, PRIEST, SHAMAN },	-- Legion healing classes
-					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 110,
 				}),
 				-- Side
@@ -769,46 +774,6 @@ root(ROOTS.Zones, m(BROKEN_ISLES, bubbleDown({ ["timeline"] = { ADDED_7_0_3_LAUN
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				-- Alchemy
-				q(44112, {	-- Trading for Dreams
-					["provider"] = { "n", 93974 }, -- Leyweaver Erenyi
-					["coord"] = { 70.5, 46.4, VALSHARAH },
-					["requireSkill"] = ALCHEMY,
-					["sourceQuests"] = { 39431 },	-- Mending the Filter
-				}),
-				q(39338, {	-- Return the Filter
-					["provider"] = { "n", 93974 }, -- Leyweaver Erenyi
-					["coord"] = { 70.5, 46.4, VALSHARAH },
-					["requireSkill"] = ALCHEMY,
-					["sourceQuests"] = { 44112 },	-- Trading for Dreams
-				}),
-
-
-
 				n(BONUS_OBJECTIVES, sharedData({
 					["description"] = "This can be completed in party-sync with a character who is in Chromie Time for Legion.",
 					["lockCriteria"] = { 1, "lvl", 45 },
@@ -826,7 +791,7 @@ root(ROOTS.Zones, m(BROKEN_ISLES, bubbleDown({ ["timeline"] = { ADDED_7_0_3_LAUN
 	}),
 })));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(38666),	-- entering the burning house during 38644	(The Farmsteads)
 		q(45490),	-- Lytheron
 		q(44881),	-- Sharptalon Matriarch Tracking Q From the WQ Sharptalon
@@ -837,13 +802,5 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(38994),	-- TRACKING Encounter Botanist - during/after doing the "To Old Friends" (questID 38582)
 		q(38596),	-- TRACKING Nightmare 02 - during/after doing the "To Old Friends" (questID 38582)
 		q(43447),	-- Vignette: Wraithtalon - secondary trigger for Wraithtalon rare in Val'sharah
-	}),
-});
-
-root(ROOTS.NeverImplemented, {
-	tier(LEGION_TIER, {
-		n(RELICS, {
-			i(130162),	-- Val-Sharah Artifact Gem #1 [Holy]
-		}),
 	}),
 });

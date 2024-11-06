@@ -1,9 +1,8 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON};
-root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
-	inst(68, {	-- The Vortex Pinnacle
+root(ROOTS.Instances, expansion(EXPANSION.CATA, bubbleDown({ ["timeline"] = ADDED_4_0_3 }, {
+	applyclassicphase(CATA_PHASE_ONE, inst(68, {	-- The Vortex Pinnacle
 		["mapID"] = 325,
 		["coord"] = { 76.76, 84.44, ULDUM },	-- Vortex Pinnacle
 		["groups"] = {
@@ -37,11 +36,18 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					["sourceQuest"] = 28845,	-- The Vortex Pinnacle
 					["groups"] = {
 						i(66901),	-- Greaves of Orsis
+						i(66903),	-- Caliph's Band
+						i(66902),	-- Token of Gratitude
 					},
+				}),
+				q(28800, {	-- Whispers of the Djinn
+					["provider"] = { "o", 207408 },	-- Magical Brazier
+					["requireSkill"] = ARCHAEOLOGY,
+					["isRepeatable"] = true,
 				}),
 			}),
 			n(ZONE_DROPS, {
-				d(NORMAL_DUNGEON, {
+				d(DIFFICULTY.DUNGEON.NORMAL, {
 					i(55854, {	-- Rainsong
 						["crs"] = {
 							45912,	-- Wild Vortex
@@ -58,7 +64,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						},
 					}),
 				}),
-				d(NormalPlus, {
+				d(DIFFICULTY.DUNGEON.MULTI.NORMAL_HEROIC, {
 					i(55855, {	-- Darksky Treads
 						["crs"] = {
 							45915,	-- Armored Mistal
@@ -76,7 +82,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 					}),
 				}),
 			}),
-			d(NORMAL_DUNGEON, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
+			d(DIFFICULTY.DUNGEON.NORMAL, bubbleDownSelf({ ["timeline"] = REMOVED_7_3_5 }, {
 				e(114, {	-- Grand Vizier Ertan
 					["crs"] = { 43878 },	-- Grand Vizier Ertan
 					["groups"] = {
@@ -95,7 +101,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55835),	-- Hail-Strung Belt
 						i(55838),	-- Mantle of Bestilled Winds
 						i(55839),	-- Skyshard Ring
-					}, 
+					},
 				}),
 				e(116, {	-- Asaad, Caliph of Zephyrs
 					["crs"] = { 43875 },	-- Asaad, Caliph of Zephyrs
@@ -109,15 +115,20 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 						i(55849),	-- Leggings of Iridescent Clouds
 						i(55842),	-- Legguards of Winnowing Wind
 						i(55846),	-- Lightningflash
-						i(55853),	-- Lunar Halo
+						i(55848),	-- Lunar Halo
 						i(55851),	-- Ring of Frozen Rain
 						i(55850),	-- Shadow of Perfect Bliss
-						i(55848),	-- Thundercall
+						i(55853),	-- Thundercall
+							-- #if BEFORE MOP
+							i(55852, {	-- Captured Lightning
+								["timeline"] = { REMOVED_5_0_4 },
+							}),
+							-- #endif
 					},
 				}),
 			})),
 			-- #if BEFORE 7.3.5
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["groups"] = {
 					n(ACHIEVEMENTS, {
 						ach(5289),	-- Extra Credit Bonus Stage
@@ -159,12 +170,17 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 							i(56373),	-- Ring of Frozen Rain
 							i(56371),	-- Shadow of Perfect Bliss
 							i(56376),	-- Thundercall
+							-- #if BEFORE MOP
+							i(56372, {	-- Captured Lightning
+								["timeline"] = { REMOVED_5_0_4 },
+							}),
+							-- #endif
 						},
 					}),
 				},
 			}),
 			-- #else
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_HEROIC, {
 				["groups"] = {
 					n(ACHIEVEMENTS, {
 						ach(5289),	-- Extra Credit Bonus Stage
@@ -180,7 +196,7 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 							i(56358),	-- Headcover of Fog
 							i(157602, {	-- Ionized Choker
 								["timeline"] = { ADDED_7_3_5 },
-							}),				
+							}),
 							i(56360),	-- Red Sky Pendant
 							i(56356),	-- Stratosphere Belt
 							i(157603, {	-- Thundercleaver Axe
@@ -218,20 +234,20 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 							i(56374),	-- Lunar Halo
 							i(56373),	-- Ring of Frozen Rain
 							i(56371),	-- Shadow of Perfect Bliss
+							i(56376, {	-- Thundercall
+								["timeline"] = { REMOVED_7_3_5 },
+							}),
 						},
 					}),
 				},
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				e(116, {	-- Asaad, Caliph of Zephyrs
 					["crs"] = { 43875 },	-- Asaad, Caliph of Zephyrs
 					["groups"] = {
 						ach(5064),	-- Heroic: The Vortex Pinnacle
 						ach(5137),	-- Heroic: The Vortex Pinnacle Guild Run
 						ach(5288),	-- No Static at All
-						i(56376, {	-- Thundercall
-							["timeline"] = { REMOVED_7_3_5 },
-						}),
 					},
 				}),
 			}),
@@ -245,11 +261,11 @@ root(ROOTS.Instances, tier(CATA_TIER, bubbleDown({ ["timeline"] = ADDED_4_0_3 },
 				i(206184),	-- Skyshard Ring
 			})),
 		},
-	}),
+	})),
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35401),	-- The Vortex Pinnacle Reward Quest
 		q(35403),	-- The Vortex Pinnacle Reward Quest
 	}),

@@ -1,36 +1,31 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(283, {	-- The Violet Hold (Wrath)
 		["mapID"] = THE_VIOLET_HOLD_WRATH,
 		["coord"] = { 66.6, 67.9, NORTHREND_DALARAN },
-		["sins"] = {
-			"Violet Hold",	-- This one is all sorts of messed up.
-			"The Violet Hold",
-			"Violette Festung",
-		},
 		["lvl"] = lvlsquish(75, 75, 15),
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(1865, {	-- Lockdown!
-					crit(7137, { -- Xevozz
-						["_encounter"] = { 629, HEROIC_DUNGEON },
+					crit(7137, {	-- Xevozz
+						["_encounter"] = { 629, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(7138, { -- Levanthor
-						["_encounter"] = { 630, HEROIC_DUNGEON },
+					crit(7138, {	-- Levanthor
+						["_encounter"] = { 630, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(7139, { -- Ichoron
-						["_encounter"] = { 628, HEROIC_DUNGEON },
+					crit(7139, {	-- Ichoron
+						["_encounter"] = { 628, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(7140, { -- Zuramat the Obliterator
-						["_encounter"] = { 631, HEROIC_DUNGEON },
+					crit(7140, {	-- Zuramat the Obliterator
+						["_encounter"] = { 631, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(7141, { -- Erekem
-						["_encounter"] = { 626, HEROIC_DUNGEON },
+					crit(7141, {	-- Erekem
+						["_encounter"] = { 626, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(7142, { -- Moragg
-						["_encounter"] = { 627, HEROIC_DUNGEON },
+					crit(7142, {	-- Moragg
+						["_encounter"] = { 627, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -39,7 +34,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["qg"] = 31080,	-- Warden Alturas
 					["sourceQuest"] = 13158,	-- Discretion is Key
 					["coord"] = { 61.2, 63.2, NORTHREND_DALARAN },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["lvl"] = lvlsquish(75, 75, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Cyanigosa slain
@@ -47,7 +42,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						}),
 						-- #if BEFORE 4.0.3
 						i(42482, {	-- The Violet Hold Key
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						-- #endif
 						i(44343),	-- Conferred Pantaloons
@@ -59,7 +54,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				q(29830, {	-- Containment
 					["qg"] = 30658,	-- Lieutenant Sinclari
 					["sourceQuest"] = 29829,	-- Discretion is Key
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(75, 75, 15),
 					["groups"] = {
 						i(44343),	-- Conferred Pantaloons
@@ -71,19 +66,19 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 				q(13158, {	-- Discretion is Key
 					["qg"] = 16128,	-- Rhonin
 					["coord"] = { 30.6, 48.6, NORTHREND_DALARAN },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(75, 75, 15),
 				}),
 				q(29829, {	-- Discretion is Key
 					["qg"] = 16128,	-- Rhonin
 					["coord"] = { 30.6, 48.6, NORTHREND_DALARAN },
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["isBreadcrumb"] = true,
 					["lvl"] = lvlsquish(75, 75, 15),
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(35654),	-- Bindings of the Bastille
 					i(35653),	-- Girdle of the Mystical Prison
@@ -95,7 +90,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(43407),	-- Stormstrike Mace (7.3.5 - Used to be only Heroic Mode)
 						i(157583, {	-- Protector's Buckler
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(43406),	-- Cloak of the Gushing Wound (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -103,7 +98,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(43375),	-- Trousers of the Arrakoa
 						-- #if AFTER 7.3.5
 						i(157567, {	-- Bodyguard's Treads
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(43405),	-- Sabatons of Erekem (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -119,7 +114,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(43410),	-- Moragg's Chestguard (7.3.5 - Used to be only Heroic Mode)
 						i(157566, {	-- Vest of the Observant
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						-- #endif
 						i(43382),	-- Band of Eyes
@@ -139,7 +134,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(35647),	-- Handguards of Rapid Pursuit
 						-- #if AFTER 7.3.5
 						i(157569, {	-- Chain Leggings of the Tide
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(37869),	-- Globule Signet (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -151,11 +146,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(35642),	-- Riot Shield
 						-- #if AFTER 7.3.5
 						i(157575, {	-- Crystal of Ensnared Power
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(37861),	-- Necklace of Arcane Spheres (7.3.5 - Used to be only Heroic Mode)
 						i(157571, {	-- Gauntlets of Stuttering Reality
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(37868),	-- Girdle of the Ethereal (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -173,10 +168,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						-- #endif
 						i(35645),	-- Poison Warden's Shotgun
 						i(157570, {	-- Helm of Cauterization
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(157572, {	-- Pauldrons of the Great Tide
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(35646),	-- Lava Burn Gloves
 						-- #if AFTER 7.3.5
@@ -190,7 +185,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["groups"] = {
 						-- #if AFTER 7.3.5
 						i(157568, {	-- Helm of Dire Vision
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(43403),	-- Shroud of Darkness (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
@@ -214,7 +209,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(37875),	-- Spaulders of the Violet Hold (7.3.5 - Used to be only Heroic Mode)
 						i(37884),	-- Azure Cloth Bindings (7.3.5 - Used to be only Heroic Mode)
 						i(150845, {	-- Bracers of Ley-Line Eradication
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						i(37874),	-- Gauntlets of Capture (7.3.5 - Used to be only Heroic Mode)
 						i(37886),	-- Handgrips of the Savage Emmisary (7.3.5 - Used to be only Heroic Mode)
@@ -231,7 +226,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ZONE_DROPS, {
@@ -251,7 +246,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						["groups"] = {
 							i(43407),	-- Stormstrike Mace
 							i(157583, {	-- Protector's Buckler
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(43406),	-- Cloak of the Gushing Wound
 							-- #if AFTER 7.3.5
@@ -259,7 +254,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(43375),	-- Trousers of the Arrakoa (7.3.5 - Used to be only Normal Mode)
 							-- #endif
 							i(157567, {	-- Bodyguard's Treads
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(43405),	-- Sabatons of Erekem
 							-- #if ANYCLASSIC
@@ -284,7 +279,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #endif
 							i(43410),	-- Moragg's Chestguard
 							i(157566, {	-- Vest of the Observant
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							-- #if AFTER 7.3.5
 							i(43382),	-- Band of Eyes (7.3.5 - Used to be only Normal Mode)
@@ -315,7 +310,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(35647),	-- Handguards of Rapid Pursuit (7.3.5 - Used to be only Normal Mode)
 							-- #endif
 							i(157569, {	-- Chain Leggings of the Tide
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37869),	-- Globule Signet
 							-- #if ANYCLASSIC
@@ -337,11 +332,11 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(35642),	-- Riot Shield (7.3.5 - Used to be only Normal Mode)
 							-- #endif
 							i(157575, {	-- Crystal of Ensnared Power
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37861),	-- Necklace of Arcane Spheres
 							i(157571, {	-- Gauntlets of Stuttering Reality
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37868),	-- Girdle of the Ethereal
 							-- #if AFTER 7.3.5
@@ -368,10 +363,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(35645),	-- Poison Warden's Shotgun (7.3.5 - Used to be only Normal Mode)
 							-- #endif
 							i(157570, {	-- Helm of Cauterization
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(157572, {	-- Pauldrons of the Great Tide
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							-- #if AFTER 7.3.5
 							i(35646),	-- Lava Burn Gloves (7.3.5 - Used to be only Normal Mode)
@@ -396,7 +391,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						["groups"] = {
 							ach(2153),	-- A Void Dance
 							i(157568, {	-- Helm of Dire Vision
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(43403),	-- Shroud of Darkness
 							-- #if AFTER 7.3.5
@@ -444,18 +439,17 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(46009),	-- Bindings of the Depths
 								i(46010),	-- Darkstone Ring
 							})),
+							applyclassicphase(WRATH_PHASE_FOUR, ach(19432, {	-- Defense Protocol Gamma: The Violet Hold
+
+							})),
 							-- #endif
 							ach(494),	-- Heroic: The Violet Hold
 							ach(5100, {	-- Heroic: The Violet Hold Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(1816),	-- Defenseless
-							{	-- Cyanigosa slain (Champion of the Frozen Wastes)
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 5613,		-- Cyanigosa slain
-							},
 							i(41791, {	-- Design: Subtle Autumn's Glow [CATA+] / Design: Thick Autumn's Glow [WRATH]
-								["timeline"] = { "removed 4.0.3" },
+								["timeline"] = { REMOVED_4_0_3 },
 							}),
 							-- #if AFTER 7.3.5
 							i(35649),	-- Jailer's Baton (7.3.5 - Used to be only Normal Mode)
@@ -464,7 +458,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(37875),	-- Spaulders of the Violet Hold
 							i(37884),	-- Azure Cloth Bindings
 							i(150845, {	-- Bracers of Ley-Line Eradication
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37874),	-- Gauntlets of Capture
 							i(37886),	-- Handgrips of the Savage Emmisary
@@ -490,7 +484,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35478),	-- The Violet Hold Reward Quest - Normal completion
 		q(35480),	-- The Violet Hold Reward Quest - Heroic completion
 	}),

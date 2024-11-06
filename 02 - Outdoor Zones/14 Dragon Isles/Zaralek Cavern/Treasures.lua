@@ -10,6 +10,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["coord"] = { 36.7, 48.8, ZARALEK_CAVERN },
 				["questID"] = 73697,
 			}),
+			o(385585, {	-- Binding Oaths
+				["coord"] = { 61.2, 71.8, ZARALEK_CAVERN },
+			}),
 			o(385565, {	-- Blazing Shadowflame Chest
 				["description"] = "You'll need to equip an Onyxia Scale Cloak in order to open this chest.",
 				["coord"] = { 28.6, 47.9, ZARALEK_CAVERN },
@@ -40,6 +43,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				["g"] = {
 					i(205192),	-- Volatile Crystal Shard
 				},
+			}),
+			o(385584, {	-- Demanding Perfection
+				["coord"] = { 43.3, 23.7, ZARALEK_CAVERN },
 			}),
 			o(401839, {	-- Dreamer's Bounty
 				["description"] = "Attack a nearby Preying Dustmoth and wait until it casts Drowsy Dust - don't interrupt! Once you have the debuff, kill the moth and open the chest.",
@@ -130,12 +136,34 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					}),
 				},
 			}),
+			o(385586, {	-- Primal Power
+				["coord"] = { 47.4, 48.6, ZARALEK_CAVERN },
+			}),
 			o(386086, {	-- Seething Cache
-				["description"] = "You'll need to pick up 3x stacks of a Insidious Insight debuff from Seething Orbs located in the Zaqali Caldera",
+				["description"] = "You'll need to pick up 3x stacks of a Insidious Insight debuff from Seething Orbs located in the Zaqali Caldera (Plot coords in Debug).\n\nWarning: While you may click each Seething Orb with multiple players, when the first player clicks the Seething Cache, the debuff will be removed from all nearby players and the cache itself will be gone!",
 				["coord"] = { 32.3, 39.4, ZARALEK_CAVERN },
 				["questID"] = 73410,
 				["g"] = {
 					i(192779),	-- Seething Slug (MOUNT!)
+					o(386083, {	-- Seething Orb
+						["coords"] = {
+							{25.2, 44.8, ZARALEK_CAVERN},
+							{26.8, 46.9, ZARALEK_CAVERN},
+							{27.7, 49.0, ZARALEK_CAVERN},
+							{28.0, 51.3, ZARALEK_CAVERN},
+							{28.7, 55.3, ZARALEK_CAVERN},
+							{29.1, 42.5, ZARALEK_CAVERN},
+							{29.9, 48.0, ZARALEK_CAVERN},
+							{30.2, 40.0, ZARALEK_CAVERN},
+							{31.2, 51.9, ZARALEK_CAVERN},
+							{32.7, 52.2, ZARALEK_CAVERN},
+							{34.4, 45.7, ZARALEK_CAVERN},
+							{35.7, 48.8, ZARALEK_CAVERN},
+							{35.8, 41.4, ZARALEK_CAVERN},
+							{36.2, 44.0, ZARALEK_CAVERN},
+							{37.6, 46.7, ZARALEK_CAVERN},
+						},
+					}),
 				},
 			}),
 			o(386080, {	-- Scorching Key
@@ -160,60 +188,127 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 			}),
 			-- Repeatable Treasure Chests?
 			o_repeated({	-- Ritual Offerings
-				-- Contains
-				i(202275),	-- Renewed Proto-Drake: Plated Jaw (DM!)
-				-- Objects
-				o(386088, {	-- Ritual Offerings
-					["coords"] = {
-						{ 41.7, 44.6, ZARALEK_CAVERN },
-						{ 40.0, 51.3, ZARALEK_CAVERN },
-						{ 38.1, 49.8, ZARALEK_CAVERN },
-						{ 40.8, 50.2, ZARALEK_CAVERN },
-					},
-					["questID"] = 73548,
+				["sym"] = {
+					{"select","itemID",
+						205340,	-- Formula: Enchanted Aspect's Shadowflame Crest (RECIPE!)
+						205338,	-- Formula: Enchanted Whelpling's Shadowflame Crest (RECIPE!)
+						205339,	-- Formula: Enchanted Wyrm's Shadowflame Crest (RECIPE!)
+						205337,	-- Formula: Titan Training Matrix V (RECIPE!)
+					},{"finalize"},
+					{"select","mapID",ZARALEK_CAVERN},
+					{"find","headerID",COMMON_BOSS_DROPS},{"pop"},	-- Obtained Weapons/Armor confirmed by Wowhead/Runaway
+				},
+				["g"] = appendAllGroups({
+					-- Shared Drops
+					i(202275),	-- Renewed Proto-Drake: Plated Jaw (MM!)
+				},sharedData({
 					["isDaily"] = true,
-				}),
-				o(386089, {	-- Ritual Offerings
-					["coords"] = {
-						{ 33.0, 39.9, ZARALEK_CAVERN },
-						{ 31.9, 39.6, ZARALEK_CAVERN },
-					},
-					["questID"] = 73551,
-					["isDaily"] = true,
-				}),
-				o(386090, {	-- Ritual Offerings
-					["coords"] = {
-						{ 36.4, 52.3, ZARALEK_CAVERN },
-						{ 35.1, 52.2, ZARALEK_CAVERN },
-						{ 32.0, 52.9, ZARALEK_CAVERN },
-					},
-					["questID"] = 73552,
-					["isDaily"] = true,
-				}),
-				o(386091, {	-- Ritual Offerings
-					["coords"] = {
-						{ 28.6, 48.7, ZARALEK_CAVERN },
-						{ 27.3, 42.2, ZARALEK_CAVERN },
-						{ 28.9, 44.2, ZARALEK_CAVERN },
-						{ 28.2, 46.3, ZARALEK_CAVERN },
-					},
-					["questID"] = 73553,
-					["isDaily"] = true,
-				}),
-			}),
-			o_repeated({	-- Smelly Trash Pile
-				-- Shared
-				["sym"] = {{"select","itemID",
-					202275,	-- Renewed Proto-Drake: Plated Jaw (DM!)
-				}},
-				["g"] = {
-					-- Contains
-					i(203313),	-- Winding Slitherdrake: Spiked Chin (DM!)
+				},{
 					-- Objects
-					o(401844, {	-- Smelly Trash Pile
-						["isRepeatable"] = true,
-						-- Dont link coords. Its 2 many
+					o(386088, {	-- Ritual Offerings
+						["questID"] = 73548,
+						["coords"] = {
+							{ 41.7, 44.6, ZARALEK_CAVERN },
+							{ 40.0, 51.3, ZARALEK_CAVERN },
+							{ 38.1, 49.8, ZARALEK_CAVERN },
+							{ 40.8, 50.2, ZARALEK_CAVERN },
+						},
 					}),
+					o(386089, {	-- Ritual Offerings
+						["questID"] = 73551,
+						["coords"] = {
+							{ 33.0, 39.9, ZARALEK_CAVERN },
+							{ 31.9, 39.6, ZARALEK_CAVERN },
+							{ 35.2, 41.8, ZARALEK_CAVERN },
+						},
+					}),
+					o(386090, {	-- Ritual Offerings
+						["questID"] = 73552,
+						["coords"] = {
+							{ 36.4, 52.3, ZARALEK_CAVERN },
+							{ 35.1, 52.2, ZARALEK_CAVERN },
+							{ 32.0, 52.9, ZARALEK_CAVERN },
+							{ 32.4, 50.3, ZARALEK_CAVERN },
+						},
+					}),
+					o(386091, {	-- Ritual Offerings
+						["questID"] = 73553,
+						["coords"] = {
+							{ 28.6, 48.7, ZARALEK_CAVERN },
+							{ 27.3, 42.2, ZARALEK_CAVERN },
+							{ 28.9, 44.2, ZARALEK_CAVERN },
+							{ 28.2, 46.3, ZARALEK_CAVERN },
+						},
+					}),
+				})),
+			}),
+			o(401845, {	-- Smelly Disturbed Dirt
+				["coords"] = {
+					{ 25.7, 43.6, ZARALEK_CAVERN },
+					{ 28.2, 53.7, ZARALEK_CAVERN },
+					{ 30.2, 40.1, ZARALEK_CAVERN },
+					{ 32.5, 53.0, ZARALEK_CAVERN },
+					{ 35.9, 45.2, ZARALEK_CAVERN },
+					{ 38.8, 84.9, ZARALEK_CAVERN },
+					{ 39.1, 62.0, ZARALEK_CAVERN },
+					{ 41.1, 35.0, ZARALEK_CAVERN },
+					{ 41.3, 55.9, ZARALEK_CAVERN },
+					{ 42.8, 78.1, ZARALEK_CAVERN },
+					{ 44.1, 41.5, ZARALEK_CAVERN },
+					{ 44.4, 35.1, ZARALEK_CAVERN },
+					{ 45.0, 15.7, ZARALEK_CAVERN },
+					{ 45.3, 70.2, ZARALEK_CAVERN },
+					{ 45.7, 52.6, ZARALEK_CAVERN },
+					{ 45.9, 22.4, ZARALEK_CAVERN },
+					{ 45.9, 22.5, ZARALEK_CAVERN },
+					{ 45.9, 87.3, ZARALEK_CAVERN },
+					{ 46.6, 80.5, ZARALEK_CAVERN },
+					{ 47.0, 26.7, ZARALEK_CAVERN },
+					{ 47.3, 62.0, ZARALEK_CAVERN },
+					{ 47.9, 48.8, ZARALEK_CAVERN },
+					{ 49.1, 40.9, ZARALEK_CAVERN },
+					{ 51.3, 24.3, ZARALEK_CAVERN },
+					{ 52.7, 65.4, ZARALEK_CAVERN },
+					{ 52.8, 32.3, ZARALEK_CAVERN },
+					{ 52.9, 23.4, ZARALEK_CAVERN },
+					{ 52.9, 23.5, ZARALEK_CAVERN },
+					{ 53.1, 47.6, ZARALEK_CAVERN },
+					{ 54.1, 77.6, ZARALEK_CAVERN },
+					{ 54.4, 22.9, ZARALEK_CAVERN },
+					{ 54.5, 22.9, ZARALEK_CAVERN },
+					{ 56.9, 31.0, ZARALEK_CAVERN },
+					{ 57.5, 70.4, ZARALEK_CAVERN },
+					{ 57.5, 70.5, ZARALEK_CAVERN },
+					{ 58.7, 43.7, ZARALEK_CAVERN },
+					{ 60.0, 63.0, ZARALEK_CAVERN },
+					{ 62.5, 42.0, ZARALEK_CAVERN },
+					{ 62.9, 69.9, ZARALEK_CAVERN },
+					{ 65.2, 55.3, ZARALEK_CAVERN },
+				},
+				["cost"] = {{"i",191304,1}},	-- Sturdy Expedition Shovel
+				["g"] = {
+					o(401846, {	-- Smelly Treasure Chest
+						["isRepeatable"] = true,
+						["sym"] = {
+							{"select","mapID",ZARALEK_CAVERN},
+							{"find","headerID",COMMON_BOSS_DROPS},{"pop"},	-- Obtained Weapons/Armor confirmed by Wowhead/Runaway
+							{"select","itemID", 202275},	-- Renewed Proto-Drake: Plated Jaw (MM!)
+						},
+					}),
+				},
+			}),
+			o(401844, {	-- Smelly Trash Pile
+				["description"] = "These spawn basically everywhere in the zone, 120+ coords not listed :)",
+				["isRepeatable"] = true,
+				-- Dont link coords. Its 2 many
+				["sym"] = {
+					{"select","mapID",ZARALEK_CAVERN},
+					{"find","headerID",COMMON_BOSS_DROPS},
+					{"find","headerID",BACK},{"pop"},		-- Only Cloak/Ring drop from these it appears
+					{"select","itemID", 202275},	-- Renewed Proto-Drake: Plated Jaw (MM!)
+				},
+				["g"] = {
+					i(203313),	-- Winding Slitherdrake: Spiked Chin (MM!)
 				},
 			}),
 			o_repeated({	-- Stolen Stash
@@ -238,13 +333,16 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 		}),
 	}),
 })));
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
+	m(DRAGON_ISLES, {
+		m(ZARALEK_CAVERN, {
+			n(TREASURES, {
+				q(75559),	-- Orange Crystal (Crystal Chest) (spellID 408322)
+				q(74987),	-- Purple Crystal (Crystal Chest) (spellID 400760)
+				q(75601),	-- Lock Opened? (Crystal Chest) (spellID 408329)
 
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, {
-	m(ZARALEK_CAVERN, {
-		q(75559),	-- Orange Crystal (Crystal Chest) (spellID 408322)
-		q(74987),	-- Purple Crystal (Crystal Chest) (spellID 400760)
-		q(75601),	-- Lock Opened? (Crystal Chest) (spellID 408329)
-
-		q(75814),	-- Probably Some Barter Brick Tracker
+				q(75814),	-- Probably Some Barter Brick Tracker
+			}),
+		}),
 	}),
-}));
+})));

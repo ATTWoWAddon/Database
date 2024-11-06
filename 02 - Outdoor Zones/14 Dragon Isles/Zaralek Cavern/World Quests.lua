@@ -14,7 +14,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(73221, {	-- A Clear State of Mind
 						["coord"] = { 51.9, 59.6, ZARALEK_CAVERN },
 						["g"] = {
-							i(202714),	-- M.U.S.T
+							i(202714),	-- M.U.S.T (QI!)
 						},
 					}),
 					q(75060, {	-- A Veritable Dumping Ground
@@ -39,12 +39,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 						["g"] = {
 							i(204473),	-- Element Siphoner
 							ach(17852, {	-- Elemental Conjuror
-								crit(1),	-- Emerald Infusion
-								crit(2),	-- Crimson Infusion
-								crit(3),	-- Primordial Infusion
-								crit(4),	-- Prismatic Infusion
-								crit(5),	-- Stone Infusion
-								crit(6),	-- Temporal Infusion
+								crit(59313),	-- Emerald Infusion
+								crit(59314),	-- Crimson Infusion
+								crit(59315),	-- Primordial Infusion
+								crit(59317),	-- Prismatic Infusion
+								crit(59318),	-- Stone Infusion
+								crit(59316),	-- Temporal Infusion
 							}),
 						},
 					})),
@@ -59,6 +59,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					}),
 					q(75661, {  -- Curative Crystalline Collection
 						["coord"] = { 39.5, 74.3, ZARALEK_CAVERN },
+						["g"] = {
+							i(203012),	-- Viridian Heartcrystal (QI!)
+						},
 					}),
 					q(75346, {	-- Data Gathering
 						["coord"] = { 60.5, 69.4, ZARALEK_CAVERN },
@@ -69,7 +72,14 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(74292, {	-- Deephollow Mysteries
 						["coord"] = { 60.9, 53.8, ZARALEK_CAVERN },
 						["g"] = {
-							i(204811),	-- Drogbar Stones
+							i(203391),	-- Dented Dwarven Pocketwatch (QI!)
+							i(205797),	-- Filthy Bundle (QI!)
+							i(203388),	-- Gunky Insignia (QI!)
+							i(203387),	-- Oddly Familiar Training Weapon (QI!)
+							i(203392),	-- Old Mirror Shard (QI!)
+							i(204329),	-- Petrified Spider Leg (QI!)
+							i(203389),	-- Shiny Rock (QI!)
+							i(204326),	-- Strange Artifact (QI!)
 						},
 					}),
 					petbattle(q(75834, {  -- Delver Mardei
@@ -84,7 +94,8 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(74992, {	-- Fire Resistance Gear
 						["coord"] = { 34.0, 41.2, ZARALEK_CAVERN },
 						["g"] = {
-							i(204314),	-- Corehound Hide
+							i(204314),	-- Corehound Hide (QI!)
+							i(204315),	-- Zaqali Bone Needle (QI)
 						},
 					}),
 					q(74945, {	-- Guanite Gambit
@@ -93,7 +104,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(74988, {	-- If You Can't Take the Heat
 						["coord"] = { 34.2, 42.0, ZARALEK_CAVERN },
 						["g"] = {
-							i(204344),	-- Conductive Lodestone
+							i(204344),	-- Conductive Lodestone (QI!)
 						},
 					}),
 					q(74985, {	-- Like Moths to a Flame
@@ -122,12 +133,18 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					}),
 					q(73698, {	-- Rolie Polie Molie
 						["coord"] = { 62.1, 49.8, ZARALEK_CAVERN },
+						["g"] = {
+							i(203229),	-- Snail Slime (QI!)
+						},
 					}),
 					q(75155, {	-- Shadowflame Snuffer
 						["coord"] = { 52.9, 21.5, ZARALEK_CAVERN },
 					}),
 					q(75345, {	-- Shell Corporation
 						["coord"] = { 57.8, 61.0, ZARALEK_CAVERN },
+						["g"] = {
+							i(205199),	-- Slime Sheathed Shell (QI!)
+						},
 					}),
 					q(75064, {	-- Shrooming for a Living
 						["coord"] = { 51.0, 74.1, ZARALEK_CAVERN },
@@ -138,7 +155,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(73408, {	-- Sniffen 'em Out!
 						["coord"] = { 58.8, 39.9, ZARALEK_CAVERN },
 						["g"] = {
-							i(203013),	-- Niffen Incense
+							i(203013),	-- Niffen Incense (QI!)
 						},
 					}),
 					q(75071, {	-- Sniffing Mice are Nice
@@ -153,7 +170,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 					q(74991, {	-- We Have Returned
 						["coord"] = { 34.0, 41.2, ZARALEK_CAVERN },
 						["g"] = {
-							i(204365),	-- Bundle of Ebon Spears
+							i(204365),	-- Bundle of Ebon Spears (QI!)
 						},
 					}),
 					q(74989, {	-- Zealous Defenses
@@ -162,81 +179,6 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }
 				})),
 				n(REWARDS, {
 					i(204460),	-- Zaralek Glowspores
-					n(BACK, {
-						i(204915),	-- Deeprock Cape
-						i(204914),	-- Deeprock Cloak
-					}),
-					filter(CLOTH, {
-						i(204926),	-- Moonless Belt
-						i(204922),	-- Moonless Gloves
-						i(204923),	-- Moonless Hood
-						i(204920),	-- Moonless Robe
-						i(204925),	-- Moonless Shoulderpads
-						i(204921),	-- Moonless Slippers
-						i(204924),	-- Moonless Trousers
-						i(204927),	-- Moonless Wristband
-					}),
-					filter(FINGER_F, {
-						i(204916),	-- Deeprock Loop
-						i(204917),	-- Deeprock Ring
-						i(204918),	-- Deeprock Signet
-					}),
-					filter(LEATHER, {
-						i(204929),	-- Sunless Boots
-						i(204935),	-- Sunless Bracers
-						i(204931),	-- Sunless Cowl
-						i(204930),	-- Sunless Grips
-						i(204932),	-- Sunless Pants
-						i(204933),	-- Sunless Spaulders
-						i(204928),	-- Sunless Tunic
-						i(204934),	-- Sunless Wrap
-					}),
-					filter(MAIL, {
-						i(204936),	-- Skyless Blouse
-						i(204943),	-- Skyless Chain
-						i(204940),	-- Skyless Coif
-						i(204944),	-- Skyless Cuffs
-						i(204942),	-- Skyless Epaulets
-						i(204941),	-- Skyless Greaves
-						i(204938),	-- Skyless Grips
-						i(204937),	-- Skyless Striders
-					}),
-					filter(NECK_F, {
-						i(204919),	-- Deeprock Pendant
-					}),
-					filter(PLATE, {
-						i(204952),	-- Starless Armplates
-						i(204945),	-- Starless Breastplate
-						i(204948),	-- Starless Fullhelm
-						i(204947),	-- Starless Gauntlets
-						i(204951),	-- Starless Girdle
-						i(204949),	-- Starless Legguards
-						i(204950),	-- Starless Mantle
-						i(204946),	-- Starless Warboots
-					}),
-					filter(TRINKET_F, {
-						i(204728),	-- Friendship Censer
-					}),
-					n(WEAPONS, {
-						i(204955),	-- Neltharic Beatstick
-						i(204958),	-- Neltharic Blade
-						i(204959),	-- Neltharic Blaster
-						i(204967),	-- Neltharic Greatsword
-						i(204961),	-- Neltharic Partisan
-						i(204954),	-- Neltharic Ritual Knife
-						i(204957),	-- Neltharic Saber
-						i(204965),	-- Neltharic Shield
-						i(204953),	-- Neltharic Shiv
-						i(204956),	-- Neltharic Smasher
-						i(204960),	-- Neltharic Spear
-						i(204963),	-- Neltharic Staff
-						i(204964),	-- Neltharic Torch
-						i(204981),	-- Neltharic Wand
-						i(204966),	-- Neltharic Warglaive
-						i(204962),	-- Neltharic Warstaff
-						i(204979),	-- Neltharic Wingaxe
-						i(204980),	-- Neltharic Wingsplitter
-					}),
 				}),
 			},
 		}),

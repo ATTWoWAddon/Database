@@ -4,7 +4,7 @@
 local VEILED_ARGUNITE = 1508;
 root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 	m(THE_VINDICAAR_ANTORAN_WASTES_UPPER, {
-		["icon"] = "Interface\\Icons\\inv_lightforgedmechsuit",
+		["icon"] = 1586383,
 		["lore"] = "For untold millennia, the Army of the Light waged war against the Burning Legion throughout the Twisting Nether. The draenei most committed to their long crusade would undergo a ritual to become Lightforged, infusing their bodies with the very essence of the Holy Light. After finally achieving victory on Argus, the Lightforged draenei have undertaken a new mission: protecting Azeroth from rising threats and helping the Alliance push back against Horde aggression.",
 		["maps"] = {
 			THE_VINDICAAR_KROKUUN_UPPER,
@@ -138,7 +138,7 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 						}),
 					},
 				}),
-				q(48976, {	-- Supplies From the Argussian Reach
+				q(48976, bubbleDownSelf({ ["minReputation"] = { FACTION_ARGUSSIAN_REACH, EXALTED }}, {	-- Supplies From the Argussian Reach
 					["provider"] = { "n", 127151 },	-- Toraan the Revered
 					["repeatable"] = true,
 					["g"] = {
@@ -146,8 +146,8 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 							i(153127),	-- Cube of Discovery
 						}),
 					},
-				}),
-				q(48977, {	-- Supplies From the Army of the Light
+				})),
+				q(48977, bubbleDownSelf({ ["minReputation"] = { FACTION_ARMY_OF_THE_LIGHT, EXALTED }}, {	-- Supplies From the Army of the Light
 					["repeatable"] = true,
 					["provider"] = { "n", 127120 },	-- Vindicator Jaelaana
 					["g"] = {
@@ -158,21 +158,18 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 							i(153182),	-- Holy Lightsphere (TOY!)
 						}),
 					},
-				}),
+				})),
 			}),
 			n(FLIGHT_PATHS, {
 				fp(1994, {	-- Vindicaar, Antoran Wastes
-					["description"] = "Vindicaar, Antoran Wastes",
 					["creatureID"] = 125514,	-- Navigation Console
 					["coord"] = { 32.3, 56.4, THE_VINDICAAR_ANTORAN_WASTES_LOWER },
 				}),
 				fp(1944, {	-- Vindicaar, Krokuun
-					["description"] = "Vindicaar, Krokuun",
 					["creatureID"] = 123139,	-- Navigation Console
 					["coord"] = { 42.5, 22.8, THE_VINDICAAR_KROKUUN_UPPER },
 				}),
 				fp(1977, {	-- Vindicaar, Eredath
-					["description"] = "Vindicaar, Eredath",
 					["creatureID"] = 125461,	-- Navigation Console
 					["coord"] = { 62.7, 49.1, THE_VINDICAAR_EREDATH_UPPER },
 				}),
@@ -251,9 +248,15 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 						47473,	-- Sizing Up the Opposition (Light's Purchase)
 						48929,	-- Sizing Up the Opposition (The Veiled Den)
 					},
-					["provider"] = { "n", 124312 },	-- High Exarch Turalyon
+					["providers"] = {
+						{ "n", 124312 },	-- High Exarch Turalyon @ Krokuun
+						{ "n", 126954 },	-- High Exarch Turalyon @ Antoran Wastes
+					},
 					["isWeekly"] = true,
-					["coord"] = { 46.7, 24.6, THE_VINDICAAR_KROKUUN_UPPER },
+					["coords"] = {
+						{ 46.7, 24.6, THE_VINDICAAR_KROKUUN_UPPER },
+						{ 33.5, 58.3, THE_VINDICAAR_ANTORAN_WASTES_UPPER },
+					},
 				}),
 				q(48636, {	-- Fueling the Antoran Campaign
 					["sourceQuests"] = { 48912 },	-- Supplying the Antoran Campaign
@@ -262,14 +265,14 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 					["cost"] = { { "c", 1220, 900 } },	-- 900x Order Resources
 					["g"] = {
 						i(152097, {	-- Lightforged Bulwark
-							["groups"] = {
-								follower(1059, {	-- Lightforged Bulwark
-									["u"] = 15,	-- Temporary troop
-								}),
-								follower(1060, {	-- Lightforged Bulwark
-									["u"] = 15,	-- Temporary troop
-								}),
-							},
+							follower(1059, {	-- Lightforged Bulwark (Temporary Troop)
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,
+							}),
+							follower(1060, {	-- Lightforged Bulwark (Temporary Troop)
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,
+							}),
 						}),
 					},
 				}),
@@ -293,7 +296,7 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 				q(47182, {	-- Long Overdue
 					["sourceQuests"] = { 47134 },	-- Foiling the Legion's Jailbreak
 					["provider"] = { "n", 121263 },	-- Grand Artificer Romuul
-					["coord"] = { 43.2, 25.5, THE_VINDICAAR_KROKUUN_UPPER },
+					["coord"] = { 43.3, 23.2, THE_VINDICAAR_KROKUUN_UPPER },
 					["lvl"] = 110,
 				}),
 				q(48074, {	-- Looming Over Me
@@ -342,14 +345,14 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 					["cost"] = { { "c", 1220, 150 } },	-- 150x Order Resources
 					["g"] = {
 						i(152097, {	-- Lightforged Bulwark
-							["groups"] = {
-								follower(1059, {	-- Lightforged Bulwark
-									["u"] = 15,	-- Temporary troop
-								}),
-								follower(1060, {	-- Lightforged Bulwark
-									["u"] = 15,	-- Temporary troop
-								}),
-							},
+							follower(1059, {	-- Lightforged Bulwark (Temporary Troop)
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,
+							}),
+							follower(1060, {	-- Lightforged Bulwark (Temporary Troop)
+								["collectible"] = false,
+								["u"] = UNLEARNABLE,
+							}),
 						}),
 					},
 				}),
@@ -412,12 +415,6 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 					["provider"] = { "n", 121263 },	-- Grand Artificer Romuul
 					["coord"] = { 43.7, 29.2, THE_VINDICAAR_KROKUUN_UPPER },
 				}),
-				q(48069, {	-- The Wrench Calls
-					["qg"] = 125525,	-- Durael
-					["sourceQuest"] = 46941,	-- The Path Forward
-					["timeline"] = { "added 7.3.0.24614" },
-					["requireSkill"] = ENGINEERING,
-				}),
 				q(48344, {	-- We Have a Problem
 					["sourceQuests"] = { 48461 },	-- Where They Least Expect It
 					["provider"] = { "n", 124312 },	-- High Exarch Turalyon
@@ -435,13 +432,39 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 				}),
 			}),
 			n(VENDORS, {
+				n(129674, {	-- Maras <Primal Sargerite Trader>
+					["coords"] = {
+						{ 57.0, 66.0, THE_VINDICAAR_ANTORAN_WASTES_LOWER },
+						{ 42.0, 58.6, THE_VINDICAAR_EREDATH_LOWER },
+						{ 40.6, 65.6, THE_VINDICAAR_KROKUUN_LOWER },
+					},
+					["groups"] = appendAllGroups(
+						sharedData({
+							["cost"] = {{"i",151568,1}},	-- Primal Sargerite
+						},{
+							i(151565),	-- Astral Glory
+							i(151564),	-- Empyrium
+							i(151566),	-- Fiendish Leather
+							i(151567),	-- Lightweave Cloth
+						}),
+						sharedData({
+							["cost"] = {{"i",151568,10}},	-- Primal Sargerite
+						},{
+							i(151718),	-- Argulite
+							i(151720),	-- Chemirine
+							i(151722),	-- Florid Malachite
+							i(151721),	-- Hesselian
+							i(151579),	-- Labradorite
+							i(151719),	-- Lightsphene
+						})),
+				}),
 				n(127120, {	-- Vindicator Jaelaana <Army of the Light Emissary>
 					["coords"] = {
 						{ 44.8, 75.0, THE_VINDICAAR_KROKUUN_UPPER },
 						{ 44.6, 67.0, THE_VINDICAAR_EREDATH_UPPER },
 						{ 63.0, 63.6, THE_VINDICAAR_ANTORAN_WASTES_UPPER },
 					},
-					["g"] = bubbleDownRepSkip(FACTION_ARMY_OF_THE_LIGHT, {
+					["g"] = bubbleDownClassicRep(FACTION_ARMY_OF_THE_LIGHT, {
 						{		-- Neutral
 						}, {	-- Friendly
 							i(152726),	-- Design: Mass Prospect Empyrium (RECIPE!)
@@ -471,7 +494,7 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 						{ 66.2, 57.8, THE_VINDICAAR_EREDATH_UPPER },
 						{ 56.6, 30.2, THE_VINDICAAR_ANTORAN_WASTES_UPPER },
 					},
-					["g"] = bubbleDownRepSkip(FACTION_ARGUSSIAN_REACH, {
+					["g"] = bubbleDownClassicRep(FACTION_ARGUSSIAN_REACH, {
 						{		-- Neutral
 						}, {	-- Friendly
 							i(152658),	-- Formula: Chaos Shatter (RECIPE!)
@@ -502,9 +525,9 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 				}),
 				n(121589, {	-- Thaumaturge Vashreen <Purveyor of Exquisite Furnishings>
 					["coords"] = {
-						{ 67.6, 55.8, THE_VINDICAAR_KROKUUN_UPPER },
-						{ 66.2, 57.8, THE_VINDICAAR_EREDATH_UPPER },
-						{ 56.6, 30.2, THE_VINDICAAR_ANTORAN_WASTES_UPPER },
+						{ 46.4, 71.8, THE_VINDICAAR_KROKUUN_UPPER },
+						{ 46.1, 65.9, THE_VINDICAAR_EREDATH_UPPER },
+						{ 61.6, 59.1, THE_VINDICAAR_ANTORAN_WASTES_UPPER },
 					},
 					["g"] = sharedData({ ["cost"] = { { "c", VEILED_ARGUNITE, 650 } } }, {
 						i(153211, {	-- Relinquished Hood
@@ -567,14 +590,17 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 							["sym"] = {
 								{"sub", "legion_relinquished", {"INVTYPE_FINGER"} },	-- Rings Only!
 								{"select", "mapID", BROKEN_ISLES},
-								{"pop"},	-- Discard the Map Headers and acquire all of their children.
-								{"where", "headerID", WORLD_QUESTS },
-								{"pop"},	-- Discard the World Quest Headers and acquire all of their children.
-								{"where", "headerID", FINGER},	-- Select only the Finger Header
+								{"find", "headerID", FINGER},	-- Select only the Finger Headers
 								{"pop"},	-- Discard the item set Headers and acquire all of their children.
 							},
 						}),
 						i(153216, {	-- Relinquished Trinket
+							["groups"] = {
+								-- This is the only source of this item (probably)
+								i(136736),	-- Badge of the Wardens
+								i(134322),	-- Drained Mana Crystal
+								i(136749),	-- Mark of the Sentinel
+							},
 							["sym"] = {
 								{"sub", "legion_relinquished", {"INVTYPE_TRINKET"} },	-- Trinkets Only!
 							},
@@ -637,7 +663,7 @@ root(ROOTS.Zones, m(ARGUS, bubbleDown({ ["timeline"] = { ADDED_7_3_0 } }, {
 })));
 
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(48668),	-- Lightforged Beacon: City Center - triggers during the cutscene while on "Into the Night" (questID 48440)
 		q(47888),	-- Triggers when turning in "Alone in the Abyss" (questID 46938)
 		q(47869),	-- Triggers when turning in "Light's Exodus" (questID 47223)
@@ -650,7 +676,7 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(48449),	-- Shroud of Arcane Echoes/Warframe
 		q(48450),	-- Shroud of Arcane Echoes/Fel Heart
 		q(48451),	-- Shroud of Arcane Echoes/Light's Judgement/Fel Heart
-		-- Stay a while and Listen
-		q(49164),	-- Silgryn and Liadrin
+		------ Stay awhile and listen ------
+		hqt(49164),	-- Silgryn and Liadrin
 	}),
 });

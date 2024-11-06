@@ -1,10 +1,10 @@
 -------------------------------------------------------------------
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
-local GRATEFUL = currency(GRATEFUL);
+local GRATEFUL_CURRENCY = currency(GRATEFUL);
 local REGURGITATED_KYRIAN_WINGS = i(182749);	-- Regurgitated Kyrian Wings
 local AEGIS_OF_SALVATION = i(184365);	-- Aegis of Salvation
-local WINGFLAYTER_THE_CRUEL = n(167078, { -- Wingflayer the Cruel
+local WINGFLAYTER_THE_CRUEL = n(167078, {	-- Wingflayer the Cruel
 	["description"] = " Only a member of the |cFF516bfeKyrian Covenant|r who has channeled anima to Temple of Courage can click the bell.",
 	["coord"] = { 41.8, 55.4, BASTION },
 	["questID"] = 60314,
@@ -13,7 +13,7 @@ local WINGFLAYTER_THE_CRUEL = n(167078, { -- Wingflayer the Cruel
 		REGURGITATED_KYRIAN_WINGS,
 	},
 });
-local ORSTUS_AND_SOTIROS = n(156340, { -- Larionrider Orstus
+local ORSTUS_AND_SOTIROS = n(156340, {	-- Larionrider Orstus
 	["description"] = "Take the anima gateway and click the Black Bell.  Only a member of the |cFF516bfeKyrian Covenant|r who has channeled anima to Citadel of Loyalty can click the bell.",
 	["crs"] = { 156339 },	-- Eliminator Sotiros
 	["coord"] = { 24.5, 22.7, BASTION },
@@ -26,18 +26,19 @@ local ORSTUS_AND_SOTIROS = n(156340, { -- Larionrider Orstus
 		AEGIS_OF_SALVATION,
 	},
 });
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH }, ["customCollect"] = "SL_COV_KYR" }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH }, ["customCollect"] = "SL_COV_KYR" }, {
 	n(KYRIAN, {
 		n(SANCTUM_UPGRADES, {
-			["icon"] = "Interface\\Icons\\Inv_misc_sigil_bastion01",
+			["icon"] = 3641395,
 			["g"] = {
 				n(ANIMA_CONDUCTOR, {
-					["icon"] = "Interface\\Icons\\Sanctum_features_animadiversion_bastion",
-					["g"] = sharedData({ ["icon"] = "Interface\\Icons\\Sanctum_features_animadiversion_bastion" }, {
+					["icon"] = 3854014,
+					["g"] = sharedData({ ["icon"] = 3854014 }, {
 						n(REWARDS, {
-							["description"] = "Every Activity within Anima Conductor Rewards this.",
 							["g"] = {
-								GRATEFUL,
+								currency(GRATEFUL, {
+									["description"] = "Grateful Offerings can be collected once you have unlocked the Anima Conductor in for your covenant.\n Once unlocked, you can loot them from Covenant Callings (higher Conductor => more Offerings), Patterns Within Patterns Weekly Quest in Zereth Morthis and from special rares & treasures, based on the channeling of your Anima Conductor.",
+								}),
 							},
 						}),
 						n(TIER_ONE, {
@@ -79,14 +80,23 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								q(61193, {	-- A Light Touch
 									["provider"] = { "n", 171671 },    -- Kofi
 									["coord"] = { 50.3, 21.4, BASTION },
+									["g"] = {
+										i(180897),	-- Firstborne's Light (QI!)
+									},
 								}),
 								q(61209, {	-- A Somber Melody
 									["provider"] = { "n", 171677 },    -- Forgelite Selene
 									["coord"] = { 50.2, 21.3, BASTION },
+									["g"] = {
+										i(180990),	-- Eonian Lyre (QI!)
+									},
 								}),
 								q(61199, {	-- Arms Day
 									["provider"] = { "n", 171671 },    -- Kofi
 									["coord"] = { 50.3, 21.4, BASTION },
+									["g"] = {
+										i(180946),	-- Blessed Armament (QI!)
+									},
 								}),
 								q(61146, {	-- Manifesting Power
 									["provider"] = { "n", 171677 },    -- Forgelite Selene
@@ -95,14 +105,23 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								q(61182, {	-- Pollen Your Weight
 									["provider"] = { "n", 171671 },    -- Kofi
 									["coord"] = { 50.3, 21.4, BASTION },
+									["g"] = {
+										i(180851),	-- Twirlpetal Pollen (QI!)
+									},
 								}),
 								q(61166, {	-- Reduce, Reuse, Recycle
 									["provider"] = { "n", 171671 },    -- Kofi
 									["coord"] = { 50.3, 21.4, BASTION },
+									["g"] = {
+										i(180830),	-- Resonant Alloy (QI!)
+									},
 								}),
 								q(61159, {	-- Signs of Demise
 									["provider"] = { "n", 171676 },    -- Galakamos
 									["coord"] = { 50.4, 21.2, BASTION },
+									["g"] = {
+										i(180816),	-- Forsworn Insignia (QI!)
+									},
 								}),
 								q(61157, {	-- Straight to the Point
 									["provider"] = { "n", 171676 },    -- Galakamos
@@ -115,6 +134,9 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 								q(61156, {	-- Where There's a Quill...
 									["provider"] = { "n", 171676 },    -- Galakamos
 									["coord"] = { 50.4, 21.2, BASTION },
+									["g"] = {
+										i(180796),	-- Shimmerflight Quill (QI!)
+									},
 								}),
 							})),
 							n(WORLD_QUESTS, {
@@ -136,12 +158,18 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 	}),
 })));
 
-for _,t in ipairs({WINGFLAYTER_THE_CRUEL,ORSTUS_AND_SOTIROS,GRATEFUL,REGURGITATED_KYRIAN_WINGS,AEGIS_OF_SALVATION}) do
+for _,t in ipairs({WINGFLAYTER_THE_CRUEL,ORSTUS_AND_SOTIROS,GRATEFUL_CURRENCY,REGURGITATED_KYRIAN_WINGS,AEGIS_OF_SALVATION}) do
 	t.customCollect = nil;
 end
 
-root(ROOTS.HiddenQuestTriggers, {
-	q(61268),	-- Triggered from buff received from Kyrian Conductor Tier 3
-	q(61267),	-- Triggered from buff received from Kyrian Conductor Tier 3
-	q(61266),	-- Triggered from buff received from Kyrian Conductor Tier 3
-});
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	n(KYRIAN, {
+		n(SANCTUM_UPGRADES, {
+			n(ANIMA_CONDUCTOR, {
+				q(61268),	-- Triggered from buff received from Kyrian Conductor Tier 3
+				q(61267),	-- Triggered from buff received from Kyrian Conductor Tier 3
+				q(61266),	-- Triggered from buff received from Kyrian Conductor Tier 3
+			}),
+		}),
+	}),
+})));

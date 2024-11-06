@@ -3,19 +3,19 @@
 -----------------------------------------------------
 local PRIMEVAL_ESSENCE = 199211;
 root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADDED_10_0_2, REMOVED_10_0_2_LAUNCH } }, {
-	tier(DF_TIER, {
+	expansion(EXPANSION.DF, {
 		n(ACHIEVEMENTS, {
 			ach(16431, {	-- Against the Elements
-				crit(1, {
+				crit(55367, {
 					["_npcs"] = { 185784 },	-- Unbridled Storm Lord
 				}),
-				crit(2, {
+				crit(55368, {
 					["_npcs"] = { 189954 },	-- Rumbling Earth Lord
 				}),
-				crit(3, {
+				crit(55369, {
 					["_npcs"] = { 189955 },	-- Raging Fire Lord
 				}),
-				crit(4, {
+				crit(55370, {
 					["_npcs"] = { 189933 },	-- Glacial Ice Lord
 				}),
 			}),
@@ -32,64 +32,98 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 		}),
 		n(QUESTS, {
 			q(70050, {	-- Chasing Storms [A]
-				["sourceQuest"] = 66596,	-- Whispers in the Winds [A]
-				["qg"] = 189077,	-- Toddy Whiskers
+				["sourceQuests"] = { 66596 },	-- Whispers in the Winds [A]
+				["provider"] = { "n", 189077 },	-- Toddy Whiskers
 				["coord"] = { 22.8, 55.8, STORMWIND_CITY },
 				["races"] = ALLIANCE_ONLY,
 			}),
 			q(69944, {	-- Chasing Storms [H]
-				["sourceQuest"] = 65439,	-- Whispers in the Winds [H]
-				["qg"] = 197279,	-- Naleidea Rivergleam
+				["sourceQuests"] = { 65439 },	-- Whispers in the Winds [H]
+				["provider"] = { "n", 197279 },	-- Naleidea Rivergleam
 				["coord"] = { 55.8, 12.6, DUROTAR },
 				["races"] = HORDE_ONLY,
 			}),
 			q(70048, {	-- A Primal Threat [A]
-				["sourceQuest"] = 66596,	-- Whispers in the Winds [A]
-				["qg"] = 193450,	-- Archmage Khadgar
+				["sourceQuests"] = { 66596 },	-- Whispers in the Winds [A]
+				["provider"] = { "n", 193450 },	-- Archmage Khadgar
 				["coord"] = { 23.0, 56.0, STORMWIND_CITY },
-				["races"] = ALLIANCE_ONLY,
-				["groups"] = {
+				["g"] = {
+					i(192493),	-- Mote of Primal Energy (QI!)
 					i(199109),	-- Primal Stormling (PET!)
 					i(199211),	-- Primeval Essence
 				},
 			}),
 			q(69923, {	-- A Primal Threat [H]
-				["sourceQuest"] = 65439,	-- Whispers in the Winds [H]
-				["qg"] = 193450,	-- Archmage Khadgar
+				["sourceQuests"] = { 65439 },	-- Whispers in the Winds [H]
+				["provider"] = { "n", 193450 },	-- Archmage Khadgar
 				["coord"] = { 55.9, 12.6, DUROTAR },
-				["races"] = HORDE_ONLY,
-				["groups"] = {
+				["g"] = {
+					i(192493),	-- Mote of Primal Energy (QI!)
 					i(199109),	-- Primal Stormling (PET!)
 					i(199211),	-- Primeval Essence
 				},
 			}),
 			q(70055, {	-- Sigil of Storms [A]
-				["sourceQuest"] = 70050,	-- Chasing Storms [A]
+				["sourceQuests"] = { 70050 },	-- Chasing Storms [A]
 				["provider"] = { "i", 198352 },	-- Sigil of Storms [A]
-				["groups"] = {
+				["g"] = {
 					i(199211),	-- Primeval Essence
 				},
 			}),
 			q(69992, {	-- Sigil of Storms [H]
-				["sourceQuest"] = 69944,	-- Chasing Storms [H]
+				["sourceQuests"] = { 69944 },	-- Chasing Storms [H]
 				["provider"] = { "i", 198080 },	-- Sigil of Storms [H]
-				["groups"] = {
+				["g"] = {
 					i(199211),	-- Primeval Essence
 				},
 			}),
-			q(70049, {	-- Calming the Storms [H]
-				["sourceQuest"] = 70048,	-- A Primal Threat [A]
-				["qg"] = 193450,	-- Archmage Khadgar
+			q(70049, {	-- Calming the Storms [A]
+				["sourceQuests"] = { 70048 },	-- A Primal Threat [A]
+				["provider"] = { "n", 193450 },	-- Archmage Khadgar
 				["coord"] = { 23.0, 56.0, STORMWIND_CITY },
-				["races"] = ALLIANCE_ONLY,
 				["isDaily"] = true,
+				["g"] = {
+					i(192493),	-- Mote of Primal Energy (QI!)
+				},
 			}),
 			q(69925, {	-- Calming the Storms [H]
-				["sourceQuest"] = 69923,	-- A Primal Threat [H]
-				["qg"] = 193450,	-- Archmage Khadgar
+				["sourceQuests"] = { 69923 },	-- A Primal Threat [H]
+				["provider"] = { "n", 193450 },	-- Archmage Khadgar
 				["coord"] = { 55.9, 12.6, DUROTAR },
-				["races"] = HORDE_ONLY,
 				["isDaily"] = true,
+				["g"] = {
+					i(192493),	-- Mote of Primal Energy (QI!)
+				},
+			}),
+			q(66458, {	-- Legacy of Tyr: Secrets of the Past [A]
+				["sourceQuests"] = { 66596 },	-- Whispers on the Winds [A]
+				["provider"] = { "n", 189569 },	-- Wrathion <The Black Prince>
+				["coord"] = { 22.9, 56.0, STORMWIND_CITY },
+				["g"] = {
+					i(201303),	-- Beheader's Poleaxe
+					i(201304),	-- Dunesplitter
+					i(201305),	-- Fist of the Treasure Seeker
+					i(201306),	-- Knowledge Seeker's Cudgel
+					i(201307),	-- Raider's Lost Spire
+					i(201302),	-- Scarab Blaster
+					i(201308),	-- Scorpion Slicer
+					i(201309),	-- Tomb Raider's Shank
+				},
+			}),
+			q(66586, {	-- Legacy of Tyr: Secrets of the Past [H]
+				["sourceQuests"] = { 65439 },	-- Whispers in the Winds [H]
+				["provider"] = { "n", 190239 },	-- Ebyssian
+				["coord"] = { 55.8, 12.1, DUROTAR },
+				["g"] = {
+					i(201303),	-- Beheader's Poleaxe
+					i(201304),	-- Dunesplitter
+					i(201305),	-- Fist of the Treasure Seeker
+					i(201306),	-- Knowledge Seeker's Cudgel
+					i(201307),	-- Raider's Lost Spire
+					i(201302),	-- Scarab Blaster
+					i(201308),	-- Scorpion Slicer
+					i(201309),	-- Tomb Raider's Shank
+				},
 			}),
 		}),
 		n(VENDORS, {
@@ -98,10 +132,10 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				195899,	-- Storm Huntress Suhrakka <Storm Vendor>
 			},
 			["coords"] = {
-				{ 1, 1, STORMWIND_CITY },	-- Placeholder
+				{ 25.0, 53.2, STORMWIND_CITY },
 				{ 55.6, 12.4, DUROTAR },
 			},
-			["groups"] = {
+			["g"] = {
 				i(199337, {	-- Bag of Furious Winds (TOY!)
 					["cost"] = {{ "i", PRIMEVAL_ESSENCE, 100 }}
 				}),
@@ -280,33 +314,97 @@ root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADD
 				TIRISFAL_GLADES,
 				UNGORO_CRATER,
 			},
-			["groups"] = {
+			["g"] = {
 				n(COMMON_BOSS_DROPS, {
 					i(199211),	-- Primeval Essence
 					i(198352),	-- Sigil of Storms [A]
 					i(198080),	-- Sigil of Storms [H]
 				}),
 				n(189933, {	-- Glacial Ice Lord
-					["groups"] = {
+					["g"] = {
 						i(199839),	-- Dimmed Primeval Water
 					},
 				}),
 				n(189955, {	-- Raging Fire Lord
-					["groups"] = {
+					["g"] = {
 						i(199836),	-- Dimmed Primeval Fire
 					},
 				}),
 				n(189954, {	-- Rumbling Earth Lord
-					["groups"] = {
+					["g"] = {
 						i(199837),	-- Dimmed Primeval Earth
 					},
 				}),
 				n(185784, {	-- Unbridled Storm Lord
-					["groups"] = {
+					["g"] = {
 						i(199838),	-- Dimmed Primeval Storm
 					},
 				}),
 			},
+		}),
+	}),
+})));
+
+root(ROOTS.WorldEvents, n(EXPANSION_PRELAUNCH, bubbleDown({ ["timeline"] = { ADDED_10_0_2 } }, {
+	expansion(EXPANSION.DF, {
+		n(HIDDEN_QUESTS, {
+			hqt(72285, {	-- Stay awhile and listen: Scalecommander Azurathel
+				["qg"] = 189078,	-- Scalecommander Azurathel
+				["sourceQuests"] = {
+					65101,	-- An Iconic, Draconic, Look [A]
+					66577,	-- Aspectral Invitation [A]
+				},
+				["name"] = "Stay awhile and listen: Scalecommander Azurathel",
+				["coord"] = { 25.4, 55.2, STORMWIND_CITY },
+				["races"] = ALLIANCE_ONLY,
+			}),
+			hqt(72286, {	-- Stay awhile and listen: Genn Greymane
+				["qg"] = 194756,	-- Genn Greymane
+				["sourceQuests"] = {
+					65101,	-- An Iconic, Draconic, Look [A]
+					66577,	-- Aspectral Invitation [A]
+				},
+				["name"] = "Stay awhile and listen: Genn Greymane",
+				["coord"] = { 27.1, 53.8, STORMWIND_CITY },
+				["races"] = ALLIANCE_ONLY,
+			}),
+			hqt(72287, {	-- Stay awhile and listen: High Exarch Turalyon
+				["qg"] = 189600,	-- High Exarch Turalyon
+				["sourceQuests"] = {
+					65101,	-- An Iconic, Draconic, Look [A]
+					66577,	-- Aspectral Invitation [A]
+				},
+				["name"] = "Stay awhile and listen: High Exarch Turalyon",
+				["coord"] = { 27.1, 53.8, STORMWIND_CITY },
+				["races"] = ALLIANCE_ONLY,
+			}),
+			hqt(72288, {	-- Stay awhile and listen: Baine and Mayla
+				["name"] = "Stay awhile and listen: Baine and Mayla",
+				["sourceQuests"] = {
+					72256,	-- The Dark Talons [H]
+					65443,	-- Expeditionary Coordination [H]
+				},
+				["provider"] = { "n", 198411 },	-- Baine
+				["coord"] = { 55.9, 12.1, DUROTAR },
+				["races"] = HORDE_ONLY,
+			}),
+			hqt(72289, {	-- Stay awhile and listen: Lor'themar and Thalyssra
+				["name"] = "Stay awhile and listen: Lor'themar and Thalyssra",
+				["sourceQuests"] = {
+					72256,	-- The Dark Talons [H]
+					65443,	-- Expeditionary Coordination [H]
+				},
+				["provider"] = { "n", 184665 },	-- Lor'themar Theron
+				["coord"] = { 55.7, 12.2, DUROTAR },
+				["races"] = HORDE_ONLY,
+			}),
+			hqt(72290, {	-- Stay awhile and listen: Cindrethresh and Emberthal
+				["name"] = "Stay awhile and listen: Cindrethresh and Emberthal",
+				["sourceQuests"] = {72256},	-- The Dark Talons [H]
+				["provider"] = { "n", 184858 },	-- Cindrethresh
+				["coord"] = { 55.6, 12.3, DUROTAR },
+				["races"] = HORDE_ONLY,
+			}),
 		}),
 	}),
 })));

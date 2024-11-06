@@ -1,14 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
-	inst(254, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {	-- The Arcatraz
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
+	inst(254, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {	-- The Arcatraz
 		["lore"] = "The Arcatraz is a prison where the naaru jailed the most terrifying and dangerous creatures they encountered on their journeys. When Kael'thas and his followers took the Keep, he sent a warden and guards to the Arcatraz. Kael's blood elves, however, were corruptible and the prisoners have begun to break free...",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3846,	-- The Arcatraz
-		["sins"] = {
-			"Tempest Keep: The Arcatraz",
-			"Festung der Stürme: Die Arkatraz",
-		},
+		-- #endif
 		["coord"] = { 74.42, 57.72, NETHERSTORM },	-- The Arcatraz, Netherstorm
 		["maps"] = {
 			TEMPEST_KEEP_ARCATRAZ,	-- Stasis Block: Trion
@@ -32,7 +30,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 18481,	-- A'dal
 					["sourceQuest"] = 10704,	-- How to Break Into the Arcatraz
 					["coord"] = { 54.0, 44.8, SHATTRATH_CITY },
-					["timeline"] = { "removed 4.3.0.14732" },
+					["timeline"] = { REMOVED_4_3_0 },
 					-- #if AFTER WRATH
 					["lvl"] = lvlsquish(67, 67, 25),
 					-- #else
@@ -50,7 +48,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29675, {	-- Hey There Dalliah
 					["qg"] = 18481,	-- A'dal
 					["sourceQuest"] = 29674,	-- Unbound Darkness
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 25),
 					["groups"] = {
 						objective(1, {	-- Wrath-Scryer Soccothrates slain
@@ -79,7 +77,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							["provider"] = { "i", 31086 },	-- Bottom Shard of the Arcatraz Key
 						}),
 						i(31084, {	-- Key to the Arcatraz
-							["timeline"] = { "removed 4.0.3.14732" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(31461),	-- A'dal's Gift
 						i(31464),	-- Naaru Belt of Precision
@@ -91,7 +89,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				q(29681, {	-- Maximum Security Breakout
 					["qg"] = 18481,	-- A'dal
 					["sourceQuest"] = 29675,	-- Hey There Dalliah
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 25),
 					["groups"] = {
 						objective(1, {	-- Harbinger Skyriss slain
@@ -116,7 +114,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29674, {	-- Unbound Darkness
 					["qg"] = 18481,	-- A'dal
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 25),
 					["groups"] = {
 						objective(1, {	-- Zereketh the Unbound slain
@@ -130,7 +128,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				i(22556, {	-- Formula: Enchant 2H Weapon - Major Agility (RECIPE!)
 					["cr"] = 20880,	-- Eredar Deathbringer
 				}),
-				i(21905, {	-- Pattern: Arcanoweave Bracers
+				i(21905, {	-- Pattern: Arcanoweave Bracers (RECIPE!)
 					["cr"] = 20869,	-- Arcatraz Sentinel
 				}),
 				i(29672, {	-- Pattern: Flame Armor Kit (RECIPE!)
@@ -141,11 +139,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["cr"] = 20900,	-- Unchained Doombringer
 				}),
 				i(24488, {	-- Third Key Fragment
+					["providers"] = {
+						{ "o", 182198 },	-- Arcane Container
+						{ "n",  22892 },	-- Third Fragment Guardian
+					},
 					["coord"] = { 59.0, 24.8, 270 },
-					["cr"] = 22892,	-- Third Fragment Guardian
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(548, {	-- Zereketh the Unbound
 					["creatureID"] = 20870,
 					["groups"] = {
@@ -161,7 +162,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(28384),	-- Outland Striders (7.3.5 - Also added to Dalliah, stayed on Zereketh as well.)
 						-- #if BEFORE MOP
 						i(28372, {	-- Idol of Feral Shadows
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 					},
@@ -185,7 +186,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #if AFTER 7.3.5
 						i(28384),	-- Outland Striders (7.3.5 - Originally only dropped from Zereketh)
 						-- #endif
-						i(24308),	-- Pattern: Whitemend Pants
+						i(24308),	-- Pattern: Whitemend Pants (RECIPE!)
 					},
 				}),
 				e(550, {	-- Wrath-Scryer Soccothrates
@@ -247,7 +248,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -287,7 +288,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(28384),	-- Outland Striders (7.3.5 - Also added to Dalliah, stayed on Zereketh as well.)
 							-- #if BEFORE MOP
 							i(28372, {	-- Idol of Feral Shadows
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 						},
@@ -311,7 +312,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							-- #if AFTER 7.3.5
 							i(28384),	-- Outland Striders (7.3.5 - Originally only dropped from Zereketh)
 							-- #endif
-							i(24308),	-- Pattern: Whitemend Pants
+							i(24308),	-- Pattern: Whitemend Pants (RECIPE!)
 						},
 					}),
 					e(550, {	-- Wrath-Scryer Soccothrates
@@ -342,7 +343,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 								-- #endif
 							}),
 							ach(5081, {	-- Heroic: The Arcatraz Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							objective(1, {	-- Millhouse Manastorm Rescued
 								["provider"] = { "n", 20977 },	-- Millhouse Manastorm
@@ -381,7 +382,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35535),	-- The Arcatraz Reward Quest - Normal completion
 		q(35538),	-- The Arcatraz Reward Quest - Heroic completion
 	}),

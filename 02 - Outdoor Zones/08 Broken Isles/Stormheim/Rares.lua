@@ -7,13 +7,13 @@ root(ROOTS.Zones, {
 		m(STORMHEIM, {
 			n(RARES, {
 				n(SPECIAL, sharedData({["description"] = "Can be made hostile by Demon Hunters using 'Spectral Sight' or Paladins wielding 'Truthguard' allowing anyone to get credit."},{
-					n(109083, { -- Houndmaster Payne
+					n(109083, {	-- Houndmaster Payne
 						["questID"] = 42858,
 						["coord"] = { 72, 59.8, STORMHEIM },
 						["crs"] = { 109089 },    -- Houndmaster Payne
 						["description"] = "Patrols inside of Greywatch. Horde players can still interact with him, but be aware the rest of the camp will be hostile. Shares completion with |cffffff00Batmaster Claud|r. \n\nCan be made hostile by Demon Hunters using 'Spectral Sight' or Paladins wielding 'Truthguard' allowing anyone to get credit.",
 					}),
-					n(109133, { -- Batmaster Claud
+					n(109133, {	-- Batmaster Claud
 						["questID"] = 42858,
 						["coord"] = { 54.6, 71.6, STORMHEIM },
 						["description"] = "Patrols inside of Dreadwake's Landing. Alliance players can still interact with him, but be aware the rest of the camp will be hostile. Shares completion with |cffffff00Houndmaster Payne|r. \n\nCan be made hostile by Demon Hunters using 'Spectral Sight' or Paladins wielding 'Truthguard' allowing anyone to get credit.",
@@ -24,20 +24,12 @@ root(ROOTS.Zones, {
 					["coord"] = { 46.0, 77.7, STORMHEIM },
 					["groups"] = {
 						i(129048),
-						{	-- Bladesquall (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 4,	-- Bladesquall
-						},
 					},
 				}),
 				n(92599,  {	-- Bloodstalker Alpha
 					["questID"] = 38626,
 					["coord"] = { 38.8, 38.8, STORMHEIM },
 					["groups"] = {
-						{	-- Worg Pack (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 8,	-- Worg Pack
-						},
 						i(129101),	-- Alpha's Paw
 					},
 				}),
@@ -47,28 +39,6 @@ root(ROOTS.Zones, {
 					["coord"] = { 58.0, 45.2, STORMHEIM },
 					["groups"] = {
 						i(129123),	-- Brvet's Hauberk of Command
-						{	-- Helmouth Raiders (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 10,	-- Helmouth Raiders
-						},
-					},
-				}),
-				v(38627,  {	-- Champion Elodie (Worgen Stalkers — Horde Only)
-					["description"] = "There is an ongoing 4x4 battle.  Assist the Horde by defeating the Worgen Stalkers.",
-					["coord"] = { 44.0, 22.9, STORMHEIM },
-					["races"] = HORDE_ONLY,
-					["crs"] = {
-						92604,	-- Champion Elodie
-						92609,	-- Tracker Jack
-						92611,	-- Ambusher Daggerfang
-						92613,	-- Priestess Liza
-					},
-					["groups"] = {
-						{	-- Worgen Stalkers or Forsaken Defenders (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 9,	-- Worgen Stalkers or Forsaken Defenders
-						},
-						i(129264),	-- Patrol Captain's Gauntlets
 					},
 				}),
 				n(94313, {	-- Daniel "Boomer" Vorick
@@ -77,24 +47,6 @@ root(ROOTS.Zones, {
 					["races"] = HORDE_ONLY,
 					["groups"] = {
 						i(129144),	-- Boomer's Utility Belt
-					},
-				}),
-				v(38630,  {	-- Deathguard Adams (Horde Kill Squad — Alliance Only)
-					["description"] = "There is an ongoing 4x4 battle.  Assist the Alliance by defeating the Horde Kill Squad.",
-					["coord"] = { 44.2, 22.8, STORMHEIM },
-					["races"] = ALLIANCE_ONLY,
-					["crs"] = {
-						92626,	-- Deathguard Adams
-						92631,	-- Dark Ranger Jess
-						92633,	-- Assassin Huwe
-						92634,	-- Apothecary Perez
-					},
-					["groups"] = {
-						i(129266),	-- Raider Captain's Gauntlets
-						{	-- Worgen Stalkers or Forsaken Defenders (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 9,	-- Worgen Stalkers or Forsaken Defenders
-						},
 					},
 				}),
 				n(94347, {	-- Dread-Rider Cortis
@@ -110,10 +62,6 @@ root(ROOTS.Zones, {
 					["coord"] = { 41.4, 32.0, STORMHEIM },	-- cave entrance
 					["groups"] = {
 						i(132898),	-- Sabatons of the Endless Vigil
-						{	-- Egyl the Enduring (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 18,	-- Egyl the Enduring
-						},
 					},
 				}),
 				n(91803,  {	-- Fathnyr
@@ -121,10 +69,45 @@ root(ROOTS.Zones, {
 					["coord"] = { 46.3, 82.9, STORMHEIM },
 					["groups"] = {
 						i(129206),	-- Andvari's Gift
-						{	-- Fathnyr (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 3,	-- Fathnyr
-						},
+					},
+				}),
+				n(createHeader({	-- Forsaken Deathsquad
+					readable = "Forsaken Deathsquad",
+					icon = 463451,
+					text = {
+						en = "Forsaken Deathsquad",
+						es = "Escuadrón de la Muerte Abandonado",
+						de = "Todesschwadron der Verlassenen",
+						fr = "Escadron de la Mort Abandonné",
+						it = "Squadra della Morte Abbandonata",
+						pt = "Esquadrão da Morte Abandonado",
+						ru = "Отрекшийся отряд смерти",
+						ko = "포세이큰 데스스쿼드",
+						cn = "被遗忘者敢死队",
+					},
+					description = {
+						en = "There is an ongoing 4x4 battle.  Assist the Alliance by defeating the Forsaken Deathsquad.",
+						es = "Hay una batalla 4x4 en curso. Ayuda a la Alianza derrotando al Forsaken Deathsquad.",
+						de = "Es gibt einen laufenden 4x4-Kampf. Unterstützen Sie die Allianz, indem Sie die Todesschwadron der Forsaken besiegen.",
+						fr = "Il y a une bataille en 4x4 en cours. Aidez l'Alliance en battant l'escadron de la mort abandonné.",
+						it = "C'è una battaglia 4x4 in corso. Aiuta l'Alleanza sconfiggendo la Squadra della Morte dei Rinnegati.",
+						pt = "Há uma batalha 4x4 em andamento. Ajude a Aliança derrotando o Esquadrão da Morte Abandonado.",
+						ru = "Идет продолжающаяся битва четыре на четыре. Помогите Альянсу, победив Отрекшихся Отряд Смерти.",
+						ko = "4대4 전투가 진행 중입니다. Forsaken Deathsquad를 물리쳐 얼라이언스를 지원하세요.",
+						cn = "正在进行一场四对四的战斗。协助联盟击败被遗忘者敢死队。",
+					},
+				}), {
+					["providers"] = {
+						{ "n", 92626 },	-- Deathguard Adams
+						{ "n", 92631 },	-- Dark Ranger Jess
+						{ "n", 92633 },	-- Assassin Huwe
+						{ "n", 92634 },	-- Apothecary Perez
+					},
+					["questID"] = 38630,	-- Forsaken Deathsquad
+					["coord"] = { 44.2, 22.8, STORMHEIM },
+					["races"] = ALLIANCE_ONLY,
+					["groups"] = {
+						i(129266),	-- Raider Captain's Gauntlets
 					},
 				}),
 				n(91529,  {	-- Glimar Ironfist
@@ -132,10 +115,6 @@ root(ROOTS.Zones, {
 					["coord"] = { 41.9, 66.5, STORMHEIM },
 					["groups"] = {
 						i(129291),	-- Stormslayer Champion Belt
-						{	-- Glimar Ironfist (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 1,	-- Glimar Ironfist
-						},
 					},
 				}),
 				n(98503,  {	-- Grrvrgull the Conqueror
@@ -143,10 +122,6 @@ root(ROOTS.Zones, {
 					["coord"] = { 78.9, 61.1, STORMHEIM },
 					["groups"] = {
 						i(138421),	-- The Conqueror's Chain
-						{	-- Grrvrgull the Conqueror (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 21,	-- Grrvrgull the Conqueror
-						},
 					},
 				}),
 				n(107926, {	-- Hannval the Butcher
@@ -154,19 +129,13 @@ root(ROOTS.Zones, {
 					["coord"] = { 51.9, 74.8, STORMHEIM },
 					["groups"] = {
 						i(138417),	-- The Butcher's Apron
-						{	-- Hannval the Butcher (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 22,	-- Hannval the Butcher
-						},
 					},
 				}),
-				v(38625,  {	-- Hook and Sinker (Alliance Only)
-					["races"] = ALLIANCE_ONLY,
+				n(92590, {	-- Hook
+					["questID"] = 38625,	-- Hook and Sinker
 					["coord"] = { 42.0, 57.6, STORMHEIM },
-					["crs"] = {
-						92590,	-- Hook
-						92591,	-- Sinker
-					},
+					["crs"] = { 92591 },	-- Sinker
+					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(129109),	-- Sinker's Line
 					},
@@ -184,20 +153,12 @@ root(ROOTS.Zones, {
 					["coord"] = { 62.4, 74.9, STORMHEIM },	-- cave entrance
 					["groups"] = {
 						i(140686),	-- Gargantuan Mantle
-						{	-- Marius & Tehd versus an Inquisitor (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 24,	-- Marius & Tehd versus an Inquisitor
-						},
 					},
 				}),
 				n(94413,  {	-- Isel the Hammer
 					["questID"] = 39120,
 					["coord"] = { 62.0, 60.6, STORMHEIM },
 					["groups"] = {
-						{	-- Isel the Hammer (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 16,	-- Isel the Hammer
-						},
 						i(129133),	-- The Hammer's Head
 					},
 				}),
@@ -206,20 +167,12 @@ root(ROOTS.Zones, {
 					["coord"] = { 60.1, 68.1, STORMHEIM },
 					["groups"] = {
 						i(132895),	-- The Watcher's Divine Inspiration
-						{	-- Ivory Sentinel (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 11,	-- Ivory Sentinel
-						},
 					},
 				}),
 				n(98421,  {	-- Kottr Vondyr
 					["questID"] = 40109,
 					["coord"] = { 73.6, 47.6, STORMHEIM },
 					["groups"] = {
-						{	-- Kottr Vondyr (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 20,	-- Kottr Vondyr
-						},
 						i(138419),	-- The Binder's Bonds
 					},
 				}),
@@ -227,11 +180,7 @@ root(ROOTS.Zones, {
 					["questID"] = 38837,
 					["coord"] = { 72.8, 49.6, STORMHEIM },
 					["groups"] = {
-						{	-- Mordvigbjorn (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 14,	-- Mordvigbjorn
-						},
-						i(133827),	-- Recipe: Bear Tartare [Rank 1]
+						i(133827),	-- Recipe: Bear Tartare [Rank 1] (RECIPE!)
 						i(129035),	-- Indomitable Bearskin Cloak
 					},
 				}),
@@ -249,10 +198,6 @@ root(ROOTS.Zones, {
 					["coord"] = { 57.8, 34.6, STORMHEIM },
 					["groups"] = {
 						i(139387),	-- Drowned Champion's Greaves
-						{	-- Roteye (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 23,	-- Roteye
-						},
 					},
 				}),
 				n(107487, {	-- Starbuck
@@ -268,20 +213,12 @@ root(ROOTS.Zones, {
 					["groups"] = {
 						i(129208),	-- Stormborne Whelpling (PET!)
 						i(129110),	-- Matriarch-Hide Legguards
-						{	-- Stormwing Matriarch (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 2,	-- Stormwing Matriarch
-						},
 					},
 				}),
 				n(98268,  {	-- Tarben <Jarl of Tideskorn Harbor>
 					["questID"] = 40081,
 					["coord"] = { 61.6, 43.4, STORMHEIM },
 					["groups"] = {
-						{	-- Tarben (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 19,	-- Tarben
-						},
 						i(129199),	-- Tideskorn Jarl's Pendant
 					},
 				}),
@@ -295,10 +232,6 @@ root(ROOTS.Zones, {
 					},
 					["groups"] = {
 						i(129113),	-- Faintly Glowing Flagon of Mead (TOY!)
-						{	-- Thane's Mead Hall (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 5,	-- Thane's Mead Hall
-						},
 					},
 				}),
 				n(92763,  {	-- The Nameless King
@@ -306,10 +239,6 @@ root(ROOTS.Zones, {
 					["questID"] = 38685,
 					["coord"] = { 67.2, 39.8, STORMHEIM },
 					["groups"] = {
-						{	-- The Nameless King (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 12,	-- The Nameless King
-						},
 						i(129041),	-- Aurora of the Nameless King
 					},
 				}),
@@ -317,10 +246,6 @@ root(ROOTS.Zones, {
 					["questID"] = 38774,
 					["coord"] = { 47.0, 49.4, STORMHEIM },
 					["groups"] = {
-						{	-- Lost Ettin (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 13,	-- Lost Ettin
-						},
 						i(129163),	-- Lost Etin's Strength
 					},
 				}),
@@ -329,10 +254,6 @@ root(ROOTS.Zones, {
 					["coord"] = { 64.7, 51.9, STORMHEIM },
 					["groups"] = {
 						i(129219),	-- The Flayer's Runewraps
-						{	-- Urgev the Flayer (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 15,	-- Urgev the Flayer
-						},
 					},
 				}),
 				n(92152,  {	-- Whitewater Typhoon
@@ -340,10 +261,45 @@ root(ROOTS.Zones, {
 					["coord"] = { 36.2, 51.1, STORMHEIM },
 					["groups"] = {
 						i(138418),	-- Typhoon Grips
-						{	-- Whitewater Typhoon (Adventurer of Stormheim)
-							["achievementID"] = 11263,	-- Adventurer of Stormheim
-							["criteriaID"] = 7,	-- Whitewater Typhoon
-						},
+					},
+				}),
+				n(createHeader({	-- Worgen Stalkers
+					readable = "Worgen Stalkers",
+					icon = 463876,
+					text = {
+						en = "Worgen Stalkers",
+						es = "Acechadores Huargen",
+						--de = "Worgen Stalkers",
+						fr = "Traqueurs Worgens",
+						it = "Cacciatori Worgen",
+						pt = "Perseguidores Worgens",
+						ru = "Воргены-сталкеры",
+						ko = "늑대인간 추적자",
+						cn = "狼人追猎者",
+					},
+					description = {
+						en = "There is an ongoing 4x4 battle.  Assist the Horde by defeating the Worgen Stalkers.",
+						es = "Hay una batalla 4x4 en curso. Ayuda a la Horda derrotando a los Worgen Stalkers.",
+						de = "Es gibt einen laufenden 4x4-Kampf. Unterstützen Sie die Horde, indem Sie die Worgenpirscher besiegen.",
+						fr = "Il y a une bataille en 4x4 en cours. Aidez la Horde en battant les Worgen Stalkers.",
+						it = "C'è una battaglia 4x4 in corso. Aiuta l'Orda sconfiggendo i Worgen Stalker.",
+						pt = "Há uma batalha 4x4 em andamento. Ajude a Horda derrotando os Worgen Stalkers.",
+						ru = "Идет продолжающаяся битва четыре на четыре. Помогите Орде, победив воргенов-сталкеров.",
+						ko = "4대4 전투가 진행 중입니다. 늑대인간 추적자를 물리쳐 호드를 도와주세요.",
+						cn = "正在进行一场四对四的战斗。击败狼人追猎者，协助部落。",
+					},
+				}), {
+					["providers"] = {
+						{ "n", 92604 },	-- Champion Elodie
+						{ "n", 92609 },	-- Tracker Jack
+						{ "n", 92611 },	-- Ambusher Daggerfang
+						{ "n", 92613 },	-- Priestess Liza
+					},
+					["questID"] = 38627,	-- Worgen Stalkers
+					["coord"] = { 44.0, 22.9, STORMHEIM },
+					["races"] = HORDE_ONLY,
+					["groups"] = {
+						i(129264),	-- Patrol Captain's Gauntlets
 					},
 				}),
 --[[ TODO:

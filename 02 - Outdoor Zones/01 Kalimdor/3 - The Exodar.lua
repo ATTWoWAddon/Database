@@ -14,27 +14,10 @@ local EGOMIS_GROUPS = {
 	}),
 };
 local REDEMPTION = recipe(7328);	-- Redemption
--- #if BEFORE CATA
-local OnTooltipForCityFactionReputation = [[function(t)
-	local reputation = t.reputation;
-	if reputation < 42000 then
-		local isHuman = _.RaceIndex == 1;
--- #if AFTER TBC
-		local repPerTurnIn = isHuman and 82.5 or 75;
--- #else
-		local repPerTurnIn = isHuman and 55 or 50;
--- #endif
-		local x, n = math.ceil((42000 - reputation) / repPerTurnIn), math.ceil(42000 / repPerTurnIn);
-		GameTooltip:AddDoubleLine("Runecloth Turn Ins", (n - x) .. " / " .. n .. " (" .. x .. ")", 1, 1, 1);
-	end
-end]];
--- #endif
 root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
-	m(THE_EXODAR, bubbleDownSelf({ ["timeline"] = { "added 2.0.1" } }, {
+	m(THE_EXODAR, bubbleDownSelf({ ["timeline"] = { ADDED_2_0_1 } }, {
 		["lore"] = "The Exodar is the capital city of the Draenei. It is located in the westernmost part of Azuremyst Isle. The Exodar's faction leader is Prophet Velen, who is located near the battlemasters in the Vault of Lights.",
-		-- #if AFTER WRATH
-		["icon"] = "Interface\\Icons\\Inv_misc_tournaments_symbol_draenei",
-		-- #endif
+		["icon"] = 255137,
 		["isRaid"] = true,
 		["groups"] = {
 			battlepets({
@@ -44,30 +27,43 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				}},
 			}),
 			n(FACTIONS, {
-				faction(930, {	-- Exodar
-					-- #if BEFORE CATA
-					["OnTooltip"] = OnTooltipForCityFactionReputation,
+				faction(FACTION_EXODAR, {	-- Exodar
+					-- #if AFTER CATA
+					["provider"] = { "i", 45580 },	-- Exodar Tabard
 					-- #endif
+					["OnTooltip"] = [[_.OnTooltipDB.RuneclothTurnIns]],
 					["races"] = ALLIANCE_ONLY,
 				}),
 			}),
 			n(FLIGHT_PATHS, {
 				fp(94, {	-- The Exodar
 					["cr"] = 17555,	-- Stephanos <Hippogryph Master>
-					-- #if AFTER CATA
-					["coord"] = { 54.5, 36.3, THE_EXODAR },
-					-- #else
-					["coord"] = { 68.3, 63.8, THE_EXODAR },
-					-- #endif
+					["coords"] = {
+						-- #if AFTER CATA
+						{ 54.5, 36.3, THE_EXODAR },
+						-- #else
+						{ 68.3, 63.8, THE_EXODAR },
+						-- #endif
+					},
 					["races"] = ALLIANCE_ONLY,
 				}),
 			}),
+			-- #if NOT ANYCLASSIC
+			-- CRIEVE NOTE: I'm going to solve this a different way eventually.
+			o(207322, {	-- Hero's Call Board
+				["coord"] = { 55.5, 47.9, THE_EXODAR },
+				["timeline"] = { ADDED_4_0_1 },
+				["sym"] = HEROS_CALL_BOARD_SYMLINK,
+				["races"] = ALLIANCE_ONLY,
+				["skipFill"] = true,
+			}),
+			-- #endif
 			n(QUESTS, {
 				q(10356, {	-- A Donation of Mageweave
 					["qg"] = 20604,	-- Dugiru <Alliance Cloth Quartermaster>
 					["cost"] = { { "i", 4338, 60 } },	-- Mageweave Cloth
 					["coord"] = { 63.5, 67.7, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3"},
+					["timeline"] = { REMOVED_4_0_3},
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 40,
 				}),
@@ -75,7 +71,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 20604,	-- Dugiru <Alliance Cloth Quartermaster>
 					["cost"] = { { "i", 14047, 60 } },	-- Runecloth
 					["coord"] = { 63.5, 67.7, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3"},
+					["timeline"] = { REMOVED_4_0_3},
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 50,
 				}),
@@ -89,7 +85,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					-- #endif
 					["cost"] = { { "i", 4306, 60 } },	-- Silk Cloth
 					["coord"] = { 63.5, 67.7, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3"},
+					["timeline"] = { REMOVED_4_0_3},
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 26,
 				},
@@ -103,7 +99,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					-- #endif
 					["cost"] = { { "i", 2592, 60 } },	-- Wool Cloth
 					["coord"] = { 63.5, 67.7, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3"},
+					["timeline"] = { REMOVED_4_0_3},
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 12,
 				},
@@ -111,22 +107,91 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 20604,	-- Dugiru <Alliance Cloth Quartermaster>
 					["sourceQuest"] = 10357,	-- A Donation of Runecloth
 					["cost"] = { { "i", 14047, 20 } },	-- Runecloth
-					["maxReputation"] = { 930, EXALTED },	-- Exodar, Exalted.
+					["maxReputation"] = { FACTION_EXODAR, EXALTED },	-- Exodar, Exalted.
 					["coord"] = { 63.5, 67.7, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3"},
+					["timeline"] = { REMOVED_4_0_3},
 					["races"] = ALLIANCE_ONLY,
 					["repeatable"] = true,
 					["lvl"] = 50,
+				}),
+				q(9551, {	-- Call of Air (1/4) [The Exodar]
+					["qg"] = 17219,	-- Sulaa <Shaman Trainer>
+					["coord"] = { 32.6, 24.2, THE_EXODAR },
+					["timeline"] = { ADDED_2_0_1, REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { SHAMAN },
+					["isBreadcrumb"] = true,
+					["lvl"] = 30,
+				}),
+				q(9547, {	-- Call of Air (1/4) [Ironforge]
+					["qg"] = 23127,	-- Farseer Javad <Shaman Trainer>
+					["coord"] = { 55.2, 29.6, IRONFORGE },
+					["timeline"] = { ADDED_2_0_1, REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { SHAMAN },
+					["isBreadcrumb"] = true,
+					["lvl"] = 30,
+				}),
+				q(10491, {	-- Call of Air (1/4) [Stormwind City]
+					["qg"] = 20407,	-- Farseer Umbrua <Shaman Trainer>
+					["coord"] = { 61.8, 83.8, STORMWIND_CITY },
+					["timeline"] = { ADDED_2_0_1, REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { SHAMAN },
+					["isBreadcrumb"] = true,
+					["lvl"] = 30,
+				}),
+				q(9552, {	-- Call of Air (2/4)
+					["qg"] = 17204,	-- Farseer Nobundo <Shaman Trainer>
+					["sourceQuests"] = {
+						9551,	-- Call of Air (1/4) [The Exodar]
+						9547,	-- Call of Air (1/4) [Ironforge]
+						10491,	-- Call of Air (1/4) [Stormwind City]
+					},
+					["coord"] = { 31, 27.8, THE_EXODAR },
+					["timeline"] = { ADDED_2_0_1, REMOVED_4_0_3 },
+					["maps"] = { AZUREMYST_ISLE },
+					["races"] = { DRAENEI },
+					["classes"] = { SHAMAN },
+					["lvl"] = 30,
+				}),
+				q(9553, {	-- Call of Air (3/4)
+					["qg"] = 17431,	-- Velaada
+					["sourceQuest"] = 9552,	-- Call of Air (2/4)
+					["coord"] = { 24.8, 35.8, AZUREMYST_ISLE },
+					["timeline"] = { ADDED_2_0_1, REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { SHAMAN },
+					["lvl"] = 30,
+				}),
+				q(9554, {	-- Call of Air (4/4)
+					["providers"] = {
+						{ "n", 17435 },	-- Susurrus
+						{ "i", 23843 },	-- Whorl of Air
+					},
+					["sourceQuest"] = 9553,	-- Call of Air (3/4)
+					["coord"] = { 22.4, 32.6, AZUREMYST_ISLE },
+					["timeline"] = { ADDED_2_0_1, REMOVED_4_0_3 },
+					["races"] = { DRAENEI },
+					["classes"] = { SHAMAN },
+					["lvl"] = 30,
+					["groups"] = {
+						i(5178, {	-- Air Totem
+							["description"] = "You must keep this in your bags forever.",
+						}),
+					},
 				}),
 				q(9605, {	-- Hippogryph Master Stephanos
 					["qg"] = 16768,	-- Nurguni
 					["sourceQuest"] = 9604,	-- On the Wings of a Hippogryph
 					["coord"] = { 56.8, 49.8, THE_EXODAR },
-					-- #if AFTER CATA
-					["maps"] = { AZUREMYST_ISLE },
-					-- #else
-					["maps"] = { BLOODMYST_ISLE },
-					-- #endif
+					["maps"] = {
+						-- #if AFTER CATA
+						AZUREMYST_ISLE,
+						-- #else
+						BLOODMYST_ISLE,
+						-- #endif
+					},
 					["cost"] = {
 						{ "i", 23903, 1 },	-- Nurguni's Supplies
 					},
@@ -136,7 +201,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				q(10366, {	-- Jol
 					["qg"] = 17483,	-- Tullas <Paladin Trainer>
 					["coord"] = { 48.4, 49.6, AZUREMYST_ISLE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { PALADIN },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = lvlsquish(12, 12, 10),
@@ -145,7 +210,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 20914,	-- Aalun <Riding Trainer>
 					["coord"] = { 81.4, 52.6, THE_EXODAR },
 					["description"] = "This quest is automatically offered to Draenei upon reaching the specified level.",
-					["timeline"] = { "added 5.2.0", REMOVED_10_1_5 },
+					["timeline"] = { ADDED_5_2_0, REMOVED_10_1_5 },
 					["maps"] = { AZUREMYST_ISLE },
 					["races"] = { DRAENEI },
 					["DisablePartySync"] = true,
@@ -162,7 +227,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				q(14082, {	-- Learn to Ride at the Exodar
 					["provider"] = { "i", 46879 },	-- Riding Training Pamphlet
 					["description"] = "The pamphlet that starts this quest is sent to Draenei in their Mailbox upon reaching the specified level.",
-					["timeline"] = { "added 3.3.0.10958", "removed 5.2.0" },
+					["timeline"] = { ADDED_3_3_0, REMOVED_5_2_0 },
 					["lockCriteria"] = { 1,
 						"spellID", 33388,	-- Apprentice Riding
 						"spellID", 33391,	-- Journeyman Riding
@@ -177,7 +242,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17509,	-- Jol <Paladin Trainer>
 					["sourceQuest"] = 10366,	-- Jol
 					["coord"] = { 38.4, 82.2, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["classes"] = { PALADIN },
 					["races"] = { DRAENEI },
 					["cost"] = {
@@ -189,7 +254,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17509,	-- Jol <Paladin Trainer>
 					["sourceQuest"] = 9598,	-- Redemption (1/2)
 					["coord"] = { 38.4, 82.2, THE_EXODAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["maps"] = { BLOODMYST_ISLE },
 					["classes"] = { PALADIN },
 					["races"] = { DRAENEI },
@@ -209,11 +274,13 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["qg"] = 17555,	-- Stephanos
 					["sourceQuest"] = 9605,	-- Hippogryph Master Stephanos
 					["coord"] = { 54.8, 35.8, THE_EXODAR },
-					-- #if AFTER CATA
-					["maps"] = { AZUREMYST_ISLE },
-					-- #else
-					["maps"] = { BLOODMYST_ISLE },
-					-- #endif
+					["maps"] = {
+						-- #if AFTER CATA
+						AZUREMYST_ISLE,
+						-- #else
+						BLOODMYST_ISLE,
+						-- #endif
+					},
 					["cost"] = {
 						{ "i", 23903, 1 },	-- Nurguni's Supplies
 					},
@@ -324,16 +391,17 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["coord"] = { 53.6, 90.8, THE_EXODAR },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
-						i(23799, {	-- Schematic: Adamantite Rifle
+						i(23799, {	-- Schematic: Adamantite Rifle (RECIPE!)
 							["isLimited"] = true,
 						}),
-						applyclassicphase(TBC_PHASE_TWO, i(23815, {	-- Schematic: Adamantite Shell Machine
+						applyclassicphase(TBC_PHASE_TWO, i(23815, {	-- Schematic: Adamantite Shell Machine (RECIPE!)
 							["isLimited"] = true,
+							["timeline"] = { REMOVED_4_0_1 },
 						})),
-						i(23816, {	-- Schematic: Fel Iron Toolbox
+						i(23816, {	-- Schematic: Fel Iron Toolbox (RECIPE!)
 							["isLimited"] = true,
 						}),
-						i(23811, {	-- Schematic: White Smoke Flare
+						i(23811, {	-- Schematic: White Smoke Flare (RECIPE!)
 							["isLimited"] = true,
 						}),
 					},
@@ -343,6 +411,22 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["races"] = ALLIANCE_ONLY,
 					["sym"] = {{"select","itemID",
 						4565,    -- Simple Dagger
+					}},
+				}),
+				n(221817, {	-- Gaal <Blacksmith>
+					["coord"] = { 56.6, 81.8, THE_EXODAR},
+					["timeline"] = { ADDED_10_2_7 },
+					["races"] = ALLIANCE_ONLY,
+					["sym"] = {{"select","itemID",
+						208684,		-- Anchorite's Sorrow
+						208755,		-- Ancient Soulpriest's Staff
+						208683,		-- Arinor Ritual Baton
+						208677,		-- Eredath Crystal Hammer
+						208662,		-- Lightforged Seeker
+						206195,		-- Path of the Naaru (TOY!)
+						208685,		-- Recovered Kaarinos Blade
+						208688,		-- Telaasti Mining Pick
+						208686,		-- Velenite Claymore
 					}},
 				}),
 				n(16716, {	-- Gornii <Cloth Armor Merchant>
@@ -405,7 +489,7 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 							["isLimited"] = true,
 						}),
 						i(25720, {	-- Pattern: Heavy Knothide Leather
-							["timeline"] = { "removed 3.2.0"},
+							["timeline"] = { REMOVED_3_2_0},
 							["requireSkill"] = LEATHERWORKING,
 							["isLimited"] = true,
 							["f"] = RECIPES,
@@ -414,21 +498,33 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				n(16766, {	-- Issca <Tabard Vendor>
 					["coord"] = { 53.8, 67.2, THE_EXODAR },
-					["races"] = ALLIANCE_ONLY,
-					-- #if AFTER WRATH
 					["sym"] = { { "sub", "common_vendor", 5193 } },	-- Rebecca Laughlin <Tabard Designer>
-					-- #endif
+					["races"] = ALLIANCE_ONLY,
 				}),
 				n(50306, {	-- Kadu <Exodar Quartermaster>
 					["coord"] = { 54.8, 36.8, THE_EXODAR },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
-						i(64889),	-- Mantle of Exodar
-						i(64890),	-- Cape of Exodar
-						i(64891),	-- Shroud of Exodar
-						i(67527),	-- Exodar Satchel
-						i(45580),	-- Exodar Tabard
+						i(45580, {	-- Exodar Tabard
+							["timeline"] = { ADDED_3_1_0 },
+						}),
+						i(64889, {	-- Mantle of Exodar
+							["minReputation"] = { FACTION_EXODAR, EXALTED },	-- Exodar, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
+						}),
+						i(64890, {	-- Cape of Exodar
+							["minReputation"] = { FACTION_EXODAR, EXALTED },	-- Exodar, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
+						}),
+						i(64891, {	-- Shroud of Exodar
+							["minReputation"] = { FACTION_EXODAR, EXALTED },	-- Exodar, Exalted.
+							["timeline"] = { ADDED_4_0_3 },
+						}),
+						i(67527, {	-- Exodar Satchel
+							["minReputation"] = { FACTION_EXODAR, REVERED },	-- Exodar, Revered.
+							["timeline"] = { ADDED_4_0_3 },
+						}),
 					},
 				}),
 				n(16747, {	-- Mahri
@@ -472,12 +568,12 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 					["sym"] = { { "sub", "common_recipes_vendor", 3364 } },	-- Borya <Tailoring Supplies>
 					-- #endif
 					["groups"] = {
-						i(21892),	-- Pattern: Bolt of Imbued Netherweave
-						i(21894, {	-- Pattern: Bolt of Soulcloth
+						i(21892),	-- Pattern: Bolt of Imbued Netherweave (RECIPE!)
+						i(21894, {	-- Pattern: Bolt of Soulcloth (RECIPE!)
 							["isLimited"] = true,
 						}),
-						i(21896),	-- Pattern: Netherweave Robe
-						i(21897),	-- Pattern: Netherweave Tunic
+						i(21896),	-- Pattern: Netherweave Robe (RECIPE!)
+						i(21897),	-- Pattern: Netherweave Tunic (RECIPE!)
 					},
 				}),
 				n(16632, {	-- Oss
@@ -510,16 +606,24 @@ root(ROOTS.Zones, m(KALIMDOR, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				n(30716, {	-- Thoth <Inscription Trainer>
 					["coord"] = { 40.5, 39.8, THE_EXODAR },
-					["timeline"] = { "added 3.0.2.8905" },
+					["timeline"] = { ADDED_3_0_2 },
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(137789, {	-- Technique: Songs of the Legion (RECIPE!)
-							["timeline"] = { "added 7.0.3.21134" },
+							["timeline"] = { ADDED_7_0_3 },
 						}),
 					},
 				}),
 				n(17584, {	-- Torallius the Pack Handler <Elekk Breeder>
 					["coord"] = { 81.5, 51.4, THE_EXODAR },
+					-- Available to Draenei without faction requirements.
+					["minReputation"] = { FACTION_EXODAR, EXALTED },	-- Exodar, Exalted.
+					["OnInit"] = [[function(t)
+						if _.RaceIndex == ]] .. DRAENEI .. [[ then
+							t.minReputation = nil;
+						end
+						return t;
+					end]],
 					["races"] = ALLIANCE_ONLY,
 					["groups"] = {
 						i(29745),	-- Great Blue Elekk (MOUNT!)

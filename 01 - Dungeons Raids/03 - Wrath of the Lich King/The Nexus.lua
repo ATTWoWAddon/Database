@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(281, {	-- The Nexus
 		["mapID"] = THE_NEXUS,
 		["coord"] = { 28.1, 28.1, BOREAN_TUNDRA },
@@ -9,54 +9,54 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(478, {	-- The Nexus
-					crit(5381, { -- Grand Magus Telestra
-						["_encounter"] = { 618, NORMAL_DUNGEON },
+					crit(5381, {	-- Grand Magus Telestra
+						["_encounter"] = { 618, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5382, { -- Anomalus
-						["_encounter"] = { 619, NORMAL_DUNGEON },
+					crit(5382, {	-- Anomalus
+						["_encounter"] = { 619, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(5383, { -- Ormorok the Tree-Shaper
-						["_encounter"] = { 620, NORMAL_DUNGEON },
+					crit(5383, {	-- Ormorok the Tree-Shaper
+						["_encounter"] = { 620, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #if ANYCLASSIC
 					-- NOTE: This boss has a different criteriaUID in classic for some dumb reason. BLIZZARD.
-					crit(5622, { -- Keristrasza
-						["_encounter"] = { 621, NORMAL_DUNGEON },
+					crit(5622, {	-- Keristrasza
+						["_encounter"] = { 621, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #else
-					crit(5384, { -- Keristrasza
-						["_encounter"] = { 621, NORMAL_DUNGEON },
+					crit(5384, {	-- Keristrasza
+						["_encounter"] = { 621, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 					-- #endif
 				}),
 				-- #if ANYCLASSIC
 				applyclassicphase(WRATH_PHASE_TWO, ach(17283, {	-- Defense Protocol Alpha: The Nexus
-					crit(57690, { -- Grand Magus Telestra
-						["_encounter"] = { 618, HEROIC_DUNGEON },
+					crit(57690, {	-- Grand Magus Telestra
+						["_encounter"] = { 618, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39393),	-- Claymore of Ancient Power
 							i(39388),	-- Spirit-World Glass
 							i(39397),	-- Pauldrons of Havoc
 						},
 					}),
-					crit(57688, { -- Anomalus
-						["_encounter"] = { 619, HEROIC_DUNGEON },
+					crit(57688, {	-- Anomalus
+						["_encounter"] = { 619, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39407),	-- Circle of Life
 							i(39396),	-- Gown of Blaumeux
 							i(39386),	-- Tunic of Dislocation
 						},
 					}),
-					crit(57687, { -- Ormorok the Tree-Shaper
-						["_encounter"] = { 620, HEROIC_DUNGEON },
+					crit(57687, {	-- Ormorok the Tree-Shaper
+						["_encounter"] = { 620, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39389),	-- Signet of the Malevolent
 							i(39395),	-- Thane's Tainted Greathelm
 							i(39391),	-- Heinous Mail Chestguard
 						},
 					}),
-					crit(57689, { -- Keristrasza
-						["_encounter"] = { 621, HEROIC_DUNGEON },
+					crit(57689, {	-- Keristrasza
+						["_encounter"] = { 621, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(39306),	-- Plated Gloves of Relief
 							i(39422),	-- Staff of the Plaguehound
@@ -74,29 +74,29 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					}),
 				})),
 				applyclassicphase(WRATH_PHASE_THREE, ach(18591, {	-- Defense Protocol Beta: The Nexus
-					crit(60578, { -- Grand Magus Telestra
-						["_encounter"] = { 618, HEROIC_DUNGEON },
+					crit(60578, {	-- Grand Magus Telestra
+						["_encounter"] = { 618, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45865),	-- Raiments of the Corrupted
 							i(45707),	-- Shieldwall of the Breaker
 						},
 					}),
-					crit(60576, { -- Anomalus
-						["_encounter"] = { 619, HEROIC_DUNGEON },
+					crit(60576, {	-- Anomalus
+						["_encounter"] = { 619, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45291),	-- Combustion Bracers
 							i(45292),	-- Energy Siphon
 						},
 					}),
-					crit(60575, { -- Ormorok the Tree-Shaper
-						["_encounter"] = { 620, HEROIC_DUNGEON },
+					crit(60575, {	-- Ormorok the Tree-Shaper
+						["_encounter"] = { 620, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							i(45287),	-- Firesoul
 							i(45288),	-- Firestrider Chestguard
 						},
 					}),
-					crit(60577, { -- Keristrasza
-						["_encounter"] = { 621, HEROIC_DUNGEON },
+					crit(60577, {	-- Keristrasza
+						["_encounter"] = { 621, DIFFICULTY.DUNGEON.HEROIC },
 						["groups"] = {
 							currency(SIDEREAL_ESSENCE),
 							i(45283),	-- Flamewatch Armguards
@@ -105,19 +105,45 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						},
 					}),
 				})),
+				applyclassicphase(WRATH_PHASE_FOUR, ach(19428, {	-- Defense Protocol Gamma: The Nexus
+					crit(63325, {	-- Grand Magus Telestra
+						["_encounter"] = { 618, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63323, {	-- Anomalus
+						["_encounter"] = { 619, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63322, {	-- Ormorok the Tree-Shaper
+						["_encounter"] = { 620, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+					crit(63324, {	-- Keristrasza
+						["_encounter"] = { 621, DIFFICULTY.DUNGEON.HEROIC },
+						["groups"] = {
+
+						},
+					}),
+				})),
 				-- #endif
 				ach(490,  {	-- Heroic: The Nexus
-					crit(5245, { -- Grand Magus Telestra
-						["_encounter"] = { 618, HEROIC_DUNGEON },
+					crit(5245, {	-- Grand Magus Telestra
+						["_encounter"] = { 618, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5246, { -- Anomalus
-						["_encounter"] = { 619, HEROIC_DUNGEON },
+					crit(5246, {	-- Anomalus
+						["_encounter"] = { 619, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5247, { -- Ormorok the Tree-Shaper
-						["_encounter"] = { 620, HEROIC_DUNGEON },
+					crit(5247, {	-- Ormorok the Tree-Shaper
+						["_encounter"] = { 620, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(5609, { -- Keristrasza
-						["_encounter"] = { 621, HEROIC_DUNGEON },
+					crit(5609, {	-- Keristrasza
+						["_encounter"] = { 621, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -126,7 +152,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if AFTER 4.3.0.15005
 					["qg"] = 55537,	-- Image of Warmage Kaitlyn
 					-- #else
-					["qg"] = 26110,	-- Librarian Serrah <Food & Drink>
+					["provider"] = { "n", 26110 },	-- Librarian Serrah <Food & Drink>
 					["coord"] = { 33.4, 34.4, BOREAN_TUNDRA },
 					-- #endif
 					["races"] = ALLIANCE_ONLY,
@@ -145,7 +171,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if AFTER 4.3.0.15005
 					["qg"] = 55537,	-- Image of Warmage Kaitlyn
 					-- #else
-					["qg"] = 26110,	-- Librarian Serrah <Food & Drink>
+					["provider"] = { "n", 26110 },	-- Librarian Serrah <Food & Drink>
 					["coord"] = { 33.4, 34.4, BOREAN_TUNDRA },
 					-- #endif
 					["races"] = HORDE_ONLY,
@@ -164,7 +190,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if AFTER 4.3.0.15005
 					["qg"] = 55535,	-- Image of Warmage Kaitlyn
 					-- #else
-					["qg"] = 25314,	-- Archmage Berinand <Maces & Staves>
+					["provider"] = { "n", 25314 },	-- Archmage Berinand <Maces & Staves>
 					["sourceQuest"] = 11900,	-- Reading the Meters
 					["coord"] = { 33.0, 34.2, BOREAN_TUNDRA },
 					-- #endif
@@ -184,7 +210,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if AFTER 4.3.0.15005
 					["qg"] = 55531,	-- Warmage Kaitlyn
 					-- #else
-					["qg"] = 26117,	-- Raelorasz
+					["provider"] = { "n", 26117 },	-- Raelorasz
 					["sourceQuest"] = 11969,	-- Springing the Trap
 					["coord"] = { 33.2, 34.4, BOREAN_TUNDRA },
 					-- #endif
@@ -202,7 +228,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					-- #if AFTER 4.3.0.15005
 					["qg"] = 55536,	-- Image of Warmage Kaitlyn
 					-- #else
-					["qg"] = 25314,	-- Archmage Berinand <Maces & Staves>
+					["provider"] = { "n", 25314 },	-- Archmage Berinand <Maces & Staves>
 					["sourceQuest"] = 11910,	-- Secrets of the Ancients
 					["coord"] = { 33.0, 34.2, BOREAN_TUNDRA },
 					-- #endif
@@ -220,7 +246,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(618, {	-- Grand Magus Telestra
 					["creatureID"] = 26731,	-- Grand Magus Telestra
 					["groups"] = {
@@ -260,7 +286,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(37153),	-- Gloves of the Crystal Gardener (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
 						i(157559, {	-- Chilly Cinch
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						-- #if AFTER 7.3.5
 						i(37152),	-- Girdle of Ice (7.3.5 - Used to be only Heroic Mode)
@@ -284,7 +310,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						i(37172),	-- Gloves of Glistening Runes (7.3.5 - Used to be only Heroic Mode)
 						-- #endif
 						i(157565, {	-- Tangler-Leather Gloves
-							["timeline"] = { "added 7.3.5.25744" },
+							["timeline"] = { ADDED_7_3_5 },
 						}),
 						-- #if AFTER 7.3.5
 						i(37171),	-- Flame-Bathed Steel Girdle (7.3.5 - Used to be only Heroic Mode)
@@ -300,13 +326,13 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					-- #if BEFORE CATA
 					n(COMMON_BOSS_DROPS, {
 						currency(101, {	-- Emblem of Heroism
-							["timeline"] = { "added 3.0.2.8905", "removed 4.0.1" },
+							["timeline"] = { ADDED_3_0_2, REMOVED_4_0_1 },
 						}),
 					}),
 					-- #endif
@@ -384,7 +410,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							-- #endif
 							i(37153),	-- Gloves of the Crystal Gardener
 							i(157559, {	-- Chilly Cinch
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37152),	-- Girdle of Ice
 							i(37155),	-- Frozen Forest Kilt
@@ -397,16 +423,12 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					e(621, {	-- Keristrasza
 						["creatureID"] = 26723,	-- Keristrasza
 						["groups"] = {
-							{	-- Champion of the Frozen Wastes
-								["achievementID"] = 1658,	-- Champion of the Frozen Wastes
-								["criteriaID"] = 5609,		-- Keristrasza slain
-							},
 							ach(5096, {	-- Heroic: The Nexus Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(2036),	-- Intense Cold
 							i(41794, {	-- Design: Deadly Monarch Topaz
-								["timeline"] = { "removed 4.0.1" },
+								["timeline"] = { REMOVED_4_0_1 },
 							}),
 							-- #if AFTER 7.3.5
 							i(35595),	-- Glacier Sharpened Vileblade (7.3.5 - Used to be only Normal Mode)
@@ -417,7 +439,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(37170),	-- Interwoven Scale Bracers
 							i(37172),	-- Gloves of Glistening Runes
 							i(157565, {	-- Tangler-Leather Gloves
-								["timeline"] = { "added 7.3.5.25744" },
+								["timeline"] = { ADDED_7_3_5 },
 							}),
 							i(37171),	-- Flame-Bathed Steel Girdle
 							-- #if AFTER 7.3.5
@@ -441,7 +463,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35513),	-- The Nexus - Reward Quest - Normal completion
 		q(35514),	-- The Nexus - Reward Quest - Heroic completion
 		q(35515),	-- The Nexus - Bonus Objective Reward Quest - kill Commander Stoutbeard (A) / Commander Kolurg (H) (Heroic only)

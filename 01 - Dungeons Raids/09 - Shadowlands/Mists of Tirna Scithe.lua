@@ -1,9 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-local NormalPlus = {NORMAL_DUNGEON,HEROIC_DUNGEON,MYTHIC_DUNGEON};
-local HeroicPlus = {HEROIC_DUNGEON,MYTHIC_DUNGEON};
-root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+root(ROOTS.Instances, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	inst(1184, {	-- Mists of Tirna Scithe
 		["coord"] = { 35.6, 54.2, ARDENWEALD },
 		["maps"] = { 1669 },	-- Mists of Tirna Scithe
@@ -21,7 +19,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(NormalPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
 				e(2400, {	-- Ingra Maloch
 					["crs"] = {
 						164567,	-- Ingra Maloch
@@ -97,7 +95,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(HeroicPlus, {
+			d(DIFFICULTY.DUNGEON.MULTI.HEROIC_PLUS, {
 				e(2405, {	-- Tred'ova
 					["crs"] = { 164517 },	--	Tred'ova
 					["g"] = {
@@ -105,15 +103,15 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 					},
 				}),
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				n(ACHIEVEMENTS, {
 					ach(14291, {	-- Someone Could Trip on These!
-						crit(1),	-- First Toy
-						crit(2),	-- Second Toy
-						crit(3),	-- Third Toy
-						crit(4),	-- Fourth Toy
-						crit(5),	-- Fifth Toy
-						crit(6),	-- Sixth Toy
+						crit(48381),	-- First Toy
+						crit(48382),	-- Second Toy
+						crit(48383),	-- Third Toy
+						crit(48384),	-- Fourth Toy
+						crit(48385),	-- Fifth Toy
+						crit(48386),	-- Sixth Toy
 					}),
 				}),
 				e(2400, {	-- Ingra Maloch
@@ -131,6 +129,7 @@ root(ROOTS.Instances, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LA
 						ach(14413),	-- Mythic: Mists of Tirna Scithe
 						ach(14382),	-- Mythic: Mists of Tirna Scithe Guild Run
 						ach(14375),	-- Hunger for Knowledge
+						i(183623),	-- Spinemaw Gormling
 					},
 				}),
 			}),

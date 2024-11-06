@@ -1,14 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_ONE, {
 	inst(257, {	-- The Botanica
 		["lore"] = "Since Kael'thas and his blood elves seized Tempest Keep from the naaru they have had quite the time to investigate and find a usage for the technology in it. The Botanica appears to be the satellite chosen especially for this purpose. Here, blood elf scientists carry out experiments on the flora in Outland, how naaru technology can be used to create and manipulate living beings, and how all this can grant the blood elves new powers. It seems, however, that the results were not quite as expected, and thus some of the experiments have gotten out of control...",
+		-- #if BEFORE MOP
 		["zone-text-areaID"] = 3847,	-- The Botanica
-		["sins"] = {
-			"Tempest Keep: The Botanica",
-			"Festung der Stürme: Die Botanika",
-		},
+		-- #endif
 		["coord"] = { 71.74, 54.95, NETHERSTORM },	-- The Botanica, Netherstorm
 		["mapID"] = TEMPEST_KEEP_BOTANICA,
 		["lvl"] = lvlsquish(65, 65, 20),
@@ -16,7 +14,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 			n(QUESTS, {
 				q(29669, {	-- A Most Somber Task
 					["sourceQuest"] = 29667,	-- Culling the Herd
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- Warp Splinter slain
@@ -37,7 +35,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29667, {	-- Culling the Herd
 					["sourceQuest"] = 29660,	-- Saving the Botanica
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- 0/6 Mutate Fleshlasher slain
@@ -56,7 +54,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 				}),
 				q(29660, {	-- Saving the Botanica
 					["description"] = "Automatically provided upon starting the instance.",
-					["timeline"] = { "added 4.3.0.14732" },
+					["timeline"] = { ADDED_4_3_0 },
 					["lvl"] = lvlsquish(67, 67, 20),
 					["groups"] = {
 						objective(1, {	-- Commander Sarannis slain
@@ -76,7 +74,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 					["cr"] = 18422,	-- Sunseeker Botanist
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				e(558, {	-- Commander Sarannis
 					["creatureID"] = 17976,
 					["groups"] = {
@@ -90,7 +88,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						-- #endif
 						-- #if BEFORE MOP
 						i(28296, {	-- Libram of the Lightbringer
-							["timeline"] = { "removed 5.0.4" },
+							["timeline"] = { REMOVED_5_0_4 },
 						}),
 						-- #endif
 						i(28769),	-- The Keystone
@@ -111,7 +109,6 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(28318),	-- Obsidian Clodstompers
 						i(28315),	-- Stormreaver Warblades
 						i(23617),	-- Plans: Earthpeace Breastplate (RECIPE!)
-						i(31744),	-- Botanist's Field Guide
 					},
 				}),
 				e(560, {	-- Thorngrin the Tender
@@ -122,7 +119,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(28324),	-- Gauntlets of Cruel Intention
 						i(28323),	-- Ring of Umbral Doom
 						i(28322),	-- Runed Dagger of Solace
-						i(24310),	-- Pattern: Battlecast Pants
+						i(24310),	-- Pattern: Battlecast Pants (RECIPE!)
 					},
 				}),
 				e(561, {	-- Laj
@@ -137,7 +134,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(28349),	-- Tidefury Helm (7.3.5 - Moved from Warp Splinter)
 						-- #endif
 						i(72706, {	-- Rapidly Evolving Frond
-							["timeline"] = { "added 4.3.0.14942" },
+							["timeline"] = { ADDED_4_3_0 },
 						}),
 					},
 				}),
@@ -176,12 +173,12 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						i(28347),	-- Warpscale Leggings (7.3.5 - Moved to Commander Sarannis)
 						-- #endif
 						i(28341),	-- Warpstaff of Arcanum
-						i(24311),	-- Pattern: Whitemend Hood
+						i(24311),	-- Pattern: Whitemend Hood (RECIPE!)
 						i(31085),	-- Top Shard of the Arcatraz Key
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				-- #if BEFORE 4.2.0
 				["description"] = "You need to have a key to the instance in order to access this mode.",
 				["cost"] = {
@@ -220,7 +217,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							-- #endif
 							-- #if BEFORE MOP
 							i(28296, {	-- Libram of the Lightbringer
-								["timeline"] = { "removed 5.0.4" },
+								["timeline"] = { REMOVED_5_0_4 },
 							}),
 							-- #endif
 							i(28769),	-- The Keystone
@@ -241,7 +238,6 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(28318),	-- Obsidian Clodstompers
 							i(28315),	-- Stormreaver Warblades
 							i(23617),	-- Plans: Earthpeace Breastplate (RECIPE!)
-							i(31744),	-- Botanist's Field Guide
 						},
 					}),
 					e(560, {	-- Thorngrin the Tender
@@ -252,7 +248,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(28324),	-- Gauntlets of Cruel Intention
 							i(28323),	-- Ring of Umbral Doom
 							i(28322),	-- Runed Dagger of Solace
-							i(24310),	-- Pattern: Battlecast Pants
+							i(24310),	-- Pattern: Battlecast Pants (RECIPE!)
 						},
 					}),
 					e(561, {	-- Laj
@@ -267,7 +263,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(28349),	-- Tidefury Helm (7.3.5 - Moved from Warp Splinter)
 							-- #endif
 							i(72706, {	-- Rapidly Evolving Frond
-								["timeline"] = { "added 4.3.0.14942" },
+								["timeline"] = { ADDED_4_3_0 },
 							}),
 						},
 					}),
@@ -275,10 +271,10 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 						["creatureID"] = 17977,
 						["groups"] = {
 							ach(680, {	-- Heroic: The Botanica
-								["timeline"] = { "added 3.0.1" },
+								["timeline"] = { ADDED_3_0_2 },
 							}),
 							ach(5080, {	-- Heroic: The Botanica Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							i(28370),	-- Bangle of Endless Blessings
 							-- #if BEFORE 7.3.5
@@ -305,7 +301,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 							i(28347),	-- Warpscale Leggings (7.3.5 - Moved to Commander Sarannis)
 							-- #endif
 							i(28341),	-- Warpstaff of Arcanum
-							i(24311),	-- Pattern: Whitemend Hood
+							i(24311),	-- Pattern: Whitemend Hood (RECIPE!)
 							applyclassicphase(TBC_PHASE_ONE, i(23572)),	-- Primal Nether
 							i(31085),	-- Top Shard of the Arcatraz Key
 							i(33859),	-- Warp Splinter Clipping
@@ -318,7 +314,7 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_ONE, {
 })));
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35525),	-- The Botanica Reward Quest - Normal completion
 		q(35526),	-- The Botanica Reward Quest - Heroic completion
 	}),

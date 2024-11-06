@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_FOUR, {
 	inst(276, {	-- Halls of Reflection
 		["mapID"] = HALLS_OF_REFLECTION,
 		["coord"] = { 52.3, 89.3, ICECROWN },
@@ -9,25 +9,25 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 		["groups"] = {
 			n(ACHIEVEMENTS, {
 				ach(4518, {	-- The Halls of Reflection
-					crit(13320, { -- Falric
-						["_encounter"] = { 601, 1 },
+					crit(13320, {	-- Falric
+						["_encounter"] = { 601, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(13321, { -- Marwyn
-						["_encounter"] = { 602, 1 },
+					crit(13321, {	-- Marwyn
+						["_encounter"] = { 602, DIFFICULTY.DUNGEON.NORMAL },
 					}),
-					crit(13323, { -- Survive the encounter with the Lich King
-						["_encounter"] = { 603, 1 },
+					crit(13323, {	-- Survive the encounter with the Lich King
+						["_encounter"] = { 603, DIFFICULTY.DUNGEON.NORMAL },
 					}),
 				}),
 				ach(4521, {	-- Heroic: The Halls of Reflection
-					crit(13177, { -- Falric
-						["_encounter"] = { 601, 2 },
+					crit(13177, {	-- Falric
+						["_encounter"] = { 601, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(13179, { -- Marwyn
-						["_encounter"] = { 602, 2 },
+					crit(13179, {	-- Marwyn
+						["_encounter"] = { 602, DIFFICULTY.DUNGEON.HEROIC },
 					}),
-					crit(13181, { -- Survive the encounter with the Lich King
-						["_encounter"] = { 603, 2 },
+					crit(13181, {	-- Survive the encounter with the Lich King
+						["_encounter"] = { 603, DIFFICULTY.DUNGEON.HEROIC },
 					}),
 				}),
 			}),
@@ -59,7 +59,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 					},
 				}),
 			}),
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				n(ZONE_DROPS, {
 					i(49852),	-- Coffin Nail
 					i(49854),	-- Mantle of Tattered Feathers
@@ -166,7 +166,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 					},
 				}),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ZONE_DROPS, {
@@ -230,7 +230,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 						["creatureID"] = 36954,	-- The Lich King
 						["groups"] = {
 							ach(5114, {	-- Heroic: The Halls of Reflection Guild Run
-								["timeline"] = { "added 4.0.3" },
+								["timeline"] = { ADDED_4_0_3 },
 							}),
 							ach(4526),	-- We're Not Retreating; We're Advancing in a Different Direction.
 							-- #if AFTER 7.3.5
@@ -283,7 +283,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FOUR, {
 
 -- #if AFTER WOD
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35441),	-- Halls of Reflection Reward Quest - Normal completion
 		q(35442),	-- Halls of Reflection Reward Quest - Heroic completion
 	}),

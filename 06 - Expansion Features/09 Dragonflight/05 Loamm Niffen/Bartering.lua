@@ -13,7 +13,21 @@ local function BarterCost(bricks, boulders)
 		{"i",BARTER_BOULDER,boulders},
 	};
 end
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
+BARTERING = createHeader({
+	readable = "Bartering",
+	icon = 413570,
+	text = {
+		en = "Bartering",
+		es = "Comercio",
+		de = "Tauschhandels",
+		fr = "Marchandage",
+		it = "Baratto",
+		pt = "Pechincha",
+		ru = "Обмен",
+		cn = "以物易物",
+	},
+});
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_1_0 } }, {
 	n(LOAMM_NIFFEN, {
 		n(BARTERING, bubbleDownSelf({ ["minReputation"] = { FACTION_LOAMM_NIFFEN, 3 } }, {
 			n(ACHIEVEMENTS, {
@@ -92,12 +106,17 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				}),
 			})),
 			n(REWARDS, {
-				i(BARTER_BRICK, {
-					["maxReputation"] = { FACTION_LOAMM_NIFFEN, 12 },
-				}),
-				i(BARTER_BOULDER, {
-					["minReputation"] = { FACTION_LOAMM_NIFFEN, 13 },
-				}),
+				["maps"] = {
+					ZARALEK_CAVERN,
+				},
+				["groups"] = {
+					i(BARTER_BRICK, {
+						["maxReputation"] = { FACTION_LOAMM_NIFFEN, 12 },
+					}),
+					i(BARTER_BOULDER, {
+						["minReputation"] = { FACTION_LOAMM_NIFFEN, 13 },
+					}),
+				},
 			}),
 			n(VENDORS, {
 				n(203172, {	-- Dustmonger Topuiz
@@ -193,13 +212,17 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 							["isWeekly"] = true,
 							["cost"] = BarterCost(3, 1),
 						}),
-						i(203308, {	-- Winding Slitherdrake: Hairy Brow (DM!)
+						i(225881, {	-- Big Bag of Barter Boulders
+							["cost"] = {{"i",225798,1}},	-- Intricately Carved Barter Boulder
+							["timeline"] = {ADDED_11_0_2}
+						}),
+						i(203308, {	-- Winding Slitherdrake: Hairy Brow (MM!)
 							["cost"] = BarterCost(55, 30),
 						}),
-						i(203312, {	-- Winding Slitherdrake: Cluster Chin Horn (DM!)
+						i(203312, {	-- Winding Slitherdrake: Cluster Chin Horn (MM!)
 							["cost"] = BarterCost(55, 30),
 						}),
-						i(203346, {	-- Winding Slitherdrake: Curled Nose (DM!)
+						i(203346, {	-- Winding Slitherdrake: Curled Nose (MM!)
 							["cost"] = BarterCost(55, 30),
 						}),
 						i(205120, {	-- Thimblerig (PET!)

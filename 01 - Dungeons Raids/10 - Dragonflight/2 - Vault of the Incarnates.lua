@@ -1,36 +1,304 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
+local VAULT_OF_THE_INCARNATES = 2390;
+local SymRaidVault = function(ClassID, DiffID)
+	return {{"sub","instance_tier",1200,DiffID,ClassID}};
+end
+------ Encounter Constants ------
+local ERANOG = 2480;
+local TERROS = 2500;
+local THE_PRIMAL_COUNCIL = 2486;
+local SENNARTH = 2482;
+local DATHEA = 2502;
+local KUROG = 2491;
+local DIURNA = 2493;
+local RASZAGETH = 2499;
+
+------ EncounterToCRS ------
+local EncounterToCRS = {
+	[ERANOG] = { 184972 },	-- Eranog
+	[TERROS] = { 190496 },	-- Terros
+	[THE_PRIMAL_COUNCIL] = {
+		187771,	-- Kadros Icewrath
+		187768,	-- Dathea Stormlash
+		187767,	-- Embar Firepath
+		187772,	-- Opalfang
+	},
+	[SENNARTH] = { 187967 },	-- Sennarth, the Cold Breath
+	[DATHEA] = { 189813 },	-- Dathea, Ascended
+	[KUROG] = { 181378 },	-- Kurog Grimtotem
+	[DIURNA] = { 190245 },	-- Broodkeeper Diurna
+	[RASZAGETH] = {
+		193909, -- Raszageth the Storm-Eater
+		189492,	-- Raszageth the Storm-Eater
+	},
+};
+
+------ EncounterToLoot ------
+local EncounterToLoot = {
+	[ERANOG] = {
+		i(195482),	-- Decorated Commander's Cindercloak
+		i(194299),	-- Decoration of Flame
+		i(195476),	-- Eranog's Adorned Sallet
+		i(195475),	-- Flame Marshal's Bulwark
+		i(195479),	-- Flametender's Legwraps
+		i(195477),	-- Scaldrons of Molten Might
+		i(195480),	-- Seal of Diurna's Chosen
+		i(195490),	-- Searing Blazecaster
+		i(195478),	-- Valdrakken Protector's Turncoat
+	},
+	[TERROS] = {
+		i(195504),	-- Awakened Planar Pillar
+		i(195500),	-- Compressed Cultist's Frock
+		i(195503),	-- Enduring Shard of Terros
+		i(195499),	-- Faultline Mantle
+		i(195501),	-- Fused Shale Waistband
+		i(195498),	-- Gaze of the Living Quarry
+		i(195497),	-- Quake-Detecting Seismostaff
+		i(194303),	-- Rumbling Ruby
+		i(195502),	-- Terros' Captive Core
+	},
+	[THE_PRIMAL_COUNCIL] = {
+		i(194300),	-- Conjured Chillglobe
+		i(195485),	-- Councilor's Terrormask
+		i(195487),	-- Embar's Ashen Hauberk
+		i(195484),	-- Icewrath's Channeling Conduit
+		i(195518),	-- Imbued Qalashi Crusher
+		i(195489),	-- Maul of the Earthshaper
+		i(195488),	-- Opalfang's Earthbound Legguards
+		i(195486),	-- Twisted Loam Spaulders
+		i(194301),	-- Whispering Incarnate Icon
+	},
+	[SENNARTH] = {
+		i(195511),	-- Acid-Proof Webbing
+		i(195505),	-- Caustic Coldsteel Slicer
+		i(195508),	-- Chilled Silken Restraints
+		i(195506),	-- Diamond-Etched Gauntlets
+		i(195510),	-- Frostbreath Thumper
+		i(195509),	-- Ice-Climber's Cleats
+		i(194304),	-- Iceblood Deathsnare
+		i(195507),	-- Unnatural Dripstone Cinch
+	},
+	[DATHEA] = {
+		i(195493),	-- Ascended Squallspires
+		i(195495),	-- Daring Chasm-Leapers
+		i(195494),	-- Dathea's Cyclonic Cage
+		i(195496),	-- Eye of the Vengeful Hurricane
+		i(195491),	-- Infused Stormglaives
+		i(195481),	-- Scepter of Drastic Measures
+		i(194302),	-- Storm-Eater's Boon
+		i(195492),	-- Windborne Hatsuburi
+	},
+	[KUROG] = {
+		i(194306),	-- All-Totem of the Master
+		i(195483),	-- Awak'mani, Grimtotem's Legacy
+		i(194305),	-- Controlled Current Technique
+		i(195512),	-- Fist of the Grand Summoner
+		i(195517),	-- Kurog's Thunderhooves
+		i(195515),	-- Magatha's Spiritual Sash
+		i(195513),	-- Scripture of Primal Devotion
+		i(195516),	-- Surging-Song Conductors
+		i(195514),	-- Treacherous Totem Wraps
+	},
+	[DIURNA] = {
+		i(194307),	-- Broodkeeper's Promise
+		i(195520),	-- Broodsworn Legionnaire's Pavise
+		i(195523),	-- Eggtender's Safety Mitts
+		i(195519),	-- Kharnalex, The First Light
+		i(195525),	-- Loyal Flametender's Bracers
+		i(194308),	-- Manic Grieftorch
+		i(195524),	-- Matriarch's Opulent Girdle
+		i(195521),	-- Ornamental Drakonid Claw
+		i(195526),	-- Seal of Filial Duty
+		i(195522),	-- Tassets of the Tarasek Legion
+	},
+	[RASZAGETH] = {
+		i(195531),	-- Calamitous Shockguards
+		i(194310),	-- Desperate Invoker's Codex
+		i(195528),	-- Incarnate Sky-Splitter
+		i(195530),	-- Loathsome Thunderhosen
+		i(195527),	-- Neltharax, Enemy of the Sky
+		i(195532),	-- Sandals of the Wild Sovereign
+		i(195533),	-- Shackles of Titanic Failure
+		i(194309),	-- Spiteful Storm
+		i(195529),	-- Stormlash's Last Resort
+	},
+};
+
+------ Zone Drops ----------
+local ZoneDropLoot = {
+	i(202004),	-- Brawler's Earthen Cuirass [BoE]
+	i(201992),	-- Emissary's Flamewrought Seal [BoE]
+	i(202005),	-- Frozen Claw Mantle [BoE]
+	i(202008),	-- Galvanic Gaiters [BoE]
+	i(202006),	-- Greathelm of Horned Fury [BoE]
+	i(202009),	-- Lavamancer's Ceremonial Waistguard [BoE]
+	i(202003),	-- Primal Seeker's Leggings [BoE]
+	i(202010),	-- Primalist Warden's Bracers [BoE]
+	i(202007),	-- Woven Stone Bracelets [BoE]
+}
+
+local InstanceHelper = CreateInstanceHelper(EncounterToCRS, EncounterToLoot, ZoneDropLoot)
+local Boss, BossOnly, Difficulty, CommonBossDrops, ZoneDrops =
+InstanceHelper.Boss, InstanceHelper.BossOnly, InstanceHelper.Difficulty, InstanceHelper.CommonBossDrops, InstanceHelper.ZoneDrops
+
+------ Difficulty To BonusID for those Tiers... ------
 -- Blizzard used some really wacky BonusIDs this time around to give proper Tier SourceIDs...
-local function TOKEN_LFR(id, t)
-	local item = i(id, t);
-	for _,i in ipairs(item.groups) do
-		i.bonusID = 7982;
-	end
-	return item;
-end
-local function TOKEN_NORMAL(id, t)
-	local item = i(id, t);
-	for _,i in ipairs(item.groups) do
-		i.bonusID = 7979;
-	end
-	return item;
-end
-local function TOKEN_HEROIC(id, t)
-	local item = i(id, t);
-	for _,i in ipairs(item.groups) do
-		i.bonusID = 7980;
-	end
-	return item;
-end
-local function TOKEN_MYTHIC(id, t)
-	local item = i(id, t);
-	for _,i in ipairs(item.groups) do
-		i.bonusID = 7981;
-	end
-	return item;
-end
-root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+-- Blizzard seems to have actually fixed needing these...
+-- local DifficultyToBonusID = {
+-- 	[DIFFICULTY.RAID.LFR] = 7982,
+-- 	[DIFFICULTY.RAID.NORMAL] = 7979,
+-- 	[DIFFICULTY.RAID.HEROIC] = 7980,
+-- 	[DIFFICULTY.RAID.MYTHIC] = 7981,
+-- };
+
+InstanceHelper.ExtraLoots = {
+	------ Tier Items ------
+	{
+		Add = function(encounter, id, difficulty, data)
+			if data[id] then
+				local tokens = {}
+				for _,token in ipairs(data[id]) do
+					tokens[#tokens + 1] = clone(token)
+				end
+				-- seems to no longer be necessary... will keep it around for a while just in case
+				-- local difficultyBonusID = DifficultyToBonusID[difficulty]
+				-- for _,token in ipairs(tokens) do
+				-- 	for _,item in ipairs(token.groups) do
+				-- 		item.bonusID = difficultyBonusID;
+				-- 	end
+				-- end
+				encounter.groups = appendAllGroups(encounter.groups, tokens);
+				return encounter
+			end
+		end,
+		Data = {
+			[SENNARTH] = {
+				i(196588, {	-- Dreadful Jade Forgestone
+					i(200409),	-- Greaves of the Haunted Frostbrood
+					i(200346),	-- Skybound Avenger's Legguards
+					i(200337),	-- Scalesworn Cultist's Culottes
+				}),
+				i(196598, {	-- Mystic Jade Forgestone
+					i(200355),	-- Lost Landcaller's Leggings
+					i(200391),	-- Stormwing Harrier's Greaves
+					i(200319),	-- Crystal Scholar's Britches
+				}),
+				i(196603, {	-- Venerated Jade Forgestone
+					i(200418),	-- Virtuous Silver Cuisses
+					i(200328),	-- Draconic Hierophant's Britches
+					i(200400),	-- Leggings of Infused Earth
+				}),
+				i(196593, {	-- Zenith Jade Forgestone
+					i(200382),	-- Legguards of the Awakened
+					i(200364),	-- Legguards of the Waking Fist
+					i(200373),	-- Vault Delver's Pantaloons
+					i(200427),	-- Poleyns of the Walking Mountain
+				}),
+			},
+			[DATHEA] = {
+				i(196587, {	-- Dreadful Garnet Forgestone
+					i(200407),	-- Grasps of the Haunted Frostbrood
+					i(200344),	-- Skybound Avenger's Grips
+					i(200335),	-- Scalesworn Cultist's Gloves
+				}),
+				i(196597, {	-- Mystic Garnet Forgestone
+					i(200353),	-- Lost Landcaller's Claws
+					i(200389),	-- Stormwing Harrier's Handguards
+					i(200317),	-- Crystal Scholar's Pageturners
+				}),
+				i(196602, {	-- Venerated Garnet Forgestone
+					i(200416),	-- Virtuous Silver Gauntlets
+					i(200326),	-- Draconic Hierophant's Grips
+					i(200398),	-- Gauntlets of Infused Earth
+				}),
+				i(196592, {	-- Zenith Garnet Forgestone
+					i(200380),	-- Gauntlets of the Awakened
+					i(200362),	-- Palms of the Waking Fist
+					i(200371),	-- Vault Delver's Lockbreakers
+					i(200425),	-- Gauntlets of the Walking Mountain
+				}),
+			},
+			[KUROG] = {
+				i(196586, {	-- Dreadful Amethyst Forgestone
+					i(200405),	-- Breastplate of the Haunted Frostbrood
+					i(200342),	-- Skybound Avenger's Harness
+					i(200333),	-- Scalesworn Cultist's Frosk
+				}),
+				i(196596, {	-- Mystic Amethyst Forgestone
+					i(200351),	-- Lost Landcaller's Robes
+					i(200387),	-- Stormwing Harrier's Cuirass
+					i(200315),	-- Crystal Scholar's Tunic
+				}),
+				i(196601, {	-- Venerated Amethyst Forgestone
+					i(200414),	-- Virtuous Silver Breastplate
+					i(200324),	-- Draconic Hierophant's Vestment
+					i(200396),	-- Robe of Infused Earth
+				}),
+				i(196591, {	-- Zenith Amethyst Forgestone
+					i(200378),	-- Hauberk of the Awakened
+					i(200360),	-- Chestwrap of the Waking Fist
+					i(200369),	-- Vault Delver's Brigandine
+					i(200423),	-- Husk of the Walking Mountain
+				}),
+			},
+			[DIURNA] = {
+				i(196589, {	-- Dreadful Lapis Forgestone
+					i(200410),	-- Jaws of the Haunted Frostbrood
+					i(200347),	-- Skybound Avenger's Ailerons
+					i(200338),	-- Scalesworn Cultist's Effigy
+				}),
+				i(196599, {	-- Mystic Lapis Forgestone
+					i(200356),	-- Lost Landcaller's Mantle
+					i(200392),	-- Stormwing Harrier's Pinions
+					i(200320),	-- Crystal Scholar's Beacons
+				}),
+				i(196604, {	-- Venerated Lapis Forgestone
+					i(200419),	-- Virtuous Silver Pauldrons
+					i(200329),	-- Draconic Hierophant's Wisdom
+					i(200401),	-- Calderas of Infused Earth
+				}),
+				i(196594, {	-- Zenith Lapis Forgestone
+					i(200383),	-- Talons of the Awakened
+					i(200365),	-- Mantle of the Waking Fist
+					i(200374),	-- Vault Delver's Epaulets
+					i(200428),	-- Peaks of the Walking Mountain
+				}),
+			},
+			[RASZAGETH] = {
+				i(196590, {	-- Dreadful Topaz Forgestone
+					i(200408),	-- Maw of the Haunted Frostbrood
+					i(200345),	-- Skybound Avenger's Visor
+					i(200336),	-- Scalesworn Cultist's Scorn
+				}),
+				i(196600, {	-- Mystic Topaz Forgestone
+					i(200354),	-- Lost Landcaller's Antlers
+					i(200390),	-- Stormwing Harrier's Skullmask
+					i(200318),	-- Crystal Scholar's Cowl
+				}),
+				i(196605, {	-- Venerated Topaz Forgestone
+					i(200417),	-- Virtuous Silver Heaume
+					i(200327),	-- Draconic Hierophant's Archcowl
+					i(200399),	-- Faceguard of Infused Earth
+				}),
+				i(196595, {	-- Zenith Topaz Forgestone
+					i(200381),	-- Crown of the Awakened
+					i(200363),	-- Gaze of the Waking Fist
+					i(200372),	-- Vault Delver's Vizard
+					i(200426),	-- Casque of the Walking Mountain
+				}),
+				i(217408, {	-- Awakened Tempostone
+					["sym"] = GET_SYM_DF_S4_TIER_TOKENS(),
+					["up"] = IGNORED_VALUE,
+					["timeline"] = { ADDED_10_2_6_SEASON_FOUR, REMOVED_TWW_LAUNCH },
+				}),
+			},
+		}
+	},
+}
+
+root(ROOTS.Instances, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1200, {	-- Vault of the Incarnates
 		["isRaid"] = true,
 		["coord"] = { 73.0, 55.7, THALDRASZUS },
@@ -48,85 +316,85 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 		["g"] = {
 			n(ACHIEVEMENTS, {
 				ach(17110, {	-- The Primal Bulwark
-					crit(1, { -- Eranog
-						["_encounter"] = { 2480, LFR_RAID },
+					crit(55109, {	-- Eranog
+						["_encounter"] = { ERANOG, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(2, { -- The Primal Council
-						["_encounter"] = { 2486, LFR_RAID },
+					crit(55110, {	-- The Primal Council
+						["_encounter"] = { THE_PRIMAL_COUNCIL, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(3, { -- Dathea, Ascended
-						["_encounter"] = { 2502, LFR_RAID },
+					crit(55111, {	-- Dathea, Ascended
+						["_encounter"] = { DATHEA, DIFFICULTY.RAID.MULTI.ALL },
 					}),
 				}),
 				ach(17111, {	-- Caverns of Infusion
-					crit(1, { -- Terros
-						["_encounter"] = { 2500, LFR_RAID },
+					crit(55113, {	-- Terros
+						["_encounter"] = { TERROS, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(2, { -- Sennarth, the Cold Breath
-						["_encounter"] = { 2482, LFR_RAID },
+					crit(55114, {	-- Sennarth, the Cold Breath
+						["_encounter"] = { SENNARTH, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(3, { -- Kurog Grimtotem
-						["_encounter"] = { 2491, LFR_RAID },
+					crit(55115, {	-- Kurog Grimtotem
+						["_encounter"] = { KUROG, DIFFICULTY.RAID.MULTI.ALL },
 					}),
 				}),
 				ach(17112, {	-- Fury of the Storm
-					crit(1, { -- Broodkeeper Diurna
-						["_encounter"] = { 2493, LFR_RAID },
+					crit(55116, {	-- Broodkeeper Diurna
+						["_encounter"] = { DIURNA, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(2, { --Raszageth the Storm-Eater
-						["_encounter"] = { 2499, LFR_RAID },
+					crit(55117, {	-- Raszageth the Storm-Eater
+						["_encounter"] = { RASZAGETH, DIFFICULTY.RAID.MULTI.ALL },
 					}),
 				}),
 				ach(16343, {	-- Vault of the Incarnates
-					crit(1, { -- Eranog
-						["_encounter"] = { 2480, LFR_RAID },
+					crit(55109, {	-- Eranog
+						["_encounter"] = { ERANOG, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(2, { -- The Primal Council
-						["_encounter"] = { 2486, LFR_RAID },
+					crit(55110, {	-- The Primal Council
+						["_encounter"] = { THE_PRIMAL_COUNCIL, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(3, { -- Dathea, Ascended
-						["_encounter"] = { 2502, LFR_RAID },
+					crit(55111, {	-- Dathea, Ascended
+						["_encounter"] = { DATHEA, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(4, { -- Terros
-						["_encounter"] = { 2500, LFR_RAID },
+					crit(55113, {	-- Terros
+						["_encounter"] = { TERROS, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(5, { -- Sennarth, the Cold Breath
-						["_encounter"] = { 2482, LFR_RAID },
+					crit(55114, {	-- Sennarth, the Cold Breath
+						["_encounter"] = { SENNARTH, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(6, { -- Kurog Grimtotem
-						["_encounter"] = { 2491, LFR_RAID },
+					crit(55115, {	-- Kurog Grimtotem
+						["_encounter"] = { KUROG, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(7, { -- Broodkeeper Diurna
-						["_encounter"] = { 2493, LFR_RAID },
+					crit(55116, {	-- Broodkeeper Diurna
+						["_encounter"] = { DIURNA, DIFFICULTY.RAID.MULTI.ALL },
 					}),
-					crit(8, { --Raszageth the Storm-Eater
-						["_encounter"] = { 2499, LFR_RAID },
+					crit(55117, {	-- Raszageth the Storm-Eater
+						["_encounter"] = { RASZAGETH, DIFFICULTY.RAID.MULTI.ALL },
 					}),
 				}),
 				ach(16345, {	-- Heroic: Vault of the Incarnates
-					crit(1, { -- Eranog
-						["_encounter"] = { 2480, HEROIC_RAID },
+					crit(55121, {	-- Eranog
+						["_encounter"] = { ERANOG, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
-					crit(2, { -- The Primal Council
-						["_encounter"] = { 2486, HEROIC_RAID },
+					crit(55122, {	-- The Primal Council
+						["_encounter"] = { THE_PRIMAL_COUNCIL, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
-					crit(3, { -- Dathea, Ascended
-						["_encounter"] = { 2502, HEROIC_RAID },
+					crit(55123, {	-- Dathea, Ascended
+						["_encounter"] = { DATHEA, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
-					crit(4, { -- Terros
-						["_encounter"] = { 2500, HEROIC_RAID },
+					crit(55124, {	-- Terros
+						["_encounter"] = { TERROS, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
-					crit(5, { -- Sennarth, the Cold Breath
-						["_encounter"] = { 2482, HEROIC_RAID },
+					crit(55125, {	-- Sennarth, the Cold Breath
+						["_encounter"] = { SENNARTH, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
-					crit(6, { -- Kurog Grimtotem
-						["_encounter"] = { 2491, HEROIC_RAID },
+					crit(55127, {	-- Kurog Grimtotem
+						["_encounter"] = { KUROG, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
-					crit(7, { -- Broodkeeper Diurna
-						["_encounter"] = { 2493, HEROIC_RAID },
+					crit(55126, {	-- Broodkeeper Diurna
+						["_encounter"] = { DIURNA, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
-					crit(8, { --Raszageth the Storm-Eater
-						["_encounter"] = { 2499, HEROIC_RAID },
+					crit(55128, {	-- Raszageth the Storm-Eater
+						["_encounter"] = { RASZAGETH, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
 					}),
 				}),
 				ach(16354, {	-- Mythic: Vault of the Incarnates
@@ -158,40 +426,110 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						i(192806),	-- Raging Magmammoth (MOUNT!)
 					},
 				}),
+				-- Awakened
+				ach(19564, bubbleDownSelf({ ["timeline"] = { ADDED_10_2_6_SEASON_FOUR, REMOVED_TWW_LAUNCH } }, {	-- Awakened Storms
+					crit(64929, {	-- Eranog
+						["_encounter"] = { ERANOG, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+					crit(64930, {	-- The Primal Council
+						["_encounter"] = { THE_PRIMAL_COUNCIL, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+					crit(64931, {	-- Terros
+						["_encounter"] = { TERROS, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+					crit(64932, {	-- Sennarth, the Cold Breath
+						["_encounter"] = { SENNARTH, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+					crit(64933, {	-- Dathea, Ascended
+						["_encounter"] = { DATHEA, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+					crit(64934, {	-- Kurog Grimtotem
+						["_encounter"] = { KUROG, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+					crit(64935, {	-- Broodkeeper Diurna
+						["_encounter"] = { DIURNA, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+					crit(64936, {	-- Raszageth the Storm-Eater
+						["_encounter"] = { RASZAGETH, DIFFICULTY.RAID.MULTI.NORMAL_PLUS },
+					}),
+				})),
+				ach(19565, bubbleDownSelf({ ["timeline"] = { ADDED_10_2_6_SEASON_FOUR, REMOVED_TWW_LAUNCH } }, {	-- Heroic: Awakened Storms
+					crit(64937, {	-- Eranog
+						["_encounter"] = { ERANOG, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+					crit(64938, {	-- The Primal Council
+						["_encounter"] = { THE_PRIMAL_COUNCIL, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+					crit(64939, {	-- Terros
+						["_encounter"] = { TERROS, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+					crit(64940, {	-- Sennarth, the Cold Breath
+						["_encounter"] = { SENNARTH, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+					crit(64941, {	-- Dathea, Ascended
+						["_encounter"] = { DATHEA, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+					crit(64942, {	-- Kurog Grimtotem
+						["_encounter"] = { KUROG, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+					crit(64943, {	-- Broodkeeper Diurna
+						["_encounter"] = { DIURNA, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+					crit(64944, {	-- Raszageth the Storm-Eater
+						["_encounter"] = { RASZAGETH, DIFFICULTY.RAID.MULTI.HEROIC_PLUS },
+					}),
+				})),
+				ach(19566, bubbleDownSelf({ ["timeline"] = { ADDED_10_2_6_SEASON_FOUR, REMOVED_TWW_LAUNCH } }, {	-- Mythic: Awakened Storms
+					crit(64945, {	-- Eranog
+						["_encounter"] = { ERANOG, DIFFICULTY.RAID.MYTHIC },
+					}),
+					crit(64946, {	-- The Primal Council
+						["_encounter"] = { THE_PRIMAL_COUNCIL, DIFFICULTY.RAID.MYTHIC },
+					}),
+					crit(64947, {	-- Terros
+						["_encounter"] = { TERROS, DIFFICULTY.RAID.MYTHIC },
+					}),
+					crit(64948, {	-- Sennarth, the Cold Breath
+						["_encounter"] = { SENNARTH, DIFFICULTY.RAID.MYTHIC },
+					}),
+					crit(64949, {	-- Dathea, Ascended
+						["_encounter"] = { DATHEA, DIFFICULTY.RAID.MYTHIC },
+					}),
+					crit(64950, {	-- Kurog Grimtotem
+						["_encounter"] = { KUROG, DIFFICULTY.RAID.MYTHIC },
+					}),
+					crit(64951, {	-- Broodkeeper Diurna
+						["_encounter"] = { DIURNA, DIFFICULTY.RAID.MYTHIC },
+					}),
+					-- Criteria not found in past wagotools tables, typo maybe? Would explain there existing a mysterious extra.
+					-- crit(64952, {	-- Raszageth the Storm-Eater
+					-- 	["_encounter"] = { RASZAGETH, DIFFICULTY.RAID.MYTHIC },
+					-- }),
+					crit(64953, {	-- Raszageth the Storm-Eater (extra criteria??)
+						["_encounter"] = { RASZAGETH, DIFFICULTY.RAID.MYTHIC },
+					}),
+				})),
 				ach(16395),		-- Vaulternative Fashion
 				-- Guild Achievements
 				ach(16356),		-- Vault of the Incarnates Guild Run
 				ach(16357),		-- Heroic: Vault of the Incarnates Guild Run
-				ach(16358),		-- Mythic: Raszageth the Storm-Eater Guild Run
 			}),
-			n(COMMON_BOSS_DROPS, bubbleDownSelf({ ["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {
-				["crs"] = {
-					184972,	-- Eranog
-					190496,	-- Terros
-					187771,	-- The Primal Council — Kadros Icewrath
-					187768,	-- The Primal Council — Dathea Stormlash
-					187767,	-- The Primal Council — Embar Firepath
-					187772,	-- The Primal Council — Opalfang
-					187967,	-- Sennarth, the Cold Breath
-					189813,	-- Dathea, Ascended
-					181378,	-- Kurog Grimtotem
-					190245,	-- Broodkeeper Diurna
-					193909,	-- Raszageth the Storm-Eater
-				},
-				["g"] = {
-					i(194642),	-- Design: Choker of Shielding (RECIPE!)
-					i(194259),	-- Pattern: Allied Cinch of Time Dilation (RECIPE!)
-					i(194266),	-- Pattern: Bronzed Grip Wrappings (RECIPE!)
-					i(194260),	-- Pattern: Blue Dragon Soles (RECIPE!)
-					i(193873),	-- Pattern: Old Spirit's Wristwraps (RECIPE!)
-					i(193881),	-- Pattern: Scale Rein Grips (RECIPE!)
-					i(193872),	-- Pattern: String of Spiritual Knick-Knacks (RECIPE!)
-					i(193880),	-- Pattern: Wind Spirit's Lasso (RECIPE!)
-					i(194489),	-- Plans: Allied Chestplate of Generosity (RECIPE!)
-					i(194490),	-- Plans: Allied Wristguard of Companionship (RECIPE!)
-					i(191597),	-- Recipe: Potion Absorption Inhibitor (RECIPE!)
-					i(199227),	-- Schematic: Sophisticated Problem Solver (RECIPE!)
-				},
+			CommonBossDrops(sharedData({ ["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {
+				i(205962, {	-- Echoing Storm Flightstone
+					["timeline"] = { ADDED_10_1_0 },
+				}),
+				i(194642),	-- Design: Choker of Shielding (RECIPE!)
+				i(194259),	-- Pattern: Allied Cinch of Time Dilation (RECIPE!)
+				i(194266),	-- Pattern: Bronzed Grip Wrappings (RECIPE!)
+				i(194260),	-- Pattern: Blue Dragon Soles (RECIPE!)
+				i(193873),	-- Pattern: Old Spirit's Wristwraps (RECIPE!)
+				i(193881),	-- Pattern: Scale Rein Grips (RECIPE!)
+				i(193872),	-- Pattern: String of Spiritual Knick-Knacks (RECIPE!)
+				i(193880),	-- Pattern: Wind Spirit's Lasso (RECIPE!)
+				i(194489),	-- Plans: Allied Chestplate of Generosity (RECIPE!)
+				i(194490),	-- Plans: Allied Wristguard of Companionship (RECIPE!)
+				i(191597),	-- Recipe: Potion Absorption Inhibitor (RECIPE!)
+				i(199227),	-- Schematic: Sophisticated Problem Solver (RECIPE!)
 			})),
 			n(QUESTS, {
 				q(72261, {	-- More Than a Prison?
@@ -199,13 +537,13 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 				}),
 				q(72259, {	-- Vault Artifacts
 					["provider"] = { "n", 197095 },	-- Lillian Brightmoon
-					["maxReputation"] = { 2507, 25 },
+					["maxReputation"] = { FACTION_DRAGONSCALE_EXPEDITION, 25 },
 					["cost"] = { { "i", 201411, 1 } },	-- 1x Ancient Vault Artifact
 					["repeatable"] = true,
 				}),
 				q(72260, {	-- Vault Artifacts
 					["provider"] = { "n", 197095 },	-- Lillian Brightmoon
-					["maxReputation"] = { 2507, 25 },
+					["maxReputation"] = { FACTION_DRAGONSCALE_EXPEDITION, 25 },
 					["cost"] = { { "i", 201411, 5 } },	-- 5x Ancient Vault Artifact
 					["repeatable"] = true,
 				}),
@@ -214,250 +552,316 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 				i(201412),	-- Ancient Vault Artifact (Quest)
 				i(201411),	-- Ancient Vault Artifact (Repeatable)
 			}),
-			d(LFR_RAID, {
-				n(ZONE_DROPS, {
-					i(202004),	-- Brawler's Earthen Cuirass [BoE]
-					i(201992),	-- Emissary's Flamewrought Seal [BoE]
-					i(202005),	-- Frozen Claw Mantle [BoE]
-					i(202008),	-- Galvanic Gaiters [BoE]
-					i(202006),	-- Greathelm of Horned Fury [BoE]
-					i(202009),	-- Lavamancer's Ceremonial Waistguard [BoE]
-					i(202003),	-- Primal Seeker's Leggings [BoE]
-					i(202010),	-- Primalist Warden's Bracers [BoE]
-					i(202007),	-- Woven Stone Bracelets [BoE]
+			Difficulty(DIFFICULTY.RAID.MULTI.ALL).AddGroups({
+				BossOnly(ERANOG),
+				BossOnly(TERROS),
+				BossOnly(THE_PRIMAL_COUNCIL),
+				BossOnly(SENNARTH),
+				BossOnly(DATHEA),
+				BossOnly(KUROG, {
+					i(200916),	-- Formula: Illusion: Primal Mastery (RECIPE!)
 				}),
-				header(HEADERS.Achievement, 17110, {	-- The Primal Bulwark
-					e(2480, {	-- Eranog
-						["crs"] = { 184972 },	-- Eranog
-						["g"] = {
-							i(195482),	-- Decorated Commander's Cindercloak
-							i(194299),	-- Decoration of Flame
-							i(195476),	-- Eranog's Adorned Sallet
-							i(195475),	-- Flame Marshal's Bulwark
-							i(195479),	-- Flametender's Legwraps
-							i(195477),	-- Scaldrons of Molten Might
-							i(195480),	-- Seal of Diurna's Chosen
-							i(195490),	-- Searing Blazecaster
-							i(195478),	-- Valdrakken Protector's Turncoat
-						},
-					}),
-					e(2486, {	-- The Primal Council
-						["crs"] = {
-							187771,	-- Kadros Icewrath
-							187768,	-- Dathea Stormlash
-							187767,	-- Embar Firepath
-							187772,	-- Opalfang
-						},
-						["g"] = {
-							i(194300),	-- Conjured Chillglobe
-							i(195485),	-- Councilor's Terrormask
-							i(195487),	-- Embar's Ashen Hauberk
-							i(195484),	-- Icewrath's Channeling Conduit
-							i(195518),	-- Imbued Qalashi Crusher
-							i(195489),	-- Maul of the Earthshaper
-							i(195488),	-- Opalfang's Earthbound Legguards
-							i(195486),	-- Twisted Loam Spaulders
-							i(194301),	-- Whispering Incarnate Icon
-
-						},
-					}),
-					e(2502, {	-- Dathea, Ascended
-						["crs"] = { 189813 },	-- Dathea, Ascended
-						["g"] = {
-							TOKEN_LFR(196587, {	-- Dreadful Garnet Forgestone
-								i(200407),	-- Grasps of the Haunted Frostbrood
-								i(200344),	-- Skybound Avenger's Grips
-								i(200335),	-- Scalesworn Cultist's Gloves
-							}),
-							TOKEN_LFR(196597, {	-- Mystic Garnet Forgestone
-								i(200353),	-- Lost Landcaller's Claws
-								i(200389),	-- Stormwing Harrier's Handguards
-								i(200317),	-- Crystal Scholar's Pageturners
-							}),
-							TOKEN_LFR(196602, {	-- Venerated Garnet Forgestone
-								i(200416),	-- Virtuous Silver Gauntlets
-								i(200326),	-- Draconic Hierophant's Grips
-								i(200398),	-- Gauntlets of Infused Earth
-							}),
-							TOKEN_LFR(196592, {	-- Zenith Garnet Forgestone
-								i(200380),	-- Gauntlets of the Awakened
-								i(200362),	-- Palms of the Waking Fist
-								i(200371),	-- Vault Delver's Lockbreakers
-								i(200425),	-- Gauntlets of the Walking Mountain
-							}),
-							i(195493),	-- Ascended Squallspires
-							i(195495),	-- Daring Chasm-Leapers
-							i(195494),	-- Dathea's Cyclonic Cage
-							i(195496),	-- Eye of the Vengeful Hurricane
-							i(195491),	-- Infused Stormglaives
-							i(195481),	-- Scepter of Drastic Measures
-							i(194302),	-- Storm-Eater's Boon
-							i(195492),	-- Windborne Hatsuburi
-						},
-					}),
-				}),
-				header(HEADERS.Achievement, 17111, {	-- Caverns of Infusion
-					e(2500, {	-- Terros
-						["crs"] = { 190496 },	-- Terros
-						["g"] = {
-							i(195504),	-- Awakened Planar Pillar
-							i(195500),	-- Compressed Cultist's Frock
-							i(195503),	-- Enduring Shard of Terros
-							i(195499),	-- Faultline Mantle
-							i(195501),	-- Fused Shale Waistband
-							i(195498),	-- Gaze of the Living Quarry
-							i(195497),	-- Quake-Detecting Seismostaff
-							i(194303),	-- Rumbling Ruby
-							i(195502),	-- Terros' Captive Core
-						},
-					}),
-					e(2482, {	-- Sennarth, the Cold Breath
-						["crs"] = { 187967 },	-- Sennarth, the Cold Breath
-						["g"] = {
-							TOKEN_LFR(196588, {	-- Dreadful Jade Forgestone
-								i(200409),	-- Greaves of the Haunted Frostbrood
-								i(200346),	-- Skybound Avenger's Legguards
-								i(200337),	-- Scalesworn Cultist's Culottes
-							}),
-							TOKEN_LFR(196598, {	-- Mystic Jade Forgestone
-								i(200355),	-- Lost Landcaller's Leggings
-								i(200391),	-- Stormwing Harrier's Greaves
-								i(200319),	-- Crystal Scholar's Britches
-							}),
-							TOKEN_LFR(196603, {	-- Venerated Jade Forgestone
-								i(200418),	-- Virtuous Silver Cuisses
-								i(200328),	-- Draconic Hierophant's Britches
-								i(200400),	-- Leggings of Infused Earth
-							}),
-							TOKEN_LFR(196593, {	-- Zenith Jade Forgestone
-								i(200382),	-- Legguards of the Awakened
-								i(200364),	-- Legguards of the Waking Fist
-								i(200373),	-- Vault Delver's Pantaloons
-								i(200427),	-- Poleyns of the Walking Mountain
-							}),
-							i(195511),	-- Acid-Proof Webbing
-							i(195505),	-- Caustic Coldsteel Slicer
-							i(195508),	-- Chilled Silken Restraints
-							i(195506),	-- Diamond-Etched Gauntlets
-							i(195510),	-- Frostbreath Thumper
-							i(195509),	-- Ice-Climber's Cleats
-							i(194304),	-- Iceblood Deathsnare
-							i(195507),	-- Unnatural Dripstone Cinch
-						},
-					}),
-					e(2491, {	-- Kurog Grimtotem
-						["crs"] = { 181378 },	-- Kurog Grimtotem
-						["g"] = {
-							TOKEN_LFR(196586, {	-- Dreadful Amethyst Forgestone
-								i(200405),	-- Breastplate of the Haunted Frostbrood
-								i(200342),	-- Skybound Avenger's Harness
-								i(200333),	-- Scalesworn Cultist's Frosk
-							}),
-							TOKEN_LFR(196596, {	-- Mystic Amethyst Forgestone
-								i(200351),	-- Lost Landcaller's Robes
-								i(200387),	-- Stormwing Harrier's Cuirass
-								i(200315),	-- Crystal Scholar's Tunic
-							}),
-							TOKEN_LFR(196601, {	-- Venerated Amethyst Forgestone
-								i(200414),	-- Virtuous Silver Breastplate
-								i(200324),	-- Draconic Hierophant's Vestment
-								i(200396),	-- Robe of Infused Earth
-							}),
-							TOKEN_LFR(196591, {	-- Zenith Amethyst Forgestone
-								i(200378),	-- Hauberk of the Awakened
-								i(200360),	-- Chestwrap of the Waking Fist
-								i(200369),	-- Vault Delver's Brigandine
-								i(200423),	-- Husk of the Walking Mountain
-							}),
-							i(194306),	-- All-Totem of the Master
-							i(195483),	-- Awak'mani, Grimtotem's Legacy
-							i(194305),	-- Controlled Current Technique
-							i(195512),	-- Fist of the Grand Summoner
-							i(195517),	-- Kurog's Thunderhooves
-							i(195515),	-- Magatha's Spiritual Sash
-							i(195513),	-- Scripture of Primal Devotion
-							i(195516),	-- Surging-Song Conductors
-							i(195514),	-- Treacherous Totem Wraps
-							i(200916),	-- Formula: Illusion: Primal Mastery (RECIPE!)
-						},
-					}),
-				}),
-				header(HEADERS.Achievement, 17112, {	-- Fury of the Storm
-					e(2493, {	-- Broodkeeper Diurna
-						["crs"] = { 190245 },	-- Broodkeeper Diurna
-						["g"] = {
-							TOKEN_LFR(196589, {	-- Dreadful Lapis Forgestone
-								i(200410),	-- Jaws of the Haunted Frostbrood
-								i(200347),	-- Skybound Avenger's Ailerons
-								i(200338),	-- Scalesworn Cultist's Effigy
-							}),
-							TOKEN_LFR(196599, {	-- Mystic Lapis Forgestone
-								i(200356),	-- Lost Landcaller's Mantle
-								i(200392),	-- Stormwing Harrier's Pinions
-								i(200320),	-- Crystal Scholar's Beacons
-							}),
-							TOKEN_LFR(196604, {	-- Venerated Lapis Forgestone
-								i(200419),	-- Virtuous Silver Pauldrons
-								i(200329),	-- Draconic Hierophant's Wisdom
-								i(200401),	-- Calderas of Infused Earth
-							}),
-							TOKEN_LFR(196594, {	-- Zenith Lapis Forgestone
-								i(200383),	-- Talons of the Awakened
-								i(200365),	-- Mantle of the Waking Fist
-								i(200374),	-- Vault Delver's Epaulets
-								i(200428),	-- Peaks of the Walking Mountain
-							}),
-							i(194307),	-- Broodkeeper's Promise
-							i(195520),	-- Broodsworn Legionnaire's Pavise
-							i(195523),	-- Eggtender's Safety Mitts
-							i(195519),	-- Kharnalex, The First Light
-							i(195525),	-- Loyal Flametender's Bracers
-							i(194308),	-- Manic Grieftorch
-							i(195524),	-- Matriarch's Opulent Girdle
-							i(195521),	-- Ornamental Drakonid Claw
-							i(195526),	-- Seal of Filial Duty
-							i(195522),	-- Tassets of the Tarasek Legion
-						},
-					}),
-					e(2499, {	-- Raszageth the Storm-Eater
-						["crs"] = { 193909 },	-- Raszageth the Storm-Eater
-						["g"] = {
-							TOKEN_LFR(196590, {	-- Dreadful Topaz Forgestone
-								i(200408),	-- Maw of the Haunted Frostbrood
-								i(200345),	-- Skybound Avenger's Visor
-								i(200336),	-- Scalesworn Cultist's Scorn
-							}),
-							TOKEN_LFR(196600, {	-- Mystic Topaz Forgestone
-								i(200354),	-- Lost Landcaller's Antlers
-								i(200390),	-- Stormwing Harrier's Skullmask
-								i(200318),	-- Crystal Scholar's Cowl
-							}),
-							TOKEN_LFR(196605, {	-- Venerated Topaz Forgestone
-								i(200417),	-- Virtuous Silver Heaume
-								i(200327),	-- Draconic Hierophant's Archcowl
-								i(200399),	-- Faceguard of Infused Earth
-							}),
-							TOKEN_LFR(196595, {	-- Zenith Topaz Forgestone
-								i(200381),	-- Crown of the Awakened
-								i(200363),	-- Gaze of the Waking Fist
-								i(200372),	-- Vault Delver's Vizard
-								i(200426),	-- Casque of the Walking Mountain
-							}),
-							i(195531),	-- Calamitous Shockguards
-							i(194310),	-- Desperate Invoker's Codex
-							i(195528),	-- Incarnate Sky-Splitter
-							i(195530),	-- Loathsome Thunderhosen
-							i(195527),	-- Neltharax, Enemy of the Sky
-							i(195532),	-- Sandals of the Wild Sovereign
-							i(195533),	-- Shackles of Titanic Failure
-							i(194309),	-- Spiteful Storm
-							i(195529),	-- Stormlash's Last Resort
-							i(201790),	-- Renewed Proto-Drake: Embodiment of the Storm-Eater (DM!)
-						},
-					}),
+				BossOnly(DIURNA),
+				BossOnly(RASZAGETH, {
+					i(201790),	-- Renewed Proto-Drake: Embodiment of the Storm-Eater (MM!)
 				}),
 			}),
-			d(NORMAL_RAID, {
+			Difficulty(DIFFICULTY.RAID.LFR).AddGroups({
+				-- #if AFTER TWW
+				o(382621, {	-- Revival Catalyst Console	-- LFR --
+					["description"] = "The Revival Catalyst is a system that lets you convert LFR Mode Non-set items from the Vault of the Incarnates Raid into your class' LFR Transmog Set.\n\nThe catalyst is in Tyrhold in Thaldraszus, Dragon Isles.\n\nMake sure to equip your item first before converting it.",
+					["coord"] = { 60.6, 53.8, THALDRASZUS },
+					["modelScale"] = 4,
+					["g"] = bubbleDown({ ["bonusID"] = 451 }, {
+						cl(DEATHKNIGHT, {
+							["sym"] = SymRaidVault(DEATHKNIGHT, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200413),	-- Drape of the Haunted Frostbrood
+								i(200411),	-- Girdle of the Haunted Frostbrood
+								i(200406),	-- Sabatons of the Haunted Frostbrood
+								i(200412),	-- Vambraces of the Haunted Frostbrood
+							},
+						}),
+						cl(DEMONHUNTER, {
+							["sym"] = SymRaidVault(DEMONHUNTER, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200343),	-- Skybound Avenger's Boots
+								i(200350),	-- Skybound Avenger's Cape
+								i(200348),	-- Skybound Avenger's Waistwrap
+								i(200349),	-- Skybound Avenger's Wristbands
+							},
+						}),
+						cl(DRUID, {
+							["sym"] = SymRaidVault(DRUID, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200358),	-- Lost Landcaller's Bindings
+								i(200359),	-- Lost Landcaller's Laena
+								i(200352),	-- Lost Landcaller's Moccasins
+								i(200357),	-- Lost Landcaller's Sash
+							},
+						}),
+						cl(EVOKER, {
+							["sym"] = SymRaidVault(EVOKER, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200385),	-- Bracers of the Awakened
+								i(200384),	-- Chain of the Awakened
+								i(200386),	-- Shroud of the Awakened
+								i(200379),	-- Treads of the Awakened
+							},
+						}),
+						cl(HUNTER, {
+							["sym"] = SymRaidVault(HUNTER, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200393),	-- Stormwing Harrier's Belt
+								i(200395),	-- Stormwing Harrier's Plumage
+								i(200388),	-- Stormwing Harrier's Sabatons
+								i(200394),	-- Stormwing Harrier's Wristguards
+							},
+						}),
+						cl(MAGE, {
+							["sym"] = SymRaidVault(MAGE, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200323),	-- Crystal Scholar's Cape
+								i(200321),	-- Crystal Scholar's Cinch
+								i(200322),	-- Crystal Scholar's Cuffs
+								i(200316),	-- Crystal Scholar's Footwraps
+							},
+						}),
+						cl(MONK, {
+							["sym"] = SymRaidVault(MONK, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200367),	-- Cuffs of the Waking Fist
+								i(200368),	-- Drape of the Waking Fist
+								i(200361),	-- Gaiters of the Waking Fist
+								i(200366),	-- Girdle of the Waking Fist
+							},
+						}),
+						cl(PALADIN, {
+							["sym"] = SymRaidVault(PALADIN, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200421),	-- Virtuous Silver Bracers
+								i(200422),	-- Virtuous Silver Cloak
+								i(200420),	-- Virtuous Silver Faulds
+								i(200415),	-- Virtuous Silver Greatboots
+							},
+						}),
+						cl(PRIEST, {
+							["sym"] = SymRaidVault(PRIEST, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200332),	-- Draconic Hierophant's Drape
+								i(200330),	-- Draconic Hierophant's Sash
+								i(200325),	-- Draconic Hierophant's Slippers
+								i(200331),	-- Draconic Hierophant's Wristbands
+							},
+						}),
+						cl(ROGUE, {
+							["sym"] = SymRaidVault(ROGUE, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200377),	-- Vault Delver's Camouflage
+								i(200370),	-- Vault Delver's Shinguards
+								i(200376),	-- Vault Delver's Sweatbands
+								i(200375),	-- Vault Delver's Utility Belt
+							},
+						}),
+						cl(SHAMAN, {
+							["sym"] = SymRaidVault(SHAMAN, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200403),	-- Cuffs of Infused Earth
+								i(200402),	-- Faulds of Infused Earth
+								i(200404),	-- Greatcloak of Infused Earth
+								i(200397),	-- Treads of Infused Earth
+							},
+						}),
+						cl(WARLOCK, {
+							["sym"] = SymRaidVault(WARLOCK, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200339),	-- Scalesworn Cultist's Girdle
+								i(200341),	-- Scalesworn Cultist's Runedrape
+								i(200334),	-- Scalesworn Cultist's Sandals
+								i(200340),	-- Scalesworn Cultist's Wristwraps
+							},
+						}),
+						cl(WARRIOR, {
+							["sym"] = SymRaidVault(WARRIOR, DIFFICULTY.RAID.LFR),
+							["g"] = {
+								i(200424),	-- Boots of the Walking Mountain
+								i(200430),	-- Bracers of the Walking Mountain
+								i(200429),	-- Core of the Walking Mountain
+								i(200431),	-- Drape of the Walking Mountain
+							},
+						}),
+					}),
+				}),
+				-- #endif
+				ZoneDrops(),
+				header(HEADERS.Achievement, 17110, {	-- The Primal Bulwark
+					Boss(ERANOG),
+					Boss(THE_PRIMAL_COUNCIL),
+					Boss(DATHEA),
+				}),
+				header(HEADERS.Achievement, 17111, {	-- Caverns of Infusion
+					Boss(TERROS),
+					Boss(SENNARTH),
+					Boss(KUROG),
+				}),
+				header(HEADERS.Achievement, 17112, {	-- Fury of the Storm
+					Boss(DIURNA),
+					Boss(RASZAGETH),
+				}),
+			}),
+			Difficulty(DIFFICULTY.RAID.MULTI.NORMAL_PLUS).AddGroups({
+				BossOnly(ERANOG, {
+					ach(16335),	-- What Frozen Things Do
+				}),
+				BossOnly(TERROS, {
+					ach(16365),	-- Little Friends
+				}),
+				BossOnly(THE_PRIMAL_COUNCIL, {
+					ach(16364),	-- The Lunker Below
+				}),
+				BossOnly(SENNARTH, {
+					ach(16419),	-- I Was Saving That For Later
+				}),
+				BossOnly(DATHEA, {
+					ach(16458),	-- Nothing But Air
+				}),
+				BossOnly(KUROG, {
+					ach(16450),	-- The Power is MINE!
+				}),
+				BossOnly(DIURNA, {
+					ach(16442),	-- Incubation Extermination
+				}),
+				BossOnly(RASZAGETH, {
+					ach(16451),	-- The Ol Raszle Daszle
+				}),
+			}),
+			Difficulty(DIFFICULTY.RAID.NORMAL).AddGroups({
+				-- #if AFTER TWW
+				o(382621, {	-- Revival Catalyst Console	-- NORMAL --
+					["description"] = "The Revival Catalyst is a system that lets you convert Normal Mode Non-set items from the Vault of the Incarnates Raid into your class' LFR Transmog Set.\n\nThe catalyst is in Tyrhold in Thaldraszus, Dragon Isles.\n\nMake sure to equip your item first before converting it.",
+					["coord"] = { 60.6, 53.8, THALDRASZUS },
+					["modelScale"] = 4,
+					["g"] = bubbleDown({ ["modID"] = 3 }, {
+						cl(DEATHKNIGHT, {
+							["sym"] = SymRaidVault(DEATHKNIGHT, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200413),	-- Drape of the Haunted Frostbrood
+								i(200411),	-- Girdle of the Haunted Frostbrood
+								i(200406),	-- Sabatons of the Haunted Frostbrood
+								i(200412),	-- Vambraces of the Haunted Frostbrood
+							},
+						}),
+						cl(DEMONHUNTER, {
+							["sym"] = SymRaidVault(DEMONHUNTER, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200343),	-- Skybound Avenger's Boots
+								i(200350),	-- Skybound Avenger's Cape
+								i(200348),	-- Skybound Avenger's Waistwrap
+								i(200349),	-- Skybound Avenger's Wristbands
+							},
+						}),
+						cl(DRUID, {
+							["sym"] = SymRaidVault(DRUID, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200358),	-- Lost Landcaller's Bindings
+								i(200359),	-- Lost Landcaller's Laena
+								i(200352),	-- Lost Landcaller's Moccasins
+								i(200357),	-- Lost Landcaller's Sash
+							},
+						}),
+						cl(EVOKER, {
+							["sym"] = SymRaidVault(EVOKER, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200385),	-- Bracers of the Awakened
+								i(200384),	-- Chain of the Awakened
+								i(200386),	-- Shroud of the Awakened
+								i(200379),	-- Treads of the Awakened
+							},
+						}),
+						cl(HUNTER, {
+							["sym"] = SymRaidVault(HUNTER, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200393),	-- Stormwing Harrier's Belt
+								i(200395),	-- Stormwing Harrier's Plumage
+								i(200388),	-- Stormwing Harrier's Sabatons
+								i(200394),	-- Stormwing Harrier's Wristguards
+							},
+						}),
+						cl(MAGE, {
+							["sym"] = SymRaidVault(MAGE, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200323),	-- Crystal Scholar's Cape
+								i(200321),	-- Crystal Scholar's Cinch
+								i(200322),	-- Crystal Scholar's Cuffs
+								i(200316),	-- Crystal Scholar's Footwraps
+							},
+						}),
+						cl(MONK, {
+							["sym"] = SymRaidVault(MONK, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200367),	-- Cuffs of the Waking Fist
+								i(200368),	-- Drape of the Waking Fist
+								i(200361),	-- Gaiters of the Waking Fist
+								i(200366),	-- Girdle of the Waking Fist
+							},
+						}),
+						cl(PALADIN, {
+							["sym"] = SymRaidVault(PALADIN, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200421),	-- Virtuous Silver Bracers
+								i(200422),	-- Virtuous Silver Cloak
+								i(200420),	-- Virtuous Silver Faulds
+								i(200415),	-- Virtuous Silver Greatboots
+							},
+						}),
+						cl(PRIEST, {
+							["sym"] = SymRaidVault(PRIEST, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200332),	-- Draconic Hierophant's Drape
+								i(200330),	-- Draconic Hierophant's Sash
+								i(200325),	-- Draconic Hierophant's Slippers
+								i(200331),	-- Draconic Hierophant's Wristbands
+							},
+						}),
+						cl(ROGUE, {
+							["sym"] = SymRaidVault(ROGUE, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200377),	-- Vault Delver's Camouflage
+								i(200370),	-- Vault Delver's Shinguards
+								i(200376),	-- Vault Delver's Sweatbands
+								i(200375),	-- Vault Delver's Utility Belt
+							},
+						}),
+						cl(SHAMAN, {
+							["sym"] = SymRaidVault(SHAMAN, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200403),	-- Cuffs of Infused Earth
+								i(200402),	-- Faulds of Infused Earth
+								i(200404),	-- Greatcloak of Infused Earth
+								i(200397),	-- Treads of Infused Earth
+							},
+						}),
+						cl(WARLOCK, {
+							["sym"] = SymRaidVault(WARLOCK, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200339),	-- Scalesworn Cultist's Girdle
+								i(200341),	-- Scalesworn Cultist's Runedrape
+								i(200334),	-- Scalesworn Cultist's Sandals
+								i(200340),	-- Scalesworn Cultist's Wristwraps
+							},
+						}),
+						cl(WARRIOR, {
+							["sym"] = SymRaidVault(WARRIOR, DIFFICULTY.RAID.NORMAL),
+							["g"] = {
+								i(200424),	-- Boots of the Walking Mountain
+								i(200430),	-- Bracers of the Walking Mountain
+								i(200429),	-- Core of the Walking Mountain
+								i(200431),	-- Drape of the Walking Mountain
+							},
+						}),
+					}),
+				}),
+				-- #endif
 				n(QUESTS, {
 					q(71018, {	-- Vault of the Incarnates: Break a Few Eggs (N)
 						["provider"] = { "n", 193460 },	-- Kalecgos
@@ -466,804 +870,379 @@ root(ROOTS.Instances, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_L
 						},
 					}),
 				}),
-				n(ZONE_DROPS, {
-					i(202004),	-- Brawler's Earthen Cuirass [BoE]
-					i(201992),	-- Emissary's Flamewrought Seal [BoE]
-					i(202005),	-- Frozen Claw Mantle [BoE]
-					i(202008),	-- Galvanic Gaiters [BoE]
-					i(202006),	-- Greathelm of Horned Fury [BoE]
-					i(202009),	-- Lavamancer's Ceremonial Waistguard [BoE]
-					i(202003),	-- Primal Seeker's Leggings [BoE]
-					i(202010),	-- Primalist Warden's Bracers [BoE]
-					i(202007),	-- Woven Stone Bracelets [BoE]
+				ZoneDrops(),
+				Boss(ERANOG),
+				Boss(TERROS),
+				Boss(THE_PRIMAL_COUNCIL),
+				Boss(SENNARTH),
+				Boss(DATHEA),
+				Boss(KUROG),
+				Boss(DIURNA),
+				Boss(RASZAGETH),
+			}),
+			Difficulty(DIFFICULTY.RAID.MULTI.HEROIC_PLUS).AddGroups({
+				CommonBossDrops({
+					TempForceMisc(ig(201740, {	-- Elemental Codex of Ultimate Power
+						r(370543),	-- Elemental Potion of Ultimate Power (RECIPE!)
+						r(370672),	-- Potion Cauldron of Ultimate Power (RECIPE!)
+					})),
 				}),
-				e(2480, {	-- Eranog
-					["crs"] = { 184972 },	-- Eranog
-					["g"] = {
-						ach(16335),	-- What Frozen Things Do
-						i(195482),	-- Decorated Commander's Cindercloak
-						i(194299),	-- Decoration of Flame
-						i(195476),	-- Eranog's Adorned Sallet
-						i(195475),	-- Flame Marshal's Bulwark
-						i(195479),	-- Flametender's Legwraps
-						i(195477),	-- Scaldrons of Molten Might
-						i(195480),	-- Seal of Diurna's Chosen
-						i(195490),	-- Searing Blazecaster
-						i(195478),	-- Valdrakken Protector's Turncoat
-					},
-				}),
-				e(2500, {	-- Terros
-					["crs"] = { 190496 },	-- Terros
-					["g"] = {
-						ach(16365),	-- Little Friends
-						i(195504),	-- Awakened Planar Pillar
-						i(195500),	-- Compressed Cultist's Frock
-						i(195503),	-- Enduring Shard of Terros
-						i(195499),	-- Faultline Mantle
-						i(195501),	-- Fused Shale Waistband
-						i(195498),	-- Gaze of the Living Quarry
-						i(195497),	-- Quake-Detecting Seismostaff
-						i(194303),	-- Rumbling Ruby
-						i(195502),	-- Terros' Captive Core
-					},
-				}),
-				e(2486, {	-- The Primal Council
-					["crs"] = {
-						187771,	-- Kadros Icewrath
-						187768,	-- Dathea Stormlash
-						187767,	-- Embar Firepath
-						187772,	-- Opalfang
-					},
-					["g"] = {
-						ach(16364),	-- The Lunker Below
-						i(194300),	-- Conjured Chillglobe
-						i(195485),	-- Councilor's Terrormask
-						i(195487),	-- Embar's Ashen Hauberk
-						i(195484),	-- Icewrath's Channeling Conduit
-						i(195518),	-- Imbued Qalashi Crusher
-						i(195489),	-- Maul of the Earthshaper
-						i(195488),	-- Opalfang's Earthbound Legguards
-						i(195486),	-- Twisted Loam Spaulders
-						i(194301),	-- Whispering Incarnate Icon
-
-					},
-				}),
-				e(2482, {	-- Sennarth, the Cold Breath
-					["crs"] = { 187967 },	-- Sennarth, the Cold Breath
-					["g"] = {
-						ach(16419),	-- I Was Saving That For Later
-						TOKEN_NORMAL(196588, {	-- Dreadful Jade Forgestone
-							i(200409),	-- Greaves of the Haunted Frostbrood
-							i(200346),	-- Skybound Avenger's Legguards
-							i(200337),	-- Scalesworn Cultist's Culottes
-						}),
-						TOKEN_NORMAL(196598, {	-- Mystic Jade Forgestone
-							i(200355),	-- Lost Landcaller's Leggings
-							i(200391),	-- Stormwing Harrier's Greaves
-							i(200319),	-- Crystal Scholar's Britches
-						}),
-						TOKEN_NORMAL(196603, {	-- Venerated Jade Forgestone
-							i(200418),	-- Virtuous Silver Cuisses
-							i(200328),	-- Draconic Hierophant's Britches
-							i(200400),	-- Leggings of Infused Earth
-						}),
-						TOKEN_NORMAL(196593, {	-- Zenith Jade Forgestone
-							i(200382),	-- Legguards of the Awakened
-							i(200364),	-- Legguards of the Waking Fist
-							i(200373),	-- Vault Delver's Pantaloons
-							i(200427),	-- Poleyns of the Walking Mountain
-						}),
-						i(195511),	-- Acid-Proof Webbing
-						i(195505),	-- Caustic Coldsteel Slicer
-						i(195508),	-- Chilled Silken Restraints
-						i(195506),	-- Diamond-Etched Gauntlets
-						i(195510),	-- Frostbreath Thumper
-						i(195509),	-- Ice-Climber's Cleats
-						i(194304),	-- Iceblood Deathsnare
-						i(195507),	-- Unnatural Dripstone Cinch
-					},
-				}),
-				e(2502, {	-- Dathea, Ascended
-					["crs"] = { 189813 },	-- Dathea, Ascended
-					["g"] = {
-						ach(16458),	-- Nothing But Air
-						TOKEN_NORMAL(196587, {	-- Dreadful Garnet Forgestone
-							i(200407),	-- Grasps of the Haunted Frostbrood
-							i(200344),	-- Skybound Avenger's Grips
-							i(200335),	-- Scalesworn Cultist's Gloves
-						}),
-						TOKEN_NORMAL(196597, {	-- Mystic Garnet Forgestone
-							i(200353),	-- Lost Landcaller's Claws
-							i(200389),	-- Stormwing Harrier's Handguards
-							i(200317),	-- Crystal Scholar's Pageturners
-						}),
-						TOKEN_NORMAL(196602, {	-- Venerated Garnet Forgestone
-							i(200416),	-- Virtuous Silver Gauntlets
-							i(200326),	-- Draconic Hierophant's Grips
-							i(200398),	-- Gauntlets of Infused Earth
-						}),
-						TOKEN_NORMAL(196592, {	-- Zenith Garnet Forgestone
-							i(200380),	-- Gauntlets of the Awakened
-							i(200362),	-- Palms of the Waking Fist
-							i(200371),	-- Vault Delver's Lockbreakers
-							i(200425),	-- Gauntlets of the Walking Mountain
-						}),
-						i(195493),	-- Ascended Squallspires
-						i(195495),	-- Daring Chasm-Leapers
-						i(195494),	-- Dathea's Cyclonic Cage
-						i(195496),	-- Eye of the Vengeful Hurricane
-						i(195491),	-- Infused Stormglaives
-						i(195481),	-- Scepter of Drastic Measures
-						i(194302),	-- Storm-Eater's Boon
-						i(195492),	-- Windborne Hatsuburi
-					},
-				}),
-				e(2491, {	-- Kurog Grimtotem
-					["crs"] = { 181378 },	-- Kurog Grimtotem
-					["g"] = {
-						ach(16450),	-- The Power is MINE!
-						TOKEN_NORMAL(196586, {	-- Dreadful Amethyst Forgestone
-							i(200405),	-- Breastplate of the Haunted Frostbrood
-							i(200342),	-- Skybound Avenger's Harness
-							i(200333),	-- Scalesworn Cultist's Frosk
-						}),
-						TOKEN_NORMAL(196596, {	-- Mystic Amethyst Forgestone
-							i(200351),	-- Lost Landcaller's Robes
-							i(200387),	-- Stormwing Harrier's Cuirass
-							i(200315),	-- Crystal Scholar's Tunic
-						}),
-						TOKEN_NORMAL(196601, {	-- Venerated Amethyst Forgestone
-							i(200414),	-- Virtuous Silver Breastplate
-							i(200324),	-- Draconic Hierophant's Vestment
-							i(200396),	-- Robe of Infused Earth
-						}),
-						TOKEN_NORMAL(196591, {	-- Zenith Amethyst Forgestone
-							i(200378),	-- Hauberk of the Awakened
-							i(200360),	-- Chestwrap of the Waking Fist
-							i(200369),	-- Vault Delver's Brigandine
-							i(200423),	-- Husk of the Walking Mountain
-						}),
-						i(194306),	-- All-Totem of the Master
-						i(195483),	-- Awak'mani, Grimtotem's Legacy
-						i(194305),	-- Controlled Current Technique
-						i(195512),	-- Fist of the Grand Summoner
-						i(195517),	-- Kurog's Thunderhooves
-						i(195515),	-- Magatha's Spiritual Sash
-						i(195513),	-- Scripture of Primal Devotion
-						i(195516),	-- Surging-Song Conductors
-						i(195514),	-- Treacherous Totem Wraps
-						i(200916),	-- Formula: Illusion: Primal Mastery (RECIPE!)
-					},
-				}),
-				e(2493, {	-- Broodkeeper Diurna
-					["crs"] = { 190245 },	-- Broodkeeper Diurna
-					["g"] = {
-						ach(16442),	-- Incubation Extermination
-						TOKEN_NORMAL(196589, {	-- Dreadful Lapis Forgestone
-							i(200410),	-- Jaws of the Haunted Frostbrood
-							i(200347),	-- Skybound Avenger's Ailerons
-							i(200338),	-- Scalesworn Cultist's Effigy
-						}),
-						TOKEN_NORMAL(196599, {	-- Mystic Lapis Forgestone
-							i(200356),	-- Lost Landcaller's Mantle
-							i(200392),	-- Stormwing Harrier's Pinions
-							i(200320),	-- Crystal Scholar's Beacons
-						}),
-						TOKEN_NORMAL(196604, {	-- Venerated Lapis Forgestone
-							i(200419),	-- Virtuous Silver Pauldrons
-							i(200329),	-- Draconic Hierophant's Wisdom
-							i(200401),	-- Calderas of Infused Earth
-						}),
-						TOKEN_NORMAL(196594, {	-- Zenith Lapis Forgestone
-							i(200383),	-- Talons of the Awakened
-							i(200365),	-- Mantle of the Waking Fist
-							i(200374),	-- Vault Delver's Epaulets
-							i(200428),	-- Peaks of the Walking Mountain
-						}),
-						i(194307),	-- Broodkeeper's Promise
-						i(195520),	-- Broodsworn Legionnaire's Pavise
-						i(195523),	-- Eggtender's Safety Mitts
-						i(195519),	-- Kharnalex, The First Light
-						i(195525),	-- Loyal Flametender's Bracers
-						i(194308),	-- Manic Grieftorch
-						i(195524),	-- Matriarch's Opulent Girdle
-						i(195521),	-- Ornamental Drakonid Claw
-						i(195526),	-- Seal of Filial Duty
-						i(195522),	-- Tassets of the Tarasek Legion
-					},
-				}),
-				e(2499, {	-- Raszageth the Storm-Eater
-					["crs"] = { 193909 },	-- Raszageth the Storm-Eater
-					["g"] = {
-						ach(16451),	-- The Ol Raszle Daszle
-						TOKEN_NORMAL(196590, {	-- Dreadful Topaz Forgestone
-							i(200408),	-- Maw of the Haunted Frostbrood
-							i(200345),	-- Skybound Avenger's Visor
-							i(200336),	-- Scalesworn Cultist's Scorn
-						}),
-						TOKEN_NORMAL(196600, {	-- Mystic Topaz Forgestone
-							i(200354),	-- Lost Landcaller's Antlers
-							i(200390),	-- Stormwing Harrier's Skullmask
-							i(200318),	-- Crystal Scholar's Cowl
-						}),
-						TOKEN_NORMAL(196605, {	-- Venerated Topaz Forgestone
-							i(200417),	-- Virtuous Silver Heaume
-							i(200327),	-- Draconic Hierophant's Archcowl
-							i(200399),	-- Faceguard of Infused Earth
-						}),
-						TOKEN_NORMAL(196595, {	-- Zenith Topaz Forgestone
-							i(200381),	-- Crown of the Awakened
-							i(200363),	-- Gaze of the Waking Fist
-							i(200372),	-- Vault Delver's Vizard
-							i(200426),	-- Casque of the Walking Mountain
-						}),
-						i(195531),	-- Calamitous Shockguards
-						i(194310),	-- Desperate Invoker's Codex
-						i(195528),	-- Incarnate Sky-Splitter
-						i(195530),	-- Loathsome Thunderhosen
-						i(195527),	-- Neltharax, Enemy of the Sky
-						i(195532),	-- Sandals of the Wild Sovereign
-						i(195533),	-- Shackles of Titanic Failure
-						i(194309),	-- Spiteful Storm
-						i(195529),	-- Stormlash's Last Resort
-						i(201790),	-- Renewed Proto-Drake: Embodiment of the Storm-Eater (DM!)
-					},
+				BossOnly(ERANOG),
+				BossOnly(TERROS),
+				BossOnly(THE_PRIMAL_COUNCIL),
+				BossOnly(SENNARTH),
+				BossOnly(DATHEA),
+				BossOnly(KUROG),
+				BossOnly(DIURNA),
+				BossOnly(RASZAGETH, {
+					ach(17107, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 }}),	-- Ahead of the Curve: Raszageth the Storm-Eater
 				}),
 			}),
-			d(HEROIC_RAID, {
-				n(COMMON_BOSS_DROPS, {
-					["crs"] = {
-						184972,	-- Eranog
-						190496,	-- Terros
-						187771,	-- The Primal Council — Kadros Icewrath
-						187768,	-- The Primal Council — Dathea Stormlash
-						187767,	-- The Primal Council — Embar Firepath
-						187772,	-- The Primal Council — Opalfang
-						187967,	-- Sennarth, the Cold Breath
-						189813,	-- Dathea, Ascended
-						181378,	-- Kurog Grimtotem
-						190245,	-- Broodkeeper Diurna
-						193909,	-- Raszageth the Storm-Eater
-					},
-					["g"] = {
-						i(201740, {	-- Elemental Codex of Ultimate Power
-							["collectible"] = false,
+			Difficulty(DIFFICULTY.RAID.HEROIC).AddGroups({
+				-- #if AFTER TWW
+				o(382621, {	-- Revival Catalyst Console	-- HEROIC --
+					["description"] = "The Revival Catalyst is a system that lets you convert Heroic Mode Non-set items from the Vault of the Incarnates Raid into your class' Heroic Transmog Set.\n\nThe catalyst is in Tyrhold in Thaldraszus, Dragon Isles.\n\nMake sure to equip your item first before converting it.",
+					["coord"] = { 60.6, 53.8, THALDRASZUS },
+					["modelScale"] = 4,
+					["g"] = bubbleDown({ ["bonusID"] = 1 }, {
+						cl(DEATHKNIGHT, {
+							["sym"] = SymRaidVault(DEATHKNIGHT, DIFFICULTY.RAID.HEROIC),
 							["g"] = {
-								r(370543),	-- Elemental Potion of Ultimate Power (RECIPE!)
-								r(370672),	-- Potion Cauldron of Ultimate Power (RECIPE!)
+								i(200413),	-- Drape of the Haunted Frostbrood
+								i(200411),	-- Girdle of the Haunted Frostbrood
+								i(200406),	-- Sabatons of the Haunted Frostbrood
+								i(200412),	-- Vambraces of the Haunted Frostbrood
 							},
 						}),
-						i(200686),	-- Primal Focus
-					},
+						cl(DEMONHUNTER, {
+							["sym"] = SymRaidVault(DEMONHUNTER, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200343),	-- Skybound Avenger's Boots
+								i(200350),	-- Skybound Avenger's Cape
+								i(200348),	-- Skybound Avenger's Waistwrap
+								i(200349),	-- Skybound Avenger's Wristbands
+							},
+						}),
+						cl(DRUID, {
+							["sym"] = SymRaidVault(DRUID, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200358),	-- Lost Landcaller's Bindings
+								i(200359),	-- Lost Landcaller's Laena
+								i(200352),	-- Lost Landcaller's Moccasins
+								i(200357),	-- Lost Landcaller's Sash
+							},
+						}),
+						cl(EVOKER, {
+							["sym"] = SymRaidVault(EVOKER, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200385),	-- Bracers of the Awakened
+								i(200384),	-- Chain of the Awakened
+								i(200386),	-- Shroud of the Awakened
+								i(200379),	-- Treads of the Awakened
+							},
+						}),
+						cl(HUNTER, {
+							["sym"] = SymRaidVault(HUNTER, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200393),	-- Stormwing Harrier's Belt
+								i(200395),	-- Stormwing Harrier's Plumage
+								i(200388),	-- Stormwing Harrier's Sabatons
+								i(200394),	-- Stormwing Harrier's Wristguards
+							},
+						}),
+						cl(MAGE, {
+							["sym"] = SymRaidVault(MAGE, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200323),	-- Crystal Scholar's Cape
+								i(200321),	-- Crystal Scholar's Cinch
+								i(200322),	-- Crystal Scholar's Cuffs
+								i(200316),	-- Crystal Scholar's Footwraps
+							},
+						}),
+						cl(MONK, {
+							["sym"] = SymRaidVault(MONK, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200367),	-- Cuffs of the Waking Fist
+								i(200368),	-- Drape of the Waking Fist
+								i(200361),	-- Gaiters of the Waking Fist
+								i(200366),	-- Girdle of the Waking Fist
+							},
+						}),
+						cl(PALADIN, {
+							["sym"] = SymRaidVault(PALADIN, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200421),	-- Virtuous Silver Bracers
+								i(200422),	-- Virtuous Silver Cloak
+								i(200420),	-- Virtuous Silver Faulds
+								i(200415),	-- Virtuous Silver Greatboots
+							},
+						}),
+						cl(PRIEST, {
+							["sym"] = SymRaidVault(PRIEST, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200332),	-- Draconic Hierophant's Drape
+								i(200330),	-- Draconic Hierophant's Sash
+								i(200325),	-- Draconic Hierophant's Slippers
+								i(200331),	-- Draconic Hierophant's Wristbands
+							},
+						}),
+						cl(ROGUE, {
+							["sym"] = SymRaidVault(ROGUE, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200377),	-- Vault Delver's Camouflage
+								i(200370),	-- Vault Delver's Shinguards
+								i(200376),	-- Vault Delver's Sweatbands
+								i(200375),	-- Vault Delver's Utility Belt
+							},
+						}),
+						cl(SHAMAN, {
+							["sym"] = SymRaidVault(SHAMAN, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200403),	-- Cuffs of Infused Earth
+								i(200402),	-- Faulds of Infused Earth
+								i(200404),	-- Greatcloak of Infused Earth
+								i(200397),	-- Treads of Infused Earth
+							},
+						}),
+						cl(WARLOCK, {
+							["sym"] = SymRaidVault(WARLOCK, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200339),	-- Scalesworn Cultist's Girdle
+								i(200341),	-- Scalesworn Cultist's Runedrape
+								i(200334),	-- Scalesworn Cultist's Sandals
+								i(200340),	-- Scalesworn Cultist's Wristwraps
+							},
+						}),
+						cl(WARRIOR, {
+							["sym"] = SymRaidVault(WARRIOR, DIFFICULTY.RAID.HEROIC),
+							["g"] = {
+								i(200424),	-- Boots of the Walking Mountain
+								i(200430),	-- Bracers of the Walking Mountain
+								i(200429),	-- Core of the Walking Mountain
+								i(200431),	-- Drape of the Walking Mountain
+							},
+						}),
+					}),
+				}),
+				-- #endif
+				CommonBossDrops({
+					ig(200686),	-- Primal Focus
 				}),
 				n(QUESTS, {
 					q(71019, {	-- Vault of the Incarnates: Break a Few Eggs (H)
-						["qg"] = 193460,	-- Kalecgos
+						["provider"] = { "n", 193460 },	-- Kalecgos
 						["g"] = {
 							i(200226),	-- Shard of the Greatstaff
 						},
 					}),
 				}),
-				n(ZONE_DROPS, {
-					i(202004),	-- Brawler's Earthen Cuirass [BoE]
-					i(201992),	-- Emissary's Flamewrought Seal [BoE]
-					i(202005),	-- Frozen Claw Mantle [BoE]
-					i(202008),	-- Galvanic Gaiters [BoE]
-					i(202006),	-- Greathelm of Horned Fury [BoE]
-					i(202009),	-- Lavamancer's Ceremonial Waistguard [BoE]
-					i(202003),	-- Primal Seeker's Leggings [BoE]
-					i(202010),	-- Primalist Warden's Bracers [BoE]
-					i(202007),	-- Woven Stone Bracelets [BoE]
-				}),
-				e(2480, {	-- Eranog
-					["crs"] = { 184972 },	-- Eranog
-					["g"] = {
-						i(195482),	-- Decorated Commander's Cindercloak
-						i(194299),	-- Decoration of Flame
-						i(195476),	-- Eranog's Adorned Sallet
-						i(195475),	-- Flame Marshal's Bulwark
-						i(195479),	-- Flametender's Legwraps
-						i(195477),	-- Scaldrons of Molten Might
-						i(195480),	-- Seal of Diurna's Chosen
-						i(195490),	-- Searing Blazecaster
-						i(195478),	-- Valdrakken Protector's Turncoat
-					},
-				}),
-				e(2500, {	-- Terros
-					["crs"] = { 190496 },	-- Terros
-					["g"] = {
-						i(195504),	-- Awakened Planar Pillar
-						i(195500),	-- Compressed Cultist's Frock
-						i(195503),	-- Enduring Shard of Terros
-						i(195499),	-- Faultline Mantle
-						i(195501),	-- Fused Shale Waistband
-						i(195498),	-- Gaze of the Living Quarry
-						i(195497),	-- Quake-Detecting Seismostaff
-						i(194303),	-- Rumbling Ruby
-						i(195502),	-- Terros' Captive Core
-					},
-				}),
-				e(2486, {	-- The Primal Council
-					["crs"] = {
-						187771,	-- Kadros Icewrath
-						187768,	-- Dathea Stormlash
-						187767,	-- Embar Firepath
-						187772,	-- Opalfang
-					},
-					["g"] = {
-						i(194300),	-- Conjured Chillglobe
-						i(195485),	-- Councilor's Terrormask
-						i(195487),	-- Embar's Ashen Hauberk
-						i(195484),	-- Icewrath's Channeling Conduit
-						i(195518),	-- Imbued Qalashi Crusher
-						i(195489),	-- Maul of the Earthshaper
-						i(195488),	-- Opalfang's Earthbound Legguards
-						i(195486),	-- Twisted Loam Spaulders
-						i(194301),	-- Whispering Incarnate Icon
-
-					},
-				}),
-				e(2482, {	-- Sennarth, the Cold Breath
-					["crs"] = { 187967 },	-- Sennarth, the Cold Breath
-					["g"] = {
-						TOKEN_HEROIC(196588, {	-- Dreadful Jade Forgestone
-							i(200409),	-- Greaves of the Haunted Frostbrood
-							i(200346),	-- Skybound Avenger's Legguards
-							i(200337),	-- Scalesworn Cultist's Culottes
-						}),
-						TOKEN_HEROIC(196598, {	-- Mystic Jade Forgestone
-							i(200355),	-- Lost Landcaller's Leggings
-							i(200391),	-- Stormwing Harrier's Greaves
-							i(200319),	-- Crystal Scholar's Britches
-						}),
-						TOKEN_HEROIC(196603, {	-- Venerated Jade Forgestone
-							i(200418),	-- Virtuous Silver Cuisses
-							i(200328),	-- Draconic Hierophant's Britches
-							i(200400),	-- Leggings of Infused Earth
-						}),
-						TOKEN_HEROIC(196593, {	-- Zenith Jade Forgestone
-							i(200382),	-- Legguards of the Awakened
-							i(200364),	-- Legguards of the Waking Fist
-							i(200373),	-- Vault Delver's Pantaloons
-							i(200427),	-- Poleyns of the Walking Mountain
-						}),
-						i(195511),	-- Acid-Proof Webbing
-						i(195505),	-- Caustic Coldsteel Slicer
-						i(195508),	-- Chilled Silken Restraints
-						i(195506),	-- Diamond-Etched Gauntlets
-						i(195510),	-- Frostbreath Thumper
-						i(195509),	-- Ice-Climber's Cleats
-						i(194304),	-- Iceblood Deathsnare
-						i(195507),	-- Unnatural Dripstone Cinch
-					},
-				}),
-				e(2502, {	-- Dathea, Ascended
-					["crs"] = { 189813 },	-- Dathea, Ascended
-					["g"] = {
-						TOKEN_HEROIC(196587, {	-- Dreadful Garnet Forgestone
-							i(200407),	-- Grasps of the Haunted Frostbrood
-							i(200344),	-- Skybound Avenger's Grips
-							i(200335),	-- Scalesworn Cultist's Gloves
-						}),
-						TOKEN_HEROIC(196597, {	-- Mystic Garnet Forgestone
-							i(200353),	-- Lost Landcaller's Claws
-							i(200389),	-- Stormwing Harrier's Handguards
-							i(200317),	-- Crystal Scholar's Pageturners
-						}),
-						TOKEN_HEROIC(196602, {	-- Venerated Garnet Forgestone
-							i(200416),	-- Virtuous Silver Gauntlets
-							i(200326),	-- Draconic Hierophant's Grips
-							i(200398),	-- Gauntlets of Infused Earth
-						}),
-						TOKEN_HEROIC(196592, {	-- Zenith Garnet Forgestone
-							i(200380),	-- Gauntlets of the Awakened
-							i(200362),	-- Palms of the Waking Fist
-							i(200371),	-- Vault Delver's Lockbreakers
-							i(200425),	-- Gauntlets of the Walking Mountain
-						}),
-						i(195493),	-- Ascended Squallspires
-						i(195495),	-- Daring Chasm-Leapers
-						i(195494),	-- Dathea's Cyclonic Cage
-						i(195496),	-- Eye of the Vengeful Hurricane
-						i(195491),	-- Infused Stormglaives
-						i(195481),	-- Scepter of Drastic Measures
-						i(194302),	-- Storm-Eater's Boon
-						i(195492),	-- Windborne Hatsuburi
-					},
-				}),
-				e(2491, {	-- Kurog Grimtotem
-					["crs"] = { 181378 },	-- Kurog Grimtotem
-					["g"] = {
-						TOKEN_HEROIC(196586, {	-- Dreadful Amethyst Forgestone
-							i(200405),	-- Breastplate of the Haunted Frostbrood
-							i(200342),	-- Skybound Avenger's Harness
-							i(200333),	-- Scalesworn Cultist's Frosk
-						}),
-						TOKEN_HEROIC(196596, {	-- Mystic Amethyst Forgestone
-							i(200351),	-- Lost Landcaller's Robes
-							i(200387),	-- Stormwing Harrier's Cuirass
-							i(200315),	-- Crystal Scholar's Tunic
-						}),
-						TOKEN_HEROIC(196601, {	-- Venerated Amethyst Forgestone
-							i(200414),	-- Virtuous Silver Breastplate
-							i(200324),	-- Draconic Hierophant's Vestment
-							i(200396),	-- Robe of Infused Earth
-						}),
-						TOKEN_HEROIC(196591, {	-- Zenith Amethyst Forgestone
-							i(200378),	-- Hauberk of the Awakened
-							i(200360),	-- Chestwrap of the Waking Fist
-							i(200369),	-- Vault Delver's Brigandine
-							i(200423),	-- Husk of the Walking Mountain
-						}),
-						i(194306),	-- All-Totem of the Master
-						i(195483),	-- Awak'mani, Grimtotem's Legacy
-						i(194305),	-- Controlled Current Technique
-						i(195512),	-- Fist of the Grand Summoner
-						i(195517),	-- Kurog's Thunderhooves
-						i(195515),	-- Magatha's Spiritual Sash
-						i(195513),	-- Scripture of Primal Devotion
-						i(195516),	-- Surging-Song Conductors
-						i(195514),	-- Treacherous Totem Wraps
-						i(200916),	-- Formula: Illusion: Primal Mastery (RECIPE!)
-					},
-				}),
-				e(2493, {	-- Broodkeeper Diurna
-					["crs"] = { 190245 },	-- Broodkeeper Diurna
-					["g"] = {
-						TOKEN_HEROIC(196589, {	-- Dreadful Lapis Forgestone
-							i(200410),	-- Jaws of the Haunted Frostbrood
-							i(200347),	-- Skybound Avenger's Ailerons
-							i(200338),	-- Scalesworn Cultist's Effigy
-						}),
-						TOKEN_HEROIC(196599, {	-- Mystic Lapis Forgestone
-							i(200356),	-- Lost Landcaller's Mantle
-							i(200392),	-- Stormwing Harrier's Pinions
-							i(200320),	-- Crystal Scholar's Beacons
-						}),
-						TOKEN_HEROIC(196604, {	-- Venerated Lapis Forgestone
-							i(200419),	-- Virtuous Silver Pauldrons
-							i(200329),	-- Draconic Hierophant's Wisdom
-							i(200401),	-- Calderas of Infused Earth
-						}),
-						TOKEN_HEROIC(196594, {	-- Zenith Lapis Forgestone
-							i(200383),	-- Talons of the Awakened
-							i(200365),	-- Mantle of the Waking Fist
-							i(200374),	-- Vault Delver's Epaulets
-							i(200428),	-- Peaks of the Walking Mountain
-						}),
-						i(194307),	-- Broodkeeper's Promise
-						i(195520),	-- Broodsworn Legionnaire's Pavise
-						i(195523),	-- Eggtender's Safety Mitts
-						i(195519),	-- Kharnalex, The First Light
-						i(195525),	-- Loyal Flametender's Bracers
-						i(194308),	-- Manic Grieftorch
-						i(195524),	-- Matriarch's Opulent Girdle
-						i(195521),	-- Ornamental Drakonid Claw
-						i(195526),	-- Seal of Filial Duty
-						i(195522),	-- Tassets of the Tarasek Legion
-					},
-				}),
-				e(2499, {	-- Raszageth the Storm-Eater
-					["crs"] = { 193909 },	-- Raszageth the Storm-Eater
-					["g"] = {
-						ach(17107, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 }}),	-- Ahead of the Curve: Raszageth the Storm-Eater
-						TOKEN_HEROIC(196590, {	-- Dreadful Topaz Forgestone
-							i(200408),	-- Maw of the Haunted Frostbrood
-							i(200345),	-- Skybound Avenger's Visor
-							i(200336),	-- Scalesworn Cultist's Scorn
-						}),
-						TOKEN_HEROIC(196600, {	-- Mystic Topaz Forgestone
-							i(200354),	-- Lost Landcaller's Antlers
-							i(200390),	-- Stormwing Harrier's Skullmask
-							i(200318),	-- Crystal Scholar's Cowl
-						}),
-						TOKEN_HEROIC(196605, {	-- Venerated Topaz Forgestone
-							i(200417),	-- Virtuous Silver Heaume
-							i(200327),	-- Draconic Hierophant's Archcowl
-							i(200399),	-- Faceguard of Infused Earth
-						}),
-						TOKEN_HEROIC(196595, {	-- Zenith Topaz Forgestone
-							i(200381),	-- Crown of the Awakened
-							i(200363),	-- Gaze of the Waking Fist
-							i(200372),	-- Vault Delver's Vizard
-							i(200426),	-- Casque of the Walking Mountain
-						}),
-						i(195531),	-- Calamitous Shockguards
-						i(194310),	-- Desperate Invoker's Codex
-						i(195528),	-- Incarnate Sky-Splitter
-						i(195530),	-- Loathsome Thunderhosen
-						i(195527),	-- Neltharax, Enemy of the Sky
-						i(195532),	-- Sandals of the Wild Sovereign
-						i(195533),	-- Shackles of Titanic Failure
-						i(194309),	-- Spiteful Storm
-						i(195529),	-- Stormlash's Last Resort
-						i(201790),	-- Renewed Proto-Drake: Embodiment of the Storm-Eater (DM!)
-					},
-				}),
+				ZoneDrops(),
+				Boss(ERANOG),
+				Boss(TERROS),
+				Boss(THE_PRIMAL_COUNCIL),
+				Boss(SENNARTH),
+				Boss(DATHEA),
+				Boss(KUROG),
+				Boss(DIURNA),
+				Boss(RASZAGETH),
 			}),
-			d(MYTHIC_RAID, {
+			Difficulty(DIFFICULTY.RAID.MYTHIC).AddGroups({
+				-- #if AFTER TWW
+				o(382621, {	-- Revival Catalyst Console	-- MYTHIC --
+					["description"] = "The Revival Catalyst is a system that lets you convert Mythic Mode Non-set items from the Vault of the Incarnates Raid into your class' Mythic Transmog Set.\n\nThe catalyst is in Tyrhold in Thaldraszus, Dragon Isles.\n\nMake sure to equip your item first before converting it.",
+					["coord"] = { 60.6, 53.8, THALDRASZUS },
+					["modelScale"] = 4,
+					["g"] = bubbleDown({ ["bonusID"] = 450 }, {
+						cl(DEATHKNIGHT, {
+							["sym"] = SymRaidVault(DEATHKNIGHT, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200413),	-- Drape of the Haunted Frostbrood
+								i(200411),	-- Girdle of the Haunted Frostbrood
+								i(200406),	-- Sabatons of the Haunted Frostbrood
+								i(200412),	-- Vambraces of the Haunted Frostbrood
+							},
+						}),
+						cl(DEMONHUNTER, {
+							["sym"] = SymRaidVault(DEMONHUNTER, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200343),	-- Skybound Avenger's Boots
+								i(200350),	-- Skybound Avenger's Cape
+								i(200348),	-- Skybound Avenger's Waistwrap
+								i(200349),	-- Skybound Avenger's Wristbands
+							},
+						}),
+						cl(DRUID, {
+							["sym"] = SymRaidVault(DRUID, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200358),	-- Lost Landcaller's Bindings
+								i(200359),	-- Lost Landcaller's Laena
+								i(200352),	-- Lost Landcaller's Moccasins
+								i(200357),	-- Lost Landcaller's Sash
+							},
+						}),
+						cl(EVOKER, {
+							["sym"] = SymRaidVault(EVOKER, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200385),	-- Bracers of the Awakened
+								i(200384),	-- Chain of the Awakened
+								i(200386),	-- Shroud of the Awakened
+								i(200379),	-- Treads of the Awakened
+							},
+						}),
+						cl(HUNTER, {
+							["sym"] = SymRaidVault(HUNTER, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200393),	-- Stormwing Harrier's Belt
+								i(200395),	-- Stormwing Harrier's Plumage
+								i(200388),	-- Stormwing Harrier's Sabatons
+								i(200394),	-- Stormwing Harrier's Wristguards
+							},
+						}),
+						cl(MAGE, {
+							["sym"] = SymRaidVault(MAGE, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200323),	-- Crystal Scholar's Cape
+								i(200321),	-- Crystal Scholar's Cinch
+								i(200322),	-- Crystal Scholar's Cuffs
+								i(200316),	-- Crystal Scholar's Footwraps
+							},
+						}),
+						cl(MONK, {
+							["sym"] = SymRaidVault(MONK, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200367),	-- Cuffs of the Waking Fist
+								i(200368),	-- Drape of the Waking Fist
+								i(200361),	-- Gaiters of the Waking Fist
+								i(200366),	-- Girdle of the Waking Fist
+							},
+						}),
+						cl(PALADIN, {
+							["sym"] = SymRaidVault(PALADIN, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200421),	-- Virtuous Silver Bracers
+								i(200422),	-- Virtuous Silver Cloak
+								i(200420),	-- Virtuous Silver Faulds
+								i(200415),	-- Virtuous Silver Greatboots
+							},
+						}),
+						cl(PRIEST, {
+							["sym"] = SymRaidVault(PRIEST, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200332),	-- Draconic Hierophant's Drape
+								i(200330),	-- Draconic Hierophant's Sash
+								i(200325),	-- Draconic Hierophant's Slippers
+								i(200331),	-- Draconic Hierophant's Wristbands
+							},
+						}),
+						cl(ROGUE, {
+							["sym"] = SymRaidVault(ROGUE, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200377),	-- Vault Delver's Camouflage
+								i(200370),	-- Vault Delver's Shinguards
+								i(200376),	-- Vault Delver's Sweatbands
+								i(200375),	-- Vault Delver's Utility Belt
+							},
+						}),
+						cl(SHAMAN, {
+							["sym"] = SymRaidVault(SHAMAN, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200403),	-- Cuffs of Infused Earth
+								i(200402),	-- Faulds of Infused Earth
+								i(200404),	-- Greatcloak of Infused Earth
+								i(200397),	-- Treads of Infused Earth
+							},
+						}),
+						cl(WARLOCK, {
+							["sym"] = SymRaidVault(WARLOCK, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200339),	-- Scalesworn Cultist's Girdle
+								i(200341),	-- Scalesworn Cultist's Runedrape
+								i(200334),	-- Scalesworn Cultist's Sandals
+								i(200340),	-- Scalesworn Cultist's Wristwraps
+							},
+						}),
+						cl(WARRIOR, {
+							["sym"] = SymRaidVault(WARRIOR, DIFFICULTY.RAID.MYTHIC),
+							["g"] = {
+								i(200424),	-- Boots of the Walking Mountain
+								i(200430),	-- Bracers of the Walking Mountain
+								i(200429),	-- Core of the Walking Mountain
+								i(200431),	-- Drape of the Walking Mountain
+							},
+						}),
+					}),
+				}),
+				-- #endif
+				CommonBossDrops({
+					ig(190455),	-- Concentrated Primal Focus
+				}),
 				n(QUESTS, {
 					q(71020, {	-- Vault of the Incarnates: Break a Few Eggs (M)
-						["qg"] = 193460,	-- Kalecgos
+						["provider"] = { "n", 193460 },	-- Kalecgos
 						["g"] = {
 							i(200227),	-- Shard of the Greatstaff
 						},
 					}),
 				}),
+				ZoneDrops(),
+				-- Mythic Only Temp BoP Items
 				n(ZONE_DROPS, {
-					i(202004, {["timeline"] = { ADDED_10_0_5 }}),		-- Brawler's Earthen Cuirass [BoE]
-					i(202146, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Brawler's Earthen Cuirass [BoP]
-					i(201992, {["timeline"] = { ADDED_10_0_5 }}),		-- Emissary's Flamewrought Seal [BoE]
-					i(202148, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Emissary's Flamewrought Seal [BoP]
-					i(202005, {["timeline"] = { ADDED_10_0_5 }}),		-- Frozen Claw Mantle [BoE]
-					i(202145, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Frozen Claw Mantle [BoP]
-					i(202008, {["timeline"] = { ADDED_10_0_5 }}),		-- Galvanic Gaiters [BoE]
-					i(202150, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Galvanic Gaiters [BoP]
-					i(202006, {["timeline"] = { ADDED_10_0_5 }}),		-- Greathelm of Horned Fury [BoE]
-					i(202144, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Greathelm of Horned Fury [BoP]
-					i(202009, {["timeline"] = { ADDED_10_0_5 }}),		-- Lavamancer's Ceremonial Waistguard [BoE]
-					i(202151, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Lavamancer's Ceremonial Waistguard [BoP]
-					i(202003, {["timeline"] = { ADDED_10_0_5 }}),		-- Primal Seeker's Leggings [BoE]
-					i(202147, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Primal Seeker's Leggings [BoP]
-					i(202010, {["timeline"] = { ADDED_10_0_5 }}),		-- Primalist Warden's Bracers [BoE]
-					i(202149, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5 }}),	-- Primalist Warden's Bracers [BoP]
-					i(202007, {["timeline"] = { ADDED_10_0_5 }}),		-- Woven Stone Bracelets [BoE]
-					i(202143, {["timeline"] = { "added 10.0.2.47213", REMOVED_10_0_5}}),	-- Woven Stone Bracelets [BoP]
-					i(190455),	-- Concentrated Primal Focus
+					i(202146, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Brawler's Earthen Cuirass [BoP]
+					i(202148, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Emissary's Flamewrought Seal [BoP]
+					i(202145, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Frozen Claw Mantle [BoP]
+					i(202150, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Galvanic Gaiters [BoP]
+					i(202144, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Greathelm of Horned Fury [BoP]
+					i(202151, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Lavamancer's Ceremonial Waistguard [BoP]
+					i(202147, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Primal Seeker's Leggings [BoP]
+					i(202149, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5 }}),	-- Primalist Warden's Bracers [BoP]
+					i(202143, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_0_5}}),	-- Woven Stone Bracelets [BoP]
 				}),
-				e(2480, {	-- Eranog
-					["crs"] = { 184972 },	-- Eranog
-					["g"] = {
-						ach(16346),	-- Mythic: Eranog
-						i(195482),	-- Decorated Commander's Cindercloak
-						i(194299),	-- Decoration of Flame
-						i(195476),	-- Eranog's Adorned Sallet
-						i(195475),	-- Flame Marshal's Bulwark
-						i(195479),	-- Flametender's Legwraps
-						i(195477),	-- Scaldrons of Molten Might
-						i(195480),	-- Seal of Diurna's Chosen
-						i(195490),	-- Searing Blazecaster
-						i(195478),	-- Valdrakken Protector's Turncoat
-					},
+				Boss(ERANOG, {
+					ach(16346),	-- Mythic: Eranog
 				}),
-				e(2500, {	-- Terros
-					["crs"] = { 190496 },	-- Terros
-					["g"] = {
-						ach(16347),	-- Mythic: Terros
-						i(195504),	-- Awakened Planar Pillar
-						i(195500),	-- Compressed Cultist's Frock
-						i(195503),	-- Enduring Shard of Terros
-						i(195499),	-- Faultline Mantle
-						i(195501),	-- Fused Shale Waistband
-						i(195498),	-- Gaze of the Living Quarry
-						i(195497),	-- Quake-Detecting Seismostaff
-						i(194303),	-- Rumbling Ruby
-						i(195502),	-- Terros' Captive Core
-					},
+				Boss(TERROS, {
+					ach(16347),	-- Mythic: Terros
 				}),
-				e(2486, {	-- The Primal Council
-					["crs"] = {
-						187771,	-- Kadros Icewrath
-						187768,	-- Dathea Stormlash
-						187767,	-- Embar Firepath
-						187772,	-- Opalfang
-					},
-					["g"] = {
-						ach(16348),	-- Mythic: The Primal Council
-						i(194300),	-- Conjured Chillglobe
-						i(195485),	-- Councilor's Terrormask
-						i(195487),	-- Embar's Ashen Hauberk
-						i(195484),	-- Icewrath's Channeling Conduit
-						i(195518),	-- Imbued Qalashi Crusher
-						i(195489),	-- Maul of the Earthshaper
-						i(195488),	-- Opalfang's Earthbound Legguards
-						i(195486),	-- Twisted Loam Spaulders
-						i(194301),	-- Whispering Incarnate Icon
-
-					},
+				Boss(THE_PRIMAL_COUNCIL, {
+					ach(16348),	-- Mythic: The Primal Council
 				}),
-				e(2482, {	-- Sennarth, the Cold Breath
-					["crs"] = { 187967 },	-- Sennarth, the Cold Breath
-					["g"] = {
-						ach(16349),	-- Mythic: Sennarth, The Cold Breath
-						TOKEN_MYTHIC(196588, {	-- Dreadful Jade Forgestone
-							i(200409),	-- Greaves of the Haunted Frostbrood
-							i(200346),	-- Skybound Avenger's Legguards
-							i(200337),	-- Scalesworn Cultist's Culottes
-						}),
-						TOKEN_MYTHIC(196598, {	-- Mystic Jade Forgestone
-							i(200355),	-- Lost Landcaller's Leggings
-							i(200391),	-- Stormwing Harrier's Greaves
-							i(200319),	-- Crystal Scholar's Britches
-						}),
-						TOKEN_MYTHIC(196603, {	-- Venerated Jade Forgestone
-							i(200418),	-- Virtuous Silver Cuisses
-							i(200328),	-- Draconic Hierophant's Britches
-							i(200400),	-- Leggings of Infused Earth
-						}),
-						TOKEN_MYTHIC(196593, {	-- Zenith Jade Forgestone
-							i(200382),	-- Legguards of the Awakened
-							i(200364),	-- Legguards of the Waking Fist
-							i(200373),	-- Vault Delver's Pantaloons
-							i(200427),	-- Poleyns of the Walking Mountain
-						}),
-						i(195511),	-- Acid-Proof Webbing
-						i(195505),	-- Caustic Coldsteel Slicer
-						i(195508),	-- Chilled Silken Restraints
-						i(195506),	-- Diamond-Etched Gauntlets
-						i(195510),	-- Frostbreath Thumper
-						i(195509),	-- Ice-Climber's Cleats
-						i(194304),	-- Iceblood Deathsnare
-						i(195507),	-- Unnatural Dripstone Cinch
-					},
+				Boss(SENNARTH, {
+					ach(16349),	-- Mythic: Sennarth, The Cold Breath
 				}),
-				e(2502, {	-- Dathea, Ascended
-					["crs"] = { 189813 },	-- Dathea, Ascended
-					["g"] = {
-						ach(16350),	-- Mythic: Dathea, Ascended
-						TOKEN_MYTHIC(196587, {	-- Dreadful Garnet Forgestone
-							i(200407),	-- Grasps of the Haunted Frostbrood
-							i(200344),	-- Skybound Avenger's Grips
-							i(200335),	-- Scalesworn Cultist's Gloves
-						}),
-						TOKEN_MYTHIC(196597, {	-- Mystic Garnet Forgestone
-							i(200353),	-- Lost Landcaller's Claws
-							i(200389),	-- Stormwing Harrier's Handguards
-							i(200317),	-- Crystal Scholar's Pageturners
-						}),
-						TOKEN_MYTHIC(196602, {	-- Venerated Garnet Forgestone
-							i(200416),	-- Virtuous Silver Gauntlets
-							i(200326),	-- Draconic Hierophant's Grips
-							i(200398),	-- Gauntlets of Infused Earth
-						}),
-						TOKEN_MYTHIC(196592, {	-- Zenith Garnet Forgestone
-							i(200380),	-- Gauntlets of the Awakened
-							i(200362),	-- Palms of the Waking Fist
-							i(200371),	-- Vault Delver's Lockbreakers
-							i(200425),	-- Gauntlets of the Walking Mountain
-						}),
-						i(195493),	-- Ascended Squallspires
-						i(195495),	-- Daring Chasm-Leapers
-						i(195494),	-- Dathea's Cyclonic Cage
-						i(195496),	-- Eye of the Vengeful Hurricane
-						i(195491),	-- Infused Stormglaives
-						i(195481),	-- Scepter of Drastic Measures
-						i(194302),	-- Storm-Eater's Boon
-						i(195492),	-- Windborne Hatsuburi
-					},
+				Boss(DATHEA, {
+					ach(16350),	-- Mythic: Dathea, Ascended
 				}),
-				e(2491, {	-- Kurog Grimtotem
-					["crs"] = { 181378 },	-- Kurog Grimtotem
-					["g"] = {
-						ach(16351),	-- Mythic: Kurog Grimtotem
-						TOKEN_MYTHIC(196586, {	-- Dreadful Amethyst Forgestone
-							i(200405),	-- Breastplate of the Haunted Frostbrood
-							i(200342),	-- Skybound Avenger's Harness
-							i(200333),	-- Scalesworn Cultist's Frosk
-						}),
-						TOKEN_MYTHIC(196596, {	-- Mystic Amethyst Forgestone
-							i(200351),	-- Lost Landcaller's Robes
-							i(200387),	-- Stormwing Harrier's Cuirass
-							i(200315),	-- Crystal Scholar's Tunic
-						}),
-						TOKEN_MYTHIC(196601, {	-- Venerated Amethyst Forgestone
-							i(200414),	-- Virtuous Silver Breastplate
-							i(200324),	-- Draconic Hierophant's Vestment
-							i(200396),	-- Robe of Infused Earth
-						}),
-						TOKEN_MYTHIC(196591, {	-- Zenith Amethyst Forgestone
-							i(200378),	-- Hauberk of the Awakened
-							i(200360),	-- Chestwrap of the Waking Fist
-							i(200369),	-- Vault Delver's Brigandine
-							i(200423),	-- Husk of the Walking Mountain
-						}),
-						i(194306),	-- All-Totem of the Master
-						i(195483),	-- Awak'mani, Grimtotem's Legacy
-						i(194305),	-- Controlled Current Technique
-						i(195512),	-- Fist of the Grand Summoner
-						i(195517),	-- Kurog's Thunderhooves
-						i(195515),	-- Magatha's Spiritual Sash
-						i(195513),	-- Scripture of Primal Devotion
-						i(195516),	-- Surging-Song Conductors
-						i(195514),	-- Treacherous Totem Wraps
-						i(200916),	-- Formula: Illusion: Primal Mastery (RECIPE!)
-					},
+				Boss(KUROG, {
+					ach(16351),	-- Mythic: Kurog Grimtotem
 				}),
-				e(2493, {	-- Broodkeeper Diurna
-					["crs"] = { 190245 },	-- Broodkeeper Diurna
-					["g"] = {
-						ach(16352),	-- Mythic: Broodkeeper Diurna
-						TOKEN_MYTHIC(196589, {	-- Dreadful Lapis Forgestone
-							i(200410),	-- Jaws of the Haunted Frostbrood
-							i(200347),	-- Skybound Avenger's Ailerons
-							i(200338),	-- Scalesworn Cultist's Effigy
-						}),
-						TOKEN_MYTHIC(196599, {	-- Mystic Lapis Forgestone
-							i(200356),	-- Lost Landcaller's Mantle
-							i(200392),	-- Stormwing Harrier's Pinions
-							i(200320),	-- Crystal Scholar's Beacons
-						}),
-						TOKEN_MYTHIC(196604, {	-- Venerated Lapis Forgestone
-							i(200419),	-- Virtuous Silver Pauldrons
-							i(200329),	-- Draconic Hierophant's Wisdom
-							i(200401),	-- Calderas of Infused Earth
-						}),
-						TOKEN_MYTHIC(196594, {	-- Zenith Lapis Forgestone
-							i(200383),	-- Talons of the Awakened
-							i(200365),	-- Mantle of the Waking Fist
-							i(200374),	-- Vault Delver's Epaulets
-							i(200428),	-- Peaks of the Walking Mountain
-						}),
-						i(194307),	-- Broodkeeper's Promise
-						i(195520),	-- Broodsworn Legionnaire's Pavise
-						i(195523),	-- Eggtender's Safety Mitts
-						i(195519),	-- Kharnalex, The First Light
-						i(195525),	-- Loyal Flametender's Bracers
-						i(194308),	-- Manic Grieftorch
-						i(195524),	-- Matriarch's Opulent Girdle
-						i(195521),	-- Ornamental Drakonid Claw
-						i(195526),	-- Seal of Filial Duty
-						i(195522),	-- Tassets of the Tarasek Legion
-					},
+				Boss(DIURNA, {
+					ach(16352),	-- Mythic: Broodkeeper Diurna
 				}),
-				e(2499, {	-- Raszageth the Storm-Eater
-					["crs"] = { 193909 },	-- Raszageth the Storm-Eater
-					["g"] = {
-						ach(16353, {	-- Mythic: Raszageth the Storm-Eater
-							title(488),	-- <Name> the Storm-Eater
-						}),
-						ach(17116, bubbleDownSelf({["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {	-- Hall of Fame: Raszageth the Storm-Eater (A)
-							["races"] = ALLIANCE_ONLY,
-							["g"] = {
-								title(487),	-- <Name>, Famed Slayer of Raszageth
-							},
-						})),
-						ach(17118, bubbleDownSelf({["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {	-- Hall of Fame: Raszageth the Storm-Eater (H)
-							["races"] = HORDE_ONLY,
-							["g"] = {
-								title(487),	-- <Name>, Famed Slayer of Raszageth
-							},
-						})),
-						ach(17108, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 }}),	-- Cutting Edge: Raszageth the Storm-Eater
-						TOKEN_MYTHIC(196590, {	-- Dreadful Topaz Forgestone
-							i(200408),	-- Maw of the Haunted Frostbrood
-							i(200345),	-- Skybound Avenger's Visor
-							i(200336),	-- Scalesworn Cultist's Scorn
-						}),
-						TOKEN_MYTHIC(196600, {	-- Mystic Topaz Forgestone
-							i(200354),	-- Lost Landcaller's Antlers
-							i(200390),	-- Stormwing Harrier's Skullmask
-							i(200318),	-- Crystal Scholar's Cowl
-						}),
-						TOKEN_MYTHIC(196605, {	-- Venerated Topaz Forgestone
-							i(200417),	-- Virtuous Silver Heaume
-							i(200327),	-- Draconic Hierophant's Archcowl
-							i(200399),	-- Faceguard of Infused Earth
-						}),
-						TOKEN_MYTHIC(196595, {	-- Zenith Topaz Forgestone
-							i(200381),	-- Crown of the Awakened
-							i(200363),	-- Gaze of the Waking Fist
-							i(200372),	-- Vault Delver's Vizard
-							i(200426),	-- Casque of the Walking Mountain
-						}),
-						i(195531),	-- Calamitous Shockguards
-						i(194310),	-- Desperate Invoker's Codex
-						i(195528),	-- Incarnate Sky-Splitter
-						i(195530),	-- Loathsome Thunderhosen
-						i(195527),	-- Neltharax, Enemy of the Sky
-						i(195532),	-- Sandals of the Wild Sovereign
-						i(195533),	-- Shackles of Titanic Failure
-						i(194309),	-- Spiteful Storm
-						i(195529),	-- Stormlash's Last Resort
-						i(201790),	-- Renewed Proto-Drake: Embodiment of the Storm-Eater (DM!)
-					},
+				Boss(RASZAGETH, {
+					ach(16353, {	-- Mythic: Raszageth the Storm-Eater
+						title(488),	-- <Name> the Storm-Eater
+					}),
+					ach(16358),		-- Mythic: Raszageth the Storm-Eater Guild Run
+					ach(17108, {["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 }}),	-- Cutting Edge: Raszageth the Storm-Eater
+					ach(17116, bubbleDownSelf({["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {	-- Hall of Fame: Raszageth the Storm-Eater (A)
+						["races"] = ALLIANCE_ONLY,
+						["g"] = {
+							title(487),	-- <Name>, Famed Slayer of Raszageth
+						},
+					})),
+					ach(17118, bubbleDownSelf({["timeline"] = { ADDED_10_0_2_LAUNCH, REMOVED_10_1_0 } }, {	-- Hall of Fame: Raszageth the Storm-Eater (H)
+						["races"] = HORDE_ONLY,
+						["g"] = {
+							title(487),	-- <Name>, Famed Slayer of Raszageth
+						},
+					})),
 				}),
 			}),
 		},
 	}),
 })));
 
-root(ROOTS.HiddenQuestTriggers, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	inst(1200, {	-- Vault of the Incarnates
 		q(72264),	-- 'Anicent Vault Artifact' first drop per week
 		q(72612),	-- Volcanius (trash)

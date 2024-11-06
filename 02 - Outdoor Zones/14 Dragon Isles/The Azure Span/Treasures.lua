@@ -4,6 +4,12 @@
 root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	m(THE_AZURE_SPAN, {
 		n(TREASURES, {
+			o(381713, {	-- A Solid Foundation
+				["coord"] = { 8.0, 45.6, THE_AZURE_SPAN },
+			}),
+			o(381715, {	-- Attention: Immediate Evacuation
+				["coord"] = { 66.4, 61.1, THE_AZURE_SPAN },
+			}),
 			o(383625, {	-- Case of Fresh Gleamfish
 				["coord"] = { 45.6, 54.8, THE_AZURE_SPAN },
 				["g"] = {
@@ -12,28 +18,87 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 			}),
 			o(381362, {	-- Chunk of Sculpture
 				["coord"] = { 60.1, 60.1, THE_AZURE_SPAN },
+				["description"] = "Behind the dragon statue next to the mountain.",
 				["g"] = {
 					i(199895),	-- Chunk of Sculpture
 				},
 			}),
 			o(381356, {	-- Coldwashed Dragonclaw
 				["coord"] = { 47.1, 38.9, THE_AZURE_SPAN },
+				["description"] = "Underwater.",
 				["g"] = {
 					i(199843),	-- Coldwashed Dragonclaw
 				},
 			}),
-			o(380587, {	-- Crate of Treated Hides
-				["coord"] = { 57.5, 41.3, THE_AZURE_SPAN },
-				-- ["questID"] = 70286,
-				["g"] = {
-					i(198683),	-- Treated Hides
+			o(376583, {	-- Decay Covered Chest
+				["coords"] = {
+					{ 9.7, 29.1, THE_AZURE_SPAN },
+					{ 9.9, 32.5, THE_AZURE_SPAN },
+					{ 10.5, 31.2, THE_AZURE_SPAN },
+					{ 11.6, 34.2, THE_AZURE_SPAN },
+					{ 12.0, 36.8, THE_AZURE_SPAN },
+					{ 12.2, 35.2, THE_AZURE_SPAN },
+					{ 12.4, 22.0, THE_AZURE_SPAN },
+					{ 12.8, 34.1, THE_AZURE_SPAN },
+					{ 13.8, 38.2, THE_AZURE_SPAN },
+					{ 13.8, 39.4, THE_AZURE_SPAN },
+					{ 13.8, 39.5, THE_AZURE_SPAN },
+					{ 14.4, 20.5, THE_AZURE_SPAN },
+					{ 14.4, 21.8, THE_AZURE_SPAN },
+					{ 14.5, 20.5, THE_AZURE_SPAN },
+					{ 14.9, 31.0, THE_AZURE_SPAN },
+					{ 16.1, 35.2, THE_AZURE_SPAN },
+					{ 16.2, 38.9, THE_AZURE_SPAN },
+					{ 16.5, 34.3, THE_AZURE_SPAN },
+					{ 17.1, 38.3, THE_AZURE_SPAN },
+					{ 17.9, 36.0, THE_AZURE_SPAN },
+					{ 18.1, 34.8, THE_AZURE_SPAN },
+					{ 18.4, 36.7, THE_AZURE_SPAN },
+					{ 18.4, 38.4, THE_AZURE_SPAN },
+					{ 18.4, 38.5, THE_AZURE_SPAN },
+					{ 18.5, 36.7, THE_AZURE_SPAN },
+					{ 21.4, 40.4, THE_AZURE_SPAN },
+					{ 21.4, 42.4, THE_AZURE_SPAN },
+					{ 21.5, 40.4, THE_AZURE_SPAN },
+					{ 21.5, 40.5, THE_AZURE_SPAN },
+					{ 21.5, 42.3, THE_AZURE_SPAN },
+					{ 23.2, 43.7, THE_AZURE_SPAN },
+					{ 24.5, 40.2, THE_AZURE_SPAN },
+					{ 24.9, 42.3, THE_AZURE_SPAN },
+					{ 34.2, 34.0, THE_AZURE_SPAN },
+					{ 34.6, 45.4, THE_AZURE_SPAN },
+					{ 34.9, 31.9, THE_AZURE_SPAN },
+					{ 35.4, 48.0, THE_AZURE_SPAN },
+					{ 35.5, 48.0, THE_AZURE_SPAN },
+					{ 35.6, 34.1, THE_AZURE_SPAN },
+					{ 35.9, 46.6, THE_AZURE_SPAN },
+					{ 58.2, 41.4, THE_AZURE_SPAN },
+					{ 58.2, 41.5, THE_AZURE_SPAN },
+					{ 58.4, 42.7, THE_AZURE_SPAN },
+					{ 58.5, 42.7, THE_AZURE_SPAN },
 				},
-			}),
-			o(380547, {	-- Decay-Infused Tanning Oil
-				["coord"] = { 16.7, 38.7, THE_AZURE_SPAN },
-				-- ["questID"] = 70266,
 				["g"] = {
-					i(198658),	-- Decay-Infused Tanning Oil
+					i(201368, {	-- Brackenhide Hollow Barbslinger
+						["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+					}),
+					i(201363, {	-- Brackenhide Hollow Maul
+						["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+					}),
+					i(201365, {	-- Brackenhide Gnoll Guard
+						["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+					}),
+					i(201370, {	-- Brackenhide Skullcracker
+						["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+					}),
+					i(201369, {	-- Hollow Greatwood Pestilence
+						["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+					}),
+					i(201367, {	-- Hollow Hunter's Sticker
+						["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+					}),
+					i(194312, {	-- Pattern: Gnoll Tent (RECIPE!)
+						["description"] = "Drops from Gnoll Creatures or Decay Covered Chests around Bracken Hollow.",
+					}),
 				},
 			}),
 			o(381110, {	-- Forgotten Jewel Box
@@ -64,6 +129,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["g"] = {
 					i(200076),	-- Harpoon Head
 				},
+			}),
+			o(381711, {	-- Im'bunata's Blessing
+				["coord"] = { 56.7, 70.4, THE_AZURE_SPAN },
 			}),
 			o(381160, {	-- Lost Compass
 				["coord"] = { 74.9, 55.0, THE_AZURE_SPAN },
@@ -119,9 +187,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 			}),
 			o(381353, {	-- Stone Dragontooth
 				["coord"] = { 69.2, 47.6, THE_AZURE_SPAN },
+				["description"] = "Next to the dragon statue on the ground.",
 				["g"] = {
 					i(199842),	-- Stone Dragontooth
 				},
+			}),
+			o(381718, {	-- The Vow
+				["coord"] = { 60.3, 49.7, THE_AZURE_SPAN },
 			}),
 			o(376582, {	-- Tuskarr Chest
 				["coords"] = {
@@ -152,8 +224,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					i(201374),	-- Tuskarr Fishing Pike
 				},
 			}),
+			o(381722, {	-- Vakthros Maintenance
+				["coord"] = { 77.4, 31.1, THE_AZURE_SPAN },
+			}),
 			o(381354, {	-- Wrapped Gold Band
 				["coord"] = { 47.3, 24.6, THE_AZURE_SPAN },
+				["description"] = "Underneath the back left foot of the dragon statue.",
 				["g"] = {
 					i(199840),	-- Wrapped Gold Band
 				},

@@ -12,16 +12,32 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				},
 			}),
 			o(381981, {	-- Chest of the Flood
+				["provider"] = { "o", 381712 },	-- Water-Bound Chest
 				["questID"] = 71033,
 				["coord"] = { 56.0, 78.7, OHNAHRAN_PLAINS },
 				["isWeekly"] = true,
 				["sym"] = {
+					{"select", "itemID",
+						201442,	-- Primal Revenant's Frostblade
+						201443,	-- Primal Revenant's Icewall
+						201028,	-- Nokhudon Boots
+						201027,	-- Nokhudon Breeches
+						201031,	-- Nokhudon Cloak
+						201034,	-- Nokhudon Girdle
+						201030,	-- Nokhudon Grips
+						201025,	-- Nokhudon Harness
+						201029,	-- Nokhudon Hood
+						201024,	-- Nokhudon Mantle
+						201032,	-- Nokhudon Wraps
+						201382,	-- Centaur Warglaives
+						201384,	-- Centaur Tracker's Javelin
+						201381,	-- Nokhud Battle-Knife
+						201380,	-- Nokhud Hunter's Bow
+						201385,	-- Nokhud Centaur Warstaff
+						201383,	-- Nokhud Stalker's Spear
+					},
 					{"select", "mapID",
 						DRAGON_ISLES,
-						THE_WAKING_SHORES,
-						OHNAHRAN_PLAINS,
-						THE_AZURE_SPAN,
-						THALDRASZUS,
 					},
 					{"pop"},
 					{"where", "headerID", ZONE_REWARDS},
@@ -32,12 +48,43 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 			o(376581, {	-- Clan Chest
 				["coords"] = {
 					{ 35.3, 37.0, OHNAHRAN_PLAINS },
-					{ 36.1, 41.8, OHNAHRAN_PLAINS },
-					{ 32.7, 37.1, OHNAHRAN_PLAINS },
-					{ 34.8, 37.1, OHNAHRAN_PLAINS },
-					{ 35.3, 36.9, OHNAHRAN_PLAINS },
-					{ 36.0, 41.1, OHNAHRAN_PLAINS },
+					{ 25.0, 37.8, OHNAHRAN_PLAINS },
+					{ 25.3, 37.4, OHNAHRAN_PLAINS },
+					{ 31.3, 70.6, OHNAHRAN_PLAINS },
+					{ 32.2, 68.1, OHNAHRAN_PLAINS },
+					{ 32.4, 39.0, OHNAHRAN_PLAINS },
+					{ 32.5, 38.9, OHNAHRAN_PLAINS },
+					{ 32.7, 37.0, OHNAHRAN_PLAINS },
+					{ 33.5, 42.4, OHNAHRAN_PLAINS },
+					{ 33.5, 42.5, OHNAHRAN_PLAINS },
+					{ 34.8, 37.0, OHNAHRAN_PLAINS },
+					{ 35.0, 41.9, OHNAHRAN_PLAINS },
+					{ 35.4, 65.8, OHNAHRAN_PLAINS },
+					{ 36.0, 41.0, OHNAHRAN_PLAINS },
 					{ 36.1, 41.7, OHNAHRAN_PLAINS },
+					{ 49.4, 67.3, OHNAHRAN_PLAINS },
+					{ 49.4, 67.7, OHNAHRAN_PLAINS },
+					{ 49.5, 67.3, OHNAHRAN_PLAINS },
+					{ 50.4, 66.4, OHNAHRAN_PLAINS },
+					{ 50.5, 66.3, OHNAHRAN_PLAINS },
+					{ 50.9, 66.5, OHNAHRAN_PLAINS },
+					{ 71.9, 56.7, OHNAHRAN_PLAINS },
+					{ 73.4, 56.1, OHNAHRAN_PLAINS },
+					{ 73.5, 56.2, OHNAHRAN_PLAINS },
+					{ 74.6, 39.2, OHNAHRAN_PLAINS },
+					{ 74.7, 40.4, OHNAHRAN_PLAINS },
+					{ 74.7, 40.5, OHNAHRAN_PLAINS },
+					{ 75.2, 41.6, OHNAHRAN_PLAINS },
+					{ 75.5, 40.4, OHNAHRAN_PLAINS },
+					{ 75.5, 40.5, OHNAHRAN_PLAINS },
+					{ 83.7, 53.4, OHNAHRAN_PLAINS },
+					{ 83.7, 53.6, OHNAHRAN_PLAINS },
+					{ 85.4, 54.7, OHNAHRAN_PLAINS },
+					{ 85.5, 54.7, OHNAHRAN_PLAINS },
+					{ 86.4, 50.7, OHNAHRAN_PLAINS },
+					{ 86.4, 53.3, OHNAHRAN_PLAINS },
+					{ 86.5, 50.7, OHNAHRAN_PLAINS },
+					{ 86.5, 53.3, OHNAHRAN_PLAINS },
 				},
 				-- ["questID"] = ,
 				["g"] = {
@@ -51,7 +98,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					i(201024),	-- Nokhudon Mantle
 					i(201032),	-- Nokhudon Wraps
 					-- Weps
+					i(201382),	-- Centaur Warglaives
 					i(201384),	-- Centaur Tracker's Javelin
+					i(201381),	-- Nokhud Battle-Knife
+					i(201380),	-- Nokhud Hunter's Bow
 					i(201385),	-- Nokhud Centaur Warstaff
 					i(201383),	-- Nokhud Stalker's Spear
 				},
@@ -87,6 +137,9 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					}),
 				},
 			}),
+			o(381707, {	-- Dreams in Emerald
+				["coord"] = { 32.3, 51.3, OHNAHRAN_PLAINS },
+			}),
 			o(381575, {	-- Duck Trap Kit
 				["coord"] = { 70.0, 64.0, OHNAHRAN_PLAINS },
 				["description"] = "Found only when the Aylaag Camp is in this location. Used to summon Quackers the Terrible.",
@@ -98,8 +151,10 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					}),
 				},
 			}),
-			-- objectID is mentioned here https://www.wowhead.com/item=195041/everliving-wooden-key#comments:id=5485045
-			-- but still missing from wowhead
+			o(376416, {	-- Ellam's Favorite Toys
+				["coord"] = { 78.3, 29.2, OHNAHRAN_PLAINS },
+				["description"] = "Found only when Aylaag Camp is up in this area, pet Ellam until progress bar is at 100%, provides Maruuk Centaur reputation.",
+			}),
 			o(378047, {	-- Emerald Chest
 				["coords"] = {
 					{ 67.03, 43.72, OHNAHRAN_PLAINS },	-- Stone
@@ -125,7 +180,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["coord"] = { 53.3, 68.9, OHNAHRAN_PLAINS },
 				["cost"] = { { "i", 195041, 1 }, },	-- 1x Everliving Wooden Key
 				["g"] = {
-					i(197585),	-- Windborne Velocidrake: Maned Back (DM!)
+					i(197585),	-- Windborne Velocidrake: Maned Back (MM!)
 				}
 			}),
 			o(380842, {	-- Gold Coin
@@ -143,6 +198,12 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					i(200861),	-- Stolen Shikaar Warspear
 				},
 			}),
+			o(381708, {	-- The First Kurnal
+				["coord"] = { 67.0, 43.7, OHNAHRAN_PLAINS },
+			}),
+			o(381705, {	-- The Gnoll Wars
+				["coord"] = { 43.5, 56.5, OHNAHRAN_PLAINS },
+			}),
 			o(380859, {	-- Tuskarr Toy Boat
 				["coord"] = { 52.0, 58.3, OHNAHRAN_PLAINS },
 				["questID"] = 70400,
@@ -157,10 +218,11 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					i(198696),	-- Wind-Blessed Hide
 				}
 			}),
-			---
-			n(191861, {	-- Lever Locked Chest
-				-- Gave nothing.. Had to do a puzzle
-				["coord"] = { 31.5, 71.6, OHNAHRAN_PLAINS },	-- Cave
+			o(381709, {	-- Wind, Wood, Water
+				["coord"] = { 38.6, 66.7, OHNAHRAN_PLAINS },
+			}),
+			o(381706, {	-- Your Dreamer
+				["coord"] = { 24.7, 65.9, OHNAHRAN_PLAINS },
 			}),
 		}),
 	}),

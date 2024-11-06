@@ -1,7 +1,7 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(755, {	-- The Obsidian Sanctum
 		["mapID"] = THE_OBSIDIAN_SANCTUM,
 		["coord"] = { 60.0, 56.7, DRAGONBLIGHT },
@@ -11,7 +11,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 		["isRaid"] = true,
 		["lvl"] = 80,
 		["groups"] = {
-			d(3, {	-- 10-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL, {
 				n(ACHIEVEMENTS, {
 					ach(624, {	-- Less Is More [10 player]
 						crit(522, {	-- Sartharion
@@ -58,10 +58,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(43986)	-- Black Drake (MOUNT!)
 						}),
 						ach(5017, {	-- The Twilight Zone - Guild Edition
-							["timeline"] = { "added 4.0.3" },
-						}),
-						crit(5889, {	-- Sartharion (10 or 25 player) slain
-							["achievementID"] = 1658,	-- Champion of the Frozen Wastes
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(40613),	-- Gloves of the Lost Conqueror		//** Confirmed Drop 4/19/19 [1 Drake up]
 						i(40614),	-- Gloves of the Lost Protector
@@ -78,7 +75,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 				}),
 			}),
-			d(4, {	-- 25-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL, {
 				n(ACHIEVEMENTS, {
 					ach(1877, {	-- Less Is More [25 player]
 						crit(7186, {	-- Sartharion
@@ -93,6 +90,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						crit(7185, {	-- Vesperon
 							["provider"] = { "n", 30449 },	-- Vesperon
 						}),
+					}),
+					ach(456, {	-- Realm First! Obsidian Slayer
+						["timeline"] = { ADDED_3_0_2, REMOVED_3_0_8 },
+						["g"] = {
+							title(106, {	-- Obsidian Slayer <Name>
+								["timeline"] = { ADDED_3_0_2, REMOVED_3_0_8 },
+							}),
+						},
 					}),
 				}),
 				e(1616, {	-- Sartharion
@@ -125,10 +130,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							i(43954)	-- Twilight Drake (MOUNT!)
 						}),
 						ach(5017, {	-- The Twilight Zone - Guild Edition
-							["timeline"] = { "added 4.0.3" },
-						}),
-						crit(5889, {	-- Sartharion (10 or 25 player) slain
-							["achievementID"] = 1658,	-- Champion of the Frozen Wastes
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(40628),	-- Gauntlets of the Lost Conqueror		//** Confirmed Drop 4/19/19 [3 Drakes up]
 						i(40629),	-- Gauntlets of the Lost Protector

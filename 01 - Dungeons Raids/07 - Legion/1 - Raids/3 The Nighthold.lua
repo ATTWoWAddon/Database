@@ -2,9 +2,7 @@
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
 -----------------------------------------------------
-local AllDifficulties = {LFR_RAID,NORMAL_RAID,HEROIC_RAID,MYTHIC_RAID};
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(786, {	-- The Nighthold
 		["isRaid"] = true,
 		["coords"] = {
@@ -16,43 +14,45 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 		["g"] = {
 			n(ACHIEVEMENTS, {
 				ach(10829, {    -- Arcing Aqueducts
-                    crit(1, {    -- Skorpyron
-                        ["_encounter"] = { 1706, LFR_RAID },
+                    crit(31445, {    -- Skorpyron
+                        ["_encounter"] = { 1706, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(2, {    -- Chronomatic Anomaly
-                        ["_encounter"] = { 1725, LFR_RAID },
+                    crit(31444, {    -- Chronomatic Anomaly
+                        ["_encounter"] = { 1725, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(3, {    -- Trilliax
-                        ["_encounter"] = { 1731, LFR_RAID },
+                    crit(31443, {    -- Trilliax
+                        ["_encounter"] = { 1731, DIFFICULTY.RAID.LFR },
                     }),
                 }),
 				ach(10837, {    -- Royal Athenaeum
-                    crit(1, {    -- Spellblade Aluriel
-                        ["_encounter"] = { 1751, LFR_RAID },
+                    crit(31447, {    -- Spellblade Aluriel
+                        ["_encounter"] = { 1751, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(2, {    -- Star Augur Etraeus
-                        ["_encounter"] = { 1732, LFR_RAID },
+                    crit(31448, {    -- Star Augur Etraeus
+                        ["_encounter"] = { 1732, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(3, {    -- High Botanist Tel'arn
-                        ["_encounter"] = { 1761, LFR_RAID },
+                    crit(31449, {    -- High Botanist Tel'arn
+                        ["_encounter"] = { 1761, DIFFICULTY.RAID.LFR },
                     }),
                 }),
 				ach(10838, {    -- Nightspire
-                    crit(1, {    -- Tichondrius
-                        ["_encounter"] = { 1762, LFR_RAID },
+                    crit(31452, {    -- Tichondrius
+                        ["_encounter"] = { 1762, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(2, {    -- Krosus
-                        ["_encounter"] = { 1713, LFR_RAID },
+                    crit(31451, {    -- Krosus
+                        ["_encounter"] = { 1713, DIFFICULTY.RAID.LFR },
                     }),
-                    crit(3, {    -- Elisande
-                        ["_encounter"] = { 1743, LFR_RAID },
+                    crit(31450, {    -- Elisande
+                        ["_encounter"] = { 1743, DIFFICULTY.RAID.LFR },
                     }),
                 }),
 				ach(10839, {    -- Betrayer's Rise
-                    crit(1, {    -- Gul'dan
-                        ["_encounter"] = { 1737, LFR_RAID },
+                    crit(31453, {    -- Gul'dan
+                        ["_encounter"] = { 1737, DIFFICULTY.RAID.LFR },
+						["provider"] = { "n", 104154 },	-- Gul'dan
                     }),
                 }),
+				ach(11628, {["timeline"] = {ADDED_7_2_0}}),	-- That's So Last Millennium (Nighthold)
 				ach(10868),	-- The Nighthold Guild Run
 			}),
 			n(WORLD_QUESTS, {
@@ -104,65 +104,11 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 				}),
 			}),
-			d(AllDifficulties, {
-				e(1737, {	-- Gul'dan
-					["crs"] = {
-						104154,	-- Gul'dan
-						111022,	-- The Demon Within
-					},
-					["g"] = {
-						i(141061, {	-- Technique: Grimoire of the Abyssal
-							["timeline"] = { ADDED_10_1_5 },
-						}),
-					},
-				}),
-			}),
-			d(LFR_RAID, {	-- Queue NPC
+			d(DIFFICULTY.RAID.LFR, {	-- Queue NPC
 				["crs"] = { 111246 },	-- Archmage Timear
 				["coord"] = { 63.7, 55.0, LEGION_DALARAN },
 			}),
-			d(LFR_RAID, {
-				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
-					["g"] = {
-						i(140148, {	-- Cache of Nightborne Treasures [Raid Finder]
-							["u"] = REMOVED_FROM_GAME,
-							["sym"] = {{"select", "instanceID", 786}, {"pop"}, {"where", "difficultyID", 17 }, {"pop"}, {"pop"}, {"is","encounterID"}, {"pop"}, {"isnt", "c"}, {"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 }},
-						}),
-						i(140172, {	-- Ancient Nightborne Tome [Raid Finder]
-							["questID"] = 43911,	-- The Nighthold: Elisande [Raid Finder]
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140148)),	-- Cache of Nightborne Treasures [Raid Finder]
-							},
-						}),
-						i(140171, {	-- Glowing Lily [Raid Finder]
-							["questID"] = 43910,	-- The Nighthold: High Botanist Tel'arn [Raid Finder]
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140148)),	-- Cache of Nightborne Treasures [Raid Finder]
-							},
-						}),
-						i(140147, {	-- Pulsauron Bindings [Raid Finder]
-							["questID"] = 43882,	-- The Nighthold: Vaults [Raid Finder]
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140148)),	-- Cache of Nightborne Treasures [Raid Finder]
-							},
-						}),
-						i(140173, {	-- Shred of Tattered Robe [Raid Finder]
-							["questID"] = 43912,	-- The Nighthold: Gul'dan [Raid Finder]
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140148)),	-- Cache of Nightborne Treasures [Raid Finder]
-							},
-						}),
-					},
-				}),
+			d(DIFFICULTY.RAID.LFR, {
 				n(ZONE_DROPS, {
 					i(144399),	-- Aristocrat's Winter Drape
 					i(144401),	-- Cloak of Multitudinous Sheaths
@@ -175,7 +121,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				}),
 				header(HEADERS.Achievement, 10829, {	-- Arcing Aqueducts
 					cr(102263, e(1706, {	-- Skorpyron
-						ach(10829, crit(1)),	-- Arcing Aqueducts / Skorpyron
 						i(139642),	-- Vantus Rune Technique: Skorpyron [Rank 1] (RECIPE!)
 						i(137754),	-- Vantus Rune Technique: Skorpyron [Rank 2] (RECIPE!)
 						i(140901),	-- Vintage Suramar Nobility Hat
@@ -194,10 +139,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(140827),	-- Manatoxin Gland
 					})),
 					cr(104415, e(1725, {	-- Chronomatic Anomaly
-						ach(10829, crit(3)),	-- Arcing Aqueducts / Chronomatic Anomaly
 						i(139643),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 1] (RECIPE!)
 						i(137755),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 2] (RECIPE!)
-						i(138828),	-- Illusion: Chronos
+						i(138828),	-- Illusion: Chronos (ILLUSION!)
 						i(140903),	-- Hood of Fading Opportunity
 						i(140894),	-- Zealous Timestone Pendant
 						i(140853),	-- Chaos-Scarred Mantle
@@ -214,7 +158,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(140831),	-- Suspended Nightwell Droplet
 					})),
 					cr(104288, e(1731, {	-- Trilliax
-						ach(10829, crit(2)),	-- Arcing Aqueducts / Trilliax
 						i(139644),	-- Vantus Rune Technique: Trilliax [Rank 1] (RECIPE!)
 						i(137756),	-- Vantus Rune Technique: Trilliax [Rank 2] (RECIPE!)
 						i(138375),	-- Cape of Second Sight
@@ -246,7 +189,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				}),
 				header(HEADERS.Achievement, 10837, {	-- Royal Athenaeum
 					cr(104881, e(1751, {	-- Spellblade Aluriel
-						ach(10837, crit(1)),	-- Royal Athenaeum / Spellblade Aluriel
 						i(139645),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 1] (RECIPE!)
 						i(137757),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 2] (RECIPE!)
 						i(140866),	-- Nightborne Battle-Magus Hood
@@ -265,7 +207,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(140834),	-- Soul of Flame
 					})),
 					cr(103758, e(1732, {	-- Star Augur Etraeus
-						ach(10837, crit(2)),	-- Royal Athenaeum / Star Augur Etraeus
 						i(142078),	-- Pattern: Imbued Silkweave Bag (Rank 3)
 						i(139649),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 1] (RECIPE!)
 						i(137761),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 2] (RECIPE!)
@@ -300,7 +241,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 							109038,	-- Solarist Tel'arn
 						},
 						["g"] = {
-							ach(10837, crit(3)),	-- Royal Athenaeum / High Botanist Tel'arn
 							i(143751),	-- Technique: Glyph of Twilight Bloom (RECIPE!)
 							i(139647),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 1] (RECIPE!)
 							i(137759),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 2] (RECIPE!)
@@ -322,7 +262,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				}),
 				header(HEADERS.Achievement, 10838, {	-- Nightspire
 					cr(103685, e(1762, {	-- Tichondrius
-						ach(10838, crit(2)),	-- Nightspire / Tichondrius
 						i(139646),	-- Vantus Rune Technique: Tichondrius [Rank 1] (RECIPE!)
 						i(137758),	-- Vantus Rune Technique: Tichondrius [Rank 2] (RECIPE!)
 						i(138338),	-- Doomblade Spaulders
@@ -348,7 +287,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(140824),	-- Writ of Subjugation
 					})),
 					cr(101002, e(1713, {	-- Krosus
-						ach(10838, crit(1)),	-- Nightspire / Krosus
 						i(139648),	-- Vantus Rune Technique: Krosus [Rank 1] (RECIPE!)
 						i(137760),	-- Vantus Rune Technique: Krosus [Rank 2] (RECIPE!)
 						i(140870),	-- Architect's Coif of Despair
@@ -375,9 +313,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(140835),	-- Unkindled Ember
 					})),
 					cr(106643, e(1743, {	-- Elisande
-						crit(3, {	-- Elisande
-							["achievementID"] = 10838,	-- Nightspire
-						}),
 						i(139650),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 1] (RECIPE!)
 						i(137762),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 2] (RECIPE!)
 						i(138332),	-- Doomblade Cowl
@@ -411,6 +346,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						i(137763),	-- Vantus Rune Technique: Gul'dan [Rank 2] (RECIPE!)
 						i(119211),	-- Golden Hearthstone Card: Lord Jaraxxus (TOY!)
 						i(143544),	-- Skull of Corruption (TOY!)
+						i(141061, {	-- Technique: Grimoire of the Abyssal
+							["timeline"] = { ADDED_10_1_5 },
+						}),
 						i(140917),	-- Netherbranded Shoulderpads
 						i(140913),	-- Breastplate of the Remembered King
 						i(138335),	-- Doomblade Pants
@@ -438,58 +376,111 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					}))
 				}),
 			}),
-			d(NORMAL_RAID, {
-				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
+			d(DIFFICULTY.RAID.MULTI.NORMAL_PLUS, {
+				cr(102263, e(1706, {	-- Skorpyron
+					ach(10678),	-- Cage Rematch
+					i(139642),	-- Vantus Rune Technique: Skorpyron [Rank 1] (RECIPE!)
+					i(137754),	-- Vantus Rune Technique: Skorpyron [Rank 2] (RECIPE!)
+				})),
+				cr(104415, e(1725, {	-- Chronomatic Anomaly
+					ach(10697),	-- Grand Opening
+					i(139643),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 1] (RECIPE!)
+					i(137755),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 2] (RECIPE!)
+					i(138828),	-- Illusion: Chronos (ILLUSION!)
+				})),
+				cr(104288, e(1731, {	-- Trilliax
+					ach(10742),	-- Gluten Free
+					i(139644),	-- Vantus Rune Technique: Trilliax [Rank 1] (RECIPE!)
+					i(137756),	-- Vantus Rune Technique: Trilliax [Rank 2] (RECIPE!)
+				})),
+				cr(104881, e(1751, {	-- Spellblade Aluriel
+					ach(10817, {	-- A Change In Scenery
+						crit(31807, {	-- The Shal'dorei Terrace
+							["_noautomation"] = true,
+						}),
+						crit(31806, {	-- The Shattered Walkway
+							["_noautomation"] = true,
+						}),
+						crit(31808, {	-- Astromancer's Rise
+							["_noautomation"] = true,
+						}),
+					}),
+					i(139645),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 1] (RECIPE!)
+					i(137757),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 2] (RECIPE!)
+				})),
+				cr(103685, e(1762, {	-- Tichondrius
+					ach(10704),	-- Not For You
+					i(137687),	-- Plans: Fel Core Hound Harness (RECIPE!)
+					i(139646),	-- Vantus Rune Technique: Tichondrius [Rank 1] (RECIPE!)
+					i(137758),	-- Vantus Rune Technique: Tichondrius [Rank 2] (RECIPE!)
+				})),
+				cr(101002, e(1713, {	-- Krosus
+					ach(10575),	-- Burning Bridges
+					i(139648),	-- Vantus Rune Technique: Krosus [Rank 1] (RECIPE!)
+					i(137760),	-- Vantus Rune Technique: Krosus [Rank 2] (RECIPE!)
+				})),
+				e(1761, {	-- High Botanist Tel'arn
+					["crs"] = {
+						109040,	-- Arcanist Tel'arn
+						104528,	-- High Botanist Tel'arn
+						109041,	-- Naturalist Tel'arn
+						109038,	-- Solarist Tel'arn
+					},
 					["g"] = {
-						i(140150, {	-- Cache of Nightborne Treasures (Normal)
-							["u"] = REMOVED_FROM_GAME,
-							["sym"] = {{"select", "instanceID", 786}, {"pop"}, {"where", "difficultyID", 14 }, {"pop"}, {"is","encounterID"}, {"pop"}, {"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 }},
+						ach(10754),	-- Fruit of All Evil
+						i(143751),	-- Technique: Glyph of Twilight Bloom (RECIPE!)
+						i(139647),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 1] (RECIPE!)
+						i(137759),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 2] (RECIPE!)
+					},
+				}),
+				cr(103758, e(1732, {	-- Star Augur Etraeus
+					ach(10851, {	-- Elementalry!
+						["crs"] = { 111595 },	-- Well-Traveled Nether Elemental
+					}),
+					i(142078),	-- Pattern: Imbued Silkweave Bag
+					i(139649),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 1] (RECIPE!)
+					i(137761),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 2] (RECIPE!)
+				})),
+				cr(106643, e(1743, {	-- Elisande
+					ach(10699, {	-- Infinitesimal
+						["crs"] = { 108802 },	-- Infinite Drakeling
+					}),
+					i(139650),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 1] (RECIPE!)
+					i(137762),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 2] (RECIPE!)
+				})),
+				e(1737, {	-- Gul'dan
+					["crs"] = {
+						104154,	-- Gul'dan
+						111022,	-- The Demon Within
+					},
+					["g"] = {
+						ach(10696, {	-- I've Got My Eyes On You
+							["crs"] = { 105630 },	-- Eye of Gul'dan <Gul'dan's Minion>
 						}),
-						i(140175, {	-- Ancient Nightborne Tome (Normal)
-							["questID"] = 43914,	-- The Nighthold: Elisande (Normal)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140150)),	-- Cache of Nightborne Treasures (Normal)
-							},
-						}),
-						i(140174, {	-- Glowing Lily (Normal)
-							["questID"] = 43913,	-- The Nighthold: High Botanist Tel'arn (Normal)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140150)),	-- Cache of Nightborne Treasures (Normal)
-							},
-						}),
-						i(140149, {	-- Pulsauron Bindings (Normal)
-							["questID"] = 43889,	-- The Nighthold: Vaults (Normal)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140150)),	-- Cache of Nightborne Treasures (Normal)
-							},
-						}),
-						i(140177, {	-- Shred of Tattered Robe (Normal)
-							["questID"] = 43915,	-- The Nighthold: Gul'dan (Normal)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140150)),	-- Cache of Nightborne Treasures (Normal)
-							},
-						}),
-						q(45381, {	-- The Nighthold: Talisman of the Shal'dorei (Normal)
-							["description"] = "Finishing this quest will grant you immediate access to Spellblade Aluriel, Krosus, and/or Elisande on Normal difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Heroic or Mythic version first.|r\n",
-							["altQuests"] = {
-								45382,	-- The Nighthold: Talisman of the Shal'dorei (Heroic)
-								45383,	-- The Nighthold: Talisman of the Shal'dorei (Mythic)
-							},
-							["provider"] = { "n", 110791 },	-- First Arcanist Thalyssra
-							["g"] = {
-								ig(141324),	-- Talisman of the Shal'dorei (Normal)
-							},
+						i(137574),	-- Felblaze Infernal (MOUNT!)
+						i(139651),	-- Vantus Rune Technique: Gul'dan [Rank 1] (RECIPE!)
+						i(137763),	-- Vantus Rune Technique: Gul'dan [Rank 2] (RECIPE!)
+						i(119211),	-- Golden Hearthstone Card: Lord Jaraxxus (TOY!)
+						i(143544),	-- Skull of Corruption (TOY!)
+						i(141061, {	-- Technique: Grimoire of the Abyssal
+							["timeline"] = { ADDED_10_1_5 },
 						}),
 					},
+				}),
+			}),
+			d(DIFFICULTY.RAID.NORMAL, {
+				n(QUESTS, {
+					q(45381, {	-- The Nighthold: Talisman of the Shal'dorei (Normal)
+						["description"] = "Finishing this quest will grant you immediate access to Spellblade Aluriel, Krosus, and/or Elisande on Normal difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Heroic or Mythic version first.|r\n",
+						["altQuests"] = {
+							45382,	-- The Nighthold: Talisman of the Shal'dorei (Heroic)
+							45383,	-- The Nighthold: Talisman of the Shal'dorei (Mythic)
+						},
+						["provider"] = { "n", 110791 },	-- First Arcanist Thalyssra
+						["g"] = {
+							ig(141324),	-- Talisman of the Shal'dorei (Normal)
+						},
+					}),
 				}),
 				n(COMMON_BOSS_DROPS, {
 					i(140199),	-- Nightshard
@@ -508,9 +499,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(144405),	-- Waistclasp of Unethical Power
 				}),
 				cr(102263, e(1706, {	-- Skorpyron
-					ach(10678),	-- Cage Rematch
-					i(139642),	-- Vantus Rune Technique: Skorpyron [Rank 1] (RECIPE!)
-					i(137754),	-- Vantus Rune Technique: Skorpyron [Rank 2] (RECIPE!)
 					i(140901),	-- Vintage Suramar Nobility Hat
 					i(140898),	-- Radiant String of Scorpid Eyes
 					i(140875),	-- Arcanochitin Hauberk
@@ -527,10 +515,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140827),	-- Manatoxin Gland
 				})),
 				cr(104415, e(1725, {	-- Chronomatic Anomaly
-					ach(10697),	-- Grand Opening
-					i(139643),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 1] (RECIPE!)
-					i(137755),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 2] (RECIPE!)
-					i(138828),	-- Illusion: Chronos
 					i(140903),	-- Hood of Fading Opportunity
 					i(140894),	-- Zealous Timestone Pendant
 					i(140853),	-- Chaos-Scarred Mantle
@@ -547,9 +531,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140831),	-- Suspended Nightwell Droplet
 				})),
 				cr(104288, e(1731, {	-- Trilliax
-					ach(10742),	-- Gluten Free
-					i(139644),	-- Vantus Rune Technique: Trilliax [Rank 1] (RECIPE!)
-					i(137756),	-- Vantus Rune Technique: Trilliax [Rank 2] (RECIPE!)
 					i(143577, {	-- Cloak of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138375),	-- Cape of Second Sight
 						i(138373),	-- Cloak of Azj'Aqir
@@ -583,13 +564,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140812),	-- Soggy Manascrubber Brush
 				})),
 				cr(104881, e(1751, {	-- Spellblade Aluriel
-					ach(10817, {	-- A Change In Scenery
-						crit(1),	-- The Shal'dorei Terrace
-						crit(2),	-- The Shattered Walkway
-						crit(3),	-- Astromancer's Rise
-					}),
-					i(139645),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 1] (RECIPE!)
-					i(137757),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 2] (RECIPE!)
 					i(140866),	-- Nightborne Battle-Magus Hood
 					i(140877),	-- Captain's Parade Breastplate
 					i(140850),	-- Bracers of Harnessed Flame
@@ -606,10 +580,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140834),	-- Soul of Flame
 				})),
 				cr(103685, e(1762, {	-- Tichondrius
-					ach(10704),	-- Not For You
-					i(137687),	-- Plans: Fel Core Hound Harness (RECIPE!)
-					i(139646),	-- Vantus Rune Technique: Tichondrius [Rank 1] (RECIPE!)
-					i(137758),	-- Vantus Rune Technique: Tichondrius [Rank 2] (RECIPE!)
 					i(143566, {	-- Shoulders of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138323),	-- Pauldrons of Azj'Aqir
 						i(138362),	-- Pauldrons of the Highlord
@@ -639,9 +609,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140824),	-- Writ of Subjugation
 				})),
 				cr(101002, e(1713, {	-- Krosus
-					ach(10575),	-- Burning Bridges
-					i(139648),	-- Vantus Rune Technique: Krosus [Rank 1] (RECIPE!)
-					i(137760),	-- Vantus Rune Technique: Krosus [Rank 2] (RECIPE!)
 					i(143562, {	-- Chest of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138350),	-- Breastplate of the Highlord
 						i(138320),	-- Finery of Azj'Aqir
@@ -679,10 +646,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						109038,	-- Solarist Tel'arn
 					},
 					["g"] = {
-						ach(10754),	-- Fruit of All Evil
-						i(143751),	-- Technique: Glyph of Twilight Bloom (RECIPE!)
-						i(139647),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 1] (RECIPE!)
-						i(137759),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 2] (RECIPE!)
 						i(140881),	-- Eventide Casque
 						i(140883),	-- Shoulderguard of the Eclipse
 						i(140874),	-- Thistle-Proof Thorngrabbers
@@ -699,10 +662,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 				}),
 				cr(103758, e(1732, {	-- Star Augur Etraeus
-					ach(10851),	-- Elementalry!
-					i(142078),	-- Pattern: Imbued Silkweave Bag
-					i(139649),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 1] (RECIPE!)
-					i(137761),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 2] (RECIPE!)
 					i(143563, {	-- Gauntlets of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138311),	-- Clutch of Azj'Aqir
 						i(138377),	-- Gloves of Second Sight
@@ -733,9 +692,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140841),	-- Tempest of the Heavens
 				})),
 				cr(106643, e(1743, {	-- Elisande
-					ach(10699),	-- Infinitesimal
-					i(139650),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 1] (RECIPE!)
-					i(137762),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 2] (RECIPE!)
 					i(143565, {	-- Helm of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138314),	-- Eyes of Azj'Aqir
 						i(138356),	-- Helmet of the Highlord
@@ -767,12 +723,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140810),	-- Farsight Spiritjewel
 				})),
 				cr(104154, e(1737, {	-- Gul'dan
-					ach(10696),	-- I've Got My Eyes On You
-					i(137574),	-- Felblaze Infernal (MOUNT!)
-					i(139651),	-- Vantus Rune Technique: Gul'dan [Rank 1] (RECIPE!)
-					i(137763),	-- Vantus Rune Technique: Gul'dan [Rank 2] (RECIPE!)
-					i(119211),	-- Golden Hearthstone Card: Lord Jaraxxus (TOY!)
-					i(143544),	-- Skull of Corruption (TOY!)
 					i(143564, {	-- Leggings of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138317),	-- Leggings of Azj'Aqir
 						i(138359),	-- Legplates of the Highlord
@@ -805,55 +755,16 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140823),	-- Warchief's Shattered Tusk
 				}))
 			}),
-			d(HEROIC_RAID, {
+			d(DIFFICULTY.RAID.HEROIC, {
 				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
-					["g"] = {
-						i(140152, {	-- Cache of Nightborne Treasures (Heroic)
-							["u"] = REMOVED_FROM_GAME,
-							["sym"] = {{"select", "instanceID", 786}, {"pop"}, {"where", "difficultyID", 15 }, {"pop"}, {"is","encounterID"}, {"pop"}, {"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 }},
-						}),
-						i(140472, {	-- Ancient Nightborne Tome (Heroic)
-							["questID"] = 43917,	-- The Nighthold: Elisande (Heroic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140152)),	-- Cache of Nightborne Treasures (Heroic)
-							},
-						}),
-						i(140178, {	-- Glowing Lily (Heroic)
-							["questID"] = 43916,	-- The Nighthold: High Botanist Tel'arn (Heroic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140152)),	-- Cache of Nightborne Treasures (Heroic)
-							},
-						}),
-						i(140151, {	-- Pulsauron Bindings (Heroic)
-							["questID"] = 43890,	-- The Nighthold: Vaults (Heroic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140152)),	-- Cache of Nightborne Treasures (Heroic)
-							},
-						}),
-						i(140180, {	-- Shred of Tattered Robe (Heroic)
-							["questID"] = 43918,	-- The Nighthold: Gul'dan (Heroic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140152)),	-- Cache of Nightborne Treasures (Heroic)
-							},
-						}),
-						q(45382, {	-- The Nighthold: Talisman of the Shal'dorei (Heroic)
-							["description"] = "Finishing this quest will grant you immediate access to Spellblade Aluriel, Krosus, and/or Elisande on Heroic difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Mythic version first.|r\n",
-							["altQuests"] = { 45383 },	-- The Nighthold: Talisman of the Shal'dorei (Mythic)
-							["provider"] = { "n", 110791 },	-- First Arcanist Thalyssra
-							["g"] = {
-								ig(141325),	-- Talisman of the Shal'dorei (Heroic)
-							},
-						}),
-					},
+					q(45382, {	-- The Nighthold: Talisman of the Shal'dorei (Heroic)
+						["description"] = "Finishing this quest will grant you immediate access to Spellblade Aluriel, Krosus, and/or Elisande on Heroic difficulty each week.\n\n|cfffd1818This quest becomes unobtainable if you complete the Mythic version first.|r\n",
+						["altQuests"] = { 45383 },	-- The Nighthold: Talisman of the Shal'dorei (Mythic)
+						["provider"] = { "n", 110791 },	-- First Arcanist Thalyssra
+						["g"] = {
+							ig(141325),	-- Talisman of the Shal'dorei (Heroic)
+						},
+					}),
 				}),
 				n(COMMON_BOSS_DROPS, {
 					i(140199),	-- Nightshard
@@ -872,8 +783,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(144405),	-- Waistclasp of Unethical Power
 				}),
 				cr(102263, e(1706, {	-- Skorpyron
-					i(139642),	-- Vantus Rune Technique: Skorpyron [Rank 1] (RECIPE!)
-					i(137754),	-- Vantus Rune Technique: Skorpyron [Rank 2] (RECIPE!)
 					i(140901),	-- Vintage Suramar Nobility Hat
 					i(140898),	-- Radiant String of Scorpid Eyes
 					i(140875),	-- Arcanochitin Hauberk
@@ -890,9 +799,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140827),	-- Manatoxin Gland
 				})),
 				cr(104415, e(1725, {	-- Chronomatic Anomaly
-					i(139643),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 1] (RECIPE!)
-					i(137755),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 2] (RECIPE!)
-					i(138828),	-- Illusion: Chronos
 					i(140903),	-- Hood of Fading Opportunity
 					i(140894),	-- Zealous Timestone Pendant
 					i(140853),	-- Chaos-Scarred Mantle
@@ -909,8 +815,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140831),	-- Suspended Nightwell Droplet
 				})),
 				cr(104288, e(1731, {	-- Trilliax
-					i(139644),	-- Vantus Rune Technique: Trilliax [Rank 1] (RECIPE!)
-					i(137756),	-- Vantus Rune Technique: Trilliax [Rank 2] (RECIPE!)
 					i(143577, {	-- Cloak of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138375),	-- Cape of Second Sight
 						i(138373),	-- Cloak of Azj'Aqir
@@ -944,8 +848,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140812),	-- Soggy Manascrubber Brush
 				})),
 				cr(104881, e(1751, {	-- Spellblade Aluriel
-					i(139645),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 1] (RECIPE!)
-					i(137757),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 2] (RECIPE!)
 					i(140866),	-- Nightborne Battle-Magus Hood
 					i(140877),	-- Captain's Parade Breastplate
 					i(140850),	-- Bracers of Harnessed Flame
@@ -962,9 +864,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140834),	-- Soul of Flame
 				})),
 				cr(103685, e(1762, {	-- Tichondrius
-					i(137687),	-- Plans: Fel Core Hound Harness (RECIPE!)
-					i(139646),	-- Vantus Rune Technique: Tichondrius [Rank 1] (RECIPE!)
-					i(137758),	-- Vantus Rune Technique: Tichondrius [Rank 2] (RECIPE!)
 					i(143566, {	-- Shoulders of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138323),	-- Pauldrons of Azj'Aqir
 						i(138362),	-- Pauldrons of the Highlord
@@ -994,8 +893,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140824),	-- Writ of Subjugation
 				})),
 				cr(101002, e(1713, {	-- Krosus
-					i(139648),	-- Vantus Rune Technique: Krosus [Rank 1] (RECIPE!)
-					i(137760),	-- Vantus Rune Technique: Krosus [Rank 2] (RECIPE!)
 					i(143562, {	-- Chest of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138350),	-- Breastplate of the Highlord
 						i(138320),	-- Finery of Azj'Aqir
@@ -1033,9 +930,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 						109038,	-- Solarist Tel'arn
 					},
 					["g"] = {
-						i(143751),	-- Technique: Glyph of Twilight Bloom (RECIPE!)
-						i(139647),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 1] (RECIPE!)
-						i(137759),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 2] (RECIPE!)
 						i(140881),	-- Eventide Casque
 						i(140883),	-- Shoulderguard of the Eclipse
 						i(140874),	-- Thistle-Proof Thorngrabbers
@@ -1052,9 +946,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 				}),
 				cr(103758, e(1732, {	-- Star Augur Etraeus
-					i(142078),	-- Pattern: Imbued Silkweave Bag
-					i(139649),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 1] (RECIPE!)
-					i(137761),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 2] (RECIPE!)
 					i(143563, {	-- Gauntlets of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138311),	-- Clutch of Azj'Aqir
 						i(138377),	-- Gloves of Second Sight
@@ -1085,8 +976,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140841),	-- Tempest of the Heavens
 				})),
 				cr(106643, e(1743, {	-- Elisande
-					i(139650),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 1] (RECIPE!)
-					i(137762),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 2] (RECIPE!)
 					i(143565, {	-- Helm of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138314),	-- Eyes of Azj'Aqir
 						i(138356),	-- Helmet of the Highlord
@@ -1121,11 +1010,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					ach(11195, {	-- Ahead of the Curve: Gul'dan
 						["u"] = REMOVED_FROM_GAME,
 					}),
-					i(137574),	-- Felblaze Infernal (MOUNT!)
-					i(139651),	-- Vantus Rune Technique: Gul'dan [Rank 1] (RECIPE!)
-					i(137763),	-- Vantus Rune Technique: Gul'dan [Rank 2] (RECIPE!)
-					i(119211),	-- Golden Hearthstone Card: Lord Jaraxxus (TOY!)
-					i(143544),	-- Skull of Corruption (TOY!)
 					i(143564, {	-- Leggings of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138317),	-- Leggings of Azj'Aqir
 						i(138359),	-- Legplates of the Highlord
@@ -1158,54 +1042,15 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(140823),	-- Warchief's Shattered Tusk
 				}))
 			}),
-			d(MYTHIC_RAID, {
+			d(DIFFICULTY.RAID.MYTHIC, {
 				n(QUESTS, {
-					["crs"] = CLASS_HALL_MISSION_TABLES,
-					["g"] = {
-						i(140154, {	-- Cache of Nightborne Treasures (Mythic)
-							["u"] = REMOVED_FROM_GAME,
-							["sym"] = {{"select", "instanceID", 786}, {"pop"}, {"where", "difficultyID", 16 }, {"pop"}, {"is","encounterID"}, {"pop"}, {"contains", "f", 1, 2, 3, 4, 5, 6, 7, 8, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 51, 52, 53, 54 }},
-						}),
-						i(140182, {	-- Ancient Nightborne Tome (Mythic)
-							["questID"] = 43920,	-- The Nighthold: Elisande (Mythic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140154)),	-- Cache of Nightborne Treasures (Mythic)
-							},
-						}),
-						i(140181, {	-- Glowing Lily (Mythic)
-							["questID"] = 43919,	-- The Nighthold: High Botanist Tel'arn (Mythic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140154)),	-- Cache of Nightborne Treasures (Mythic)
-							},
-						}),
-						i(140153, {	-- Pulsauron Bindings (Mythic)
-							["questID"] = 43891,	-- The Nighthold: Vaults (Mythic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140154)),	-- Cache of Nightborne Treasures (Mythic)
-							},
-						}),
-						i(140183, {	-- Shred of Tattered Robe (Mythic)
-							["questID"] = 43921,	-- The Nighthold: Gul'dan (Mythic)
-							["repeatable"] = true,
-							["u"] = REMOVED_FROM_GAME,
-							["g"] = {
-								un(REMOVED_FROM_GAME, i(140154)),	-- Cache of Nightborne Treasures (Mythic)
-							},
-						}),
-						q(45383, {	-- The Nighthold: Talisman of the Shal'dorei (Mythic)
-							["description"] = "Finishing this quest will grant you immediate access to Spellblade Aluriel, Krosus, and/or Elisande on Mythic difficulty each week.\n",
-							["provider"] = { "n", 110791 },	-- First Arcanist Thalyssra
-							["g"] = {
-								ig(141326),	-- Talisman of the Shal'dorei (Mythic)
-							},
-						}),
-					},
+					q(45383, {	-- The Nighthold: Talisman of the Shal'dorei (Mythic)
+						["description"] = "Finishing this quest will grant you immediate access to Spellblade Aluriel, Krosus, and/or Elisande on Mythic difficulty each week.\n",
+						["provider"] = { "n", 110791 },	-- First Arcanist Thalyssra
+						["g"] = {
+							ig(141326),	-- Talisman of the Shal'dorei (Mythic)
+						},
+					}),
 				}),
 				n(COMMON_BOSS_DROPS, {
 					i(140199),	-- Nightshard
@@ -1225,8 +1070,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				}),
 				cr(102263, e(1706, {	-- Skorpyron
 					ach(10840),	-- Mythic: Skorpyron
-					i(139642),	-- Vantus Rune Technique: Skorpyron [Rank 1] (RECIPE!)
-					i(137754),	-- Vantus Rune Technique: Skorpyron [Rank 2] (RECIPE!)
 					i(140901),	-- Vintage Suramar Nobility Hat
 					i(140898),	-- Radiant String of Scorpid Eyes
 					i(140875),	-- Arcanochitin Hauberk
@@ -1244,9 +1087,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				})),
 				cr(104415, e(1725, {	-- Chronomatic Anomaly
 					ach(10842),	-- Mythic: Chronomatic Anomaly
-					i(139643),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 1] (RECIPE!)
-					i(137755),	-- Vantus Rune Technique: Chronomatic Anomaly [Rank 2] (RECIPE!)
-					i(138828),	-- Illusion: Chronos
 					i(140903),	-- Hood of Fading Opportunity
 					i(140894),	-- Zealous Timestone Pendant
 					i(140853),	-- Chaos-Scarred Mantle
@@ -1264,8 +1104,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				})),
 				cr(104288, e(1731, {	-- Trilliax
 					ach(10843),	-- Mythic: Trilliax
-					i(139644),	-- Vantus Rune Technique: Trilliax [Rank 1] (RECIPE!)
-					i(137756),	-- Vantus Rune Technique: Trilliax [Rank 2] (RECIPE!)
 					i(143577, {	-- Cloak of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138375),	-- Cape of Second Sight
 						i(138373),	-- Cloak of Azj'Aqir
@@ -1300,8 +1138,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				})),
 				cr(104881, e(1751, {	-- Spellblade Aluriel
 					ach(10844),	-- Mythic: Spellblade Aluriel
-					i(139645),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 1] (RECIPE!)
-					i(137757),	-- Vantus Rune Technique: Spellblade Aluriel [Rank 2] (RECIPE!)
 					i(140866),	-- Nightborne Battle-Magus Hood
 					i(140877),	-- Captain's Parade Breastplate
 					i(140850),	-- Bracers of Harnessed Flame
@@ -1319,9 +1155,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				})),
 				cr(103685, e(1762, {	-- Tichondrius
 					ach(10847),	-- Mythic: Tichondrius
-					i(137687),	-- Plans: Fel Core Hound Harness (RECIPE!)
-					i(139646),	-- Vantus Rune Technique: Tichondrius [Rank 1] (RECIPE!)
-					i(137758),	-- Vantus Rune Technique: Tichondrius [Rank 2] (RECIPE!)
 					i(143566, {	-- Shoulders of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138323),	-- Pauldrons of Azj'Aqir
 						i(138362),	-- Pauldrons of the Highlord
@@ -1352,8 +1185,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				})),
 				cr(101002, e(1713, {	-- Krosus
 					ach(10848),	-- Mythic: Krosus
-					i(139648),	-- Vantus Rune Technique: Krosus [Rank 1] (RECIPE!)
-					i(137760),	-- Vantus Rune Technique: Krosus [Rank 2] (RECIPE!)
 					i(143562, {	-- Chest of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138350),	-- Breastplate of the Highlord
 						i(138320),	-- Finery of Azj'Aqir
@@ -1392,9 +1223,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					},
 					["g"] = {
 						ach(10846),	-- Mythic: High Botanist Tel'arn
-						i(143751),	-- Technique: Glyph of Twilight Bloom (RECIPE!)
-						i(139647),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 1] (RECIPE!)
-						i(137759),	-- Vantus Rune Technique: High Botanist Tel'arn [Rank 2] (RECIPE!)
 						i(140881),	-- Eventide Casque
 						i(140883),	-- Shoulderguard of the Eclipse
 						i(140874),	-- Thistle-Proof Thorngrabbers
@@ -1412,9 +1240,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				}),
 				cr(103758, e(1732, {	-- Star Augur Etraeus
 					ach(10845),	-- Mythic: Star Augur Etraeus
-					i(142078),	-- Pattern: Imbued Silkweave Bag
-					i(139649),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 1] (RECIPE!)
-					i(137761),	-- Vantus Rune Technique: Star Augur Etraeus [Rank 2] (RECIPE!)
 					i(143563, {	-- Gauntlets of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138311),	-- Clutch of Azj'Aqir
 						i(138377),	-- Gloves of Second Sight
@@ -1446,8 +1271,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 				})),
 				cr(106643, e(1743, {	-- Elisande
 					ach(10849),	-- Mythic: Grand Magistrix Elisande
-					i(139650),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 1] (RECIPE!)
-					i(137762),	-- Vantus Rune Technique: Grand Magistrix Elisande [Rank 2] (RECIPE!)
 					i(143565, {	-- Helm of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 						i(138314),	-- Eyes of Azj'Aqir
 						i(138356),	-- Helmet of the Highlord
@@ -1495,14 +1318,9 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 							["u"] = REMOVED_FROM_GAME,
 						}),
 						ach(10850, {	-- Mythic: Gul'dan
-							title(342),	-- Title: %, Vengeance Incarnate
+							title(342),	-- <Name>, Vengeance Incarnate
 						}),
 						i(137575),	-- Hellfire Infernal (MOUNT!)
-						i(137574),	-- Felblaze Infernal (MOUNT!)
-						i(139651),	-- Vantus Rune Technique: Gul'dan [Rank 1] (RECIPE!)
-						i(137763),	-- Vantus Rune Technique: Gul'dan [Rank 2] (RECIPE!)
-						i(119211),	-- Golden Hearthstone Card: Lord Jaraxxus (TOY!)
-						i(143544),	-- Skull of Corruption (TOY!)
 						i(143564, {	-- Leggings of the Foreseen Conqueror [Demon Hunter, Paladin, Priest, Warlock]
 							i(138317),	-- Leggings of Azj'Aqir
 							i(138359),	-- Legplates of the Highlord
@@ -1540,7 +1358,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 	}),
 }));
 root(ROOTS.HiddenQuestTriggers, {
-	tier(LEGION_TIER, {
+	expansion(EXPANSION.LEGION, {
 		q(45318),	-- Skorpyron
 		q(45319),	-- Chronomatic Anomaly
 		q(45320),	-- Triliax
@@ -1556,49 +1374,5 @@ root(ROOTS.HiddenQuestTriggers, {
 		q(45327),	-- Gul'dan Mythic
 		q(45328),	-- Triggers when the door to Chronomatic Anomaly opens
 		q(46328),	-- Triggers when the port to Elisande is activated
-	}),
-});
-root(ROOTS.NeverImplemented, {
-	tier(LEGION_TIER, {
-		inst(786, {	-- The Nighthold
-			i(157764),	-- Claw of the Crystalline Scorpid
-			i(157765),	-- Draught of Souls
-			-- Added in 9.1 Why? Noone knows
-			cl(DEATHKNIGHT, {
-				i(180553),	-- Dreadwake Bonecage
-				i(180554),	-- Dreadwake Legplates
-				i(180555),	-- Dreadwake Pauldrons
-			}),
-			cl(DEMONHUNTER, {
-				i(180615),	-- Tunic of Second Sight
-				i(180616),	-- Legwraps of Second Sight
-				i(180617),	-- Shoulderguards of Second Sight
-			}),
-			cl(MONK, {
-				i(180562),	-- Tunic of Enveloped Dissonance
-				i(180563),	-- Leggings of Enveloped Dissonance
-				i(180564),	-- Pauldrons of Enveloped
-			}),
-			cl(PALADIN, {
-				i(180535),	-- Breastplate of the Highlord
-				i(180540),	-- Light's Vanguard Breastplate
-				i(180541),	-- Light's Vanguard Legplates
-				i(180542),	-- Light's Vanguard Shoulderplates
-			}),
-			cl(ROGUE, {
-				i(180556),	-- Doomblade Tunic
-				i(180557),	-- Doomblade Pants
-				i(180558),	-- Doomblade Spaulders
-			}),
-			i(180550),	-- Doomwalker Warboots
-			i(180551),	-- Flamelicked Girdle
-			i(180552),	-- Wristguards of the Dark Keepers
-			i(180560),	-- Girdle of Nefarious Strategy
-			i(180561),	-- Bracers of Impossible Choices
-			i(180566),	-- Well-Flattened Wristguards
-			i(180567),	-- Stutterstep Treads
-			i(180619),	-- Wristwraps of Broken Trust
-			i(180620),	-- High Shadow Councilor's Wrap
-		}),
 	}),
 });

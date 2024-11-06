@@ -1,15 +1,12 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
+root(ROOTS.Instances, expansion(EXPANSION.TBC, applyclassicphase(TBC_PHASE_FIVE, {
 	inst(752, {	-- Sunwell Plateau
 		["lore"] = "Nearly seven thousand years ago, the Highborne were exiled from Kalimdor for refusing to give up arcane magic. Led by Dath'Remar Sunstrider, these elves founded their own kingdom of Quel'Thalas. For millennia the mystical pool of energy known as the Sunwell fueled the potent magic of the exiled high elves. Now, the remnants of this ancient fountain have become the Burning Legion's latest target as the demons prepare to summon their commander, Kil'jaeden, with the Sunwell's energy.",
+		-- #if BEFORE WRATH
 		["zone-text-areaID"] = 4075,	-- Sunwell Plateau
-		["sins"] = {
-			"The Sunwell",
-			"Der Sonnenbrunnen",
-			"Le Puits de soleil",
-		},
+		-- #endif
 		["coord"] = { 44.28, 45.71, ISLE_OF_QUELDANAS },	-- Sunwell Plateau, Isle of Quel'Danas
 		["maps"] = {
 			SUNWELL_PLATEAU,
@@ -19,6 +16,9 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 		["isRaid"] = true,
 		["lvl"] = lvlsquish(68, 68, 30),	-- Level 68s could zone in without any attunements. TODO: Check this.
 		["groups"] = {
+			n(ACHIEVEMENTS, {
+				ach(11749, {["timeline"] = {ADDED_7_2_0}}),	-- Suns Out, Thori'dals Out (Sunwell Plateau)
+			}),
 			n(ZONE_DROPS, bubbleDown({
 			-- #IF AFTER 10.0
 				["_drop"] = { "classes", "c" },
@@ -46,21 +46,21 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 				i(35211),	-- Plans: Hard Khorium Battleplate (RECIPE!)
 				i(35210),	-- Plans: Sunblessed Breastplate (RECIPE!)
 				i(35208),	-- Plans: Sunblessed Gauntlets (RECIPE!)
-				i(35186),	-- Schematic: Annihilator Holo-Gogs
-				i(35196),	-- Schematic: Hard Khorium Goggles
-				i(35190),	-- Schematic: Hyper-Magnified Moon Specs
-				i(35187),	-- Schematic: Justicebringer 3000 Specs
-				i(35193),	-- Schematic: Lightning Etched Specs
-				i(35195),	-- Schematic: Mayhem Projection Goggles
-				i(35189),	-- Schematic: Powerheal 9000 Lens
-				i(35192),	-- Schematic: Primal-Attuned Goggles
-				i(35197),	-- Schematic: Quad Deathblow X44 Goggles
-				i(35194),	-- Schematic: Surestrike Goggles v3.0
-				i(35191),	-- Schematic: Wonderheal XT68 Shades
+				i(35186),	-- Schematic: Annihilator Holo-Gogs (RECIPE!)
+				i(35196),	-- Schematic: Hard Khorium Goggles (RECIPE!)
+				i(35190),	-- Schematic: Hyper-Magnified Moon Specs (RECIPE!)
+				i(35187),	-- Schematic: Justicebringer 3000 Specs (RECIPE!)
+				i(35193),	-- Schematic: Lightning Etched Specs (RECIPE!)
+				i(35195),	-- Schematic: Mayhem Projection Goggles (RECIPE!)
+				i(35189),	-- Schematic: Powerheal 9000 Lens (RECIPE!)
+				i(35192),	-- Schematic: Primal-Attuned Goggles (RECIPE!)
+				i(35197),	-- Schematic: Quad Deathblow X44 Goggles (RECIPE!)
+				i(35194),	-- Schematic: Surestrike Goggles v3.0 (RECIPE!)
+				i(35191),	-- Schematic: Wonderheal XT68 Shades (RECIPE!)
 				i(35273),	-- Study of Advanced Smelting (RECIPE!)
 				-- #if BEFORE MOP
 				i(34349, {	-- Blade of Life's Inevitability
-					["timeline"] = { "removed 5.0.4" },
+					["timeline"] = { REMOVED_5_0_4 },
 				}),
 				-- #endif
 				i(34350),	-- Gauntlets of the Ancient Shadowmoon
@@ -98,9 +98,15 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 					24892,	-- Sathrovarr the Corruptor
 				},
 				["groups"] = {
-					i(34848),	-- Bracers of the Forgotten Conqueror
-					i(34851),	-- Bracers of the Forgotten Protector
-					i(34852),	-- Bracers of the Forgotten Vanquisher
+					i(34848, {	-- Bracers of the Forgotten Conqueror
+						["classes"] = { PALADIN, PRIEST, WARLOCK },
+					}),
+					i(34851, {	-- Bracers of the Forgotten Protector
+						["classes"] = { WARRIOR, HUNTER, SHAMAN },
+					}),
+					i(34852, {	-- Bracers of the Forgotten Vanquisher
+						["classes"] = { ROGUE, MAGE, DRUID },
+					}),
 					i(34164),	-- Dragonscale-Encrusted Longblade
 					i(34165),	-- Fang of Kalecgos
 					i(34169),	-- Breeches of Natural Aggression
@@ -114,11 +120,17 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 				["creatureID"] = 24882,
 				["groups"] = {
 					i(122113, {	-- Sunblade Micro-Defender (PET!)
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					}),
-					i(34853),	-- Belt of the Forgotten Conqueror
-					i(34854),	-- Belt of the Forgotten Protector
-					i(34855),	-- Belt of the Forgotten Vanquisher
+					i(34853, {	-- Belt of the Forgotten Conqueror
+						["classes"] = { PALADIN, PRIEST, WARLOCK },
+					}),
+					i(34854, {	-- Belt of the Forgotten Protector
+						["classes"] = { WARRIOR, HUNTER, SHAMAN },
+					}),
+					i(34855, {	-- Belt of the Forgotten Vanquisher
+						["classes"] = { ROGUE, MAGE, DRUID },
+					}),
 					i(34176),	-- Reign of Misery
 					i(34179),	-- Heart of the Pit
 					i(34177),	-- Clutch of Demise
@@ -130,9 +142,15 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 			e(1593, {	-- Felmyst
 				["creatureID"] = 25038,
 				["groups"] = {
-					i(34856),	-- Boots of the Forgotten Conqueror
-					i(34857),	-- Boots of the Forgotten Protector
-					i(34858),	-- Boots of the Forgotten Vanquisher
+					i(34856, {	-- Boots of the Forgotten Conqueror
+						["classes"] = { PALADIN, PRIEST, WARLOCK },
+					}),
+					i(34857, {	-- Boots of the Forgotten Protector
+						["classes"] = { WARRIOR, HUNTER, SHAMAN },
+					}),
+					i(34858, {	-- Boots of the Forgotten Vanquisher
+						["classes"] = { ROGUE, MAGE, DRUID },
+					}),
 					i(34182),	-- Grand Magister's Staff of Torrents
 					i(34185),	-- Sword Breaker's Bulwark
 					i(34184),	-- Brooch of the Highborne
@@ -148,17 +166,35 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 				},
 				["groups"] = {
 					i(122115, {	-- Wretched Servant (PET!)
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					}),
-					i(34853),	-- Belt of the Forgotten Conqueror
-					i(34854),	-- Belt of the Forgotten Protector
-					i(34855),	-- Belt of the Forgotten Vanquisher
-					i(34856),	-- Boots of the Forgotten Conqueror
-					i(34857),	-- Boots of the Forgotten Protector
-					i(34858),	-- Boots of the Forgotten Vanquisher
-					i(34848),	-- Bracers of the Forgotten Conqueror
-					i(34851),	-- Bracers of the Forgotten Protector
-					i(34852),	-- Bracers of the Forgotten Vanquisher
+					i(34853, {	-- Belt of the Forgotten Conqueror
+						["classes"] = { PALADIN, PRIEST, WARLOCK },
+					}),
+					i(34854, {	-- Belt of the Forgotten Protector
+						["classes"] = { WARRIOR, HUNTER, SHAMAN },
+					}),
+					i(34855, {	-- Belt of the Forgotten Vanquisher
+						["classes"] = { ROGUE, MAGE, DRUID },
+					}),
+					i(34856, {	-- Boots of the Forgotten Conqueror
+						["classes"] = { PALADIN, PRIEST, WARLOCK },
+					}),
+					i(34857, {	-- Boots of the Forgotten Protector
+						["classes"] = { WARRIOR, HUNTER, SHAMAN },
+					}),
+					i(34858, {	-- Boots of the Forgotten Vanquisher
+						["classes"] = { ROGUE, MAGE, DRUID },
+					}),
+					i(34848, {	-- Bracers of the Forgotten Conqueror
+						["classes"] = { PALADIN, PRIEST, WARLOCK },
+					}),
+					i(34851, {	-- Bracers of the Forgotten Protector
+						["classes"] = { WARRIOR, HUNTER, SHAMAN },
+					}),
+					i(34852, {	-- Bracers of the Forgotten Vanquisher
+						["classes"] = { ROGUE, MAGE, DRUID },
+					}),
 					i(34198),	-- Stanchion of Primal Intellect
 					i(34199),	-- Archon's Gavel
 					i(34203),	-- Grip of Mannoroth
@@ -192,20 +228,20 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 						["timeline"] = { ADDED_8_3_0 },
 					}),
 					i(122114, {	-- Chaos Pup (PET!)
-						["timeline"] = { "added 6.1.0.19445" },
+						["timeline"] = { ADDED_6_1_0 },
 					}),
 					i(34214),	-- Muramasa
-					i(34231),	-- Aegis of Angelic Fortune (MISSING IN ADVENTURE GUIDE)
-					i(34232),	-- Fel Conqueror Raiments (MISSING IN ADVENTURE GUIDE)
+					i(34231),	-- Aegis of Angelic Fortune
+					i(34232),	-- Fel Conqueror Raiments
 					i(34229),	-- Garments of Serene Shores
 					i(34211),	-- Harness of Carnal Instinct
 					i(34216),	-- Heroic Judicator's Chestguard
-					i(34233),	-- Robes of Faltered Light (MISSING IN ADVENTURE GUIDE)
+					i(34233),	-- Robes of Faltered Light
 					i(34212),	-- Sunglow Vest
 					i(34228),	-- Vicious Hawkstrider Hauberk
 					i(34215),	-- Warharness of Reckless Fury
-					i(34240),	-- Gauntlets of the Soothed Soul (MISSING IN ADVENTURE GUIDE)
-					i(34234),	-- Shadowed Gauntlets of Paroxysm (MISSING IN ADVENTURE GUIDE)
+					i(34240),	-- Gauntlets of the Soothed Soul
+					i(34234),	-- Shadowed Gauntlets of Paroxysm
 					i(34213),	-- Ring of Hardened Resolve
 					i(34230),	-- Ring of Omnipotence
 					i(35282),	-- Sin'dorei Band of Dominance
@@ -221,18 +257,14 @@ root(ROOTS.Instances, tier(TBC_TIER, applyclassicphase(TBC_PHASE_FIVE, {
 				["creatureID"] = 25315,
 				["groups"] = {
 					ach(698, {	-- Sunwell Plateau
-						["timeline"] = { "added 3.0.1" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					ach(5092, {	-- Sunwell Plateau Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					ach(725, {	-- Thori'dal, the Stars' Fury
 						["provider"] = { "i", 34334 },	-- Thori'dal, the Stars' Fury
-						-- #if BEFORE WRATH
-						["description"] = "Obtain Thori'dal, the Stars' Fury from Kil'jaeden in Sunwell Plateau.",
-						-- #else
-						["description"] = "You must equip the bow to earn this achievement.",
-						-- #endif
+						["lore"] = "You must equip the bow to earn this achievement.",
 						["classes"] = { WARRIOR, ROGUE, HUNTER },
 					}),
 					i(34334),	-- Thori'dal, the Stars' Fury (LEGENDARY!)

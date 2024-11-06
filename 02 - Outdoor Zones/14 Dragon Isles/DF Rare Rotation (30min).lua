@@ -4,10 +4,24 @@
 local function bo(questID, isDaily)
     return { ["questID"] = questID, ["isDaily"] = isDaily };
 end
+DF_RARE_ROTATION = createHeader({
+	readable = "DF Rare Rotation",
+	icon = 237274,
+	text = {
+		en = "DF Rare Rotation",
+		fr = "Rotation Rare de DF",
+		ru = "Редкие DF по расписанию",
+		cn = "每30分钟稀有",
+	},
+});
 root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(RARES, {
-		n(-1143, {	-- DF Rare Rotation
+		n(DF_RARE_ROTATION, {
+			-- #if BEFORE 10.1.7
 			["description"] = "Every 30 minutes 1 rare will spawn, based on a fixed 14h rotation, and they will be marked with a skull on the map if you are in the respective zone.\n\nRotation: |cFFFFFFFF1. |rPhleep |cFFFFFFFF2. |rMagmaton |cFFFFFFFF3. |rGruffy |cFFFFFFFF4. |rRonsak |cFFFFFFFF5. |rRiverwalker Tamopo |cFFFFFFFF6. |rAmethyzar |cFFFFFFFF7. |rEldoren the Reborn\n\n|cFFFFFFFF8. |rPenumbrus |cFFFFFFFF9. |rSkag the Thrower |cFFFFFFFF10. |rMikrin |cFFFFFFFF11. |rRokmur |cFFFFFFFF12. |rSmogswog |cFFFFFFFF13. |rMatriarch Remalla |cFFFFFFFF14. |rO'nank Shorescour\n\n|cFFFFFFFF15. |rResearcher Sneakwing |cFFFFFFFF16. |rTreasure-Mad Trambladd |cFFFFFFFF17. |rHarkyn Grymstone |cFFFFFFFF18. |rFulgurb |cFFFFFFFF19. |rSandana the Tempest |cFFFFFFFF20. |rGorjo the Crab Shackler |cFFFFFFFF21. |rSteamgill\n\n|cFFFFFFFF22. |rTempestrian |cFFFFFFFF23. |rMassive Magmashell |cFFFFFFFF24. |rGrumbletrunk |cFFFFFFFF25. |rOshigol |cFFFFFFFF26. |rBroodweaver Araznae |cFFFFFFFF27. |rAzra's Prized Peony |cFFFFFFFF28. |rMalsegan\n\nExample: Phleep spawned at 8am. Rokmur would spawn at 1pm. Phleep's next spawn would be at 10pm.",
+			-- #else
+			["description"] = "When a zone has the week long Dreamsurge Event active, the 'Mob Timing Rules' for that specific zone are no longer valid & any rare for that zone can spawn at any given time.\n\nEvery 30 minutes 1 rare will spawn, based on a fixed 14h rotation, and they will be marked with a skull on the map if you are in the respective zone.\n\nRotation: |cFFFFFFFF1. |rPhleep |cFFFFFFFF2. |rMagmaton |cFFFFFFFF3. |rGruffy |cFFFFFFFF4. |rRonsak |cFFFFFFFF5. |rRiverwalker Tamopo |cFFFFFFFF6. |rAmethyzar |cFFFFFFFF7. |rEldoren the Reborn\n\n|cFFFFFFFF8. |rPenumbrus |cFFFFFFFF9. |rSkag the Thrower |cFFFFFFFF10. |rMikrin |cFFFFFFFF11. |rRokmur |cFFFFFFFF12. |rSmogswog |cFFFFFFFF13. |rMatriarch Remalla |cFFFFFFFF14. |rO'nank Shorescour\n\n|cFFFFFFFF15. |rResearcher Sneakwing |cFFFFFFFF16. |rTreasure-Mad Trambladd |cFFFFFFFF17. |rHarkyn Grymstone |cFFFFFFFF18. |rFulgurb |cFFFFFFFF19. |rSandana the Tempest |cFFFFFFFF20. |rGorjo the Crab Shackler |cFFFFFFFF21. |rSteamgill\n\n|cFFFFFFFF22. |rTempestrian |cFFFFFFFF23. |rMassive Magmashell |cFFFFFFFF24. |rGrumbletrunk |cFFFFFFFF25. |rOshigol |cFFFFFFFF26. |rBroodweaver Araznae |cFFFFFFFF27. |rAzra's Prized Peony |cFFFFFFFF28. |rMalsegan\n\nExample: Phleep spawned at 8am. Rokmur would spawn at 1pm. Phleep's next spawn would be at 10pm.",
+			-- #endif
 			["g"] = sharedData({
 				["isDaily"] = true,
 			},{
@@ -131,7 +145,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["questID"] = 74036,
 					["g"] = {
 						bo(70947, true),
-						i(196994),	-- Cliffside Wylderdrake: Short Horns (DM!)
+						i(196994),	-- Cliffside Wylderdrake: Short Horns (MM!)
 						i(200300),	-- Sack of Looted Treasures
 						i(200291),	-- Waterlogged Racing Grips
 					},
@@ -197,7 +211,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 					["questID"] = 74003,
 					["g"] = {
 						i(200171),	-- Grymheart Blade
-						i(197131),	-- Highland Drake: Hairy Cheek (DM!)
+						i(197131),	-- Highland Drake: Hairy Cheek (MM!)
 						i(200175),	-- Repurposed Anvil
 						i(200243),	-- Titanic Scholar's Finery
 					},

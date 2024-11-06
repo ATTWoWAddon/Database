@@ -3,7 +3,7 @@
 -----------------------------------------------------
 WARCRAFT_MOVIE = createHeader({
 	readable = "Warcraft Movie",
-	icon = "Interface\\Icons\\INV_MISC_FILM_01",
+	icon = 133885,
 	text = {
 		en = "Warcraft Movie",
 		cn = "魔兽电影",
@@ -13,7 +13,7 @@ WARCRAFT_MOVIE = createHeader({
 	},
 });
 root(ROOTS.Promotions, n(WARCRAFT_MOVIE, bubbleDown({ ["u"] = REMOVED_FROM_GAME }, {
-	["timeline"] = { "added 7.0.3.22248" },
+	["timeline"] = { ADDED_7_0_3 },
 	["groups"] = {
 		a(ach(11210)),	-- Fight for the Alliance
 		h(ach(11211)),	-- Fight for the Horde

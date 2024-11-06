@@ -10,7 +10,10 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 					q(64522, {	-- Stolen Korthian Supplies
 						["provider"] = { "i", 187276 },	-- Stolen Korthian Supplies
 						["isWeekly"] = true,
-						["minReputation"] = { 2472, 3 },	-- Tier 3
+						["minReputation"] = { FACTION_THE_ARCHIVISTS_CODEX, 3 },	-- Tier 3
+						["g"] = {
+							i(187551),	-- Small Korthian Supply Chest
+						},
 					}),
 				}),
 				n(RARES, {
@@ -37,7 +40,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 						--	Greens
 							i(185050),	-- Spider Soul
 						--	Whites
-							i(186994),	-- Design: Shaded Stone Statue
+							i(186994),	-- Design: Shaded Stone Statue (RECIPE!)
 						-- Objects
 						o(369437, {	-- Riftbound Cache
 							["coords"] = {
@@ -97,7 +100,7 @@ root(ROOTS.Zones, m(SHADOWLANDS, bubbleDown({ ["timeline"] = { ADDED_9_1_0 } }, 
 							179735,	-- Torglluun
 						}
 					}),
-					i(187006),	-- Recipe: Twilight Tea
+					i(187006),	-- Recipe: Twilight Tea (RECIPE!)
 				}),
 			},
 		}),

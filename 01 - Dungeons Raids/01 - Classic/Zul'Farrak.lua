@@ -1,24 +1,26 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(CLASSIC_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, {
 	inst(241, {	-- Zul'Farrak
 		-- #if BEFORE MOP
 		["lore"] = "Troll legends tell of a powerful sword called Sul'thraze the Lasher, a weapon capable of instilling fear and weakness in even the most formidable of foes. Long ago, the weapon was split in half. However, rumors have circulated that the two halves may be found somewhere within Zul'Farrak's walls. Reports have also suggested that a band of mercenaries fleeing Gadgetzan wandered into the city and became trapped. Their fate remains unknown. But perhaps most disturbing of all are the hushed whispers of an ancient creature sleeping within a sacred pool at the city's heart - a mighty demigod who will wreak untold destruction upon any adventurer foolish enough to awaken him.",
 		-- #endif
 		["zone-text-areaID"] = 978,	-- Zul'Farrak
 		["mapID"] = ZULFARRAK,
-		-- #if AFTER CATA
-		["coord"] = { 39.21, 21.29, TANARIS },
-		-- #else
-		["coord"] = { 39.0, 19.0, TANARIS },
-		-- #endif
+		["coords"] = {
+			-- #if AFTER CATA
+			{ 39.21, 21.29, TANARIS },
+			-- #else
+			{ 39.0, 19.0, TANARIS },
+			-- #endif
+		},
 		["lvl"] = lvlsquish(39, 39, 15),
 		["groups"] = {
 			n(QUESTS, {
 				q(27070, {	-- A Fool's Errand
 					["qg"] = 7407,	-- Chief Engineer Bildewhizzle
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(44, 44, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Tiara of the Deep
@@ -31,14 +33,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						i(65929),	-- Bildewhizzle's Armbands
 						i(65978),	-- Electrified Leggings
 						i(65999),	-- Pauldrons of Zul'Farrak
+						-- #if BEFORE MOP
 						i(66010, {	-- Star of the Fool
-							["timeline"] = { "added 4.0.3.13277", "deleted 5.0.4" },
+							["timeline"] = { ADDED_4_0_3, DELETED_5_0_4 },
 						}),
+						-- #endif
 					},
 				}),
 				q(27076, {	-- Breaking and Entering
 					["qg"] = 44929,	-- Tran'rek
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(44, 44, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Nekrum Gutchewer slain
@@ -52,7 +56,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(27068, {	-- Chief Ukorz Sandscalp
 					["qg"] = 40712,	-- Mazoga's Spirit
 					["sourceQuest"] = 25556,	-- Into Zul'Farrak
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(44, 44, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Chief Ukorz Sandscalp slain
@@ -66,17 +70,17 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				q(2768, {	-- Divino-matic Rod
 					["qg"] = 7407,	-- Chief Engineer Bilgewhizzle <Gadgetzan Water Co.>
 					["coord"] = { 52.5, 28.5, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 40,
 					["groups"] = {
 						objective(1, {	-- 0/1 Divino-matic Rod
 							["provider"] = { "i", 8548 },	-- Divino-matic Rod
 						}),
 						i(9534, {	-- Engineer's Guild Headpiece
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(9533, {	-- Masons Fraternity Ring
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
@@ -84,14 +88,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 4453,	-- Wizzle Brassbolts
 					["sourceQuest"] = 2769,	-- The Brassbolts Brothers
 					["coord"] = { 78.0, 77.0, THOUSAND_NEEDLES },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 40,
 					["groups"] = {
 						objective(1, {	-- 0/1 Gahz'rilla's Electrified Scale
 							["provider"] = { "i", 8707 },	-- Gahz'rilla's Electrified Scale
 						}),
 						i(11122, {	-- Carrot on a Stick
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 							-- #if BEFORE WRATH
 							-- #if AFTER TBC
 							["description"] = "Once you have a Riding Crop, you may safely vendor this item as the two effects do not stack. Until then, use it to make mounted travel more efficient.",
@@ -101,7 +105,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 							-- #endif
 						}),
 						i(9653, {	-- Speedy Racer Googles
-							["timeline"] = { "removed 1.9.3" },
+							["timeline"] = { REMOVED_1_9_3 },
 						}),
 					},
 				}),
@@ -109,14 +113,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 7804,	-- Trenton Lighthammer
 					["sourceQuest"] = 25032,	-- Secrets in the Oasis
 					["coord"] = { 42.4, 24.0, TANARIS },
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["isBreadcrumb"] = true,
 				}),
 				q(2991, {	-- Nekrum's Medallion
 					["qg"] = 8022,	-- Thadius Grimshade
 					["sourceQuest"] = 2990,	-- Thadius Grimshade
 					["coord"] = { 67.0, 19.4, BLASTED_LANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["lvl"] = 40,
 					["groups"] = {
@@ -129,7 +133,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 7876,	-- Tran'rek
 					["sourceQuest"] = 2864,	-- Tran'rek
 					["coord"] = { 51.6, 26.8, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 40,
 					["groups"] = {
 						objective(1, {	-- 0/5 Uncracked Scarab Shell
@@ -139,32 +143,51 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					},
 				}),
 				q(2861, {	-- Tabetha's Task
-					["qgs"] = {
-						4568,	-- Anastasia Hartwell
-						5144,	-- Bink
-						5497,	-- Jennea Cannon
-						5885,	-- Deino
+					["allianceQuestData"] = {
+						["qgs"] = {
+							5144,	-- Bink <Mage Trainer>
+							5497,	-- Jennea Cannon <Mage Trainer>
+						},
+						["coords"] = {
+							{ 27, 8.2, IRONFORGE },
+							{ 38.6, 79.4, STORMWIND_CITY },
+						},
 					},
-					["qgs"] = {
-						5885,	-- Deino <Mage Trainer>
-						5144,	-- Bink <Mage Trainer>
-						5497,	-- Jennea Cannon <Mage Trainer>
-						4568,	-- Anastasia Hartwell <Mage Trainer>
+					["hordeQuestData"] = {
+						["qgs"] = {
+							5885,	-- Deino <Mage Trainer>
+							4568,	-- Anastasia Hartwell <Mage Trainer>
+						},
+						["coords"] = {
+							{ 38.4, 86, ORGRIMMAR },
+							{ 85, 10.2, UNDERCITY },
+						},
 					},
-					["coords"] = {
-						{ 38.4, 86, ORGRIMMAR },
-						{ 27, 8.2, IRONFORGE },
-						{ 38.6, 79.4, STORMWIND_CITY },
-						{ 85, 10.2, UNDERCITY },
-					},
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["isBreadcrumb"] = true,
 					["lvl"] = 40,
+				}),
+				q(4787, {	-- The Ancient Egg
+					["qg"] = 8579,	-- Yeh'kinya
+					["sourceQuest"] = 3527,	-- The Prophecy of Mosh'aru
+					["coord"] = { 67, 22.4, TANARIS },
+					["timeline"] = { REMOVED_4_0_3 },
+					["maps"] = { THE_HINTERLANDS },
+					["lvl"] = 40,
+					["groups"] = {
+						objective(1, {	-- 0/1 Ancient Egg
+							["providers"] = {
+								{ "i",  12402 },	-- Ancient Egg
+								{ "o", 175889 },	-- Ancient Egg
+							},
+							["coord"] = { 57.5, 86.7, THE_HINTERLANDS },
+						}),
+					},
 				}),
 				q(2769, {	-- The Brassbolts Brothers
 					["qg"] = 6169,	-- Klockmort Spannerspan
 					["coord"] = { 68.2, 46.2, IRONFORGE },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = ALLIANCE_ONLY,
 					["isBreadcrumb"] = true,
 					["lvl"] = 40,
@@ -173,7 +196,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 8579,	-- Yeh'kinya
 					["sourceQuest"] = 3520,	-- Screecher Spirits
 					["coord"] = { 67.0, 22.4, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 40,
 					["groups"] = {
 						objective(1, {	-- 0/1 First Mosh'aru Tablet
@@ -188,32 +211,37 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					["qg"] = 3188,	-- Master Gadrin
 					["sourceQuest"] = 2935,	-- Consult Master Gadrin
 					["coord"] = { 56.0, 74.6, DUROTAR },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["races"] = HORDE_ONLY,
 					["lvl"] = 40,
+					["groups"] = {
+						objective(1, {	-- Find the Spider God's Name
+							["provider"] = { "o", 142715 },	-- Tablet of Theka
+						}),
+					},
 				}),
 				q(2846, {	-- Tiara of the Deep
 					["qg"] = 6546,	-- Tabetha
 					["sourceQuest"] = 2861,	-- Tabetha's Task
 					["coord"] = { 46.0, 57.0, DUSTWALLOW_MARSH },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 40,
 					["groups"] = {
 						objective(1, {	-- 0/1 Tiara of the Deep
 							["provider"] = { "i", 9234 },	-- Tiara of the Deep
 						}),
 						i(9527, {	-- Spellshifter Rod
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 						i(9531, {	-- Gemshale Pauldrons
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 						}),
 					},
 				}),
 				q(3042, {	-- Troll Temper
 					["qg"] = 7804,	-- Trenton Lighthammer <The Mithril Order>
 					["coord"] = { 51.4, 28.8, TANARIS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["lvl"] = 40,
 					["groups"] = {
 						objective(1, {	-- 0/20 Troll Temper
@@ -223,7 +251,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				}),
 				q(27071, {	-- Wrath of the Sandfury
 					["qg"] = 40712,	-- Mazoga's Spirit
-					["timeline"] = { "added 4.0.3.13277" },
+					["timeline"] = { ADDED_4_0_3 },
 					["lvl"] = lvlsquish(44, 44, 15),
 					["groups"] = {
 						objective(1, {	-- 0/1 Theka the Martyr slain
@@ -246,17 +274,33 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				i(9240, {	-- Mallet of Zul'Farrak
 					["description"] = "The Sacred Mallet drops from Qiaga the Keeper on top of the Altar of Zul in Hinterlands. You then bring it to the top of Jintha'alor and use it near the altar to turn into the Mallet of Zul'Farrak so you can summon Gahz'rilla in Zul'Farrak.",
 					["coord"] = { 59.0, 79.6, THE_HINTERLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cost"] = { { "i", 9241, 1 } },	-- Sacred Mallet
 					["cr"] = 7995,	-- Vile Priestess Hexx
 				}),
 				i(9241, {	-- Sacred Mallet
 					["description"] = "Bring this to the top of Jintha'alor and use it near the altar to turn into the Mallet of Zul'Farrak so you can summon Gahz'rilla in Zul'Farrak.",
 					["coord"] = { 49.2, 68.6, THE_HINTERLANDS },
-					["timeline"] = { "removed 4.0.3" },
+					["timeline"] = { REMOVED_4_0_3 },
 					["cr"] = 7996,	-- Qiaga the Keeper
 				}),
 				-- #endif
+				-- #if SEASON_OF_DISCOVERY
+				applyclassicphase(SOD_PHASE_THREE, i(223526, {	-- Sul'thraze the Lasher
+					["description"] = "You must take both of the swords and combine them to form this weapon.",
+					["cost"] = {
+						{ "i", 11086, 1 },	-- Jang'thraze the Protector
+						{ "i", 9379, 1 },	-- Sang'thraze the Deflector
+					},
+					["crs"] = {
+						8127,	-- Antu'sul
+						7267,	-- Chief Ukorz Sandscalp
+					},
+				})),
+				i(9372, {	-- Sul'thraze the Lasher
+					["timeline"] = { "removed 1.15.2" },
+				}),
+				-- #else
 				i(9372, {	-- Sul'thraze the Lasher
 					["description"] = "You must take both of the swords and combine them to form this weapon.",
 					["cost"] = {
@@ -268,14 +312,26 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						7267,	-- Chief Ukorz Sandscalp
 					},
 				}),
+				-- #endif
 			}),
 			n(ZONE_DROPS, {
 				i(142402, {	-- Plans: Light Earthforged Blade (RECIPE!)
-					["timeline"] = { "added 7.1.5.23360" },
+					["timeline"] = { ADDED_7_1_5 },
 				}),
-				i(9243),	-- Shriveled Troll Heart
+				i(9243),	-- Shriveled Heart / Shriveled Troll Heart
 				i(9523),	-- Troll Temper
 			}),
+			-- #if SEASON_OF_DISCOVERY
+			applyclassicphase(SOD_PHASE_THREE, n(222573, {	-- Delirious Ancient
+				["description"] = "Spawns after clearing any 3 bosses (other than Ghaz'rilla) and will wander around the Ghaz'rilla area.",
+				["cost"] = {{ "i", 221418, 1 }},	-- Agamaggan's Roar
+				["groups"] = {
+					i(221290),	-- Ace of Dunes
+					i(221271),	-- Ace of Wilds
+					i(221262),	-- Wild Offering
+				},
+			})),
+			-- #endif
 			n(10080, {	-- Sandarr Dunereaver
 				["description"] = "This is a rare that is not always present.\n\nItems listed for this NPC 'technically' can drop from other creatures in the dungeon, but are extremely rare in comparison.",
 				["groups"] = {
@@ -295,7 +351,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 			n(10082, {	-- Zerillis
 				["description"] = "This is a rare that is not always present.",
 				["groups"] = {
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(223962)),	-- Sandstalker Ankleguards
+					i(12470, {	-- Sandstalker Ankleguards
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					-- #else
 					i(12470),	-- Sandstalker Ankleguards
+					-- #endif
 				},
 			}),
 			e(485, {	-- Theka the Martyr
@@ -303,7 +366,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["groups"] = {
 					i(10660),	-- First Mosh'aru Tablet
 					i(151456, {	-- Theka's Seal of Vigilance
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 				},
 			}),
@@ -312,7 +375,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["groups"] = {
 					i(9379),	-- Sang'thraze the Deflector
 					i(9639),	-- The Hand of Antu'sul
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(223532)),	-- Lifeblood Amulet
+					i(9641, {	-- Lifeblood Amulet
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					-- #else
 					i(9641),	-- Lifeblood Amulet
+					-- #endif
 					i(9640),	-- Vice Grips
 				},
 			}),
@@ -321,19 +391,33 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["groups"] = {
 					i(18082),	-- Zum'rah's Vexing Cane
 					i(151457, {	-- Witch Doctor's Ritual Collar
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(223534)),	-- Jumanza Grips
+					i(18083, {	-- Jumanza Grips
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					-- #else
 					i(18083),	-- Jumanza Grips
+					-- #endif
 				},
 			}),
 			n(10081, {	-- Dustwraith
 				["description"] = "This is a rare that is not always present.",
 				["groups"] = {
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(223533)),	-- Desertwalker Cane
+					i(12471, {	-- Desertwalker Cane
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					-- #else
 					i(12471, {	-- Desertwalker Cane
 						-- #if AFTER LEGION
 						["description"] = "This item is available only in personal loot.",
 						-- #endif
 					}),
+					-- #endif
 				},
 			}),
 			-- #if BEFORE MOP
@@ -363,13 +447,24 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 					-- #endif
 					i(9475),	-- Diabolic Skiver
 					i(9470),	-- Bad Mojo Mask
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(223529)),	-- Jinxed Hoodoo Skin
+					applyclassicphase(SOD_PHASE_THREE, i(223530)),	-- Jinxed Hoodoo Kilt
+					i(9473, {	-- Jinxed Hoodoo Skin
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					i(9474, {	-- Jinxed Hoodoo Kilt
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					-- #else
 					i(9473),	-- Jinxed Hoodoo Skin
 					i(151459, {	-- Nekrum's Witherguard
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(9474),	-- Jinxed Hoodoo Kilt
+					-- #endif
 					i(151458, {	-- Sezz'ziz's Captive Kickers
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 				},
 			}),
@@ -398,22 +493,36 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 				["creatureID"] = 7267,
 				["groups"] = {
 					ach(639, {	-- Zul'Farrak
-						["timeline"] = { "added 3.0.1" },
+						["timeline"] = { ADDED_3_0_2 },
 					}),
 					ach(5048, {	-- Zul'Farrak Guild Run
-						["timeline"] = { "added 4.0.3" },
+						["timeline"] = { ADDED_4_0_3 },
 					}),
 					i(11086),	-- Jang'thraze the Protector
 					i(9478),	-- Ripsaw
 					i(9477),	-- The Chief's Enforcer
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(223963)),	-- Embrace of the Lycan
+					applyclassicphase(SOD_PHASE_THREE, i(223531)),	-- Big Bad Pauldrons
+					i(9479, {	-- Embrace of the Lycan
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					i(9476, {	-- Big Bad Pauldrons
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					-- #else
 					i(9479),	-- Embrace of the Lycan
 					i(9476),	-- Big Bad Pauldrons
+					-- #endif
 					i(151460, {	-- Farraki Ceremonial Robes
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(151461, {	-- Ukorz's Chain Leggings
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(221290)),	-- Ace of Dunes
+					-- #endif
 				},
 			}),
 			n(7795, {	-- Hydromancer Velratha
@@ -434,11 +543,22 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 						["timeline"] = { ADDED_10_0_7 },
 					}),
 					i(8707),	-- Gahz'rilla's Electrified Scale
+					-- #if SEASON_OF_DISCOVERY
+					applyclassicphase(SOD_PHASE_THREE, i(223527)),	-- Gahz'rilla Fang
+					applyclassicphase(SOD_PHASE_THREE, i(223528)),	-- Gahz'rilla Scale Armor
+					i(9467, {	-- Gahz'rilla Fang
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					i(9469, {	-- Gahz'rilla Scale Armor
+						["timeline"] = { "removed 1.15.2" },
+					}),
+					-- #else
 					i(9467),	-- Gahz'rilla Fang
 					i(151455, {	-- Gahz'rilla Scale Cloak
-						["timeline"] = { "added 7.3.0.24484" },
+						["timeline"] = { ADDED_7_3_0 },
 					}),
 					i(9469),	-- Gahz'rilla Scale Armor
+					-- #endif
 				},
 			}),
 		},
@@ -446,7 +566,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, {
 }));
 -- #if AFTER 6.0.1
 root(ROOTS.HiddenQuestTriggers, {
-	tier(WOD_TIER, {
+	expansion(EXPANSION.WOD, {
 		q(35588),	-- Zul'Farrak Reward Quest - Normal completion
 		q(35589),	-- Zul'Farrak Bonus Reward
 	}),

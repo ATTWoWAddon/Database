@@ -4,15 +4,16 @@
 -- #if AFTER 7.1.0.22908
 DIABLO_EVENTS = createHeader({
 	readable = "Diablo Events",
-	icon = "Interface\\Icons\\DiabloAnniversary_HoradricCube",
+	icon = 1529348,
 	text = {
 		en = "Diablo Events",
 		ru = "События Diablo",
+		cn = "暗黑破坏神活动",
 	},
 });
 DIABLO_TWENTIETH_ANNIVERSARY = createHeader({
 	readable = "Diablo 20th Anniversary",
-	icon = "Interface\\Icons\\diabloanniversary_achievement",
+	icon = 1529344,
 	text = {
 		en = "Diablo 20th Anniversary",
 		de = "20. Geburtstag von Diablo",
@@ -25,7 +26,7 @@ A_GREEDY_EMISSARY = 1382;
 GREEDY_EMISSARY_EVENT = createHeader({
 	-- https://www.wowhead.com/event=1382/a-greedy-emissary
 	readable = "A Greedy Emissary",
-	icon = "Interface\\Icons\\inv_misc_bag_horadricsatchel",
+	icon = 5160585,
 	eventID = A_GREEDY_EMISSARY,
 	text = {
 		en = "A Greedy Emissary",
@@ -41,7 +42,7 @@ GREEDY_EMISSARY_EVENT = createHeader({
 });
 root(ROOTS.Promotions, n(DIABLO_EVENTS, {
 	n(DIABLO_TWENTIETH_ANNIVERSARY, bubbleDown({ ["u"] = REMOVED_FROM_GAME }, {
-		["timeline"] = { "added 7.1.0.22908" },
+		["timeline"] = { ADDED_7_1_0 },
 		["maps"] = { DUSKWOOD },
 		["groups"] = {
 			n(ZONE_DROPS, {
@@ -84,7 +85,7 @@ root(ROOTS.Promotions, n(DIABLO_EVENTS, {
 			}),
 		},
 	})),
-	applyevent(A_GREEDY_EMISSARY, n(GREEDY_EMISSARY_EVENT, bubbleDownSelf({ ["timeline"] = { "added 10.1.0.49741", "removed 10.1.0.50000" } }, {
+	applyevent(A_GREEDY_EMISSARY, n(GREEDY_EMISSARY_EVENT, bubbleDownSelf({ ["timeline"] = { ADDED_10_1_0, REMOVED_10_1_0 } }, {
 		-- Event begins on May 25, 2023, and ends on June 13, 2023.
 		n(ACHIEVEMENTS, {
 			ach(18258, {	--	Little Lord of Lies
@@ -111,7 +112,7 @@ root(ROOTS.Promotions, n(DIABLO_EVENTS, {
 					["questID"] = 76215,
 					["isDaily"] = true,
 					["groups"] = {
-						i(206018),	-- Baa'lial Soulstone
+						i(206018),	-- Baa'lial (PET!)
 						i(206039, {	-- Enmity Bundle
 							i(206004),	-- Enmity Cloak
 							i(206020),	-- Enmity Hood
@@ -138,6 +139,10 @@ root(ROOTS.Promotions, n(DIABLO_EVENTS, {
 			},
 		}),
 	}))),
+	i(206007, {	-- Treasure Nabbin' Bag
+		["description"] = "Can be earned by logging into Diablo Immortal on a level 10+ character during the WoW 20th Anniversary.",
+		["timeline"] = { ADDED_11_0_5 },
+	}),
 }));
 -- #endif
 

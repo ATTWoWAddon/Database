@@ -1,11 +1,10 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FIVE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_FOUR_RUBYSANCTUM, {
 	inst(761, {	-- The Ruby Sanctum
 		["mapID"] = THE_RUBY_SANCTUM,
 		["coord"] = { 61.2, 52.7, DRAGONBLIGHT },
-		["sins"] = { "Rubinsanktum" },
 		-- #if AFTER CATA
 		["sharedLockout"] = 1,
 		-- #endif
@@ -44,7 +43,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FIVE, {
 			n(39746, {	-- General Zarithrian
 				["description"] = "Must be killed before you can fight Halion."
 			}),
-			d(3, {	-- 10-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL, {
 				e(1652, {	-- Halion
 					["creatureID"] = 39863,	-- Halion
 					["groups"] = {
@@ -64,13 +63,13 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FIVE, {
 					},
 				}),
 			}),
-			d(5, {	-- 10-Player (Heroic)
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC, {
 				e(1652, {	-- Halion
 					["creatureID"] = 39863,	-- Halion
 					["groups"] = {
 						ach(4818),	-- Heroic: The Twilight Destroyer (10 player)
 						ach(5022, {	-- The Twilight Destroyer - Guild Edition
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(54557),	-- Baltharus' Gift					//** Confirmed Drop 4/19/19
 						i(54566),	-- Twilight Scale Shoulders			//** Confirmed Drop 4/19/19
@@ -87,7 +86,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FIVE, {
 					},
 				}),
 			}),
-			d(4, {	-- 25-Player
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL, {
 				e(1652, {	-- Halion
 					["creatureID"] = 39863,	-- Halion
 					["groups"] = {
@@ -111,13 +110,13 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_FIVE, {
 					},
 				}),
 			}),
-			d(6, {	-- 25-Player (Heroic)
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC, {
 				e(1652, {	-- Halion
 					["creatureID"] = 39863,	-- Halion
 					["groups"] = {
 						ach(4816),	-- Heroic: The Twilight Destroyer (25 player)
 						ach(5022, {	-- The Twilight Destroyer - Guild Edition
-							["timeline"] = { "added 4.0.3" },
+							["timeline"] = { ADDED_4_0_3 },
 						}),
 						i(54581),	-- Penumbra Pendant
 						i(54583),	-- Cloak of Burning Dusk			//** Confirmed Drop 4/19/19

@@ -68,43 +68,82 @@ local SHOULDER_VANQ = i(71674, {	-- Mantle of the Fiery Vanquisher
 	}},
 });
 
-root(ROOTS.Instances, tier(CATA_TIER, {
-	inst(78, {	-- Firelands
-		["isRaid"] = true,
+-- #if AFTER 8.2.5
+local NORMAL_HEROIC_DIFFICULTY_ID = DIFFICULTY.RAID.MULTI.NORMAL_HEROIC;
+local NORMAL_DIFFICULTY_ID = DIFFICULTY.RAID.NORMAL;
+local HEROIC_DIFFICULTY_ID = DIFFICULTY.RAID.HEROIC;
+-- #else
+local NORMAL_HEROIC_DIFFICULTY_ID = DIFFICULTY.LEGACY_RAID.MULTI.NORMAL_HEROIC;
+local NORMAL_DIFFICULTY_ID = DIFFICULTY.LEGACY_RAID.MULTI.NORMAL;
+local HEROIC_DIFFICULTY_ID = DIFFICULTY.LEGACY_RAID.MULTI.HEROIC;
+-- #endif
+
+root(ROOTS.Instances, expansion(EXPANSION.CATA, {
+	applyclassicphase(CATA_PHASE_RAGE_OF_THE_FIRELANDS, inst(78, bubbleDownSelf({ ["timeline"] = { ADDED_4_2_0 }, }, {	-- Firelands
 		["coord"] = { 47.3, 78.1, MOUNT_HYJAL },
 		["maps"] = { 367, 368, 369 },
+		["isRaid"] = true,
 		["lvl"] = 85,
 		["groups"] = {
 			n(ACHIEVEMENTS, {
+				ach(5828, {	-- Glory of the Firelands Raider
+					-- Meta Achievement
+					["sym"] = {{"meta_achievement",
+						5807,	-- Heroic: Beth'tilac
+						5808,	-- Heroic: Lord Rhyolith
+						5806,	-- Heroic: Shannox
+						5809,	-- Heroic: Alysrazor
+						5805,	-- Heroic: Baleroc
+						5804,	-- Heroic: Majordomo Fandral Staghelm
+						5821,	-- Death from Above
+						5810,	-- Not an Ambi-Turner
+						5813,	-- Do a Barrel Roll!
+						5829,	-- Bucket List
+						5830,	-- Share the Pain
+						5799,	-- Only the Penitent...
+					}},
+					["groups"] = {
+						i(69230),	-- Corrupted Fire Hawk (MOUNT!)
+					},
+				}),
+				achWithRep(5827, FACTION_AVENGERS_OF_HYJAL, {	-- Avengers of Hyjal
+					title(188),	-- <Name>, Avenger of Hyjal
+				}),
+				ach(11755, {["timeline"] = {ADDED_7_2_0}}),	-- Hot Couture (Firelands)
 				ach(5802, {	-- Firelands
-					crit(1, {	-- Beth'tilac
-						["_encounter"] = { 192, NORMAL_RAID },
+					crit(17430, {	-- Beth'tilac
+						["_encounter"] = { 192, NORMAL_HEROIC_DIFFICULTY_ID },
 					}),
-					crit(2, {	-- Lord Rhyolith
-						["_encounter"] = { 193, NORMAL_RAID },
+					crit(17431, {	-- Lord Rhyolith
+						["_encounter"] = { 193, NORMAL_HEROIC_DIFFICULTY_ID },
 					}),
-					crit(3, {	-- Alysrazor
-						["_encounter"] = { 194, NORMAL_RAID },
+					crit(17435, {	-- Alysrazor
+						["_encounter"] = { 194, NORMAL_HEROIC_DIFFICULTY_ID },
 					}),
-					crit(4, {	-- Shannox
-						["_encounter"] = { 195, NORMAL_RAID },
+					crit(17429, {	-- Shannox
+						["_encounter"] = { 195, NORMAL_HEROIC_DIFFICULTY_ID },
 					}),
-					crit(5, {	-- Baleroc, the Gatekeeper
-						["_encounter"] = { 196, NORMAL_RAID },
+					crit(17432, {	-- Baleroc, the Gatekeeper
+						["_encounter"] = { 196, NORMAL_HEROIC_DIFFICULTY_ID },
 					}),
-					crit(6, {	-- Majordomo Staghelm
-						["_encounter"] = { 197, NORMAL_RAID },
+					crit(17433, {	-- Majordomo Staghelm
+						["_encounter"] = { 197, NORMAL_HEROIC_DIFFICULTY_ID },
 					}),
-					crit(7, {	-- Ragnaros
-						["_encounter"] = { 198, NORMAL_RAID },
+					crit(17434, {	-- Ragnaros
+						["_encounter"] = { 198, NORMAL_HEROIC_DIFFICULTY_ID },
 					}),
 				}),
 				ach(5983),	-- Firelands Guild Run
 			}),
+			n(FACTIONS, {
+				faction(FACTION_AVENGERS_OF_HYJAL, {	-- Avengers of Hyjal
+					["icon"] = 512609,
+				}),
+			}),
 			n(QUALITY_LEGENDARY, {
 				["classes"] = { PRIEST, SHAMAN, MAGE, WARLOCK, DRUID, EVOKER },
 				["title"] = "Dragonwrath, Tarecgosa's Rest",
-				["icon"] = "Interface\\Icons\\Stave_2H_Tarecgosa_E_01StageFinal",
+				["icon"] = 523897,
 				["isRaid"] = true,
 				["lvl"] = 85,
 				-- TODO: coords for all these quests
@@ -352,57 +391,153 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 				}),
 			}),
 			n(VENDORS, {
-				n(54401, {	-- Naresir Stormfury
-					i(70930),
-					i(71229),
-					i(71228),
-					i(71230),
-					i(71227),
-					i(71258),
-					i(71249),
-					i(71131),
-					i(71255),
-					i(71254),
-					i(71250),
-					i(70933),
-					i(71253),
+				n(54401, {	-- Naresir Stormfury <Avengers of Hyjal Quartermaster>
+					i(71227),	-- Bladed Flamewrath Cover
+					i(70930),	-- Durable Flamewrath Greatcloak
+					i(71229),	-- Flowing Flamewrath Cape
+					i(71230),	-- Rippling Flamewrath Drape
+					i(71228),	-- Sleek Flamewrath Cloak
+					i(71253),	-- Belt of the Seven Seals
+					i(71250),	-- Cinch of the Flaming Ember
+					i(71258),	-- Embereye Belt
+					i(71255),	-- Firearrow Belt
+					i(71254),	-- Firemend Cinch
+					i(71249),	-- Firescar Sash
+					i(71131),	-- Flamebinding Girdle
+					i(70933),	-- Girdle of the Indomitable Flame
+					i(70934),	-- Adamantine Signet of the Avengers
+					i(71217),	-- Infernal Signet of the Avengers
+					i(71215),	-- Obsidian Signet of the Avengers
+					i(71237),	-- Quicksilver Signet of the Avengers
+					i(69001),	-- Ancient Petrified Seed
+					i(69002),	-- Essence of the Eternal Flame
+					i(69000),	-- Fiery Quintessence
+					i(68998),	-- Rune of Zeth
+					i(68996),	-- Stay of Execution
 				}),
 			}),
 			n(ZONE_DROPS, {
-				["groups"] = {
-					i(69976),	-- Pattern: Boots of the Black Flame
-					i(69966),	-- Pattern: Don Tayo's Inferno Mittens
-					i(69975),	-- Pattern: Endless Dream  Walkers
-					i(69965),	-- Pattern: Grips of Altered Reality
-					i(69962),	-- Pattern: Clutches of Evil (RECIPE!)
-					i(69960),	-- Pattern: Dragonfire Gloves (RECIPE!)
-					i(69971),	-- Pattern: Earthen Scale Sabatons (RECIPE!)
-					i(69974),	-- Pattern: Ethereal Footfalls (RECIPE!)
-					i(69972),	-- Pattern: Footwraps of Quenched Fire (RECIPE!)
-					i(69961),	-- Pattern: Gloves of Unforgiving Flame (RECIPE!)
-					i(69963),	-- Pattern: Heavenly Gloves of the Moon (RECIPE!)
-					i(69973),	-- Pattern: Treads of the Craft (RECIPE!)
-					i(69970),	-- Plans: Emberforged Elementium Boots (RECIPE!)
-					i(69969),	-- Plans: Mirrored Boots (RECIPE!)
-					i(69968),	-- Plans: Warboots of Mighty Lords (RECIPE!)
-					i(69958),	-- Plans: Eternal Elementium Handguards (RECIPE!)
-					i(69957),	-- Plans: Fists of Fury (RECIPE!)
-					i(69959),	-- Plans: Holy Flame Gauntlets (RECIPE!)
-					i(68972),	-- Apparatus of Khaz'goroth
-					i(71359),	-- Chelley's Sterilized Scalpel
-					i(70929),	-- Firebound Gorget
-					i(71365),	-- Hide-Bound Chains
-					i(71366),	-- Lava Bolt Crossbow
-					i(71362),	-- Obsidium Cleaver
-					i(71361),	-- Ranseur of Hatred
-					i(71640),	-- Riplimb's Lost Collar
-					i(71360),	-- Spire of Scarlet Pain
-					i(68915),	-- Scales of Life
-					i(71367),	-- Theck's Emberseal
-				},
+				i(69976),	-- Pattern: Boots of the Black Flame
+				i(69966),	-- Pattern: Don Tayo's Inferno Mittens
+				i(69975),	-- Pattern: Endless Dream  Walkers
+				i(69965),	-- Pattern: Grips of Altered Reality
+				i(69962),	-- Pattern: Clutches of Evil (RECIPE!)
+				i(69960),	-- Pattern: Dragonfire Gloves (RECIPE!)
+				i(69971),	-- Pattern: Earthen Scale Sabatons (RECIPE!)
+				i(69974),	-- Pattern: Ethereal Footfalls (RECIPE!)
+				i(69972),	-- Pattern: Footwraps of Quenched Fire (RECIPE!)
+				i(69961),	-- Pattern: Gloves of Unforgiving Flame (RECIPE!)
+				i(69963),	-- Pattern: Heavenly Gloves of the Moon (RECIPE!)
+				i(69973),	-- Pattern: Treads of the Craft (RECIPE!)
+				i(69970),	-- Plans: Emberforged Elementium Boots (RECIPE!)
+				i(69969),	-- Plans: Mirrored Boots (RECIPE!)
+				i(69968),	-- Plans: Warboots of Mighty Lords (RECIPE!)
+				i(69958),	-- Plans: Eternal Elementium Handguards (RECIPE!)
+				i(69957),	-- Plans: Fists of Fury (RECIPE!)
+				i(69959),	-- Plans: Holy Flame Gauntlets (RECIPE!)
+				i(68972),	-- Apparatus of Khaz'goroth
+				i(71359),	-- Chelley's Sterilized Scalpel
+				i(70929),	-- Firebound Gorget
+				-- #if BEFORE MOP
+				i(71154, {	-- Giantslicer
+					["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+				}),
+				-- #endif
+				i(71365),	-- Hide-Bound Chains
+				i(71366),	-- Lava Bolt Crossbow
+				i(71362),	-- Obsidium Cleaver
+				i(71361),	-- Ranseur of Hatred
+				i(71640),	-- Riplimb's Lost Collar
+				i(71360),	-- Spire of Scarlet Pain
+				i(68915),	-- Scales of Life
+				i(71367),	-- Theck's Emberseal
 			}),
-			d(NORMAL_RAID, {
-				["difficulties"] = { 1, 3, 4 },
+			d(NORMAL_HEROIC_DIFFICULTY_ID, {
+				e(192, {	-- Beth'tilac
+					["creatureID"] = 52498,
+					["groups"] = {
+						ach(5821),	-- Death from Above
+						i(152976, {	-- Cinderweb Recluse (PET!)
+							["timeline"] = { ADDED_7_3_0 },
+						}),
+					},
+				}),
+				e(193, {	-- Lord Rhyolith
+					["creatureID"] = 52558,
+					["groups"] = {
+						ach(5810),	-- Not an Ambi-Turner
+					},
+				}),
+				e(194, {	-- Alysrazor
+					["creatureID"] = 52530,
+					["groups"] = {
+						ach(5813, {	-- Do a Barrel Roll!
+							crit(17533),	-- Brushfire
+							crit(17535),	-- Lava Spew
+							crit(17536),	-- Incendiary Cloud
+							crit(17538),	-- Fiery Tornado
+						}),
+						i(71665),	-- Flametalon of Alysrazor (MOUNT!)
+					},
+				}),
+				e(195, {	-- Shannox
+					["creatureID"] = 53691,
+					["groups"] = {
+						ach(5829, {	-- Bucket List
+							crit(17576),	-- Shannox
+							crit(17775),	-- Beth'tilac's Lair
+							crit(17776),	-- Flamebreach
+							crit(17777),	-- Path of Corruption
+							crit(17778),	-- The Ridge of Ancient Flame
+							crit(17779),	-- Shatterstone
+						}),
+						i(152975, {	-- Blazehound (PET!)
+							["timeline"] = { ADDED_7_3_0 },
+						}),
+					},
+				}),
+				e(196, {	-- Baleroc, the Gatekeeper
+					["creatureID"] = 53494,
+					["groups"] = {
+						ach(5830),	-- Share the Pain
+						i(152977, {	-- Surger (PET!)
+							["timeline"] = { ADDED_7_3_0 },
+						}),
+					},
+				}),
+				e(197, {	-- Majordomo Staghelm
+					["creatureID"] = 52571,
+					["groups"] = {
+						ach(5799, {	-- Only the Penitent...
+							["description"] = "This achievement requires a group of 2.",
+						}),
+						i(152978, {	-- Infernal Pyreclaw (PET!)
+							["timeline"] = { ADDED_7_3_0 },
+						}),
+						i(122304, {	-- Fandral's Seed Pouch (TOY!)
+							["timeline"] = { ADDED_6_1_0 },
+						}),
+					},
+				}),
+				e(198, {	-- Ragnaros
+					["creatureID"] = 52409,
+					["groups"] = {
+						ach(5855),	-- Ragnar-O's
+						i(69224),	-- Pureblood Fire Hawk (MOUNT!)
+						ig(175158, {	-- Flames of Fury (RI!)
+							["timeline"] = { ADDED_8_3_0 },
+						}),
+					},
+				}),
+			}),
+			d(NORMAL_DIFFICULTY_ID, {
+				["difficulties"] = {
+					-- #if AFTER 8.2.5
+					DIFFICULTY.DUNGEON.NORMAL,
+					-- #endif
+					DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL,
+					DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL,
+				},
 				["groups"] = {
 					n(COMMON_BOSS_DROPS, {
 						["crs"] = {
@@ -428,10 +563,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					e(192, {	-- Beth'tilac
 						["creatureID"] = 52498,
 						["groups"] = {
-							ach(5821),	-- Death from Above
-							i(152976,	{	-- Cinderweb Recluse (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
 							i(71039),	-- Funeral Pyre
 							i(70922),	-- Mandible of Beth'tilac
 							i(71038),	-- Ward of the Red Widow
@@ -451,7 +582,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					e(193, {	-- Lord Rhyolith
 						["creatureID"] = 52558,
 						["groups"] = {
-							ach(5810),	-- Not an Ambi-Turner
 							i(71006),	-- Volcanospike
 							i(70991),	-- Arbalest of Erupting Fury
 							i(71011),	-- Flickering Cowl
@@ -470,13 +600,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					e(194, {	-- Alysrazor
 						["creatureID"] = 52530,
 						["groups"] = {
-							ach(5813, {	-- Do a Barrel Roll!
-								crit(1),	-- Brushfire
-								crit(2),	-- Lava Spew
-								crit(3),	-- Incendiary Cloud
-								crit(4),	-- Fiery Tornado
-							}),
-							i(71665),	-- Flametalon of Alysrazor (MOUNT!)
 							i(70733),	-- Alysra's Razor
 							i(70734),	-- Greathelm of the Voracious Maw
 							i(70985),	-- Craterflame Spaulders
@@ -496,16 +619,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					e(195, {	-- Shannox
 						["creatureID"] = 53691,
 						["groups"] = {
-							ach(5829, {	-- Bucket List
-								crit(1),	-- Beth'tilac's Lair
-								crit(2),	-- Flamebreach
-								crit(3),	-- Path of Corruption
-								crit(4),	-- The Ridge of Ancient Flame
-								crit(5),	-- Shatterstone
-							}),
-							i(152975,	{	-- Blazehound (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
 							i(71014),	-- Skullstealer Greataxe
 							i(71013),	-- Feeding Frenzy
 							i(71022),	-- Goblet of Anger
@@ -525,10 +638,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					e(196, {	-- Baleroc, the Gatekeeper
 						["creatureID"] = 53494,
 						["groups"] = {
-							ach(5830),	-- Share the Pain
-							i(152977, {	-- Surger (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
 							i(71312),	-- Gatecrasher
 							i(70915),	-- Shard of Torment
 							i(71323),	-- Molten Scream
@@ -547,13 +656,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					e(197, {	-- Majordomo Staghelm
 						["creatureID"] = 52571,
 						["groups"] = {
-							ach(5799, {	-- Only the Penitent...
-								["description"] = "This achievement requires a group of 2.",
-							}),
-							i(152978, {	-- Infernal Pyreclaw (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
-							i(122304),	-- Fandral's Seed Pouch (TOY!)
 							SHOULDER_CONQ,	-- Shoulders of the Fiery Conqueror
 							SHOULDER_PROT,	-- Shoulders of the Fiery Protector
 							SHOULDER_VANQ,	-- Shoulders of the Fiery Vanquisher
@@ -574,14 +676,9 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					e(198, {	-- Ragnaros
 						["creatureID"] = 52409,
 						["groups"] = {
-							ach(5855),	-- Ragnar-O's
 							HELM_CONQ,	-- Crown of the Fiery Conqueror
 							HELM_PROT,	-- Crown of the Fiery Protector
 							HELM_VANQ,	-- Crown of the Fiery Vanquisher
-							i(69224),	-- Pureblood Fire Hawk (MOUNT!)
-							ig(175158, {	-- Flames of Fury (RI!)
-								["timeline"] = { ADDED_8_3_0 },
-							}),
 							i(71798),	-- Sho'ravon, Greatstaff of Annihilation
 							i(71352),	-- Sulfuras, the Extinguished Hand
 							i(71355),	-- Ko'gun, Hammer of the Firelord
@@ -598,8 +695,14 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					}),
 				},
 			}),
-			d(HEROIC_RAID, {
-				["difficulties"] = { 2, 5, 6 },
+			d(HEROIC_DIFFICULTY_ID, {
+				["difficulties"] = {
+					-- #if AFTER 8.2.5
+					DIFFICULTY.DUNGEON.HEROIC,
+					-- #endif
+					DIFFICULTY.LEGACY_RAID.PLAYER10_HEROIC,
+					DIFFICULTY.LEGACY_RAID.PLAYER25_HEROIC
+				},
 				["groups"] = {
 					n(VENDORS, {
 						n(54402, {	-- Lurah Wrathvine
@@ -617,12 +720,44 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 										{ "i", 71359, 1 },	-- Chelley's Sterilized Scalpel
 									},
 								}),
+								-- #if BEFORE MOP
+								i(71567, {	-- Covenant of the Flame
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 71146, 1 },	-- Covenant of the Flame
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								i(71590, {	-- Deathclutch Figurine
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 70939, 1 },	-- Deathclutch Figurine
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								i(71592, {	-- Deflecting Star
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 71218, 1 },	-- Deflecting Star
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								-- #endif
 								i(71563, {	-- Firebound Gorget
 									["cost"] = {
 										{ "i", 71617, 1 },	-- Crystallized Firestone
 										{ "i", 70929, 1 },	-- Firebound Gorget
 									},
 								}),
+								-- #if BEFORE MOP
+								i(71593, {	-- Giantslicer
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 71154, 1 },	-- Giantslicer
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								-- #endif
 								i(71561, {	-- Hide-Bound Chains
 									["cost"] = {
 										{ "i", 71617, 1 },	-- Crystallized Firestone
@@ -635,6 +770,15 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 										{ "i", 71366, 1 },	-- Lava Bolt Crossbow
 									},
 								}),
+								-- #if BEFORE MOP
+								i(71568, {	-- Morningstar Shard
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 71152, 1 },	-- Morningstar Shard
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								-- #endif
 								i(71562, {	-- Obsidium Cleaver
 									["cost"] = {
 										{ "i", 71617, 1 },	-- Crystallized Firestone
@@ -647,6 +791,15 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 										{ "i", 71361, 1 },	-- Ranseur of Hatred
 									},
 								}),
+								-- #if BEFORE MOP
+								i(71587, {	-- Relic of the Elemental Lords
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 71147, 1 },	-- Relic of the Elemental Lords
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								-- #endif
 								i(71641, {	-- Riplimb's Lost Collar
 									["cost"] = {
 										{ "i", 71617, 1 },	-- Crystallized Firestone
@@ -665,6 +818,22 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 										{ "i", 71150, 1 },	-- Scorchvine Wand
 									},
 								}),
+								-- #if BEFORE MOP
+								i(71577, {	-- Singed Plume of Aviana
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 71149, 1 },	-- Singed Plume of Aviana
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								i(71580, {	-- Soulflame Vial
+									["cost"] = {
+										{ "i", 71617, 1 },	-- Crystallized Firestone
+										{ "i", 71148, 1 },	-- Soulflame Vial
+									},
+									["timeline"] = { ADDED_4_2_0, REMOVED_5_0_4 },
+								}),
+								-- #endif
 								i(71559, {	-- Spire of Scarlet Pain
 									["cost"] = {
 										{ "i", 71617, 1 },	-- Crystallized Firestone
@@ -714,9 +883,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 						["creatureID"] = 52498,
 						["groups"] = {
 							ach(5807),	-- Heroic: Beth'tilac
-							i(152976,	{	-- Cinderweb Recluse (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
 							i(71409),	-- Funeral Pyre
 							i(71406),	-- Mandible of Beth'tilac
 							i(71408),	-- Ward of the Red Widow
@@ -759,7 +925,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 							i(71679),	-- Chest of the Fiery Conqueror
 							i(71686),	-- Chest of the Fiery Protector
 							i(71672),	-- Chest of the Fiery Vanquisher
-							i(71665),	-- Flametalon of Alysrazor (MOUNT!)
 							i(71427),	-- Alysra's Razor
 							i(71430),	-- Greathelm of the Voracious Maw
 							i(71438),	-- Craterflame Spaulders
@@ -783,9 +948,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 							i(71678),	-- Leggings of the Fiery Conqueror
 							i(71685),	-- Leggings of the Fiery Protector
 							i(71671),	-- Leggings of the Fiery Vanquisher
-							i(152975,	{	-- Blazehound (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
 							i(71445),	-- Skullstealer Greataxe
 							i(71441),	-- Feeding Frenzy
 							i(71448),	-- Goblet of Anger
@@ -809,9 +971,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 							i(71676),	-- Gauntlets of the Fiery Conqueror
 							i(71683),	-- Gauntlets of the Fiery Protector
 							i(71669),	-- Gauntlets of the Fiery Vanquisher
-							i(152977, {	-- Surger (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
 							i(71454),	-- Gatecrasher
 							i(71460),	-- Shard of Torment
 							i(71462),	-- Molten Scream
@@ -831,10 +990,6 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 						["creatureID"] = 52571,
 						["groups"] = {
 							ach(5804),	-- Heroic: Majordomo Fandral Staghelm
-							i(152978, {	-- Infernal Pyreclaw (PET!)
-								["timeline"] = { ADDED_7_3_0 },
-							}),
-							i(122304),	-- Fandral's Seed Pouch (TOY!)
 							i(71680),	-- Shoulders of the Fiery Conqueror
 							i(71687),	-- Shoulders of the Fiery Protector
 							i(71673),	-- Shoulders of the Fiery Vanquisher
@@ -854,17 +1009,15 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 					}),
 					e(198, {	-- Ragnaros
 						["creatureID"] = 52409,
-						["sym"] = {{"select","itemID",175158}},	-- Flames of Fury (Bag of Tricks addition)
 						["groups"] = {
+							un(REMOVED_FROM_GAME, ach(5985)),	-- Realm First! Ragnaros
 							ach(5803, {	-- Heroic: Ragnaros
 								title(190),	-- Firelord
 							}),
 							ach(5984),	-- Heroic: Ragnaros Guild Run
-							un(REMOVED_FROM_GAME, ach(5985)),	-- Realm First! Ragnaros
 							i(71677),	-- Crown of the Fiery Conqueror
 							i(71684),	-- Crown of the Fiery Protector
 							i(71670),	-- Crown of the Fiery Vanquisher
-							i(69224),	-- Pureblood Fire Hawk (MOUNT!)
 							i(71797),	-- Sho'ravon, Greatstaff of Annihilation
 							i(70723),	-- Sulfuras, the Extinguished Hand
 							i(71615),	-- Ko'gun, Hammer of the Firelord
@@ -882,36 +1035,5 @@ root(ROOTS.Instances, tier(CATA_TIER, {
 				},
 			}),
 		},
-	}),
+	}))),
 }));
-
-root(ROOTS.NeverImplemented, {
-	tier(CATA_TIER, {
-		inst(78, {	-- Firelands
-			["maps"] = { 367, 368, 369 },
-			["groups"] = {
-				i(71570),	-- Bracers of Forked Lightning
-				i(71400),	-- Girdle of the Indomitable Flame
-				i(71583),	-- Bracers of Imperious Truths
-				i(71584),	-- Gigantiform Bracers
-				i(71585),	-- Bracers of Regal Force
-				i(71582),	-- Bracers of Misting Ash
-				i(71394),	-- Flamebinding Girdle
-				i(71569),	-- Flamebinder Bracers
-				i(71581),	-- Smolderskull Bindings
-				d(NORMAL_RAID, {
-					-- Normal version tokens that don't exist (here in NYI with Normal wrapper just in case someone gets them to drop)
-					i(71679),	-- Chest of the Fiery Conqueror
-					i(71672),	-- Chest of the Fiery Vanquisher
-					i(71686),	-- Chest of the Fiery Protector
-					i(71676),	-- Gauntlets of the Fiery Conqueror
-					i(71683),	-- Gauntlets of the Fiery Protector
-					i(71669),	-- Gauntlets of the Fiery Vanquisher
-					i(71678),	-- Leggings of the Fiery Conqueror
-					i(71685),	-- Leggings of the Fiery Protector
-					i(71671),	-- Leggings of the Fiery Vanquisher
-				}),
-			},
-		}),
-	}),
-});

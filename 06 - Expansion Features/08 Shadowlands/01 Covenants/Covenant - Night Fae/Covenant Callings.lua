@@ -2,7 +2,7 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
 	n(NIGHT_FAE, {
 		["customCollect"] = "SL_COV_NFA",
 		["maps"] = {
@@ -27,7 +27,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 				}),
 				q(60418, {	-- A Call to Bastion
 					["provider"] = { "n", 167193 },	-- Featherlight
-					["coord"] = { 59.7, 31.3, ARDENWEALD },
+					["coord"] = { 59.9, 31.7, THE_TRUNK },
 					["g"] = {
 						i(181475),	-- Bounty of the Grove Wardens
 					},
@@ -46,20 +46,6 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 						i(181732),	-- Tribute of the Ambitious
 					},
 				}),
-				q(60373, {	-- A Source of Sorrowvine
-					["provider"] = { "n", 168513 },	-- Elder Shaper An'wyn
-					["coord"] = { 16.5, 52.4, ARDENWEALD },
-					["g"] = {
-						i(181475),	-- Bounty of the Grove Wardens
-					},
-				}),
-				q(60369, {	-- A Wealth of Wealdwood
-					["provider"] = { "n", 168513 },	-- Elder Shaper An'wyn
-					["coord"] = { 16.5, 52.4, ARDENWEALD },
-					["g"] = {
-						i(181475),	-- Bounty of the Grove Wardens
-					},
-				}),
 				q(60381, {	-- Aiding Ardenweald
 					["provider"] = { "n", 167195 },	-- Blodwyn
 					["coord"] = { 53.7, 6.20, THE_TRUNK },
@@ -76,7 +62,7 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 				}),
 				q(60383, {	-- Aiding Maldraxxus
 					["provider"] = { "n", 167195 },	-- Blodwyn
-					["coord"] = { 46.4, 50.6, ARDENWEALD },
+					["coord"] = { 53.1, 6.1, THE_TRUNK },
 					["g"] = {
 						i(181475),	-- Bounty of the Grove Wardens
 					},
@@ -99,14 +85,8 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 					["provider"] = { "n", 158553 },	-- Flutterby
 					["coord"] = { 33.9, 43.5, ARDENWEALD },
 					["g"] = {
+						i(184561),	-- Anima Embers (QI!)
 						i(181476),	-- Tribute of the Wild Hunt
-					},
-				}),
-				q(60374, {	-- Bonemetal Bonanza
-					["provider"] = { "n", 168513 },	-- Elder Shaper An'wyn
-					["coord"] = { 16.5, 52.4, ARDENWEALD },
-					["g"] = {
-						i(181475),	-- Bounty of the Grove Wardens
 					},
 				}),
 				q(60438, {	-- Challenges in Ardenweald
@@ -137,17 +117,11 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 						i(181476),	-- Tribute of the Wild Hunt
 					},
 				}),
-				q(60364, {	-- Gildenite Grab
-					["provider"] = { "n", 168513 },	-- Elder Shaper An'wyn
-					["coord"] = { 16.5, 52.4, ARDENWEALD },
-					["g"] = {
-						i(181475),	-- Bounty of the Grove Wardens
-					},
-				}),
 				q(60414, {	-- Rare Resources
 					["provider"] = { "n", 168513 },	-- Elder Shaper An'wyn
 					["coord"] = { 43.6, 52.4, ARDENWEALD },
 					["g"] = {
+						i(179327),	-- Coin of Brokerage (QI!)
 						i(181475),	-- Bounty of the Grove Wardens
 					},
 				}),
@@ -196,4 +170,4 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, {
 			})),
 		},
 	}),
-}));
+})));

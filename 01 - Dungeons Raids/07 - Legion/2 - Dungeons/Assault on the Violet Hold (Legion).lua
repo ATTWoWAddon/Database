@@ -1,14 +1,29 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-
-root(ROOTS.Instances, tier(LEGION_TIER, {
+root(ROOTS.Instances, expansion(EXPANSION.LEGION, {
 	inst(777, {	-- Assault of Violet Hold (Legion)
 		["lvl"] = 105,
 		["mapID"] = 732,
 		["coord"] = { 66.2, 68.3, LEGION_DALARAN },
 		["g"] = {
-			d(NORMAL_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MULTI.NORMAL_PLUS, {
+				cr(102387, e(1697, {	-- Sael'orn
+					ach(10798),	-- Assault on Violet Hold
+					i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
+					i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
+					i(136700),	-- Schematic: "The Felic" (RECIPE!)
+					i(140037),	-- Technique: Unwritten Legend (RECIPE!)
+				})),
+				cr(102446, e(1711, {	-- Fel Lord Betrug
+					ach(10798),	-- Assault on Violet Hold
+					i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
+					i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
+					i(136700),	-- Schematic: "The Felic" (RECIPE!)
+					i(140037),	-- Technique: Unwritten Legend (RECIPE!)
+				})),
+			}),
+			d(DIFFICULTY.DUNGEON.NORMAL, {
 				cr(101995, e(1693, {	-- Festerface
 					i(137438),	-- Band of Decaying Rubies
 					i(137435),	-- Blightbile Waistband
@@ -82,11 +97,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137463),	-- Fealty of Nerub
 				})),
 				cr(102387, e(1697, {	-- Sael'orn
-					ach(10798),	-- Assault on Violet Hold
-					i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
-					i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
-					i(136700),	-- Schematic: "The Felic"
-					i(140037),	-- Technique: Unwritten Legend (RECIPE!)
 					i(134436),	-- Armbands of Slaughter
 					i(134482),	-- Cinch of Frozen Fear
 					i(134521),	-- Dread-Stricken Shoudlerguards
@@ -106,11 +116,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137473),	-- Phase Spider Mandible
 				})),
 				cr(102446, e(1711, {	-- Fel Lord Betrug
-					ach(10798),	-- Assault on Violet Hold
-					i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
-					i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
-					i(136700),	-- Schematic: "The Felic"
-					i(140037),	-- Technique: Unwritten Legend (RECIPE!)
 					i(134466),	-- Begrudging Trudgers
 					i(137456),	-- Belt of Mighty Links
 					i(137459),	-- Chaos Talisman
@@ -130,7 +135,7 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					i(137476),	-- Brand of Tyranny
 				})),
 			}),
-			d(HEROIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.HEROIC, {
 				["lvl"] = 110,
 				["groups"] = {
 					cr(101995, e(1693, {	-- Festerface
@@ -207,10 +212,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 					cr(102387, e(1697, {	-- Sael'orn
 						ach(10799),	-- Heroic: Assault on Violet Hold
-						i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
-						i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
-						i(136700),	-- Schematic: "The Felic"
-						i(140037),	-- Technique: Unwritten Legend (RECIPE!)
 						i(134436),	-- Armbands of Slaughter
 						i(134482),	-- Cinch of Frozen Fear
 						i(134521),	-- Dread-Stricken Shoudlerguards
@@ -231,10 +232,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 					cr(102446, e(1711, {	-- Fel Lord Betrug
 						ach(10799),	-- Heroic: Assault on Violet Hold
-						i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
-						i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
-						i(136700),	-- Schematic: "The Felic"
-						i(140037),	-- Technique: Unwritten Legend (RECIPE!)
 						i(134466),	-- Begrudging Trudgers
 						i(137456),	-- Belt of Mighty Links
 						i(137459),	-- Chaos Talisman
@@ -255,11 +252,13 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					})),
 				},
 			}),
-			d(MYTHIC_DUNGEON, {
+			d(DIFFICULTY.DUNGEON.MYTHIC, {
 				["lvl"] = 110,
 				["groups"] = {
 					cr(101995, e(1693, {	-- Festerface
-						ach(10554),	-- I Made a Food!
+						ach(10554, {	-- I Made a Food!
+							["crs"] = { 102169 },	-- Black Bile
+						}),
 						i(137438),	-- Band of Decaying Rubies
 						i(137435),	-- Blightbile Waistband
 						i(137479),	-- Cowl of Promising News
@@ -335,10 +334,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					cr(102387, e(1697, {	-- Sael'orn
 						ach(10800),	-- Mythic: Assault on Violet Hold
 						ach(10860),	-- Mythic: Assault on Violet Hold Guild Run
-						i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
-						i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
-						i(136700),	-- Schematic: "The Felic"
-						i(140037),	-- Technique: Unwritten Legend (RECIPE!)
 						i(134436),	-- Armbands of Slaughter
 						i(134482),	-- Cinch of Frozen Fear
 						i(134521),	-- Dread-Stricken Shoudlerguards
@@ -360,10 +355,6 @@ root(ROOTS.Instances, tier(LEGION_TIER, {
 					cr(102446, e(1711, {	-- Fel Lord Betrug
 						ach(10800),	-- Mythic: Assault on Violet Hold
 						ach(10860),	-- Mythic: Assault on Violet Hold Guild Run
-						i(137824),	-- Design: Maelstrom Band [Rank 2] (RECIPE!)
-						i(137882),	-- Pattern: Warhide Shoulderguard [Rank 3] (RECIPE!)
-						i(136700),	-- Schematic: "The Felic"
-						i(140037),	-- Technique: Unwritten Legend (RECIPE!)
 						i(134466),	-- Begrudging Trudgers
 						i(137456),	-- Belt of Mighty Links
 						i(137459),	-- Chaos Talisman

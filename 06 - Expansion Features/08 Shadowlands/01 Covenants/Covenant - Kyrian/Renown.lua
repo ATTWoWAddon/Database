@@ -4,7 +4,8 @@
 local WISPS_OF_MEMORY = i(186472, {	-- Wisps of Memory
 	["description"] = "Rewarded at 52, 67 and 76 Renown.",
 });
-root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH }, ["customCollect"] = "SL_COV_KYR" }, {
+
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH }, ["customCollect"] = "SL_COV_KYR" }, {
 	n(KYRIAN, {
 		n(RENOWN, {
 			["description"] = "These are rewards automatically granted by reaching a specific level of Renown.",
@@ -24,21 +25,8 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 				title(425, {	-- Hand of the Archon (TITLE!)
 					["description"] = "Requires Renown 40.",
 				}),
-				i(186515,  {	-- Ensemble: Aspiring Aspirant's Regalia
+				iensemble(186515,  {	-- Ensemble: Aspiring Aspirant's Regalia
 					["description"] = "Requires Renown 60.",
-					["g"] = {
-						i(184998),	-- Aspiring Aspirant's Drape
-						i(184993),	-- Aspiring Aspirant's Handwraps
-						i(184994),	-- Aspiring Aspirant's Hood
-						i(184995),	-- Aspiring Aspirant's Leggings
-						i(185008),	-- Aspiring Aspirant's Robes
-						i(184996),	-- Aspiring Aspirant's Sash
-						i(184992),	-- Aspiring Aspirant's Slippers
-						i(184991, {	-- Aspiring Aspirant's Vestments
-							["description"] = "If this piece shows as uncollected after learning the ensemble, relog and then SHIFT+CLICK anywhere in an ATT list to refresh your collection.",	-- if anyone reports this as missing, remind them that RELOGGING IS NECESSARY.  refreshing alone did not work for me, nor did relogging alone - it required the one-two punch combo
-						}),
-						i(184997),	-- Aspiring Aspirant's Wraps
-					},
 				}),
 				i(188005, {	-- Anima-Bathed Blade
 					["description"] = "Rewarded at 15 and 24 Renown.",
@@ -68,35 +56,35 @@ root(ROOTS.ExpansionFeatures, tier(SL_TIER, bubbleDown({ ["timeline"] = { ADDED_
 
 WISPS_OF_MEMORY.customCollect = nil;
 
-root(ROOTS.HiddenQuestTriggers, {
-	tier(SL_TIER, {
-		n(KYRIAN, {
-			n(RENOWN, {
-				q(64138),	-- hitting Renown 45
-				q(64378),	-- hitting Renown 48 [Death Knight] (received Memory of the Final Sentence)
-				q(64379),	-- hitting Renown 48 [Demon Hunter] (received Memory of Blind Faith)
-				q(64395),	-- hitting Renown 48 [Druid] (received Memory of Kindred Affinity)
-				q(64392),	-- hitting Renown 48 [Hunter] (received Memory of the Pact of the Soulstalkers)
-				q(64386),	-- hitting Renown 48 [Mage] (received Memory of Harmonic Echo)
-				q(64413),	-- hitting Renown 48 [Monk] (received Memory of Call to Arms)
-				q(64417),	-- hitting Renown 48 [Paladin] (received Memory of Divine Resonance)
-				q(64405),	-- hitting Renown 48 [Priest] (received Memory of Spheres' Harmony)
-				q(64396),	-- hitting Renown 48 [Rogue] (received Memory of Resounding Clarity)
-				q(64409),	-- hitting Renown 48 [Shaman] (received Memory of the Raging Vesper Vortex)
-				q(64412),	-- hitting Renown 48 [Warlock] (received Memory of the Languishing Soul Detritus)
-				q(64418),	-- hitting Renown 48 [Warrior] (received Memory of Elysian Might)
-				q(64145),	-- hitting Renown 50
-				q(64443),	-- hitting Renown 52
-				q(64137),	-- hitting Renown 56
-				q(64146),	-- hitting Renown 59
-				q(64372),	-- hitting Renown 60
-				q(64444),	-- hitting Renown 67
-				q(63601),	-- learning Ensemble: Aspiring Aspirant
-				q(64445),	-- Renown 76
-				-- 9.1.5 New HQTS
-				q(65107),	-- hitting Renown 15 (Anima instead of Soulkeeper Upgrade)
-				q(65108),	-- hitting Renown 24 (Anima instead of Soulkeeper Upgrade)
-			}),
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.SL, bubbleDown({ ["timeline"] = { ADDED_9_0_2_LAUNCH } }, {
+	n(KYRIAN, {
+		n(RENOWN, {
+			q(62756),	-- Reaching Renown 19 / unlocking Deepening Bond 4% stam increase
+			q(62757),	-- Reaching Renown 35 / unlocking Deepening Bond 6% stam increase
+			q(62927),	-- Reaching Renown 39 / unlocking covenant mount
+			q(64138, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 45
+			q(64378, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Death Knight] (received Memory of the Final Sentence)
+			q(64379, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Demon Hunter] (received Memory of Blind Faith)
+			q(64395, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Druid] (received Memory of Kindred Affinity)
+			q(64392, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Hunter] (received Memory of the Pact of the Soulstalkers)
+			q(64386, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Mage] (received Memory of Harmonic Echo)
+			q(64413, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Monk] (received Memory of Call to Arms)
+			q(64417, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Paladin] (received Memory of Divine Resonance)
+			q(64405, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Priest] (received Memory of Spheres' Harmony)
+			q(64396, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Rogue] (received Memory of Resounding Clarity)
+			q(64409, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Shaman] (received Memory of the Raging Vesper Vortex)
+			q(64412, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Warlock] (received Memory of the Languishing Soul Detritus)
+			q(64418, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 48 [Warrior] (received Memory of Elysian Might)
+			q(64145, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 50
+			q(64443, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 52
+			q(64137, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 56
+			q(64146, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 59
+			q(64372, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 60
+			q(64444, {["timeline"] = {ADDED_9_1_0}}),	-- hitting Renown 67
+			q(64445, {["timeline"] = {ADDED_9_1_0}}),	-- Renown 76
+			-- 9.1.5 New HQTS
+			q(65107, {["timeline"] = {ADDED_9_1_5}}),	-- hitting Renown 15 (Anima instead of Soulkeeper Upgrade)
+			q(65108, {["timeline"] = {ADDED_9_1_5}}),	-- hitting Renown 24 (Anima instead of Soulkeeper Upgrade)
 		}),
 	}),
-});
+})));

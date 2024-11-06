@@ -3,12 +3,12 @@
 -------------------------------------------------------------------
 SIEGE_ON_DRAGONBANE_KEEP = createHeader({
 	readable = "Siege on Dragonbane Keep",
-	icon = "Interface\\Icons\\inv_artifact_dragonscales",
+	icon = 1394891,
 	text = {
-		en = [[~GetSpellInfo(388945)]],
+		en = WOWAPI_GetSpellName(388945),
 	},
 });
-root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(VALDRAKKEN_ACCORD, {
 		n(SIEGE_ON_DRAGONBANE_KEEP, bubbleDownSelf({ ["minReputation"] = { FACTION_VALDRAKKEN_ACCORD, 5 } }, {
 			["questID"] = 70866,
@@ -20,7 +20,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					ach(16411),	-- Siege on Dragonbane Keep: Home Sweet Home
 					ach(16410),	-- Siege on Dragonbane Keep: Snack Attack
 				}),
-				n(REWARDS, {
+				n(EVENT_COMPLETION, {
 					i(200116),	-- Everlasting Horn of Lavaswimming (TOY!)
 					i(202142),	-- Dragonbane Keep Strongbox [RARE]
 					i(200072, {	-- Dragonbane Keep Strongbox [EPIC]
@@ -55,7 +55,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					o(381357, {	-- Stone Tablet
 						["coord"] = { 27.8, 68.4, THE_WAKING_SHORES },
 						["g"] = {
-							crit(1, {	-- Complaint to Scalepiercer
+							crit(55264, {	-- Complaint to Scalepiercer
 								["achievementID"] = 16412,	-- Siege on Dragonbane Keep: Chiseled Record
 							}),
 						},
@@ -63,7 +63,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					o(381358, {	-- Stone Tablet
 						["coord"] = { 28.8, 72.5, THE_WAKING_SHORES },
 						["g"] = {
-							crit(2, {	-- Wyrmeater's Recipe
+							crit(55266, {	-- Wyrmeater's Recipe
 								["achievementID"] = 16412,	-- Siege on Dragonbane Keep: Chiseled Record
 							}),
 						},
@@ -71,7 +71,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 					o(381359, {	-- Stone Tablet
 						["coord"] = { 24.1, 69.2, THE_WAKING_SHORES },
 						["g"] = {
-							crit(3, {	-- The Grand Flame's Journal
+							crit(55265, {	-- The Grand Flame's Journal
 								["achievementID"] = 16412,	-- Siege on Dragonbane Keep: Chiseled Record
 							}),
 						},
@@ -81,8 +81,7 @@ root(ROOTS.ExpansionFeatures, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_
 		})),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, tier(DF_TIER, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	n(VALDRAKKEN_ACCORD, {
 		n(SIEGE_ON_DRAGONBANE_KEEP, {
 			q(70867),	-- Scalebane Keep (seems to indicate if the community event timer is shown perhaps? unflagged when the siege was completed)

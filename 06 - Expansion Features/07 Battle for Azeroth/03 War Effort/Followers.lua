@@ -2,10 +2,11 @@
 --      E X P A N S I O N   F E A T U R E S    M O D U L E       --
 -------------------------------------------------------------------
 
-root(ROOTS.ExpansionFeatures, tier(BFA_TIER, {
-	n(WARFRONT, {
+root(ROOTS.ExpansionFeatures, expansion(EXPANSION.BFA, {
+	n(WAR_EFFORT, {
 		n(FOLLOWERS, bubbleDownSelf({
-			["u"] = 15,	-- Temporary troops
+			["collectible"] = false,
+			["u"] = UNLEARNABLE,	-- Temporary troops
 		}, {
 			follower(1063),	-- Alliance:Dwarven Riflemen \\ Horde:Tauren Earthshakers
 			follower(1064),	-- Alliance:Gnomeregan Mechano-Tanks \\ Horde:Forsaken Dreadguards

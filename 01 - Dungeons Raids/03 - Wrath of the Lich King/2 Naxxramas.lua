@@ -15,7 +15,7 @@ local WOTLK_CLASSIC_TENMAN_KEY_ONUPDATE = [[function(t)
 end]];
 -- #endif
 local DEATHS_BARGAINING_CHIP = 206576;
-root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
+root(ROOTS.Instances, expansion(EXPANSION.WRATH, applyclassicphase(WRATH_PHASE_ONE, {
 	inst(754, {	-- Naxxramas
 		["mapID"] = NAXXRAMAS,
 		["maps"] = { 163, 164, 165, 166, 167 },
@@ -42,11 +42,12 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["description"] = "When you have both the ward and holy water, head to the entrance of the Crusader's Cathedral, but don't enter there - Instead, use your Ward of Naxxramas and turn to the left. If done correctly, you will see a Dread Ward of Naxxramas right next to the gates there, Once you find the Dread Ward, toss your  Stratholme Holy Water in it.\n\nIf done correctly, you will receive a zone-wide yell, and a debuff called  Sleight of Hand. Once you get this debuff, you have 5 minutes to run all the way to the Undead side of Stratholme, to the gate to the left of the Necropolis where Lord Aurius Rivendare is located. You MUST kill Lord Aurius Rivendare to open the gate. If you arrive in time, a Hand of Naxxramas NPC will be there, and you will be able to use your Argent Dawn Commission to burn it to a crisp.",
 					["sourceQuests"] = { 76257 },	-- Darkmaster's Scourgestone
 					["questID"] = 76261,
+					["maps"] = { 318 },	-- Stratholme - Undead
 					["cost"] = {
 						{ "i", 12846, 1 },	-- 1x Argent Dawn Commission
 						{ "i", 13180, 1 },	-- 1x Stratholme Holy Water
 						{ "i", 206377, 1 },	-- 1x Ward of Naxxramas
-					}
+					},
 				}),
 				n(16116, {	-- Archmage Angela Dosantos
 					["description"] = "Talk to Archmage after defeating Hand of Naxxramas",
@@ -62,6 +63,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 					["provider"] = { "n", 16116 },	-- Archmage Angela Dosantos
 					["coord"] = { 75.5, 52.8, EASTERN_PLAGUELANDS },
+					["maxReputation"] = { FACTION_ARGENT_DAWN, REVERED },
 					["minReputation"] = { FACTION_ARGENT_DAWN, HONORED },
 					["cost"] = {
 						{ "i", 12363, 5 },	-- 5x Arcane Crystal
@@ -80,6 +82,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					},
 					["provider"] = { "n", 16116 },	-- Archmage Angela Dosantos
 					["coord"] = { 75.5, 52.8, EASTERN_PLAGUELANDS },
+					["maxReputation"] = { FACTION_ARGENT_DAWN, EXALTED },
 					["minReputation"] = { FACTION_ARGENT_DAWN, REVERED },
 					["cost"] = {
 						{ "i", 12363, 2 },	-- 2x Arcane Crystal
@@ -106,55 +109,56 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 			n(ACHIEVEMENTS, bubbleDownSelf({ ["timeline"] = { ADDED_10_1_5 } }, {
 				ach(18557),	-- Never Bothered, Anyway
 				ach(18616, {	-- Putting Wilhelm Out of Business
-					crit(1, {	-- Omarion's Notes - Pages 1 & 2
+					crit(60649, {	-- Omarion's Notes - Pages 1 & 2
 						["_quests"] = { 76291 },
 					}),
-					crit(2, {	-- Omarion's Notes - Pages 3 & 4
+					crit(60650, {	-- Omarion's Notes - Pages 3 & 4
 						["_quests"] = { 76292 },
 					}),
-					crit(3, {	-- Omarion's Notes - Pages 5 & 6
+					crit(60651, {	-- Omarion's Notes - Pages 5 & 6
 						["_quests"] = { 76293 },
 					}),
-					crit(4, {	-- Omarion's Notes - Pages 7 & 8
+					crit(60652, {	-- Omarion's Notes - Pages 7 & 8
 						["_quests"] = { 76294 },
 					}),
-					crit(5, {	-- Omarion's Notes - Pages 9 & 10
+					crit(60653, {	-- Omarion's Notes - Pages 9 & 10
 						["_quests"] = { 76295 },
 					}),
-					crit(6, {	-- Omarion's Notes - Pages 11 & 12
+					crit(60654, {	-- Omarion's Notes - Pages 11 & 12
 						["_quests"] = { 76296 },
 					}),
-					crit(7, {	-- Omarion's Notes - Pages 13 & 14
+					crit(60655, {	-- Omarion's Notes - Pages 13 & 14
 						["_quests"] = { 76297 },
 					}),
-					crit(8, {	-- Omarion's Notes - Pages 15 & 16
+					crit(60656, {	-- Omarion's Notes - Pages 15 & 16
 						["_quests"] = { 76298 },
 					}),
-					crit(9, {	-- Omarion's Notes - Pages 17 & 18
+					crit(60657, {	-- Omarion's Notes - Pages 17 & 18
 						["_quests"] = { 76299 },
 					}),
-					crit(10, {	-- Omarion's Notes - Pages 19 & 20
+					crit(60658, {	-- Omarion's Notes - Pages 19 & 20
 						["_quests"] = { 76300 },
 					}),
-					crit(11, {	-- Omarion's Notes - Pages 21 & 22
+					crit(60659, {	-- Omarion's Notes - Pages 21 & 22
 						["_quests"] = { 76301 },
 					}),
-					crit(12, {	-- Omarion's Notes - Pages 23 & 24
+					crit(60660, {	-- Omarion's Notes - Pages 23 & 24
 						["_quests"] = { 76302 },
 					}),
-					crit(13, {	-- Omarion's Notes - Pages 25 & 26
+					crit(60661, {	-- Omarion's Notes - Pages 25 & 26
 						["_quests"] = { 76303 },
 					}),
-					crit(14, {	-- Omarion's Notes - Pages 27 & 28
+					crit(60662, {	-- Omarion's Notes - Pages 27 & 28
 						["_quests"] = { 76304 },
 					}),
-					crit(15, {	-- Omarion's Notes - Pages 29 & 30
+					crit(60663, {	-- Omarion's Notes - Pages 29 & 30
 						["_quests"] = { 76305 },
 					}),
-					crit(16, {	-- Omarion's Notes - Pages 31 & 32
+					crit(60664, {	-- Omarion's Notes - Pages 31 & 32
 						["_quests"] = { 76306 },
 					}),
 				}),
+				ach(11750, {["timeline"] = {ADDED_7_2_0}}),	-- Undying Aesthetic (Naxxramas)
 			})),
 			n(COMMON_BOSS_DROPS, bubbleDownSelf({ ["timeline"] = { ADDED_10_1_5 } }, {
 				i(206375, {	-- Corruptor's Scourgestone
@@ -192,7 +196,6 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 						{ "i", 20520, 3 },		-- 3x Dark Rune
 						{ "i", 33042, 1 },		-- 1x Black Coffee
 						{ "i", 13180, 2 },		-- 2x Stratholme Holy Water
-						{ "i", 206473, 1 },		-- 1x Makeshift Grappling Hook
 					},
 					["g"] = {
 						i(206615),	-- Desecrated Cloth Bracers
@@ -1196,7 +1199,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(10402),	-- Blackened Defias Boots
 								i(206611),	-- Lamented Crusader's Boots
 								i(7187),	-- VanCleef's Boots
-								i(4660),	-- Walking Boots
+							--	i(4660),	-- Walking Boots					Added to original Source in 10.1.7
 							},
 						}),
 						i(206571, {	-- Dented Raider's Bracers
@@ -1219,8 +1222,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							["description"] = "Includes a wide range of Bind on Equip (BoE) Gauntlets from Classic, including those found in dungeons. We specifically feature items where Dented Tokens serve as the exclusive or optimal source.",
 							["g"] = {
 								i(206608),	-- Lamented Crusader's Gauntlets
-								i(1944),	-- Metalworking Gloves
-								i(1945),	-- Woodworking Gloves
+							--	i(1944),	-- Metalworking Gloves				Added to original Source in 10.1.7
+							--	i(1945),	-- Woodworking Gloves				Added to original Source in 10.1.7
 							},
 						}),
 						i(206568, {	-- Dented Raider's Helmet
@@ -1234,7 +1237,8 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							["cost"] = {{ "i", DEATHS_BARGAINING_CHIP, 3 }},
 							["description"] = "Includes a wide range of Bind on Equip (BoE) Leggings from Classic, including those found in dungeons. We specifically feature items where Dented Tokens serve as the exclusive or optimal source.",
 							["g"] = {
-								i(1943),	-- Goblin Mail Leggings
+							--	i(1943),	-- Goblin Mail Leggings				Added to original Source in 10.1.7
+							--	i(2978),	-- Veteran Leggings					-- Likely added back. Add when confirmed
 								i(206610),	-- Lamented Crusader's Leggings
 							},
 						}),
@@ -1246,19 +1250,19 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							},
 						}),
 						i(206771, {	-- Pattern: Cursed Cloth (RECIPE!)
-							["description"] = "Requires to have completed achievement: Drop Dead, Gorgeous to buy.",
+							["sourceAchievements"] = { 11744 },	-- Drop Dead, Gorgeous
 							["cost"] = {{ "i", DEATHS_BARGAINING_CHIP, 20 }},
 						}),
 						i(206772, {	-- Pattern: Languished Leather (RECIPE!)
-							["description"] = "Requires to have completed achievement: Drop Dead, Gorgeous to buy.",
+							["sourceAchievements"] = { 11744 },	-- Drop Dead, Gorgeous
 							["cost"] = {{ "i", DEATHS_BARGAINING_CHIP, 20 }},
 						}),
 						i(206773, {	-- Pattern: Scourged Scales (RECIPE!)
-							["description"] = "Requires to have completed achievement: Drop Dead, Gorgeous to buy.",
+							["sourceAchievements"] = { 11744 },	-- Drop Dead, Gorgeous
 							["cost"] = {{ "i", DEATHS_BARGAINING_CHIP, 20 }},
 						}),
 						i(206774, {	-- Plans: Undeath Metal (RECIPE!)
-							["description"] = "Requires to have completed achievement: Drop Dead, Gorgeous to buy.",
+							["sourceAchievements"] = { 11744 },	-- Drop Dead, Gorgeous
 							["cost"] = {{ "i", DEATHS_BARGAINING_CHIP, 20 }},
 						}),
 						i(206579, {	-- Phylacterweave
@@ -1317,7 +1321,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 					["timeline"] = { ADDED_10_1_5 },
 				}),
 			})),
-			d(3, {	-- 10-Man
+			d(DIFFICULTY.LEGACY_RAID.PLAYER10_NORMAL, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ACHIEVEMENTS, {
@@ -1338,10 +1342,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							}},
 						}),
 						ach(2187, {	-- The Undying
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 							["groups"] = {
 								title(109, {	-- The Undying
-									["timeline"] = { "removed 4.0.3" },
+									["timeline"] = { REMOVED_4_0_3 },
 								}),
 							},
 						}),
@@ -1355,7 +1359,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							["lvl"] = lvlsquish(78, 78, 30),
 							["groups"] = {
 								i(44582, {	-- Key to the Focusing Iris
-									["timeline"] = { "deleted 4.2.0" },
+									["timeline"] = { DELETED_4_2_0 },
 									-- #if ANYCLASSIC
 									["OnUpdate"] = WOTLK_CLASSIC_TENMAN_KEY_ONUPDATE,
 									-- #endif
@@ -1464,7 +1468,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								i(93030, {	-- Giant Bone Spider (PET!)
-									["timeline"] = { "added 5.1.0.16309" },
+									["timeline"] = { ADDED_5_1_0 },
 								}),
 								i(39221),	-- Wraith Spear
 								i(39226),	-- Maexxna's Femur
@@ -1560,7 +1564,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								i(93032, {	-- Fungal Abomination (PET!)
-									["timeline"] = { "added 5.1.0.16309" },
+									["timeline"] = { ADDED_5_1_0 },
 								}),
 								i(40622),	-- Spaulders of the Lost Conqueror
 								i(40623),	-- Spaulders of the Lost Protector
@@ -1646,6 +1650,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								16063,	-- Sir Zeliek
 							},
 							["lore"] = "The most powerful death knights within Naxxramas are the four horsemen. They represent the pinnacle of Kel'Thuzad's guard. The first, Thane Korth'azz, holds the power of flame. The next, Lady Blaumeux, calls forth the power of shadows, drawing the souls of the living into the voracious embrace. Sir Zeliek, a paladin in life, so strong in his faith, that even in undeath, the power of the light still heeds his call, smiting his foes in battle. The final death knight, Lord Mograine, was the finest warrior that the death knights had ever seen. However, after the events of Azeroth, he vanished without a trace. Kel'Thuzad has appointed Baron Rivendare in his place.",
+							["provider"] = { "o", 193426 },	-- Four Horsemen Chest
 							["groups"] = {
 								ach(2176),	-- And They Would All Go Down Together (10 player)
 								ach(568, {	-- The Military Quarter (10 player)
@@ -1694,7 +1699,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #elseif BEFORE 8.0.1
 									["description"] = "This item was originally unavailable until Patch 8.0.1 after the AllTheThings Discord reported it missing from the Patchwerk loot table. Interestingly enough, its absense triggered the creation of the addon by Crieve after failing to get this transmog to drop after many many months of unsuccessfully farming for it.",
 									-- #endif
-									["timeline"] = { "created 3.0.2.8905", "added 8.0.1" },
+									["timeline"] = { CREATED_3_0_2, ADDED_8_0_1 },
 								}),
 								i(39273),	-- Sullen Cloth Boots
 							},
@@ -1769,7 +1774,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								i(93029, {	-- Stitched Pup (PET!)
-									["timeline"] = { "added 5.1.0.16309" },
+									["timeline"] = { ADDED_5_1_0 },
 								}),
 								-- #IF ANYCLASSIC
 								-- Leaving this duplication for Classic because it doesn't support the 'extract' symlink command
@@ -1870,7 +1875,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #elseif BEFORE 8.0.1
 									["description"] = "This item was originally unavailable until Patch 8.0.1 after the AllTheThings Discord reported it missing from the Patchwerk loot table. Interestingly enough, its absense triggered the creation of the addon by Crieve after failing to get this transmog to drop after many many months of unsuccessfully farming for it.",
 									-- #endif
-									["timeline"] = { "created 3.0.2.8905", "added 8.0.1" },
+									["timeline"] = { CREATED_3_0_2, ADDED_8_0_1 },
 								}),
 								i(39224),	-- Leggings of Discord
 								i(39280),	-- Leggings of Innumerable Barbs
@@ -1968,10 +1973,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								ach(5016, {	-- Just Can't Get Enough - Guild Edition
-									["timeline"] = { "added 4.0.3" },
-								}),
-								ach(1658, {	-- Champion of the Frozen Wastes
-									["criteriaID"] = 5888,	-- Kel'Thuzad (10 or 25 player) slain
+									["timeline"] = { ADDED_4_0_3 },
 								}),
 								ach(578, {	-- The Dedicated Few (10 player)
 									["criteriaID"] = 6802,	-- Kel'Thuzad slain
@@ -1993,14 +1995,14 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(39421),	-- Gem of Imprisoned Vassals
 								i(39425),	-- Cloak of the Dying
 								i(122197, {	-- Music Roll: Wrath of the Lich King
-									["timeline"] = { "added 6.1.0.19445" },
+									["timeline"] = { ADDED_6_1_0 },
 								}),
 							},
 						}),
 					}),
 				},
 			}),
-			d(4, {	-- 25-Man
+			d(DIFFICULTY.LEGACY_RAID.PLAYER25_NORMAL, {
 				["lvl"] = lvlsquish(80, 80, 30),
 				["groups"] = {
 					n(ACHIEVEMENTS, {
@@ -2021,10 +2023,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							}},
 						}),
 						ach(2186, {	-- The Immortal
-							["timeline"] = { "removed 4.0.3" },
+							["timeline"] = { REMOVED_4_0_3 },
 							["groups"] = {
 								title(108, {	-- The Immortal
-									["timeline"] = { "removed 4.0.3" },
+									["timeline"] = { REMOVED_4_0_3 },
 								}),
 							},
 						}),
@@ -2035,7 +2037,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							["lvl"] = lvlsquish(78, 78, 30),
 							["groups"] = {
 								i(44581, {	-- Heroic Key to the Focusing Iris
-									["timeline"] = { "deleted 4.2.0" },
+									["timeline"] = { DELETED_4_2_0 },
 								}),
 							},
 						}),
@@ -2134,10 +2136,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40108),	-- Seized Beauty
 								i(40074),	-- Strong-Handed Ring
 								i(39757, {	-- Idol of Worship
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(39728, {	-- Totem of Misery
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 							},
 						}),
@@ -2156,7 +2158,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								i(93030, {	-- Giant Bone Spider (PET!)
-									["timeline"] = { "added 5.1.0.16309" },
+									["timeline"] = { ADDED_5_1_0 },
 								}),
 								i(39758),	-- The Jawbone
 								i(39763),	-- Wraith Strike
@@ -2222,10 +2224,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40108),	-- Seized Beauty
 								i(40074),	-- Strong-Handed Ring
 								i(40190, {	-- Spinning Fate
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40191, {	-- Libram of Radiance
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 							},
 						}),
@@ -2267,7 +2269,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40258),	-- Forethought Talisman
 								i(40256),	-- Grim Toll
 								i(40207, {	-- Sigil of Awareness
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 							},
 						}),
@@ -2293,7 +2295,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								i(93032, {	-- Fungal Abomination (PET!)
-									["timeline"] = { "added 5.1.0.16309" },
+									["timeline"] = { ADDED_5_1_0 },
 								}),
 								i(40637),	-- Mantle of the Lost Conqueror
 								i(40638),	-- Mantle of the Lost Protector
@@ -2348,10 +2350,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40108),	-- Seized Beauty
 								i(40074),	-- Strong-Handed Ring
 								i(40321, {	-- Idol of the Shooting Star
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40322, {	-- Totem of Dueling
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 							},
 						}),
@@ -2391,10 +2393,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40258),	-- Forethought Talisman
 								i(40256),	-- Grim Toll
 								i(40342, {	-- Idol of Awakening
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40337, {	-- Libram of Resurgence
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 							},
 						}),
@@ -2406,6 +2408,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								16063,	-- Sir Zeliek
 							},
 							["lore"] = "The most powerful death knights within Naxxramas are the four horsemen. They represent the pinnacle of Kel'Thuzad's guard. The first, Thane Korth'azz, holds the power of flame. The next, Lady Blaumeux, calls forth the power of shadows, drawing the souls of the living into the voracious embrace. Sir Zeliek, a paladin in life, so strong in his faith, that even in undeath, the power of the light still heeds his call, smiting his foes in battle. The final death knight, Lord Mograine, was the finest warrior that the death knights had ever seen. However, after the events of Azeroth, he vanished without a trace. Kel'Thuzad has appointed Baron Rivendare in his place.",
+							["provider"] = { "o", 193426 },	-- Four Horsemen Chest
 							["groups"] = {
 								ach(2177),	-- And They Would All Go Down Together (25 player)
 								ach(569, {	-- The Military Quarter (25 player)
@@ -2426,7 +2429,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40627),	-- Breastplate of the Lost Vanquisher
 								i(139547, {	-- Runes of the Darkening [Death Knight Hidden Appearance]
 									["sourceQuest"] = 38990,	-- The Call of Icecrown
-									["timeline"] = { "added 7.0.3.22248" },
+									["timeline"] = { ADDED_7_0_3 },
 								}),
 							},
 						}),
@@ -2476,10 +2479,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40108),	-- Seized Beauty
 								i(40074),	-- Strong-Handed Ring
 								i(40268, {	-- Libram of Tolerance
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40267, {	-- Totem of Hex
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 							},
 						}),
@@ -2553,7 +2556,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								i(93029, {	-- Stitched Pup (PET!)
-									["timeline"] = { "added 5.1.0.16309" },
+									["timeline"] = { ADDED_5_1_0 },
 								}),
 								-- #IF ANYCLASSIC
 								-- Leaving this duplication for Classic because it doesn't support the 'extract' symlink command
@@ -2716,22 +2719,22 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40236),	-- Serene Echoes
 								i(40325),	-- Bindings of the Expansive Mind
 								i(40191, {	-- Libram of Radiance
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40337, {	-- Libram of Resurgence
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40268, {	-- Libram of Tolerance
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40321, {	-- Idol of the Shooting Star
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(39757, {	-- Idol of Worship
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								i(40322, {	-- Totem of Dueling
-									["timeline"] = { "removed 5.0.4" },
+									["timeline"] = { REMOVED_5_0_4 },
 								}),
 								-- #ENDIF
 							},
@@ -2808,10 +2811,10 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 							["lore"] = "He serves the Lich King without question, a necromancer of great prowess in life, turned to a master of necromancy after his death. It is said he is the most loyal of the Lich King's subjects.",
 							["groups"] = {
 								applyclassicphase(WRATH_PHASE_ONE_REALM_FIRST, ach(1402, {	-- Realm First! Conqueror of Naxxramas
-									["timeline"] = { "removed 4.0.3" },
+									["timeline"] = { REMOVED_4_0_3 },
 									["groups"] = {
-										title(90, {	-- %, Conqueror of Naxxramas
-											["timeline"] = { "removed 4.0.3" },
+										title(90, {	-- <Name>, Conqueror of Naxxramas
+											["timeline"] = { REMOVED_4_0_3 },
 										}),
 									},
 								})),
@@ -2823,10 +2826,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 									-- #endif
 								}),
 								ach(5016, {	-- Just Can't Get Enough - Guild Edition
-									["timeline"] = { "added 4.0.3" },
-								}),
-								ach(1658, {	-- Champion of the Frozen Wastes
-									["criteriaID"] = 5888,	-- Kel'Thuzad (10 or 25 player) slain
+									["timeline"] = { ADDED_4_0_3 },
 								}),
 								ach(579, {	-- The Dedicated Few (25 player)
 									["criteriaID"] = 7172,	-- Kel'Thuzad slain
@@ -2853,7 +2853,7 @@ root(ROOTS.Instances, tier(WOTLK_TIER, applyclassicphase(WRATH_PHASE_ONE, {
 								i(40398),	-- Leggings of Mortal Arrogance
 								i(40399),	-- Signet of Manifested Pain
 								i(122197, {	-- Music Roll: Wrath of the Lich King
-									["timeline"] = { "added 6.1.0.19445" },
+									["timeline"] = { ADDED_6_1_0 },
 								}),
 							},
 						}),

@@ -1,25 +1,9 @@
 -----------------------------------------------------
 --   D U N G E O N S  &  R A I D S  M O D U L E    --
 -----------------------------------------------------
-TIER_ZERO_POINT_FIVE_SETS = createHeader({
-	readable = "Tier 0.5 Sets",
-	-- #if ANYCLASSIC
-	constant = "TIER_ZERO_POINT_FIVE_SETS",
-	-- #endif
-	icon = "Interface\\Icons\\INV_Chest_Plate03",
-	text = {
-		en = "Tier 0.5 Sets",
-		fr = "Ensembles Tier 0.5",
-		ru = "Комплекты T0.5",
-		cn = "等级 0.5 套装",
-	},
-	lore = {
-		en = "The Dungeon Set 2 class sets, commonly referred to as Tier 0.5, are obtained by completing a long quest chain to upgrade the first set available as drops in end game dungeons into stronger versions of themselves. In current WoW, these sets are covetted by Collectors as the quest chain was completely removed from the game with Cataclysm. In WoW Classic, you should finish this quest chain on all of your characters before then!",
-	},
-});
 local TIER_ZERO_POINT_FIVE_RACES = { DRUID, HUNTER, MAGE, PALADIN, PRIEST, ROGUE, SHAMAN, WARLOCK, WARRIOR };
-root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "removed 4.0.3" } }, (function(t) return not t.objectiveID; end), {
-	applyclassicphase(PHASE_FIVE, n(TIER_ZERO_POINT_FIVE_SETS, {
+root(ROOTS.Instances, expansion(EXPANSION.CLASSIC, bubbleDownFiltered({ ["timeline"] = { REMOVED_4_0_3 } }, (function(t) return not t.objectiveID; end), {
+	applyclassicphase(PHASE_FIVE_TIER_ZERO_POINT_FIVE_SETS, n(TIER_ZERO_POINT_FIVE_SETS, {
 		["classes"] = TIER_ZERO_POINT_FIVE_RACES,
 		["groups"] = {
 			cl(DRUID, {
@@ -426,6 +410,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 				},
 			}),
 			cl(PALADIN, {
+				-- #if AFTER TBC
 				{	-- An Earnest Proposition
 					["allianceQuestData"] = q(8908, {	-- An Earnest Proposition [A]
 						["qg"] = 16013,	-- Deliana
@@ -552,6 +537,97 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 						i(22089),	-- Soulforge Breastplate
 					},
 				},
+				-- #else
+				q(8908, {	-- An Earnest Proposition [A]
+					["qg"] = 16013,	-- Deliana
+					["coord"] = { 43.5, 52.6, IRONFORGE },
+					["maps"] = { WINTERSPRING, SCHOLOMANCE, STRATHOLME },
+					["classes"] = { PALADIN },
+					["races"] = ALLIANCE_ONLY,
+					["cost"] = {
+						{ "i", 16722, 1 },	-- Lightforge Bracers
+						{ "g", 200000 },	-- 20g
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						objective(1, {	-- 0/15 Winterspring Blood Sample
+							["provider"] = { "i", 21928 },	-- Winterspring Blood Sample
+						}),
+						i(22088),	-- Soulforge Bracers
+					},
+				}),
+				q(8954, {	-- Anthion's Parting Words [A]
+					["qg"] = 16016,	-- Anthion Harmon
+					["sourceQuest"] = 9015,	-- The Challenge
+					["coord"] = { 30.9, 16.8, EASTERN_PLAGUELANDS },
+					["maps"] = {
+						STRATHOLME,
+						BLACKROCK_SPIRE,
+						LBRS_TAZZALOR,
+						LBRS_SKITTERWEB_TUNNELS,
+						LBRS_HORDEMAR_CITY,
+						LBRS_HALL_OF_BLACKHAND,
+						LBRS_HALYCONS_LAIR,
+						LBRS_CHAMBER_OF_BATTLE,
+					},
+					["classes"] = { PALADIN },
+					["races"] = ALLIANCE_ONLY,
+					["cost"] = {
+						{ "i", 16725, 1 },	-- Lightforge Boots
+						{ "i", 16728, 1 },	-- Lightforge Legplates
+						{ "i", 16729, 1 },	-- Lightforge Spaulders
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						i(22087),	-- Soulforge Boots
+						i(22092),	-- Soulforge Legplates
+						i(22093),	-- Soulforge Spaulders
+					},
+				}),
+				q(8933, {	-- Just Compensation [A]
+					["qg"] = 16013,	-- Deliana
+					["sourceQuest"] = 8977,	-- Return to Deliana
+					["coord"] = { 43.5, 52.6, IRONFORGE },
+					["maps"] = { BLACKROCK_DEPTHS, STRATHOLME },
+					["classes"] = { PALADIN },
+					["races"] = ALLIANCE_ONLY,
+					["cost"] = {
+						{ "i", 16723, 1 },	-- Lightforge Belt
+						{ "i", 16724, 1 },	-- Lightforge Gauntlets
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						i(22086),	-- Soulforge Belt
+						i(22090),	-- Soulforge Gauntlets
+					},
+				}),
+				q(9002, {	-- Saving the Best for Last [A]
+					["qg"] = 16013,	-- Deliana
+					["sourceQuest"] = 8997,	-- Back to the Beginning [ALLIANCE]
+					["coord"] = { 43.5, 52.6, IRONFORGE },
+					["maps"] = {
+						SCHOLOMANCE,
+						BLACKROCK_SPIRE,
+						LBRS_TAZZALOR,
+						LBRS_SKITTERWEB_TUNNELS,
+						LBRS_HORDEMAR_CITY,
+						LBRS_HALL_OF_BLACKHAND,
+						LBRS_HALYCONS_LAIR,
+						LBRS_CHAMBER_OF_BATTLE,
+					},
+					["classes"] = { PALADIN },
+					["races"] = ALLIANCE_ONLY,
+					["cost"] = {
+						{ "i", 16727, 1 },	-- Lightforge Helm
+						{ "i", 16726, 1 },	-- Lightforge Breastplate
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						i(22091),	-- Soulforge Helm
+						i(22089),	-- Soulforge Breastplate
+					},
+				}),
+				-- #endif
 			}),
 			cl(PRIEST, {
 				{	-- An Earnest Proposition
@@ -819,6 +895,7 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 				},
 			}),
 			cl(SHAMAN, {
+				-- #if AFTER TBC
 				{	-- An Earnest Proposition
 					["allianceQuestData"] = q(10492, {	-- An Earnest Proposition [A]
 						["qg"] = 16013,	-- Deliana
@@ -953,6 +1030,112 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 						i(22102),	-- Vest of The Five Thunders
 					},
 				},
+				-- #else
+				q(8918, {	-- An Earnest Proposition [H]
+					["qg"] = 16012,	-- Mokvar
+					["coord"] = { 35.0, 38.3, ORGRIMMAR },
+					["maps"] = { SILITHUS, SCHOLOMANCE, STRATHOLME },
+					["classes"] = { SHAMAN },
+					["races"] = HORDE_ONLY,
+					["cost"] = {
+						{ "i", 16671, 1 },	-- Bindings of Elements
+						{ "g", 200000 },	-- 20g
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						objective(1, {	-- 0/15 Silithus Venom Sample
+							["provider"] = { "i", 22381 },	-- Silithus Venom Sample
+							["crs"] = {
+								11739,	-- Rock Stalker
+								11738,	-- Sand Skitterer
+								11737,	-- Stonelash Flayer
+								11736,	-- Stonelash Pincer
+								11735,	-- Stonelash Scorpid
+							},
+						}),
+						i(22095),	-- Bindings of The Five Thunders
+					},
+				}),
+				q(8957, {	-- Anthion's Parting Words [H]
+					["qg"] = 16016,	-- Anthion Harmon
+					["sourceQuest"] = 9015,	-- The Challenge
+					["coord"] = { 30.9, 16.8, EASTERN_PLAGUELANDS },
+					["maps"] = {
+						STRATHOLME,
+						BLACKROCK_SPIRE,
+						LBRS_TAZZALOR,
+						LBRS_SKITTERWEB_TUNNELS,
+						LBRS_HORDEMAR_CITY,
+						LBRS_HALL_OF_BLACKHAND,
+						LBRS_HALYCONS_LAIR,
+						LBRS_CHAMBER_OF_BATTLE,
+					},
+					["classes"] = { SHAMAN },
+					["races"] = HORDE_ONLY,
+					["cost"] = {
+						{ "i", 16670, 1 },	-- Boots of Elements
+						{ "i", 16668, 1 },	-- Kilt of Elements
+						{ "i", 16669, 1 },	-- Pauldrons of Elements
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						i(22096),	-- Boots of The Five Thunders
+						i(22100),	-- Kilt of The Five Thunders
+						i(22101),	-- Pauldrons of The Five Thunders
+					},
+				}),
+				q(8942, {	-- Just Compensation [H]
+					["qg"] = 16012,	-- Mokvar
+					["sourceQuest"] = 8978,	-- Return to Mokvar
+					["coord"] = { 35.0, 38.3, ORGRIMMAR },
+					["maps"] = {
+						BLACKROCK_SPIRE,
+						LBRS_TAZZALOR,
+						LBRS_SKITTERWEB_TUNNELS,
+						LBRS_HORDEMAR_CITY,
+						LBRS_HALL_OF_BLACKHAND,
+						LBRS_HALYCONS_LAIR,
+						LBRS_CHAMBER_OF_BATTLE,
+					},
+					["classes"] = { SHAMAN },
+					["races"] = HORDE_ONLY,
+					["cost"] = {
+						{ "i", 16673, 1 },	-- Cord of Elements
+						{ "i", 16672, 1 },	-- Gauntlets of Elements
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						i(22098),	-- Cord of The Five Thunders
+						i(22099),	-- Gauntlets of The Five Thunders
+					},
+				}),
+				q(9011, {	-- Saving the Best for Last [H]
+					["qg"] = 16012,	-- Mokvar
+					["sourceQuest"] = 8998,	-- Back to the Beginning [HORDE]
+					["coord"] = { 35.0, 38.3, ORGRIMMAR },
+					["maps"] = {
+						SCHOLOMANCE,
+						BLACKROCK_SPIRE,
+						LBRS_TAZZALOR,
+						LBRS_SKITTERWEB_TUNNELS,
+						LBRS_HORDEMAR_CITY,
+						LBRS_HALL_OF_BLACKHAND,
+						LBRS_HALYCONS_LAIR,
+						LBRS_CHAMBER_OF_BATTLE,
+					},
+					["classes"] = { SHAMAN },
+					["races"] = HORDE_ONLY,
+					["cost"] = {
+						{ "i", 16667, 1 },	-- Coif of Elements
+						{ "i", 16666, 1 },	-- Vest of Elements
+					},
+					["lvl"] = 58,
+					["groups"] = {
+						i(22097),	-- Coif of The Five Thunders
+						i(22102),	-- Vest of The Five Thunders
+					},
+				}),
+				-- #endif
 			}),
 			cl(WARLOCK, {
 				{	-- An Earnest Proposition
@@ -1249,7 +1432,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 							8908,	-- An Earnest Proposition [PALADIN]
 							8909,	-- An Earnest Proposition [PRIEST]
 							8910,	-- An Earnest Proposition [ROGUE]
+							-- #if AFTER TBC
 							10492,	-- An Earnest Proposition [SHAMAN]
+							-- #endif
 							8911,	-- An Earnest Proposition [WARLOCK]
 							8912,	-- An Earnest Proposition [WARRIOR]
 						},
@@ -1264,7 +1449,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 							8913,	-- An Earnest Proposition [DRUID]
 							8914,	-- An Earnest Proposition [HUNTER]
 							8915,	-- An Earnest Proposition [MAGE]
+							-- #if AFTER TBC
 							10493,	-- An Earnest Proposition [PALADIN]
+							-- #endif
 							8916,	-- An Earnest Proposition [PRIEST]
 							8917,	-- An Earnest Proposition [ROGUE]
 							8918,	-- An Earnest Proposition [SHAMAN]
@@ -1280,28 +1467,16 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 					["qg"] = 16016,	-- Anthion Harmon
 					["sourceQuest"] = 8947,	-- Anthion's Strange Request
 					["coord"] = { 30.9, 16.8, EASTERN_PLAGUELANDS },
-					["maps"] = { DIRE_MAUL },
+					["maps"] = {
+						DIRE_MAUL,
+						235,	-- Gordok Commons
+						236,	-- Capital Gardens
+						237,	-- Court of the Highborne
+						238,	-- Prison of Immol'Thar
+					},
 					["cost"] = {
 						{ "i", 21983, 1 },	-- Incomplete Banner of Provocation
 					},
-					["lvl"] = 58,
-				}),
-				q(9030, {	-- Anthion's Parting Words
-					["qg"] = 16013,	-- Deliana
-					["altQuests"] = {
-						8951,	-- Anthion's Parting Words [ALLIANCE]
-						8952,	-- Anthion's Parting Words [ALLIANCE]
-						8953,	-- Anthion's Parting Words [ALLIANCE]
-						8954,	-- Anthion's Parting Words [ALLIANCE]
-						8955,	-- Anthion's Parting Words [ALLIANCE]
-						8956,	-- Anthion's Parting Words [ALLIANCE]
-						8958,	-- Anthion's Parting Words [ALLIANCE]
-						8959,	-- Anthion's Parting Words [ALLIANCE]
-						10496,	-- Anthion's Parting Words [ALLIANCE]
-					},
-					["coord"] = { 43.53, 52.64, IRONFORGE },
-					["races"] = ALLIANCE_ONLY,
-					["isBreadcrumb"] = true,
 					["lvl"] = 58,
 				}),
 				q(8947, {	-- Anthion's Strange Request
@@ -1339,7 +1514,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 							8956,	-- Anthion's Parting Words [ALLIANCE]
 							8958,	-- Anthion's Parting Words [ALLIANCE]
 							8959,	-- Anthion's Parting Words [ALLIANCE]
+							-- #if AFTER TBC
 							10496,	-- Anthion's Parting Words [ALLIANCE]
+							-- #endif
 						},
 						["coord"] = { 43.53, 52.64, IRONFORGE },
 					}),
@@ -1354,7 +1531,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 							8957,	-- Anthion's Parting Words [HORDE]
 							9021,	-- Anthion's Parting Words [HORDE]
 							9022,	-- Anthion's Parting Words [HORDE]
+							-- #if AFTER TBC
 							10497,	-- Anthion's Parting Words [HORDE]
+							-- #endif
 						},
 						["coord"] = { 34.95, 38.29, ORGRIMMAR },
 					}),
@@ -1462,6 +1641,10 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 					["sourceQuest"] = 8948,	-- Anthion's Old Friend
 					["maps"] = {
 						DIRE_MAUL,
+						235,	-- Gordok Commons
+						236,	-- Capital Gardens
+						237,	-- Court of the Highborne
+						238,	-- Prison of Immol'Thar
 						BLACKROCK_SPIRE,
 						LBRS_TAZZALOR,
 						LBRS_SKITTERWEB_TUNNELS,
@@ -1589,7 +1772,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 							8935,	-- Just Compensation [ALLIANCE]
 							8936,	-- Just Compensation [ALLIANCE]
 							8937,	-- Just Compensation [ALLIANCE]
+							-- #if AFTER TBC
 							10494,	-- Just Compensation [ALLIANCE]
+							-- #endif
 						},
 						["coord"] = { 43.53, 52.64, IRONFORGE },
 					}),
@@ -1604,7 +1789,9 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 							8942,	-- Just Compensation [HORDE]
 							8943,	-- Just Compensation [HORDE]
 							8944,	-- Just Compensation [HORDE]
+							-- #if AFTER TBC
 							10495,	-- Just Compensation [HORDE]
+							-- #endif
 						},
 						["coord"] = { 34.95, 38.29, ORGRIMMAR },
 					}),
@@ -1744,7 +1931,11 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 					},
 					["lvl"] = 58,
 					["groups"] = {
-						i(22057),	-- Brazier of Invocation
+						i(22057, {	-- Brazier of Invocation
+							-- #if AFTER CATA
+							["description"] = "If you did complete the quest before the Cataclysm, you can request a new Brazier from Bodley.\nYou must have the Extra-Dimensional Ghost Revealer In order to see him outside UBRS Entrance in Black Rock Mountain.\nMux Manascrambler in Gadgetzan in Tanaris can assist you in getting the Ghost Revealer.",
+							-- #endif
+						}),
 						i(22344),	-- Brazier of Invocation: User's Manual
 					},
 				}),
@@ -1764,7 +1955,14 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 				q(9015, {	-- The Challenge
 					["qg"] = 16032,	-- Falrin Treeshaper
 					["sourceQuest"] = 8950,	-- The Instigator's Enchantment
-					["maps"] = { DIRE_MAUL, BLACKROCK_DEPTHS },
+					["maps"] = {
+						BLACKROCK_DEPTHS,
+						DIRE_MAUL,
+						235,	-- Gordok Commons
+						236,	-- Capital Gardens
+						237,	-- Court of the Highborne
+						238,	-- Prison of Immol'Thar
+					},
 					["lvl"] = 58,
 					["groups"] = {
 						objective(1, {	-- Theldren's Team Defeated
@@ -1808,7 +2006,13 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 				q(8950, {	-- The Instigator's Enchantment
 					["qg"] = 16032,	-- Falrin Treeshaper
 					["sourceQuest"] = 8949,	-- Falrin's Vendetta
-					["maps"] = { DIRE_MAUL },
+					["maps"] = {
+						DIRE_MAUL,
+						235,	-- Gordok Commons
+						236,	-- Capital Gardens
+						237,	-- Court of the Highborne
+						238,	-- Prison of Immol'Thar
+					},
 					["cost"] = {
 						{ "i", 20520, 4 },	-- Dark Rune
 						{ "i", 14344, 8 },	-- Large Brilliant Shard
@@ -1851,7 +2055,11 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 				q(8967, {	-- The Left Piece of Lord Valthalak's Amulet [WARLOCK, DRUID]
 					["qg"] = 16033,	-- Bodley
 					["sourceQuest"] = 8963,	-- Components of Importance [WARLOCK, DRUID]
-					["maps"] = { BLACKROCK_MOUNTAIN, DIRE_MAUL },
+					["maps"] = {
+						BLACKROCK_MOUNTAIN,
+						DIRE_MAUL,
+						239,	-- Warpwood Quarter
+					},
 					["classes"] = { WARLOCK, DRUID },
 					["cost"] = {
 						{ "i", 22115, 1 },	-- Extra-Dimensional Ghost Revealer
@@ -1911,7 +2119,11 @@ root(ROOTS.Instances, tier(CLASSIC_TIER, bubbleDownFiltered({ ["timeline"] = { "
 				q(8990, {	-- The Right Piece of Lord Valthalak's Amulet [WARRIOR, ROGUE]
 					["qg"] = 16033,	-- Bodley
 					["sourceQuest"] = 8985,	-- More Components of Importance [WARRIOR, ROGUE]
-					["maps"] = { BLACKROCK_MOUNTAIN, DIRE_MAUL },
+					["maps"] = {
+						BLACKROCK_MOUNTAIN,
+						DIRE_MAUL,
+						239,	-- Warpwood Quarter
+					},
 					["classes"] = { WARRIOR, ROGUE },
 					["cost"] = {
 						{ "i", 22115, 1 },	-- Extra-Dimensional Ghost Revealer

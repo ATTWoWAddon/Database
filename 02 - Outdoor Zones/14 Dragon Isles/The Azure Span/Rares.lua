@@ -4,7 +4,6 @@
 local function bo(questID, isDaily)
     return { ["questID"] = questID, ["isDaily"] = isDaily };
 end
-
 root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
 	m(THE_AZURE_SPAN, {
 		n(RARES, sharedData({ ["isDaily"] = true }, {
@@ -28,7 +27,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["questID"] = 74058,
 				["g"] = {
 					bo(69858, true),
-					i(197404),	-- Renewed Proto-Drake: Finned Tail (DM!)
+					i(197404),	-- Renewed Proto-Drake: Finned Tail (MM!)
 				},
 			}),
 			n(197353, {	-- Blisterhide <The Infested>
@@ -39,7 +38,7 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["coord"] = { 16.7, 28.4, THE_AZURE_SPAN },
 				["questID"] = 73870,
 				["g"] = {
-					i(197595),	-- Windborne Velocidrake: Finned Ears (DM!)
+					i(197595),	-- Windborne Velocidrake: Finned Ears (MM!)
 				},
 			}),
 			n(194392, {	-- Brackle
@@ -51,13 +50,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 				["questID"] = 72836,
 				["isDaily"] = IGNORED_VALUE,
 			}),
-			n(193157, {	-- Dragonhunter Gorund
+			n(193157, bubbleDownSelf({ ["timeline"] = { REMOVED_10_2_5 } }, {	-- Dragonhunter Gorund
 				["coord"] = { 27.8, 45.8, THE_AZURE_SPAN },
 				["questID"] = 73873,
 				["g"] = {
 					i(200302),	-- Magmaforged Scimitar
 				},
-			}),
+			})),
 			n(193691, {	-- Fisherman Tinnak <Angered Ghost>
 				["minReputation"] = { FACTION_ISKAARA_TUSKARR, 7 },
 				["description"] = "Collect the Broken Fishing Pole, Torn Fishing Net and Old Harpoon around to summon him.\n\nRewards you with 950 Reputation if you are summoner or 60 Reputation with a normal tag.",
@@ -225,12 +224,13 @@ root(ROOTS.Zones, m(DRAGON_ISLES, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAU
 		})),
 	}),
 })));
-
-root(ROOTS.HiddenQuestTriggers, m(DRAGON_ISLES, {
-	m(THE_AZURE_SPAN, {
-		q(73886),	-- Killing both Mucklings for Mucka the Raker
-		q(71240),	-- Triggered on killing various rares, maybe first one-time Rare killed on a character
+root(ROOTS.HiddenQuestTriggers, expansion(EXPANSION.DF, bubbleDown({ ["timeline"] = { ADDED_10_0_2_LAUNCH } }, {
+	m(DRAGON_ISLES, {
+		m(THE_AZURE_SPAN, {
+			n(RARES, {
+				q(73886),	-- Killing both Mucklings for Mucka the Raker
+				q(71240),	-- Triggered on killing various rares, maybe first one-time Rare killed on a character
+			}),
+		}),
 	}),
-}));
-
-
+})));

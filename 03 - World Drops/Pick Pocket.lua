@@ -1,12 +1,49 @@
 -----------------------------------------------------
 --       W O R L D   D R O P S   M O D U L E       --
 -----------------------------------------------------
--- #if AFTER WRATH
 root(ROOTS.WorldDrops, {
 	header(HEADERS.Spell, 921, {	-- Pick Pocket
 		["description"] = "A Rogue can use their Pick Pocket skill to steal the following items from mobs of a specific area.",
 		["groups"] = {
-			tier(WOD_TIER, {
+			expansion(EXPANSION.CLASSIC, {
+				-- #if NOT ANYCLASSIC
+				i(6150, {	-- A Frayed Knot
+					["description"] = "Can be pickpocketed from Classic humanoids.",
+				}),
+				-- #endif
+				i(5373, {	-- Lucky Charm
+					["description"] = "While there's no evidence to suggest that having this item will make the thing you want drop for you, Crieve totally got his second binding after only 97 weeks of Baron Geddon with this bad boy in his bags. Without it, it'd probably have been more than that!",
+				}),
+			}),
+			expansion(EXPANSION.WRATH, {
+				i(37674, {	-- An Unopened Tome of Advice
+					["description"] = "If only they would have read this.",
+					["coord"] = { 47.8, 49.4, DRAGONBLIGHT },
+					["cr"] = 27539,	-- Frigid Necromancer <Cult of the Damned>
+				}),
+				filter(TOYS, {
+					i(36863, {	-- Decahedral Dwarven Dice (TOY!)
+						["description"] = "Can be pickpocketed from Northrend humanoids.",
+						["timeline"] = { ADDED_3_0_2 },
+						["_drop"] = { "f" },	-- Drop Consumable
+					}),
+					i(36862, {	-- Worn Troll Dice (TOY!)
+						["description"] = "Can be pickpocketed from Northrend humanoids.",
+						["timeline"] = { ADDED_3_0_2 },
+						["_drop"] = { "f" },	-- Drop Consumable
+					}),
+				}),
+			}),
+			expansion(EXPANSION.CATA, {
+				filter(TOYS, {
+					i(63269, {	-- Loaded Gnomish Dice (TOY!)
+						["description"] = "Can be pickpocketed from Cataclysm humanoids.",
+						["timeline"] = { ADDED_4_0_1 },
+						["_drop"] = { "f" },	-- Drop Consumable
+					}),
+				}),
+			}),
+			expansion(EXPANSION.WOD, {
 				q(39107, {	-- An Even Bigga Score
 					["qg"] = 83006,	-- Griftah
 					["classes"] = { ROGUE },
@@ -37,7 +74,7 @@ root(ROOTS.WorldDrops, {
 				i(113008),	-- Glowing Ancestral Idol: 20 coins
 				i(113007),	-- Magma-Infused War Beads: 20 coins
 			}),
-			tier(LEGION_TIER, {
+			expansion(EXPANSION.LEGION, {
 				i(151165),	-- Verbellin Tourbillion Chronometer	20000
 				i(151164),	-- Sparkling Sin'dorei Signet	10000
 				i(151163),	-- Locket of Magical Memories	5000
@@ -60,29 +97,6 @@ root(ROOTS.WorldDrops, {
 				i(151147),	-- Charmed Pendant	10
 				i(151146),	-- Charmed Band
 			}),
-			filter(TOYS, {
-				i(36863, {	-- Decahedral Dwarven Dice (TOY!)
-					["description"] = "Can be pickpocketed from Northrend humanoids.",
-					["timeline"] = { "added 3.0.1.8681" },
-					["_drop"] = { "f" },	-- Drop Consumable
-				}),
-				i(63269, {	-- Loaded Gnomish Dice (TOY!)
-					["description"] = "Can be pickpocketed from Cataclysm humanoids.",
-					["timeline"] = { "added 4.0.1.12941" },
-					["_drop"] = { "f" },	-- Drop Consumable
-				}),
-				i(36862, {	-- Worn Troll Dice (TOY!)
-					["description"] = "Can be pickpocketed from Northrend humanoids.",
-					["timeline"] = { "added 3.0.1.8788" },
-					["_drop"] = { "f" },	-- Drop Consumable
-				}),
-			}),
-			-- #if NOT ANYCLASSIC
-			i(6150, {	-- A Frayed Knot
-				["description"] = "Can be pickpocketed from Classic humanoids.",
-			}),
-			-- #endif
 		},
 	}),
 });
--- #endif
